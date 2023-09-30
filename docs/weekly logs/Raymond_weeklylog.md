@@ -19,4 +19,4 @@
 ![Task_Done](./images/tasks/Paing-Task.jpg)
 
 ## Recap of week's goals
-I collaborate with my team to discuss and work on the project plan.
+I collaborate with my team to discuss and work on the project plan, team weekly log and completed my personal weekly log.
