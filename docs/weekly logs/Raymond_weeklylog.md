@@ -14,6 +14,8 @@
 
 ## Week 4 2023/09/25-2023/10/1
 
+-Types of tasks that I have worked on
+
 ![Task_Done](./images/tasks/Paing-Task.jpg)
 
 ## Recap of week's goals
