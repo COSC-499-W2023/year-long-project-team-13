@@ -21,4 +21,17 @@
 ## Week 4 2023/09/25~2023/10/1
 
 - Which features were in the project plan for this milestone?
+    We worked on the project plan and made sure to distribute the work evenly.
 - Which tasks from the project board are associated with these features?
+    The project plan is called **Project Plan** on the Kanban board.
+
+Burnup chart
+![Burnup](./images/burnup/Week4_burnup.png)
+Network Graph
+![Network](./images/network/Week4_network.png)
+Completed Tasks
+![Completed](./images/completed/week4_done.png)
+In progress Tasks
+![In Progress](./images/in-prog/In%20progress.png)
+Tests
+- Tests: We don't have any code this week so there's no tests to run.

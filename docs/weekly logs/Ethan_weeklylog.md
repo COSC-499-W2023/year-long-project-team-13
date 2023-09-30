@@ -16,3 +16,5 @@
 - Type of tasks you worked on (screenshot from Peer Eval question)
 
 ![Tasks](./images/tasks/Ethan_Week4.png)
+
+- This week, we worked on the project plan and made sure to distribute the work evenly.
