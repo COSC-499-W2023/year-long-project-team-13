@@ -17,3 +17,8 @@
 - Herman -> Herman Sood -> herman-23
 - Raymond -> Sitt Paing -> SittHmuePaing
 - Adrian -> Adrian Fong -> AdrianFWM
+
+## Week 4 2023/09/25~2023/10/1
+
+- Which features were in the project plan for this milestone?
+- Which tasks from the project board are associated with these features?
