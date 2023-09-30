@@ -1,6 +1,16 @@
 # Personal Week Log
 
-## Applicable date range
+- Applicable date range
+- Type of tasks you worked on (screenshot from Peer Eval question)
+- Recap on your week's goals-Which features were yours in the project plan for this milestone?
+  - Which tasks from the project board are associated with these features?
+  - Among these tasks, which have you completed/in progress in the last week?
+  - Optional text: Additional context that we should be aware of
 
-09/21/2023 - 09/23/2023
+# Preferred name -> Ssc name -> Github name
 
+- Adrian -> Adrian Fong -> AdrianFWM
+
+## Week 4 2023/09/25~2023/10/1
+
+![WeeklyTask](./images/tasks%20worked%20on/AdrianFong_Week4_Task.png)
