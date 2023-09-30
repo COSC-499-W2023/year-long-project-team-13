@@ -13,4 +13,6 @@
 - Ethan -> Ethan Hsu -> YuchenHsu
 
 ## Week 4 2023/09/25~2023/10/1
+- Type of tasks you worked on (screenshot from Peer Eval question)
+
 ![Tasks](./images/tasks%20worked%20on/Ethan_Week4.png)
