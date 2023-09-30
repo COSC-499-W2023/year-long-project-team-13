@@ -13,4 +13,9 @@
 
 ## Week 4 2023/09/25~2023/10/1
 
-![WeeklyTask](./images/tasks%20worked%20on/AdrianFong_Week4_Task.png)
+- Task I have worked on this week.
+![WeeklyTask](./images/tasks/AdrianFong_Week4_Task.png)
+
+## Recap on your week's goals
+
+- Worked on project plan document, distribute work evenly, my own weekly log, contribute to team weeklog.
