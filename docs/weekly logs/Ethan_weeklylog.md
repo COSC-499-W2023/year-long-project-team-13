@@ -18,3 +18,13 @@
 ![Tasks](./images/tasks/Ethan_Week4.png)
 
 - This week, we worked on the project plan and made sure to distribute the work evenly.
+
+# Week 5 2023/10/02~2023/10/08
+
+- Type of tasks you worked on (screenshot from Peer Eval question)
+
+![Tasks](./images/tasks/Ethan_Week5.png)
+
+- This week, I learned the basics of Django, making a simple exercise website. And searched for the template to be used for our project.
+
+![W3Learning](./images/w3images/Ethan/Homepage.png)
