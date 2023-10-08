@@ -34,12 +34,12 @@ I collaborate with my team to discuss on the project templates we would like to 
 -Optional text: Below are some images of practice i have done using Django
 
 -Django coding
-![Django](./images/tasks/Django_practice_Sitt_W5.png)
+![Django](./images/w3images/Sitt/Django_practice_Sitt_W5.png)
 -The list of members
-![Django](./images/tasks/Django_practice3_Sitt_W5.png)
+![Django](./images/w3images/Sitt/Django_practice3_Sitt_W5.png)
 -Home page for Admin
-![Django](./images/tasks/Django_practice1_Sitt_W5.png)
+![Django](./images/w3images/Sitt/Django_practice1_Sitt_W5.png)
 -The list of members on admin page(after practicing adding and deleting members)
-![Django](./images/tasks/Django_practice2_Sitt_W5.png)
+![Django](./images/w3images/Sitt/Django_practice2_Sitt_W5.png)
 
 
