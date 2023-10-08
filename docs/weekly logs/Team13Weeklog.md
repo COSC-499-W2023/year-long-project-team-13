@@ -9,6 +9,7 @@
 - Table view of in progress tasks on project board (by which username)
 - Test report
 - Optional text: Additional context that we should be aware of
+-
 
 ## Preferred name -> Ssc name -> Github name
 
@@ -36,7 +37,6 @@ In progress Tasks
 Tests
 
 - Tests: We don't have any code this week so there's no tests to run.
-
 
 ## Preferred name -> Ssc name -> Github name
 
