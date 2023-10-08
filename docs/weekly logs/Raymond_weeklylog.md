@@ -26,7 +26,7 @@ I collaborate with my team to discuss and work on the project plan, team weekly 
 
 -Types of tasks that I have worked on
 
-![Task_Done](./images/tasks/SittPaing_W5-Task.png)
+![Task_Done](./images/tasks/Sitt%20Paing%20W5-Task.png)
 
 ## Recap of week's goals
 I collaborate with my team to discuss on the project templates we would like to use and learn a new framework django and work on the setup to use for our project from W3schools.com. I also worked on my weeklylog and contribute in teamlog for this week.
