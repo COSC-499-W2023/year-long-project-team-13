@@ -27,21 +27,22 @@
 
 ## Recap on your week's goals
 
-- Worked on "Learning Django basics and setup" from the project board, learning Django practices/exercises on w3schools website, I learned how to setup and modify Django files and make it into a local website; also, worked on my own weekly log, contribute to team weeklog.
-- Additional: Following images are the screenshot of the Django exercise website.
+- Worked on "Learning Django basics and setup" from the project board, learning Django practices/exercises on w3schools website, I learned how to setup and modify Django files and make it into a local website. 
+- Finding CSS template from online for our actual website.
+- Worked on my own weekly log, contribute to team weeklog.
+- Additional: Following images are the screenshot of the Django exercise website:
 
-![Django Code](./images/w3images/Adrian/Code.png)
 - Django code and files
+![Django Code](./images/w3images/Adrian/Code.png)
 
-![Django Home](./images/w3images/Adrian/Home.png)
 - Home Page
+![Django Home](./images/w3images/Adrian/Home.png)
 
-![Django Member List](./images/w3images/Adrian/MemberList.png)
 - Member List Page
+![Django Member List](./images/w3images/Adrian/MemberList.png)
 
-![Django Member Details](./images/w3images/Adrian/MemberDetails.png)
 - Member Details Page
+![Django Member Details](./images/w3images/Adrian/MemberDetails.png)
 
-![Django Admin](./images/w3images/Adrian/Admin.png)
 - Admin Page
-
+![Django Admin](./images/w3images/Adrian/Admin.png)
