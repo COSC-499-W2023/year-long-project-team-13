@@ -22,7 +22,6 @@ Also, update your README.md file with the team and client/project information.  
 
 ## Install Guide
 
-
 1. **Create a Python Virtual Environment (Optional, but Recommended):** Before installing the required packages, it's a good practice to create a Python virtual environment. This isolates your project dependencies from the system-wide Python environment. Use the following commands to create a virtual environment:
 
    * **Windows** (Command Prompt):
@@ -58,7 +57,7 @@ Also, update your README.md file with the team and client/project information.  
      To activate the virtual environment:
 
      ```console
-     source myenv/bin/activate
+     . myenv/bin/activate
      ```
 
 2. **Install Required Packages:** With the virtual environment activated (if you created one), proceed to install the necessary packages by running the following command in your terminal:
