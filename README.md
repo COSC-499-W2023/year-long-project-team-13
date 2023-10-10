@@ -22,68 +22,53 @@ Also, update your README.md file with the team and client/project information.  
 
 ## Install Guide
 
-1. **Create a Python Virtual Environment (Optional, but Recommended):** Before installing the required packages, it's a good practice to create a Python virtual environment. This isolates your project dependencies from the system-wide Python environment. Use the following commands to create a virtual environment:
+1. **Activate the virtual environment:**
 
-   * **Windows** (Command Prompt):
+    Macos:
 
-     ```console
-     python -m venv myenv
-     ```
+    ```console
+    source myenv/bin/activate
+    ```
 
-     To activate the virtual environment:
+    Windows:
 
-     ```console
-     myenv\Scripts\activate
-     ```
-   * **Windows** (PowerShell):
+    ```console
+    myenv/Scripts/activate
+    ```
 
-     ```console
-     python -m venv myenv
-     ```
+    Git bash:
 
-     To activate the virtual environment:
+    ```console
+    . myenv/Scripts/activate
+    ```
 
-     ```console
-     .\myenv\Scripts\Activate.ps1
-     ```
-   * **macOS** (zsh):
-
-     ```console
-     python -m venv myenv
-     ```
-
-     To activate the virtual environment:
-
-     ```console
-     source myenv/bin/activate
-     ```
-   * **git bash**:
-
-     ```console
-     python -m venv myenv
-     ```
-
-     To activate the virtual environment:
-
-     ```console
-     . myenv/Scripts/activate
-     ```
 2. **Install Required Packages:** With the virtual environment activated (if you created one), proceed to install the necessary packages by running the following command in your terminal:
+
+   Macos:
+
+   ```console
+   python -m pip install -r requirements.txt
+   ```
+
+   Windows/git bash:
 
    ```console
    py -m pip install -r requirements.txt
    ```
+
 3. **Database Setup:** Configure the database by applying migrations with these commands:
 
    ```console
    python manage.py makemigrations
    python manage.py migrate
    ```
+
 4. **Start the Django Server:** Launch the Django development server with this command:
 
    ```console
    python manage.py runserver
    ```
+
 5. **Access the Website:** Open your web browser and navigate to [http://127.0.0.1:8000/](http://127.0.0.1:8000/) to access the locally hosted website.
 
 By following these steps, you'll have a Python virtual environment set up and activated, ensuring a clean and isolated environment for your Django project.
