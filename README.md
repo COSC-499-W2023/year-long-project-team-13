@@ -20,27 +20,7 @@ Please use the provided folder structure for your docs (project plan, design doc
 
 Also, update your README.md file with the team and client/project information.  You can find details on writing GitHub Markdown [here](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax) as well as a [handy cheatsheet](https://enterprise.github.com/downloads/en/markdown-cheatsheet.pdf).
 
-## Install Guide
-
-In order to use the program, first install the required packages by running the following command in the terminal.
-
-```
-pip install -r requirements.txt
-```
-
-Then, for the django server setup, run the following code.
-
-```
-python3 manage.py makemigrations
-python3 manage.py migrate
-python3 manage.py runserver
-```
-
-Then, go to [127.0.0.1:8000](https://127.0.0.1:8000 "click to go to the local website") to access the website.
-
-
-## Instal Guide V2
-
+## Instal Guide
 
 To begin using the program, follow these steps to set up the Django server:
 
