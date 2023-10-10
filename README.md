@@ -22,7 +22,7 @@ Also, update your README.md file with the team and client/project information.  
 
 ## Install Guide
 
-1. **Activate the virtual environment:**
+1. **Activate the virtual environment:** If you created a virtual environment, activate it by running the following command in your terminal:
 
     Macos:
 
