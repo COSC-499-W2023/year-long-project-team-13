@@ -46,7 +46,6 @@ Also, update your README.md file with the team and client/project information.  
      ```console
      .\myenv\Scripts\Activate.ps1
      ```
-
    * **macOS** (zsh):
 
      ```console
@@ -58,7 +57,6 @@ Also, update your README.md file with the team and client/project information.  
      ```console
      source myenv/bin/activate
      ```
-
    * **git bash**:
 
      ```console
@@ -73,7 +71,7 @@ Also, update your README.md file with the team and client/project information.  
 2. **Install Required Packages:** With the virtual environment activated (if you created one), proceed to install the necessary packages by running the following command in your terminal:
 
    ```console
-   pip install -r requirements.txt
+   py -m pip install -r requirements.txt
    ```
 3. **Database Setup:** Configure the database by applying migrations with these commands:
 
