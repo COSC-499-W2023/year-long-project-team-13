@@ -36,4 +36,4 @@ python3 manage.py migrate
 python3 manage.py runserver
 ```
 
-Then, go to [127.0.0.1:8000](127.0.0.1:8000 "click to go to the local website")
+Then, go to [127.0.0.1:8000](https://127.0.0.1:8000 "click to go to the local website") to access the website.
