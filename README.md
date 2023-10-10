@@ -66,7 +66,7 @@ Also, update your README.md file with the team and client/project information.  
      To activate the virtual environment:
 
      ```console
-     . myenv/bin/activate
+     . myenv/Scripts/activate
      ```
 2. **Install Required Packages:** With the virtual environment activated (if you created one), proceed to install the necessary packages by running the following command in your terminal:
 
