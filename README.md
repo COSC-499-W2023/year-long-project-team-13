@@ -24,24 +24,29 @@ Also, update your README.md file with the team and client/project information.  
 
 1. **Activate the virtual environment:** If you created a virtual environment, activate it by running the following command in your terminal:
 
-    Macos:
+   Macos:
 
-    ```console
-    source myenv/bin/activate
-    ```
+   ```console
+   source myenv/bin/activate
+   ```
 
-    Windows:
+   Cmd.exe:
 
-    ```console
-    myenv/Scripts/activate
-    ```
+   ```console
+   myenv\Scripts\activate.bat
+   ```
 
-    Git bash:
+   Powershell:
 
-    ```console
-    . myenv/Scripts/activate
-    ```
+   ```console
+   myenv\Scripts\Activate.ps1
+   ```
 
+   Git bash:
+
+   ```console
+   . myenv/Scripts/activate
+   ```
 2. **Install Required Packages:** With the virtual environment activated (if you created one), proceed to install the necessary packages by running the following command in your terminal:
 
    Macos:
@@ -55,20 +60,17 @@ Also, update your README.md file with the team and client/project information.  
    ```console
    py -m pip install -r requirements.txt
    ```
-
 3. **Database Setup:** Configure the database by applying migrations with these commands:
 
    ```console
    python manage.py makemigrations
    python manage.py migrate
    ```
-
 4. **Start the Django Server:** Launch the Django development server with this command:
 
    ```console
    python manage.py runserver
    ```
-
 5. **Access the Website:** Open your web browser and navigate to [http://127.0.0.1:8000/](http://127.0.0.1:8000/) to access the locally hosted website.
 
 By following these steps, you'll have a Python virtual environment set up and activated, ensuring a clean and isolated environment for your Django project.
