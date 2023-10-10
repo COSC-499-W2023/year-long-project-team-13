@@ -59,7 +59,7 @@ Also, update your README.md file with the team and client/project information.  
      source myenv/bin/activate
      ```
 
-     **git bash**:
+   * **git bash**:
 
      ```console
      python -m venv myenv
