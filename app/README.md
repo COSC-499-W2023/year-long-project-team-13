@@ -1,5 +1,5 @@
 
-# video_app
+# Guide to Run the Program
 
 A django based video sharing app
 To begin create a folder inside the video_app folder called media and insert any jpeg image and rename it mountain.jpg which will act as our default profile picture after a user creates an account
