@@ -24,7 +24,16 @@ Also, update your README.md file with the team and client/project information.  
 
 1. **Activate the virtual environment:** If you created a virtual environment, activate it by running the following command in your terminal:
 
-   Macos:
+   If you have never created a virtual environment, you need to install the virtualenv package first:
+
+   ```console
+   pip install virtualenv
+   ```
+
+   Once you install the virtualenv package, you can create a virtual environment by running the following command:
+
+
+   MacOS/Linux:
 
    ```console
    source myenv/bin/activate
@@ -47,6 +56,7 @@ Also, update your README.md file with the team and client/project information.  
    ```console
    . myenv/Scripts/activate
    ```
+
 2. **Install Required Packages:** With the virtual environment activated (if you created one), proceed to install the necessary packages by running the following command in your terminal:
 
    Macos:
@@ -59,6 +69,12 @@ Also, update your README.md file with the team and client/project information.  
 
    ```console
    py -m pip install -r requirements.txt
+   ```
+
+   Depending on the system an environment already created, it is possible that the command above will not work. If that is the case, change the py in front to **python** and try again:
+
+   ```console
+   python -m pip install -r requirements.txt
    ```
 3. **Database Setup:** Configure the database by applying migrations with these commands:
 
