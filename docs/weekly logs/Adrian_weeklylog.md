@@ -14,8 +14,35 @@
 ## Week 4 2023/09/25~2023/10/1
 
 - Task I have worked on this week.
-![WeeklyTask](./images/tasks/AdrianFong_Week4_Task.png)
+![Weekly Task 4](./images/tasks/AdrianFong_Week4_Task.png)
 
 ## Recap on your week's goals
 
 - Worked on project plan document, distribute work evenly, my own weekly log, contribute to team weeklog.
+
+## Week 5 2023/10/2~2023/10/7
+
+- Task I have worked on this week.
+![Weekly Task 5](./images/tasks/AdrianFong_Week5_Task.png)
+
+## Recap on your week's goals
+
+- Worked on "Learning Django basics and setup" from the project board, learning Django practices/exercises on w3schools website, I learned how to setup and modify Django files and make it into a local website. 
+- Finding CSS template from online for our actual website.
+- Worked on my own weekly log, contribute to team weeklog.
+- Additional: Following images are the screenshot of the Django exercise website:
+
+- Django code and files
+![Django Code](./images/w3images/Adrian/Code.png)
+
+- Home Page
+![Django Home](./images/w3images/Adrian/Home.png)
+
+- Member List Page
+![Django Member List](./images/w3images/Adrian/MemberList.png)
+
+- Member Details Page
+![Django Member Details](./images/w3images/Adrian/MemberDetails.png)
+
+- Admin Page
+![Django Admin](./images/w3images/Adrian/Admin.png)
