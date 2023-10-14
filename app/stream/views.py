@@ -3,7 +3,7 @@ from . models import VidStream
 from . forms import VidUploadForm
 from django.views.generic import DetailView, DeleteView, UpdateView, ListView, CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from django.contrib.auth.models import User 
+from django.contrib.auth.models import User
 
 class VideoDetailView(DetailView):
     template_name = "stream/video-detail.html"
@@ -11,7 +11,7 @@ class VideoDetailView(DetailView):
 
 class GeneralVideoListView(ListView):
     model = VidStream
-    template_name = 'stream/video-list.html'
+    template_name = 'stream/video-page.html'
     context_object_name = 'videos'
     ordering = ['-upload_date']
 
@@ -21,7 +21,7 @@ def search(request):
         if query:
             results = VidStream.objects.filter(title__contains=query)
             return render(request, 'stream/search.html',{'videos':results})
-    
+
     return render(request, 'stream/search.html')
 
 
@@ -35,7 +35,7 @@ class VideoCreateView(LoginRequiredMixin   ,CreateView):
 
     #this is to make sure that the logged in user is the one to upload the content
     def form_valid(self, form):
-        form.instance.streamer = self.request.user 
+        form.instance.streamer = self.request.user
         return super().form_valid(form)
 
 
@@ -48,7 +48,7 @@ class VideoUpdateView(LoginRequiredMixin, UserPassesTestMixin ,UpdateView):
 
     #this is to make sure that the logged in user is the one to upload the content
     def form_valid(self, form):
-        form.instance.streamer = self.request.user 
+        form.instance.streamer = self.request.user
         return super().form_valid(form)
     #this function prevents other people from updating your videos
     def test_func(self):
@@ -56,8 +56,8 @@ class VideoUpdateView(LoginRequiredMixin, UserPassesTestMixin ,UpdateView):
         if self.request.user == video.streamer:
             return True
         return False
-    
-    
+
+
 
 
 class VideoDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
@@ -69,7 +69,7 @@ class VideoDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         video = self.get_object()
         if self.request.user == video.streamer:
             return True
-        return False 
+        return False
 
 
 
@@ -81,7 +81,7 @@ class UserVideoListView(ListView):
     def get_queryset(self):
         user = get_object_or_404(User, username=self.kwargs.get('username'))
         return VidStream.objects.filter(streamer=user).order_by('-upload_date')
-    
+
 
 
 
