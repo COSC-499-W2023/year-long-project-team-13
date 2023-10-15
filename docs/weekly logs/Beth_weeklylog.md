@@ -6,7 +6,7 @@
 
 This week we all worked together to work on the Project plan. 
 
-### Week 5 Oct 1 - Oct
+### Week 5 Oct 1 - Oct 7
 
 ![W5Tasks](./images/tasks/Ralston_W5_Tasks.png)
 
@@ -19,3 +19,9 @@ This week was spent learning Django and becoming familiar with Python. I followe
 ![HomePage](./images/w3images/Beth/Home_Ralston.png)
 
 ![MainPage](./images/w3images/Beth/Main_Ralston.png)
+
+### Week 6 Oct 8 - Oct 14
+
+![W6Tasks](./images/tasks/Ralston_W6_Tasks.png)
+
+The setup and testing of the "Setting up the project Django base" on my computer. I also started working on the home page. I tried connecting the newly found html and css files to the basic set up of Django. The Setting up the project Django base is complete. The Home page is still in progress. I also started reading through a W3 school AWS tutorial to begin to be comfortable with AWS.
