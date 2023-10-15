@@ -11,7 +11,8 @@ class VideoDetailView(DetailView):
 
 class GeneralVideoListView(ListView):
     model = VidStream
-    template_name = 'stream/video-page.html'
+    # template_name = "stream/video-list.html"
+    template_name = 'stream/index.html'
     context_object_name = 'videos'
     ordering = ['-upload_date']
 
