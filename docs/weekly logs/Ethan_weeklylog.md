@@ -36,3 +36,12 @@
   ![W3Learning](./images/w3images/Ethan/MemberDetail.png)
 - Django Practice Website Admin Page
   ![W3Learning](./images/w3images/Ethan/Admin.png)
+
+## Week 6 2023/10/09 ~ 2023/10/15
+
+- Type of tasks you worked on (screenshot from Peer Eval question)
+
+![Tasks](./images/tasks/Ethan_Week6.png)
+
+- This week, me and the team started working on implementing the template for our project. We also chose our css/html template and started incorperating it into the django website we made.
+
