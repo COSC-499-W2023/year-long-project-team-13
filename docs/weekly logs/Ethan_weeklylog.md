@@ -19,6 +19,10 @@
 
 - This week, we worked on the project plan and made sure to distribute the work evenly.
 
+# Preferred name -> Ssc name -> Github name
+
+- Ethan -> Ethan Hsu -> YuchenHsu
+
 ## Week 5 2023/10/02~2023/10/08
 
 - Type of tasks you worked on (screenshot from Peer Eval question)
@@ -49,14 +53,10 @@
 
 - This week, me and the team started working on implementing the template for our project. We also chose our css/html template and started incorperating it into the django website we made.
 - The task associated is "[Setting up the project Django base](https://github.com/COSC-499-W2023/year-long-project-team-13/issues/45)"**,** "[Home Page](https://github.com/COSC-499-W2023/year-long-project-team-13/issues/3)", "[CSS dev](https://github.com/COSC-499-W2023/year-long-project-team-13/issues/7)", "[User Interface Design](https://github.com/COSC-499-W2023/year-long-project-team-13/issues/6)".
-
 - Optional Text: The following images are from the Django website template and the css template we chose. And the combining in progress.
-
 - Django Website Template
   ![Django](./images/w3images/Ethan/django_css_template/Ethan_django_css_merge.png)
-
 - CSS Template
   ![CSS](./images/w3images/Ethan/django_css_template/Ethan_css_template.png)
-
 - Combining
   ![Combining](./images/w3images/Ethan/django_css_template/Ethan_django_css_merge.png)
