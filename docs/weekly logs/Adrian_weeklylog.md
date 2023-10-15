@@ -54,8 +54,8 @@
 
 ## Recap on your week's goals
 
-- Worked on "Setting up the project Django base" from the project board, setup the Django environment, Django database with website loaded.
-- Working on "CSS dev" from project board, applied the css template files into Django environment.
+- Worked on "Setting up the project Django base" from the project board, setup the Django environment, Django database with website framework loaded.
+- Working on "CSS dev" from project board, implemented some part of the css template files into Django environment.
 - Working on "Home page" on project board, connect the our Home page into Django environment, so when the Django loaded up, it shows our home page.
 - Additional: Following images are the screenshot of the Django environment website and home page with CSS layout website:
 
