@@ -46,18 +46,3 @@
 
 - Admin Page
 ![Django Admin](./images/w3images/Adrian/Admin.png)
-
-## Week 6 2023/10/08~2023/10/14
-
-- Task I have worked on this week.
-![Weekly Task 6](./images/tasks/AdrianFong_Week6_Task.png)
-
-## Recap on your week's goals
-
-- Worked on "Setting up the project Django base" from project board, setup the Django environment files for our project.
-- Working on "CSS dev" by applying the css template into Django environment.
-- Working on "Home Page" by connect the Django environment with home page html along with the CSS layout.
-- Worked my own weekly log, contribute to team weeklog.
-
-- Additional: Following images are the screenshot of the Django environment pages and home page with CSS layout website:
-
