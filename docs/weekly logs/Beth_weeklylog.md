@@ -6,7 +6,7 @@
 
 This week we all worked together to work on the Project plan. 
 
-### Week 5 Oct 1 - Oct 7
+### Week 5 Oct 2 - Oct 8
 
 ![W5Tasks](./images/tasks/Ralston_W5_Tasks.png)
 
@@ -20,7 +20,7 @@ This week was spent learning Django and becoming familiar with Python. I followe
 
 ![MainPage](./images/w3images/Beth/Main_Ralston.png)
 
-### Week 6 Oct 8 - Oct 14
+### Week 6 Oct 9 - Oct 15
 
 ![W6Tasks](./images/tasks/Ralston_W6_Tasks.png)
 
