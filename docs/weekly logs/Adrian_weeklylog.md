@@ -20,6 +20,10 @@
 
 - Worked on project plan document, distribute work evenly, my own weekly log, contribute to team weeklog.
 
+# Preferred name -> Ssc name -> Github name
+
+- Adrian -> Adrian Fong -> AdrianFWM
+
 ## Week 5 2023/10/2~2023/10/7
 
 - Task I have worked on this week.
@@ -46,6 +50,10 @@
 
 - Admin Page
 ![Django Admin](./images/w3images/Adrian/Admin.png)
+
+# Preferred name -> Ssc name -> Github name
+
+- Adrian -> Adrian Fong -> AdrianFWM
 
 ## Week 6 2023/10/8~2023/10/14
 
