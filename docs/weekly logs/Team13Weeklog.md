@@ -58,7 +58,7 @@ Burnup chart
 Network Graph
 ![Network](./images/network/Week5_network.png)
 Completed Tasks
-![Completed](./images/completed/week5_done.png)
+![Completed](./images/completed/Week5_done.png)
 In progress Tasks
 ![In Progress](./images/in-prog/Week5_inprogress.png)
 
@@ -70,3 +70,30 @@ Optional Text:
 
 - The bulk of this week's project progression is on individual learning of the django framework by following the online tutorial [W3School Django Tutorial](https://www.w3schools.com/django/index.php).
 - The results of each of the team members' websites are in the individual logs.
+
+## Preferred name -> Ssc name -> Github name
+
+- Ethan -> Ethan Hsu -> YuchenHsu
+- Beth -> Beth Ralston -> mblackbeak
+- Herman -> Herman Sood -> herman-23
+- Raymond -> Sitt Paing -> SittHmuePaing
+- Adrian -> Adrian Fong -> AdrianFWM
+
+## Week 6 2023/10/9 ~ 2023/10/15
+
+- Which features were in the project plan for this milestone?
+  - We worked on setting up the basic framework of a Django website and implemented some parts of css.
+  - We searched for and decided on the template we want to use for html and css.
+  - We started combining the css template with the Django website.
+- Which tasks from the project board are associated with these features?
+  - We completed "[Setting up the project Django base](https://github.com/COSC-499-W2023/year-long-project-team-13/issues/45)"**.**
+  - We started on "[Home Page](https://github.com/COSC-499-W2023/year-long-project-team-13/issues/3)", "[CSS dev](https://github.com/COSC-499-W2023/year-long-project-team-13/issues/7)", "[User Interface Design](https://github.com/COSC-499-W2023/year-long-project-team-13/issues/6)".
+
+Burnup chart
+![Burnup](./images/burnup/Week6_burnup.png)
+Network Graph
+![Network](./images/network/Week6_network.png)
+Completed Tasks
+![Completed](./images/completed/Week6_done.png)
+In progress Tasks
+![In Progress](./images/in-prog/Week6_inprogress.png)
