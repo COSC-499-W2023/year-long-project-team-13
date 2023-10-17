@@ -5,6 +5,7 @@
     <link href="{% static 'css/styleTest.css' %}" rel="stylesheet">
     <form method="POST">
         {% csrf_token %}
+        
         <div class="section">
             <div class="container">
                 <div class="row full-height justify-content-center">
@@ -20,15 +21,18 @@
                                             <div class="section text-center">
                                                 <h4 class="mb-4 pb-3">Log In</h4>
                                                 <div class="form-group">
-                                                    <input type="email" name="logemail" class="form-style" placeholder="Your Email" id="logemail" autocomplete="off">
+                                                    {% comment %} <input type="email" name="logemail" class="form-style" placeholder="Your Email" id="logemail" autocomplete="off"> {% endcomment %}
+                                                    {% comment %} <input type="email" name="logemail" class="form-style" placeholder="Your Email" id="logemail" autocomplete="off"> {% endcomment %}
+
                                                     <i class="input-icon uil uil-at"></i>
                                                 </div>	
                                                 <div class="form-group mt-2">
-                                                    <input type="password" name="logpass" class="form-style" placeholder="Your Password" id="logpass" autocomplete="off">
+                                                    {% comment %} <input type="password" name="logpass" class="form-style" placeholder="Your Password" id="logpass" autocomplete="off"> {% endcomment %}
                                                     <i class="input-icon uil uil-lock-alt"></i>
                                                 </div>
                                                 {{ form.as_p }}
-                                                <a href="#" class="btn mt-4">submit</a>
+                                                <button class="btn btn-outline-info" type="submit">Login</button>
+                                            </form>
                                                 <p class="mb-0 mt-4 text-center"><a href="#0" class="link">Forgot your password?</a></p>
                                               </div>
                                           </div>
@@ -50,7 +54,7 @@
                                                     <input type="password" name="logpass" class="form-style" placeholder="Your Password" id="logpass" autocomplete="off">
                                                     <i class="input-icon uil uil-lock-alt"></i>
                                                 </div>
-                                                {{ form.as_p }}
+                                                {% comment %} {{ form.as_p }} {% endcomment %}
                                                 <a href="#" class="btn mt-4">submit</a>
                                               </div>
                                           </div>
@@ -66,15 +70,8 @@
         
         {% comment %} <button class="btn btn-outline-info" type="submit">Login</button> {% endcomment %}
 
-    </form>
+    {% comment %} </form> {% endcomment %}
     {% comment %} <div>
         Need an Account ?<a href="{% url 'register'%}">Register</a>
     </div> {% endcomment %}
 {% endblock content %}
-
-
-
-<a href="https://front.codes/" class="logo" target="_blank">
-    <img src="https://assets.codepen.io/1462889/fcy.png" alt="">
-</a>
-
