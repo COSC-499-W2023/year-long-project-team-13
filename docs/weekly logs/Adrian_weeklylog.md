@@ -20,6 +20,10 @@
 
 - Worked on project plan document, distribute work evenly, my own weekly log, contribute to team weeklog.
 
+# Preferred name -> Ssc name -> Github name
+
+- Adrian -> Adrian Fong -> AdrianFWM
+
 ## Week 5 2023/10/2~2023/10/7
 
 - Task I have worked on this week.
@@ -46,3 +50,25 @@
 
 - Admin Page
 ![Django Admin](./images/w3images/Adrian/Admin.png)
+
+# Preferred name -> Ssc name -> Github name
+
+- Adrian -> Adrian Fong -> AdrianFWM
+
+## Week 6 2023/10/8~2023/10/14
+
+- Task I have worked on this week.
+![Weekly Task 6](./images/tasks/AdrianFong_Week6_Task.png)
+
+## Recap on your week's goals
+
+- Worked on "Setting up the project Django base" from the project board, setup the Django environment, Django database with website framework loaded.
+- Working on "CSS dev" from project board, implemented some part of the css template files into Django environment.
+- Working on "Home page" on project board, connect the our Home page into Django environment, so when the Django loaded up, it shows our home page.
+- Additional: Following images are the screenshot of the Django environment website and home page with CSS layout website:
+
+Home Page
+![Home Page](./images/w3images/Adrian/HomePage.png)
+
+Django Home Page
+![Django Home Page](./images/w3images/Adrian/DjangoHome.png)
