@@ -10,13 +10,15 @@
             <h2 class="sr-only">Login Form</h2>
             <div class="illustration"><i class="icon ion-ios-locked-outline"></i></div>
             {{ form.as_p }}
-            <button class="btn btn-outline-info" type="submit">Login</button>
-            <div class="form-group"><button class="btn btn-primary btn-block" type="submit">Log In</button></div>
-            <a href="#" class="forgot">Forgot your email or password?</a></form>
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit">Login</button>
+            </div>
+            {% comment %} <div class="form-group"><button class="btn btn-primary btn-block" type="submit">Log In</button></div> {% endcomment %}
+            <a href="#" class="forgot">Forgot your email or password?</a>
+            <div>
+                Need an Account ?<a href="{% url 'register'%}">Register</a>
+            </div>
         </form>
-        <div>
-            Need an Account ?<a href="{% url 'register'%}">Register</a>
-        </div>
     </div>
 {% endblock content %}
 
