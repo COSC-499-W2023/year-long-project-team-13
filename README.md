@@ -37,7 +37,7 @@ Also, update your README.md file with the team and client/project information.  
    MacOS/Linux:
 
    ```console
-   source myenv/bin/activate
+   source myenv/Scripts/activate
    ```
 
    Cmd.exe:
