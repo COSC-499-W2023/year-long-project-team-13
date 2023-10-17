@@ -5,73 +5,39 @@
     <link href="{% static 'css/styleTest.css' %}" rel="stylesheet">
     <form method="POST">
         {% csrf_token %}
-        
-        <div class="section">
-            <div class="container">
-                <div class="row full-height justify-content-center">
-                    <div class="col-12 text-center align-self-center py-5">
-                        <div class="section pb-5 pt-5 pt-sm-2 text-center">
-                            <h6 class="mb-0 pb-3"><span>Log In </span><span>Sign Up</span></h6>
-                              <input class="checkbox" type="checkbox" id="reg-log" name="reg-log"/>
-                              <label for="reg-log"></label>
-                            <div class="card-3d-wrap mx-auto">
-                                <div class="card-3d-wrapper">
-                                    <div class="card-front">
-                                        <div class="center-wrap">
-                                            <div class="section text-center">
-                                                <h4 class="mb-4 pb-3">Log In</h4>
-                                                <div class="form-group">
-                                                    {% comment %} <input type="email" name="logemail" class="form-style" placeholder="Your Email" id="logemail" autocomplete="off"> {% endcomment %}
-                                                    {% comment %} <input type="email" name="logemail" class="form-style" placeholder="Your Email" id="logemail" autocomplete="off"> {% endcomment %}
+        <h1>Log in</h1>
+        {{ form.as_p }}
+        <button class="btn btn-outline-info" type="submit">Login</button>
 
-                                                    <i class="input-icon uil uil-at"></i>
-                                                </div>	
-                                                <div class="form-group mt-2">
-                                                    {% comment %} <input type="password" name="logpass" class="form-style" placeholder="Your Password" id="logpass" autocomplete="off"> {% endcomment %}
-                                                    <i class="input-icon uil uil-lock-alt"></i>
-                                                </div>
-                                                {{ form.as_p }}
-                                                <button class="btn btn-outline-info" type="submit">Login</button>
-                                            </form>
-                                                <p class="mb-0 mt-4 text-center"><a href="#0" class="link">Forgot your password?</a></p>
-                                              </div>
-                                          </div>
-                                      </div>
-                                    
-                                    <div class="card-back">
-                                        <div class="center-wrap">
-                                            <div class="section text-center">
-                                                <h4 class="mb-4 pb-3">Sign Up</h4>
-                                                <div class="form-group">
-                                                    <input type="text" name="logname" class="form-style" placeholder="Your Full Name" id="logname" autocomplete="off">
-                                                    <i class="input-icon uil uil-user"></i>
-                                                </div>	
-                                                <div class="form-group mt-2">
-                                                    <input type="email" name="logemail" class="form-style" placeholder="Your Email" id="logemail" autocomplete="off">
-                                                    <i class="input-icon uil uil-at"></i>
-                                                </div>	
-                                                <div class="form-group mt-2">
-                                                    <input type="password" name="logpass" class="form-style" placeholder="Your Password" id="logpass" autocomplete="off">
-                                                    <i class="input-icon uil uil-lock-alt"></i>
-                                                </div>
-                                                {% comment %} {{ form.as_p }} {% endcomment %}
-                                                <a href="#" class="btn mt-4">submit</a>
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-            </div>
-        </div>
-        {% comment %} <h1>Log in</h1> {% endcomment %}
-        
-        {% comment %} <button class="btn btn-outline-info" type="submit">Login</button> {% endcomment %}
-
-    {% comment %} </form> {% endcomment %}
-    {% comment %} <div>
+    </form>
+    <div>
         Need an Account ?<a href="{% url 'register'%}">Register</a>
-    </div> {% endcomment %}
+    </div>
 {% endblock content %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Untitled</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+    <div class="login-dark">
+        <form method="post">
+            <h2 class="sr-only">Login Form</h2>
+            <div class="illustration"><i class="icon ion-ios-locked-outline"></i></div>
+            <div class="form-group"><input class="form-control" type="email" name="email" placeholder="Email"></div>
+            <div class="form-group"><input class="form-control" type="password" name="password" placeholder="Password"></div>
+            <div class="form-group"><button class="btn btn-primary btn-block" type="submit">Log In</button></div><a href="#" class="forgot">Forgot your email or password?</a></form>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
