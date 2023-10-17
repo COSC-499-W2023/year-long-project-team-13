@@ -1,5 +1,8 @@
 {% extends 'stream/base.html'%}
+{% load static %}
 {% block content%}
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/styleTest.css' %}" rel="stylesheet">
     <form method="POST">
         {% csrf_token %}
         <h1>Log in</h1>

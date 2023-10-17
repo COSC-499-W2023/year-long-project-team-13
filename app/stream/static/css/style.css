@@ -7,3 +7,6 @@ div {
     text-align: center;
 }
 
+a:link {
+    color: red;
+}
