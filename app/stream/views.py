@@ -30,6 +30,7 @@ def home(request):
 def contact(request):
     return render(request, 'stream/contact.html')
 
+
 class VideoCreateView(LoginRequiredMixin   ,CreateView):
     model = VidStream
     success_url = "/"
