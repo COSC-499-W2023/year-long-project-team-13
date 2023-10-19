@@ -27,6 +27,9 @@ def search(request):
 def home(request):
     return render(request, 'stream/home.html')
 
+def contact(request):
+    return render(request, 'stream/contact.html')
+
 class VideoCreateView(LoginRequiredMixin   ,CreateView):
     model = VidStream
     success_url = "/"
