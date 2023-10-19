@@ -1,67 +1,37 @@
-{% load static %}
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  {% block page_meta %}
-  {% endblock %}
+{% extends 'stream/base.html'%}
+{% block content %}
+    <div class="center_journal">
+        <h1>Search </h1>
+    </div>
+    <div>
+        <form method="POST">
+            {% csrf_token %}
+            <div class="input-group">
+                <div class="input-group-prepend">
+                <span class="input-group-text"></span>
+                </div>
+                <input type="text" class="form-control" name="title">
+                <button type="submit" class="btn btn-dark">Search</button>
+            </div>
 
-  {# Vendor styles #}
-  {% block vendor_css %}
-    <link rel="stylesheet" type="text/css" media="all" href="{% static 'css/vendor.css' %}" />
-  {% endblock %}
 
-  {# Global styles #}
-  {% block site_css %}
-    <link rel="stylesheet" type="text/css" media="all" href="{% static 'css/application.css' %}" />
-  {% endblock %}
-
-  {# Page-specific styles #}
-  {% autoescape off %}
-    {% block page_css %}{% endblock %}
-  {% endautoescape %}
-
-  {% block extra_head %}
-    {# Extra header stuff (scripts, styles, metadata, etc) #}
-  {% endblock %}
-
-  <title>{% block page_title %}{% endblock %}</title>
-</head>
-<body class="{% block body_class %}{% endblock %}">
-{% block body %}
-    {# Page content will go here #}
-{% endblock %}
-
-{# Modal HTML #}
-{% block modals %}
-{% endblock %}
-
-{# Vendor javascript #}
-{% block vendor_js %}
-  <script src="{% static 'js/vendor.js' %}"></script>
-{% endblock %}
-
-{# Global javascript #}
-{% block site_js %}
-  <script src="{% static 'js/application.js' %}"></script>
-{% endblock %}
-
-{# Shared data for javascript #}
-<script type="text/javascript">
-  window._sharedData = {
-    {% autoescape off %}
-      {% block shared_data %}
-        'DEBUG': {% if debug %}true{% else %}false{% endif %},
-      {% endblock %}
-    {% endautoescape %}
-  }
-</script>
-
-{# Page javascript #}
-{% autoescape off %}
-  {% block page_js %}
-  {% endblock %}
-{% endautoescape %}
-</body>
-</html>
+        </form>
+    </div>
+    <div>
+        {% for item in videos%}
+        <div class="card" style="width: 40rem; margin: 20px; box-shadow: 12em;">
+            <img class="rounded-circle border-dark" src="{{ item.streamer.profile.image.url }}" style="border-color: red;" width="30" height="30">
+            <a class="mr-2" href="{% url 'stream:user-videos' item.streamer.username %}" style="text-align: start;">{{ item.streamer }}</a>
+            <h12 style="text-align: start;">{{ item.upload_date }}</h12>
+            <video class="card-image-top" controls>
+                <source src="{{ item.video.url }}" type="video/mp4">
+            </video>
+            <div class="card-body">
+              <h5 class="card-title"><a href="{% url 'stream:video-detail' item.id  %}">{{ item.title }}</a></h5>
+              <p class="card-text">{{item.description }}</p>
+            </div>
+            <hr>
+          </div>
+        {% endfor %}
+    </div>
+{% endblock content %}
