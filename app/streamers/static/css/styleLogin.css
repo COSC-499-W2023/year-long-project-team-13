@@ -21,6 +21,15 @@
   }
 }
 
+.please {
+  text-align: left;
+  color: black;
+}
+
+.form {
+  text-align: center;
+}
+
 .btn-primary {
   color: white;
 }

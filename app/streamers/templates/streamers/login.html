@@ -16,25 +16,19 @@
                             {% comment %} lotus image {% endcomment %}
                             <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp"
                               style="width: 185px;" alt="logo">
-                            <h4 class="mt-1 mb-5 pb-1">We are The Lotus Team</h4>
+                            <h4 class="mt-1 mb-5 pb-1">We are Vnonymous</h4>
                           </div>
           
                           <form method="POST">
                             {% csrf_token %}
-                            <p>Please login to your account</p>
-          
-                            {% comment %} <div class="form-outline mb-4">
-                              <input type="email" id="form2Example11" class="form-control"
-                              placeholder="Phone number or email address" />
-                              <label class="form-label" for="form2Example11">Username</label>
+                            <div class="please">
+                                <p>Please login to your account</p>
                             </div>
-          
-                            <div class="form-outline mb-4">
-                              <input type="password" id="form2Example22" class="form-control" />
-                              <label class="form-label" for="form2Example22">Password</label>
-                            </div> {% endcomment %}
-          
-                            {{ form.as_p }}
+
+                            <div class="form">
+                                {{ form.as_p }}
+                            </div>
+
                             <div class="text-center pt-1 mb-5 pb-1">
                               <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3 btn-outline-info" type="submit">Log In</button>
                               <a class="text-muted" href="#!">Forgot password?</a>
@@ -66,7 +60,8 @@
 
 
 
-        {% comment %} <form method="POST">
+        {% comment "Original code" %} 
+        <form method="POST">
             {% csrf_token %}
             <h1>Log in</h1>
             {{ form.as_p }}
@@ -75,5 +70,6 @@
         </form>
         <div>
             Need an Account ?<a href="{% url 'register'%}">Register</a>
-        </div> {% endcomment %}
+        </div> 
+        {% endcomment %}
 {% endblock content %}
