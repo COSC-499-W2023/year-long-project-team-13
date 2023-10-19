@@ -62,8 +62,18 @@
         <div class="container">
             <div class="col-lg-8 mx-auto">
                 <h1>Start trying Vnonymous</h1>
+                # change buttons from register to new video and add contact
+                {% if user.is_authenticated %}
+                <p>Start by creating a new video or by adding a new contact</p>
+                <a href=" {% url 'stream:video-create' %}" href=" {% url 'stream:video-create' %}">
+                    <button class="btn btn-primary btn-lg btn-default" type="button" > Visit CREATE Video page</button>
+                    <button class="btn btn-primary btn-lg btn-default" type="button" > Visit ADD Contact page</button>
+                </a>
+                {% else %}
                 <p>In order to use this, start by creating an account</p>
-                <a href=" {% url 'register' %}"><button class="btn btn-primary btn-lg btn-default" type="button" >visit CREATE ACCOUNT page</button></a>
+                <a href=" {% url 'register' %}"><button class="btn btn-primary btn-lg btn-default" type="button" >Visit CREATE ACCOUNT page</button></a>
+                {% endif %}
+                
             </div>
         </div>
     </section>
