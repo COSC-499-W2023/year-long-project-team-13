@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'fpfd*qb+!is4hf@l6c(0n*1v4syzidbwzfsm-^%c30x*&772wc'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -124,10 +124,10 @@ STATIC_ROOT = BASE_DIR / 'productionfiles'
 
 STATIC_URL = 'static/'
 
-# #Add this in your settings.py file:
-# STATICFILES_DIRS = [
-#     BASE_DIR / 'mystaticfiles'
-# ]
+#Add this in your settings.py file:
+STATICFILES_DIRS = [
+    BASE_DIR / 'static'
+]
 
 LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = 'login'
@@ -135,4 +135,7 @@ LOGIN_URL = 'login'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+#solves vidstream auto-created primary key error
+DEFAULT_AUTO_FIELD='django.db.models.AutoField'
 
