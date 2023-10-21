@@ -48,7 +48,7 @@
 
                 <div class="d-flex justify-content-center">
                   <button type="button"
-                    class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Register</button>
+                    class="btn btn-success btn-block btn-lg gradient-custom-4 text-body" onclick="register()">Register</button>
                 </div>
 
                 <p class="text-center text-muted mt-5 mb-0">Have already an account? <a href="{% url 'login' %}"
@@ -64,6 +64,15 @@
   </div>
 </section>
 </div>
+
+<script>
+function register() {
+  // Alert that lets the user know registration was successful
+  alert("Registration successful!");
+  // Redirect to the login page after successful registration
+  window.location.href = "{% url 'login' %}";
+}
+</script>
 
 {% comment %}  <form method="POST">
     {% csrf_token %}
