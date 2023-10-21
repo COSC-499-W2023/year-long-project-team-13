@@ -6,32 +6,23 @@ from django.forms import ModelForm, TextInput, EmailInput, PasswordInput
 
 
 class UserRegistrationForm(UserCreationForm):
-    email = forms.EmailField()
+    username = forms.CharField(widget=forms.TextInput(attrs={'placeholder' :'Username', 
+                                                             'style':'width: 300px; color: green;', 
+                                                             'class': 'form-control'}))
+    email = forms.EmailField(widget=forms.EmailInput(attrs={'placeholder' :'Email', 
+                                                            'style': 'width: 300px; color: red;', 
+                                                            'class': 'form-control'}))
+    password1 = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder' :'Password', 
+                                                                  'style': 'width: 300px; color: blue;', 
+                                                                  'class': 'form-control'}))
+    password2 = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder' :'Confirm Password', 
+                                                                  'style': 'width: 300px; color: purple;', 
+                                                                  'class': 'form-control'}))
 
     class Meta:
         model = User
         fields = ['username','email','password1','password2']
         widgets = {
-            'username': TextInput(attrs = {
-                'class': "form-control",
-                'style': 'max-width: 300px;',
-                'placeholder': 'Username'
-            }),
-            'email': TextInput(attrs = {
-                'class': "form-control",
-                'style': 'max-width: 400px;',
-                'placeholder': 'Email'
-            }),
-            'password1': TextInput(attrs = {
-                'class': "form-control",
-                'style': 'max-width: 300px; color:green;',
-                'placeholder': 'Password'
-            }),
-            'password2': TextInput(attrs = {
-                'class': "form-control",
-                'style': 'max-width: 300px; color:yellow;',
-                'placeholder': 'Confirm Password'
-            })
         }
 
 
@@ -40,18 +31,18 @@ class UserUpdateForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ['username','email']
-        # widgets = {
-        #     'username': TextInput(attrs = {
-        #         'class': "form-control",
-        #         'style': 'max-width: 300px; color:red;',
-        #         'placeholder': 'Username'
-        #     }),
-        #     'email': EmailInput(attrs = {
-        #         'class': "form-control",
-        #         'style': 'max-width: 300px; color:blue;',
-        #         'placeholder': 'Email'
-        #     })
-        # }
+        widgets = {
+            'username': TextInput(attrs = {
+                'class': "form-control",
+                'style': 'max-width: 300px; color:red;',
+                'placeholder': 'Username'
+            }),
+            'email': EmailInput(attrs = {
+                'class': "form-control",
+                'style': 'max-width: 300px; color:blue;',
+                'placeholder': 'Email'
+            })
+        }
 
 
 class UserProfileUpdateForm(forms.ModelForm):
