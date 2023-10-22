@@ -68,7 +68,7 @@
 - Additional: Following images are the screenshot of the Django environment website and home page with CSS layout website:
 
 Home Page
-![Home Page](./images/w3images/Adrian/HomePage.png)
+![Home Page](./images/Adrian_images/Week_6/Home_Page.png)
 
-Django Home Page
-![Django Home Page](./images/w3images/Adrian/DjangoHome.png)
+Video Page
+![Django Home Page](./images/Adrian_images/Week_6/Video_Page.png)
