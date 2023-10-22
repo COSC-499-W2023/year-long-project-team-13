@@ -59,7 +59,7 @@ For this week, we started working on the html/css template that we choose for ou
 ![Task_Done](./images/tasks/SittPaing_W7-Task.png)
 
 ## Recap of week's goals
-For this week, I worked on html/css template for the login and home page, and also help my team to fix bugs and issues by searching for online solution and utilize them when we are working on the templates. 
+For this week, I worked on html/css template for the login and video page, and also help my team to fix bugs and issues by searching for online solution and utilize them when we are working on the templates. 
 
 
 
