@@ -60,3 +60,16 @@
   ![CSS](./images/w3images/Ethan/django_css_template/Ethan_css_template.png)
 - Combining
   ![Combining](./images/w3images/Ethan/django_css_template/Ethan_django_css_merge.png)
+
+
+# Preferred name -> Ssc name -> Github name
+
+- Ethan -> Ethan Hsu -> YuchenHsu
+
+## Week 7 2023/10/16 ~ 2023/10/22
+
+- Type of tasks you worked on (screenshot from Peer Eval question)
+
+![Tasks](./images/tasks/Ethan_Week7.png)
+
+- This week, I finished the homepage of the website. And the linking of the pages. So far, all the buttons link to their respective pages.
