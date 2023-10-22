@@ -73,3 +73,5 @@
 ![Tasks](./images/tasks/Ethan_Week7.png)
 
 - This week, I finished the homepage of the website. And the linking of the pages. So far, all the buttons link to their respective pages.
+
+![Homepage](./images/Ethan_stuff/new_homepage.png)
