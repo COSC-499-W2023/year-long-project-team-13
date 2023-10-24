@@ -8,6 +8,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.keys import Keys
 from selenium import webdriver
 
+# video page test function
 def video_page_test(driver):
     # Find the element with the id "Video Button" and click it
     video_button_element = driver.find_element(By.ID, "Video Button")
@@ -18,6 +19,118 @@ def video_page_test(driver):
 
     # Check if the URL contains the expected video page URL
     if '/video' in driver.current_url:
+        print("Test successful")
+    else:
+        print("Test failed")
+
+# add contact page test function
+
+def contact_page_test(driver):
+    # Find the element with the id "Contact Button" and click it
+    contact_button_element = driver.find_element(By.ID, "Contact Button")
+    contact_button_element.click()
+
+    # Wait for the URL to change to the contact page URL
+    wait.until(EC.url_contains('/contact'))
+
+    # Check if the URL contains the expected contact page URL
+    if '/contact' in driver.current_url:
+        print("Test successful")
+    else:
+        print("Test failed")
+
+# add home page test function
+
+def home_page_test(driver):
+    # Find the element with the id "Home Button" and click it
+    home_button_element = driver.find_element(By.ID, "Home Button")
+    home_button_element.click()
+
+    # Wait for the URL to change to the home page URL
+    wait.until(EC.url_contains('/'))
+
+    # Check if the URL contains the expected home page URL
+    if '/' in driver.current_url:
+        print("Test successful")
+    else:
+        print("Test failed")
+
+# add login page test function
+
+def login_page_test(driver):
+    # Find the element with the id "Login Button" and click it
+    login_button_element = driver.find_element(By.ID, "Login Button")
+    login_button_element.click()
+
+    # Wait for the URL to change to the login page URL
+    wait.until(EC.url_contains('/login'))
+
+    # Check if the URL contains the expected login page URL
+    if '/login' in driver.current_url:
+        print("Test successful")
+    else:
+        print("Test failed")
+
+# add register page test function
+
+def register_page_test(driver):
+    # Find the element with the id "Register Button" and click it
+    register_button_element = driver.find_element(By.ID, "Register Button")
+    register_button_element.click()
+
+    # Wait for the URL to change to the register page URL
+    wait.until(EC.url_contains('/register'))
+
+    # Check if the URL contains the expected register page URL
+    if '/register' in driver.current_url:
+        print("Test successful")
+    else:
+        print("Test failed")
+
+# add profile page test function
+
+def profile_page_test(driver):
+    # Find the element with the id "Profile Button" and click it
+    profile_button_element = driver.find_element(By.ID, "Profile Button")
+    profile_button_element.click()
+
+    # Wait for the URL to change to the profile page URL
+    wait.until(EC.url_contains('/profile'))
+
+    # Check if the URL contains the expected profile page URL
+    if '/profile' in driver.current_url:
+        print("Test successful")
+    else:
+        print("Test failed")
+
+# add new video page test function
+
+def new_video_page_test(driver):
+    # Find the element with the id "New Video Button" and click it
+    new_video_button_element = driver.find_element(By.ID, "New Video Button")
+    new_video_button_element.click()
+
+    # Wait for the URL to change to the new video page URL
+    wait.until(EC.url_contains('/new-video'))
+
+    # Check if the URL contains the expected new video page URL
+    if '/new-video' in driver.current_url:
+        print("Test successful")
+    else:
+        print("Test failed")
+
+# add logout page test function
+
+def logout_page_test(driver):
+    # Find the element with the id "Logout Button" and click it
+    logout_button_element = driver.find_element(By.ID, "Logout Button")
+    logout_button_element.click()
+
+    # Wait for the URL to change to the logout page URL
+    wait.until(EC.url_contains('/logout'))
+
+    # Check if the URL contains the expected logout page URL
+    if '/logout' in driver.current_url:
         print("Test successful")
     else:
         print("Test failed")
