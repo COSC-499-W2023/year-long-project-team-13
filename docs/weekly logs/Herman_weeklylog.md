@@ -64,6 +64,24 @@
   - Among these tasks, which have you completed/in progress in the last week?
   Setting up the project Djang base (completed), CSS dev (in progress)
 
+# Personal Week Log
+
+- Applicable date range
+##  Week 7 2023/10/15~2023/10/21
+
+
+![Tasks](./images/tasks/Week7Herman.png)
+
+# Preferred name -> Ssc name -> Github name
+
+- Herman -> Herman Sood -> Herman Sood
+
+- Recap on your week's goals-Which features were yours in the project plan for this milestone? This week I worked on the create account and CSS dev associated with it. 
+ 
+  - Which tasks from the project board are associated with these features?
+  Create account and CSS dev.
+  - Among these tasks, which have you completed/in progress in the last week?
+ Create account and CSS dev. 
 
 
 

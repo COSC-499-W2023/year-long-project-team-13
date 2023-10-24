@@ -9,7 +9,7 @@
 - Table view of in progress tasks on project board (by which username)
 - Test report
 - Optional text: Additional context that we should be aware of
--
+- 
 
 ## Preferred name -> Ssc name -> Github name
 
@@ -92,8 +92,33 @@ Optional Text:
 Burnup chart
 ![Burnup](./images/burnup/Week6_burnup.png)
 Network Graph
-![Network](./images/network/Week6_network.png)
+![Network](./images/network/Week6_Network.png)
 Completed Tasks
 ![Completed](./images/completed/Week6_done.png)
 In progress Tasks
 ![In Progress](./images/in-prog/Week6_inprogress.png)
+
+## Preferred name -> Ssc name -> Github name
+
+- Ethan -> Ethan Hsu -> YuchenHsu
+- Beth -> Beth Ralston -> mblackbeak
+- Herman -> Herman Sood -> herman-23
+- Raymond -> Sitt Paing -> SittHmuePaing
+- Adrian -> Adrian Fong -> AdrianFWM
+
+## Week 7 2023/10/16 ~ 2023/10/22
+
+- Which features were in the project plan for this milestone?
+  - We worked on homepage, login and create account as well as started learning and setting up AWS.
+- Which tasks from the project board are associated with these features?
+  - We completed [Home Page](https://github.com/COSC-499-W2023/year-long-project-team-13/issues/3).
+  - We started on [Login](https://github.com/COSC-499-W2023/year-long-project-team-13/issues/5), [Create account](https://github.com/COSC-499-W2023/year-long-project-team-13/issues/8), and [Learning AWS and setup](https://github.com/COSC-499-W2023/year-long-project-team-13/issues/41).
+
+Burnup chart
+![Burnup](./images/burnup/Week7_burnup.png)
+Network Graph
+![Network](./images/network/Week7_Network.png)
+Completed Tasks
+![Completed](./images/completed/Week7_done.png)
+In progress Tasks
+![In Progress](./images/in-prog/Week7_inprogress.png)

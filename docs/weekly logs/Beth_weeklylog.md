@@ -25,3 +25,9 @@ This week was spent learning Django and becoming familiar with Python. I followe
 ![W6Tasks](./images/tasks/Ralston_W6_Tasks.png)
 
 The setup and testing of the "Setting up the project Django base" on my computer. I also started working on the home page. I tried connecting the newly found html and css files to the basic set up of Django. The Setting up the project Django base is complete. The Home page is still in progress. I also started reading through a W3 school AWS tutorial to begin to be comfortable with AWS.
+
+### Week 7 Oct 16 - 22
+
+![W6Tasks](./images/tasks/Ralston_W6_Tasks.png)
+
+Completed the homepage css bug and linked all of the homepage buttons to their respective pages (That are still in progress or just empty html pages). Followed several aws tutorials and completed the aws amplify github connection guide. AWS was able to successfully build and deploy.
