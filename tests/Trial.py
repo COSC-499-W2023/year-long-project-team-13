@@ -6,58 +6,68 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.keys import Keys
 from selenium import webdriver
 
-def click_element_by_id(driver, element_id):
-    element = driver.find_element(By.ID, element_id)
-    element.click()
+driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
 
-def page_test(driver, page_url, element_id, expected_url):
-    driver.get(page_url)
-    wait.until(EC.url_to_be(page_url))
-    click_element_by_id(driver, element_id)
-    wait.until(EC.url_contains(expected_url))
-    if expected_url in driver.current_url:
-        print("Test successful")
-    else:
-        print("Test failed")
-
-def add_contact_page_test(driver):
-    page_test(driver, 'http://localhost:8000', 'Contact Button', '/contact-page-url')
-
-def add_home_page_test(driver):
-    page_test(driver, 'http://localhost:8000', 'Home Button', '/home-page-url')
-
-def add_login_page_test(driver):
-    page_test(driver, 'http://localhost:8000', 'Login Button', '/login-page-url')
-
-def add_register_page_test(driver):
-    page_test(driver, 'http://localhost:8000', 'Register Button', '/register-page-url')
-
-def add_profile_page_test(driver):
-    page_test(driver, 'http://localhost:8000', 'Profile Button', '/profile-page-url')
-
-def add_new_video_page_test(driver):
-    page_test(driver, 'http://localhost:8000', 'New Video Button', '/new-video-page-url')
-
-def add_logout_page_test(driver):
-    page_test(driver, 'http://localhost:8000', 'Logout Button', '/logout-page-url')
-
-# Create the WebDriver instance
-chrome_options = webdriver.ChromeOptions()
-chrome_options.add_argument("--log-level=3")  # Suppress log messages
-
-driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
 driver.maximize_window()
 
 wait = WebDriverWait(driver, 60)
 
-# Call the test functions for different pages
-add_contact_page_test(driver)
-add_home_page_test(driver)
-add_login_page_test(driver)
-add_register_page_test(driver)
-add_profile_page_test(driver)
-add_new_video_page_test(driver)
-add_logout_page_test(driver)
+driver.get('https://www.bstackdemo.com/')
 
-# Close the WebDriver when done
+wait.until(EC.url_to_be('https://www.bstackdemo.com/'))
+
+sign_in=driver.find_element(By.ID, "signin")
+sign_in.click()
+
+WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, "/html/body/div/div[2]/div/form/div[2]/div[1]/div/div[1]/div[1]"))).click()
+WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, "/html/body/div/div[2]/div/form/div[2]/div[1]/div/div[1]/div[1]/div[1]"))).click()
+active_ele = driver.switch_to.active_element
+active_ele.send_keys("demouser")
+active_ele.send_keys(Keys.ENTER)
+
+WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, "/html/body/div/div[2]/div/form/div[2]/div[2]/div/div[1]"))).click()
+WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, "/html/body/div/div[2]/div/form/div[2]/div[2]/div/div[1]/div[1]"))).click()
+
+
+active_ele = driver.switch_to.active_element
+active_ele.send_keys("testingisfun99")
+active_ele.send_keys(Keys.ENTER)
+
+sign_in=driver.find_element(By.ID, "login-btn")
+sign_in.click()
+
+#Select a Google phone and add it to the cart
+WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, "/html/body/div/div/div/main/div[1]/div[3]/label/span"))).click()
+#Like a phone
+WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, "/html/body/div/div/div/main/div[2]/div[2]/div[1]/button"))).click()
+WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH,"/html/body/div/div/div/main/div[2]/div[3]/div[4]"))).click()
+WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.CLASS_NAME,"buy-btn"))).click()
+
+#Checkout
+WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.ID, "firstNameInput"))).click()
+active_ele = driver.switch_to.active_element
+active_ele.send_keys("Alice")
+active_ele.send_keys(Keys.ENTER)
+
+WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.ID, "lastNameInput"))).click()
+active_ele = driver.switch_to.active_element
+active_ele.send_keys("Cooper")
+active_ele.send_keys(Keys.ENTER)
+
+WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.ID, "addressLine1Input"))).click()
+active_ele = driver.switch_to.active_element
+active_ele.send_keys("Apt.5, Downton Building, Cherryblossom Road")
+active_ele.send_keys(Keys.ENTER)
+
+WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.ID, "provinceInput"))).click()
+active_ele = driver.switch_to.active_element
+active_ele.send_keys("Canterbury")
+active_ele.send_keys(Keys.ENTER)
+
+WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.ID, "postCodeInput"))).click()
+active_ele = driver.switch_to.active_element
+active_ele.send_keys("CT3")
+active_ele.send_keys(Keys.ENTER)
+
+WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.ID,"downloadpdf"))).click()
 driver.quit()
