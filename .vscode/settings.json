@@ -1,28 +1,24 @@
 {
     "python.testing.pytestEnabled": false,
     "python.testing.unittestEnabled": true,
-    //文字編輯器
-    "editor.fontSize": 16, //字級
-    "editor.lineHeight": 24, //行高
-    "editor.fontFamily": "'Fira Code', 'Source Code Pro', Consolas, 'Courier New', monospace", //字型
-    "editor.fontLigatures": true, //啟用/停用連字
-    "editor.tabSize": 4, //Tab的空格
-    "editor.wordWrap": "on", //程式碼換行
-    "editor.tabCompletion": "on", //啟用tab鍵自動完成
-    "editor.renderWhitespace": "boundary", //呈現空白字符的方式
-    "editor.showFoldingControls": "always", //顯示摺疊控制向
-    "editor.snippetSuggestions": "top", //將程式碼片段建議顯示於頂端
-    "files.autoGuessEncoding": true, //在開啟檔案時推測字元集編碼
-    "files.insertFinalNewline": true, //儲存檔案時在結尾插入一個新行
-    "files.trimTrailingWhitespace": true, //儲存檔案時修剪尾端空白
+    "editor.fontSize": 16,
+    "editor.lineHeight": 24,
+    "editor.fontFamily": "'Fira Code', 'Source Code Pro', Consolas, 'Courier New', monospace",
+    "editor.fontLigatures": true,
+    "editor.tabSize": 4,
+    "editor.wordWrap": "on",
+    "editor.tabCompletion": "on",
+    "editor.renderWhitespace": "boundary",
+    "editor.showFoldingControls": "always",
+    "editor.snippetSuggestions": "top",
+    "files.autoGuessEncoding": true,
+    "files.insertFinalNewline": true,
+    "files.trimTrailingWhitespace": true,
     "terminal.integrated.fontFamily": "Lucida Console",
-    //工作台
-    "breadcrumbs.enabled": true, //啟用麵包屑
-    //視窗
-    "window.menuBarVisibility": "toggle", //隱藏功能表，按Alt鍵時顯示
-    "window.titleBarStyle": "custom", //視窗標題列的外觀
-    //功能
-    "explorer.confirmDelete": false, //檔案刪除時確認
+    "breadcrumbs.enabled": true,
+    "window.menuBarVisibility": "toggle",
+    "window.titleBarStyle": "custom",
+    "explorer.confirmDelete": false,
     "explorer.confirmDragAndDrop": false,
     "git.ignoreLimitWarning": true,
     "jupyter.jupyterServerType": "local",
