@@ -16,66 +16,35 @@ driver.maximize_window()
 # driver wait time
 wait = WebDriverWait(driver, 60)
 
-driver.get('http://127.0.0.1:8000/')
+def test_register_page():
+    driver.get('http://127.0.0.1:8000/register/')
 
-wait.until(EC.url_to_be('http://127.0.0.1:8000/'))
+    # Test that the page title is correct
+    assert driver.title == "Register"
 
-sign_in=driver.find_element(By.ID, "signin")
-sign_in.click()
+    # Test that the form fields are present
+    assert driver.find_element(By.ID, "id_username").is_displayed()
+    assert driver.find_element(By.ID, "id_email").is_displayed()
+    assert driver.find_element(By.ID, "id_password1").is_displayed()
+    assert driver.find_element(By.ID, "id_password2").is_displayed()
 
+    # Test that the "I agree" checkbox is present
+    assert driver.find_element(By.ID, "id_agree").is_displayed()
 
-WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, "/html/body/div/div[2]/div/form/div[2]/div[1]/div/div[1]/div[1]"))).click()
-WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, "/html/body/div/div[2]/div/form/div[2]/div[1]/div/div[1]/div[1]/div[1]"))).click()
-active_ele = driver.switch_to.active_element
-active_ele.send_keys("demouser")
-active_ele.send_keys(Keys.ENTER)
+    # Test that the "Register" button is present
+    assert driver.find_element(By.XPATH, "//button[text()='Register']").is_displayed()
 
-WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, "/html/body/div/div[2]/div/form/div[2]/div[2]/div/div[1]"))).click()
-WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, "/html/body/div/div[2]/div/form/div[2]/div[2]/div/div[1]/div[1]"))).click()
+    # Test that clicking the "Register" button redirects to the login page
+    register_button = driver.find_element(By.XPATH, "//button[text()='Register']")
+    register_button.click()
+    wait.until(EC.url_to_be('http://127.0.0.1:8000/login/'))
 
+    # Test that the "Already have an account" link is present
+    assert driver.find_element(By.XPATH, "//a[text()='Sign In']").is_displayed()
 
-active_ele = driver.switch_to.active_element
-active_ele.send_keys("testingisfun99")
-active_ele.send_keys(Keys.ENTER)
+    # Test that clicking the "Already have an account" link redirects to the login page
+    login_link = driver.find_element(By.XPATH, "//a[text()='Sign In']")
+    login_link.click()
+    wait.until(EC.url_to_be('http://127.0.0.1:8000/login/'))
 
-sign_in=driver.find_element(By.ID, "login-btn")
-sign_in.click()
-
-#Select a Google phone and add it to the cart
-WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, "/html/body/div/div/div/main/div[1]/div[3]/label/span"))).click()
-#Like a phone
-WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, "/html/body/div/div/div/main/div[2]/div[2]/div[1]/button"))).click()
-WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH,"/html/body/div/div/div/main/div[2]/div[3]/div[4]"))).click()
-WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.CLASS_NAME,"buy-btn"))).click()
-
-#Checkout
-WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.ID, "firstNameInput"))).click()
-active_ele = driver.switch_to.active_element
-active_ele.send_keys("Alice")
-active_ele.send_keys(Keys.ENTER)
-
-WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.ID, "lastNameInput"))).click()
-active_ele = driver.switch_to.active_element
-active_ele.send_keys("Cooper")
-active_ele.send_keys(Keys.ENTER)
-
-WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.ID, "addressLine1Input"))).click()
-active_ele = driver.switch_to.active_element
-active_ele.send_keys("Apt.5, Downton Building, Cherryblossom Road")
-active_ele.send_keys(Keys.ENTER)
-
-WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.ID, "provinceInput"))).click()
-active_ele = driver.switch_to.active_element
-active_ele.send_keys("Canterbury")
-active_ele.send_keys(Keys.ENTER)
-
-WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.ID, "postCodeInput"))).click()
-active_ele = driver.switch_to.active_element
-active_ele.send_keys("CT3")
-active_ele.send_keys(Keys.ENTER)
-
-WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.ID,"downloadpdf"))).click()
-driver.quit()
-
-
-
+    driver.quit()
