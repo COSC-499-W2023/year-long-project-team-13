@@ -25,9 +25,9 @@ def video_page_test(driver):
 
 # add contact page test function
 
-def contact_page_test(driver):
+def add_contact_page_test(driver):
     # Find the element with the id "Contact Button" and click it
-    contact_button_element = driver.find_element(By.ID, "Contact Button")
+    contact_button_element = driver.find_element(By.ID, "Add Contact Button")
     contact_button_element.click()
 
     # Wait for the URL to change to the contact page URL
@@ -151,6 +151,20 @@ driver.get('http://localhost:8000')
 
 # Call the video page test function
 video_page_test(driver)
+home_page_test(driver)
+add_contact_page_test(driver)
+home_page_test(driver)
+register_page_test(driver)
+home_page_test(driver)
+login_page_test(driver)
+# actually login
+
+profile_page_test(driver)
+home_page_test(driver)
+new_video_page_test(driver)
+home_page_test(driver)
+logout_page_test(driver)
+home_page_test(driver)
 
 # close the webdriver
 driver.quit()
