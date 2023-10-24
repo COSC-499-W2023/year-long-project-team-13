@@ -52,6 +52,17 @@ I collaborate with my team to discuss on the project templates we would like to 
 ## Recap of week's goals
 For this week, we started working on the html/css template that we choose for our project previously and do implementation in the django website that our team made. I also contribute in resolving the issue where django is not loading the css by searching different online resources.
 
+## Week 7 2023/10/16 ~ 2023/10/21
+
+-Types of tasks that I have worked on
+
+![Task_Done](./images/tasks/SittPaing_W7-Task.png)
+
+## Recap of week's goals
+For this week, I worked on html/css template for the login and video page, and also help my team to fix bugs and issues by searching for online solution and utilize them when we are working on the templates. 
+
+
+
 
 
 
