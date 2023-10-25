@@ -9,6 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Video App</title>
     <link rel="stylesheet" href= "{%static 'assets/bootstrap/css/bootstrap.min.css' %}">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+
     <!-- Bootstrap core CSS 
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
@@ -52,8 +54,8 @@
       </div>
     </nav>
   -->
-
-    <body id="page-top" data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="77">
+    <!--style in body change the website side background-->
+    <body id="page-top" data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="77" style="background-color: red;">
       <nav class="navbar navbar-expand-md fixed-top navbar-light" id="mainNav">
           <div class="container"><a class="navbar-brand" href=" {% url 'stream:home' %} ">Group 13</a><button data-bs-toggle="collapse" class="navbar-toggler navbar-toggler-right" data-bs-target="#navbarResponsive" type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" value="Menu"><i class="fa fa-bars"></i></button>
               <div class="collapse navbar-collapse" id="navbarResponsive">

@@ -4,7 +4,8 @@
     <!-- <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet"> -->
     <link href="{% static 'css/styleLogin.css' %}" rel="stylesheet">
 
-    <section class="h-100 gradient-form" style="background-color: #eee;">
+    <!--style in section change the website background-->
+    <section class="h-100 gradient-form" style="background-color: grey;">
         <div class="container py-5 h-100">
             <div class="row d-flex justify-content-center align-items-center h-100">
               <div class="col-xl-10">
@@ -22,18 +23,20 @@
           
                           <form method="POST">
                             {% csrf_token %}
-                            <div class="please">
+                            <div id="please">
                                 <p>Please login to your account</p>
                             </div>
 
-                            <div class="form">
+                            <div id="form">
                                 {{ form.as_p }}
                                 {% comment %} {{ form.username }}
                                 {{ form.password }} {% endcomment %}
                             </div>
 
                             <div class="text-center pt-1 mb-5 pb-1">
-                              <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3 btn-outline-info" type="submit">Log In</button>
+                              <!--<button id="login" class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3 btn-outline-info" type="submit">Log In</button> -->
+                              <button id="login" class="btn btn-primary btn-block fa-lg mb-3 btn-outline-info" type="submit">Log In</button>
+                              <br>
                               <a class="text-muted" href="#!">Forgot password?</a>
                             </div>
           
