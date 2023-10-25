@@ -7,6 +7,7 @@ from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.keys import Keys
 from selenium import webdriver
+import time
 
 # video page test function
 def video_page_test(driver):
@@ -133,23 +134,29 @@ def login(driver):
     # Find the element with the id "Username Input" and click it
     username_input_element = driver.find_element(By.ID, "id_username")
     username_input_element.click()
+    time.sleep(0.5)
 
     # Send the username to the username input
     username_input_element.send_keys("linus")
+    time.sleep(0.5)
 
     # Find the element with the id "Password Input" and click it
     password_input_element = driver.find_element(By.ID, "id_password")
     password_input_element.click()
+    time.sleep(0.5)
 
     # Send the password to the password input
     password_input_element.send_keys("123")
+    time.sleep(0.5)
 
     # Find the element with the id "Login Submit Button" and click it
     login_submit_button_element = driver.find_element(By.ID, "Login Submit Button")
     login_submit_button_element.click()
+    time.sleep(0.5)
 
     # Wait for the URL to change to the home page URL
     wait.until(EC.url_contains('/'))
+    time.sleep(0.5)
 
 # Create a ChromeOptions object with the log level set to 3
 chrome_options = webdriver.ChromeOptions()
@@ -167,19 +174,32 @@ driver.get('http://localhost:8000')
 
 # Call the video page test function
 video_page_test(driver)
+time.sleep(0.5)
 home_page_test(driver)
+time.sleep(0.5)
 add_contact_page_test(driver)
+time.sleep(0.5)
 home_page_test(driver)
+time.sleep(0.5)
 register_page_test(driver)
+time.sleep(0.5)
 home_page_test(driver)
+time.sleep(0.5)
 login_page_test(driver)
+time.sleep(0.5)
 # actually login
 login(driver)
+time.sleep(0.5)
 profile_page_test(driver)
+time.sleep(0.5)
 home_page_test(driver)
+time.sleep(0.5)
 new_video_page_test(driver)
+time.sleep(0.5)
 home_page_test(driver)
+time.sleep(0.5)
 logout_page_test(driver)
+time.sleep(0.5)
 home_page_test(driver)
 
 # close the webdriver
