@@ -97,7 +97,8 @@ function register() {
   var password2 = document.getElementById("id_password2").value;
 
   // Check if any of the values are empty
-  if (username === "" || email === "" || password1 === "" || password2 === "") {
+  // Make check function to see if input for each box is a string, a number or so on. Could do a check for each text box. ex for letters in username  if length of username less than 4, invalid, need 4 or more characters for name, for numbers in password, etc
+  if (username == "" || email == "" || password1 == "" || password2 == "") {
     // Display an error message if any of the values are empty strings
     alert("Please enter all the required fields.");
   } else {
