@@ -6,7 +6,6 @@ asgiref==3.7.2
 async-timeout==4.0.3
 attrs==23.1.0
 Babel==2.13.0
--e git+https://github.com/yihong0618/bilingual_book_maker.git@5a7cbca75f618225b81e1dc290744936880b9001#egg=bbook_maker
 beautifulsoup4==4.12.2
 Brotli==1.0.9
 bs4==0.0.1
