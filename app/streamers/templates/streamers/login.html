@@ -1,11 +1,48 @@
+{% comment %}  
 {% extends 'stream/base.html'%}
 {% load static %}
 {% block content%}
+{% endcomment %}
+
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    {% comment %} <title>Video App</title> {% endcomment %}
+    <link rel="stylesheet" href= "{%static 'assets/bootstrap/css/bootstrap.min.css' %}">
+    {% comment %} <link href="{% static 'css/style.css' %}" rel="stylesheet"> {% endcomment %}
     <!-- <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet"> -->
     <link href="{% static 'css/styleLogin.css' %}" rel="stylesheet">
 
+    <!--style in body change the website side/top/bottom background-->
+    <body id="page-top" data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="77"  style="background-color: blue;">
+      <nav class="navbar navbar-expand-md fixed-top navbar-light" id="mainNav">
+          <div class="container"><a class="navbar-brand" href=" {% url 'stream:home' %} ">Group 13</a><button data-bs-toggle="collapse" class="navbar-toggler navbar-toggler-right" data-bs-target="#navbarResponsive" type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" value="Menu"><i class="fa fa-bars"></i></button>
+              <div class="collapse navbar-collapse" id="navbarResponsive">
+                  <ul class="navbar-nav ms-auto">
+                      <li class="nav-item nav-link"><a class="nav-link active" href=" {% url 'stream:video-list' %} ">Videos</a></li>
+                      <li class="nav-item nav-link"><a class="nav-link active" href=" {% url 'stream:contact' %} ">Add Contacts</a></li>
+                  </ul>
+              </div>
+              <div class="navbar-nav">
+                  {% if user.is_authenticated %}
+                    <a class="nav-item nav-link" href="{% url 'stream:video-create' %}">New Video</a>
+                    <a class="nav-item nav-link" href="{% url 'profile' %}">Profile</a>
+                    <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
+                  {% else %}
+                    <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
+                    <a class="nav-item nav-link" href="{% url 'register' %}">Register</a>
+                  {% endif %}
+                </div>
+          </div>
+      </nav>
+
     <!--style in section change the website background-->
-    <section class="h-100 gradient-form" style="background-color: grey;">
+    <section class="h-100 gradient-form" style="background-color: grey; margin-top: 25px;">
         <div class="container py-5 h-100">
             <div class="row d-flex justify-content-center align-items-center h-100">
               <div class="col-xl-10">
@@ -78,4 +115,12 @@
             Need an Account ?<a href="{% url 'register'%}">Register</a>
         </div> 
         {% endcomment %}
+
+        <script src=" {% static 'assets/bootstrap/js/bootstrap.min.js' %} "></script>
+        
+        <!-- This js makes the header change to black colour when scrolling-->
+        <script src=" {% static 'assets/js/grayscale.js' %} "></script>
+      </body>
+{% comment %} 
 {% endblock content %}
+{% endcomment %}
