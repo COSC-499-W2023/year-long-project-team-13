@@ -55,7 +55,7 @@
                     class="btn btn-success btn-block btn-lg gradient-custom-4 text-body" onclick="register()">Register</button>
                 </div>
 
-                <p class="text-center text-muted mt-5 mb-0">Have already an account? <a href="{% url 'login' %}"
+                <p class="text-center text-muted mt-5 mb-0">Already have an account? <a href="{% url 'login' %}"
                     class="fw-bold text-body"><u>Login here</u></a></p>
 
               </form>
@@ -88,4 +88,22 @@ function register() {
     Already have an account <a href="{% url 'login' %}">Sign In</a>
 </div>
 </div> {% endcomment %}
-{% endblock content %}
+{% endblock content %}<script>
+function register() {
+  // Get the values of all the form inputs
+  var username = document.getElementById("id_username").value;
+  var email = document.getElementById("id_email").value;
+  var password1 = document.getElementById("id_password1").value;
+  var password2 = document.getElementById("id_password2").value;
+
+  // Check if any of the values are empty
+  if (username === "" || email === "" || password1 === "" || password2 === "") {
+    // Display an error message if any of the values are empty strings
+    alert("Please enter all the required fields.");
+  } else {
+    // Display the success message and redirect to the login page
+    alert("Registration successful!");
+    window.location.href = "{% url 'login' %}";
+  }
+}
+</script>
