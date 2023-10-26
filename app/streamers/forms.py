@@ -24,6 +24,26 @@ class UserRegistrationForm(UserCreationForm):
         model = User
         fields = ['username','email','password1','password2']
         widgets = {
+            'username': TextInput(attrs = {
+                'class': "form-control",
+                'style': 'max-width: 300px; color:red',
+                'placeholder': 'Username'
+            }),
+            'email': EmailInput(attrs = {
+                'class': "form-control",
+                'style': 'max-width: 300px; color:blue',
+                'placeholder': 'Email'
+            }),
+            'password1': PasswordInput(attrs = {
+                'class': "form-control",
+                'style': 'max-width: 300px; color:green',
+                'placeholder': 'Password'
+            }),
+            'password2': TextInput(attrs = {
+                'class': "form-control",
+                'style': 'max-width: 300px; color:yellow',
+                'placeholder': 'Confirm Password'
+            })
         }
 
 
@@ -33,6 +53,16 @@ class UserUpdateForm(forms.ModelForm):
         model = User
         fields = ['username','email']
         widgets = {
+            'username': TextInput(attrs = {
+                'class': "form-control",
+                'style': 'max-width: 300px; color:red',
+                'placeholder': 'Username'
+            }),
+            'email': EmailInput(attrs = {
+                'class': "form-control",
+                'style': 'max-width: 300px; color:blue',
+                'placeholder': 'Email'
+            })
         }
 
 

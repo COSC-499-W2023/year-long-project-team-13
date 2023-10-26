@@ -21,6 +21,21 @@
   }
 }
 
-.btn-primary {
-  color: white;
+#please {
+  text-align: left;
+  color: black;
+}
+
+#form {
+  text-align: center;
+}
+
+#login {
+  color: green;
+  width: 100%;
+  border-radius: 4px;
+  background-color: lightblue;
+}
+#login:hover {
+  background-color: grey;
 }
