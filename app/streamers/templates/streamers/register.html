@@ -1,4 +1,4 @@
-{% comment %}  
+{% comment %}
 {% extends 'stream/base.html'%}
 {% load static %}
 {% block content%}
@@ -18,7 +18,9 @@
   <!--style in body change the website side/top/bottom background-->
   <body id="page-top" data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="77" style="background-size: cover; background-image: url('{% static 'assets/img/register-background.jpg' %}');">
     <nav class="navbar navbar-expand-md fixed-top navbar-light" id="mainNav">
-      <div class="container"><a class="navbar-brand" href=" {% url 'stream:home' %} ">Group 13</a><button data-bs-toggle="collapse" class="navbar-toggler navbar-toggler-right" data-bs-target="#navbarResponsive" type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" value="Menu"><i class="fa fa-bars"></i></button>
+      <div class="container"><a class="navbar-brand" href=" {% url 'stream:home' %} " id="Home Button">
+        Group 13
+      </a><button data-bs-toggle="collapse" class="navbar-toggler navbar-toggler-right" data-bs-target="#navbarResponsive" type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" value="Menu"><i class="fa fa-bars"></i></button>
           <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ms-auto">
               <li class="nav-item nav-link"><a class="nav-link active" href=" {% url 'stream:video-list' %} ">Videos</a></li>
@@ -37,7 +39,7 @@
           </div>
       </div>
     </nav>
-    
+
     <!--style in section change the website background-->
     {% comment %} <section class="vh-100 bg-image" style="background-size: cover; background-image: url('{% static 'assets/img/register-background.jpg' %}'); margin-top: 73px;"> {% endcomment %}
       <!-- Gradient mask -->
@@ -58,7 +60,7 @@
                     </div> {% endcomment %}
                     {{ form.username }}
                     <p id="intruction">Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.</p>
-                    
+
                     {% comment %} <div class="form-outline mb-4">
                       <input type="email" id="form3Example3cg" class="form-control form-control-lg" />
                       <label class="form-label" for="form3Example3cg">Your Email</label>
@@ -77,14 +79,14 @@
                       Your password can’t be a commonly used password.
                       <br>
                       Your password can’t be entirely numeric.</p>
-                    
+
                     {% comment %} <div class="form-outline mb-4">
                       <input type="password" id="form3Example4cdg" class="form-control form-control-lg" />
                       <label class="form-label" for="form3Example4cdg">Repeat your password</label>
                     </div> {% endcomment %}
                     {{ form.password2 }}
                     {% comment %} <p id="intruction">Enter the same password as before, for verification.</p> {% endcomment %}
-                    
+
                     <div class="form-check d-flex justify-content-center mb-5">
                       <div class="checkbox">
                         <input class="form-check-input me-2 border-info" type="checkbox" value="" id="form2Example3cg" />
@@ -122,7 +124,7 @@
       }
     </script> {% endcomment %}
 
-    {% comment %}  
+    {% comment %}
       <form method="POST">
           {% csrf_token %}
           <h1>Register</h1>
@@ -133,7 +135,7 @@
       <div>
           Already have an account <a href="{% url 'login' %}">Sign In</a>
       </div>
-      </div> 
+      </div>
     {% endblock content %}
     {% endcomment %}
 
@@ -158,7 +160,7 @@
     </script> {% endcomment %}
 
     <script src=" {% static 'assets/bootstrap/js/bootstrap.min.js' %} "></script>
-      
+
     <!-- This js makes the header change to black colour when scrolling-->
     <script src=" {% static 'assets/js/grayscale.js' %} "></script>
   </body>
