@@ -150,7 +150,7 @@ def login(driver):
     time.sleep(0.5)
 
     # Find the element with the id "Login Submit Button" and click it
-    login_submit_button_element = driver.find_element(By.ID, "Login Submit Button")
+    login_submit_button_element = driver.find_element(By.ID, "login")
     login_submit_button_element.click()
     time.sleep(0.5)
 
