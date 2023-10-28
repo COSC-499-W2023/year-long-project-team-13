@@ -1,109 +1,153 @@
-{% comment %} {% extends 'stream/base.html'%} {% endcomment %}
+{% comment %}  
+{% extends 'stream/base.html'%}
 {% load static %}
-{% block content %}
-<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
-<link href="{% static 'css/styleRegister.css' %}" rel="stylesheet">
+{% block content%}
+{% endcomment %}
+
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href= "{%static 'assets/bootstrap/css/bootstrap.min.css' %}">
+    <link href="{% static 'css/styleRegister.css' %}" rel="stylesheet">
+  </head>
+  <!--style in body change the website side/top/bottom background-->
+  <body id="page-top" data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="77"  style="background-size: cover; background-image: url(' {% static 'assets/img/login-background-image.jpg' %} ');">
+    <nav class="navbar navbar-expand-md fixed-top navbar-light" id="mainNav">
+      <div class="container"><a class="navbar-brand" href=" {% url 'stream:home' %} ">Group 13</a><button data-bs-toggle="collapse" class="navbar-toggler navbar-toggler-right" data-bs-target="#navbarResponsive" type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" value="Menu"><i class="fa fa-bars"></i></button>
+          <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item nav-link"><a class="nav-link active" href=" {% url 'stream:video-list' %} ">Videos</a></li>
+              <li class="nav-item nav-link"><a class="nav-link active" href=" {% url 'stream:contact' %} ">Add Contacts</a></li>
+            </ul>
+          </div>
+          <div class="navbar-nav">
+            {% if user.is_authenticated %}
+              <a class="nav-item nav-link" href="{% url 'stream:video-create' %}">New Video</a>
+              <a class="nav-item nav-link" href="{% url 'profile' %}">Profile</a>
+              <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
+            {% else %}
+              <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
+              <a class="nav-item nav-link" href="{% url 'register' %}">Register</a>
+            {% endif %}
+          </div>
+      </div>
+    </nav>
     
-<section class="vh-100 bg-image"
-  style="background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.webp');">
-  <div class="mask d-flex align-items-center h-100 gradient-custom-3">
-    <div class="container h-100">
-      <div class="row d-flex justify-content-center align-items-center h-100">
-        <div class="col-12 col-md-9 col-lg-7 col-xl-6">
-          <div class="card" style="border-radius: 15px;">
-            <div class="card-body p-5">
-              <h2 class="text-uppercase text-center mb-5">Create an account</h2>
+    <section class="vh-100 bg-image"
+      style="background-size: cover; background-image: url('{% static 'assets/img/register-background.jpg' %}');">
+      <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+        <div class="container h-100">
+          <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+              <div class="card" style="border-radius: 15px;">
+                <div class="card-body p-5">
+                  <h2 class="text-uppercase text-center mb-5">Create an account</h2>
 
-              <form method="POST">
-                {% csrf_token %}
+                  <form method="POST">
+                    {% csrf_token %}
 
-                {% comment %} <div class="form-outline mb-4">
-                  <input type="text" id="form3Example1cg" class="form-control form-control-lg" />
-                  <label class="form-label" for="form3Example1cg">Your Name</label>
-                </div> {% endcomment %}
-                {{ form.username }}
+                    {% comment %} <div class="form-outline mb-4">
+                      <input type="text" id="form3Example1cg" class="form-control form-control-lg" />
+                      <label class="form-label" for="form3Example1cg">Your Name</label>
+                    </div> {% endcomment %}
+                    {{ form.username }}
 
-                {% comment %} <div class="form-outline mb-4">
-                  <input type="email" id="form3Example3cg" class="form-control form-control-lg" />
-                  <label class="form-label" for="form3Example3cg">Your Email</label>
-                </div> {% endcomment %}
-                {{ form.email }}
+                    {% comment %} <div class="form-outline mb-4">
+                      <input type="email" id="form3Example3cg" class="form-control form-control-lg" />
+                      <label class="form-label" for="form3Example3cg">Your Email</label>
+                    </div> {% endcomment %}
+                    {{ form.email }}
 
-                {% comment %} <div class="form-outline mb-4">
-                  <input type="password" id="form3Example4cg" class="form-control form-control-lg" />
-                  <label class="form-label" for="form3Example4cg">Password</label>
-                </div> {% endcomment %}
-                {{ form.password1 }}
+                    {% comment %} <div class="form-outline mb-4">
+                      <input type="password" id="form3Example4cg" class="form-control form-control-lg" />
+                      <label class="form-label" for="form3Example4cg">Password</label>
+                    </div> {% endcomment %}
+                    {{ form.password1 }}
 
-                {% comment %} <div class="form-outline mb-4">
-                  <input type="password" id="form3Example4cdg" class="form-control form-control-lg" />
-                  <label class="form-label" for="form3Example4cdg">Repeat your password</label>
-                </div> {% endcomment %}
-                {{ form.password2 }}
+                    {% comment %} <div class="form-outline mb-4">
+                      <input type="password" id="form3Example4cdg" class="form-control form-control-lg" />
+                      <label class="form-label" for="form3Example4cdg">Repeat your password</label>
+                    </div> {% endcomment %}
+                    {{ form.password2 }}
 
-                <div class="form-check d-flex justify-content-center mb-5">
-                  <div class="checkbox">
-                    <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3cg" />
-                  </div>
-                  <label class="form-check-label" for="form2Example3g">
-                    I agree all statements in <a href="#!" class="text-body"><u>Terms of service</u></a>
-                  </label>
+                    <div class="form-check d-flex justify-content-center mb-5">
+                      <div class="checkbox">
+                        <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3cg" />
+                      </div>
+                      <label class="form-check-label" for="form2Example3g">
+                        I agree all statements in <a href="#!" class="text-body"><u>Terms of service</u></a>
+                      </label>
+                    </div>
+
+                    <div class="d-flex justify-content-center">
+                      <button type="button"
+                        class="btn btn-success btn-block btn-lg gradient-custom-4 text-body" onclick="register()">Register</button>
+                    </div>
+
+                    <p class="text-center text-muted mt-5 mb-0">Already have an account? <a href="{% url 'login' %}"
+                        class="fw-bold text-body"><u>Login here</u></a></p>
+
+                  </form>
+
                 </div>
-
-                <div class="d-flex justify-content-center">
-                  <button type="button"
-                    class="btn btn-success btn-block btn-lg gradient-custom-4 text-body" onclick="register()">Register</button>
-                </div>
-
-                <p class="text-center text-muted mt-5 mb-0">Already have an account? <a href="{% url 'login' %}"
-                    class="fw-bold text-body"><u>Login here</u></a></p>
-
-              </form>
-
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<script>
-function register() {
-  // Alert that lets the user know registration was successful
-  alert("Registration successful!");
-  // Redirect to the login page after successful registration
-  window.location.href = "{% url 'login' %}";
-}
-</script>
+    <script>
+      function register() {
+        // Alert that lets the user know registration was successful
+        alert("Registration successful!");
+        // Redirect to the login page after successful registration
+        window.location.href = "{% url 'login' %}";
+      }
+    </script>
 
-{% comment %}  <form method="POST">
-    {% csrf_token %}
-    <h1>Register</h1>
-    {{ form.as_p }}
-    <button class="btn btn-outline-info" type="submit">Sign Up</button>
+    {% comment %}  
+      <form method="POST">
+          {% csrf_token %}
+          <h1>Register</h1>
+          {{ form.as_p }}
+          <button class="btn btn-outline-info" type="submit">Sign Up</button>
 
-</form>
-<div>
-    Already have an account <a href="{% url 'login' %}">Sign In</a>
-</div>
-</div> {% endcomment %}
-{% endblock content %}<script>
-function register() {
-  // Get the values of all the form inputs
-  var username = document.getElementById("id_username").value;
-  var email = document.getElementById("id_email").value;
-  var password1 = document.getElementById("id_password1").value;
-  var password2 = document.getElementById("id_password2").value;
+      </form>
+      <div>
+          Already have an account <a href="{% url 'login' %}">Sign In</a>
+      </div>
+      </div> 
+    {% endblock content %}
+    {% endcomment %}
 
-  // Check if any of the values are empty
-  if (username === "" || email === "" || password1 === "" || password2 === "") {
-    // Display an error message if any of the values are empty strings
-    alert("Please enter all the required fields.");
-  } else {
-    // Display the success message and redirect to the login page
-    alert("Registration successful!");
-    window.location.href = "{% url 'login' %}";
-  }
-}
-</script>
+    <script>
+      function register() {
+        // Get the values of all the form inputs
+        var username = document.getElementById("id_username").value;
+        var email = document.getElementById("id_email").value;
+        var password1 = document.getElementById("id_password1").value;
+        var password2 = document.getElementById("id_password2").value;
+
+        // Check if any of the values are empty
+        if (username === "" || email === "" || password1 === "" || password2 === "") {
+          // Display an error message if any of the values are empty strings
+          alert("Please enter all the required fields.");
+        } else {
+          // Display the success message and redirect to the login page
+          alert("Registration successful!");
+          window.location.href = "{% url 'login' %}";
+        }
+      }
+    </script>
+
+    <script src=" {% static 'assets/bootstrap/js/bootstrap.min.js' %} "></script>
+      
+    <!-- This js makes the header change to black colour when scrolling-->
+    <script src=" {% static 'assets/js/grayscale.js' %} "></script>
+  </body>
