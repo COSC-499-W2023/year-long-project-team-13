@@ -1,2 +1,5 @@
 # ignore all the pycache file
 __pycache__/*
+
+# ignore all file that ends with .pyc
+*.pyc
