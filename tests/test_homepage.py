@@ -21,8 +21,10 @@ def video_page_test(driver):
     # Check if the URL contains the expected video page URL
     if '/video' in driver.current_url:
         print("Test successful")
+        return True
     else:
         print("Test failed")
+        return False
 
 # add contact page test function
 def add_contact_page_test(driver):
@@ -36,8 +38,10 @@ def add_contact_page_test(driver):
     # Check if the URL contains the expected contact page URL
     if '/contact' in driver.current_url:
         print("Test successful")
+        return True
     else:
         print("Test failed")
+        return False
 
 # add home page test function
 def home_page_test(driver):
@@ -51,9 +55,10 @@ def home_page_test(driver):
     # Check if the URL contains the expected home page URL
     if '/' in driver.current_url:
         print("Test successful")
+        return True
     else:
         print("Test failed")
-
+        return False
 # add login page test function
 def login_page_test(driver):
     # Find the element with the id "Login Button" and click it
@@ -66,9 +71,10 @@ def login_page_test(driver):
     # Check if the URL contains the expected login page URL
     if '/login' in driver.current_url:
         print("Test successful")
+        return True
     else:
         print("Test failed")
-
+        return False
 # add register page test function
 def register_page_test(driver):
     # Find the element with the id "Register Button" and click it
@@ -81,9 +87,10 @@ def register_page_test(driver):
     # Check if the URL contains the expected register page URL
     if '/register' in driver.current_url:
         print("Test successful")
+        return True
     else:
         print("Test failed")
-
+        return False
 # add profile page test function
 def profile_page_test(driver):
     # Find the element with the id "Profile Button" and click it
@@ -96,9 +103,10 @@ def profile_page_test(driver):
     # Check if the URL contains the expected profile page URL
     if '/profile' in driver.current_url:
         print("Test successful")
+        return True
     else:
         print("Test failed")
-
+        return False
 # add new video page test function
 def new_video_page_test(driver):
     # Find the element with the id "New Video Button" and click it
@@ -111,9 +119,10 @@ def new_video_page_test(driver):
     # Check if the URL contains the expected new video page URL
     if '/new' in driver.current_url:
         print("Test successful")
+        return True
     else:
         print("Test failed")
-
+        return False
 # add logout page test function
 def logout_page_test(driver):
     # Find the element with the id "Logout Button" and click it
@@ -126,9 +135,10 @@ def logout_page_test(driver):
     # Check if the URL contains the expected logout page URL
     if '/logout' in driver.current_url:
         print("Test successful")
+        return True
     else:
         print("Test failed")
-
+        return False
 # login to the page
 def login(driver):
     # Find the element with the id "Username Input" and click it
