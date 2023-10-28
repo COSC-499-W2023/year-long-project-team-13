@@ -26,13 +26,14 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
+        pip install pytest
         pip install -r .github/workflows/requirements.txt
         pip install virtualenv
     - name: Lint with Ruff
       run: |
         pip install ruff
         ruff --output-format=github .
-  continue-on-error: true
+      continue-on-error: true
     - name: Test with pytest
       run: |
         pip install pytest pytest-cov
