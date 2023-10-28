@@ -16,7 +16,7 @@
     <link href="{% static 'css/styleRegister.css' %}" rel="stylesheet">
   </head>
   <!--style in body change the website side/top/bottom background-->
-  <body id="page-top" data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="77"  style="background-size: cover; background-image: url(' {% static 'assets/img/login-background-image.jpg' %} ');">
+  <body id="page-top" data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="77" style="background-size: cover; background-image: url('{% static 'assets/img/register-background.jpg' %}');">
     <nav class="navbar navbar-expand-md fixed-top navbar-light" id="mainNav">
       <div class="container"><a class="navbar-brand" href=" {% url 'stream:home' %} ">Group 13</a><button data-bs-toggle="collapse" class="navbar-toggler navbar-toggler-right" data-bs-target="#navbarResponsive" type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" value="Menu"><i class="fa fa-bars"></i></button>
           <div class="collapse navbar-collapse" id="navbarResponsive">
@@ -38,8 +38,9 @@
       </div>
     </nav>
     
-    <section class="vh-100 bg-image"
-      style="background-size: cover; background-image: url('{% static 'assets/img/register-background.jpg' %}');">
+    <!--style in section change the website background-->
+    <section class="vh-100 bg-image" style="background-size: cover; background-image: url('{% static 'assets/img/register-background.jpg' %}'); margin-top: 73px;">
+      <!-- Gradient mask -->
       <div class="mask d-flex align-items-center h-100 gradient-custom-3">
         <div class="container h-100">
           <div class="row d-flex justify-content-center align-items-center h-100">
@@ -77,16 +78,17 @@
 
                     <div class="form-check d-flex justify-content-center mb-5">
                       <div class="checkbox">
-                        <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3cg" />
+                        <input class="form-check-input me-2 border-info" type="checkbox" value="" id="form2Example3cg" />
                       </div>
                       <label class="form-check-label" for="form2Example3g">
                         I agree all statements in <a href="#!" class="text-body"><u>Terms of service</u></a>
                       </label>
                     </div>
 
+                    {% comment %}  onclick="register()" {% endcomment %}
                     <div class="d-flex justify-content-center">
-                      <button type="button"
-                        class="btn btn-success btn-block btn-lg gradient-custom-4 text-body" onclick="register()">Register</button>
+                      {% comment %} btn btn-primary btn-block fa-lg mb-3 btn-outline-info {% endcomment %}
+                      <button id="register" type="submit" class="btn btn-outline-info btn-success btn-block btn-lg gradient-custom-4 text-body">Register</button>
                     </div>
 
                     <p class="text-center text-muted mt-5 mb-0">Already have an account? <a href="{% url 'login' %}"
@@ -102,14 +104,14 @@
       </div>
     </section>
 
-    <script>
+    {% comment %} <script>
       function register() {
         // Alert that lets the user know registration was successful
         alert("Registration successful!");
         // Redirect to the login page after successful registration
         window.location.href = "{% url 'login' %}";
       }
-    </script>
+    </script> {% endcomment %}
 
     {% comment %}  
       <form method="POST">
@@ -126,7 +128,7 @@
     {% endblock content %}
     {% endcomment %}
 
-    <script>
+    {% comment %} <script>
       function register() {
         // Get the values of all the form inputs
         var username = document.getElementById("id_username").value;
@@ -144,7 +146,7 @@
           window.location.href = "{% url 'login' %}";
         }
       }
-    </script>
+    </script> {% endcomment %}
 
     <script src=" {% static 'assets/bootstrap/js/bootstrap.min.js' %} "></script>
       
