@@ -27,3 +27,11 @@
   width: 85%;
   border-radius: 4px;
 }
+
+#intruction {
+  margin-top: 1px;
+  margin-left: auto; 
+  margin-right: auto;
+  font-size: 14px;
+  width: 85%;
+}
