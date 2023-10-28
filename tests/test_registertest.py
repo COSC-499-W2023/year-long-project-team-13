@@ -5,24 +5,31 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium import webdriver
+import time
 
 def register_page_test(driver, username, email, password):
     # Find the username, email, and password fields and fill them out
     username_element = driver.find_element(By.ID, "id_username")
     username_element.send_keys(username)
+    time.sleep(0.5)
 
     email_element = driver.find_element(By.ID, "id_email")
     email_element.send_keys(email)
+    time.sleep(0.5)
+
 
     password1_element = driver.find_element(By.ID, "id_password1")
     password1_element.send_keys(password)
+    time.sleep(0.5)
 
     password2_element = driver.find_element(By.ID, "id_password2")
     password2_element.send_keys(password)
+    time.sleep(0.5)
 
     # Submit the form by clicking the "Register" button
     register_button = driver.find_element(By.ID, "register")
     register_button.click()
+    time.sleep(0.5)
 
     # Wait for the registration to complete (you might need to adjust the wait time)
     wait.until(EC.url_contains('/register'))
