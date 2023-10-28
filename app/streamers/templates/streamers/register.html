@@ -18,7 +18,7 @@
   <!--style in body change the website side/top/bottom background-->
   <body id="page-top" data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="77" style="background-size: cover; background-image: url('{% static 'assets/img/register-background.jpg' %}');">
     <nav class="navbar navbar-expand-md fixed-top navbar-light" id="mainNav">
-      <div class="container"><a class="navbar-brand" href=" {% url 'stream:home' %} ">Group 13</a><button data-bs-toggle="collapse" class="navbar-toggler navbar-toggler-right" data-bs-target="#navbarResponsive" type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" value="Menu"><i class="fa fa-bars"></i></button>
+      <div class="container"><a class="navbar-brand" href=" {% url 'stream:home' %} ">Vnonymous</a><button data-bs-toggle="collapse" class="navbar-toggler navbar-toggler-right" data-bs-target="#navbarResponsive" type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" value="Menu"><i class="fa fa-bars"></i></button>
           <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ms-auto">
               <li class="nav-item nav-link"><a class="nav-link active" href=" {% url 'stream:video-list' %} ">Videos</a></li>
@@ -51,11 +51,13 @@
 
                   <form method="POST">
                     {% csrf_token %}
+                    {% comment %} {{form.as_p}} {% endcomment %}
 
                     {% comment %} <div class="form-outline mb-4">
                       <input type="text" id="form3Example1cg" class="form-control form-control-lg" />
                       <label class="form-label" for="form3Example1cg">Your Name</label>
                     </div> {% endcomment %}
+                    {{ form.username.errors }}
                     {{ form.username }}
                     <p id="intruction">Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.</p>
                     
@@ -63,12 +65,14 @@
                       <input type="email" id="form3Example3cg" class="form-control form-control-lg" />
                       <label class="form-label" for="form3Example3cg">Your Email</label>
                     </div> {% endcomment %}
+                    {{ form.email.errors }}
                     {{ form.email }}
 
                     {% comment %} <div class="form-outline mb-4">
                       <input type="password" id="form3Example4cg" class="form-control form-control-lg" />
                       <label class="form-label" for="form3Example4cg">Password</label>
                     </div> {% endcomment %}
+                    {{ form.password1.errors }}
                     {{ form.password1 }}
                     <p id="intruction">Your password can’t be too similar to your other personal information.
                       <br>
@@ -82,12 +86,13 @@
                       <input type="password" id="form3Example4cdg" class="form-control form-control-lg" />
                       <label class="form-label" for="form3Example4cdg">Repeat your password</label>
                     </div> {% endcomment %}
+                    {{ form.password2.errors }}
                     {{ form.password2 }}
                     {% comment %} <p id="intruction">Enter the same password as before, for verification.</p> {% endcomment %}
                     
                     <div class="form-check d-flex justify-content-center mb-5">
                       <div class="checkbox">
-                        <input class="form-check-input me-2 border-info" type="checkbox" value="" id="form2Example3cg" />
+                        <input class="form-check-input me-2 border-success" type="checkbox" value="" id="form2Example3cg" />
                       </div>
                       <label class="form-check-label" for="form2Example3g">
                         I agree all statements in <a href="#!" class="text-body"><u>Terms of service</u></a>
@@ -97,7 +102,7 @@
                     {% comment %}  onclick="register()" {% endcomment %}
                     <div class="d-flex justify-content-center">
                       {% comment %} btn btn-primary btn-block fa-lg mb-3 btn-outline-info {% endcomment %}
-                      <button id="register" type="submit" class="btn btn-outline-info btn-success btn-block btn-lg gradient-custom-4 text-body">Register</button>
+                      <button id="register" type="submit" class="btn btn-outline-info btn-success btn-block btn-lg gradient-custom-4 text-body" required>Register</button>
                     </div>
 
                     <p class="text-center text-muted mt-5 mb-0">Already have an account? <a href="{% url 'login' %}"
