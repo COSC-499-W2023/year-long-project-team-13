@@ -1,10 +1,10 @@
 {% extends 'stream/base.html'%}
 {% block content %}
-    <div style="margin-top: 25px;">
+    <div style="margin-top: -25px;">
       <h1>
         {% comment %} include the video named "vnonymous.mp4" located in ../../../media/ and set the file to be 50px by 50 px {% endcomment %}
-        <video autoplay muted loop id="myVideo" width="50" height="50">
-          <source src="../../../media/vnonymous.mp4" type="video/mp4">
+        {% comment %} <video autoplay muted loop id="myVideo" width="150" height="150">
+          <source src="../../../media/vnonymous.mp4" type="video/mp4"> {% endcomment %}
       </h1>
     <div>
         {% for item in videos%}
