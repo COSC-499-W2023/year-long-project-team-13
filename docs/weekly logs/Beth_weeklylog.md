@@ -49,4 +49,5 @@ Screen shot of all builds this week
 ![Builds](./images/Ralston_stuff/All_Builds.png)
 
 Screen shot of homepage tests
+![Tests](./images/tests_completion/Week8_test.png)
 
