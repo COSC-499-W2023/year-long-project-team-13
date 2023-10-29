@@ -9,7 +9,7 @@
 - Table view of in progress tasks on project board (by which username)
 - Test report
 - Optional text: Additional context that we should be aware of
-- 
+-
 
 ## Preferred name -> Ssc name -> Github name
 
@@ -122,3 +122,30 @@ Completed Tasks
 ![Completed](./images/completed/Week7_done.png)
 In progress Tasks
 ![In Progress](./images/in-prog/Week7_inprogress.png)
+
+## Preferred name -> Ssc name -> Github name
+
+- Ethan -> Ethan Hsu -> YuchenHsu
+- Beth -> Beth Ralston -> mblackbeak
+- Herman -> Herman Sood -> herman-23
+- Raymond -> Sitt Paing -> SittHmuePaing
+- Adrian -> Adrian Fong -> AdrianFWM
+
+## Week 8 2023/10/23 ~ 2023/10/29
+
+- Which features were in the project plan for this milestone?
+  - We worked on making the homepage look better and finished the login and create account pages.
+  - We also made sure to test everything.
+- Which tasks from the project board are associated with these features?
+  - We completed [Login](https://github.com/COSC-499-W2023/year-long-project-team-13/issues/5), [Create account](https://github.com/COSC-499-W2023/year-long-project-team-13/issues/8), and refined [Home Page](https://github.com/COSC-499-W2023/year-long-project-team-13/issues/3).
+
+Burnup chart
+![Burnup](./images/burnup/Week8_burnup.png)
+Network Graph
+![Network](./images/network/Week8_Network.png)
+Completed Tasks
+![Completed](./images/completed/Week8_done.png)
+In progress Tasks
+![In Progress](./images/in-prog/Week8_inprogress.png)
+Test Report
+![Test Report](./images/tests_completion/Week8_test.png)

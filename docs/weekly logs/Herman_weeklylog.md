@@ -83,6 +83,36 @@
   - Among these tasks, which have you completed/in progress in the last week?
  Create account and CSS dev. 
 
+# Personal Week Log
+
+- Applicable date range
+##  Week 8 2023/10/22~2023/10/29
+
+
+![Tasks](./images/tasks/Week8Herman.png)
+
+# Preferred name -> Ssc name -> Github name
+
+- Herman -> Herman Sood -> Herman Sood
+
+- Recap on your week's goals-Which features were yours in the project plan for this milestone? This week I worked on the create account where I made some fixes to make the register button function, did the register test using selenium and helped a little with login. I also helped with making the register button not allow for any duplicate accounts to be made and restricted things like password length and other variables in order to successfully create an account.
+ 
+  - Which tasks from the project board are associated with these features?
+  Create account and Login.
+  - Among these tasks, which have you completed/in progress in the last week?
+ Create account and CSS dev and login. 
+
+ ![WeeklyLogImages](./images/tasks/Week8HermanLogin.png)
+ ![WeeklyLogImages](./images/tasks/Week8Hermanregisterpage.png)
+ ![WeeklyLogImages](./images/tasks/Week8HermanRegistertest.png)
+ 
+
+
+
+
+
+
+
 
 
 
