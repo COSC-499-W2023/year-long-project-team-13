@@ -28,6 +28,25 @@ The setup and testing of the "Setting up the project Django base" on my computer
 
 ### Week 7 Oct 16 - 22
 
-![W6Tasks](./images/tasks/Ralston_W6_Tasks.png)
+![W7Tasks](./images/tasks/Ralston_W7_Tasks.png)
 
 Completed the homepage css bug and linked all of the homepage buttons to their respective pages (That are still in progress or just empty html pages). Followed several aws tutorials and completed the aws amplify github connection guide. AWS was able to successfully build and deploy.
+
+### Week 8 Oct 23 - 29
+
+![W8Tasks](./images/tasks/Ralston_W8_Tasks.png)
+
+My features for this week was homepage and testing. On the project board they are called homepage. Homepage is now tested and in the done section. I also worked on presentation prep which is still in progess.
+Finally, I also worked on implementing a CI Pipeline which is still in progress. 
+
+Screen shot of presentation outline
+![PresentationPrep](./images/Ralston_stuff/Ralston_PresPrep.png)
+
+Screen shot of most recent build with the pipline
+![Build](./images/Ralston_stuff/Recent_Build.png)
+
+Screen shot of all builds this week
+![Builds](./images/Ralston_stuff/All_Builds.png)
+
+Screen shot of homepage tests
+
