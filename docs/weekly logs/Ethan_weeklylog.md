@@ -87,7 +87,11 @@
 
 - This week, I worked on making the home page look better, creating the logo for our project, and making the test for homepage to make sure it links to all the other pages and tested with Selenium.
 - The following images are the logo and the test for homepage respectively.
-- Logo
+  - Logo
 
-<video controls="controls" name="Logo" width="800px" height="600px">
-    <source src="./images/Ethan_stuff/Logo.mp4" type="video/mp4">
+![Logo](./images/Ethan_stuff/vnonymous.gif)
+
+  - Test
+
+![Test](./images/Ethan_stuff/Testing_results.png)
+![Test](./images/Ethan_stuff/479198746786398536.gif)
