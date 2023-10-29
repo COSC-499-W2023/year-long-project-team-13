@@ -65,36 +65,10 @@
 - Worked on "Setting up the project Django base" from the project board, setup the Django environment, Django database with website framework loaded.
 - Working on "CSS dev" from project board, implemented some part of the css template files into Django environment.
 - Working on "Home page" on project board, connect the our Home page into Django environment, so when the Django loaded up, it shows our home page.
-- Worked on my own weekly log, contribute to team weeklog.
 - Additional: Following images are the screenshot of the Django environment website and home page with CSS layout website:
 
 Home Page
-![Home Page](./images/Adrian_images/Week_6/Home_Page.png)
+![Home Page](./images/w3images/Adrian/HomePage.png)
 
-Video Page
-![Video Page](./images/Adrian_images/Week_6/Video_Page.png)
-
-# Preferred name -> Ssc name -> Github name
-
-- Adrian -> Adrian Fong -> AdrianFWM
-
-## Week 7 2023/10/15~2023/10/21
-
-- Task I have worked on this week.
-![Weekly Task 6](./images/tasks/AdrianFong_Week7_Task.png)
-
-## Recap on your week's goals
-
-- Working on "Login" and "Create Account" on project board, made the Login and Register Page with forms and connect the header buttons to the home page. The function submitting the login and register form to sql database are complete. Applied css and bootstrap files on Login and Register Page.
-- Worked on remaking the form functions in Django for css style and sql database layout in Login and Register Page.
-- Working on the website logo, which will be applied on the top corner of the website, and on top of the login form. 
-- Working on slogan on the right side of the login form.
-- Working on remaking the header bar from home page.
-- Worked on my own weekly log, contribute to team weeklog.
-- Additional: Following images are the screenshot of the Login and Register Page:
-
-Login Page
-![Login Page](./images/Adrian_images/Week_7/Login_Page.png)
-
-Register Page
-![Register Page](./images/Adrian_images/Week_7/Register_Page.png)
+Django Home Page
+![Django Home Page](./images/w3images/Adrian/DjangoHome.png)

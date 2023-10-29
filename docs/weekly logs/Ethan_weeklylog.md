@@ -61,7 +61,6 @@
 - Combining
   ![Combining](./images/w3images/Ethan/django_css_template/Ethan_django_css_merge.png)
 
-
 # Preferred name -> Ssc name -> Github name
 
 - Ethan -> Ethan Hsu -> YuchenHsu
@@ -75,3 +74,20 @@
 - This week, I finished the homepage of the website. And the linking of the pages. So far, all the buttons link to their respective pages.
 
 ![Homepage](./images/Ethan_stuff/new_homepage.png)
+
+# Preferred name -> Ssc name -> Github name
+
+- Ethan -> Ethan Hsu -> YuchenHsu
+
+## Week 8 2023/10/23 ~ 2023/10/29
+
+- Type of tasks you worked on (screenshot from Peer Eval question)
+
+![Tasks](./images/tasks/Ethan_Week8.png)
+
+- This week, I worked on making the home page look better, creating the logo for our project, and making the test for homepage to make sure it links to all the other pages and tested with Selenium.
+- The following images are the logo and the test for homepage respectively.
+- Logo
+
+<video controls="controls" name="Logo" width="800px" height="600px">
+    <source src="./images/Ethan_stuff/Logo.mp4" type="video/mp4">
