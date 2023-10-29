@@ -68,7 +68,74 @@
 - Additional: Following images are the screenshot of the Django environment website and home page with CSS layout website:
 
 Home Page
-![Home Page](./images/w3images/Adrian/HomePage.png)
+![Home Page](./images/Adrian_images/Week_6/Home_Page.png)
 
-Django Home Page
-![Django Home Page](./images/w3images/Adrian/DjangoHome.png)
+Video Page
+![Video Page](./images/Adrian_images/Week_6/Video_Page.png)
+
+# Preferred name -> Ssc name -> Github name
+
+- Adrian -> Adrian Fong -> AdrianFWM
+
+## Week 7 2023/10/15~2023/10/21
+
+- Task I have worked on this week.
+![Weekly Task 7](./images/tasks/AdrianFong_Week7_Task.png)
+
+## Recap on your week's goals
+
+- Working on "Login" and "Create Account" on project board, made the Login and Register Page with forms and connect the header buttons to the home page. The function submitting the login and register form to sql database are complete. Applied css and bootstrap files on Login and Register Page.
+- Worked on remaking the form functions in Django for css style and sql database layout in Login and Register Page.
+- Working on the website logo, which will be applied on the top corner of the website, and on top of the login form. 
+- Working on slogan on the right side of the login form.
+- Working on remaking the header bar from home page.
+- Worked on my own weekly log, contribute to team weeklog.
+- Additional: Following images are the screenshot of the Login and Register Page:
+
+Login Page
+![Login Page](./images/Adrian_images/Week_7/Login_Page.png)
+
+Register Page
+![Register Page](./images/Adrian_images/Week_7/Register_Page.png)
+
+# Preferred name -> Ssc name -> Github name
+
+- Adrian -> Adrian Fong -> AdrianFWM
+
+## Week 8 2023/10/22~2023/10/28
+
+- Task I have worked on this week.
+![Weekly Task 8](./images/tasks/AdrianFong_Week8_Task.png)
+
+## Recap on your week's goals
+
+- Worked on "Login" and "Create Account" on project board, finished working on Login and Register Page with forms and connect headers with other pages. The form function of submitting information from the Login and Register Page to the SQL database. The error message shown after input wrong information or user on Login and Register Page. Reapplied css and bootstrap file formats on Login and Register Page to match the theme with the other Pages. 
+- Worked on reworking the whole website theme for Login and Register Page.
+- Worked on applying animated website logo onto the website, especially on Login Page.
+- Worked on applying new images to match the theme on Login and Register Page.
+- Worked on remaking the Video Page and Search Page.
+- Worked on remaking header bar and applied it onto all other pages.
+- Worked on testing the Login and Register Page manually and see if there are errors or not.
+- Worked on my own weekly log, contribute to team weeklog.
+- Additional: Following images are the screenshot of the whole website:
+
+Home Page
+![Home Page](./images/Adrian_images/Week_8/HomePage.png)
+
+Video Page
+![Video Page](./images/Adrian_images/Week_8/VideoPage.png)
+
+Search Page
+![Video Page](./images/Adrian_images/Week_8/SearchPage.png)
+
+Login Page
+![Login Page](./images/Adrian_images/Week_8/LoginPage.png)
+
+Login Error Page
+![Login Error Page](./images/Adrian_images/Week_8/LoginError.png)
+
+Register Page
+![Register Page](./images/Adrian_images/Week_8/RegisterPage.png)
+
+Register Error Page
+![Register Error Page](./images/Adrian_images/Week_8/RegisterError.png)
