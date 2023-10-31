@@ -1,12 +1,8 @@
 {% extends 'stream/base.html'%}
 {% block content %}
-    <div>
-        <h1>
-          {% comment %} include the video named "vnonymous.mp4" located in ../../../media/ and set the file to be 50px by 50 px {% endcomment %}
-          <video autoplay muted loop id="myVideo" width="150" height="150">
-            <source src="../../../media/vnonymous.mp4" type="video/mp4">
-        </h1>
-    <div>
+    <div style="margin-top: 25px;">
+        {% comment %} <h1>Vnonymous</h1> {% endcomment %}
+    <div style="padding-top: 75px;">
         {% for item in videos%}
         <div class="card" style="width: 40rem; margin: 20px; box-shadow: 12em;">
             <img class="rounded-circle border-dark" src="{{ item.streamer.profile.image.url }}" style="border-color: red;" width="30" height="30">
@@ -23,4 +19,5 @@
           </div>
         {% endfor %}
     </div>
+  </div>
 {% endblock content %}
