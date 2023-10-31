@@ -28,10 +28,10 @@ class UserRegistrationForm(UserCreationForm):
 class UserUpdateForm(forms.ModelForm):
     username = forms.CharField(widget=forms.TextInput(attrs={'placeholder' :'Username',
                                                              'style':'width: 400px; height: 45px; margin-left: auto; margin-right: auto; margin-bottom: 25px; border: 2px groove lightgreen;',
-                                                             'class': 'form-control', 'required': True}))
+                                                             'class': 'form-control'}))
     email = forms.EmailField(widget=forms.EmailInput(attrs={'placeholder' :'Email',
                                                         'style': 'width: 400px; height: 45px;margin-left: auto; margin-right: auto; margin-bottom: 25px; border: 2px groove lightgreen;',
-                                                        'class': 'form-control', 'required': True}))
+                                                        'class': 'form-control'}))
 
     class Meta:
         model = User
@@ -41,6 +41,7 @@ class UserUpdateForm(forms.ModelForm):
 
 
 class UserProfileUpdateForm(forms.ModelForm):
+
     class Meta:
         model = Profile
         fields = ['image']
