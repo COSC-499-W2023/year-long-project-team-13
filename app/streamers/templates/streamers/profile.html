@@ -1,7 +1,61 @@
-{% extends 'stream/base.html'%}
-{% block content %}
-<div style = "margin-top: 25px; padding-top: 75px;">
-    <div>
+{% comment %} {% extends 'stream/base.html'%} {% endcomment %}
+{% comment %} {% block content %} {% endcomment %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href= "{%static 'assets/bootstrap/css/bootstrap.min.css' %}">
+    <link href="{% static 'css/styleProfile.css' %}" rel="stylesheet">
+  </head>
+
+  <body id="page-top" data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="77" style="background-color: grey;">
+    <nav class="navbar navbar-expand-md fixed-top navbar-light" id="mainNav">
+      <div class="container"><a class="navbar-brand" href=" {% url 'stream:home' %} " id="Home Button">
+        Vnonymous
+      </a><button data-bs-toggle="collapse" class="navbar-toggler navbar-toggler-right" data-bs-target="#navbarResponsive" type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" value="Menu"><i class="fa fa-bars"></i></button>
+          <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item nav-link"><a class="nav-link active" href=" {% url 'stream:video-list' %} ">Videos</a></li>
+              <li class="nav-item nav-link"><a class="nav-link active" href=" {% url 'stream:contact' %} ">Add Contacts</a></li>
+            </ul>
+          </div>
+          <div class="navbar-nav">
+            {% if user.is_authenticated %}
+              <a class="nav-item nav-link" href="{% url 'stream:video-create' %}">New Video</a>
+              <a class="nav-item nav-link" href="{% url 'profile' %}">Profile</a>
+              <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
+            {% else %}
+              <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
+              <a class="nav-item nav-link" href="{% url 'register' %}" id="register">Register</a>
+            {% endif %}
+          </div>
+      </div>
+    </nav>
+    <div style = "margin-top: 25px; padding-top: 75px;">
+
+            <img src="{{ user.profile.image.url }}">
+            <h3>{{ user.username }}</h3>
+            <p>{{ user.email }}</p>
+        </div>
+        <div>
+            {% comment %} enctype="multipart/form-data" {% endcomment %}
+            <form method="POST" >
+                {% csrf_token %}
+                <legend>profile info</legend>
+                {{ form.as_p }}
+                {{ profileform.as_p }}
+                <button class="btn btn-outline-info" type="submit">Update</button>
+            </form>
+
+        </div>
+</body>
+{% comment %} {% endblock content %} {% endcomment %}
+
+{% comment %} <div>
         <img src="{{ user.profile.image.url }}">
         <h3>{{ user.username }}</h3>
         <p>{{ username.email }}</p>
@@ -10,12 +64,9 @@
         <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             <legend>profile info</legend>
-            {{ user_form.username }}
-            {% comment %} {{ userform.as_p }}
-            {{ profileform.as_p }} {% endcomment %}
+            {{ userform.as_p }}
+            {{ profileform.as_p }}
             <button class="btn btn-outline-info" type="submit">Update</button>
         </form>
 
-    </div>
-</div>
-{% endblock content %}
+    </div> {% endcomment %}
