@@ -51,3 +51,6 @@ Screen shot of all builds this week
 Screen shot of homepage tests
 ![Tests](./images/tests_completion/Week8_test.png)
 
+### Week 9 Oct 30 - Nov 5
+
+I focused on the preparation for the presentation. Finishing a last few things for the homepage and other functions. We also spent a while practicing the presentation. I also did a little bit of debugging for the CI-workflow in github actions. The remainder of my time this week was spent watching other teams present and giving them feedback. 
