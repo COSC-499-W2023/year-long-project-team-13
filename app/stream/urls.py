@@ -22,7 +22,7 @@ urlpatterns = [
     path('search',views.search,name="search"),
     path('',views.home,name="home"),
     path('video',GeneralVideoListView.as_view(), name="video-list"),
-    path('contact',views.contact,name="contact"),
+    path('contact',views.contact,name="contact")
 ]
 
 
