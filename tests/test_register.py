@@ -26,6 +26,11 @@ def register_page_test(driver, username, email, password):
     password2_element.send_keys(password)
     time.sleep(0.5)
 
+     # Find the checkbox and click it
+    checkbox_element = driver.find_element(By.XPATH, "//input[@type='checkbox']")
+    checkbox_element.click()
+    time.sleep(0.5)
+
     # Submit the form by clicking the "Register" button
     register_button = driver.find_element(By.ID, "register")
     register_button.click()
