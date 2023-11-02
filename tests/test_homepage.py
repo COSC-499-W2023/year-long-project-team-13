@@ -8,6 +8,8 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.keys import Keys
 from selenium import webdriver
 import time
+import unittest
+
 
 # video page test function
 def video_page_test(driver):
@@ -183,34 +185,40 @@ wait = WebDriverWait(driver, 60)
 driver.get('http://localhost:8000')
 
 # Call the video page test function
-video_page_test(driver)
-time.sleep(0.5)
-home_page_test(driver)
-time.sleep(0.5)
-add_contact_page_test(driver)
-time.sleep(0.5)
-home_page_test(driver)
-time.sleep(0.5)
-register_page_test(driver)
-time.sleep(0.5)
-home_page_test(driver)
-time.sleep(0.5)
-login_page_test(driver)
-time.sleep(0.5)
-# actually login
-login(driver)
-time.sleep(0.5)
-profile_page_test(driver)
-time.sleep(0.5)
-home_page_test(driver)
-time.sleep(0.5)
-new_video_page_test(driver)
-time.sleep(0.5)
-home_page_test(driver)
-time.sleep(0.5)
-logout_page_test(driver)
-time.sleep(0.5)
-home_page_test(driver)
+# inlcude all the tests in the main_test class
+class main_test(unittest.TestCase):
+    def test_homepage(self):
+        self.assertTrue(video_page_test(driver))
+        time.sleep(0.5)
+        self.assertTrue(home_page_test(driver))
+        time.sleep(0.5)
+        self.assertTrue(add_contact_page_test(driver))
+        time.sleep(0.5)
+        self.assertTrue(home_page_test(driver))
+        time.sleep(0.5)
+        self.assertTrue(register_page_test(driver))
+        time.sleep(0.5)
+        self.assertTrue(home_page_test(driver))
+        time.sleep(0.5)
+        self.assertTrue(login_page_test(driver))
+        time.sleep(0.5)
+        # actually login
+        login(driver)
+        time.sleep(0.5)
+        self.assertTrue(profile_page_test(driver))
+        time.sleep(0.5)
+        self.assertTrue(home_page_test(driver))
+        time.sleep(0.5)
+        self.assertTrue(new_video_page_test(driver))
+        time.sleep(0.5)
+        self.assertTrue(home_page_test(driver))
+        time.sleep(0.5)
+        self.assertTrue(logout_page_test(driver))
+        time.sleep(0.5)
+        self.assertTrue(home_page_test(driver))
 
-# close the webdriver
-driver.quit()
+        # close the webdriver
+        driver.quit()
+
+if __name__ == '__main__':
+    unittest.main()
