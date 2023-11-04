@@ -111,4 +111,4 @@
   - Test video
 ![Test](./images/Ethan_stuff/Master_Test.gif)
   - Presentation Prep
-![Presentation](./images/Ethan_stuff/presentation_prep.png)
+![Presentation](./images/Ethan_stuff/Presentation_Prep.png)
