@@ -62,6 +62,28 @@ For this week, we started working on the html/css template that we choose for ou
 For this week, I worked on html/css template for the login and video page, and also help my team to fix bugs and issues by searching for online solution and utilize them when we are working on the templates. 
 
 
+## Week 8 2023/10/22 ~ 2023/10/28
+
+-Types of tasks that I have worked on
+
+![Task_Done](./images/tasks/SittPaing_W8-Task.png)
+
+## Recap of week's goals
+For this week, we worked on the login/register page making changes to html/css and work on the function of the login and register pages. Also we tested the code frequently to see whether the website return the output that we are expecting to see. I also work on the test code for the login page to check whether the login is successful or not. Any bugs and issues that have arises during coding is also fixed along the way when working on the website through searching online for external resources to tackle the problems.
+
+Register Page
+![Register Page](./images/Sitt_images/Week_8/Register_Page.png)
+
+Login Page
+![Login Page](./images/Sitt_images/Week_8/Login_Page.png)
+
+Login Testing
+![Login Testing](./images/Sitt_images/Week_8/Login_Testing.png)
+
+Login Testing Successful
+![Login Testing Successful](./images/Sitt_images/Week_8/Login_Testing_Successful.png)
+
+
 
 
 
