@@ -53,4 +53,6 @@ Screen shot of homepage tests
 
 ### Week 9 Oct 30 - Nov 5
 
+![W9Tasks](./images/tasks/Ralston_W9_Tasks.png)
+
 I focused on the preparation for the presentation. Finishing a last few things for the homepage and other functions. We also spent a while practicing the presentation. I also did a little bit of debugging for the CI-workflow in github actions. The remainder of my time this week was spent watching other teams present and giving them feedback. 
