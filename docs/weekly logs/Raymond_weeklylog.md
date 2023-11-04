@@ -95,9 +95,11 @@ For this week, we worked on our presentation as well as prepare for a live demo 
 
 
 Presentation Prep
+
 ![Presentation Prep](./images/Sitt_images/Week_9/Presentation_Prep.png)
 
 My Presentation Part
+
 ![My Presentation Part](./images/Sitt_images/Week_9/My_Presentation_Part.png)
 
 Profile Page
