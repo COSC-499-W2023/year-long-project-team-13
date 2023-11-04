@@ -106,7 +106,7 @@ Profile Page
 ![Profile Page](./images/Sitt_images/Week_9/Edit_Profile_Page.png)
 
 Logout Page
-![Logout Page](./images/Sitt_images/Week_9/Log_out_Page.png)
+![Logout Page](./images/Sitt_images/Week_9/Logout_page.png)
 
 Login Testing
 ![Login Testing](./images/Sitt_images/Week_9/Login_Testing.png)
