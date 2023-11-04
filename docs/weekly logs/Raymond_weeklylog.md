@@ -93,6 +93,12 @@ Login Testing Successful
 ## Recap of week's goals
 For this week, we worked on our presentation as well as prepare for a live demo for our presentation. We also fixed any existing bugs and issues when doing the live demo and make changes/fix the html/css of the pages(profile, login and logout). We also made preparation on the google docs for the presentation on what we want to present. 
 
+Presentation Prep
+![Presentation Prep](./images/Sitt_images/Week_9/Presentation_Prep.png)
+
+My Presentation Part
+![My Presentation Part](./images/Sitt_images/Week_9/My_Presentation_Part.png)
+
 Profile Page
 ![Profile Page](./images/Sitt_images/Week_9/Edit_Profile_Page.png)
 
@@ -105,11 +111,6 @@ Login Testing
 Login Testing Successful
 ![Login Testing Successful](./images/Sitt_images/Week_9/Login_Testing_Successful.png)
 
-Presentation Prep
-![Presentation Prep](./images/Sitt_images/Week_9/Presentation_Prep.png)
-
-My Presentation Part
-![My Presentation Part](./images/Sitt_images/Week_9/My_Presentation_Part.png)
 
 
 
