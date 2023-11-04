@@ -103,8 +103,8 @@ My Presentation Part
 Profile Page
 ![Profile Page](./images/Sitt_images/Week_9/Edit_Profile_Page.png)
 
-Login Page
-![Login Page](./images/Sitt_images/Week_9/Log_Out_Page.png)
+Logout Page
+![Logout Page](./images/Sitt_images/Week_9/Log_Out_Page.png)
 
 Login Testing
 ![Login Testing](./images/Sitt_images/Week_9/Login_Testing.png)
