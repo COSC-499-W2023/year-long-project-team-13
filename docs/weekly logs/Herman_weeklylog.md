@@ -107,6 +107,30 @@
  ![WeeklyLogImages](./images/tasks/Week8HermanRegistertest.png)
  
 
+ # Personal Week Log
+
+- Applicable date range
+##  Week 9 2023/10/22~2023/10/29
+
+
+![Tasks](./images/tasks/Week9Herman.png)
+
+# Preferred name -> Ssc name -> Github name
+
+- Herman -> Herman Sood -> Herman Sood
+
+- Recap on your week's goals-Which features were yours in the project plan for this milestone? This week I worked on making some final changes to the register page including some minor updates to ensure the testing of the register page was good to go for the presentation. I also did the milestone 1 presentation with my team and helped out with the login a little bit. 
+  - Which tasks from the project board are associated with these features?
+  Create account and Login and Presentation Prep.
+  - Among these tasks, which have you completed/in progress in the last week?
+ Create account and Login nand Presentation Prep. 
+
+ ![WeeklyLogImages](./images/tasks/Week9HermanMilestone1Prep.png)
+ ![WeeklyLogImages](./images/tasks/Week9LoginHerman.png)
+ ![WeeklyLogImages](./images/tasks/Week9Register.png)
+ ![WeeklyLogImages](./images/tasks/Week9Registertest.png)
+ ![WeeklyLogImages](./images/tasks/Week9RegistertestSuccessful.png)
+
 
 
 
