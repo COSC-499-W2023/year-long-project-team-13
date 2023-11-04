@@ -149,3 +149,31 @@ In progress Tasks
 ![In Progress](./images/in-prog/Week8_inprogress.png)
 Test Report
 ![Test Report](./images/tests_completion/Week8_test.png)
+
+## Preferred name -> Ssc name -> Github name
+
+- Ethan -> Ethan Hsu -> YuchenHsu
+- Beth -> Beth Ralston -> mblackbeak
+- Herman -> Herman Sood -> herman-23
+- Raymond -> Sitt Paing -> SittHmuePaing
+- Adrian -> Adrian Fong -> AdrianFWM
+
+## Week 9 2023/10/30 ~ 2023/11/05
+
+- Which features were in the project plan for this milestone?
+  - This week, we worked on making the presentation and preparing live demo for the presentation.
+  - We also finished the testing code for the login, create account pages and homepage.
+  - Changed some tests and CSS before the presentation.
+- Which tasks from the project board are associated with these features?
+  - We completed [Presentation Prep](https://github.com/COSC-499-W2023/year-long-project-team-13/issues/49) and started working on [Profile](https://github.com/COSC-499-W2023/year-long-project-team-13/issues/57), [Edit profile](https://github.com/COSC-499-W2023/year-long-project-team-13/issues/9) and [CSS dev](https://github.com/COSC-499-W2023/year-long-project-team-13/issues/7).
+
+Burnup chart
+![Burnup](./images/burnup/Week9_burnup.png)
+Network Graph
+![Network](./images/network/Week9_Network.png)
+Completed Tasks
+![Completed](./images/completed/Week9_done.png)
+In progress Tasks
+![In Progress](./images/in-prog/Week9_inprogress.png)
+Test Report
+![Test Report](./images/tests_completion/Week9_test.png)
