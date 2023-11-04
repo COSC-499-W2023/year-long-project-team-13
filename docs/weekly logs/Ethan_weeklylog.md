@@ -88,10 +88,25 @@
 - This week, I worked on making the home page look better, creating the logo for our project, and making the test for homepage to make sure it links to all the other pages and tested with Selenium.
 - The following images are the logo and the test for homepage respectively.
   - Logo
-
 ![Logo](./images/Ethan_stuff/vnonymous.gif)
-
   - Test
-
 ![Test](./images/Ethan_stuff/Testing_results.png)
 ![Test](./images/Ethan_stuff/479198746786398536.gif)
+
+# Preferred name -> Ssc name -> Github name
+
+- Ethan -> Ethan Hsu -> YuchenHsu
+
+## Week 9 2023/10/30 ~ 2023/11/05
+
+- Type of tasks you worked on (screenshot from Peer Eval question)
+
+![Tasks](./images/tasks/Ethan_Week9.png)
+
+- This week, I worked on refining the homepage test, and preparing for the presentation. I also worked on making sure the website top bar is consistent across all pages and displays the correct group name.
+- I also helped with trying to figure
+- The following images are the test for homepage.
+  - Test
+![Test](./images/tests_completion/Week9_test.png)
+  - Presentation Prep
+![Presentation](./images/Ethan_stuff/presentation_prep.png)
