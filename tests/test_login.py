@@ -6,6 +6,7 @@ from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium import webdriver
 import time
+import unittest
 
 def login_page_test(driver, username, password):
     # Find the element with the id "Username Input" and click it
@@ -37,8 +38,10 @@ def login_page_test(driver, username, password):
     # Check if the URL contains the expected post-login page URL
     if '/login' in driver.current_url:
         print("Login failed")
+        return False
     else:
         print("Login successful")
+        return True
 # Create a ChromeOptions object with the log level set to 3
 chrome_options = webdriver.ChromeOptions()
 chrome_options.add_argument("--log-level=3")  # Set log level to suppress warnings
@@ -53,9 +56,13 @@ wait = WebDriverWait(driver, 60)
 # Navigate to the homepage
 driver.get('http://localhost:8000/login')
 
-# Call the login page test function with appropriate input values
-login_page_test(driver, 'linus', '123')  # Replace with actual credentials
+# test function within a main
+class main_test(unittest.TestCase):
+    def test_login(self):
+        self.assertTrue(login_page_test(driver, 'linus', '123'))
+        # Call the login page test function with appropriate input values
 
-# Close the webdriver
-driver.quit()
-
+        # Close the webdriver
+        driver.quit()
+if __name__ == "__main__":
+    unittest.main()
