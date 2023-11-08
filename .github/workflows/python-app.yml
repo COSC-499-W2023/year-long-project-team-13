@@ -29,6 +29,7 @@ jobs:
         pip install pytest
         pip install -r .github/workflows/requirements.txt
         pip install virtualenv
+        pip install selenium
     - name: Lint with Ruff
       run: |
         pip install ruff
