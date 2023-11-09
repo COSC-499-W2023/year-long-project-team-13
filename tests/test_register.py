@@ -6,6 +6,7 @@ from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium import webdriver
 import time
+import unittest
 
 def register_page_test(driver, username, email, password):
     # Find the username, email, and password fields and fill them out
@@ -42,8 +43,10 @@ def register_page_test(driver, username, email, password):
     # Check if the URL contains the expected login page URL
     if '/register' in driver.current_url:
         print("Registration successful")
+        return True
     else:
         print("Registration failed")
+        return False
 
 # Create a ChromeOptions object with the log level set to 3
 chrome_options = webdriver.ChromeOptions()
@@ -59,8 +62,14 @@ wait = WebDriverWait(driver, 60)  # Adjust the wait time as needed
 # Navigate to the registration page
 driver.get('http://localhost:8000/register/')  # Update the URL if needed
 
-# Call the register page test function with appropriate input values
-register_page_test(driver, 'abcd', 'abcd@email.com', 'abcd123')
+# main test function
+class main_test(unittest.TestCase):
+    # test function within a main
+    def test_register_page(self):
+        # Call the register page test function with appropriate input values
+        self.assertTrue(register_page_test(driver, 'abcd', 'abcd@email.com', 'abcd123'))
 
-# Close the webdriver
-driver.quit()
+        # Close the webdriver
+        driver.quit()
+if __name__ == '__main__':
+    unittest.main()
