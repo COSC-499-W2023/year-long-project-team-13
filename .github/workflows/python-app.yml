@@ -30,6 +30,15 @@ jobs:
         pip install -r .github/workflows/requirements.txt
         pip install virtualenv
         pip install selenium
+    - name: Prepare Selenium
+      # https://github.com/marketplace/actions/setup-chromedriver
+      uses: nanasess/setup-chromedriver@master
+    - name: Launch browser
+      run: |
+        google-chrome --version
+        export DISPLAY=:99
+        chromedriver --url-base=/wd/hub &
+        sudo Xvfb -ac :99 -screen 0 1280x1024x24 > /dev/null 2>&1 & # optional, disables headless mode
     - name: Lint with Ruff
       run: |
         pip install ruff
@@ -38,4 +47,4 @@ jobs:
     - name: Test with pytest
       run: |
         pip install pytest pytest-cov
-        pytest tests/test_homepage.py --doctest-modules --junitxml=junit/test-results.xml --cov=com --cov-report=xml --cov-report=html
+        pytest tests/tests.py --doctest-modules --junitxml=junit/test-results.xml --cov=com --cov-report=xml --cov-report=html
