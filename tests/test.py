@@ -3,7 +3,7 @@
 
 import os
 #os.system('python test_homepage.py') # runs homepage test
-os.system(f'python /year-long-project-team-13/tests/test_register.py')
+os.system(f'python test_register.py')
 #os.system('python test_register.py') # runs register test
 #os.system('python test_login.py') # runs login test
 
