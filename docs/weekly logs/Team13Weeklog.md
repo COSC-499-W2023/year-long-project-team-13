@@ -9,7 +9,7 @@
 - Table view of in progress tasks on project board (by which username)
 - Test report
 - Optional text: Additional context that we should be aware of
--
+- 
 
 ## Preferred name -> Ssc name -> Github name
 
@@ -177,3 +177,35 @@ In progress Tasks
 ![In Progress](./images/in-prog/Week9_inprogress.png)
 Test Report
 ![Test Report](./images/tests_completion/Week9_test.png)
+
+## Preferred name -> Ssc name -> Github name
+
+- Ethan -> Ethan Hsu -> YuchenHsu
+- Beth -> Beth Ralston -> mblackbeak
+- Herman -> Herman Sood -> herman-23
+- Raymond -> Sitt Paing -> SittHmuePaing
+- Adrian -> Adrian Fong -> AdrianFWM
+
+## Week 10 2023/11/06 ~ 2023/11/12
+
+- Which features were in the project plan for this milestone?
+  - This week, we worked on making the UML diagram and the profile page, and also continued working on the CI for github.
+  - We also started trying to host our project on AWS.
+- Which tasks from the project board are associated with these features?
+  - We are still working on [Edit profile](https://github.com/COSC-499-W2023/year-long-project-team-13/issues/9)
+
+Burnup chart
+![Burnup](./images/burnup/Week10_burnup.png)
+Network Graph
+![Network](./images/network/Week10_Network.png)
+Completed Tasks
+![Completed](./images/completed/Week10_done.png)
+In progress Tasks
+![In Progress](./images/in-prog/Week10_inprogress.png)
+Test Report
+![Test Report](./images/tests_completion/Week9_test.png)
+
+Optional Text:
+
+- The following image is the uml diagram we made for our project.
+  ![UML](./images/uml/uml.png)
