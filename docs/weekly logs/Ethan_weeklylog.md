@@ -125,6 +125,10 @@
 
 - This week, I worked on making the UML diagram and also tried to host the project on AWS.
   - So far I have tried EC2, which is still in progress figuring out problems, Elastic Beanstalk, which doesn't like my login credentials, and Lambda, which I can't figure out how to install the dependencies without breaking the other stuff.
+- The guides I tried includes the following:
+  - [AWS Lambda](https://dev.to/vaddimart/deploy-django-app-on-aws-lambda-using-serverless-part-1-1i90)
+  - [AWS Elastic Beanstalk](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create-deploy-python-django.html)
+  - [AWS EC2](https://blog.devgenius.io/how-to-deploy-a-django-project-on-an-amazon-ec2-instance-with-apache-875f925d0a9a)
 - The following images are the UML diagram and the AWS stuff.
   - UML
 ![UML](./images/uml/uml.png)
