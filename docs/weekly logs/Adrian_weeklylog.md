@@ -186,3 +186,50 @@ Presentation Prep Script part 1
 
 Presentation Prep Script part 2
 ![Presentation Prep Script part 2](./images/Adrian_images/Week_9/PresentaionPrep_2.png)
+
+# Preferred name -> Ssc name -> Github name
+
+- Adrian -> Adrian Fong -> AdrianFWM
+
+## Week 10 2023/11/05~2023/11/11
+
+- Task I have worked on this week.
+![Weekly Task 10](./images/tasks/AdrianFong_Week10_Task.png)
+
+## Recap on your week's goals
+
+- Worked on fixing the header on Video and Search Page.
+- Worked on Upload, Profile, Logout Page, adding header bar, css layout, and imported working function on successful upload video post.
+- Worked on Edit Profile form function working on Profile Page, modified Django form to match css and SQL database.
+- Worked on fixing error on Profile Page of not updating the profile information after filling the form.
+- Worked on "Presentation prep" on project board, we wrote a script, dividing presentation work, and assigning presentation part to everyone.
+- Worked on grading, comment, and watch other group's presentation. 
+- Worked on my own weekly log, contribute to team weeklog.
+- Additional: Following images are the screenshot of the whole website:
+
+Video Page
+![Video Page](./images/Adrian_images/Week_9/VideoPage.png)
+
+Search Page
+![Search Page](./images/Adrian_images/Week_9/SearchPage.png)
+
+Upload Page
+![Upload Page](./images/Adrian_images/Week_9/UploadPage.png)
+
+Upload Page (Uploading Video)
+![Upload Page (Uploading Video)](./images/Adrian_images/Week_9/Uploading_UploadPage.png)
+
+Video Page (Upload Success)
+![Video Page (Upload Success)](./images/Adrian_images/Week_9/UploadSuccess_VideoPage.png)
+
+Profile Page
+![Profile Page](./images/Adrian_images/Week_9/ProfilePage.png)
+
+Logout Page
+![Logout Page](./images/Adrian_images/Week_9/LogoutPage.png)
+
+Presentation Prep Script part 1
+![Presentation Prep Script part 1](./images/Adrian_images/Week_9/PresentaionPrep_1.png)
+
+Presentation Prep Script part 2
+![Presentation Prep Script part 2](./images/Adrian_images/Week_9/PresentaionPrep_2.png)
