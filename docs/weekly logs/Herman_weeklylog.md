@@ -83,6 +83,83 @@
   - Among these tasks, which have you completed/in progress in the last week?
  Create account and CSS dev. 
 
+# Personal Week Log
+
+- Applicable date range
+##  Week 8 2023/10/22~2023/10/28
+
+
+![Tasks](./images/tasks/Week8Herman.png)
+
+# Preferred name -> Ssc name -> Github name
+
+- Herman -> Herman Sood -> Herman Sood
+
+- Recap on your week's goals-Which features were yours in the project plan for this milestone? This week I worked on the create account where I made some fixes to make the register button function, did the register test using selenium and helped a little with login. I also helped with making the register button not allow for any duplicate accounts to be made and restricted things like password length and other variables in order to successfully create an account.
+ 
+  - Which tasks from the project board are associated with these features?
+  Create account and Login.
+  - Among these tasks, which have you completed/in progress in the last week?
+ Create account and CSS dev and login. 
+
+ ![WeeklyLogImages](./images/tasks/Week8HermanLogin.png)
+ ![WeeklyLogImages](./images/tasks/Week8Hermanregisterpage.png)
+ ![WeeklyLogImages](./images/tasks/Week8HermanRegistertest.png)
+ 
+
+ # Personal Week Log
+
+- Applicable date range
+##  Week 9 2023/10/22~2023/10/29
+
+
+![Tasks](./images/tasks/Week9Herman.png)
+
+# Preferred name -> Ssc name -> Github name
+
+- Herman -> Herman Sood -> Herman Sood
+
+- Recap on your week's goals-Which features were yours in the project plan for this milestone? This week I worked on making some final changes to the register page including some minor updates to ensure the testing of the register page was good to go for the presentation. I also did the milestone 1 presentation with my team and helped out with the login a little bit. 
+  - Which tasks from the project board are associated with these features?
+  Create account and Login and Presentation Prep.
+  - Among these tasks, which have you completed/in progress in the last week?
+ Create account and Login nand Presentation Prep. 
+
+ ![WeeklyLogImages](./images/tasks/Week9HermanMilestone1Prep.png)
+ ![WeeklyLogImages](./images/tasks/Week9LoginHerman.png)
+ ![WeeklyLogImages](./images/tasks/Week9Register.png)
+ ![WeeklyLogImages](./images/tasks/Week9Registertest.png)
+ ![WeeklyLogImages](./images/tasks/Week9RegistertestSuccessful.png)
+
+ # Personal Week Log
+
+- Applicable date range
+##  Week 10 2023/11/4~2023/11/11
+
+
+![Tasks](./images/tasks/Week10Herman.png)
+
+# Preferred name -> Ssc name -> Github name
+
+- Herman -> Herman Sood -> Herman Sood
+
+- Recap on your week's goals-Which features were yours in the project plan for this milestone? This week I worked on making a quick touch to the profile page and worked on edit profile. The main goal was to fix up the structure of the page and be able to upload new images and have them display when updating the page after refreshing. This was good but just some issues with the password. Also need a css template for the profile.  
+  - Which tasks from the project board are associated with these features?
+  Profile and editprofile
+  - Among these tasks, which have you completed/in progress in the last week?
+ profile an editprofile
+
+ ![WeeklyLogImages](./images/tasks/Week10HermanLogin.png)
+ ![WeeklyLogImages](./images/tasks/Week10HermanEditeProfilePage.png)
+ ![WeeklyLogImages](./images/tasks/Week10HermanEditProfile.png)
+ ![WeeklyLogImages](./images/tasks/Week10HermanProfileSuccess.png)
+
+
+
+
+
+
+
 
 
 

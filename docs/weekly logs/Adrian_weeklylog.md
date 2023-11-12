@@ -65,7 +65,6 @@
 - Worked on "Setting up the project Django base" from the project board, setup the Django environment, Django database with website framework loaded.
 - Working on "CSS dev" from project board, implemented some part of the css template files into Django environment.
 - Working on "Home page" on project board, connect the our Home page into Django environment, so when the Django loaded up, it shows our home page.
-- Worked on my own weekly log, contribute to team weeklog.
 - Additional: Following images are the screenshot of the Django environment website and home page with CSS layout website:
 
 Home Page
@@ -81,7 +80,7 @@ Video Page
 ## Week 7 2023/10/15~2023/10/21
 
 - Task I have worked on this week.
-![Weekly Task 6](./images/tasks/AdrianFong_Week7_Task.png)
+![Weekly Task 7](./images/tasks/AdrianFong_Week7_Task.png)
 
 ## Recap on your week's goals
 
@@ -98,3 +97,123 @@ Login Page
 
 Register Page
 ![Register Page](./images/Adrian_images/Week_7/Register_Page.png)
+
+# Preferred name -> Ssc name -> Github name
+
+- Adrian -> Adrian Fong -> AdrianFWM
+
+## Week 8 2023/10/22~2023/10/28
+
+- Task I have worked on this week.
+![Weekly Task 8](./images/tasks/AdrianFong_Week8_Task.png)
+
+## Recap on your week's goals
+
+- Worked on "Login" and "Create Account" on project board, finished working on Login and Register Page with forms and connect headers with other pages. The form function of submitting information from the Login and Register Page to the SQL database. The error message shown after input wrong information or user on Login and Register Page. Reapplied css and bootstrap file formats on Login and Register Page to match the theme with the other Pages. 
+- Worked on reworking the whole website theme for Login and Register Page.
+- Worked on applying animated website logo onto the website, especially on Login Page.
+- Worked on applying new images to match the theme on Login and Register Page.
+- Worked on remaking the Video Page and Search Page.
+- Worked on remaking header bar and applied it onto all other pages.
+- Worked on testing the Login and Register Page manually and see if there are errors or not.
+- Worked on my own weekly log, contribute to team weeklog.
+- Additional: Following images are the screenshot of the whole website:
+
+Home Page
+![Home Page](./images/Adrian_images/Week_8/HomePage.png)
+
+Video Page
+![Video Page](./images/Adrian_images/Week_8/VideoPage.png)
+
+Search Page
+![Search Page](./images/Adrian_images/Week_8/SearchPage.png)
+
+Login Page
+![Login Page](./images/Adrian_images/Week_8/LoginPage.png)
+
+Login Error Page
+![Login Error Page](./images/Adrian_images/Week_8/LoginError.png)
+
+Register Page
+![Register Page](./images/Adrian_images/Week_8/RegisterPage.png)
+
+Register Error Page
+![Register Error Page](./images/Adrian_images/Week_8/RegisterError.png)
+
+# Preferred name -> Ssc name -> Github name
+
+- Adrian -> Adrian Fong -> AdrianFWM
+
+## Week 9 2023/10/29~2023/11/04
+
+- Task I have worked on this week.
+![Weekly Task 9](./images/tasks/AdrianFong_Week9_Task.png)
+
+## Recap on your week's goals
+
+- Worked on fixing the header on Video and Search Page.
+- Worked on Upload, Profile, Logout Page, adding header bar, css layout, and imported working function on successful upload video post.
+- Worked on Edit Profile form function working on Profile Page, modified Django form to match css and SQL database.
+- Worked on fixing error on Profile Page of not updating the profile information after filling the form.
+- Worked on "Presentation prep" on project board, we wrote a script, dividing presentation work, and assigning presentation part to everyone.
+- Worked on grading, comment, and watch other group's presentation. 
+- Worked on my own weekly log, contribute to team weeklog.
+- Additional: Following images are the screenshot of the whole website:
+
+Video Page
+![Video Page](./images/Adrian_images/Week_9/VideoPage.png)
+
+Search Page
+![Search Page](./images/Adrian_images/Week_9/SearchPage.png)
+
+Upload Page
+![Upload Page](./images/Adrian_images/Week_9/UploadPage.png)
+
+Upload Page (Uploading Video)
+![Upload Page (Uploading Video)](./images/Adrian_images/Week_9/Uploading_UploadPage.png)
+
+Video Page (Upload Success)
+![Video Page (Upload Success)](./images/Adrian_images/Week_9/UploadSuccess_VideoPage.png)
+
+Profile Page
+![Profile Page](./images/Adrian_images/Week_9/ProfilePage.png)
+
+Logout Page
+![Logout Page](./images/Adrian_images/Week_9/LogoutPage.png)
+
+Presentation Prep Script part 1
+![Presentation Prep Script part 1](./images/Adrian_images/Week_9/PresentaionPrep_1.png)
+
+Presentation Prep Script part 2
+![Presentation Prep Script part 2](./images/Adrian_images/Week_9/PresentaionPrep_2.png)
+
+# Preferred name -> Ssc name -> Github name
+
+- Adrian -> Adrian Fong -> AdrianFWM
+
+## Week 10 2023/11/05~2023/11/11
+
+- Task I have worked on this week.
+![Weekly Task 10](./images/tasks/AdrianFong_Week10_Task.png)
+
+## Recap on your week's goals
+
+- Worked on drawing UML diagram for SQL database restructure.
+- Working on drawing webpage road map.
+- Worked on "Edit Profile", it can upload profile picture, able to change profile picture refresh webpage, change username if username is unused, change email, and change password.
+- Working on finding template for profile page.
+- Planning on making another webpage for changing password.
+- Worked on my own weekly log, contribute to team weeklog.
+- Additional: Following images are the screenshot of the whole website:
+
+Edit Profile Page
+![Edit Profile Page](./images/Adrian_images/Week_10/EditProfilePage.png)
+
+Fillin Edit Profile
+![Fillin Edit Profile](./images/Adrian_images/Week_10/EditProfile_fillin.png)
+
+Back to Login Page
+![Back to Login Page](./images/Adrian_images/Week_10/BacktoLogin.png)
+
+Profile Upload Successful
+![Profile Upload Successful](./images/Adrian_images/Week_10/ProfileSuccess.png)
