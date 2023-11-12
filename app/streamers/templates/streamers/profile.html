@@ -37,8 +37,11 @@
     </nav>
 
     <div style = "margin-top: 25px; padding-top: 75px;">
+      <img src="{{ user.profile.image.url }}" style="">
+    {% comment %} <div style = "margin-top: 25px; padding-top: 75px;">
 
-            <img src="{{ user.profile.image.url }}">
+      <img src="{{ user.profile.image.url }}" style=""> {% endcomment %}
+            {% comment %} <img src="{{ user.profile.image.url }}"> {% endcomment %}
             <h3>{{ user.username }}</h3>
             <p>{{ user.email }}</p>
             <p>{{ user.password }}</p>
@@ -47,15 +50,13 @@
             <p>{{ user.profile.image.url }}</p>
         </div>
         <div>
-            {% comment %} enctype="multipart/form-data" {% endcomment %}
-            <form method="POST" >
+            <form method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 <legend>profile info</legend>
                 {{ userform.username.errors }}
                 {{ userform.username }}
                 {{ userform.email.errors }}
                 {{ userform.email }}
-                <!-- Password did not save as hash -->
                 {{ userform.password.errors }}
                 {{ userform.password }}
 
