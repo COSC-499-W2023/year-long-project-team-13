@@ -69,3 +69,7 @@ A copy of the builds worked on this for the ci-pipeline and testing.
 A copy of the best build that succeeded but is not finding the files
 ![W10Pipelin](./images/Ralston_stuff/W10_pipeline.png)
 
+The html linking diagrams I worked on:
+![linking](./images/Ralston_stuff/linking1.jpg)
+![morelinking](./images/Ralston_stuff/linking2.jpg)
+
