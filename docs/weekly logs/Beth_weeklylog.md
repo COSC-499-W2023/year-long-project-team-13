@@ -56,3 +56,16 @@ Screen shot of homepage tests
 ![W9Tasks](./images/tasks/Ralston_W9_Tasks.png)
 
 I focused on the preparation for the presentation. Finishing a last few things for the homepage and other functions. We also spent a while practicing the presentation. I also did a little bit of debugging for the CI-workflow in github actions. The remainder of my time this week was spent watching other teams present and giving them feedback. 
+
+### Week 10 Nov 6 - Nov 12
+
+![W10Tasks](./images/tasks/Ralston_W10_Tasks.png)
+
+The features in the project plan I worked on this week were the AWS and CI-pipeline as well as the System architecture. The tasks associated are learning aws and setup, and system architecture. We have completed the UML diagram and basic mapping of the html linking. I have still not finished the pipeline yet, nor is the aws functional. This has been a huge learning curve and so much of my time this week has been reading internet sources to try and understand the problems I have been having.
+
+A copy of the builds worked on this for the ci-pipeline and testing.
+![W10Builds](./images/Ralston_stuff/W10_build.png)
+
+A copy of the best build that succeeded but is not finding the files
+![W10Pipelin](./images/Ralston_stuff/W10_pipeline.png)
+
