@@ -112,3 +112,25 @@
 ![Test](./images/Ethan_stuff/Master_Test.gif)
   - Presentation Prep
 ![Presentation](./images/Ethan_stuff/Presentation_Prep.png)
+
+# Preferred name -> Ssc name -> Github name
+
+- Ethan -> Ethan Hsu -> YuchenHsu
+
+## Week 10 2023/11/06 ~ 2023/11/12
+
+- Type of tasks you worked on (screenshot from Peer Eval question)
+
+![Tasks](./images/tasks/Ethan_Week10.png)
+
+- This week, I worked on making the UML diagram and also tried to host the project on AWS.
+  - So far I have tried EC2, which is still in progress figuring out problems, Elastic Beanstalk, which doesn't like my login credentials, and Lambda, which I can't figure out how to install the dependencies without breaking the other stuff.
+- The following images are the UML diagram and the AWS stuff.
+  - UML
+![UML](./images/uml/uml.png)
+  - AWS
+![AWS](./images/Ethan_stuff/aws.png)
+![AWS](./images/Ethan_stuff/aws2.png)
+![AWS](./images/Ethan_stuff/aws3.png)
+![AWS](./images/Ethan_stuff/aws4.png)
+
