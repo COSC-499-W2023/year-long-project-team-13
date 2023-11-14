@@ -59,7 +59,7 @@ For this week, we started working on the html/css template that we choose for ou
 ![Task_Done](./images/tasks/SittPaing_W7-Task.png)
 
 ## Recap of week's goals
-For this week, I worked on html/css template for the login and video page, and also help my team to fix bugs and issues by searching for online solution and utilize them when we are working on the templates. 
+For this week, I worked on html/css template for the login and video page, and also help my team to fix bugs and issues by searching for online solution and utilize them when we are working on the templates.
 
 
 ## Week 8 2023/10/22 ~ 2023/10/28
@@ -84,14 +84,14 @@ Login Testing Successful
 ![Login Testing Successful](./images/Sitt_images/Week_8/Login_Testing_Successful.png)
 
 
-## Week 9 2023/10/22 ~ 2023/10/28
+## Week 9 Week 9 2023/10/30 ~ 2023/11/05
 
 -Types of tasks that I have worked on
 
 ![Task_Done](./images/tasks/SittPaing_W9-Task.png)
 
 ## Recap of week's goals
-For this week, we worked on our presentation as well as prepare for a live demo for our presentation. We also fixed any existing bugs and issues when doing the live demo and make changes/fix the html/css of the pages(profile, login and logout). We also made preparation on the google docs for the presentation on what we want to present. 
+For this week, we worked on our presentation as well as prepare for a live demo for our presentation. We also fixed any existing bugs and issues when doing the live demo and make changes/fix the html/css of the pages(profile, login and logout). We also made preparation on the google docs for the presentation on what we want to present.
 
 
 Presentation Prep
@@ -113,6 +113,26 @@ Login Testing
 
 Login Testing Successful
 ![Login Testing Successful](./images/Sitt_images/Week_9/Login_Testing_Successful.png)
+
+## Week 10 2023/11/6 ~ 2023/10/12
+
+-Types of tasks that I have worked on
+
+![Task_Done](./images/tasks/SittPaing_W10-Task.png)
+
+## Recap of week's goals
+For this week, we worked on the UML diagram for SQL database restructure. I also search online for suitable profile template from various websites to use for our project as well as use online resources to gain insight on how to work on change password. I also contribute in changing the structure as well as CSS for the template and help my team members to fix issues/bugs, when doing the project.
+
+
+Searching online to gain insight for Change Password
+![Presentation Prep](./images/Sitt_images/Week_10/Change_Password.png)
+
+UML Diagram
+![My Presentation Part](./images/Sitt_images/Week_10/UML_Diagram.png)
+
+Profile Template searching
+![Profile Page](./images/Sitt_images/Week_10/Profile_template.png)
+
 
 
 
