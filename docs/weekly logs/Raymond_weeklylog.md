@@ -121,7 +121,7 @@ Login Testing Successful
 ![Task_Done](./images/tasks/SittPaing_W10-Task.png)
 
 ## Recap of week's goals
-For this week, we worked on the UML diagram for SQL database restructure. I also search online for suitable profile template from various websites to use for our project as well as use online resources to gain insight on how to work on change password. I also contribute in change the structure as well as CSS for the template and help my team members to fix issues/bugs when doing the project.
+For this week, we worked on the UML diagram for SQL database restructure. I also search online for suitable profile template from various websites to use for our project as well as use online resources to gain insight on how to work on change password. I also contribute in changing the structure as well as CSS for the template and help my team members to fix issues/bugs, when doing the project.
 
 
 Searching online to gain insight for Change Password
