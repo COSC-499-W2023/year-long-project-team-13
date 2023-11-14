@@ -125,12 +125,15 @@ For this week, we worked on the UML diagram for SQL database restructure. I also
 
 
 Searching online to gain insight for Change Password
+
 ![Searching online to gain insight for Change Password](./images/Sitt_images/Week_10/Change_Password.png)
 
 UML Diagram
+
 ![UML Diagram](./images/Sitt_images/Week_10/UML_Diagram.png)
 
-Profile Template searching
+Profile Template
+
 ![Profile Page](./images/Sitt_images/Week_10/Profile_template.png)
 
 
