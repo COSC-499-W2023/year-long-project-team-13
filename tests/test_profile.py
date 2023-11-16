@@ -64,6 +64,7 @@ driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), opti
 driver.maximize_window()
 
 # Call the profile page test function with appropriate input values
+driver.get('http://localhost:8000/login')
 profile_page_test(driver, 'linus', '123', 'abc@xyz.com')
 
 # Close the webdriver
