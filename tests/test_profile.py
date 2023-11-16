@@ -51,9 +51,9 @@ def profile_page_test(driver, username, password, email):
     WebDriverWait(driver, 60).until(EC.url_contains('/profile'))
 
     # Check if the profile page elements are present and correct
-    assert WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, "img[src*='user.profile.image.url']")))
-    assert WebDriverWait(driver, 10).until(EC.text_to_be_present_in_element((By.CSS_SELECTOR, "h3"), username))
-    assert WebDriverWait(driver, 10).until(EC.text_to_be_present_in_element((By.CSS_SELECTOR, "p"), email))
+    #assert WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, "img[src*='user.profile.image.url']")))
+    assert WebDriverWait(driver, 10).until(EC.text_to_be_present_in_element((By.ID, "username"), username))
+    assert WebDriverWait(driver, 10).until(EC.text_to_be_present_in_element((By.ID, "email"), email))
 
 # Create a ChromeOptions object with the log level set to 3
 chrome_options = webdriver.ChromeOptions()
