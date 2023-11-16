@@ -94,7 +94,9 @@
                               <div class="col-sm-9 text-secondary">
                                   {% comment %} <input type="text" class="form-control" value="John Doe"> {% endcomment %}
                                   {{ userform.username.errors }}
-                                  {{ userform.username }}
+                                  <div id="username">
+                                    {{ userform.username }}
+                                  </div>
                               </div>
                           </div>
                           <div class="row mb-3">
@@ -104,7 +106,9 @@
                               <div class="col-sm-9 text-secondary">
                                   {% comment %} <input type="text" class="form-control" value="john@example.com"> {% endcomment %}
                                   {{ userform.email.errors }}
-                                  {{ userform.email }}
+                                  <div id="email">
+                                    {{ userform.email }}
+                                  </div>
                               </div>
                           </div>
                           <div class="row mb-3">
@@ -115,7 +119,9 @@
                                   {% comment %} <input type="text" class="form-control" value="(239) 816-9029"> {% endcomment %}
                                   {% comment %} <p>Image: {% endcomment %}
                                     {{ profileform.image.errors }}
-                                    {{ profileform.image }}
+                                    <div id="image">
+                                      {{ profileform.image }}
+                                    </div>
                                     {% comment %} </p> {% endcomment %}
                               </div>
                           </div>
