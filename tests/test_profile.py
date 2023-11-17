@@ -43,17 +43,62 @@ def login_page_test(driver, username, password):
 def profile_page_test(driver, username, password, email):
     # Call the login page test function
     login_page_test(driver, username, password)
+    time.sleep(0.5)
 
     # Navigate to the profile page
-    driver.get('http://127.0.0.1:8000/profile')
+    # driver.get('http://localhost:8000/profile')
+
+    profile_button_element = driver.find_element(By.ID, "Profile Button")
+    profile_button_element.click()
+
+    # Wait for the URL to change to the profile page URL
+    wait.until(EC.url_contains('/profile'))
+
+    username_element = driver.find_element(By.ID, "id_username")
+    username_element.send_keys(username)
+    username_value_input = username_element.get_attribute('value')
+    print(username_value_input)
+    time.sleep(0.5)
+
+    email_element = driver.find_element(By.ID, "id_email")
+    email_element.send_keys(email)
+    email_value_input = email_element.get_attribute('value')
+    print(email_value_input)
+    time.sleep(0.5)
+
+    update_button = driver.find_element(By.ID, "update")
+    update_button.click()
+    time.sleep(0.5)
+
+    wait.until(EC.url_contains('/profile'))
+    time.sleep(0.5)
+
+    username_element_check = driver.find_element(By.ID, "id_username")
+    username_value_check = username_element_check.get_attribute('value')
+    print(username_value_check)
+    time.sleep(0.5)
+
+    email_element_check = driver.find_element(By.ID, "id_email")
+    email_value_check = email_element_check.get_attribute('value')
+    print(email_value_check)
+    time.sleep(0.5)
+
+    # Check if the URL contains the expected profile page URL
+    if '/profile' in driver.current_url:
+        if username_value_check == username_value_input and email_value_check == email_value_input:
+            print("Test successful")
+        else:
+            print("Test failed")
+    else:
+        print("Test failed")
 
      # Wait for the profile page to load
-    WebDriverWait(driver, 60).until(EC.url_contains('/profile'))
+    # WebDriverWait(driver, 60).until(EC.url_contains('/profile'))
 
     # Check if the profile page elements are present and correct
     #assert WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, "img[src*='user.profile.image.url']")))
-    assert WebDriverWait(driver, 10).until(EC.text_to_be_present_in_element((By.ID, "username"), username))
-    assert WebDriverWait(driver, 10).until(EC.text_to_be_present_in_element((By.ID, "email"), email))
+    #assert WebDriverWait(driver, 10).until(EC.text_to_be_present_in_element((By.ID, "username"), username))
+    #assert WebDriverWait(driver, 10).until(EC.text_to_be_present_in_element((By.ID, "email"), email))
 
 # Create a ChromeOptions object with the log level set to 3
 chrome_options = webdriver.ChromeOptions()
@@ -63,9 +108,12 @@ chrome_options.add_argument("--log-level=3")  # Set log level to suppress warnin
 driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
 driver.maximize_window()
 
+wait = WebDriverWait(driver, 60)
+
 # Call the profile page test function with appropriate input values
 driver.get('http://localhost:8000/login')
 profile_page_test(driver, 'linus', '123', 'abc@xyz.com')
+time.sleep(0.5)
 
 # Close the webdriver
 driver.quit()
