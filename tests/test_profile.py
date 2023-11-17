@@ -92,7 +92,7 @@ def profile_page_test(driver, username, password, email):
     else:
         print("Test failed")
 
-     # Wait for the profile page to load
+    # Wait for the profile page to load
     # WebDriverWait(driver, 60).until(EC.url_contains('/profile'))
 
     # Check if the profile page elements are present and correct
