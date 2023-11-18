@@ -57,13 +57,13 @@ def profile_page_test(driver, username, password, email):
     username_element = driver.find_element(By.ID, "id_username")
     username_element.send_keys(username)
     username_value_input = username_element.get_attribute('value')
-    print(username_value_input)
+    # print(username_value_input)
     time.sleep(0.5)
 
     email_element = driver.find_element(By.ID, "id_email")
     email_element.send_keys(email)
     email_value_input = email_element.get_attribute('value')
-    print(email_value_input)
+    # print(email_value_input)
     time.sleep(0.5)
 
     update_button = driver.find_element(By.ID, "update")
@@ -73,31 +73,26 @@ def profile_page_test(driver, username, password, email):
     wait.until(EC.url_contains('/profile'))
     time.sleep(0.5)
 
-    username_element_check = driver.find_element(By.ID, "id_username")
-    username_value_check = username_element_check.get_attribute('value')
-    print(username_value_check)
+    username_value_check = driver.find_element(By.ID, "id_username").get_attribute('value')
+    # print(username_value_check)
     time.sleep(0.5)
 
-    email_element_check = driver.find_element(By.ID, "id_email")
-    email_value_check = email_element_check.get_attribute('value')
-    print(email_value_check)
+    email_value_check = driver.find_element(By.ID, "id_email").get_attribute('value')
+    # print(email_value_check)
     time.sleep(0.5)
 
-    username_display_check = driver.find_element(By.TAG_NAME, "h4").get_attribute('value')
-    print(username_display_check)
+    username_display_value_check = driver.find_element(By.TAG_NAME, "h4").text.lower()
+    # print(username_display_value_check)
     time.sleep(0.5)
 
     # Check if the URL contains the expected profile page URL
     if '/profile' in driver.current_url:
-        if username_value_check == username_value_input and email_value_check == email_value_input:
-            if username_value_check == username_display_check:
-                print("Test successful")
-            else:
-                print("Test failed")
+        if username_value_check == username_value_input and email_value_check == email_value_input and username_value_check == username_display_value_check:
+            print("Edit Profile successful")
         else:
-            print("Test failed")
+            print("Edit Profile failed")
     else:
-        print("Test failed")
+        print("Edit Profile failed")
 
     # Wait for the profile page to load
     # WebDriverWait(driver, 60).until(EC.url_contains('/profile'))
