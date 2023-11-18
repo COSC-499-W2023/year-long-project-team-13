@@ -83,10 +83,17 @@ def profile_page_test(driver, username, password, email):
     print(email_value_check)
     time.sleep(0.5)
 
+    username_display_check = driver.find_element(By.TAG_NAME, "h4").get_attribute('value')
+    print(username_display_check)
+    time.sleep(0.5)
+
     # Check if the URL contains the expected profile page URL
     if '/profile' in driver.current_url:
         if username_value_check == username_value_input and email_value_check == email_value_input:
-            print("Test successful")
+            if username_value_check == username_display_check:
+                print("Test successful")
+            else:
+                print("Test failed")
         else:
             print("Test failed")
     else:
