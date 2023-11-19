@@ -22,16 +22,17 @@ from streamers import views as streamers_views
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls, name="admin"),
     path('',include('stream.urls')),
     path('profile',streamers_views.profile, name="profile"),
     path('register/',streamers_views.register, name="register"),
     path('login', auth_views.LoginView.as_view(template_name='streamers/login.html'), name="login"),
     path('logout',auth_views.LogoutView.as_view(template_name='streamers/logout.html'), name="logout"),
+    # note the override comes before the admin URLs below
+    path('admin/logout/', auth_views.LogoutView.as_view(template_name='streamers/logout.html')),
+    path('admin/', admin.site.urls, name="admin"),
 
 ]
 
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
