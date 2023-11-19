@@ -13,7 +13,6 @@
     {% comment %} <link rel="stylesheet" href="{%static 'https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic&amp;display=swap'%}">
     <link rel="stylesheet" href="{%static 'https://fonts.googleapis.com/css?family=Cabin:700&amp;display=swap'%}"> {% endcomment %}
     <link rel="stylesheet" href="{%static 'assets/fonts/font-awesome.min.css' %}">
-
 </head>
 
 <body id="page-top" data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="77">
@@ -32,7 +31,7 @@
                     <a class="nav-item nav-link" href="{% url 'admin:index' %}">Admin</a>
                   {% endif %}
                   <a class="nav-item nav-link" href="{% url 'profile' %}" id="Profile Button">Profile</a>
-                  <a class="nav-item nav-link" href="{% url 'logout' %}" id = "Logout Button">Logout</a>
+                  <a class="nav-item nav-link" onclick="return confirmLogOut()" href="{% url 'logout' %}" id = "Logout Button">Logout</a>
                 {% else %}
                   <a class="nav-item nav-link" href="{% url 'login' %}" id="Login Button">Login</a>
                   <a class="nav-item nav-link" href="{% url 'register' %}" id="Register Button">Register</a>
@@ -84,7 +83,13 @@
     </section>
     <div class="map-clean"></div>
     <script src=" {% static 'assets/bootstrap/js/bootstrap.min.js' %} "></script>
+
+    <!-- This js makes the header change to black colour when scrolling -->
     <script src=" {% static 'assets/js/grayscale.js' %} "></script>
+
+    <!-- This js ask user before logout  -->
+    <script src=" {% static 'assets/js/logout.js'%} "></script>
+
 </body>
 
 </html>
