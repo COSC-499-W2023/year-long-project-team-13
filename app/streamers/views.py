@@ -39,3 +39,9 @@ def profile(request):
         'profileform': profileform,
     }
     return render(request, 'streamers/profile.html', context)
+
+@login_required
+def notifications(request):
+    # Here you can add code to fetch and process notifications
+    # For now, we'll just render an empty page
+    return render(request, 'streamers/notification.html')
