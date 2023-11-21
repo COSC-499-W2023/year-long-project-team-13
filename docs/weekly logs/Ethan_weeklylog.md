@@ -61,7 +61,6 @@
 - Combining
   ![Combining](./images/w3images/Ethan/django_css_template/Ethan_django_css_merge.png)
 
-
 # Preferred name -> Ssc name -> Github name
 
 - Ethan -> Ethan Hsu -> YuchenHsu
@@ -75,3 +74,67 @@
 - This week, I finished the homepage of the website. And the linking of the pages. So far, all the buttons link to their respective pages.
 
 ![Homepage](./images/Ethan_stuff/new_homepage.png)
+
+# Preferred name -> Ssc name -> Github name
+
+- Ethan -> Ethan Hsu -> YuchenHsu
+
+## Week 8 2023/10/23 ~ 2023/10/29
+
+- Type of tasks you worked on (screenshot from Peer Eval question)
+
+![Tasks](./images/tasks/Ethan_Week8.png)
+
+- This week, I worked on making the home page look better, creating the logo for our project, and making the test for homepage to make sure it links to all the other pages and tested with Selenium.
+- The following images are the logo and the test for homepage respectively.
+  - Logo
+![Logo](./images/Ethan_stuff/vnonymous.gif)
+  - Test
+![Test](./images/Ethan_stuff/Testing_results.png)
+![Test](./images/Ethan_stuff/479198746786398536.gif)
+
+# Preferred name -> Ssc name -> Github name
+
+- Ethan -> Ethan Hsu -> YuchenHsu
+
+## Week 9 2023/10/30 ~ 2023/11/05
+
+- Type of tasks you worked on (screenshot from Peer Eval question)
+
+![Tasks](./images/tasks/Ethan_Week9.png)
+
+- This week, I worked on refining the homepage test, and preparing for the presentation. I also worked on making sure the website top bar is consistent across all pages and displays the correct group name.
+- I also helped with trying to figure
+- The following images are the test for homepage.
+  - Test
+![Test](./images/tests_completion/Week9_test.png)
+  - Test video
+![Test](./images/Ethan_stuff/Master_Test.gif)
+  - Presentation Prep
+![Presentation](./images/Ethan_stuff/Presentation_Prep.png)
+
+# Preferred name -> Ssc name -> Github name
+
+- Ethan -> Ethan Hsu -> YuchenHsu
+
+## Week 10 2023/11/06 ~ 2023/11/12
+
+- Type of tasks you worked on (screenshot from Peer Eval question)
+
+![Tasks](./images/tasks/Ethan_Week10.png)
+
+- This week, I worked on making the UML diagram and also tried to host the project on AWS.
+  - So far I have tried EC2, which is still in progress figuring out problems, Elastic Beanstalk, which doesn't like my login credentials, and Lambda, which I can't figure out how to install the dependencies without breaking the other stuff.
+- The guides I tried includes the following:
+  - [AWS Lambda](https://dev.to/vaddimart/deploy-django-app-on-aws-lambda-using-serverless-part-1-1i90)
+  - [AWS Elastic Beanstalk](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create-deploy-python-django.html)
+  - [AWS EC2](https://blog.devgenius.io/how-to-deploy-a-django-project-on-an-amazon-ec2-instance-with-apache-875f925d0a9a)
+- The following images are the UML diagram and the AWS stuff.
+  - UML
+![UML](./images/uml/uml.png)
+  - AWS
+![AWS](./images/Ethan_stuff/aws.png)
+![AWS](./images/Ethan_stuff/aws2.png)
+![AWS](./images/Ethan_stuff/aws3.png)
+![AWS](./images/Ethan_stuff/aws4.png)
+
