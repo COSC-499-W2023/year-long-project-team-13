@@ -78,7 +78,7 @@
                 <a class="nav-item nav-link" href="{% url 'admin:index' %}">Admin</a>
               {% endif %}
               <a class="nav-item nav-link" href="{% url 'profile' %}">Profile</a>
-              <a class="nav-item nav-link" onclick="return confirmLogOut()" href="{% url 'logout' %}">Logout</a>
+              <a class="nav-item nav-link"  href='#'onclick='overlay()'>Logout</a>
             {% else %}
               <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
               <a class="nav-item nav-link" href="{% url 'register' %}">Register</a>
@@ -86,6 +86,14 @@
           </div>
       </div>
     </nav>
+
+    <div id="overlay" class="float-center "style="position:fixed;top:30%;">
+      <div>
+          <p class="text-dark">Are you sure to logout?</p>
+          <button id="logout" class="float-left submit-button" >Home</button>
+          <button id="cancel" class="float-left submit-button">cancel</button>
+      </div>
+    </div>
 
 
     <!-- Page Content -->
@@ -105,6 +113,17 @@
 
     <!-- This js ask user before logout  -->
     <script src=" {% static 'assets/js/logout.js'%} "></script>
+
+    <!-- Logout popup UI -->
+    <script src=" {% static 'assets/js/logoutUI.js'%} "></script>
+    <script>
+        document.getElementById("logout").onclick = function () {
+            location.href = "{% url 'logout' %}";
+        };
+        document.getElementById("cancel").onclick = function () {
+            location.href = "{% url 'stream:home' %}";
+        };
+    </script>
 
   </body>
 </html>
