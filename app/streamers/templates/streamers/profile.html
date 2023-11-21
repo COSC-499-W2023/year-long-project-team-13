@@ -10,6 +10,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href= "{%static 'assets/bootstrap/css/bootstrap.min.css' %}">
     <link href="{% static 'css/styleProfile.css' %}" rel="stylesheet">
+    <link href="{% static 'css/logoutUI.css' %}" rel="stylesheet">
+    <script src=" {% static 'assets/js/logoutUI.js'%} "></script>
   </head>
 
   <body id="page-top" data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="77" style="background-color: grey;">
@@ -30,7 +32,9 @@
                 <a class="nav-item nav-link" href="{% url 'admin:index' %}">Admin</a>
               {% endif %}
               <a class="nav-item nav-link" href="{% url 'profile' %}">Profile</a>
-              <a class="nav-item nav-link" onclick="return confirmLogOut()" href="{% url 'logout' %}">Logout</a>
+              {% comment %} <a class="nav-item nav-link" onclick="return confirmLogOut()" href="{% url 'logout' %}">Logout</a> {% endcomment %}
+              <a class="nav-item nav-link"  href='#'onclick='overlay()'>Logout Test</a>
+              {% comment %} href="{% url 'logoutConfirm' %}" {% endcomment %}
             {% else %}
               <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
               <a class="nav-item nav-link" href="{% url 'register' %}
@@ -39,6 +43,20 @@
           </div>
       </div>
     </nav>
+
+    <div id="overlay" class="float-center "style="position:fixed;top:30%;">
+        <div>
+            <p class="text-dark">Are you sure to logout?</p>
+            <button id="logout" class="float-left submit-button" >Home</button>
+            <button id="cancel" class="float-left submit-button">cancel</button>
+            {% comment %} <input
+    action="action"
+    onclick="window.history.go(-1); return false;"
+    type="submit"
+    value="Cancel"
+/> {% endcomment %}
+       </div>
+    </div>
 
     <!-- https://www.bootdey.com/snippets/view/profile-edit-data-and-skills#css -->
     <div style = "margin-top: 25px; padding-top: 75px;">
@@ -228,6 +246,15 @@
         <!-- This js ask user before logout  -->
         <script src=" {% static 'assets/js/logout.js'%} "></script>
 
+        <script>
+            document.getElementById("logout").onclick = function () {
+                location.href = "{% url 'logout' %}";
+            };
+            document.getElementById("cancel").onclick = function () {
+                location.href = "{% url 'profile' %}";
+            };
+        </script>
+{% comment %} {% url 'profile' %} {% endcomment %}
 </body>
 </html>
 {% comment %} {% endblock content %} {% endcomment %}
