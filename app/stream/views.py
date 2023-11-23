@@ -86,13 +86,3 @@ class UserVideoListView(ListView):
     def get_queryset(self):
         user = get_object_or_404(User, username=self.kwargs.get('username'))
         return VidStream.objects.filter(streamer=user).order_by('-upload_date')
-
-
-
-
-
-
-
-
-
-
