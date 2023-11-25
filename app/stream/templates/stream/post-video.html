@@ -3,9 +3,12 @@
     <div style = "margin-top: 25px; padding-top: 75px;">
         <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
-            <h1>Upload a video</h1>
-                {{ form.as_p }}
-            <button class="btn btn-outline-info" type="submit">Upload</button>
+            <h1>Record a video</h1>
+            <div class="button-group">
+                <button class="btn btn-outline-info" type="button">Start/Rerecord</button>
+                <button class="btn btn-outline-info" type="button">Stop Recording</button>
+                <button class="btn btn-outline-info" type="button">Next</button>
+            </div>
 
         </form>
     </div>
