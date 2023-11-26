@@ -37,7 +37,7 @@
             {% else %}
               <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
               <a class="nav-item nav-link" href="{% url 'register' %}">Register</a>
-              <a class="nav-item nav-link" href="{% url 'setting' %}">Setting</a>
+              {% comment %} <a class="nav-item nav-link" href="{% url 'setting' %}">Setting</a> {% endcomment %}
             {% endif %}
           </div>
       </div>
