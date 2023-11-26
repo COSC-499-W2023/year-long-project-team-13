@@ -12,8 +12,9 @@
                     align-items: center;
                     height: 100vh;
                 }
-                .vertical-buttons {
-                  flex-direction: column;
+                .horizontal-buttons {
+                  flex-direction: row;
+                    display: flex;
                 }
 
                 .button {
@@ -26,7 +27,7 @@
                   text-decoration: none;
                   display: inline-block;
                   font-size: 16px;
-                  width: 25%; /* Set a width if needed */
+                  width: 75%; /* Set a width if needed */
                   cursor: pointer; /* Mouse pointer on change to hand on hover */
                 }
 
@@ -48,23 +49,22 @@
               </style>
             </head>
             <body>
+                <div style = "margin-top: 75px; padding-top: 75px;">
 
                 <div class="video-box">
-                    <div class="vertical-buttons">
-                        <video controls>
-                            <source src="{{ item.video.url }}" type="video/mp4">
-                        </video>
+                    <video controls>
+                        <source src="{{ item.video.url }}" type="video/mp4">
+                    </video>
+                </div>
+                    <div class="horizontal-buttons">
 
-                        <button class="button">Start/Rerecord</button>
+                        <button class="button">Start/Re-record</button>
                         <button class="button">Stop Recording</button>
                         <button class="button">NEXT</button>
                     </div>
-                </div>
+
+            </div>
             </body>
-
-
-
-
         </form>
     </div>
 {% endblock content %}

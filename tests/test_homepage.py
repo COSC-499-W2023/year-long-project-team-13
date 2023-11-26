@@ -149,6 +149,10 @@ def login(driver):
     password_input_element.send_keys("123")
     time.sleep(0.5)
 
+    # Scroll down the login page
+    html = driver.find_element(By.TAG_NAME, "html")
+    html.send_keys(Keys.PAGE_DOWN)
+
     # Find the element with the id "Login Submit Button" and click it
     login_submit_button_element = driver.find_element(By.ID, "login")
     login_submit_button_element.click()
