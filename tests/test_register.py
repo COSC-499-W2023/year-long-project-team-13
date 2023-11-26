@@ -35,6 +35,8 @@ def register_page_test(driver, username, email, password):
     html = driver.find_element(By.TAG_NAME, "html")
     html.send_keys(Keys.PAGE_DOWN)
 
+    html.send_keys(Keys.PAGE_DOWN)
+
     # Submit the form by clicking the "Register" button
     register_button = driver.find_element(By.ID, "register")
     register_button.click()
