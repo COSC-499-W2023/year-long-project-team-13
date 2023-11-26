@@ -17,8 +17,8 @@
     <link href="{% static 'css/logoutUI.css' %}" rel="stylesheet">
 </head>
 
-<body id="page-top" data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="77" style="background-color: grey;">
-    <nav class="navbar navbar-expand-md fixed-top navbar-light" id="mainNav">
+<body id="page-top" data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="77" style="background-size: cover; background-image: url(' {% static 'assets/img/intro-bg.jpg' %} ');">
+      <nav class="navbar navbar-expand-md fixed-top navbar-light" id="mainNav">
         <div class="container"><a class="navbar-brand" href=" {% url 'stream:home' %} ">Vnonymous</a><button data-bs-toggle="collapse" class="navbar-toggler navbar-toggler-right" data-bs-target="#navbarResponsive" type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" value="Menu"><i class="fa fa-bars"></i></button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto">
@@ -53,28 +53,26 @@
     {% endif %}
 
 
-    <div class="container" style="margin-top: 25px;">
-        <div>
-            {% comment %} <h1>Vnonymous</h1> {% endcomment %}
+    <div style="margin-top: 25px;">
+      {% comment %} <h1>Vnonymous</h1> {% endcomment %}
+    <div style="padding-top: 75px;">
+      {% for item in videos%}
+      <div class="card" style="width: 40rem; margin: 20px; box-shadow: 12em;">
+          <img class="rounded-circle border-dark" src="{{ item.streamer.profile.image.url }}" style="border-color: red;" width="30" height="30">
+          <a class="mr-2" href="{% url 'stream:user-videos' item.streamer.username %}" style="text-align: start;">{{ item.streamer }}</a>
+          <h12 style="text-align: start;">{{ item.upload_date }}</h12>
+          <video class="card-image-top" controls>
+              <source src="{{ item.video.url }}" type="video/mp4">
+            </video>
+          <div class="card-body">
+            <h5 class="card-title"><a href="{% url 'stream:video-detail' item.id  %}">{{ item.title }}</a></h5>
+            <p class="card-text">{{item.description }}</p>
+          </div>
+          <hr>
         </div>
-        <div style="padding-top: 50px;">
-            {% for item in videos %}
-                <div class="card mb-3" style="width: 75%; box-shadow: 12em; margin: auto;">
-                    <img class="rounded-circle border-dark" src="{{ item.streamer.profile.image.url }}" style="border-color: red;" width="50" height="50">
-                    <a class="mr-2" href="{% url 'stream:user-videos' item.streamer.username %}" style="text-align: start;">{{ item.streamer }}</a>
-                    <h12 style="text-align: start;">{{ item.upload_date }}</h12>
-                    <video class="card-img-top" controls style="width: 100%; height: auto;">
-                        <source src="{{ item.video.url }}" type="video/mp4">
-                    </video>
-                    <div class="card-body">
-                        <h5 class="card-title"><a href="{% url 'stream:video-detail' item.id  %}">{{ item.title }}</a></h5>
-                        <p class="card-text">{{ item.description }}</p>
-                    </div>
-                    <hr>
-                </div>
-            {% endfor %}
-        </div>
+      {% endfor %}
     </div>
+  </div>
 
   <script src=" {% static 'assets/bootstrap/js/bootstrap.min.js' %} "></script>
 
