@@ -62,12 +62,14 @@ def profile_page_test(driver, username, password, email, image):
     wait.until(EC.url_contains('/profile'))
 
     username_element = driver.find_element(By.ID, "id_username")
+    username_element.clear()
     username_element.send_keys(username)
     username_value_input = username_element.get_attribute('value')
     # print(username_value_input)
     time.sleep(0.5)
 
     email_element = driver.find_element(By.ID, "id_email")
+    email_element.clear()
     email_element.send_keys(email)
     email_value_input = email_element.get_attribute('value')
     # print(email_value_input)
