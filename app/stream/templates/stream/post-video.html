@@ -3,11 +3,36 @@
     <div style = "margin-top: 25px; padding-top: 75px;">
         <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
-            <h1>Record a video</h1>
-            <div class="button-group">
-                <button class="btn btn-outline-info" type="button">Start/Rerecord</button>
-                <button class="btn btn-outline-info" type="button">Stop Recording</button>
-                <button class="btn btn-outline-info" type="button">Next</button>
+            <style>
+                .vertical-buttons {
+                  display: flex;
+                  flex-direction: column;
+                }
+
+                .button {
+                  margin-bottom: 10px;
+                  padding: 10px;
+                  color: white;
+                  border: 1px solid white;
+                  text-align: center;
+                  text-decoration: none;
+                  display: inline-block;
+                  font-size: 16px;
+                  width: 50%; /* Set a width if needed */
+                  cursor: pointer; /* Mouse pointer on change to hand on hover */
+                }
+
+                .button:hover {
+                  background-color: #3e8e41;
+                }
+              </style>
+            </head>
+            <body>
+
+            <div class="vertical-buttons">
+              <button class="button">Start/Rerecord</button>
+              <button class="button">Stop Recording</button>
+              <button class="button">NEXT</button>
             </div>
 
         </form>
