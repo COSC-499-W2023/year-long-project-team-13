@@ -10,6 +10,7 @@
     <title>Vnonymous</title>
     <link rel="stylesheet" href= "{%static 'assets/bootstrap/css/bootstrap.min.css' %}">
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    {% comment %} <link href="{% static 'css/logoutUI.css' %}" rel="stylesheet"> {% endcomment %}
 
     <!-- Bootstrap core CSS
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
@@ -91,8 +92,8 @@
                 <a class="nav-item nav-link" href="{% url 'admin:index' %}">Admin</a>
               {% endif %}
               <a class="nav-item nav-link" href="{% url 'profile' %}">Profile</a>
-              <a class="nav-item nav-link"  href='#'onclick='overlay()'>Logout</a>
-            {% else %}
+              <a class="nav-item nav-link"  href='#'onclick='overlay()' id="Logout Button">Logout</a>
+              {% else %}
               <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
               <a class="nav-item nav-link" href="{% url 'register' %}">Register</a>
             {% endif %}
@@ -127,7 +128,7 @@
     <!-- This js ask user before logout  -->
     <script src=" {% static 'assets/js/logout.js'%} "></script>
 
-    <!-- Logout popup UI -->
+    {% comment %} <!-- Logout popup UI -->
     <script src=" {% static 'assets/js/logoutUI.js'%} "></script>
     <script>
         document.getElementById("logout").onclick = function () {
@@ -136,7 +137,7 @@
         document.getElementById("cancel").onclick = function () {
             location.href = "{% url 'stream:home' %}";
         };
-    </script>
+    </script> {% endcomment %}
 
   </body>
 </html>
