@@ -126,7 +126,7 @@ def add_contact_page_search_test(driver):
     wait.until(EC.url_contains('/video'))
 
     # Check if the URL contains the expected contact page URL
-    if '/contact' in driver.current_url:
+    if '/video' in driver.current_url:
         print("Test successful")
     else:
         print("Test failed")
@@ -146,6 +146,10 @@ driver.get('http://localhost:8000')
 
 # Call the video page test function
 video_page_test(driver)
+login_page_test(driver)
+login(driver)
+add_contact_page_test(driver)
+add_contact_page_search_test(driver)
 
 # close the webdriver
 driver.quit()
