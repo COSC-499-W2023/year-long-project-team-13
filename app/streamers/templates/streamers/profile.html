@@ -32,8 +32,8 @@
               {% endif %}
               <a class="nav-item nav-link" href="{% url 'profile' %}">Profile</a>
               <a class="nav-item nav-link" href="{% url 'setting' %}">Setting</a>
-            {% else %}
-              <a class="nav-item nav-link" href="{% url 'setting' %}">Setting</a>
+            {% comment %} {% else %}
+              <a class="nav-item nav-link" href="{% url 'setting' %}">Setting</a> {% endcomment %}
               <a class="nav-item nav-link"  href='#'onclick='overlay()'>Logout</a>
             {% else %}
               <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
