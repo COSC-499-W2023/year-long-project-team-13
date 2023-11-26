@@ -18,7 +18,7 @@
 
 <body id="page-top" data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="77">
     <nav class="navbar navbar-expand-md fixed-top navbar-light" id="mainNav">
-        <div class="container"><a class="navbar-brand" href=" {% url 'stream:home' %} ">Vnonymous</a><button data-bs-toggle="collapse" class="navbar-toggler navbar-toggler-right" data-bs-target="#navbarResponsive" type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" value="Menu"><i class="fa fa-bars"></i></button>
+        <div class="container"><a class="navbar-brand" href=" {% url 'stream:home' %} " id="Home Button">Vnonymous</a><button data-bs-toggle="collapse" class="navbar-toggler navbar-toggler-right" data-bs-target="#navbarResponsive" type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" value="Menu"><i class="fa fa-bars"></i></button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item nav-link"><a class="nav-link active" href=" {% url 'stream:video-list' %} " id="Video Button">Videos</a></li>
@@ -29,11 +29,15 @@
                 {% if user.is_authenticated %}
                   <a class="nav-item nav-link" href="{% url 'stream:video-create' %}" id="New Video Button">New Video</a>
                   {% if user.is_superuser %}
-                    <a class="nav-item nav-link" href="{% url 'admin:index' %}">Admin</a>
+                    <a class="nav-item nav-link" href="{% url 'admin:index' %}" id="Admin Button">Admin</a>
                   {% endif %}
                   <a class="nav-item nav-link" href="{% url 'profile' %}" id="Profile Button">Profile</a>
+
                   <a class="nav-item nav-link" href="{% url 'notifications' %}">Notifications</a> 
                   <a class="nav-item nav-link"  href='#'onclick='overlay()'>Logout</a>
+
+                  <a class="nav-item nav-link"  href='#'onclick='overlay()' id="Logout Button">Logout</a>
+
                 {% else %}
                   <a class="nav-item nav-link" href="{% url 'login' %}" id="Login Button">Login</a>
                   <a class="nav-item nav-link" href="{% url 'register' %}" id="Register Button">Register</a>
@@ -46,8 +50,8 @@
         <div id="overlay" class="float-center" style="position:fixed; top:30%;">
             <div>
                 <p class="text-dark">Are you sure to logout?</p>
-                <button id="logout" class="float-left submit-button" >Home</button>
-                <button id="cancel" class="float-left submit-button">cancel</button>
+                <button id="logout" class="float-left submit-button" >Logout</button>
+                <button id="cancel" class="float-left submit-button">Cancel</button>
             </div>
         </div>
     {% endif %}
