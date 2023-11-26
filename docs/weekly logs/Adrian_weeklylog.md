@@ -31,7 +31,7 @@
 
 ## Recap on your week's goals
 
-- Worked on "Learning Django basics and setup" from the project board, learning Django practices/exercises on w3schools website, I learned how to setup and modify Django files and make it into a local website. 
+- Worked on "Learning Django basics and setup" from the project board, learning Django practices/exercises on w3schools website, I learned how to setup and modify Django files and make it into a local website.
 - Finding CSS template from online for our actual website.
 - Worked on my own weekly log, contribute to team weeklog.
 - Additional: Following images are the screenshot of the Django exercise website:
@@ -86,7 +86,7 @@ Video Page
 
 - Working on "Login" and "Create Account" on project board, made the Login and Register Page with forms and connect the header buttons to the home page. The function submitting the login and register form to sql database are complete. Applied css and bootstrap files on Login and Register Page.
 - Worked on remaking the form functions in Django for css style and sql database layout in Login and Register Page.
-- Working on the website logo, which will be applied on the top corner of the website, and on top of the login form. 
+- Working on the website logo, which will be applied on the top corner of the website, and on top of the login form.
 - Working on slogan on the right side of the login form.
 - Working on remaking the header bar from home page.
 - Worked on my own weekly log, contribute to team weeklog.
@@ -109,7 +109,7 @@ Register Page
 
 ## Recap on your week's goals
 
-- Worked on "Login" and "Create Account" on project board, finished working on Login and Register Page with forms and connect headers with other pages. The form function of submitting information from the Login and Register Page to the SQL database. The error message shown after input wrong information or user on Login and Register Page. Reapplied css and bootstrap file formats on Login and Register Page to match the theme with the other Pages. 
+- Worked on "Login" and "Create Account" on project board, finished working on Login and Register Page with forms and connect headers with other pages. The form function of submitting information from the Login and Register Page to the SQL database. The error message shown after input wrong information or user on Login and Register Page. Reapplied css and bootstrap file formats on Login and Register Page to match the theme with the other Pages.
 - Worked on reworking the whole website theme for Login and Register Page.
 - Worked on applying animated website logo onto the website, especially on Login Page.
 - Worked on applying new images to match the theme on Login and Register Page.
@@ -156,7 +156,7 @@ Register Error Page
 - Worked on Edit Profile form function working on Profile Page, modified Django form to match css and SQL database.
 - Worked on fixing error on Profile Page of not updating the profile information after filling the form.
 - Worked on "Presentation prep" on project board, we wrote a script, dividing presentation work, and assigning presentation part to everyone.
-- Worked on grading, comment, and watch other group's presentation. 
+- Worked on grading, comment, and watch other group's presentation.
 - Worked on my own weekly log, contribute to team weeklog.
 - Additional: Following images are the screenshot of the whole website:
 
@@ -217,3 +217,6 @@ Back to Login Page
 
 Profile Upload Successful
 ![Profile Upload Successful](./images/Adrian_images/Week_10/ProfileSuccess.png)
+
+UML for SQL Database
+![UML](./images/uml/uml.png)
