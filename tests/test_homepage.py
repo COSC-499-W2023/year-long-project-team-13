@@ -120,6 +120,9 @@ def logout_page_test(driver):
     logout_button_element = driver.find_element(By.ID, "Logout Button")
     logout_button_element.click()
 
+    logout_popup_element = driver.find_element(By.ID, "logout")
+    logout_popup_element.click()
+
     # Wait for the URL to change to the logout page URL
     wait.until(EC.url_contains('/logout'))
 
