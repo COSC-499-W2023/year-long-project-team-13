@@ -4,20 +4,17 @@
         {% comment %} <h1>Search </h1> {% endcomment %}
     </div>
     <div style="padding-top: 75px;">
-        <form method="POST">
-            {% csrf_token %}
-            <div class="input-group">
-                <div class="input-group-prepend">
-                <span class="input-group-text"></span>
-                </div>
-                <input type="text" class="form-control" name="title">
-                <button type="submit" class="btn btn-dark">Search</button>
+        {% comment %} <form method="POST"> {% endcomment %}
+        <div class="input-group">
+            <div class="input-group-prepend">
             </div>
-
-
-        </form>
+            <input type="text" class="form-control" name="title">
+            {% comment %} <button type="submit" class="btn btn-dark">Search</button> {% endcomment %}
+            <a href="{% url 'stream:video-list' %}" class="btn btn-dark">Search</a>
+        </div>
+        {% comment %} </form> {% endcomment %}
     </div>
-    <div>
+    {% comment %} <div>
         {% for item in videos%}
         <div class="card" style="width: 40rem; margin: 20px; box-shadow: 12em;">
             <img class="rounded-circle border-dark" src="{{ item.streamer.profile.image.url }}" style="border-color: red;" width="30" height="30">
@@ -33,5 +30,5 @@
             <hr>
           </div>
         {% endfor %}
-    </div>
+    </div> {% endcomment %}
 {% endblock content %}

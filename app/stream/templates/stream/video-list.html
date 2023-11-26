@@ -1,23 +1,25 @@
-{% extends 'stream/base.html'%}
+{% extends 'stream/base.html' %}
 {% block content %}
-    <div style="margin-top: 25px;">
-        {% comment %} <h1>Vnonymous</h1> {% endcomment %}
-    <div style="padding-top: 75px;">
-        {% for item in videos%}
-        <div class="card" style="width: 40rem; margin: 20px; box-shadow: 12em;">
-            <img class="rounded-circle border-dark" src="{{ item.streamer.profile.image.url }}" style="border-color: red;" width="30" height="30">
-            <a class="mr-2" href="{% url 'stream:user-videos' item.streamer.username %}" style="text-align: start;">{{ item.streamer }}</a>
-            <h12 style="text-align: start;">{{ item.upload_date }}</h12>
-            <video class="card-image-top" controls>
-                <source src="{{ item.video.url }}" type="video/mp4">
-              </video>
-            <div class="card-body">
-              <h5 class="card-title"><a href="{% url 'stream:video-detail' item.id  %}">{{ item.title }}</a></h5>
-              <p class="card-text">{{item.description }}</p>
-            </div>
-            <hr>
-          </div>
-        {% endfor %}
+    <div class="container" style="margin-top: 25px;">
+        <div>
+            {% comment %} <h1>Vnonymous</h1> {% endcomment %}
+        </div>
+        <div style="padding-top: 50px;">
+            {% for item in videos %}
+                <div class="card mb-3" style="width: 75%; box-shadow: 12em; margin: auto;">
+                    <img class="rounded-circle border-dark" src="{{ item.streamer.profile.image.url }}" style="border-color: red;" width="50" height="50">
+                    <a class="mr-2" href="{% url 'stream:user-videos' item.streamer.username %}" style="text-align: start;">{{ item.streamer }}</a>
+                    <h12 style="text-align: start;">{{ item.upload_date }}</h12>
+                    <video class="card-img-top" controls style="width: 100%; height: auto;">
+                        <source src="{{ item.video.url }}" type="video/mp4">
+                    </video>
+                    <div class="card-body">
+                        <h5 class="card-title"><a href="{% url 'stream:video-detail' item.id  %}">{{ item.title }}</a></h5>
+                        <p class="card-text">{{ item.description }}</p>
+                    </div>
+                    <hr>
+                </div>
+            {% endfor %}
+        </div>
     </div>
-  </div>
 {% endblock content %}
