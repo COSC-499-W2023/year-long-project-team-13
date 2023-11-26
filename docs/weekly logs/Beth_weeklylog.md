@@ -4,7 +4,7 @@
 
 ![Tasks](./images/tasks/Ralston_W4_Tasks.png)
 
-This week we all worked together to work on the Project plan. 
+This week we all worked together to work on the Project plan.
 
 ### Week 5 Oct 2 - Oct 8
 
@@ -37,7 +37,7 @@ Completed the homepage css bug and linked all of the homepage buttons to their r
 ![W8Tasks](./images/tasks/Ralston_W8_Tasks.png)
 
 My features for this week was homepage and testing. On the project board they are called homepage. Homepage is now tested and in the done section. I also worked on presentation prep which is still in progess.
-Finally, I also worked on implementing a CI Pipeline which is still in progress. 
+Finally, I also worked on implementing a CI Pipeline which is still in progress.
 
 Screen shot of presentation outline
 ![PresentationPrep](./images/Ralston_stuff/Ralston_PresPrep.png)
@@ -55,7 +55,7 @@ Screen shot of homepage tests
 
 ![W9Tasks](./images/tasks/Ralston_W9_Tasks.png)
 
-I focused on the preparation for the presentation. Finishing a last few things for the homepage and other functions. We also spent a while practicing the presentation. I also did a little bit of debugging for the CI-workflow in github actions. The remainder of my time this week was spent watching other teams present and giving them feedback. 
+I focused on the preparation for the presentation. Finishing a last few things for the homepage and other functions. We also spent a while practicing the presentation. I also did a little bit of debugging for the CI-workflow in github actions. The remainder of my time this week was spent watching other teams present and giving them feedback.
 
 ### Week 10 Nov 6 - Nov 12
 
@@ -73,3 +73,4 @@ The html linking diagrams I worked on:
 ![linking](./images/Ralston_stuff/linking1.jpg)
 ![morelinking](./images/Ralston_stuff/linking2.jpg)
 
+### Week 11/12 Nov 13 - Nov 25
