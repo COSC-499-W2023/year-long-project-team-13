@@ -22,3 +22,10 @@ class Profile(models.Model):
             output_size = (300, 300)
             fixed_image.thumbnail(output_size)
             fixed_image.save(self.image.path)
+
+
+
+class Notification(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    message = models.CharField(max_length=200)
+    timestamp = models.DateTimeField(auto_now_add=True)
