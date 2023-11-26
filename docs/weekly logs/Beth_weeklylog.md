@@ -28,6 +28,48 @@ The setup and testing of the "Setting up the project Django base" on my computer
 
 ### Week 7 Oct 16 - 22
 
-![W6Tasks](./images/tasks/Ralston_W6_Tasks.png)
+![W7Tasks](./images/tasks/Ralston_W7_Tasks.png)
 
 Completed the homepage css bug and linked all of the homepage buttons to their respective pages (That are still in progress or just empty html pages). Followed several aws tutorials and completed the aws amplify github connection guide. AWS was able to successfully build and deploy.
+
+### Week 8 Oct 23 - 29
+
+![W8Tasks](./images/tasks/Ralston_W8_Tasks.png)
+
+My features for this week was homepage and testing. On the project board they are called homepage. Homepage is now tested and in the done section. I also worked on presentation prep which is still in progess.
+Finally, I also worked on implementing a CI Pipeline which is still in progress. 
+
+Screen shot of presentation outline
+![PresentationPrep](./images/Ralston_stuff/Ralston_PresPrep.png)
+
+Screen shot of most recent build with the pipline
+![Build](./images/Ralston_stuff/Recent_Build.png)
+
+Screen shot of all builds this week
+![Builds](./images/Ralston_stuff/All_Builds.png)
+
+Screen shot of homepage tests
+![Tests](./images/tests_completion/Week8_test.png)
+
+### Week 9 Oct 30 - Nov 5
+
+![W9Tasks](./images/tasks/Ralston_W9_Tasks.png)
+
+I focused on the preparation for the presentation. Finishing a last few things for the homepage and other functions. We also spent a while practicing the presentation. I also did a little bit of debugging for the CI-workflow in github actions. The remainder of my time this week was spent watching other teams present and giving them feedback. 
+
+### Week 10 Nov 6 - Nov 12
+
+![W10Tasks](./images/tasks/Ralston_W10_Tasks.png)
+
+The features in the project plan I worked on this week were the AWS and CI-pipeline as well as the System architecture. The tasks associated are learning aws and setup, and system architecture. We have completed the UML diagram and basic mapping of the html linking. I have still not finished the pipeline yet, nor is the aws functional. This has been a huge learning curve and so much of my time this week has been reading internet sources to try and understand the problems I have been having.
+
+A copy of the builds worked on this for the ci-pipeline and testing.
+![W10Builds](./images/Ralston_stuff/W10_build.png)
+
+A copy of the best build that succeeded but is not finding the files
+![W10Pipelin](./images/Ralston_stuff/W10_pipeline.png)
+
+The html linking diagrams I worked on:
+![linking](./images/Ralston_stuff/linking1.jpg)
+![morelinking](./images/Ralston_stuff/linking2.jpg)
+

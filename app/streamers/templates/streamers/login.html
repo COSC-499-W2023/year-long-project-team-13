@@ -31,9 +31,12 @@
           <div class="navbar-nav">
             {% if user.is_authenticated %}
               <a class="nav-item nav-link" href="{% url 'stream:video-create' %}">New Video</a>
+              {% if user.is_superuser %}
+                <a class="nav-item nav-link" href="{% url 'admin:index' %}">Admin</a>
+              {% endif %}
               <a class="nav-item nav-link" href="{% url 'profile' %}">Profile</a>
               <a class="nav-item nav-link" href="{% url 'setting' %}">Setting</a>
-              <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
+              <a class="nav-item nav-link"  href='#'onclick='overlay()'>Logout</a>
             {% else %}
               <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
               <a class="nav-item nav-link" href="{% url 'register' %}">Register</a>
@@ -132,8 +135,9 @@
 
     <script src=" {% static 'assets/bootstrap/js/bootstrap.min.js' %} "></script>
 
-    <!-- This js makes the header change to black colour when scrolling-->
+    <!-- This js makes the header change to black colour when scrolling -->
     <script src=" {% static 'assets/js/grayscale.js' %} "></script>
+
   </body>
 {% comment %}
 {% endblock content %}
