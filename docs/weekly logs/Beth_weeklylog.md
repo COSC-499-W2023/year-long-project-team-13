@@ -76,7 +76,7 @@ The html linking diagrams I worked on:
 ### Week 11/12 Nov 13 - Nov 25
 ![Week11/12Tasks](./images/tasks/Ralston_W12_Tasks.png)
 
-My features in the project plan for this milestone were aws and database and the UI for the Create Video page. On the task board these are called Learning AWS and Setup, CSS dev, User Interface Design, Bug Fixing, Database, and Create Video. I have spend approximately 18 hours on the aws database setup with lots and lots of bug fixing this week(s). It is still inprogress and not yet completed. I also spent a fair amount of time on the Create Video UI. The UI is completed but not the tests are written but not yet passing.
+My features in the project plan for this milestone were aws and database and the UI for the Create Video page. On the task board these are called Learning AWS and Setup, CSS dev, User Interface Design, Bug Fixing, Database, and Create Video. I have spend approximately 18 hours on the aws database setup with lots and lots of bug fixing this week(s). It is still inprogress and not yet completed. I also spent a fair amount of time on the Create Video UI. The UI is completed and the tests are written but not yet passing. I also spent some time testing and reviewing other Ethan's and Adrian's code.
 
 # Here are some of the progress I made with Aws and the different erros that have come up so far.
 ![OriginalError](./images/Ralston_stuff/Week12/aws_lambda1.png)
