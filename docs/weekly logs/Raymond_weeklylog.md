@@ -146,6 +146,7 @@ Profile Template
 For these weeks, I work on the setting page where the user can change the password as well as change the theme of the page to either dark/light. I have worked on the html and css for both the pages and link them to the respective button/link. I make some changes on some of the pages to add the setting button for the user to go to setting page as well as add codes for showing notification which notifying the user whether they want to log out of the page on both the setting and theme page. I fix the issue that affect my setting/theme page css and html as well as work on the function of changing theme which is still in progress. I am also collecting some idea on how to work on change password on the setting page how thought there are some codes already done but its commented out at the moment.
 
 
+
 Adding of Setting button on the header bar
 
 ![Adding of Setting button on the header bard](./images/Sitt_images/Week_11_12/Setting_button_added_on_profile.png)
