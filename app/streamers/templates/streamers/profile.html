@@ -21,18 +21,18 @@
       </a><button data-bs-toggle="collapse" class="navbar-toggler navbar-toggler-right" data-bs-target="#navbarResponsive" type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" value="Menu"><i class="fa fa-bars"></i></button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ms-auto">
-            <li class="nav-item nav-link"><a class="nav-link active" href=" {% url 'stream:video-list' %} " id="Video Button">Videos</a></li>
-            <li class="nav-item nav-link"><a class="nav-link active" href=" {% url 'stream:contact' %} " id="Add Contacts Button">Add Contacts</a></li>
+            <li class="nav-item nav-link"><a class="nav-link active" href=" {% url 'stream:video-list' %} ">Videos</a></li>
+            <li class="nav-item nav-link"><a class="nav-link active" href=" {% url 'stream:contact' %} ">Add Contacts</a></li>
             {% if user.is_authenticated %}
-              <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:video-create' %}" id="New Video Button">New Video</a>
+              <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:video-create' %}">New Video</a>
               {% if user.is_superuser %}
-                <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'admin:index' %}" id="Admin Button">Admin</a>
+                <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'admin:index' %}">Admin</a>
               {% endif %}
-              <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'profile' %}" id="Profile Button">Profile</a>
-              <li class="nav-item nav-link"><a class="nav-link active"  href='#'onclick='overlay()' id="Logout Button">Logout</a>
+              <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'profile' %}">Profile</a>
+              <li class="nav-item nav-link"><a class="nav-link active"  href='#'onclick='overlay()'>Logout</a>
             {% else %}
-              <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'login' %}" id="Login Button">Login</a>
-              <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'register' %}" id="Register Button">Register</a>
+              <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'login' %}">Login</a>
+              <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'register' %}">Register</a>
             {% endif %}
         </ul>
     </div>
