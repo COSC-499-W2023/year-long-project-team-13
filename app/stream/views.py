@@ -31,7 +31,14 @@ def contact(request):
     return render(request, 'stream/contact.html')
 
 def request_video(request):
-    return render(request, 'stream/request-video.html')
+    if request.method == "POST":
+        form = VidUploadForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('stream:home')
+    else:
+        form = VidUploadForm()
+        return render(request, 'stream/request-video.html', {'form':form})
 
 
 class VideoCreateView(LoginRequiredMixin   ,CreateView):
