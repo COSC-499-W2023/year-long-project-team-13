@@ -13,7 +13,6 @@ import sys
 def login_page_test(driver, username, password):
     # Find the element with the id "Username Input" and click it
     username_input_element = driver.find_element(By.ID, "id_username")
-    username_input_element.clear()
     username_input_element.click()
     time.sleep(0.5)
 
@@ -23,7 +22,6 @@ def login_page_test(driver, username, password):
 
     # Find the element with the id "Password Input" and click it
     password_input_element = driver.find_element(By.ID, "id_password")
-    password_input_element.clear()
     password_input_element.click()
     time.sleep(0.5)
 
