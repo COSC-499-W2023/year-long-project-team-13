@@ -1,5 +1,5 @@
-{% comment %} {% extends 'stream/base.html'%}
-{% block content %} {% endcomment %}
+{% extends 'stream/base.html'%}
+{% block content %}
 
 {% load bootstrap5 %}
 {% bootstrap_css %}
@@ -7,39 +7,7 @@
 {% load static %}
 <!DOCTYPE html>
 <html data-bs-theme="light" lang="en">
-
 <head>
-  <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href= "{%static 'assets/bootstrap/css/bootstrap.min.css' %}">
-    <title>Vnonymous</title>
-    <link href="{% static 'css/style.css' %}" rel="stylesheet">
-    <link href="{% static 'css/logoutUI.css' %}" rel="stylesheet">
-</head>
-
-<body id="page-top" data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="77" style="background-color: grey;">
-    <nav class="navbar navbar-expand-md fixed-top navbar-light" id="mainNav">
-        <div class="container"><a class="navbar-brand" href=" {% url 'stream:home' %} " id="Home Button">Vnonymous</a><button data-bs-toggle="collapse" class="navbar-toggler navbar-toggler-right" data-bs-target="#navbarResponsive" type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" value="Menu"><i class="fa fa-bars"></i></button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item nav-link"  id="Video Button"><a class="nav-link active" href=" {% url 'stream:video-list' %} ">Videos</a></li>
-                    <li class="nav-item nav-link"><a class="nav-link active" href=" {% url 'stream:contact' %} " id="Add Contacts Button">Add Contacts</a></li>
-                    {% if user.is_authenticated %}
-                      <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:video-create' %}" id="New Video Button">New Video</a>
-                      {% if user.is_superuser %}
-                        <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'admin:index' %}" id="Admin Button">Admin</a>
-                      {% endif %}
-                      <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'profile' %}" id="Profile Button">Profile</a>
-                      <li class="nav-item nav-link"><a class="nav-link active"  href='#'onclick='overlay()' id="Logout Button">Logout</a>
-                    {% else %}
-                      <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'login' %}" id="Login Button">Login</a>
-                      <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'register' %}" id="Register Button">Register</a>
-                    {% endif %}
-                </ul>
-            </div>
-        </div>
-    </nav>
-
     <div style = "margin-top: 25px; padding-top: 75px;">
         <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
@@ -116,18 +84,5 @@
             </div>
         {% endif %}
     </div>
-
-    {% if user.is_authenticated %}
-        <div id="overlay" class="float-center" style="position:fixed; top:30%;">
-            <div>
-                <p class="text-dark">Are you sure to logout?</p>
-                <button id="logout" class="float-left submit-button" >Logout</button>
-                <button id="cancel" class="float-left submit-button">Cancel</button>
-            </div>
-        </div>
-    {% endif %}
-
-
-    {% comment "" %}
 {% endblock content %}
-{% endcomment %}
+
