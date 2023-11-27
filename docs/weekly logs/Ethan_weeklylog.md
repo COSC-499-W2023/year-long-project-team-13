@@ -121,7 +121,7 @@
 
 - Type of tasks you worked on (screenshot from Peer Eval question)
 
-![Tasks](./images/tasks/Ethan_Week10.png)
+#### Did not save on the website so the TA cannot see the result.
 
 - This week, I worked on making the UML diagram and also tried to host the project on AWS.
   - So far I have tried EC2, which is still in progress figuring out problems, Elastic Beanstalk, which doesn't like my login credentials, and Lambda, which I can't figure out how to install the dependencies without breaking the other stuff.
@@ -138,3 +138,39 @@
 ![AWS](./images/Ethan_stuff/aws3.png)
 ![AWS](./images/Ethan_stuff/aws4.png)
 
+# Preferred name -> Ssc name -> Github name
+
+- Ethan -> Ethan Hsu -> YuchenHsu
+
+## Week 11~12 2023/11/13 ~ 2023/11/26
+
+- Type of tasks you worked on (screenshot from Peer Eval question)
+
+![Tasks](./images/tasks/Ethan_Week12.png)
+
+- For week 11. I tried to host the website on AWS but had no success. Which took the entire week. For week 12, I worked on making the video list page look better, and also changed the add contacts page to make it more intuitive.
+- The tasks associated are the following:
+
+  - [Learning AWS and setup](https://github.com/COSC-499-W2023/year-long-project-team-13/issues/41)
+  - [User Interface Design](https://github.com/COSC-499-W2023/year-long-project-team-13/issues/6)
+  - [Add contact](https://github.com/COSC-499-W2023/year-long-project-team-13/issues/27)
+  - [Github Pull Request For the Contact Page and Video List Page](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/74)
+  - [Github Pull Request I reviewed](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/69)
+- The following images are for the trials on AWS and the code I did for the Contact Page and the Video List Page.
+  - AWS with SST: For this option, I was only able to make it host a dummy website, but not our project.
+    ![AWS](./images/Ethan_stuff/week12/aws_sst_0.png)
+    ![AWS](./images/Ethan_stuff/week12/aws_sst_1.png)
+    ![AWS](./images/Ethan_stuff/week12/aws_sst_2.png)
+    ![AWS](./images/Ethan_stuff/week12/aws_sst_3.png)
+  - AWS EC2: For this one, I managed to have the virtual machine run our code and host the website, but I cannot access it from the internet. I tried to change the security group to allow all traffic, but it still doesn't work.
+    ![AWS](./images/Ethan_stuff/week12/aws_EC2.png)
+    ![AWS](./images/Ethan_stuff/week12/aws_EC2_1.png)
+- These are images of the code I did on the Contact Page and the Video List Page
+  - Contact Page
+    ![Contact](./images/Ethan_stuff/week12/Contact_Page.png)
+  - Video List Page
+    ![Video List](./images/Ethan_stuff/week12/Video_List_Page.png)
+  - This is the test report for both the Contact Page and the Video List Page
+    ![Test](./images/Ethan_stuff/week12/contact_video_page_test.png)
+  - This is the test report for the entire website
+    ![Test](./images/Ethan_stuff/week12/Master_Test_Contact_Video_Test.png)
