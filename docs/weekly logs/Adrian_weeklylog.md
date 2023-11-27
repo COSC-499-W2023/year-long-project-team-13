@@ -231,6 +231,8 @@ UML for SQL Database
 ### Edit Profile Page/Testing
 - Worked on "Edit Profile" on project board, new Edit Profile template with functioning forms updated, user are able to change username, email, profile picture, and update after clicking the "update" button.
 <br/>
+- [Edit Profile Page/Testing Pull Request](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/70)
+<br/>
 <br/>
 Edit Profile Page
 ![Edit Profile Page](./images/Adrian_images/Week_12/Edit_Profile_Page.png)
@@ -258,14 +260,17 @@ Admin Page
 Admin Testing
 ![Admin Testing](./images/Adrian_images/Week_12/Admin_Test.png)
 
-### Logout UI (In Progress)
-- Working on "Logout" on project board, it is still in progress, the logout UI shows up after clicking the logout button on header bar. Every button on UI is functional.
+### Logout UI/Testing (In Progress)
+- Working on "Logout" on project board, it is still in progress, the logout UI shows up after clicking the logout button on header bar. Every button on UI is functional and work on every webpage.
+- Worked on Logout Testing for this current stage Logout, it successfully runs.
 <br/>
 - [Logout Page/Testing Pull Request](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/71)
 <br/>
 <br/>
 Logout UI
 ![Logout UI](./images/Adrian_images/Week_12/Logout_InProgress.png)
+Logout Testing
+![Logout Testing](./images/Adrian_images/Week_12/Logout_Test.png)
 
 ### Top Header Page (Updated)
 - Worked on creating new button on top header bar for "Admin", "Profile", and "Logout" with successful linking to other pages, it sucessfully tested on test home page file.
@@ -287,9 +292,8 @@ Review Pull Request Screenshot
 - Worked on deciding task priorities, because presentation video is coming up next week, so we decide to work on pages that does not have a template, so we can have all website pages with correct templates.
 - Worked on assigning other people on working page layout template, such as: Beth working on "Create Video Page", Ethan working on "View Video Page".
 - Worked on my own weekly log, contribute to team weeklog.
-
-- Additional: Following images are the screenshot of the whole website/tests/commit/pull request:
-
-
-  - [Edit Profile Testing complete, updated other test files](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/70)
-  - [logout and logout test](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/71)
+- Additional: Following images are the screenshot of the whole website testing:
+<br/>
+<br/>
+Whole Website Test
+![Whole Website Test](./images/Adrian_images/Week_12/Whole_Test.png)
