@@ -169,7 +169,7 @@
   - Contact Page
     ![Contact](./images/Ethan_stuff/week12/Contact_Page.png)
   - Video List Page
-    ![Video List](./images/Ethan_stuff/week12/Video_List_Page.png)
+    ![Video List](./images/Ethan_stuff/week12/video_list_page.png)
   - This is the test report for both the Contact Page and the Video List Page
     ![Test](./images/Ethan_stuff/week12/contact_video_page_test.png)
   - This is the test report for the entire website
