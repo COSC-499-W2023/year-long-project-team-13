@@ -80,7 +80,7 @@ My features in the project plan for this milestone were aws and database and the
 
 # Here are some of the progress I made with Aws and the different erros that have come up so far.
 ![OriginalError](./images/Ralston_stuff/Week12/aws_lambda1.png)
-![OnePreviousError](./images/Ralston_stuff/Week12/aws-errors2.png.png)
+![OnePreviousError](./images/Ralston_stuff/Week12/aws-errors2.png)
 # Current Output with AWS
 ![OutputError](./images/Ralston_stuff/Week12/aws-errors2.png)
 # Current Terminal Error
