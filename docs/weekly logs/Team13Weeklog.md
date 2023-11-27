@@ -221,9 +221,9 @@ Optional Text:
 ## Week 11~12 2023/11/13 ~ 2023/11/26
 
 - Which features were in the project plan for this milestone?
-  - This week, we worked on making the profile page adn the notification page.
+  - This week, we worked on making the profile page, admin page and the notification page.
   - We also worked on making the create video page, the video list page and the add contact page look better.
-  - We have also started working on the Settings page.
+  - We have also started working on the Settings page, Logout UI.
   - We also tried to host our project on AWS, but we ran into some problems and that one is still in progress.
 - Which tasks from the project board are associated with these features?
   - We completed [Profile](https://github.com/COSC-499-W2023/year-long-project-team-13/issues/57), [Edit profile](https://github.com/COSC-499-W2023/year-long-project-team-13/issues/9) and [Admin](https://github.com/COSC-499-W2023/year-long-project-team-13/issues/11).
