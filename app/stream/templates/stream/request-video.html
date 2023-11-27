@@ -50,13 +50,42 @@
         </div>
     {% endif %}
 
+    <style>
+
+        .vertical-buttons {
+          flex-direction: column;
+            display: flex;
+        }
+
+        .button {
+          background-color: transparent;
+          margin-bottom: 10px;
+          padding: 10px;
+          color: white;
+          border: 1px solid white;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 16px;
+          width: 50%; /* Set a width if needed */
+          cursor: pointer; /* Mouse pointer on change to hand on hover */
+        }
+
+        .button:hover {
+          background-color: #3e8e41;
+        }
+        </style>
 
     <div style = "margin-top: 25px; padding-top: 75px;">
         <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
-            <h1>Upload a video</h1>
+            <h1>SEND A VIDEO REQUEST</h1>
+            <button class="button" type="submit">Choose Contact</button>
+            <br>
+            <body>Contact Chosen: </body>
                 {{ form.as_p }}
-            <button class="btn btn-outline-info" type="submit">Upload</button>
+            <br>
+            <button class="button" type="submit">SEND</button>
 
         </form>
     </div>
