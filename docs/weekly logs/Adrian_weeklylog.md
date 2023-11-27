@@ -230,7 +230,7 @@ UML for SQL Database
 
 ### Edit Profile Page/Testing
 - Worked on "Edit Profile" on project board, new Edit Profile template with functioning forms updated, user are able to change username, email, profile picture, and update after clicking the "update" button.
-  - [Edit Profile Page/Testing Pull Request](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/70)
+  - [Edit Profile Page/Testing Pull Request/Commit](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/70)
   - Edit Profile Page
 ![Edit Profile Page](./images/Adrian_images/Week_12/Edit_Profile_Page.png)
   - Edit Profile Page Form Function
