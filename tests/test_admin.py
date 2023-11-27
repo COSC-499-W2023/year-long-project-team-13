@@ -44,37 +44,23 @@ def login_page_test(driver, username, password):
     else:
         print("Login successful")
 
-def logout_test(driver, username, password):
+def admin_test(driver, username, password):
     # Call the login page test function
     login_page_test(driver, username, password)
     time.sleep(0.5)
 
-    logout_element = driver.find_element(By.ID, "Logout Button")
-    logout_element.click()
+    admin_element = driver.find_element(By.ID, "Admin Button")
+    admin_element.click()
     time.sleep(0.5)
 
-    logout_confirm_element = driver.find_element(By.ID, "cancel")
-    logout_confirm_element.click()
-    time.sleep(0.5)
-
-    wait.until(EC.url_contains('/'))
-
-    logout_element = driver.find_element(By.ID, "Logout Button")
-    logout_element.click()
-    time.sleep(0.5)
-
-    logout_confirm_element = driver.find_element(By.ID, "logout")
-    logout_confirm_element.click()
-    time.sleep(0.5)
-
-    # Wait for the URL to change to the logout page URL
-    wait.until(EC.url_contains('/logout'))
+    # Wait for the URL to change to the admin page URL
+    wait.until(EC.url_contains('/admin'))
 
     # Check if the URL contains the expected profile page URL
-    if '/logout' in driver.current_url:
-        print("Logout successful")
+    if '/admin' in driver.current_url:
+        print("Admin successful")
     else:
-        print("Logout failed")
+        print("Admin failed")
 
     # Wait for the profile page to load
     # WebDriverWait(driver, 60).until(EC.url_contains('/profile'))
@@ -96,7 +82,7 @@ wait = WebDriverWait(driver, 60)
 
 # Call the profile page test function with appropriate input values
 driver.get('http://localhost:8000/login')
-logout_test(driver, 'linus', '123')
+admin_test(driver, 'linus', '123')
 time.sleep(0.5)
 
 # Close the webdriver

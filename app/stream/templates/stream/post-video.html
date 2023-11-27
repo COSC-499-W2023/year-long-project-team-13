@@ -1,79 +1,63 @@
-{% extends 'stream/base.html'%}
-{% block content %}
+{% comment %} {% extends 'stream/base.html'%}
+{% block content %} {% endcomment %}
+
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% load static %}
+<!DOCTYPE html>
+<html data-bs-theme="light" lang="en">
+
+<head>
+  <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href= "{%static 'assets/bootstrap/css/bootstrap.min.css' %}">
+    <title>Vnonymous</title>
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'css/logoutUI.css' %}" rel="stylesheet">
+</head>
+
+<body id="page-top" data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="77" style="background-color: grey;">
+    <nav class="navbar navbar-expand-md fixed-top navbar-light" id="mainNav">
+        <div class="container"><a class="navbar-brand" href=" {% url 'stream:home' %} " id="Home Button">Vnonymous</a><button data-bs-toggle="collapse" class="navbar-toggler navbar-toggler-right" data-bs-target="#navbarResponsive" type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" value="Menu"><i class="fa fa-bars"></i></button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item nav-link"  id="Video Button"><a class="nav-link active" href=" {% url 'stream:video-list' %} ">Videos</a></li>
+                    <li class="nav-item nav-link"><a class="nav-link active" href=" {% url 'stream:contact' %} " id="Add Contacts Button">Add Contacts</a></li>
+                    {% if user.is_authenticated %}
+                      <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:video-create' %}" id="New Video Button">New Video</a>
+                      {% if user.is_superuser %}
+                        <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'admin:index' %}" id="Admin Button">Admin</a>
+                      {% endif %}
+                      <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'profile' %}" id="Profile Button">Profile</a>
+                      <li class="nav-item nav-link"><a class="nav-link active"  href='#'onclick='overlay()' id="Logout Button">Logout</a>
+                    {% else %}
+                      <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'login' %}" id="Login Button">Login</a>
+                      <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'register' %}" id="Register Button">Register</a>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    {% if user.is_authenticated %}
+        <div id="overlay" class="float-center" style="position:fixed; top:30%;">
+            <div>
+                <p class="text-dark">Are you sure to logout?</p>
+                <button id="logout" class="float-left submit-button" >Logout</button>
+                <button id="cancel" class="float-left submit-button">Cancel</button>
+            </div>
+        </div>
+    {% endif %}
+
+
     <div style = "margin-top: 25px; padding-top: 75px;">
         <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
-            <h1 style="text-align: center; color: white;">Record a Video</h1>
-            <style>
-                body {
-                    margin: 0;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    height: 100vh;
-                }
-                .horizontal-buttons {
-                  flex-direction: row;
-                    display: flex;
-                }
+            <h1>Upload a video</h1>
+                {{ form.as_p }}
+            <button class="btn btn-outline-info" type="submit">Upload</button>
 
-                .button {
-                  background-color: transparent;
-                  margin-bottom: 10px;
-                  padding: 10px;
-                  color: white;
-                  border: 1px solid white;
-                  text-align: center;
-                  text-decoration: none;
-                  display: inline-block;
-                  font-size: 16px;
-                  width: 75%; /* Set a width if needed */
-                  cursor: pointer; /* Mouse pointer on change to hand on hover */
-                }
-
-                .button:hover {
-                  background-color: #3e8e41;
-                }
-
-                .video-box{
-                    margin: 0 auto;
-                    width: 50%;
-                    height: 50%;
-                }
-
-                video {
-                    width: 100%;
-                    height: auto;
-                    display: block;
-                }
-              </style>
-            </head>
-            <body>
-                <div style = "margin-top: 75px; padding-top: 75px;">
-
-                <div class="video-box">
-                    <video controls>
-                        <source src="{{ item.video.url }}" type="video/mp4">
-                    </video>
-                </div>
-                    <div class="horizontal-buttons">
-
-                        <button class="button">Start/Re-record</button>
-                        <button class="button">Stop Recording</button>
-                        <button class="button">NEXT</button>
-                    </div>
-
-            </div>
-            </body>
         </form>
-        {% if user.is_authenticated %}
-            <div id="overlay" class="float-center" style="position:fixed; top:30%;">
-                <div>
-                    <p class="text-dark">Are you sure to logout?</p>
-                    <button id="logout" class="float-left submit-button" >Logout</button>
-                    <button id="cancel" class="float-left submit-button">Cancel</button>
-                </div>
-            </div>
-        {% endif %}
     </div>
 {% endblock content %}
