@@ -160,7 +160,7 @@ wait = WebDriverWait(driver, 60)
 
 # Call the profile page test function with appropriate input values
 driver.get('http://localhost:8000/login')
-profile_page_test(driver, 'linus', '123', 'abc@xyz.com', os.path.abspath('../app/media/mountain.jpg'), 'linuslinus', 'admin@xyz.com')
+profile_page_test(driver, 'linus', '123', 'abc@xyz.com', os.path.abspath('../app/media/mountain.jpg'), 'linus', 'admin@xyz.com')
 time.sleep(0.5)
 
 # Close the webdriver
