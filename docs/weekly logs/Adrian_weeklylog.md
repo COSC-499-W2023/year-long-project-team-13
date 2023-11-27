@@ -230,62 +230,43 @@ UML for SQL Database
 
 ### Edit Profile Page/Testing
 - Worked on "Edit Profile" on project board, new Edit Profile template with functioning forms updated, user are able to change username, email, profile picture, and update after clicking the "update" button.
-<br>
-- [Edit Profile Page/Testing Pull Request](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/70)
-<br>
-<br>
-Edit Profile Page
+  - [Edit Profile Page/Testing Pull Request](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/70)
+  - Edit Profile Page
 ![Edit Profile Page](./images/Adrian_images/Week_12/Edit_Profile_Page.png)
-Edit Profile Page Form Function
+  - Edit Profile Page Form Function
 ![Edit Profile Page Form Function](./images/Adrian_images/Week_12/Edit_Profile_Page_Function.png)
 - Worked on Edit Profile test, it successfully runs and check for changing user profile information after updating, it also can run with other tests with no error.
-<br>
-<br>
-Edit Profile Testing
+  - Edit Profile Testing Screenshot
 ![Edit Profile Page Testing](./images/Adrian_images/Week_12/Edit_Profile_Test.png)
 
 ### Admin Page/Testing
 - Worked on "Admin" on project board, it will only be avaliable if the user's account is an admin. In admin page, the admin user is able to view and change SQL database information, and change admin password. Admin page is able to link back to home page and logout page after click the right top page link button.
-<br>
-- [Admin Page Pull Request/Commit](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/69)
-<br>
-<br>
-Admin Page
+  - [Admin Page Pull Request/Commit](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/69)
+  - Admin Page Screenshot
 ![Admin Page](./images/Adrian_images/Week_12/Admin_Page.png)
 - Worked on Admin test, it runs successfully and check the admin button shows up if admin user has logged in and check if the admin page link with other pages. It is also running with other test with no error.
-<br>
-- [Admin Test Pull Request/Commit](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/72)
-<br>
-<br>
-Admin Testing
+  - [Admin Test Pull Request/Commit](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/72)
+  - Admin Testing Screenshot
 ![Admin Testing](./images/Adrian_images/Week_12/Admin_Test.png)
 
 ### Logout UI/Testing (In Progress)
 - Working on "Logout" on project board, it is still in progress, the logout UI shows up after clicking the logout button on header bar. Every button on UI is functional and work on every webpage.
 - Worked on Logout Testing for this current stage Logout, it successfully runs.
-<br>
-- [Logout Page/Testing Pull Request](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/71)
-<br>
-<br>
-Logout UI
+  - [Logout Page/Testing Pull Request](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/71)
+  - Logout UI Screenshot
 ![Logout UI](./images/Adrian_images/Week_12/Logout_InProgress.png)
-Logout Testing
+  - Logout Testing Screenshot
 ![Logout Testing](./images/Adrian_images/Week_12/Logout_Test.png)
 
 ### Top Header Page (Updated)
 - Worked on creating new button on top header bar for "Admin", "Profile", and "Logout" with successful linking to other pages, it sucessfully tested on test home page file.
-<br>
-<br>
-Logout UI
-![Logout UI](./images/Adrian_images/Week_12/Top_Bar.png)
+  - Header Screenshot
+![Header](./images/Adrian_images/Week_12/Top_Bar.png)
 
 ### Review Pull Request
 - Worked on review other people's code in pull requests, approved and merged Ethan's Add Contact Page request.
-<br>
-- [Add Contacts Pull Request](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/74)
-<br>
-<br>
-Review Pull Request Screenshot
+  - [Add Contacts Pull Request](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/74)
+  - Review Pull Request Screenshot
 ![Review Pull Request Screenshot](./images/Adrian_images/Week_12/Review_Pull_Request.png)
 
 ### Deciding on Task Priorities/Assigning Other People Task
@@ -293,7 +274,5 @@ Review Pull Request Screenshot
 - Worked on assigning other people on working page layout template, such as: Beth working on "Create Video Page", Ethan working on "View Video Page".
 - Worked on my own weekly log, contribute to team weeklog.
 - Additional: Following images are the screenshot of the whole website testing:
-<br>
-<br>
-Whole Website Test
+  - Whole Website Test Screenshot
 ![Whole Website Test](./images/Adrian_images/Week_12/Whole_Test.png)
