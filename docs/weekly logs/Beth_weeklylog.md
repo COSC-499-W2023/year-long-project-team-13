@@ -4,7 +4,7 @@
 
 ![Tasks](./images/tasks/Ralston_W4_Tasks.png)
 
-This week we all worked together to work on the Project plan. 
+This week we all worked together to work on the Project plan.
 
 ### Week 5 Oct 2 - Oct 8
 
@@ -37,7 +37,7 @@ Completed the homepage css bug and linked all of the homepage buttons to their r
 ![W8Tasks](./images/tasks/Ralston_W8_Tasks.png)
 
 My features for this week was homepage and testing. On the project board they are called homepage. Homepage is now tested and in the done section. I also worked on presentation prep which is still in progess.
-Finally, I also worked on implementing a CI Pipeline which is still in progress. 
+Finally, I also worked on implementing a CI Pipeline which is still in progress.
 
 Screen shot of presentation outline
 ![PresentationPrep](./images/Ralston_stuff/Ralston_PresPrep.png)
@@ -55,7 +55,7 @@ Screen shot of homepage tests
 
 ![W9Tasks](./images/tasks/Ralston_W9_Tasks.png)
 
-I focused on the preparation for the presentation. Finishing a last few things for the homepage and other functions. We also spent a while practicing the presentation. I also did a little bit of debugging for the CI-workflow in github actions. The remainder of my time this week was spent watching other teams present and giving them feedback. 
+I focused on the preparation for the presentation. Finishing a last few things for the homepage and other functions. We also spent a while practicing the presentation. I also did a little bit of debugging for the CI-workflow in github actions. The remainder of my time this week was spent watching other teams present and giving them feedback.
 
 ### Week 10 Nov 6 - Nov 12
 
@@ -72,4 +72,21 @@ A copy of the best build that succeeded but is not finding the files
 The html linking diagrams I worked on:
 ![linking](./images/Ralston_stuff/linking1.jpg)
 ![morelinking](./images/Ralston_stuff/linking2.jpg)
+
+### Week 11/12 Nov 13 - Nov 25
+![Week11/12Tasks](./images/tasks/Ralston_W12_Tasks.png)
+
+My features in the project plan for this milestone were aws and database and the UI for the Create Video page. On the task board these are called Learning AWS and Setup, CSS dev, User Interface Design, Bug Fixing, Database, and Create Video. I have spend approximately 18 hours on the aws database setup with lots and lots of bug fixing this week(s). It is still inprogress and not yet completed. I also spent a fair amount of time on the Create Video UI. The UI is completed and the tests are written but not yet passing. I also spent some time testing and reviewing other Ethan's and Adrian's code.
+
+# Here are some of the progress I made with Aws and the different erros that have come up so far.
+![OriginalError](./images/Ralston_stuff/Week12/aws_lambda1.png)
+![OnePreviousError](./images/Ralston_stuff/Week12/aws-errors2.png)
+# Current Output with AWS
+![OutputError](./images/Ralston_stuff/Week12/aws-errors2.png)
+# Current Terminal Error
+![CurrentError](./images/Ralston_stuff/Week12/aws_lamda2.png)
+# Create Video UI
+![UI](./images/Ralston_stuff/Week12/create-page.png)
+# Test Report for my stuff
+![TestReport](./images/Ralston_stuff/Week12/testing-errors.png)
 

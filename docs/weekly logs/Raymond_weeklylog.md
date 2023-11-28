@@ -136,7 +136,58 @@ Profile Template
 
 ![Profile Page](./images/Sitt_images/Week_10/Profile_template.png)
 
+## Week 11~12 2023/11/13 ~ 2023/11/26
 
+-Types of tasks that I have worked on
+
+![Task_Done](./images/tasks/SittPaing_W11_12-Task.png)
+
+## Recap of week's goals
+For these weeks, I work on the setting page where the user can change the password as well as change the theme of the page to either dark/light. I have worked on the html and css for both the pages and link them to the respective button/link. I make some changes on some of the pages to add the setting button for the user to go to setting page as well as add codes for showing notification which notifying the user whether they want to log out of the page on both the setting and theme page. I fix the issue that affect my setting/theme page css and html as well as work on the function of changing theme which is still in progress. I am also collecting some idea on how to work on change password on the setting page although there are some codes already done but its commented out at the moment. Me and my team also discuss on what to be done before the presentation and what we should present for the presentation and assigning task priorities.
+
+Adding of Setting button on the header bar
+
+![Adding of Setting button on the header bard](./images/Sitt_images/Week_11_12/Setting_button_added_on_profile.png)
+
+Worked on Setting page with setting button added
+
+![Worked on Setting page with setting button added](./images/Sitt_images/Week_11_12/Setting_page_with_setting_button_added.png)
+
+Worked on Theme page with setting button added
+
+![Worked on Theme page with setting button added](./images/Sitt_images/Week_11_12/theme_page_with_setting_button_added.png)
+
+Worked on Notification message on setting page
+
+![Worked on Notification message on setting page](./images/Sitt_images/Week_11_12/Notification_before_logging_out_Setting.png)
+
+Worked on Notification message on theme page
+
+![Worked on Notification message on theme page](./images/Sitt_images/Week_11_12/Notification_before_logging_out_Theme.png)
+
+Commits
+
+![Commits](./images/Sitt_images/Week_11_12/Commits.png)
+
+Setting Code
+
+![Setting Code](./images/Sitt_images/Week_11_12/Setting_Code.png)
+
+Theme Code
+
+![Theme Code](./images/Sitt_images/Week_11_12/Theme_Code.png)
+
+Theme css
+
+![Theme css](./images/Sitt_images/Week_11_12/Theme_css.png)
+
+Theme js (still in progress)
+
+![Theme js (still in progress)](./images/Sitt_images/Week_11_12/Theme_function_js_(in_progress).png)
+
+Change Password Code (Commented Out)
+
+![Change Password Code (Commented Out)](./images/Sitt_images/Week_11_12/Change_Password_Code.png)
 
 
 
