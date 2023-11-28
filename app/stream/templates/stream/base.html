@@ -67,21 +67,22 @@
           </i>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item nav-link"><a class="nav-link active" href=" {% url 'stream:video-list' %} " id="Video Button">Videos</a></li>
-                <li class="nav-item nav-link"><a class="nav-link active" href=" {% url 'stream:contact' %} " id="Add Contacts Button">Add Contacts</a></li>
-                {% if user.is_authenticated %}
-                  <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:video-create' %}" id="New Video Button">New Video</a>
-                  {% if user.is_superuser %}
-                    <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'admin:index' %}" id="Admin Button">Admin</a>
-                  {% endif %}
-                  <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'profile' %}" id="Profile Button">Profile</a>
-                  <li class="nav-item nav-link"><a class="nav-link active"  href='#'onclick='overlay()' id="Logout Button">Logout</a>
-                {% else %}
-                  <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'login' %}" id="Login Button">Login</a>
-                  <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'register' %}" id="Register Button">Register</a>
-                {% endif %}
-            </ul>
+           <ul class="navbar-nav ms-auto">
+    <li class="nav-item nav-link"><a class="nav-link active" href=" {% url 'stream:video-list' %} " id="Video Button">Videos</a></li>
+    <li class="nav-item nav-link"><a class="nav-link active" href=" {% url 'stream:contact' %} " id="Add Contacts Button">Add Contacts</a></li>
+    {% if user.is_authenticated %}
+        <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:video-create' %}" id="New Video Button">New Video</a></li>
+        <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'notifications' %}" id="Notification Button">Notifications</a></li>
+        {% if user.is_superuser %}
+            <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'admin:index' %}" id="Admin Button">Admin</a></li>
+        {% endif %}
+        <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'profile' %}" id="Profile Button">Profile</a></li>
+        <li class="nav-item nav-link"><a class="nav-link active"  href='#'onclick='overlay()' id="Logout Button">Logout</a></li>
+    {% else %}
+        <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'login' %}" id="Login Button">Login</a></li>
+        <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'register' %}" id="Register Button">Register</a></li>
+    {% endif %}
+</ul>
         </div>
         {% comment %} <div class="navbar-nav">
             <a class="nav-link active" href=" {% url 'stream:video-list' %} ">Videos</a>
@@ -91,6 +92,10 @@
               {% if user.is_superuser %}
                 <a class="nav-item nav-link" href="{% url 'admin:index' %}">Admin</a>
               {% endif %}
+              {% if user.is_authenticated %}
+              <li class="nav-item nav-link">
+              <a class="nav-link active" href="{% url 'notifications' %}" id="Notification Button">Notifications</a>
+          </li> {% endif %}
               <a class="nav-item nav-link" href="{% url 'profile' %}">Profile</a>
               <a class="nav-item nav-link"  href='#'onclick='overlay()' id="Logout Button">Logout</a>
               {% else %}

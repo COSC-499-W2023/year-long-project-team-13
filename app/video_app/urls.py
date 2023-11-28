@@ -30,6 +30,8 @@ urlpatterns = [
     # note the override comes before the admin URLs below
     path('admin/logout/', auth_views.LogoutView.as_view(template_name='streamers/logout.html')),
     path('admin/', admin.site.urls, name="admin"),
+    path('notifications',streamers_views.notifications, name="notifications"),
+    
 
 ]
 
