@@ -61,8 +61,8 @@
                               <div class="mt-3">
                                   <h4>{{ user.username }}</h4>
                                   <!-- <p class="text-dark mb-1">{{ user.email }}</p> -->
-                                  <p class="text-secondary mb-1">Full Stack Developer</p>
-                                  <p class="text-muted font-size-sm">Bay Area, San Francisco, CA</p>
+                                  <p class="text-secondary mb-1" id="NameCheck">{{ user.first_name }} {{ user.last_name }}</p>
+                                  <p class="text-muted font-size-sm" id="EmailCheck">{{ user.email }}</p>
                                   <button class="btn btn-primary">Follow</button>
                                   <button class="btn btn-outline-primary">Message</button>
                               </div>
@@ -101,13 +101,27 @@
                       <div class="card-body">
                           <div class="row mb-3">
                               <div class="col-sm-3">
-                                  <h6 class="mb-0">Username</h6>
+                                  <h6 class="mb-0">First Name</h6>
                               </div>
                               <div class="col-sm-9 text-secondary">
                                   {% comment %} <input type="text" class="form-control" value="John Doe"> {% endcomment %}
-                                  {{ userform.username.errors }}
-                                  {{ userform.username }}
+                                  {% comment %} {{ userform.username.errors }}
+                                  {{ userform.username }} {% endcomment %}
+                                {{ userform.first_name.errors }}
+                                {{ userform.first_name }}
                               </div>
+                          </div>
+                          <div class="row mb-3">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Last Name</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                {% comment %} <input type="text" class="form-control" value="John Doe"> {% endcomment %}
+                                {{ userform.last_name.errors }}
+                                {{ userform.last_name }}
+                                {% comment %} {{ userform.first_name.errors }}
+                                {{ userform.first_name }} {% endcomment %}
+                            </div>
                           </div>
                           <div class="row mb-3">
                               <div class="col-sm-3">
