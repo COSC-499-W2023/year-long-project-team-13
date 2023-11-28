@@ -75,7 +75,7 @@
           background-color: #3e8e41;
         }
 
-        div.justified {
+        .justified {
             display: flex;
             justify-content: center;
         }
@@ -92,6 +92,18 @@
             <div class="justified">
                 <body>Enter a Message:</body>
                     {{ form.description }}
+            </div>
+            <div class="checkboxes">
+                <h5>Options</h5>
+                <body>Blur Face:</body>
+                <input type="checkbox" id="Blur Face" name="Blur Face" value="1">
+                <body>Blur Background:</body>
+                <input type="checkbox" id="Blur Background" name="Blur Background" value="2">
+                <body>Time Limit:</body>
+                <input type="checkbox" id="Time Limit" name="Time Limit" value="3">
+                <body>Data Encryption:</body>
+                <input type="checkbox" id="Data Encryption" name="Data Encryption" value="4">
+
             </div>
             <br>
             <button class="button" type="submit">SEND</button>
