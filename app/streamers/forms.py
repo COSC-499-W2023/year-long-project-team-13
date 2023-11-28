@@ -2,6 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from . models import Profile
+from . models import Person
 
 from django.contrib.auth.forms import SetPasswordForm
 
@@ -25,16 +26,22 @@ class UserRegistrationForm(UserCreationForm):
         fields = ['username','email','password1','password2']
 
 class UserUpdateForm(forms.ModelForm):
-    username = forms.CharField(widget=forms.TextInput(attrs={'placeholder' :'Username',
+    # username = forms.CharField(widget=forms.TextInput(attrs={'placeholder' :'Username',
+    #                                                          'style':'width: 400px; height: 45px; margin-left: auto; margin-right: auto; margin-bottom: 25px; border: 2px groove lightgreen;',
+    #                                                          'class': 'form-control', 'required': True}))
+    first_name = forms.CharField(widget=forms.TextInput(attrs={'placeholder' :'First Name',
                                                              'style':'width: 400px; height: 45px; margin-left: auto; margin-right: auto; margin-bottom: 25px; border: 2px groove lightgreen;',
-                                                             'class': 'form-control', 'required': True}))
+                                                             'class': 'form-control', 'required': True}), max_length=50)
+    last_name = forms.CharField(widget=forms.TextInput(attrs={'placeholder' :'Last Name',
+                                                             'style':'width: 400px; height: 45px; margin-left: auto; margin-right: auto; margin-bottom: 25px; border: 2px groove lightgreen;',
+                                                             'class': 'form-control', 'required': True}), max_length=50)
     email = forms.EmailField(widget=forms.EmailInput(attrs={'placeholder' :'Email',
                                                             'style': 'width: 400px; height: 45px;margin-left: auto; margin-right: auto; margin-bottom: 25px; border: 2px groove lightgreen;',
                                                             'class': 'form-control', 'required': True}))
 
     class Meta:
-        model = User
-        fields = ['username','email']
+        model = Person
+        fields = ['first_name','last_name','email']
 
 class UserProfileUpdateForm(forms.ModelForm):
 
