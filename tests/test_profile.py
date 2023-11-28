@@ -132,14 +132,8 @@ def profile_page_test(driver, username, password, firstName, lastName, email, im
 
     # Check if the URL contains the expected profile page URL
     if '/profile' in driver.current_url:
-        if firstName_value_check == firstName_value_input and lastName_value_check == lastName_value_input and email_value_check == email_value_input and 'mountain' in img_check and '.jpg' in img_check:
-            if email_display_value_check == email_value_check:
-                if name_display_value_check == (firstName_value_check + " " + lastName_value_check):
-                    print("Edit Profile successful")
-                else:
-                    print("Name Display failed")
-            else:
-                print("Email Display failed")
+        if firstName_value_check == firstName_value_input and lastName_value_check == lastName_value_input and email_value_check == email_value_input and 'mountain' in img_check and '.jpg' in img_check and email_display_value_check == email_value_check and name_display_value_check == (firstName_value_check + " " + lastName_value_check):
+            print("Edit Profile successful")
         else:
             print("Edit Profile failed")
     else:
