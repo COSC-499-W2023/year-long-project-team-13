@@ -32,12 +32,12 @@ def contact(request):
 
 def request_video(request):
     if request.method == "POST":
-        form = VidUploadForm(request.POST)
+        form = VidRequestForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('stream:home')
     else:
-        form = VidUploadForm()
+        form = VidRequestForm()
         return render(request, 'stream/request-video.html', {'form':form})
 
 
