@@ -4,13 +4,18 @@ from .forms import UserRegistrationForm, UserUpdateForm, UserProfileUpdateForm, 
 from django.contrib.auth.hashers import make_password
 from django.shortcuts import redirect
 from django.contrib.auth import logout, authenticate, login
+from django.contrib.auth.models import User
 from .models import Notification
+from django.dispatch import Signal
 
+# Define the signal
+user_signed_up = Signal()
 def register(request):
     if request.method == "POST":
         form = UserRegistrationForm(request.POST)
         if form.is_valid():
-            form.save()
+            new_user = form.save()
+            user_signed_up.send(sender=User, user=new_user)
             return redirect('login')
     else:
         form = UserRegistrationForm()
