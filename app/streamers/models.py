@@ -5,6 +5,7 @@ from django.dispatch import receiver
 from PIL import Image, ImageOps
 # import ExifTags
 
+# Update User's Profile Picture
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     image = models.ImageField(default="mountain.jpg", upload_to='profile-pics')
@@ -32,3 +33,14 @@ class Notification(models.Model):
 def user_logged_in(sender, user, request, **kwargs):
     Notification.objects.create(user=user, message='You have logged in.')
 
+# Update User's First & Last Name
+class Person(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    first_name = models.CharField(max_length=50)
+    last_name = models.CharField(max_length=50)
+
+    def __str__(self):
+        return f"{self.first_name} {self.last_name}"
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
