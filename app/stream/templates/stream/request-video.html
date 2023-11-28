@@ -85,9 +85,13 @@
         <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             <h1>SEND A VIDEO REQUEST</h1>
-            <button class="button" type="submit">Choose Contact</button>
-            <br>
-            <body>Contact Chosen: </body>
+            <select name="contacts" id="contacts">
+                <option value="Choose">Choose a Contact</option>
+                <option value="Ethan">Ethan</option>
+                <option value="Adrian">Adrian</option>
+                <option value="Herman">Herman</option>
+                <option value="Raymond">Raymond</option>
+              </select>
             <br>
             <div class="justified">
                 <body>Enter a Message:</body>
