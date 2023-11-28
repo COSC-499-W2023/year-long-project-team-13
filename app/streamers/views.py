@@ -10,7 +10,7 @@ from django.dispatch import Signal
 
 # Define the signal
 user_signed_up = Signal()
-def register(requestt):
+def register(request):
     if request.method == "POST":
         form = UserRegistrationForm(request.POST)
         if form.is_valid():
