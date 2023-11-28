@@ -10,3 +10,5 @@ import test_admin # runs admin test
 import test_contact_videopage # runs contact video page
 import test_create # runs create video test
 import test_notification # runs notification test
+import test_setting # runs setting test
+import test_theme # runs theme test
