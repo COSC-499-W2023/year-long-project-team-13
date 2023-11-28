@@ -92,24 +92,16 @@
                 <option value="Herman">Herman</option>
                 <option value="Raymond">Raymond</option>
               </select>
+            <div style = "padding-top: 5px;">
             <br>
             <div class="justified">
                 <body>Enter a Message:</body>
                     {{ form.description }}
             </div>
-            <div class="checkboxes">
-                <h5>Options</h5>
-                <body>Blur Face:</body>
-                <input type="checkbox" id="Blur Face" name="Blur Face" value="1">
-                <body>Blur Background:</body>
-                <input type="checkbox" id="Blur Background" name="Blur Background" value="2">
-                <body>Time Limit:</body>
-                <input type="checkbox" id="Time Limit" name="Time Limit" value="3">
-                <body>Data Encryption:</body>
-                <input type="checkbox" id="Data Encryption" name="Data Encryption" value="4">
-
-            </div>
-            <br>
+            <div style = "padding-top: 15px;">
+            <label for="duedate">Due Date:</label>
+            <input type="date" id="dueDate" name="dueDate">
+            <div style = "padding-top: 15px;">
             <button class="button" type="submit">SEND</button>
 
         </form>
