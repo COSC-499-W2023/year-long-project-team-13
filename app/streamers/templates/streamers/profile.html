@@ -30,6 +30,7 @@
                 <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'admin:index' %}" id="Admin Button">Admin</a>
               {% endif %}
               <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'profile' %}" id="Profile Button">Profile</a>
+              <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'setting' %}" id="Setting Button">Setting</a>
               <li class="nav-item nav-link"><a class="nav-link active"  href='#'onclick='overlay()' id="Logout Button">Logout</a>
             {% else %}
               <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'login' %}" id="Login Button">Login</a>
@@ -265,9 +266,9 @@
 {% comment %} <div>
         <img src="{{ user.profile.image.url }}">
         <h3>{{ user.username }}</h3>
-        <p>{{ username.email }}</p>
+        <p>{{ user.email }}</p>
     </div>
-    <div>
+    <div style="text-align: center;">
         <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             <legend>profile info</legend>
@@ -275,5 +276,10 @@
             {{ profileform.as_p }}
             <button class="btn btn-outline-info" type="submit">Update</button>
         </form>
+    </div>
 
-    </div> {% endcomment %}
+    <script src=" {% static 'assets/bootstrap/js/bootstrap.min.js' %} "></script>
+    <script src=" {% static 'assets/js/grayscale.js' %} "></script>
+  </body>
+</html>
+{% comment %} {% endblock content %} {% endcomment %}
