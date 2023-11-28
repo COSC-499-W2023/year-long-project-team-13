@@ -154,8 +154,26 @@
  ![WeeklyLogImages](./images/tasks/Week10HermanEditProfile.png)
  ![WeeklyLogImages](./images/tasks/Week10HermanProfileSuccess.png)
 
+- Applicable date range
+##  Week 11-12 2023/~2023
 
 
+![Tasks](./images/tasks/Week10Herman.png)
+
+# Preferred name -> Ssc name -> Github name
+
+- Herman -> Herman Sood -> Herman Sood
+
+- Recap on your week's goals-Which features were yours in the project plan for this milestone? For week 11 I worked on the profile page and helped setup the structure of the page. The profile image can be updated every time after refreshing. The css was also done for the design of the profile page. For week 12 I worked on the notification page and got the structure set up. It also has some css design to the page. More work in progress.
+  - Which tasks from the project board are associated with these features?
+  Profile and editprofile and Notifications
+  - Among these tasks, which have you completed/in progress in the last week?
+Profile and editeprofile and Notifications
+
+ ![WeeklyLogImages](./images/tasks/Week11-12Herman.png)
+ ![WeeklyLogImages](./images/tasks/Week11HermanProfile.png)
+ ![WeeklyLogImages](./images/tasks/Week12NotificationHerman.png)
+![WeeklyLogImages](./images/tasks/Week11-12HermanCommits.png)
 
 
 

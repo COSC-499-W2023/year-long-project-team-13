@@ -1,48 +1,10 @@
-{% comment %} {% extends 'stream/base.html'%}
-{% block content %} {% endcomment %}
-
-{% load bootstrap5 %}
-{% bootstrap_css %}
-{% bootstrap_javascript %}
-{% load static %}
-<!DOCTYPE html>
-<html data-bs-theme="light" lang="en">
-
-<head>
-  <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href= "{%static 'assets/bootstrap/css/bootstrap.min.css' %}">
-    <title>Vnonymous</title>
-    <link href="{% static 'css/style.css' %}" rel="stylesheet">
-    <link href="{% static 'css/logoutUI.css' %}" rel="stylesheet">
-</head>
-
-<body id="page-top" data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="77" style="background-color: grey;">
-    <nav class="navbar navbar-expand-md fixed-top navbar-light" id="mainNav">
-        <div class="container"><a class="navbar-brand" href=" {% url 'stream:home' %} ">Vnonymous</a><button data-bs-toggle="collapse" class="navbar-toggler navbar-toggler-right" data-bs-target="#navbarResponsive" type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" value="Menu"><i class="fa fa-bars"></i></button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item nav-link"><a class="nav-link active" href=" {% url 'stream:video-list' %} " id="Video Button">Videos</a></li>
-                    <li class="nav-item nav-link"><a class="nav-link active" href=" {% url 'stream:contact' %} " id="Add Contacts Button">Add Contacts</a></li>
-                </ul>
-            </div>
-            <div class="navbar-nav">
-                {% if user.is_authenticated %}
-                  <a class="nav-item nav-link" href="{% url 'stream:video-create' %}" id="New Video Button">New Video</a>
-                  {% if user.is_superuser %}
-                    <a class="nav-item nav-link" href="{% url 'admin:index' %}">Admin</a>
-                  {% endif %}
-                  <a class="nav-item nav-link" href="{% url 'profile' %}" id="Profile Button">Profile</a>
-                  <a class="nav-item nav-link"  href='#'onclick='overlay()' id="Logout Button">Logout</a>
-                {% else %}
-                  <a class="nav-item nav-link" href="{% url 'login' %}" id="Login Button">Login</a>
-                  <a class="nav-item nav-link" href="{% url 'register' %}" id="Register Button">Register</a>
-                {% endif %}
-              </div>
+{% extends 'stream/base.html' %}
+{% block content %}
+    <div class="container" style="margin-top: 25px;">
+        <div>
+            {% comment %} <h1>Vnonymous</h1> {% endcomment %}
         </div>
-    </nav>
-
-    {% if user.is_authenticated %}
+        {% if user.is_authenticated %}
         <div id="overlay" class="float-center" style="position:fixed; top:30%;">
             <div>
                 <p class="text-dark">Are you sure to logout?</p>
@@ -50,49 +12,23 @@
                 <button id="cancel" class="float-left submit-button">Cancel</button>
             </div>
         </div>
-    {% endif %}
-
-
-    <div style="margin-top: 25px;">
-        {% comment %} <h1>Vnonymous</h1> {% endcomment %}
-    <div style="padding-top: 75px;">
-        {% for item in videos%}
-        <div class="card" style="width: 40rem; margin: 20px; box-shadow: 12em;">
-            <img class="rounded-circle border-dark" src="{{ item.streamer.profile.image.url }}" style="border-color: red;" width="30" height="30">
-            <a class="mr-2" href="{% url 'stream:user-videos' item.streamer.username %}" style="text-align: start;">{{ item.streamer }}</a>
-            <h12 style="text-align: start;">{{ item.upload_date }}</h12>
-            <video class="card-image-top" controls>
-                <source src="{{ item.video.url }}" type="video/mp4">
-              </video>
-            <div class="card-body">
-              <h5 class="card-title"><a href="{% url 'stream:video-detail' item.id  %}">{{ item.title }}</a></h5>
-              <p class="card-text">{{item.description }}</p>
-            </div>
-            <hr>
-          </div>
-        {% endfor %}
+        {% endif %}
+        <div style="padding-top: 50px;">
+            {% for item in videos %}
+                <div class="card mb-3" style="width: 75%; box-shadow: 12em; margin: auto;">
+                    <img class="rounded-circle border-dark" src="{{ item.streamer.profile.image.url }}" style="border-color: red;" width="50" height="50">
+                    <a class="mr-2" href="{% url 'stream:user-videos' item.streamer.username %}" style="text-align: start;">{{ item.streamer }}</a>
+                    <h12 style="text-align: start;">{{ item.upload_date }}</h12>
+                    <video class="card-img-top" controls style="width: 100%; height: auto;">
+                        <source src="{{ item.video.url }}" type="video/mp4">
+                    </video>
+                    <div class="card-body">
+                        <h5 class="card-title"><a href="{% url 'stream:video-detail' item.id  %}">{{ item.title }}</a></h5>
+                        <p class="card-text">{{ item.description }}</p>
+                    </div>
+                    <hr>
+                </div>
+            {% endfor %}
+        </div>
     </div>
-  </div>
-
-  <script src=" {% static 'assets/bootstrap/js/bootstrap.min.js' %} "></script>
-
-  <!-- This js makes the header change to black colour when scrolling -->
-  <script src=" {% static 'assets/js/grayscale.js' %} "></script>
-
-  <!-- This js ask user before logout  -->
-  <script src=" {% static 'assets/js/logout.js'%} "></script>
-
-  <!-- Logout popup UI -->
-  <script src=" {% static 'assets/js/logoutUI.js'%} "></script>
-  <script>
-      document.getElementById("logout").onclick = function () {
-          location.href = "{% url 'logout' %}";
-      };
-      document.getElementById("cancel").onclick = function () {
-          location.href = "{% url 'stream:video-list' %}";
-      };
-  </script>
-
-</body>
-</html>
-{% comment %} {% endblock content %} {% endcomment %}
+{% endblock content %}

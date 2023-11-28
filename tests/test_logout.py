@@ -67,7 +67,7 @@ def logout_test(driver, username, password):
     logout_confirm_element.click()
     time.sleep(0.5)
 
-    # Wait for the URL to change to the profile page URL
+    # Wait for the URL to change to the logout page URL
     wait.until(EC.url_contains('/logout'))
 
     # Check if the URL contains the expected profile page URL
