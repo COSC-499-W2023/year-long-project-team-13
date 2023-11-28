@@ -74,6 +74,11 @@
         .button:hover {
           background-color: #3e8e41;
         }
+
+        div.justified {
+            display: flex;
+            justify-content: center;
+        }
         </style>
 
     <div style = "margin-top: 25px; padding-top: 75px;">
@@ -83,7 +88,11 @@
             <button class="button" type="submit">Choose Contact</button>
             <br>
             <body>Contact Chosen: </body>
-                {{ form.description }}
+            <br>
+            <div class="justified">
+                <body>Enter a Message:</body>
+                    {{ form.description }}
+            </div>
             <br>
             <button class="button" type="submit">SEND</button>
 
