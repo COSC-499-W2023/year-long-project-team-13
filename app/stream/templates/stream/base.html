@@ -75,10 +75,8 @@
         {% if user.is_superuser %}
             <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'admin:index' %}" id="Admin Button">Admin</a></li>
         {% endif %}
+        <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'notifications' %}" id="Notification Button">Notifications</a></li>
         <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'profile' %}" id="Profile Button">Profile</a></li>
-        <li class="nav-item nav-link">
-          <a class="nav-link active" href="{% url 'notifications' %}" id="Notification Button">Notifications</a>
-      </li>
         <li class="nav-item nav-link"><a class="nav-link active"  href='#'onclick='overlay()' id="Logout Button">Logout</a></li>
     {% else %}
         <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'login' %}" id="Login Button">Login</a></li>
@@ -93,7 +91,7 @@
               <a class="nav-item nav-link" href="{% url 'stream:video-create' %}">New Video</a>
               {% if user.is_superuser %}
                 <a class="nav-item nav-link" href="{% url 'admin:index' %}">Admin</a>
-              {% endif %}   
+              {% endif %}
               {% if user.is_authenticated %}
               <li class="nav-item nav-link">
               <a class="nav-link active" href="{% url 'notifications' %}" id="Notification Button">Notifications</a>
