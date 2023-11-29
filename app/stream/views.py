@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from . models import VidStream
 from . forms import VidUploadForm
+from . forms import VidRequestForm
 from django.views.generic import DetailView, DeleteView, UpdateView, ListView, CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.models import User
