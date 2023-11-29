@@ -102,7 +102,9 @@
             <label for="duedate">Due Date:</label>
             <input type="date" id="dueDate" name="dueDate">
             <div style = "padding-top: 15px;">
-            <button class="button" type="submit">SEND</button>
+            <a href="{% url 'stream:home' %}" >
+              <button class="button" type="button">SEND</button>
+            </a>
 
         </form>
     </div>
