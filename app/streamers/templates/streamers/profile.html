@@ -14,7 +14,7 @@
     <link href="{% static 'css/logoutUI.css' %}" rel="stylesheet">
   </head>
 
-  <body id="page-top" data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="77" style="background-color: grey;">
+  <body id="page-top" data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="77" style="background-size: cover; background-image: url(' {% static 'assets/img/intro-bg.jpg' %} ');">
     <nav class="navbar navbar-expand-md fixed-top navbar-light" id="mainNav">
       <div class="container"><a class="navbar-brand" href=" {% url 'stream:home' %} " id="Home Button">
         Vnonymous
@@ -25,10 +25,12 @@
             <li class="nav-item nav-link"><a class="nav-link active" href=" {% url 'stream:contact' %} " id="Add Contacts Button">Add Contacts</a></li>
             {% if user.is_authenticated %}
               <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:video-create' %}" id="New Video Button">New Video</a>
+              <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'notifications' %}" id="Notification Button">Notifications</a></li>
               {% if user.is_superuser %}
                 <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'admin:index' %}" id="Admin Button">Admin</a>
               {% endif %}
               <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'profile' %}" id="Profile Button">Profile</a>
+              <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'setting' %}" id="Setting Button">Setting</a>
               <li class="nav-item nav-link"><a class="nav-link active"  href='#'onclick='overlay()' id="Logout Button">Logout</a>
             {% else %}
               <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'login' %}" id="Login Button">Login</a>
@@ -61,8 +63,8 @@
                               <div class="mt-3">
                                   <h4>{{ user.username }}</h4>
                                   <!-- <p class="text-dark mb-1">{{ user.email }}</p> -->
-                                  <p class="text-secondary mb-1">Full Stack Developer</p>
-                                  <p class="text-muted font-size-sm">Bay Area, San Francisco, CA</p>
+                                  <p class="text-secondary mb-1" id="NameCheck">{{ user.first_name }} {{ user.last_name }}</p>
+                                  <p class="text-muted font-size-sm" id="EmailCheck">{{ user.email }}</p>
                                   <button class="btn btn-primary">Follow</button>
                                   <button class="btn btn-outline-primary">Message</button>
                               </div>
@@ -101,13 +103,27 @@
                       <div class="card-body">
                           <div class="row mb-3">
                               <div class="col-sm-3">
-                                  <h6 class="mb-0">Username</h6>
+                                  <h6 class="mb-0">First Name</h6>
                               </div>
                               <div class="col-sm-9 text-secondary">
                                   {% comment %} <input type="text" class="form-control" value="John Doe"> {% endcomment %}
-                                  {{ userform.username.errors }}
-                                  {{ userform.username }}
+                                  {% comment %} {{ userform.username.errors }}
+                                  {{ userform.username }} {% endcomment %}
+                                {{ userform.first_name.errors }}
+                                {{ userform.first_name }}
                               </div>
+                          </div>
+                          <div class="row mb-3">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Last Name</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                {% comment %} <input type="text" class="form-control" value="John Doe"> {% endcomment %}
+                                {{ userform.last_name.errors }}
+                                {{ userform.last_name }}
+                                {% comment %} {{ userform.first_name.errors }}
+                                {{ userform.first_name }} {% endcomment %}
+                            </div>
                           </div>
                           <div class="row mb-3">
                               <div class="col-sm-3">
@@ -232,9 +248,6 @@
         <!-- This js makes the header change to black colour when scrolling -->
         <script src=" {% static 'assets/js/grayscale.js' %} "></script>
 
-        <!-- This js ask user before logout  -->
-        <script src=" {% static 'assets/js/logout.js'%} "></script>
-
         <!-- Logout popup UI -->
         <script src=" {% static 'assets/js/logoutUI.js'%} "></script>
         <script>
@@ -253,9 +266,9 @@
 {% comment %} <div>
         <img src="{{ user.profile.image.url }}">
         <h3>{{ user.username }}</h3>
-        <p>{{ username.email }}</p>
+        <p>{{ user.email }}</p>
     </div>
-    <div>
+    <div style="text-align: center;">
         <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             <legend>profile info</legend>
@@ -263,5 +276,10 @@
             {{ profileform.as_p }}
             <button class="btn btn-outline-info" type="submit">Update</button>
         </form>
+    </div>
 
-    </div> {% endcomment %}
+    <script src=" {% static 'assets/bootstrap/js/bootstrap.min.js' %} "></script>
+    <script src=" {% static 'assets/js/grayscale.js' %} "></script>
+  </body>
+</html>
+{% comment %} {% endblock content %} {% endcomment %}

@@ -47,7 +47,7 @@ def login_page_test(driver, username, password):
     else:
         print("Login successful")
 
-def profile_page_test(driver, username, password, email, image, username_set, email_set):
+def profile_page_test(driver, username, password, firstName, lastName, email, image, firstName_set, lastName_set, email_set):
     # Call the login page test function
     login_page_test(driver, username, password)
     time.sleep(0.5)
@@ -61,18 +61,22 @@ def profile_page_test(driver, username, password, email, image, username_set, em
     # Wait for the URL to change to the profile page URL
     wait.until(EC.url_contains('/profile'))
 
-    username_element = driver.find_element(By.ID, "id_username")
-    username_element.clear()
-    username_element.send_keys(username_set)
-    username_value_input = username_element.get_attribute('value')
-    # print(username_value_input)
+    firstName_element = driver.find_element(By.ID, "id_first_name")
+    firstName_element.clear()
+    firstName_element.send_keys(firstName_set)
+    firstName_value_input = firstName_element.get_attribute('value')
+    time.sleep(0.5)
+
+    lastName_element = driver.find_element(By.ID, "id_last_name")
+    lastName_element.clear()
+    lastName_element.send_keys(lastName_set)
+    lastName_value_input = lastName_element.get_attribute('value')
     time.sleep(0.5)
 
     email_element = driver.find_element(By.ID, "id_email")
     email_element.clear()
     email_element.send_keys(email_set)
     email_value_input = email_element.get_attribute('value')
-    # print(email_value_input)
     time.sleep(0.5)
 
     #By.xpath("//input[@id='file_up']")
@@ -90,25 +94,28 @@ def profile_page_test(driver, username, password, email, image, username_set, em
     wait.until(EC.url_contains('/profile'))
     time.sleep(0.5)
 
-    username_value_check = driver.find_element(By.ID, "id_username").get_attribute('value')
-    # print(username_value_check)
-    time.sleep(0.5)
+    firstName_value_check = driver.find_element(By.ID, "id_first_name").get_attribute('value')
+
+    lastName_value_check = driver.find_element(By.ID, "id_last_name").get_attribute('value')
 
     email_value_check = driver.find_element(By.ID, "id_email").get_attribute('value')
-    # print(email_value_check)
-    time.sleep(0.5)
 
-    username_display_value_check = driver.find_element(By.TAG_NAME, "h4").text.lower()
-    # print(username_display_value_check)
-    time.sleep(0.5)
+    # .text.lower()
+
+    name_display_value_check = driver.find_element(By.ID, "NameCheck").text
+
+    email_display_value_check = driver.find_element(By.ID, "EmailCheck").text
 
     img_check = driver.find_element(By.TAG_NAME, "img").get_attribute('src')
-    # print(img_check)
+
+    firstName_element = driver.find_element(By.ID, "id_first_name")
+    firstName_element.clear()
+    firstName_element.send_keys(firstName)
     time.sleep(0.5)
 
-    username_element = driver.find_element(By.ID, "id_username")
-    username_element.clear()
-    username_element.send_keys(username)
+    lastName_element = driver.find_element(By.ID, "id_last_name")
+    lastName_element.clear()
+    lastName_element.send_keys(lastName)
     time.sleep(0.5)
 
     email_element = driver.find_element(By.ID, "id_email")
@@ -125,7 +132,7 @@ def profile_page_test(driver, username, password, email, image, username_set, em
 
     # Check if the URL contains the expected profile page URL
     if '/profile' in driver.current_url:
-        if username_value_check == username_value_input and email_value_check == email_value_input and username_value_check == username_display_value_check and 'mountain' in img_check and '.jpg' in img_check:
+        if firstName_value_check == firstName_value_input and lastName_value_check == lastName_value_input and email_value_check == email_value_input and 'mountain' in img_check and '.jpg' in img_check and email_display_value_check == email_value_check and name_display_value_check == (firstName_value_check + " " + lastName_value_check):
             print("Edit Profile successful")
         else:
             print("Edit Profile failed")
@@ -158,7 +165,7 @@ wait = WebDriverWait(driver, 60)
 
 # Call the profile page test function with appropriate input values
 driver.get('http://localhost:8000/login')
-profile_page_test(driver, 'linus', '123', 'abc@xyz.com', os.path.abspath('../app/media/mountain.jpg'), 'linuslinus', 'admin@xyz.com')
+profile_page_test(driver, 'aime', 'David123.', 'Aime', 'David', 'abc@xyz.com', os.path.abspath('../app/media/mountain.jpg'), 'Test First Name', 'Test Last Name', 'admin@xyz.com')
 time.sleep(0.5)
 
 # Close the webdriver
