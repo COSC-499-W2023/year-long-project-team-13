@@ -44,7 +44,7 @@ def create_video_test(driver):
     video_button_element.click()
     # Wait for the URL to change to the video page URL
     wait.until(EC.url_contains('/new'))
-    # Check if the URL contains the expected post-login page URL
+    # Check if the URL contains the expected page URL
     if '/new' in driver.current_url:
         print("Create Video Successful")
     else:

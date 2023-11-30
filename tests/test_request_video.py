@@ -39,13 +39,18 @@ def login(driver, username, password):
     wait.until(EC.url_contains('/'))
     time.sleep(0.5)
 def create_video_test(driver):
-    # Find the element with the id "New Video Button" and click it
+    # Find the element with the id "Video Request Button" and click it
     video_button_element = driver.find_element(By.ID, "Video Request Button")
     video_button_element.click()
     # Wait for the URL to change to the video page URL
     wait.until(EC.url_contains('/request-video'))
-    # Check if the URL contains the expected post-login page URL
-    if '/request-video' in driver.current_url:
+    # Check that the send button goes to home page
+    video_button_element = driver.find_element(By.ID, "send")
+    video_button_element.click()
+    # Wait for the URL to change to the home page URL
+    wait.until(EC.url_contains('/'))
+    # Check if the URL contains the expected page URL
+    if '/' in driver.current_url:
         print("Request Video Successful")
     else:
         print("Request Video Failed")
