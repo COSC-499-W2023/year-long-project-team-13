@@ -44,6 +44,7 @@ def create_video_test(driver):
     video_button_element.click()
     # Wait for the URL to change to the video page URL
     wait.until(EC.url_contains('/request-video'))
+    time.sleep(0.5)
     # Check that the send button goes to home page
     video_button_element = driver.find_element(By.ID, "send")
     video_button_element.click()
