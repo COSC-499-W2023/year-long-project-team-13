@@ -38,16 +38,34 @@ def login(driver, username, password):
     # Wait for the URL to change to the home page URL
     wait.until(EC.url_contains('/'))
     time.sleep(0.5)
-def create_video_test(driver):
+    if '/' in driver.current_url:
+        print("Login Successful")
+    else:
+        print("Login Failed")
+
+def request_video_test(driver):
     # Find the element with the id "Video Request Button" and click it
     video_button_element = driver.find_element(By.ID, "Video Request Button")
     video_button_element.click()
     # Wait for the URL to change to the video page URL
     wait.until(EC.url_contains('/request-video'))
     time.sleep(0.5)
+    # Check contacts button
+    video_button_element = driver.find_element(By.ID, "contacts")
+    video_button_element.click()
+    time.sleep(0.5)
+    # Check message text area
+    video_button_element = driver.find_element(By.ID, "message")
+    video_button_element.click()
+    time.sleep(0.5)
+    # Check due date button
+    video_button_element = driver.find_element(By.ID, "dueDate")
+    video_button_element.click()
+    time.sleep(0.5)
     # Check that the send button goes to home page
     video_button_element = driver.find_element(By.ID, "send")
     video_button_element.click()
+    time.sleep(0.5)
     # Wait for the URL to change to the home page URL
     wait.until(EC.url_contains('/'))
     # Check if the URL contains the expected page URL
@@ -73,7 +91,7 @@ driver.get('http://localhost:8000/login')
 # Call the login page test function with appropriate input values
 login(driver, 'linus', '123')  # Replace with actual credentials
 time.sleep(0.5)
-create_video_test(driver)
+request_video_test(driver)
 
 # Close the webdriver
 driver.quit()
