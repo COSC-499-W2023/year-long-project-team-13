@@ -16,6 +16,7 @@
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
     <link href="{% static 'css/styleRequest.css' %}" rel="stylesheet">
     <link href="{% static 'css/logoutUI.css' %}" rel="stylesheet">
+    <link href="{% static 'css/styleProfile.css' %}" rel="stylesheet">
 </head>
 
 <body id="page-top" data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="77" style="background-size: cover; background-image: url(' {% static 'assets/img/intro-bg.jpg' %} ');">
@@ -56,6 +57,7 @@
     <div class="container">
         <div class="row d-flex justify-content-center align-items-center h-100">
           <div class="col-lg-15">
+            <div class="card">
             <form method="POST" enctype="multipart/form-data">
               {% csrf_token %}
               <h1>SEND A VIDEO REQUEST</h1>
@@ -81,6 +83,7 @@
                 </a>
               </div>
             </form>
+            </div>
           </div>
         </div>
       </div>
@@ -101,7 +104,7 @@
             location.href = "{% url 'logout' %}";
         };
         document.getElementById("cancel").onclick = function () {
-            location.href = "{% url 'stream:video-create' %}";
+            location.href = "{% url 'stream:request-video' %}";
         };
     </script>
 

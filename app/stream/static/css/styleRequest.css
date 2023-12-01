@@ -1,15 +1,11 @@
 
-.vertical-buttons {
-    flex-direction: column;
-    display: flex;
-    }
 
 .button {
     background-color: transparent;
     margin-bottom: 10px;
     padding: 10px;
-    color: white;
-    border: 1px solid white;
+    color: black;
+    border: 1px solid #3e8e41;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -17,6 +13,20 @@
     width: 50%; /* Set a width if needed */
     cursor: pointer; /* Mouse pointer on change to hand on hover */
     }
+
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 0 solid transparent;
+    border-radius: .25rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 6px 0 rgb(218 218 253 / 65%), 0 2px 6px 0 rgb(206 206 238 / 54%);
+}
 
 .button:hover {
     background-color: #3e8e41;
