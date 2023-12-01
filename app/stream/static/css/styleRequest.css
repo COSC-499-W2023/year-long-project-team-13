@@ -14,6 +14,14 @@
     cursor: pointer; /* Mouse pointer on change to hand on hover */
     }
 
+.button:hover {
+    background-color: #3e8e41;
+    }
+
+.textarea {
+    border: 2px solid #3e8e41;
+    }
+
 .card {
     position: relative;
     display: flex;
@@ -28,9 +36,6 @@
     box-shadow: 0 2px 6px 0 rgb(218 218 253 / 65%), 0 2px 6px 0 rgb(206 206 238 / 54%);
 }
 
-.button:hover {
-    background-color: #3e8e41;
-   }
 
 .justified {
     display: flex;

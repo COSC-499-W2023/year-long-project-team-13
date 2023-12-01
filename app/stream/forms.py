@@ -10,7 +10,7 @@ class VidUploadForm(forms.ModelForm):
 
 class VidRequestForm(forms.ModelForm):
 
-    description = forms.CharField(widget=forms.Textarea(attrs={"rows":5, "cols":20, 'required': True}))
+    description = forms.CharField(widget=forms.Textarea(attrs={"rows":5, "cols":20, 'style': 'boarder: 2px groove lightgreen;','required': True}))
 
     class Meta:
         model = VidRequest
