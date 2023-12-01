@@ -1,4 +1,7 @@
-
+h6{
+    color: black;
+    font-weight: bold;
+    }
 
 .button {
     background-color: transparent;
@@ -20,6 +23,11 @@
 
 .textarea {
     border: 2px solid #3e8e41;
+    }
+
+.label{
+    color: black;
+    font-weight: bold;
     }
 
 .card {
