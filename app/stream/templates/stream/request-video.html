@@ -71,16 +71,18 @@
               <div style = "padding-top: 5px;">
               <br>
               <div class="justified">
-              <div class="col-sm-13">
+              <div class="col-lg-13">
                 <h6>Enter a Message:</h6>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-lg-3">
                     {{ form.description }}
                 </div>
               </div>
               <div style = "padding-top: 15px;">
+                <div class="col-lg-11">
               <label for="duedate" class="label">DUE DATE:</label>
-              <input type="date" id="dueDate" name="dueDate">
+              <input type="date" id="dueDate" name="dueDate" class="input">
+              </div>
               <div style = "padding-top: 15px;">
                 <a href="{% url 'stream:home' %}" >
                   <button class="button" :hover type="button" id="send">SEND</button>

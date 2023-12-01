@@ -8,7 +8,7 @@ h6{
     margin-bottom: 10px;
     padding: 10px;
     color: black;
-    border: 1px solid #3e8e41;
+    border: 2px solid #3e8e41;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -28,6 +28,11 @@ h6{
 .label{
     color: black;
     font-weight: bold;
+    padding-right:120px;
+    }
+
+.input{
+    border: 2px solid #3e8e41;
     }
 
 .card {
