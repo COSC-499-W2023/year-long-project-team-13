@@ -1,4 +1,8 @@
 
+.vertical-buttons {
+    flex-direction: column;
+    display: flex;
+    }
 
 .button {
     background-color: transparent;

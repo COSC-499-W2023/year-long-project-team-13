@@ -55,35 +55,35 @@
 
     <div class="container">
         <div class="row d-flex justify-content-center align-items-center h-100">
-        <div class="col-lg-15">
-        <form method="POST" enctype="multipart/form-data">
-            {% csrf_token %}
-            <h1>SEND A VIDEO REQUEST</h1>
-            <select name="contacts" id="contacts">
+          <div class="col-lg-15">
+            <form method="POST" enctype="multipart/form-data">
+              {% csrf_token %}
+              <h1>SEND A VIDEO REQUEST</h1>
+              <select name="contacts" id="contacts">
                 <option value="Choose">Choose a Contact</option>
                 <option value="Ethan">Ethan</option>
                 <option value="Adrian">Adrian</option>
                 <option value="Herman">Herman</option>
                 <option value="Raymond">Raymond</option>
               </select>
-            <div style = "padding-top: 5px;">
-            <br>
-            <div class="justified">
+              <div style = "padding-top: 5px;">
+              <br>
+              <div class="justified">
                 <body>Enter a Message:</body>
                     {{ form.description }}
-            </div>
-            <div style = "padding-top: 15px;">
-            <label for="duedate">Due Date:</label>
-            <input type="date" id="dueDate" name="dueDate">
-            <div style = "padding-top: 15px;">
-            <a href="{% url 'stream:home' %}" >
-              <button class="button" :hover type="button" id="send">SEND</button>
-            </a>
-
-        </form>
-    </div>
-    </div>
-    </div>
+              </div>
+              <div style = "padding-top: 15px;">
+              <label for="duedate">Due Date:</label>
+              <input type="date" id="dueDate" name="dueDate">
+              <div style = "padding-top: 15px;">
+                <a href="{% url 'stream:home' %}" >
+                  <button class="button" :hover type="button" id="send">SEND</button>
+                </a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
 
 
     <script src=" {% static 'assets/bootstrap/js/bootstrap.min.js' %} "></script>
