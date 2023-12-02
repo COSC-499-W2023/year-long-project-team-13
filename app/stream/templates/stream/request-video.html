@@ -57,11 +57,12 @@
     <div class="container">
         <div class="row d-flex justify-content-center align-items-center h-100">
           <div class="col-lg-15">
-            <div class="card">
+            <h1>SEND A VIDEO REQUEST</h1>
+            <div class="card mb-3" style="width: 75%; box-shadow: 12em; margin: auto;">
             <form method="POST" enctype="multipart/form-data">
               {% csrf_token %}
-              <h1>SEND A VIDEO REQUEST</h1>
-              <select name="contacts" id="contacts" class="dropdown">
+              <div style = "padding-top: 25px;">
+              <select name="contacts" id="contacts" class="dropdown buttonRound">
                 <option value="Choose">Choose a Contact</option>
                 <option value="Ethan">Ethan</option>
                 <option value="Adrian">Adrian</option>
@@ -81,7 +82,7 @@
               <div style = "padding-top: 15px;">
                 <div class="col-lg-11">
               <label for="duedate" class="label">DUE DATE:</label>
-              <input type="date" id="dueDate" name="dueDate" class="input">
+              <input type="date" id="dueDate" name="dueDate" class="input buttonRound">
               </div>
               <div style = "padding-top: 15px;">
                 <a href="{% url 'stream:home' %}" >
