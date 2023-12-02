@@ -49,6 +49,7 @@
                 {% if user.is_superuser %}
                   <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'admin:index' %}" id="Admin Button">Admin</a>
                 {% endif %}
+                <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:request-video' %}" id="Video Request Button">Video Request</a>
                 <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'profile' %}" id="Profile Button">Profile</a>
                 <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'setting' %}" id="Setting Button">Setting</a>
                 <li class="nav-item nav-link"><a class="nav-link active"  href='#'onclick='overlay()' id="Logout Button">Logout</a>
