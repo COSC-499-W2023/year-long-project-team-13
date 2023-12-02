@@ -61,7 +61,7 @@
             <form method="POST" enctype="multipart/form-data">
               {% csrf_token %}
               <h1>SEND A VIDEO REQUEST</h1>
-              <select name="contacts" id="contacts">
+              <select name="contacts" id="contacts" class="dropdown">
                 <option value="Choose">Choose a Contact</option>
                 <option value="Ethan">Ethan</option>
                 <option value="Adrian">Adrian</option>
@@ -85,7 +85,7 @@
               </div>
               <div style = "padding-top: 15px;">
                 <a href="{% url 'stream:home' %}" >
-                  <button class="button" :hover type="button" id="send">SEND</button>
+                  <button class="button buttonRound" :hover type="button" id="send">SEND</button>
                 </a>
               </div>
             </form>
