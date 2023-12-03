@@ -174,3 +174,14 @@
     ![Test](./images/Ethan_stuff/week12/contact_video_page_test.png)
   - This is the test report for the entire website
     ![Test](./images/Ethan_stuff/week12/Master_Test_Contact_Video_Test.png)
+
+# Preferred name -> Ssc name -> Github name
+
+- Ethan -> Ethan Hsu -> YuchenHsu
+
+## Week 13 2023/11/27 ~ 2023/12/03
+
+- Type of tasks you worked on (screenshot from Peer Eval question)
+
+![Tasks](./images/tasks/Ethan_Week13.png)
+
