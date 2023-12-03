@@ -29,9 +29,11 @@
             <li class="nav-item nav-link"><a class="nav-link active" href=" {% url 'stream:contact' %} " id="Add Contacts Button">Add Contacts</a></li>
             {% if user.is_authenticated %}
               <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:video-create' %}" id="New Video Button">New Video</a>
+              <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'notifications' %}" id="Notification Button">Notifications</a></li>
               {% if user.is_superuser %}
                 <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'admin:index' %}" id="Admin Button">Admin</a>
               {% endif %}
+              <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:request-video' %}" id="Video Request Button">Video Request</a>
               <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'profile' %}" id="Profile Button">Profile</a>
               <li class="nav-item nav-link"><a class="nav-link active"  href='#'onclick='overlay()' id="Logout Button">Logout</a>
             {% else %}
