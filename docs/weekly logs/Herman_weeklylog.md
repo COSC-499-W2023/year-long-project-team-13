@@ -176,6 +176,27 @@ Profile and editeprofile and Notifications
 ![WeeklyLogImages](./images/tasks/Week11-12HermanCommits.png)
 
 
+- Applicable date range
+##  Week 13 2023/11/27~2023/12/03
+
+
+ ![WeeklyLogImages](./images/tasks/Week13Herman.png)
+
+# Preferred name -> Ssc name -> Github name
+
+- Herman -> Herman Sood -> Herman Sood
+
+- Recap on your week's goals-Which features were yours in the project plan for this milestone? For week 13 I worked on the notifications page and then the design milestone with my team. For the notifications page I made sure to add the navigation to the navigation bar and made it so that it shows on every other page. Further I added some functionality in which any time a user logs into their account, on the notifications page they can see the day and the time they logged in and it will add to that each time they relogin. For the design milestone I wrote a few brief summaries of the all of the features. I also did the recording of my part of the video for the presentation. 
+  - Which tasks from the project board are associated with these features?
+  Notifications and Design Milestone
+  - Among these tasks, which have you completed/in progress in the last week?
+Notifications and Design Milestone
+
+ ![WeeklyLogImages](./images/tasks/Week13Notifications.png)
+ 
+
+
+
 
 
 
