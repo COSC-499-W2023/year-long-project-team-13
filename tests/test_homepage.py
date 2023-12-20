@@ -120,6 +120,10 @@ def logout_page_test(driver):
     logout_button_element = driver.find_element(By.ID, "Logout Button")
     logout_button_element.click()
 
+    logout_confirm_element = driver.find_element(By.ID, "logout")
+    logout_confirm_element.click()
+    time.sleep(0.5)
+
     # Wait for the URL to change to the logout page URL
     wait.until(EC.url_contains('/logout'))
 
@@ -148,6 +152,10 @@ def login(driver):
     # Send the password to the password input
     password_input_element.send_keys("123")
     time.sleep(0.5)
+
+    # Scroll down the login page
+    html = driver.find_element(By.TAG_NAME, "html")
+    html.send_keys(Keys.PAGE_DOWN)
 
     # Find the element with the id "Login Submit Button" and click it
     login_submit_button_element = driver.find_element(By.ID, "login")

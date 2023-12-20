@@ -9,7 +9,7 @@
 - Table view of in progress tasks on project board (by which username)
 - Test report
 - Optional text: Additional context that we should be aware of
-- 
+-
 
 ## Preferred name -> Ssc name -> Github name
 
@@ -209,3 +209,67 @@ Optional Text:
 
 - The following image is the uml diagram we made for our project.
   ![UML](./images/uml/uml.png)
+
+## Preferred name -> Ssc name -> Github name
+
+- Ethan -> Ethan Hsu -> YuchenHsu
+- Beth -> Beth Ralston -> mblackbeak
+- Herman -> Herman Sood -> herman-23
+- Raymond -> Sitt Paing -> SittHmuePaing
+- Adrian -> Adrian Fong -> AdrianFWM
+
+## Week 11~12 2023/11/13 ~ 2023/11/26
+
+- Which features were in the project plan for this milestone?
+  - This week, we worked on making the profile page, admin page and the notification page.
+  - We also worked on making the create video page, the video list page and the add contact page look better.
+  - We have also started working on the Settings page, Logout UI.
+  - We also tried to host our project on AWS, but we ran into some problems and that one is still in progress.
+- Which tasks from the project board are associated with these features?
+  - We completed [Profile](https://github.com/COSC-499-W2023/year-long-project-team-13/issues/57), [Edit profile](https://github.com/COSC-499-W2023/year-long-project-team-13/issues/9) and [Admin](https://github.com/COSC-499-W2023/year-long-project-team-13/issues/11).
+  - We are still working on [Learning AWS and setup](https://github.com/COSC-499-W2023/year-long-project-team-13/issues/41), [System architecture](https://github.com/COSC-499-W2023/year-long-project-team-13/issues/4) and [Settings](https://github.com/COSC-499-W2023/year-long-project-team-13/issues/10).
+- This week's respective pull requests are:
+  - [Admin page complete](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/69)
+  - [Edit Profile Testing complete, updated other test files](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/70)
+  - [logout and logout test](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/71)
+  - [Admin test updated](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/72)
+  - [Add contacts](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/74)
+
+Burnup chart
+![Burnup](./images/burnup/Week12_burnup.png)
+Network Graph
+![Network](./images/network/Week12_Network.png)
+Completed Tasks
+![Completed](./images/completed/Week12_done.png)
+In progress Tasks
+![In Progress](./images/in-prog/Week12_inprogress.png)
+Test Report
+![Test Report](./images/tests_completion/Week12_test.png)
+
+## Preferred name -> Ssc name -> Github name
+
+- Ethan -> Ethan Hsu -> YuchenHsu
+- Beth -> Beth Ralston -> mblackbeak
+- Herman -> Herman Sood -> herman-23
+- Raymond -> Sitt Paing -> SittHmuePaing
+- Adrian -> Adrian Fong -> AdrianFWM
+
+## Week 13 2023/11/27 ~ 2023/12/03
+
+- Which features were in the project plan for this milestone?
+  - This week, we merged all the main branches into the master branch and made sure that everything works. And made sure that the tests all pass.
+  - We also planned for the diagrams and the presentation video.
+  - Video request page UI is finished and testing is done.
+  - Video Create page test is done.
+
+Burnup chart
+![Burnup](./images/burnup/Week13_burnup.png)
+Network Graph
+![Network](./images/network/Week13_Network1.png)
+![Network](./images/network/Week13_Network2.png)
+Completed Tasks
+![Completed](./images/completed/Week13_done.png)
+In progress Tasks
+![In Progress](./images/in-prog/Week13_inprogress.png)
+Test Report
+![Test Report](./images/tests_completion/week13_test.png)

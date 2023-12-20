@@ -6,6 +6,9 @@ from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium import webdriver
 import time
+# Get absolute path from relative path image
+import os
+import sys
 
 def login_page_test(driver, username, password):
     # Find the element with the id "Username Input" and click it
@@ -26,6 +29,10 @@ def login_page_test(driver, username, password):
     password_input_element.send_keys(password)
     time.sleep(0.5)
 
+    # Scroll down the login page
+    html = driver.find_element(By.TAG_NAME, "html")
+    html.send_keys(Keys.PAGE_DOWN)
+
     # Find the element with the id "Login Submit Button" and click it
     login_submit_button_element = driver.find_element(By.ID, "login")
     login_submit_button_element.click()
@@ -40,7 +47,7 @@ def login_page_test(driver, username, password):
     else:
         print("Login successful")
 
-def profile_page_test(driver, username, password, email):
+def profile_page_test(driver, username, password, firstName, lastName, email, image, firstName_set, lastName_set, email_set):
     # Call the login page test function
     login_page_test(driver, username, password)
     time.sleep(0.5)
@@ -54,16 +61,30 @@ def profile_page_test(driver, username, password, email):
     # Wait for the URL to change to the profile page URL
     wait.until(EC.url_contains('/profile'))
 
-    username_element = driver.find_element(By.ID, "id_username")
-    username_element.send_keys(username)
-    username_value_input = username_element.get_attribute('value')
-    # print(username_value_input)
+    firstName_element = driver.find_element(By.ID, "id_first_name")
+    firstName_element.clear()
+    firstName_element.send_keys(firstName_set)
+    firstName_value_input = firstName_element.get_attribute('value')
+    time.sleep(0.5)
+
+    lastName_element = driver.find_element(By.ID, "id_last_name")
+    lastName_element.clear()
+    lastName_element.send_keys(lastName_set)
+    lastName_value_input = lastName_element.get_attribute('value')
     time.sleep(0.5)
 
     email_element = driver.find_element(By.ID, "id_email")
-    email_element.send_keys(email)
+    email_element.clear()
+    email_element.send_keys(email_set)
     email_value_input = email_element.get_attribute('value')
-    # print(email_value_input)
+    time.sleep(0.5)
+
+    #By.xpath("//input[@id='file_up']")
+    #profileform.image user.profile.image.url user.profile.image
+    uploadImg = driver.find_element(By.ID, "id_image")
+    uploadImg.send_keys(image)
+    #uploadImg_name = uploadImg.get_attribute('value')
+    #print(uploadImg_name)
     time.sleep(0.5)
 
     update_button = driver.find_element(By.ID, "update")
@@ -73,21 +94,45 @@ def profile_page_test(driver, username, password, email):
     wait.until(EC.url_contains('/profile'))
     time.sleep(0.5)
 
-    username_value_check = driver.find_element(By.ID, "id_username").get_attribute('value')
-    # print(username_value_check)
-    time.sleep(0.5)
+    firstName_value_check = driver.find_element(By.ID, "id_first_name").get_attribute('value')
+
+    lastName_value_check = driver.find_element(By.ID, "id_last_name").get_attribute('value')
 
     email_value_check = driver.find_element(By.ID, "id_email").get_attribute('value')
-    # print(email_value_check)
+
+    # .text.lower()
+
+    name_display_value_check = driver.find_element(By.ID, "NameCheck").text
+
+    email_display_value_check = driver.find_element(By.ID, "EmailCheck").text
+
+    img_check = driver.find_element(By.TAG_NAME, "img").get_attribute('src')
+
+    firstName_element = driver.find_element(By.ID, "id_first_name")
+    firstName_element.clear()
+    firstName_element.send_keys(firstName)
     time.sleep(0.5)
 
-    username_display_value_check = driver.find_element(By.TAG_NAME, "h4").text.lower()
-    # print(username_display_value_check)
+    lastName_element = driver.find_element(By.ID, "id_last_name")
+    lastName_element.clear()
+    lastName_element.send_keys(lastName)
+    time.sleep(0.5)
+
+    email_element = driver.find_element(By.ID, "id_email")
+    email_element.clear()
+    email_element.send_keys(email)
+    time.sleep(0.5)
+
+    update_button = driver.find_element(By.ID, "update")
+    update_button.click()
+    time.sleep(0.5)
+
+    wait.until(EC.url_contains('/profile'))
     time.sleep(0.5)
 
     # Check if the URL contains the expected profile page URL
     if '/profile' in driver.current_url:
-        if username_value_check == username_value_input and email_value_check == email_value_input and username_value_check == username_display_value_check:
+        if firstName_value_check == firstName_value_input and lastName_value_check == lastName_value_input and email_value_check == email_value_input and 'mountain' in img_check and '.jpg' in img_check and email_display_value_check == email_value_check and name_display_value_check == (firstName_value_check + " " + lastName_value_check):
             print("Edit Profile successful")
         else:
             print("Edit Profile failed")
@@ -112,9 +157,15 @@ driver.maximize_window()
 
 wait = WebDriverWait(driver, 60)
 
+# File file = new File("src/test/resources/testData/twt_Pic.jpg")
+# yourElement.sendKeys(file.getAbsolutePath())
+# projectpath = System.getProperty("user.dir")
+
+# print( os.path.abspath('..\\drivers\\chromedriver_v78.0.exe') )
+
 # Call the profile page test function with appropriate input values
 driver.get('http://localhost:8000/login')
-profile_page_test(driver, 'linus', '123', 'abc@xyz.com')
+profile_page_test(driver, 'aime', 'David123.', 'Aime', 'David', 'abc@xyz.com', os.path.abspath('../app/media/mountain.jpg'), 'Test First Name', 'Test Last Name', 'admin@xyz.com')
 time.sleep(0.5)
 
 # Close the webdriver

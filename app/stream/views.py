@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from . models import VidStream
 from . forms import VidUploadForm
+from . forms import VidRequestForm
 from django.views.generic import DetailView, DeleteView, UpdateView, ListView, CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.models import User
@@ -29,6 +30,16 @@ def home(request):
 
 def contact(request):
     return render(request, 'stream/contact.html')
+
+def request_video(request):
+    if request.method == "POST":
+        form = VidRequestForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('stream:home')
+    else:
+        form = VidRequestForm()
+        return render(request, 'stream/request-video.html', {'form':form})
 
 
 class VideoCreateView(LoginRequiredMixin   ,CreateView):

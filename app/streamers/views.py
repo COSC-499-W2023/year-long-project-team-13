@@ -1,17 +1,21 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from . forms import UserRegistrationForm, UserUpdateForm, UserProfileUpdateForm, UserProfileUpdateForm, SetPasswordForm
+from .forms import UserRegistrationForm, UserUpdateForm, UserProfileUpdateForm, UserProfileUpdateForm, SetPasswordForm
 from django.contrib.auth.hashers import make_password
-
 from django.shortcuts import redirect
-from django.contrib.auth import logout
+from django.contrib.auth import logout, authenticate, login
+from django.contrib.auth.models import User
+from .models import Notification
+from django.dispatch import Signal
 
-
+# Define the signal
+user_signed_up = Signal()
 def register(request):
     if request.method == "POST":
         form = UserRegistrationForm(request.POST)
         if form.is_valid():
-            form.save()
+            new_user = form.save()
+            user_signed_up.send(sender=User, user=new_user)
             return redirect('login')
     else:
         form = UserRegistrationForm()
@@ -22,17 +26,10 @@ def profile(request):
     if request.method == "POST":
         userform = UserUpdateForm(request.POST, instance=request.user)
         profileform = UserProfileUpdateForm(request.POST, request.FILES, instance=request.user.profile)
-        # passwordform = SetPasswordForm(request.POST, instance=request.user)
         if userform.is_valid() and profileform.is_valid():
             userform.save()
             profileform.save()
             return redirect("profile")
-            # user = userform.save(commit=False)
-            # user.password = make_password(user.password)
-            # user.save()
-            # profileform.save()
-            # return redirect("profile")
-
     else:
         userform = UserUpdateForm(instance=request.user)
         profileform = UserProfileUpdateForm(instance=request.user.profile)
@@ -42,3 +39,32 @@ def profile(request):
         'profileform': profileform,
     }
     return render(request, 'streamers/profile.html', context)
+
+def notifications(request):
+    user = request.user
+    if user.is_authenticated:
+        notifications = Notification.objects.filter(user=user).order_by('-timestamp')
+        return render(request, 'streamers/notification.html', {'notifications': notifications})
+    else:
+        return redirect('streamers:login')  # or wherever you want to redirect unauthenticated users
+
+def login_view(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+        print("user:", user)  # and this
+        if user is not None:
+           Notification.objects.create(user=user, message='You have logged in.')
+           login(request, user)
+           return redirect('home')  # or wherever you want to redirect after login
+        else:
+            return render(request, 'login.html', {'error': 'Invalid username or password'})
+    else:
+        return render(request, 'login.html')
+
+def logout_view(request):
+    user = request.user
+    if user.is_authenticated:
+        logout(request)
+    return redirect('home')  # or wherever you want to redirect after logout

@@ -154,7 +154,46 @@
  ![WeeklyLogImages](./images/tasks/Week10HermanEditProfile.png)
  ![WeeklyLogImages](./images/tasks/Week10HermanProfileSuccess.png)
 
+- Applicable date range
+##  Week 11-12 2023/~2023
 
+
+![Tasks](./images/tasks/Week10Herman.png)
+
+# Preferred name -> Ssc name -> Github name
+
+- Herman -> Herman Sood -> Herman Sood
+
+- Recap on your week's goals-Which features were yours in the project plan for this milestone? For week 11 I worked on the profile page and helped setup the structure of the page. The profile image can be updated every time after refreshing. The css was also done for the design of the profile page. For week 12 I worked on the notification page and got the structure set up. It also has some css design to the page. More work in progress.
+  - Which tasks from the project board are associated with these features?
+  Profile and editprofile and Notifications
+  - Among these tasks, which have you completed/in progress in the last week?
+Profile and editeprofile and Notifications
+
+ ![WeeklyLogImages](./images/tasks/Week11-12Herman.png)
+ ![WeeklyLogImages](./images/tasks/Week11HermanProfile.png)
+ ![WeeklyLogImages](./images/tasks/Week12NotificationHerman.png)
+![WeeklyLogImages](./images/tasks/Week11-12HermanCommits.png)
+
+
+- Applicable date range
+##  Week 13 2023/11/27~2023/12/03
+
+
+ ![WeeklyLogImages](./images/tasks/Week13Herman.png)
+
+# Preferred name -> Ssc name -> Github name
+
+- Herman -> Herman Sood -> Herman Sood
+
+- Recap on your week's goals-Which features were yours in the project plan for this milestone? For week 13 I worked on the notifications page and then the design milestone with my team. For the notifications page I made sure to add the navigation to the navigation bar and made it so that it shows on every other page. Further I added some functionality in which any time a user logs into their account, on the notifications page they can see the day and the time they logged in and it will add to that each time they relogin. For the design milestone I wrote a few brief summaries of the all of the features. I also did the recording of my part of the video for the presentation. 
+  - Which tasks from the project board are associated with these features?
+  Notifications and Design Milestone
+  - Among these tasks, which have you completed/in progress in the last week?
+Notifications and Design Milestone
+
+ ![WeeklyLogImages](./images/tasks/Week13Notifications.png)
+ 
 
 
 
