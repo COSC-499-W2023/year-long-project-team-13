@@ -85,14 +85,14 @@ WSGI_APPLICATION = 'video_app.wsgi.application'
 # }
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'datadjango',
-        'USER': 'linus',
-        'PASSWORD': 'aime123_',
-        'HOST': 'datadjango.cqtxhhmhjnhu.ca-central-1.rds.amazonaws.com',
-        'PORT': '5432'
-    }
+  'default': {
+    'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    'NAME': 'djangodatabase',
+    'USER': 'masteruser',
+    'PASSWORD': 'masteruser',
+    'HOST': 'database-django.cqtxhhmhjnhu.ca-central-1.rds.amazonaws.com',
+    'PORT': '5432',
+  }
 }
 
 
