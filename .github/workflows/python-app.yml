@@ -30,7 +30,6 @@ jobs:
         pip install -r .github/workflows/requirements.txt
         pip install virtualenv
         pip install selenium
-        pip install webdriver-manager
     - name: Launch browser
       run: |
         google-chrome --version
