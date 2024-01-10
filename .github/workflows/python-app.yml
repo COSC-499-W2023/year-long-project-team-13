@@ -32,7 +32,6 @@ jobs:
         pip install selenium
     - name: Prepare Selenium
       # https://github.com/marketplace/actions/setup-chromedriver
-      uses: nanasess/setup-chromedriver@master
     - name: Launch browser
       run: |
         google-chrome --version
