@@ -1,8 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from . models import Profile
-from . models import Person
+from . models import Profile, Person
 
 from django.contrib.auth.forms import SetPasswordForm
 
@@ -38,10 +37,12 @@ class UserUpdateForm(forms.ModelForm):
     email = forms.EmailField(widget=forms.EmailInput(attrs={'placeholder' :'Email',
                                                             'style': 'width: 400px; height: 45px;margin-left: auto; margin-right: auto; margin-bottom: 25px; border: 2px groove lightgreen;',
                                                             'class': 'form-control', 'required': True}))
+    birthdate = forms.DateField(widget=forms.DateInput(format=('%d/%m/%Y'), attrs={'placeholder' :'Select a date',
+                                                            'class': 'form-control', 'required': True}))
 
     class Meta:
         model = Person
-        fields = ['first_name','last_name','email']
+        fields = ['first_name','last_name','email','birthdate']
 
 class UserProfileUpdateForm(forms.ModelForm):
 

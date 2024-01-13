@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.signals import user_logged_in
 from django.dispatch import receiver
 from PIL import Image, ImageOps
+from datetime import date
 # import ExifTags
 
 # Update User's Profile Picture
@@ -38,6 +39,7 @@ class Person(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
+    birthdate = models.DateField(default=date.today)
 
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
