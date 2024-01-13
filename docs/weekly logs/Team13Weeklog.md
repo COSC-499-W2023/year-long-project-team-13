@@ -245,3 +245,31 @@ In progress Tasks
 ![In Progress](./images/in-prog/Week12_inprogress.png)
 Test Report
 ![Test Report](./images/tests_completion/Week12_test.png)
+
+## Preferred name -> Ssc name -> Github name
+
+- Ethan -> Ethan Hsu -> YuchenHsu
+- Beth -> Beth Ralston -> mblackbeak
+- Herman -> Herman Sood -> herman-23
+- Raymond -> Sitt Paing -> SittHmuePaing
+- Adrian -> Adrian Fong -> AdrianFWM
+
+## Week 13 2023/11/27 ~ 2023/12/03
+
+- Which features were in the project plan for this milestone?
+  - This week, we merged all the main branches into the master branch and made sure that everything works. And made sure that the tests all pass.
+  - We also planned for the diagrams and the presentation video.
+  - Video request page UI is finished and testing is done.
+  - Video Create page test is done.
+
+Burnup chart
+![Burnup](./images/burnup/Week13_burnup.png)
+Network Graph
+![Network](./images/network/Week13_Network1.png)
+![Network](./images/network/Week13_Network2.png)
+Completed Tasks
+![Completed](./images/completed/Week13_done.png)
+In progress Tasks
+![In Progress](./images/in-prog/Week13_inprogress.png)
+Test Report
+![Test Report](./images/tests_completion/week13_test.png)

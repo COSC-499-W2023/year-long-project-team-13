@@ -78,15 +78,23 @@ The html linking diagrams I worked on:
 
 My features in the project plan for this milestone were aws and database and the UI for the Create Video page. On the task board these are called Learning AWS and Setup, CSS dev, User Interface Design, Bug Fixing, Database, and Create Video. I have spend approximately 18 hours on the aws database setup with lots and lots of bug fixing this week(s). It is still inprogress and not yet completed. I also spent a fair amount of time on the Create Video UI. The UI is completed and the tests are written but not yet passing. I also spent some time testing and reviewing other Ethan's and Adrian's code.
 
-# Here are some of the progress I made with Aws and the different erros that have come up so far.
+##### Here are some of the progress I made with Aws and the different erros that have come up so far.
 ![OriginalError](./images/Ralston_stuff/Week12/aws_lambda1.png)
 ![OnePreviousError](./images/Ralston_stuff/Week12/aws-errors2.png)
-# Current Output with AWS
+##### Current Output with AWS
 ![OutputError](./images/Ralston_stuff/Week12/aws-errors2.png)
-# Current Terminal Error
+##### Current Terminal Error
 ![CurrentError](./images/Ralston_stuff/Week12/aws_lamda2.png)
-# Create Video UI
+##### Create Video UI
 ![UI](./images/Ralston_stuff/Week12/create-page.png)
-# Test Report for my stuff
+##### Test Report for my stuff
 ![TestReport](./images/Ralston_stuff/Week12/testing-errors.png)
+
+### Week 13 Nov 27 - Dec 3
+![Week13Tasks](./images/tasks/Ralston_W13_Tasks.png)
+
+My features in the Project plan this week were the UI for Request Video and Create Video. As well as the Design Milestone document and video. On the board these were called Reqeust Video UI, Create Video UI and Design Milestone. I completed all three of these. I also wrote tests for both Request Video and Create Video (See team log for test report). I also spent some time reviewing and testing some of my team members code (See Closed Pull requests for reviews). As well, I spent a small amount of time fixing AWS. Finally, I also added a model to our current database to connect to the Request Video UI (See models.py and form.py for changes). It is connected but not fully functional yet. (All changes have been merged into master)
+
+##### Request Video UI
+![Request](./images/Ralston_stuff/Week13/video_request.png)
 
