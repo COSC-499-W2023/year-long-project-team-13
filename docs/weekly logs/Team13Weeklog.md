@@ -273,3 +273,31 @@ In progress Tasks
 ![In Progress](./images/in-prog/Week13_inprogress.png)
 Test Report
 ![Test Report](./images/tests_completion/week13_test.png)
+
+## Preferred name -> Ssc name -> Github name
+
+- Ethan -> Ethan Hsu -> YuchenHsu
+- Beth -> Beth Ralston -> mblackbeak (mblackbeak)
+- Herman -> Herman Sood -> herman-23
+- Raymond -> Sitt Paing -> SittHmuePaing
+- Adrian -> Adrian Fong -> AdrianFWM
+
+## Week 1 2024/01/08 ~ 2024/01/14
+
+- Which features were in the project plan for this milestone?
+  - This week, we worked on the S3 bucket and cloudfront routing for the videos uploaded.
+  - We also worked on the Github actions/Continuous Integration.
+  - Server hosting on Elastic Beanstalk and database setup.
+  - Updating the database structure and the models and change some processes for different pages.
+  - Add contact page is started to be worked on.
+  - Settings page is being worked on for themes and changing password.
+
+Burnup chart
+![Burnup](./images/burnup/term2_week1_burnup.png)
+Network Graph
+![Network](./images/network/term2_week1_network.png)
+Completed Tasks
+![Completed](./images/completed/term2_week1_done_1.png)
+![Completed](./images/completed/term2_week1_done_2.png)
+In progress Tasks
+![In Progress](./images/in-prog/term2_week1_inprogress.png)
