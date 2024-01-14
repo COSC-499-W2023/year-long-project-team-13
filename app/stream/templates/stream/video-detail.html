@@ -1,5 +1,6 @@
 {% extends 'stream/base.html' %}
 {% block content %}
+<div style="padding-top: 100px;">
     <div>
         <img class="rounded-circle border-dark" src="{{ object.streamer.profile.image.url }}">
         <h12>{{ object.streamer.username }}</h12>
@@ -17,6 +18,7 @@
         <video controls>
             <source src="{{ object.video.url }}" type="video/mp4">
         </video>
-        
+
     </div>
+</div>
 {% endblock content %}

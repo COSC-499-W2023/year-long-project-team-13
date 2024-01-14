@@ -21,6 +21,7 @@
                     <h12 style="text-align: start;">{{ item.upload_date }}</h12>
                     <video class="card-img-top" controls style="width: 100%; height: auto;">
                         <source src="{{ item.video.url }}" type="video/mp4">
+                        {% comment %} <source src="{{ "https://d18u3jaflgrcvn.cloudfront.net/videos/Beautiful_City_SEA_VIEW___Creative_Commons_Videos___Free_HD_Videos_-_no_copyright.mp4" }}" type="video/mp4"> {% endcomment %}
                     </video>
                     <div class="card-body">
                         <h5 class="card-title"><a href="{% url 'stream:video-detail' item.id  %}">{{ item.title }}</a></h5>
