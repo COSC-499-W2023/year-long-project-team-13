@@ -201,7 +201,9 @@
 ## Week 1 2024/01/08 ~ 2024/01/14
 
 - Type of tasks you worked on (screenshot from Peer Eval question)
-  - No peer evaluation page/team formation page for this week
+
+![Tasks](./images/tasks/ethan_term2_week1.png)
+
 - This week, I worked on making s3 buckets working and setup cloudfront routing for the files stored in the s3 bucket for security reasons.
   - The files are stored in the s3 bucket and can be accessed through cloudfron with [this link](https://d18u3jaflgrcvn.cloudfront.net/media/Beautiful_City_SEA_VIEW___Creative_Commons_Videos___Free_HD_Videos_-_no_copyright.mp4)
   - The working webpage screenshot is as follows:
