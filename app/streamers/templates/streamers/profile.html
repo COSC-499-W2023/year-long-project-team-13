@@ -136,15 +136,15 @@
                                   {{ userform.email }}
                               </div>
                           </div>
-                          <div class="row mb-3">
+                          {% comment %} <div class="row mb-3">
                             <div class="col-sm-3">
                                 <h6 class="mb-0">Birth Date</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                {{ userform.birthdate.errors }}
-                                {{ userform.birthdate }}
+                                {{ personalinfoform.birthdate.errors }}
+                                {{ personalinfoform.birthdate }}
                             </div>
-                        </div>
+                        </div> {% endcomment %}
                           <div class="row mb-3">
                               <div class="col-sm-3">
                                   <h6 class="mb-0">Image</h6>

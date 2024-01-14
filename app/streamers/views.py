@@ -7,6 +7,7 @@ from django.contrib.auth import logout, authenticate, login
 from django.contrib.auth.models import User
 from .models import Notification
 from django.dispatch import Signal
+# , PersonalInfoUpdateForm
 
 # Define the signal
 user_signed_up = Signal()
@@ -25,17 +26,22 @@ def register(request):
 def profile(request):
     if request.method == "POST":
         userform = UserUpdateForm(request.POST, instance=request.user)
+        # personalinfoform = PersonalInfoUpdateForm(request.POST, instance=request.user.personalinfo)
         profileform = UserProfileUpdateForm(request.POST, request.FILES, instance=request.user.profile)
-        if userform.is_valid() and profileform.is_valid():
+        # and personalinfoform.is_valid
+        if userform.is_valid()  and profileform.is_valid():
             userform.save()
+            # personalinfoform.save()
             profileform.save()
             return redirect("profile")
     else:
         userform = UserUpdateForm(instance=request.user)
+        # personalinfoform = PersonalInfoUpdateForm(instance=request.user.personalinfo)
         profileform = UserProfileUpdateForm(instance=request.user.profile)
 
     context = {
         'userform': userform,
+        # 'personalinfoform': personalinfoform,
         'profileform': profileform,
     }
     return render(request, 'streamers/profile.html', context)
