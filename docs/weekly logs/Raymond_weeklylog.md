@@ -229,4 +229,38 @@ Dark Mode for the Theme
 ![Dark Mode for the Theme](./images/Sitt_images/Week_13/Dark_Mode.png)
 
 
+## Term 2 Week 1 2024/01/08 ~ 2024/01/14
+
+-Types of tasks that I have worked on
+ Since there is no peer evaluation, below is the task that I have done.
+  - Deciding on task priorities
+  - Coding
+  - Team meetings
+  - Helping others with their work
+  - Receiving help from others on my work
+  - Figuring out a problem on my own
+
+## Recap of week's goals
+This week, we discussed during the team meeting about what we have done in term 1 and list them out so we know what we need to work on for this term as well as update our Kanban Board and focus on the matter at hand. I have worked on change password/confirm password but there are issues that need to be fixed since the new password input does not overwrite the old password in the database so the user cannot log in with the new password. I am also trying to figure out on the theme page by learning through online resources since the theme function need to be applied to all the pages, not just one page.
+
+Discussion and Making Lists of Things to be done
+
+![Discussion and Making Lists of Things to be done](./images/Sitt_images/Term_2_Week_1/List_1.png)
+![Discussion and Making Lists of Things to be done](./images/Sitt_images/Term_2_Week_1/List_2.png)
+
+Coding for change/confirm password (in progress)
+
+![Coding for change/confirm password (in progress)](./images/Sitt_images/Term_2_Week_1/forms.py_password.png)
+
+![Coding for change/confirm password (in progress)](./images/Sitt_images/Term_2_Week_1/views.py_password.png)
+
+![Coding for change/confirm password (in progress)](./images/Sitt_images/Term_2_Week_1/Html_changes_password.png)
+
+
+### Additional
+- Worked on my own weekly log, contribute to team weekly log.
+- Discuss with teammates to clarify doubts and things that need to be focus on.
+- Learn new information from online to use for my project.
+
+
 
