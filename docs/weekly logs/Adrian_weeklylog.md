@@ -346,3 +346,68 @@ UML for SQL Database
 - Additional: Following images are the screenshot of the whole website testing:
   - Whole Website Test Screenshot
 ![Whole Website Test Report](./images/tests_completion/week13_test.png)
+
+# Preferred name -> Ssc name -> Github name
+
+- Adrian -> Adrian Fong -> AdrianFWM
+
+## Term 2 Week 1 2023/12/04~2023/01/14
+
+- Task I have worked on this week and winter break.
+  - System administration (related to server, network, database)
+  - Coding
+  - Writing automated tests for your code
+  - Doing manual testing for your code
+  - Team meetings
+  - Helping others with their work
+  - Receiving help from others on my work
+  - Figuring out a problem on my own
+
+## Recap on your week's goals
+
+### RDS Database
+- Worked on "RDS Database setup" on project board, successfully made a connection from local SQLite to RDS PostgreSQL database, and made a new database on RDS with our current SQL database structure.
+  - [AWS RDS Database branch](https://github.com/COSC-499-W2023/year-long-project-team-13/tree/aws-testing)
+  - RDS database screenshot
+![RDS database screenshot](./images/Adrian_images/T2_Week_1/RDS_Database.jpg)
+
+### EC2 / Elastic Beanstalk
+- Worked on "AWS Cloud server setup" on project board, successfully made an Elastic Beanstalk web server with EC2 ip connection, and connect to RDS database. Our website is able to deploy and use it on AWS Elastic Beanstalk server.
+  - [AWS EC2/Elastic Beanstalk branch](https://github.com/COSC-499-W2023/year-long-project-team-13/tree/aws-testing)
+  - EC2 screenshot
+![EC2 screenshot](./images/Adrian_images/T2_Week_1/EC2.jpg)
+  - Elastic Beanstalk screenshot
+![Elastic Beanstalk screenshot](./images/Adrian_images/T2_Week_1/Elastic_Beanstalk.jpg)
+  - Elastic Beanstalk load with our webpage screenshot
+![Elastic Beanstalk load with our webpage screenshot](./images/Adrian_images/T2_Week_1/Elastic_Beanstalk_WebServer.jpg)
+
+### Update Database Structure (In-Progress)
+- Working on "Update Database structure" on project board, added "User Information" table and "Video Request" table on SQL database. Both table are connect to the "Users" table. New added tables display data on admin page.
+  - [Update Database Structure branch](https://github.com/COSC-499-W2023/year-long-project-team-13/tree/update_database)
+  - Admin page table screenshot
+![Admin page table screenshot](./images/Adrian_images/T2_Week_1/Admin.jpg)
+  - User information table content screenshot
+![User information table content screenshot](./images/Adrian_images/T2_Week_1/Birthdate.jpg)
+  - Video request table content screenshot
+![ideo request table content screenshot](./images/Adrian_images/T2_Week_1/Video_request.jpg)
+  - Database structure we aim to update to
+![Database structure we aim to update to](./images/Adrian_images/T2_Week_1/Cosc_499_UML.drawio.png)
+  - Our original database stucture
+![Our original database stucture](./images/Adrian_images/T2_Week_1/Copy_of_Cosc_499_UML.drawio.png)
+
+### Edit Profile (Birthdate) / Testing
+- Worked on updating the profile page with users able to view and edit their birthdate. As we updated the database structure, and added birthdate into user's profile.
+- Testing on Profile page successfully pass.
+  - [Update Database Structure branch](https://github.com/COSC-499-W2023/year-long-project-team-13/tree/update_database)
+  - Edit birthdate on profile page screenshot (Red Arrows: birthdate)
+![Edit birthdate on profile page screenshot](./images/Adrian_images/T2_Week_1/EditProfile_Birthdate.jpg)
+  - Edit profile (with birthdate) screenshot
+![Edit profile (with birthdate) screenshot](./images/Adrian_images/T2_Week_1/Profile_Birthdate_Test.jpg)
+
+### Weekly Log / Team Weekly Log / Additional
+- Worked on my own weekly log, contribute to team weeklog.
+- I got some help from Ethan for setting up Elastic Beanstalk server with IAM user identity roles.
+- Helped Raymond on changing password on setting page.
+- I did encounter a lot of challenge on setting up RDS database and Elastic Beanstalk server on AWS with Django and Python which it does not have a proper setup guide from the internet. After few weeks of tries, successfully setup database and server on AWS.
+- Also, I encounter to update new tables on SQL database which the admin page was not showing or updating any new table or data. Now, it is showing both new tables with data on admin page which serval code fixes.
+- We had meetings on Tuesday, Thursday and Saturday this week.

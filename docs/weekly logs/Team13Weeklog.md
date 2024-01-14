@@ -282,13 +282,13 @@ Test Report
 - Raymond -> Sitt Paing -> SittHmuePaing
 - Adrian -> Adrian Fong -> AdrianFWM
 
-## Week 1 2024/01/08 ~ 2024/01/14
+## Term 2 Week 1 2024/01/08 ~ 2024/01/14
 
 - Which features were in the project plan for this milestone?
   - This week, we worked on the S3 bucket and cloudfront routing for the videos uploaded.
   - We also worked on the Github actions/Continuous Integration.
-  - Server hosting on Elastic Beanstalk and database setup.
-  - Updating the database structure and the models and change some processes for different pages.
+  - Server hosting on Elastic Beanstalk and RDS database setup on AWS.
+  - Updating the database structure and the models and change some processes for different pages (profile page, admin page).
   - Add contact page is started to be worked on.
   - Settings page is being worked on for themes and changing password.
 
