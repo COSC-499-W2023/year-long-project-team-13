@@ -87,6 +87,9 @@ def changepassword(request):
                 return redirect("setting")
             else:
                 passwordform.add_error('new_password2', 'Passwords do not match')
+                return redirect("profile")
+        else:
+            return redirect("notifications")
     else:
         passwordform = SetPasswordForm(instance=request.user)
 
