@@ -354,14 +354,7 @@ UML for SQL Database
 ## Term 2 Week 1 2023/12/04~2023/01/14
 
 - Task I have worked on this week and winter break.
-  - System administration (related to server, network, database)
-  - Coding
-  - Writing automated tests for your code
-  - Doing manual testing for your code
-  - Team meetings
-  - Helping others with their work
-  - Receiving help from others on my work
-  - Figuring out a problem on my own
+![Weekly Task 11/12](./images/tasks/AdrianFong_T2_Week1_Task.jpg)
 
 ## Recap on your week's goals
 
@@ -408,6 +401,6 @@ UML for SQL Database
 - Worked on my own weekly log, contribute to team weeklog.
 - I got some help from Ethan for setting up Elastic Beanstalk server with IAM user identity roles.
 - Helped Raymond on changing password on setting page.
-- I did encounter a lot of challenge on setting up RDS database and Elastic Beanstalk server on AWS with Django and Python which it does not have a proper setup guide from the internet. After few weeks of tries, successfully setup database and server on AWS.
+- I did encounter a lot of challenge on setting up RDS database and Elastic Beanstalk server on AWS with Django and Python which it does not have a proper setup guide from the internet. After few weeks of tries, I successfully setup database and server on AWS.
 - Also, I encounter to update new tables on SQL database which the admin page was not showing or updating any new table or data. Now, it is showing both new tables with data on admin page which serval code fixes.
 - We had meetings on Tuesday, Thursday and Saturday this week.
