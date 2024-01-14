@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from .forms import UserRegistrationForm, UserUpdateForm, UserProfileUpdateForm, UserProfileUpdateForm, SetPasswordForm
+from .forms import SetPasswordFormWithConfirm, UserRegistrationForm, UserUpdateForm, UserProfileUpdateForm, UserProfileUpdateForm, SetPasswordForm
 from django.contrib.auth.hashers import make_password
 from django.shortcuts import redirect
 from django.contrib.auth import logout, authenticate, login
@@ -68,3 +68,29 @@ def logout_view(request):
     if user.is_authenticated:
         logout(request)
     return redirect('home')  # or wherever you want to redirect after logout
+
+@login_required
+def changepassword(request):
+    if request.method == "POST":
+        passwordform = SetPasswordForm(request.POST, instance=request.user)
+        # passwordform = SetPasswordFormWithConfirm(request.user, request.POST)
+
+        if passwordform.is_valid():
+            new_password1 = passwordform.cleaned_data['new_password1']
+            new_password2 = passwordform.cleaned_data['new_password2']
+
+            # Check if the new passwords match
+            if new_password1 == new_password2:
+                user = passwordform.save(commit=False)
+                user.password = make_password(new_password1)
+                user.save()
+                return redirect("setting")
+            else:
+                passwordform.add_error('new_password2', 'Passwords do not match')
+    else:
+        passwordform = SetPasswordForm(instance=request.user)
+
+    context = {
+        'passwordform': passwordform,
+    }
+    return render(request, 'streamers/setting.html', context)
