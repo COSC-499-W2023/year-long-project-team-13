@@ -25,8 +25,22 @@ SECRET_KEY = 'fpfd*qb+!is4hf@l6c(0n*1v4syzidbwzfsm-^%c30x*&772wc'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+# DEBUG = False
+# # AWS_ACCESS_KEY_ID = 'ASIA4HU6ILMRHALXJ5UV'
+# # AWS_SECRET_ACCESS_KEY = 'Qukq6847BUBvzckLohMB9sIUEhzb4swWl74O/HWE'
+# AWS_STORAGE_BUCKET_NAME = 'elasticbeanstalk-ca-central-1-841071745826'
+# AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
+# AWS_S3_REGION_NAME = "ca-central-1"
+# AWS_S3_SIGNATURE_VERSION = "s3v4"
+# AWS_QUERYSTRING_EXPIRE = 604800
+# CLOUDFRONT_DOMAIN = 'd18u3jaflgrcvn.cloudfront.net'
 
-ALLOWED_HOSTS = []
+# STATIC_LOCATION = "static"
+# STATIC_URL = f'{CLOUDFRONT_DOMAIN}/static/'
+# # Add your path in the STATICFILES_STORAGE
+# STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+# ALLOWED_HOSTS = ['*']
 
 
 # Application definition
