@@ -14,7 +14,6 @@ user_signed_up = Signal()
 def register(request):
     if request.method == "POST":
         form = UserRegistrationForm(request.POST)
-        # infoform = UserInfoRegistrationForm(request.POST)
         if form.is_valid():
             new_user = form.save()
             user_signed_up.send(sender=User, user=new_user)
@@ -22,7 +21,6 @@ def register(request):
             return redirect('login')
     else:
         form = UserRegistrationForm()
-        # infoform = UserInfoRegistrationForm()
     return render(request, 'streamers/register.html', {"form":form })
 
 @login_required

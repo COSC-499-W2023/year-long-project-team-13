@@ -25,13 +25,6 @@ class UserRegistrationForm(UserCreationForm):
         model = User
         fields = ['username','email','password1','password2']
 
-class UserInfoRegistrationForm(UserCreationForm):
-    birthdate = forms.DateField(widget=forms.TextInput(attrs={'placeholder' :'Select a date',
-                                                        'class': 'form-control', 'type': 'date','required': True}))
-    class Meta:
-        model = UserInfo
-        fields = ['birthdate']
-
 class UserUpdateForm(forms.ModelForm):
     # username = forms.CharField(widget=forms.TextInput(attrs={'placeholder' :'Username',
     #                                                          'style':'width: 400px; height: 45px; margin-left: auto; margin-right: auto; margin-bottom: 25px; border: 2px groove lightgreen;',
