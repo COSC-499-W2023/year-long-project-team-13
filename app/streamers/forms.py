@@ -1,8 +1,8 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from . models import Profile
-# , PersonalInfo
+from . models import Profile, UserInfo
+#
 
 from django.contrib.auth.forms import SetPasswordForm
 
@@ -25,6 +25,13 @@ class UserRegistrationForm(UserCreationForm):
         model = User
         fields = ['username','email','password1','password2']
 
+class UserInfoRegistrationForm(UserCreationForm):
+    birthdate = forms.DateField(widget=forms.TextInput(attrs={'placeholder' :'Select a date',
+                                                        'class': 'form-control', 'type': 'date','required': True}))
+    class Meta:
+        model = UserInfo
+        fields = ['birthdate']
+
 class UserUpdateForm(forms.ModelForm):
     # username = forms.CharField(widget=forms.TextInput(attrs={'placeholder' :'Username',
     #                                                          'style':'width: 400px; height: 45px; margin-left: auto; margin-right: auto; margin-bottom: 25px; border: 2px groove lightgreen;',
@@ -43,12 +50,12 @@ class UserUpdateForm(forms.ModelForm):
         model = User
         fields = ['first_name','last_name','email']
 
-# class PersonalInfoUpdateForm(forms.ModelForm):
-#     birthdate = forms.DateField(widget=forms.DateInput(format=('%d/%m/%Y'), attrs={'placeholder' :'Select a date',
-#                                                         'class': 'form-control', 'required': True}))
-#     class Meta:
-#         model = PersonalInfo
-#         fields = ['birthdate']
+class UserInfoUpdateForm(forms.ModelForm):
+    birthdate = forms.DateField(widget=forms.TextInput(attrs={'placeholder' :'Select a date',
+                                                        'class': 'form-control', 'type': 'date','required': True}))
+    class Meta:
+        model = UserInfo
+        fields = ['birthdate']
 
 class UserProfileUpdateForm(forms.ModelForm):
 

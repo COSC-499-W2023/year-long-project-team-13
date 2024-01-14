@@ -20,6 +20,7 @@ class VidStream(models.Model):
 
 class VidRequest(models.Model):
     id = models.IntegerField((""), primary_key=True)
+    # auto_increment_id = models.AutoField(primary_key=True)
     sender = models.ForeignKey(User, related_name="user_sender", on_delete=models.CASCADE)
     reciever = models.ForeignKey(User, related_name="user_reciever", on_delete=models.CASCADE)
     description = models.TextField(max_length=600)

@@ -66,6 +66,7 @@
                                   <!-- <p class="text-dark mb-1">{{ user.email }}</p> -->
                                   <p class="text-secondary mb-1" id="NameCheck">{{ user.first_name }} {{ user.last_name }}</p>
                                   <p class="text-muted font-size-sm" id="EmailCheck">{{ user.email }}</p>
+                                  <pclass="text-muted font-size-sm" id="BirthdateCheck">{{ user.userinfo.birthdate }}</p>
                                   <button class="btn btn-primary">Follow</button>
                                   <button class="btn btn-outline-primary">Message</button>
                               </div>
@@ -136,7 +137,7 @@
                                   {{ userform.email }}
                               </div>
                           </div>
-                          {% comment %} <div class="row mb-3">
+                          <div class="row mb-3">
                             <div class="col-sm-3">
                                 <h6 class="mb-0">Birth Date</h6>
                             </div>
@@ -144,7 +145,7 @@
                                 {{ personalinfoform.birthdate.errors }}
                                 {{ personalinfoform.birthdate }}
                             </div>
-                        </div> {% endcomment %}
+                        </div>
                           <div class="row mb-3">
                               <div class="col-sm-3">
                                   <h6 class="mb-0">Image</h6>

@@ -34,7 +34,7 @@ class Notification(models.Model):
 def user_logged_in(sender, user, request, **kwargs):
     Notification.objects.create(user=user, message='You have logged in.')
 
-# Update User's First & Last Name & birthdate
+# Update User's First & Last Name
 # class Person(models.Model):
 #     user = models.OneToOneField(User, on_delete=models.CASCADE)
 #     first_name = models.CharField(max_length=50)
@@ -47,12 +47,12 @@ def user_logged_in(sender, user, request, **kwargs):
 #         super().save(*args, **kwargs)
 
 # Update User's Birthdate
-# class PersonalInfo(models.Model):
-#     user = models.OneToOneField(User, on_delete=models.CASCADE)
-#     birthdate = models.DateField(default=date.today)
+class UserInfo(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    birthdate = models.DateField(default=date.today)
 
-#     def __str__(self):
-#         return f"{self.user.username} PersonalInfo "
+    def __str__(self):
+        return f"{self.user.username} PersonalInfo "
 
-#     def save(self, *args, **kwargs):
-#         super().save(*args, **kwargs)
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)

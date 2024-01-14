@@ -1,47 +1,49 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from .forms import UserRegistrationForm, UserUpdateForm, UserProfileUpdateForm, UserProfileUpdateForm, SetPasswordForm
+from .forms import UserRegistrationForm, UserInfoRegistrationForm, UserUpdateForm, UserInfoUpdateForm, UserProfileUpdateForm, UserProfileUpdateForm, SetPasswordForm
 from django.contrib.auth.hashers import make_password
 from django.shortcuts import redirect
 from django.contrib.auth import logout, authenticate, login
 from django.contrib.auth.models import User
 from .models import Notification
 from django.dispatch import Signal
-# , PersonalInfoUpdateForm
+from . models import Profile, UserInfo
 
 # Define the signal
 user_signed_up = Signal()
 def register(request):
     if request.method == "POST":
         form = UserRegistrationForm(request.POST)
+        # infoform = UserInfoRegistrationForm(request.POST)
         if form.is_valid():
             new_user = form.save()
             user_signed_up.send(sender=User, user=new_user)
+            UserInfo.objects.create(user=new_user, birthdate='2024-01-01')
             return redirect('login')
     else:
         form = UserRegistrationForm()
+        # infoform = UserInfoRegistrationForm()
     return render(request, 'streamers/register.html', {"form":form })
 
 @login_required
 def profile(request):
     if request.method == "POST":
         userform = UserUpdateForm(request.POST, instance=request.user)
-        # personalinfoform = PersonalInfoUpdateForm(request.POST, instance=request.user.personalinfo)
+        personalinfoform = UserInfoUpdateForm(request.POST, instance=request.user.userinfo)
         profileform = UserProfileUpdateForm(request.POST, request.FILES, instance=request.user.profile)
-        # and personalinfoform.is_valid
-        if userform.is_valid()  and profileform.is_valid():
+        if userform.is_valid() and personalinfoform.is_valid and profileform.is_valid():
             userform.save()
-            # personalinfoform.save()
+            personalinfoform.save()
             profileform.save()
             return redirect("profile")
     else:
         userform = UserUpdateForm(instance=request.user)
-        # personalinfoform = PersonalInfoUpdateForm(instance=request.user.personalinfo)
+        personalinfoform = UserInfoUpdateForm(instance=request.user.userinfo)
         profileform = UserProfileUpdateForm(instance=request.user.profile)
 
     context = {
         'userform': userform,
-        # 'personalinfoform': personalinfoform,
+        'personalinfoform': personalinfoform,
         'profileform': profileform,
     }
     return render(request, 'streamers/profile.html', context)

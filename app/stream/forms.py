@@ -1,6 +1,5 @@
 from django import forms
-from . models import VidStream
-from . models import VidRequest
+from . models import VidStream, VidRequest
 
 class VidUploadForm(forms.ModelForm):
 
