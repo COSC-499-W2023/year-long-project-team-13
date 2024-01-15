@@ -13,15 +13,15 @@
     </div>
     {% endif %}
     <div style="padding-top: 150px;">
-        {% comment %} <form method="POST"> {% endcomment %}
-        <div class="input-group">
-            <div class="input-group-prepend">
+        <form method="POST" action="{% url 'stream:contact' %}">
+            {% csrf_token %}
+            <div class="input-group">
+                <div class="input-group-prepend">
+                </div>
+                <input type="text" class="form-control" name="contact_name" placeholder="Enter name to add as contact">
+                <button type="submit" class="btn btn-dark">Add Contact</button>
             </div>
-            <input type="text" class="form-control" name="title">
-            {% comment %} <button type="submit" class="btn btn-dark">Search</button> {% endcomment %}
-            <a href="{% url 'stream:video-list' %}" class="btn btn-dark" id='search button'>Search</a>
-        </div>
-        {% comment %} </form> {% endcomment %}
+        </form>
     </div>
     {% comment %} <div>
         {% for item in videos%}

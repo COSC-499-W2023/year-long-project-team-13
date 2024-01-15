@@ -5,6 +5,7 @@ from . forms import VidRequestForm
 from django.views.generic import DetailView, DeleteView, UpdateView, ListView, CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.models import User
+from django.contrib import messages
 
 class VideoDetailView(DetailView):
     template_name = "stream/video-detail.html"
@@ -29,6 +30,16 @@ def home(request):
     return render(request, 'stream/home.html')
 
 def contact(request):
+    if request.method == 'POST':
+        contact_name = request.POST.get('contact_name')
+        user_to_add = User.objects.filter(username=contact_name).first()
+        if user_to_add:
+            # Assuming you have a Contact model and it has a ManyToMany field for storing contacts
+            request.user.profile.contacts.add(user_to_add.profile)
+            messages.success(request, f'Contact {user_to_add.username} added successfully!')
+        else:
+            messages.error(request, f'User {contact_name} not found.')
+        return redirect('stream:contact')
     return render(request, 'stream/contact.html')
 
 def request_video(request):
