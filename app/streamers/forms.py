@@ -1,8 +1,8 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from . models import Profile, UserInfo
-# , Setting
+from . models import Profile, UserInfo, Setting
+
 from django.contrib.auth.forms import SetPasswordForm
 
 
@@ -58,15 +58,15 @@ class UserProfileUpdateForm(forms.ModelForm):
         model = Profile
         fields = ['image']
 
-# class SettingForm(forms.ModelForm):
-#     YES_NO = (('Yes', 'True'),('No', 'False'),)
-#     darkmode = forms.BooleanField(widget=forms.RadioSelect(choices=YES_NO, attrs={'placeholder' :'On/Off',
-#                                                         'class': 'form-control','required': True}))
-#     emailnotification = forms.BooleanField(widget=forms.RadioSelect(choices=YES_NO, attrs={'placeholder' :'On/Off',
-#                                                         'class': 'form-control','required': True}))
-#     class Meta:
-#         model = Setting
-#         fields = ['darkmode', 'emailnotification']
+class SettingForm(forms.ModelForm):
+    YES_NO = (('Yes', 'True'),('No', 'False'),)
+    darkmode = forms.BooleanField(widget=forms.RadioSelect(choices=YES_NO, attrs={'placeholder' :'On/Off',
+                                                        'class': 'form-control','required': True}))
+    emailnotification = forms.BooleanField(widget=forms.RadioSelect(choices=YES_NO, attrs={'placeholder' :'On/Off',
+                                                        'class': 'form-control','required': True}))
+    class Meta:
+        model = Setting
+        fields = ['darkmode', 'emailnotification']
 
 class SetPasswordForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder' :'Password',

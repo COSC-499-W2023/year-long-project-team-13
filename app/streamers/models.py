@@ -5,7 +5,7 @@ from django.dispatch import receiver
 from PIL import Image, ImageOps
 from datetime import date
 # from . models import VidStream, VidRequest
-from stream.models import VidRequest
+# from stream.models import VidRequest
 # import ExifTags
 
 # Update User's Profile Picture
@@ -75,14 +75,14 @@ def user_logged_in(sender, user, request, **kwargs):
 #         super().save(*args, **kwargs)
 
 # User's Setting preference
-# class Setting(models.Model):
-#     user = models.OneToOneField(User, on_delete=models.CASCADE)
-#     darkmode = models.BooleanField(default=False)
-#     emailnotification = models.BooleanField(default=True)
-#     # defaultoption =
+class Setting(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    darkmode = models.BooleanField(default=False)
+    emailnotification = models.BooleanField(default=True)
+    # defaultoption =
 
-#     def __str__(self):
-#         return f"{self.user.username} Settings "
+    def __str__(self):
+        return f"{self.user.username} Settings "
 
-#     def save(self, *args, **kwargs):
-#         super().save(*args, **kwargs)
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
