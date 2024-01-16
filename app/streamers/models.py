@@ -4,6 +4,8 @@ from django.contrib.auth.signals import user_logged_in
 from django.dispatch import receiver
 from PIL import Image, ImageOps
 from datetime import date
+# from . models import VidStream, VidRequest
+from stream.models import VidRequest
 # import ExifTags
 
 # Update User's Profile Picture
@@ -24,15 +26,6 @@ class Profile(models.Model):
             output_size = (300, 300)
             fixed_image.thumbnail(output_size)
             fixed_image.save(self.image.path)
-
-class Notification(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    message = models.CharField(max_length=200)
-    timestamp = models.DateTimeField(auto_now_add=True)
-
-@receiver(user_logged_in)
-def user_logged_in(sender, user, request, **kwargs):
-    Notification.objects.create(user=user, message='You have logged in.')
 
 # Update User's First & Last Name
 # class Person(models.Model):
@@ -56,3 +49,40 @@ class UserInfo(models.Model):
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
+
+# Login Notifications table
+class Notification(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    message = models.CharField(max_length=200)
+    timestamp = models.DateTimeField(auto_now_add=True)
+
+@receiver(user_logged_in)
+def user_logged_in(sender, user, request, **kwargs):
+    Notification.objects.create(user=user, message='You have logged in.')
+
+# Video request notification table
+# class VidRequestNotification(models.Model):
+#     id = models.OneToOneField(VidRequest, on_delete=models.CASCADE)
+#     sender = models.ForeignKey(User, related_name="user_sender", on_delete=models.CASCADE)
+#     reciever = models.ForeignKey(User, related_name="user_reciever", on_delete=models.CASCADE)
+#     description = models.TextField(max_length=600)
+#     timestamp = models.DateTimeField(auto_now_add=True)
+
+#     def __str__(self):
+#         return self.id
+
+#     def save(self, *args, **kwargs):
+#         super().save(*args, **kwargs)
+
+# User's Setting preference
+# class Setting(models.Model):
+#     user = models.OneToOneField(User, on_delete=models.CASCADE)
+#     darkmode = models.BooleanField(default=False)
+#     emailnotification = models.BooleanField(default=True)
+#     # defaultoption =
+
+#     def __str__(self):
+#         return f"{self.user.username} Settings "
+
+#     def save(self, *args, **kwargs):
+#         super().save(*args, **kwargs)

@@ -8,6 +8,7 @@ from django.contrib.auth.models import User
 from .models import Notification
 from django.dispatch import Signal
 from . models import Profile, UserInfo
+# , Setting
 
 # Define the signal
 user_signed_up = Signal()
@@ -18,6 +19,7 @@ def register(request):
             new_user = form.save()
             user_signed_up.send(sender=User, user=new_user)
             UserInfo.objects.create(user=new_user, birthdate='2024-01-01')
+            # Setting.objects.create(user=new_user, darkmode=False, emailnotification=True)
             return redirect('login')
     else:
         form = UserRegistrationForm()
