@@ -1,0 +1,14 @@
+Video page successful
+home page successful
+add contact successful
+home page successful
+register successful
+home page successful
+login successful
+fully logged in
+profile successful
+home page successful
+new video page successful
+home page successful
+logout successful
+home page successful

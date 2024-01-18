@@ -20,9 +20,9 @@ def video_page_test(driver):
 
     # Check if the URL contains the expected video page URL
     if '/video' in driver.current_url:
-        print("Test successful")
+        print("Video page successful")
     else:
-        print("Test failed")
+        print("Video page failed")
 
 # add contact page test function
 def add_contact_page_test(driver):
@@ -35,9 +35,9 @@ def add_contact_page_test(driver):
 
     # Check if the URL contains the expected contact page URL
     if '/contact' in driver.current_url:
-        print("Test successful")
+        print("add contact successful")
     else:
-        print("Test failed")
+        print("add contact failed")
 
 # add home page test function
 def home_page_test(driver):
@@ -50,9 +50,9 @@ def home_page_test(driver):
 
     # Check if the URL contains the expected home page URL
     if '/' in driver.current_url:
-        print("Test successful")
+        print("home page successful")
     else:
-        print("Test failed")
+        print("home page failed")
 
 # add login page test function
 def login_page_test(driver):
@@ -65,9 +65,9 @@ def login_page_test(driver):
 
     # Check if the URL contains the expected login page URL
     if '/login' in driver.current_url:
-        print("Test successful")
+        print("login successful")
     else:
-        print("Test failed")
+        print("login failed")
 
 # add register page test function
 def register_page_test(driver):
@@ -80,9 +80,9 @@ def register_page_test(driver):
 
     # Check if the URL contains the expected register page URL
     if '/register' in driver.current_url:
-        print("Test successful")
+        print("register successful")
     else:
-        print("Test failed")
+        print("register failed")
 
 # add profile page test function
 def profile_page_test(driver):
@@ -95,9 +95,9 @@ def profile_page_test(driver):
 
     # Check if the URL contains the expected profile page URL
     if '/profile' in driver.current_url:
-        print("Test successful")
+        print("profile successful")
     else:
-        print("Test failed")
+        print("profile failed")
 
 # add new video page test function
 def new_video_page_test(driver):
@@ -110,9 +110,9 @@ def new_video_page_test(driver):
 
     # Check if the URL contains the expected new video page URL
     if '/new' in driver.current_url:
-        print("Test successful")
+        print("new video page successful")
     else:
-        print("Test failed")
+        print("new video page failed")
 
 # add logout page test function
 def logout_page_test(driver):
@@ -122,36 +122,35 @@ def logout_page_test(driver):
 
     logout_confirm_element = driver.find_element(By.ID, "logout")
     logout_confirm_element.click()
-    time.sleep(0.5)
 
     # Wait for the URL to change to the logout page URL
     wait.until(EC.url_contains('/logout'))
 
     # Check if the URL contains the expected logout page URL
     if '/logout' in driver.current_url:
-        print("Test successful")
+        print("logout successful")
     else:
-        print("Test failed")
+        print("logout failed")
 
 # login to the page
 def login(driver):
     # Find the element with the id "Username Input" and click it
     username_input_element = driver.find_element(By.ID, "id_username")
     username_input_element.click()
-    time.sleep(0.5)
+    wait.until(EC.presence_of_element_located((By.ID, "id_username")))
 
     # Send the username to the username input
     username_input_element.send_keys("linus")
-    time.sleep(0.5)
+    wait.until(EC.text_to_be_present_in_element_value((By.ID, "id_username"), "linus"))
 
     # Find the element with the id "Password Input" and click it
     password_input_element = driver.find_element(By.ID, "id_password")
     password_input_element.click()
-    time.sleep(0.5)
+    wait.until(EC.presence_of_element_located((By.ID, "id_password")))
 
     # Send the password to the password input
     password_input_element.send_keys("123")
-    time.sleep(0.5)
+    wait.until(EC.text_to_be_present_in_element_value((By.ID, "id_password"), "123"))
 
     # Scroll down the login page
     html = driver.find_element(By.TAG_NAME, "html")
@@ -160,11 +159,10 @@ def login(driver):
     # Find the element with the id "Login Submit Button" and click it
     login_submit_button_element = driver.find_element(By.ID, "login")
     login_submit_button_element.click()
-    time.sleep(0.5)
 
     # Wait for the URL to change to the home page URL
     wait.until(EC.url_contains('/'))
-    time.sleep(0.5)
+    print("fully logged in")
 
 # Create a ChromeOptions object with the log level set to 3
 chrome_options = webdriver.ChromeOptions()
@@ -175,7 +173,7 @@ driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), opti
 driver.maximize_window()
 
 # Set the wait time for the driver
-wait = WebDriverWait(driver, 60)
+wait = WebDriverWait(driver, 10)
 
 # Navigate to the homepage
 driver.get('http://localhost:8000')
