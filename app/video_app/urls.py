@@ -18,22 +18,15 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
-from streamers import views as streamers_views
 
 
 urlpatterns = [
     path('',include('stream.urls')),
-    path('profile',streamers_views.profile, name="profile"),
-    path('register/',streamers_views.register, name="register"),
-    path('login', auth_views.LoginView.as_view(template_name='streamers/login.html'), name="login"),
-    path('logout',auth_views.LogoutView.as_view(template_name='streamers/logout.html'), name="logout"),
-    path('setting',auth_views.LoginView.as_view(template_name='streamers/settings.html'), name="setting"),
-    path('theme',auth_views.LoginView.as_view(template_name='streamers/theme.html'), name="theme"),
+
     # note the override comes before the admin URLs below
-    path('admin/logout/', auth_views.LogoutView.as_view(template_name='streamers/logout.html')),
+    path('admin/logout/', auth_views.LogoutView.as_view(template_name='stream/logout.html')),
     path('admin/', admin.site.urls, name="admin"),
-    path('notifications',streamers_views.notifications, name="notifications"),
-    
+
 
 ]
 
