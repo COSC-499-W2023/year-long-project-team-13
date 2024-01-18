@@ -19,7 +19,8 @@
                 <div class="input-group-prepend">
                 </div>
                 <input type="text" class="form-control" name="contact_name" placeholder="Enter name to add as contact">
-                <button type="submit" class="btn btn-dark">Add Contact</button>
+                <a href=" {% url 'stream:video-list' %}" class="btn btn-dark" id="search button">Add Contact</a>
+                {% comment %} <button type="submit" class="btn btn-dark" id="search button">Add Contact</button> {% endcomment %}
             </div>
         </form>
     </div>
