@@ -32,11 +32,11 @@
                         <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'admin:index' %}" id="Admin Button">Admin</a>
                       {% endif %}
                       <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:request-video' %}" id="Video Request Button">Video Request</a>
-                      <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'profile' %}" id="Profile Button">Profile</a>
+                      <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:profile' %}" id="Profile Button">Profile</a>
                       <li class="nav-item nav-link"><a class="nav-link active"  href='#'onclick='overlay()' id="Logout Button">Logout</a>
                     {% else %}
-                      <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'login' %}" id="Login Button">Login</a>
-                      <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'register' %}" id="Register Button">Register</a>
+                      <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:login' %}" id="Login Button">Login</a>
+                      <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:register' %}" id="Register Button">Register</a>
                     {% endif %}
                 </ul>
             </div>
@@ -108,7 +108,7 @@
     <script src=" {% static 'assets/js/logoutUI.js'%} "></script>
     <script>
         document.getElementById("logout").onclick = function () {
-            location.href = "{% url 'logout' %}";
+            location.href = "{% url 'stream:logout' %}";
         };
         document.getElementById("cancel").onclick = function () {
             location.href = "{% url 'stream:request-video' %}";
