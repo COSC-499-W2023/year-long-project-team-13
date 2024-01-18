@@ -115,16 +115,25 @@
                             <input type="email" class="form-control" id="email">
 
                         </div>
+                    </form>
+
+                    <form method = "post" enctype = "multipart/form-data">
+                        {% csrf_token %}
+
                         <div class="form-group">
 
-                            <label for=pass>Password</label>
-                            <input type="password" class="form-control" id="pass">
+                            <label for= "id_new_password1">Password</label>
+                            <input type="password" class="form-control" id="id_new_password1" name = "new_password1">
+                            {{passwordform.new_password1.errors}}
+                            {{passwordform.new_password1}}
 
                         </div>
                         <div class="form-group ">
 
-                            <label for=pass2>Confirm Password</label>
-                            <input type="confirm password" class="form-control" id="pass2">
+                            <label for= "id_new_password2">Confirm Password</label>
+                            <input type="password" class="form-control" id = "id_new_password2" name ="new_password2">
+                            {{passwordform.new_password2.errors}}
+                            {{passwordform.new_password2}}
 
                         </div>
 
@@ -132,20 +141,19 @@
 
                             <div class="col">
 
-                                <button type="button" class="btn btn-primary btn-block">Save Changes</button>
+                                <button type="submit" class="btn btn-primary btn-block">Save Changes</button>
 
                             </div>
 
                             <div class="col">
 
-                                <button type="button" class="btn btn-default btn-block">Cancel</button>
+                                <a href="{% url 'setting' %}" class="btn btn-default btn-block">Cancel</a>
 
                             </div>
 
                         </div>
 
                     </form>
-
                 </div>
 
             </div>
