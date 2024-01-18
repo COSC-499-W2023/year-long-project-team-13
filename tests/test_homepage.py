@@ -19,10 +19,9 @@ def video_page_test(driver):
     wait.until(EC.url_contains('/video'))
 
     # Check if the URL contains the expected video page URL
-    if '/video' in driver.current_url:
-        print("Video page successful")
-    else:
-        print("Video page failed")
+    assert '/video' in driver.current_url
+    print("TEST 0: `video page` test passed")
+
 
 # add contact page test function
 def add_contact_page_test(driver):
@@ -34,10 +33,8 @@ def add_contact_page_test(driver):
     wait.until(EC.url_contains('/contact'))
 
     # Check if the URL contains the expected contact page URL
-    if '/contact' in driver.current_url:
-        print("add contact successful")
-    else:
-        print("add contact failed")
+    assert '/contact' in driver.current_url
+    print("TEST 1: `contact page` test passed")
 
 # add home page test function
 def home_page_test(driver):
@@ -179,6 +176,7 @@ wait = WebDriverWait(driver, 10)
 driver.get('http://localhost:8000')
 
 # Call the video page test function
+print("Home Page test Start")
 video_page_test(driver)
 time.sleep(0.5)
 home_page_test(driver)
@@ -207,6 +205,7 @@ time.sleep(0.5)
 logout_page_test(driver)
 time.sleep(0.5)
 home_page_test(driver)
+print("Home page test completed")
 
 # close the webdriver
 driver.quit()
