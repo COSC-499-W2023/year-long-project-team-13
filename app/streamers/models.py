@@ -9,6 +9,8 @@ from PIL import Image, ImageOps
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     image = models.ImageField(default="mountain.jpg", upload_to='profile-pics')
+    contacts = models.ManyToManyField('self', blank=True)
+    notifications = models.TextField(default='', blank=True)
 
     def __str__(self):
         return f"{self.user.username} Profile "
@@ -23,7 +25,6 @@ class Profile(models.Model):
             output_size = (300, 300)
             fixed_image.thumbnail(output_size)
             fixed_image.save(self.image.path)
-
 class Notification(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     message = models.CharField(max_length=200)

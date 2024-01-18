@@ -34,9 +34,14 @@ def contact(request):
         contact_name = request.POST.get('contact_name')
         user_to_add = User.objects.filter(username=contact_name).first()
         if user_to_add:
-            # Assuming you have a Contact model and it has a ManyToMany field for storing contacts
+            # Add the user to the current user's contacts
             request.user.profile.contacts.add(user_to_add.profile)
-            messages.success(request, f'Contact {user_to_add.username} added successfully!')
+
+            # Add a notification to the user being added
+            user_to_add.profile.notifications += f"You have received a contact request from {request.user.username}.\n"
+            user_to_add.profile.save()
+
+            messages.success(request, f'Add request to {user_to_add.username} sent successfully!')
         else:
             messages.error(request, f'User {contact_name} not found.')
         return redirect('stream:contact')
