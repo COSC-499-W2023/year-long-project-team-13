@@ -24,7 +24,7 @@ urlpatterns = [
     path('',include('stream.urls')),
 
     # note the override comes before the admin URLs below
-    path('admin/logout/', auth_views.LogoutView.as_view(template_name='streamers/logout.html')),
+    path('admin/logout/', auth_views.LogoutView.as_view(template_name='stream/logout.html')),
     path('admin/', admin.site.urls, name="admin"),
 
 
