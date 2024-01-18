@@ -69,7 +69,7 @@ wait = WebDriverWait(driver, 60)  # Adjust the wait time as needed
 driver.get('http://localhost:8000/register/')  # Update the URL if needed
 
 # Call the register page test function with appropriate input values
-register_page_test(driver, 'abcd', 'abcd@email.com', 'herman123')
+register_page_test(driver, 'abcde', 'abcde@email.com', 'herman1234')
 
 # Close the webdriver
 driver.quit()
