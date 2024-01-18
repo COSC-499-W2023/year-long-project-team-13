@@ -1,6 +1,18 @@
 {% extends 'stream/base.html' %}
 {% block content %}
+<<<<<<< HEAD
 <div style="padding-top: 100px;">
+=======
+    {% if user.is_authenticated %}
+    <div id="overlay" class="float-center" style="position:fixed; top:30%;">
+        <div>
+            <p class="text-dark">Are you sure to logout?</p>
+            <button id="logout" class="float-left submit-button" >Logout</button>
+            <button id="cancel" class="float-left submit-button">Cancel</button>
+        </div>
+    </div>
+    {% endif %}
+>>>>>>> c3146a415c369a3aee61d37d401606f1ab966bd1
     <div>
         <img class="rounded-circle border-dark" src="{{ object.streamer.profile.image.url }}" width='50' height='50'>
         <h8 style="font-size:30px">{{ object.streamer.username }}</h12>

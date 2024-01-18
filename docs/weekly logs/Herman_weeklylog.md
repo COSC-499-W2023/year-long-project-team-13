@@ -193,6 +193,21 @@ Profile and editeprofile and Notifications
 Notifications and Design Milestone
 
  ![WeeklyLogImages](./images/tasks/Week13Notifications.png)
+
+ - Applicable date range
+##  Week 1 Term 2 01/08/24~01/14/24
+
+ # Preferred name -> Ssc name -> Github name
+
+- Herman -> Herman Sood -> Herman Sood
+
+![Tasks](./images/tasks/Term2Week1Herman.png)
+
+- Recap on your week's goals-Which features were yours in the project plan for this milestone? For term 2 week 1 I tried to work some more on the notifications but realized I cannot really do much until some functionality involving being able add a contact is done so I can get those notifications. Therefore, I am now working on and trying to get the add contact function to work properly. 
+  - Which tasks from the project board are associated with these features?
+  Notifications and Add Contact Function
+  - Among these tasks, which have you completed/in progress in the last week?
+Notifications and Design Milestone before Christmas break.
  
 
 

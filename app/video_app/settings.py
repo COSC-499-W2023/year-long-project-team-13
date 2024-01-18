@@ -53,7 +53,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'stream.apps.StreamConfig',
-    'streamers.apps.StreamersConfig',
+    # 'streamers.apps.StreamersConfig',
     'bootstrap5',
     'storages',
 ]
