@@ -98,3 +98,12 @@ My features in the Project plan this week were the UI for Request Video and Crea
 ##### Request Video UI
 ![Request](./images/Ralston_stuff/Week13/video_request.png)
 
+# Term 2
+
+### Week 1 Jan 8 - 14
+![Week1Tasks](./images/tasks/Ralston_term2_w1_tasks.png)
+
+My feature this week was to work on the CI testing pipeline. This is associated with the CI Automated Testing task on the project board. This is still in progress as I spent the first little bit of this week to try and resolve problems. I then decided to restart with a simplier testing file and I rewrote the yml file. As well, I made an entirely new workflow for github actions. Currently I seem to have a problem with pytest itself and loading in the requirements on my computer.
+
+#### Quick snap shot of the most recent error
+![CIPipelineError](./images/Ralston_stuff/term2_w1_ci_pipeline.png)
