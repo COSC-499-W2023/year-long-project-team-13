@@ -7,6 +7,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth import logout, authenticate, login
 from django.dispatch import Signal
+from stream.models import UserInfo
+from stream.forms import UserInfoUpdateForm
 
 from . models import VidStream, Notification, Profile, UserInfo, Setting
 from . forms import VidUploadForm, VidRequestForm, UserRegistrationForm, UserUpdateForm, UserInfoUpdateForm, UserProfileUpdateForm, UserProfileUpdateForm, SetPasswordForm
@@ -136,11 +138,16 @@ def register(request):
 
 @login_required
 def profile(request):
+    if not hasattr(request.user, 'userinfo'):
+        UserInfo.objects.create(user=request.user)
+    if not hasattr(request.user, 'profile'):
+        Profile.objects.create(user=request.user)
+
     if request.method == "POST":
         userform = UserUpdateForm(request.POST, instance=request.user)
         personalinfoform = UserInfoUpdateForm(request.POST, instance=request.user.userinfo)
         profileform = UserProfileUpdateForm(request.POST, request.FILES, instance=request.user.profile)
-        if userform.is_valid() and personalinfoform.is_valid and profileform.is_valid():
+        if userform.is_valid() and personalinfoform.is_valid() and profileform.is_valid():
             userform.save()
             personalinfoform.save()
             profileform.save()
