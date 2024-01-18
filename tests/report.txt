@@ -1,16 +1,8 @@
 Home Page test Start
 TEST 0: `video page` test passed
-home page successful
+Test 2: `home page` successful
 TEST 1: `contact page` test passed
-home page successful
-register successful
-home page successful
-login successful
-fully logged in
-profile successful
-home page successful
-new video page successful
-home page successful
-logout successful
-home page successful
-Home page test completed
+Test 2: `home page` successful
+Test 4: `register` successful
+Test 2: `home page` successful
+Test 3: `login` successful

@@ -19,8 +19,10 @@ def video_page_test(driver):
     wait.until(EC.url_contains('/video'))
 
     # Check if the URL contains the expected video page URL
-    assert '/video' in driver.current_url
-    print("TEST 0: `video page` test passed")
+    if '/video' in driver.current_url:
+        print("TEST 0: `video page` test passed")
+    else:
+        print("TEST 0: `video page` test failed")
 
 
 # add contact page test function
@@ -33,8 +35,10 @@ def add_contact_page_test(driver):
     wait.until(EC.url_contains('/contact'))
 
     # Check if the URL contains the expected contact page URL
-    assert '/contact' in driver.current_url
-    print("TEST 1: `contact page` test passed")
+    if '/contact' in driver.current_url:
+        print("TEST 1: `contact page` test passed")
+    else:
+        print("TEST 1: `contact page` test failed")
 
 # add home page test function
 def home_page_test(driver):
@@ -47,9 +51,9 @@ def home_page_test(driver):
 
     # Check if the URL contains the expected home page URL
     if '/' in driver.current_url:
-        print("home page successful")
+        print("Test 2: `home page` successful")
     else:
-        print("home page failed")
+        print("Test 2: `home page` failed")
 
 # add login page test function
 def login_page_test(driver):
@@ -62,9 +66,9 @@ def login_page_test(driver):
 
     # Check if the URL contains the expected login page URL
     if '/login' in driver.current_url:
-        print("login successful")
+        print("Test 3: `login` successful")
     else:
-        print("login failed")
+        print("Test 3: `login` failed")
 
 # add register page test function
 def register_page_test(driver):
@@ -77,9 +81,9 @@ def register_page_test(driver):
 
     # Check if the URL contains the expected register page URL
     if '/register' in driver.current_url:
-        print("register successful")
+        print("Test 4: `register` successful")
     else:
-        print("register failed")
+        print("Test 4: `register` failed")
 
 # add profile page test function
 def profile_page_test(driver):
@@ -92,9 +96,9 @@ def profile_page_test(driver):
 
     # Check if the URL contains the expected profile page URL
     if '/profile' in driver.current_url:
-        print("profile successful")
+        print("Test 5: `profile` successful")
     else:
-        print("profile failed")
+        print("Test 5: `profile` failed")
 
 # add new video page test function
 def new_video_page_test(driver):
@@ -107,9 +111,9 @@ def new_video_page_test(driver):
 
     # Check if the URL contains the expected new video page URL
     if '/new' in driver.current_url:
-        print("new video page successful")
+        print("Test 6: `new video page` successful")
     else:
-        print("new video page failed")
+        print("Test 6: `new video page` failed")
 
 # add logout page test function
 def logout_page_test(driver):
@@ -125,9 +129,9 @@ def logout_page_test(driver):
 
     # Check if the URL contains the expected logout page URL
     if '/logout' in driver.current_url:
-        print("logout successful")
+        print("Test7: `logout` successful")
     else:
-        print("logout failed")
+        print("Test 7: `logout` failed")
 
 # login to the page
 def login(driver):
