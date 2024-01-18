@@ -4,5 +4,4 @@ __pycache__/*
 # ignore all file that ends with .pyc
 *.pyc
 
-# ignore all files named db.sqlite3
-db.sqlite3
+
