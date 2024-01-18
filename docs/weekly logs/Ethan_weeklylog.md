@@ -193,3 +193,22 @@
     - [Notifications](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/82)
     - [Logout page layout updated](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/81)
     - [Edit Profile Form Function Updated (username to First/Last name) / Testing](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/80)
+
+# Preferred name -> Ssc name -> Github name
+
+- Ethan -> Ethan Hsu -> YuchenHsu
+
+## Week 1 2024/01/08 ~ 2024/01/14
+
+- Type of tasks you worked on (screenshot from Peer Eval question)
+
+![Tasks](./images/tasks/ethan_term2_week1.png)
+
+- This week, I worked on making s3 buckets working and setup cloudfront routing for the files stored in the s3 bucket for security reasons.
+  - The files are stored in the s3 bucket and can be accessed through cloudfron with [this link](https://d18u3jaflgrcvn.cloudfront.net/media/Beautiful_City_SEA_VIEW___Creative_Commons_Videos___Free_HD_Videos_-_no_copyright.mp4)
+  - The working webpage screenshot is as follows:
+    - ![AWS S3](./images/Ethan_stuff/t2w1/s3_upload_cloudfront_view_video.png)
+    - ![AWS S3-2](./images/Ethan_stuff/t2w1/s3_upload_cloudfront_view_video_2.png)
+    - ![AWS S3-3](./images/Ethan_stuff/t2w1/s3_upload_cloudfront_view_video_3.png)
+  - The tasks associated are the following:
+    - [S3 Buckets](https://github.com/COSC-499-W2023/year-long-project-team-13/issues/96)
