@@ -84,7 +84,7 @@ wait = WebDriverWait(driver, 60)
 
 # Call the profile page test function with appropriate input values
 driver.get('http://localhost:8000/login')
-setting_test(driver, 'linus', '123')
+setting_test(driver, 'linus', 'Admin123')
 time.sleep(0.5)
 
 # Close the webdriver

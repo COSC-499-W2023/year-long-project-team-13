@@ -47,7 +47,7 @@ def login_page_test(driver, username, password):
     else:
         print("Login successful")
 
-def profile_page_test(driver, username, password, firstName, lastName, email, birthdate, image, firstName_set, lastName_set, email_set, birthdateset):
+def profile_page_test(driver, username, password, firstName, lastName, email, birthyear, birthdate, image, firstName_set, lastName_set, email_set, birthyearset, birthdateset):
     # Call the login page test function
     login_page_test(driver, username, password)
     time.sleep(0.5)
@@ -81,6 +81,9 @@ def profile_page_test(driver, username, password, firstName, lastName, email, bi
 
     birthdate_element = driver.find_element(By.ID, "id_birthdate")
     birthdate_element.clear()
+    birthdate_element.send_keys(birthyearset)
+    driver.switch_to.new_window('tab')
+    time.sleep(0.5)
     birthdate_element.send_keys(birthdateset)
     birthdate_value_input = birthdate_element.get_attribute('value')
     time.sleep(0.5)
@@ -135,6 +138,9 @@ def profile_page_test(driver, username, password, firstName, lastName, email, bi
 
     birthdate_element = driver.find_element(By.ID, "id_birthdate")
     birthdate_element.clear()
+    birthdate_element.send_keys(birthyear)
+    driver.switch_to.new_window('tab')
+    time.sleep(0.5)
     birthdate_element.send_keys(birthdate)
     time.sleep(0.5)
 
@@ -180,7 +186,7 @@ wait = WebDriverWait(driver, 60)
 
 # Call the profile page test function with appropriate input values
 driver.get('http://localhost:8000/login')
-profile_page_test(driver, 'aime', 'David123.', 'Aime', 'David', 'abc@xyz.com','01012024', os.path.abspath('../app/media/mountain.jpg'), 'Test First Name', 'Test Last Name', 'admin@xyz.com','12252000')
+profile_page_test(driver, 'adrian', 'cclemon0912', 'Adrian', 'Fong', 'af@student.com','2024', '0118', os.path.abspath('../app/media/mountain.jpg'), 'Test First Name', 'Test Last Name', 'admin@xyz.com','2000', '0101')
 time.sleep(0.5)
 
 # Close the webdriver
