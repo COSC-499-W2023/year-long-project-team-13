@@ -1,4 +1,4 @@
-Login Page test Start
-Login Successful
-TEST: 0 `Request Video` Successful
-Login Page test Completed
+Setting Page test Start
+Login successful
+TEST: 0 `Setting` successful
+Setting Page test Completed
