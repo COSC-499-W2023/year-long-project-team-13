@@ -51,9 +51,9 @@ def home_page_test(driver):
 
     # Check if the URL contains the expected home page URL
     if '/' in driver.current_url:
-        print("Test 2: `home page` successful")
+        print("TEST 2: `home page` successful")
     else:
-        print("Test 2: `home page` failed")
+        print("TEST 2: `home page` failed")
 
 # add login page test function
 def login_page_test(driver):
@@ -66,9 +66,9 @@ def login_page_test(driver):
 
     # Check if the URL contains the expected login page URL
     if '/login' in driver.current_url:
-        print("Test 3: `login` successful")
+        print("TEST 3: `login` successful")
     else:
-        print("Test 3: `login` failed")
+        print("TEST 3: `login` failed")
 
 # add register page test function
 def register_page_test(driver):
@@ -81,9 +81,9 @@ def register_page_test(driver):
 
     # Check if the URL contains the expected register page URL
     if '/register' in driver.current_url:
-        print("Test 4: `register` successful")
+        print("TEST 4: `register` successful")
     else:
-        print("Test 4: `register` failed")
+        print("TEST 4: `register` failed")
 
 # add profile page test function
 def profile_page_test(driver):
@@ -96,9 +96,9 @@ def profile_page_test(driver):
 
     # Check if the URL contains the expected profile page URL
     if '/profile' in driver.current_url:
-        print("Test 5: `profile` successful")
+        print("TEST 5: `profile` successful")
     else:
-        print("Test 5: `profile` failed")
+        print("TEST 5: `profile` failed")
 
 # add new video page test function
 def new_video_page_test(driver):
@@ -111,9 +111,9 @@ def new_video_page_test(driver):
 
     # Check if the URL contains the expected new video page URL
     if '/new' in driver.current_url:
-        print("Test 6: `new video page` successful")
+        print("TEST 6: `new video page` successful")
     else:
-        print("Test 6: `new video page` failed")
+        print("TEST 6: `new video page` failed")
 
 # add logout page test function
 def logout_page_test(driver):
@@ -129,9 +129,9 @@ def logout_page_test(driver):
 
     # Check if the URL contains the expected logout page URL
     if '/logout' in driver.current_url:
-        print("Test7: `logout` successful")
+        print("TEST 7: `logout` successful")
     else:
-        print("Test 7: `logout` failed")
+        print("TEST 7: `logout` failed")
 
 # login to the page
 def login(driver):
