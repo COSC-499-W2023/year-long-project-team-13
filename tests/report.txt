@@ -1,7 +1,4 @@
-Contact Video Page Test Start
-TEST: 0 `Video page` successful
-Login successful
-fully logged in
-TEST 1: `Add contact` successful
-TEST 4: `Add contact search` successful
-Contact Video Page Test Completed
+Create Video Test Start
+Login Successful
+TEST: 0 `Create Video` Successful
+Create Video Test Completed
