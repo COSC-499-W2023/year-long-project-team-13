@@ -8,6 +8,8 @@ from selenium import webdriver
 import time
 
 def register_page_test(driver, username, email, password):
+    html = driver.find_element(By.TAG_NAME, "html")
+
     # Find the username, email, and password fields and fill them out
     username_element = driver.find_element(By.ID, "id_username")
     username_element.send_keys(username)
@@ -26,16 +28,15 @@ def register_page_test(driver, username, email, password):
     password2_element.send_keys(password)
     time.sleep(0.5)
 
+    # Scroll down the register page
+    html.send_keys(Keys.PAGE_DOWN)
+
      # Find the checkbox and click it
     checkbox_element = driver.find_element(By.XPATH, "//input[@type='checkbox']")
     checkbox_element.click()
     time.sleep(0.5)
 
-    # Scroll down the register page
-    html = driver.find_element(By.TAG_NAME, "html")
-    html.send_keys(Keys.PAGE_DOWN)
-
-    html.send_keys(Keys.PAGE_DOWN)
+    html.send_keys(Keys.END)
 
     # Submit the form by clicking the "Register" button
     register_button = driver.find_element(By.ID, "register")
