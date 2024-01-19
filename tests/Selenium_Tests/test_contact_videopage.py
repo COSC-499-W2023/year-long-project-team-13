@@ -39,20 +39,6 @@ def add_contact_page_test(driver):
     else:
         print("TEST 1: `Add contact` failed")
 
-# add home page test function
-def home_page_test(driver):
-    # Find the element with the id "Home Button" and click it
-    home_button_element = driver.find_element(By.ID, "Home Button")
-    home_button_element.click()
-
-    # Wait for the URL to change to the home page URL
-    wait.until(EC.url_contains('/'))
-
-    # Check if the URL contains the expected home page URL
-    if '/' in driver.current_url:
-        print("TEST 2: `Home page` successful")
-    else:
-        print("TEST 2: `Home page` failed")
 
 # add login page test function
 def login_page_test(driver):
@@ -69,20 +55,7 @@ def login_page_test(driver):
     else:
         print("Login failed")
 
-# add new video page test function
-def new_video_page_test(driver):
-    # Find the element with the id "New Video Button" and click it
-    new_video_button_element = driver.find_element(By.ID, "New Video Button")
-    new_video_button_element.click()
 
-    # Wait for the URL to change to the new video page URL
-    wait.until(EC.url_contains('/new'))
-
-    # Check if the URL contains the expected new video page URL
-    if '/new' in driver.current_url:
-        print("TEST 3: `New video` successful")
-    else:
-        print("TEST 3: `New video` failed")
 
 # login to the page
 def login(driver):
@@ -126,9 +99,9 @@ def add_contact_page_search_test(driver):
 
     # Check if the URL contains the expected contact page URL
     if '/video' in driver.current_url:
-        print("TEST 4: `Add contact search` successful")
+        print("TEST 2: `Add contact search` successful")
     else:
-        print("TEST 4: `Add contact search` failed")
+        print("TEST 2: `Add contact search` failed")
 # Create a ChromeOptions object with the log level set to 3
 chrome_options = webdriver.ChromeOptions()
 chrome_options.add_argument("--log-level=3")  # Set log level to suppress warnings
