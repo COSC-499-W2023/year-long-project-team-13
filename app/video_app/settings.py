@@ -35,6 +35,7 @@ AWS_S3_SIGNATURE_VERSION = "s3v4"
 AWS_QUERYSTRING_EXPIRE = 604800
 CLOUDFRONT_DOMAIN = 'd18u3jaflgrcvn.cloudfront.net'
 
+<<<<<<< HEAD
 # STATIC_LOCATION = "static"
 # STATIC_URL = f'{CLOUDFRONT_DOMAIN}/static/'
 # # Add your path in the STATICFILES_STORAGE
@@ -42,6 +43,10 @@ CLOUDFRONT_DOMAIN = 'd18u3jaflgrcvn.cloudfront.net'
 
 # ALLOWED_HOSTS = ['*']
 
+=======
+# ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['ebdjango-env-1.eba-uzn2yvai.ca-central-1.elasticbeanstalk.com']
+>>>>>>> afa625e47746f8fa1cf642f132461265158a043b
 
 # Application definition
 
@@ -92,11 +97,22 @@ WSGI_APPLICATION = 'video_app.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+  'default': {
+    'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    'NAME': 'djangodatabase',
+    'USER': 'masteruser',
+    'PASSWORD': 'masteruser',
+    'HOST': 'database-django.cqtxhhmhjnhu.ca-central-1.rds.amazonaws.com',
+    'PORT': '5432',
+  }
 }
 
 

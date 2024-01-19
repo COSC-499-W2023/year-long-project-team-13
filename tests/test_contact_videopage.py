@@ -101,7 +101,7 @@ def login(driver):
     time.sleep(0.5)
 
     # Send the password to the password input
-    password_input_element.send_keys("123")
+    password_input_element.send_keys("Admin123")
     time.sleep(0.5)
 
     # Scroll down the login page
