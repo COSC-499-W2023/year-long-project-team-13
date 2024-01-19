@@ -1,5 +1,0 @@
-Theme Page test Start
-Login successful
-TEST: 0 `Setting` successful
-TEST: 1 `Theme` successful
-Theme Page test Completed
