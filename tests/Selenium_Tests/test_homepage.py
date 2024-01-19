@@ -88,7 +88,9 @@ def register_page_test(driver):
 # add profile page test function
 def profile_page_test(driver):
     # Find the element with the id "Profile Button" and click it
+    wait.until(EC.presence_of_element_located((By.ID, "Profile Button")))
     profile_button_element = driver.find_element(By.ID, "Profile Button")
+    wait.until(EC.element_to_be_clickable((By.ID, "Profile Button")))
     profile_button_element.click()
 
     # Wait for the URL to change to the profile page URL
@@ -159,6 +161,7 @@ def login(driver):
 
     # Find the element with the id "Login Submit Button" and click it
     login_submit_button_element = driver.find_element(By.ID, "login")
+    wait.until(EC.element_to_be_clickable((By.ID, "login")))
     login_submit_button_element.click()
 
     # Wait for the URL to change to the home page URL

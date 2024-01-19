@@ -40,6 +40,7 @@ def register_page_test(driver, username, email, password):
 
     # Submit the form by clicking the "Register" button
     register_button = driver.find_element(By.ID, "register")
+    wait.until(EC.element_to_be_clickable((By.ID, "register")))
     register_button.click()
 
     # Wait for the registration to complete (you might need to adjust the wait time)

@@ -1,4 +1,24 @@
+Home Page test Start
+TEST 0: `video page` test passed
+TEST 2: `home page` successful
+TEST 1: `contact page` test passed
+TEST 2: `home page` successful
+TEST 4: `register` successful
+TEST 2: `home page` successful
+TEST 3: `login` successful
+fully logged in
+TEST 5: `profile` successful
+TEST 2: `home page` successful
+TEST 6: `new video page` successful
+TEST 2: `home page` successful
+TEST 7: `logout` successful
+TEST 2: `home page` successful
+Home page test completed
+Register Page test Start
+TEST: 0 `Registration` successful
+Register Page test End
 Login Page test Start
-Login Successful
-TEST: 0 `Request Video` Successful
+TEST: 0 `Login` successful
 Login Page test Completed
+Logout test Start
+Login failed
