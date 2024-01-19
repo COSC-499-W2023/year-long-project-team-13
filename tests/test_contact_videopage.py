@@ -101,8 +101,8 @@ def login(driver):
     wait.until(EC.presence_of_element_located((By.ID, "id_password")))
 
     # Send the password to the password input
-    password_input_element.send_keys("123")
-    wait.until(EC.text_to_be_present_in_element_value((By.ID, "id_password"), "123"))
+    password_input_element.send_keys("Admin123")
+    wait.until(EC.text_to_be_present_in_element_value((By.ID, "id_password"), "Admin123"))
 
     # Scroll down the login page
     html = driver.find_element(By.TAG_NAME, "html")

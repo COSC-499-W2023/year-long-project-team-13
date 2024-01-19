@@ -95,7 +95,7 @@ wait = WebDriverWait(driver, 60)
 # Call the profile page test function with appropriate input values
 print("Logout test Start")
 driver.get('http://localhost:8000/login')
-logout_test(driver, 'linus', '123')
+logout_test(driver, 'linus', 'Admin123')
 print("Logout test Completed")
 
 # Close the webdriver

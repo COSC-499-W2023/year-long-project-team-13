@@ -81,7 +81,7 @@ wait = WebDriverWait(driver, 60)
 # Call the profile page test function with appropriate input values
 print("Notification Page test Start")
 driver.get('http://localhost:8000/login')
-notification_test(driver, 'linus', '123')
+notification_test(driver, 'linus', 'Admin123')
 print("Notification Page test completed")
 
 # Close the webdriver

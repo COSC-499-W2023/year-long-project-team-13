@@ -82,7 +82,7 @@ wait = WebDriverWait(driver, 60)
 # Call the profile page test function with appropriate input values
 print("Setting Page test Start")
 driver.get('http://localhost:8000/login')
-setting_test(driver, 'linus', '123')
+setting_test(driver, 'linus', 'Admin123')
 print("Setting Page test Completed")
 
 # Close the webdriver

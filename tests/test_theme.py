@@ -101,7 +101,7 @@ wait = WebDriverWait(driver, 60)
 # Call the profile page test function with appropriate input values
 print("Theme Page test Start")
 driver.get('http://localhost:8000/login')
-theme_test(driver, 'linus', '123')
+theme_test(driver, 'linus', 'Admin123')
 print("Theme Page test Completed")
 
 # Close the webdriver
