@@ -8,6 +8,7 @@ from selenium import webdriver
 import time
 
 def login_page_test(driver, username, password):
+    wait.until(EC.url_contains('/login'))
     # Find the element with the id "Username Input" and click it
     username_input_element = driver.find_element(By.ID, "id_username")
     username_input_element.click()
@@ -32,6 +33,7 @@ def login_page_test(driver, username, password):
 
     # Find the element with the id "Login Submit Button" and click it
     login_submit_button_element = driver.find_element(By.ID, "login")
+    wait.until(EC.element_to_be_clickable((By.ID, "login")))
     login_submit_button_element.click()
 
     # Wait for the URL to change to the home page URL

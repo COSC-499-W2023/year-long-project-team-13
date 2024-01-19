@@ -43,25 +43,3 @@ def login_page_test(driver, username, password):
         print("TEST 0: `Login` failed Did not go home")
     else:
         print("TEST: 0 `Login` successful")
-# Create a ChromeOptions object with the log level set to 3
-chrome_options = webdriver.ChromeOptions()
-chrome_options.add_argument("--log-level=3")  # Set log level to suppress warnings
-
-# Use the ChromeOptions and Service with suppressed logging
-driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
-driver.maximize_window()
-
-# Set the wait time for the driver
-wait = WebDriverWait(driver, 60)
-
-# Navigate to the homepage
-driver.get('http://localhost:8000/login')
-
-# Call the login page test function with appropriate input values
-print("Login Page test Start")
-login_page_test(driver, 'linus', 'Admin123')  # Replace with actual credentials
-print("Login Page test Completed")
-
-# Close the webdriver
-driver.quit()
-

@@ -8,6 +8,7 @@ from selenium import webdriver
 import time
 
 def login_page_test(driver, username, password):
+    wait.until(EC.url_contains('/login'))
     # Find the element with the id "Username Input" and click it
     username_input_element = driver.find_element(By.ID, "id_username")
     username_input_element.click()

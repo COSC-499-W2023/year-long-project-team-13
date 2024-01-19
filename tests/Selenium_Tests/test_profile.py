@@ -10,6 +10,7 @@ import time
 import os
 import sys
 
+
 def login_page_test(driver, username, password):
     # Find the element with the id "Username Input" and click it
     username_input_element = driver.find_element(By.ID, "id_username")
