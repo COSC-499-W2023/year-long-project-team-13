@@ -1,3 +1,4 @@
-Login Page test Start
-TEST: 0 `Login` successful
-Login Page test Completed
+Logout test Start
+Login successful
+TEST 0: `Logout` successful
+Logout test Completed
