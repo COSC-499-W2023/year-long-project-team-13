@@ -1,4 +1,7 @@
-Admin Page test Start
+Contact Video Page Test Start
+TEST: 0 `Video page` successful
 Login successful
-TEST: 0 `Admin` successful
-Admin Page test Completed
+fully logged in
+TEST 1: `Add contact` successful
+TEST 4: `Add contact search` successful
+Contact Video Page Test Completed
