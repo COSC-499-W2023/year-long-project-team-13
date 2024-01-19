@@ -101,7 +101,7 @@
 
                 <div class="container">
 
-                    <form>
+                    {% comment %} <form>
 
                         <div class="form-group">
 
@@ -115,7 +115,7 @@
                             <input type="email" class="form-control" id="email">
 
                         </div>
-                    </form>
+                    </form> {% endcomment %}
 
                     <form method = "post" enctype = "multipart/form-data">
                         {% csrf_token %}
