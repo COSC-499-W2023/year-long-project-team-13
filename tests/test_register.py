@@ -13,20 +13,20 @@ def register_page_test(driver, username, email, password):
     # Find the username, email, and password fields and fill them out
     username_element = driver.find_element(By.ID, "id_username")
     username_element.send_keys(username)
-    time.sleep(0.5)
+    wait.until(EC.text_to_be_present_in_element_value((By.ID, "id_username"), username))
 
     email_element = driver.find_element(By.ID, "id_email")
     email_element.send_keys(email)
-    time.sleep(0.5)
+    wait.until(EC.text_to_be_present_in_element_value((By.ID, "id_email"), email))
 
 
     password1_element = driver.find_element(By.ID, "id_password1")
     password1_element.send_keys(password)
-    time.sleep(0.5)
+    wait.until(EC.text_to_be_present_in_element_value((By.ID, "id_password1"), password))
 
     password2_element = driver.find_element(By.ID, "id_password2")
     password2_element.send_keys(password)
-    time.sleep(0.5)
+    wait.until(EC.text_to_be_present_in_element_value((By.ID, "id_password2"), password))
 
     # Scroll down the register page
     html.send_keys(Keys.PAGE_DOWN)
@@ -34,25 +34,23 @@ def register_page_test(driver, username, email, password):
      # Find the checkbox and click it
     checkbox_element = driver.find_element(By.XPATH, "//input[@type='checkbox']")
     checkbox_element.click()
-    time.sleep(0.5)
+    wait.until(EC.presence_of_element_located((By.XPATH, "//input[@type='checkbox']")))
 
     html.send_keys(Keys.END)
 
     # Submit the form by clicking the "Register" button
     register_button = driver.find_element(By.ID, "register")
     register_button.click()
-    time.sleep(0.5)
 
     # Wait for the registration to complete (you might need to adjust the wait time)
     # wait.until(EC.url_contains('/register'))
     wait.until(EC.url_contains('/login'))
-    time.sleep(0.5)
 
     # Check if the URL contains the expected login page URL
     if '/register' in driver.current_url:
-        print("Registration failed")
+        print("TEST: 0 `Registration` failed")
     else:
-        print("Registration successful")
+        print("TEST: 0 `Registration` successful")
 
 # Create a ChromeOptions object with the log level set to 3
 chrome_options = webdriver.ChromeOptions()
@@ -69,7 +67,9 @@ wait = WebDriverWait(driver, 60)  # Adjust the wait time as needed
 driver.get('http://localhost:8000/register/')  # Update the URL if needed
 
 # Call the register page test function with appropriate input values
+print("Register Page test Start")
 register_page_test(driver, 'abcde', 'abcde@email.com', 'herman1234')
+print("Register Page test End")
 
 # Close the webdriver
 driver.quit()
