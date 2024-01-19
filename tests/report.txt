@@ -1,3 +1,4 @@
-Register Page test Start
-TEST: 0 `Registration` successful
-Register Page test End
+Login Page test Start
+Login Successful
+TEST: 0 `Request Video` Successful
+Login Page test Completed
