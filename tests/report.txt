@@ -1,4 +1,5 @@
-Setting Page test Start
+Theme Page test Start
 Login successful
 TEST: 0 `Setting` successful
-Setting Page test Completed
+TEST: 1 `Theme` successful
+Theme Page test Completed
