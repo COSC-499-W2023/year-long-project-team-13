@@ -35,7 +35,6 @@ AWS_S3_SIGNATURE_VERSION = "s3v4"
 AWS_QUERYSTRING_EXPIRE = 604800
 CLOUDFRONT_DOMAIN = 'd18u3jaflgrcvn.cloudfront.net'
 
-<<<<<<< HEAD
 # STATIC_LOCATION = "static"
 # STATIC_URL = f'{CLOUDFRONT_DOMAIN}/static/'
 # # Add your path in the STATICFILES_STORAGE
@@ -43,10 +42,8 @@ CLOUDFRONT_DOMAIN = 'd18u3jaflgrcvn.cloudfront.net'
 
 # ALLOWED_HOSTS = ['*']
 
-=======
 # ALLOWED_HOSTS = []
 ALLOWED_HOSTS = ['ebdjango-env-1.eba-uzn2yvai.ca-central-1.elasticbeanstalk.com']
->>>>>>> afa625e47746f8fa1cf642f132461265158a043b
 
 # Application definition
 
