@@ -1,4 +1,4 @@
-Logout test Start
+Notification Page test Start
 Login successful
-TEST 0: `Logout` successful
-Logout test Completed
+TEST 0: `Notifications` successful
+Notification Page test completed
