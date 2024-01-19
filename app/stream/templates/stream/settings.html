@@ -15,7 +15,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <link rel="stylesheet" href= "{%static 'assets/bootstrap/css/bootstrap.min.css' %}">
       <title>Vnonymous</title>
-      <link href="{% static 'css/styleProfile.css' %}" rel="stylesheet">
+      {% comment %} <link href="{% static 'css/styleProfile.css' %}" rel="stylesheet"> {% endcomment %}
       <link href="{% static 'css/logoutUI.css' %}" rel="stylesheet">
       <link href="{% static 'css/styleSetting.css' %}" rel="stylesheet">
     </head>
@@ -116,26 +116,34 @@
 
                         </div>
                     </form> {% endcomment %}
-
-                    <form method = "post" enctype = "multipart/form-data">
+{% comment %} enctype = "multipart/form-data" {% endcomment %}
+<div class="col-lg-8">
+                    <form method = "post" enctype="multipart/form-data">
                         {% csrf_token %}
 
-                        <div class="form-group">
 
-                            <label for= "id_new_password1">Password</label>
-                            <input type="password" class="form-control" id="id_new_password1" name = "new_password1">
-                            {{passwordform.new_password1.errors}}
-                            {{passwordform.new_password1}}
-
+                            {% comment %} <label for= "id_new_password1">Password</label> {% endcomment %}
+                            {% comment %} <input type="password" class="form-control" id="id_new_password1" name = "new_password1"> {% endcomment %}
+                            <div class="row mb-3">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Password</h6>
+                                </div>
+                                {% comment %} <div class="col-sm-9 text-secondary"> {% endcomment %}
+                                    <p>
+                                {{ passwordform.password.errors }}
+                                {{ passwordform.password }}
+                                    </p>
+                            {% comment %} </div> {% endcomment %}
                         </div>
-                        <div class="form-group ">
+
+                        {% comment %} <div class="form-group ">
 
                             <label for= "id_new_password2">Confirm Password</label>
                             <input type="password" class="form-control" id = "id_new_password2" name ="new_password2">
                             {{passwordform.new_password2.errors}}
                             {{passwordform.new_password2}}
 
-                        </div>
+                        </div> {% endcomment %}
 
                         <div class="row mt-5">
 
@@ -150,10 +158,10 @@
                                 <a href="{% url 'stream:setting' %}" class="btn btn-default btn-block">Cancel</a>
 
                             </div>
-
                         </div>
 
                     </form>
+                </div>
                 </div>
 
             </div>

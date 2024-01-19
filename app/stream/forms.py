@@ -104,36 +104,36 @@ class SettingForm(forms.ModelForm):
 
 
 class SetPasswordForm(forms.ModelForm):
-    new_password1 = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder' :'Password',
+    password = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder' :'Password',
                                                                   'style': 'width: 400px; height: 45px; margin-left: auto; margin-right: auto; margin-bottom: 25px; border: 2px groove lightgreen;',
                                                                   'class': 'form-control', 'required': True}))
 
     class Meta:
         model = User
-        fields = ['new_password1']
+        fields = ['password']
 
-class SetPasswordFormWithConfirm(SetPasswordForm):
-    new_password2 = forms.CharField(
-        widget=forms.PasswordInput(attrs={
-            'placeholder': 'Confirm Password',
-            'style': 'width: 400px; height: 45px; margin-left: auto; margin-right: auto; margin-bottom: 25px; border: 2px groove lightgreen;',
-            'class': 'form-control',
-            'required': True,
-        }),
-    )
+# class SetPasswordFormWithConfirm(SetPasswordForm):
+#     new_password2 = forms.CharField(
+#         widget=forms.PasswordInput(attrs={
+#             'placeholder': 'Confirm Password',
+#             'style': 'width: 400px; height: 45px; margin-left: auto; margin-right: auto; margin-bottom: 25px; border: 2px groove lightgreen;',
+#             'class': 'form-control',
+#             'required': True,
+#         }),
+#     )
 
-    def clean_new_password2(self):
-        password1 = self.cleaned_data.get('new_password1')
-        password2 = self.cleaned_data.get('new_password2')
+#     def clean_new_password2(self):
+#         password1 = self.cleaned_data.get('new_password1')
+#         password2 = self.cleaned_data.get('new_password2')
 
-        if password1 and password2 and password1 != password2:
-            raise forms.ValidationError(('The two password fields must match.'))
+#         if password1 and password2 and password1 != password2:
+#             raise forms.ValidationError(('The two password fields must match.'))
 
-        # Validate the password using Django's password validation
-        password_validation.validate_password(password2, self.user)
+#         # Validate the password using Django's password validation
+#         password_validation.validate_password(password2, self.user)
 
-        return password2
+#         return password2
 
-    class Meta:
-        model = User
-        fields = ['new_password1', 'new_password2']
+#     class Meta:
+#         model = User
+#         fields = ['new_password1', 'new_password2']
