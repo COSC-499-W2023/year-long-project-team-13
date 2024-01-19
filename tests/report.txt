@@ -1,4 +1,3 @@
-Create Video Test Start
-Login Successful
-TEST: 0 `Create Video` Successful
-Create Video Test Completed
+Login Page test Start
+TEST: 0 `Login` successful
+Login Page test Completed
