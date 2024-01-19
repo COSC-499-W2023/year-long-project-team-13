@@ -14,20 +14,20 @@ def login_page_test(driver, username, password):
     # Find the element with the id "Username Input" and click it
     username_input_element = driver.find_element(By.ID, "id_username")
     username_input_element.click()
-    time.sleep(0.5)
+    wait.until(EC.presence_of_element_located((By.ID, "id_username")))
 
     # Send the username to the username input
     username_input_element.send_keys(username)
-    time.sleep(0.5)
+    wait.until(EC.text_to_be_present_in_element_value((By.ID, "id_username"), username))
 
     # Find the element with the id "Password Input" and click it
     password_input_element = driver.find_element(By.ID, "id_password")
     password_input_element.click()
-    time.sleep(0.5)
+    wait.until(EC.presence_of_element_located((By.ID, "id_password")))
 
     # Send the password to the password input
     password_input_element.send_keys(password)
-    time.sleep(0.5)
+    wait.until(EC.text_to_be_present_in_element_value((By.ID, "id_password"), password))
 
     # Scroll down the login page
     html = driver.find_element(By.TAG_NAME, "html")
@@ -36,11 +36,10 @@ def login_page_test(driver, username, password):
     # Find the element with the id "Login Submit Button" and click it
     login_submit_button_element = driver.find_element(By.ID, "login")
     login_submit_button_element.click()
-    time.sleep(0.5)
 
     # Wait for the URL to change to the home page URL
     WebDriverWait(driver, 60).until(EC.url_contains('/'))
-    time.sleep(0.5)
+
     # Check if the URL contains the expected post-login page URL
     if '/login' in driver.current_url:
         print("Login failed")
@@ -60,30 +59,35 @@ def profile_page_test(driver, username, password, firstName, lastName, email, bi
 
     # Wait for the URL to change to the profile page URL
     wait.until(EC.url_contains('/profile'))
+    print("TEST: 0 `Profile page found` successful")
 
     firstName_element = driver.find_element(By.ID, "id_first_name")
     firstName_element.clear()
     firstName_element.send_keys(firstName_set)
     firstName_value_input = firstName_element.get_attribute('value')
-    time.sleep(0.5)
+    wait.until(EC.text_to_be_present_in_element_value((By.ID, "id_first_name"), firstName_set))
+    print("TEST: 1 `First Name input` successful")
 
     lastName_element = driver.find_element(By.ID, "id_last_name")
     lastName_element.clear()
     lastName_element.send_keys(lastName_set)
     lastName_value_input = lastName_element.get_attribute('value')
-    time.sleep(0.5)
+    wait.until(EC.text_to_be_present_in_element_value((By.ID, "id_last_name"), lastName_set))
+    print("TEST: 2 `Last Name input` successful")
 
     email_element = driver.find_element(By.ID, "id_email")
     email_element.clear()
     email_element.send_keys(email_set)
     email_value_input = email_element.get_attribute('value')
-    time.sleep(0.5)
+    wait.until(EC.text_to_be_present_in_element_value((By.ID, "id_email"), email_set))
+    print("TEST: 3 `Email input` successful")
 
     birthdate_element = driver.find_element(By.ID, "id_birthdate")
     birthdate_element.clear()
     birthdate_element.send_keys(birthdateset)
     birthdate_value_input = birthdate_element.get_attribute('value')
     time.sleep(0.5)
+    print("TEST: 4 `Birthdate input` successful")
 
     #By.xpath("//input[@id='file_up']")
     #profileform.image user.profile.image.url user.profile.image
@@ -95,10 +99,8 @@ def profile_page_test(driver, username, password, firstName, lastName, email, bi
 
     update_button = driver.find_element(By.ID, "update")
     update_button.click()
-    time.sleep(0.5)
 
     wait.until(EC.url_contains('/profile'))
-    time.sleep(0.5)
 
     firstName_value_check = driver.find_element(By.ID, "id_first_name").get_attribute('value')
 
@@ -111,27 +113,31 @@ def profile_page_test(driver, username, password, firstName, lastName, email, bi
     # .text.lower()
 
     name_display_value_check = driver.find_element(By.ID, "NameCheck").text
+    print("TEST: 5 `name check` successful")
 
     email_display_value_check = driver.find_element(By.ID, "EmailCheck").text
+    print("TEST: 6 `email check` successful")
 
     birthdate_display_value_check = driver.find_element(By.ID, "BirthdateCheck").text
+    print("TEST: 7 `birthdate check` successful")
 
     img_check = driver.find_element(By.TAG_NAME, "img").get_attribute('src')
+    print("TEST: 8 `image check` successful")
 
     firstName_element = driver.find_element(By.ID, "id_first_name")
     firstName_element.clear()
     firstName_element.send_keys(firstName)
-    time.sleep(0.5)
+    wait.until(EC.text_to_be_present_in_element_value((By.ID, "id_first_name"), firstName))
 
     lastName_element = driver.find_element(By.ID, "id_last_name")
     lastName_element.clear()
     lastName_element.send_keys(lastName)
-    time.sleep(0.5)
+    wait.until(EC.text_to_be_present_in_element_value((By.ID, "id_last_name"), lastName))
 
     email_element = driver.find_element(By.ID, "id_email")
     email_element.clear()
     email_element.send_keys(email)
-    time.sleep(0.5)
+    wait.until(EC.text_to_be_present_in_element_value((By.ID, "id_email"), email))
 
     birthdate_element = driver.find_element(By.ID, "id_birthdate")
     birthdate_element.clear()
@@ -140,19 +146,17 @@ def profile_page_test(driver, username, password, firstName, lastName, email, bi
 
     update_button = driver.find_element(By.ID, "update")
     update_button.click()
-    time.sleep(0.5)
 
     wait.until(EC.url_contains('/profile'))
-    time.sleep(0.5)
 
     # Check if the URL contains the expected profile page URL
     if '/profile' in driver.current_url:
         if firstName_value_check == firstName_value_input and lastName_value_check == lastName_value_input and email_value_check == email_value_input and birthdate_value_check == birthdate_value_input and 'mountain' in img_check and '.jpg' in img_check and email_display_value_check == email_value_check and birthdate_display_value_check == 'Dec. 25, 2000' and name_display_value_check == (firstName_value_check + " " + lastName_value_check):
-            print("Edit Profile successful")
+            print("TEST: 9 `Edit Profile` successful")
         else:
-            print("Edit Profile failed")
+            print("TEST: 9 `Edit Profile` failed")
     else:
-        print("Edit Profile failed")
+        print("TEST: 9 `Edit Profile` failed")
 
     # Wait for the profile page to load
     # WebDriverWait(driver, 60).until(EC.url_contains('/profile'))
@@ -179,9 +183,10 @@ wait = WebDriverWait(driver, 60)
 # print( os.path.abspath('..\\drivers\\chromedriver_v78.0.exe') )
 
 # Call the profile page test function with appropriate input values
+print("Profile Page test Start")
 driver.get('http://localhost:8000/login')
 profile_page_test(driver, 'aime', 'David123.', 'Aime', 'David', 'abc@xyz.com','01012024', os.path.abspath('../app/media/mountain.jpg'), 'Test First Name', 'Test Last Name', 'admin@xyz.com','12252000')
-time.sleep(0.5)
+print("Profile Page test completed")
 
 # Close the webdriver
 driver.quit()

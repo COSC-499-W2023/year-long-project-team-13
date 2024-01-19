@@ -1,4 +1,13 @@
-Notification Page test Start
+Profile Page test Start
 Login successful
-TEST 0: `Notifications` successful
-Notification Page test completed
+Profile page found
+First Name input successful
+Last Name input successful
+Email input successful
+Birthdate input successful
+name check successful
+email check successful
+birthdate check successful
+image check successful
+Edit Profile failed
+Profile Page test completed
