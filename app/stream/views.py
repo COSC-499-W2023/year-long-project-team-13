@@ -9,7 +9,7 @@ from django.contrib.auth import logout, authenticate, login
 from django.dispatch import Signal
 
 from . models import VidStream, Notification, Profile, UserInfo, Setting
-from . forms import VidUploadForm, VidRequestForm, UserRegistrationForm, UserUpdateForm, UserInfoUpdateForm, UserProfileUpdateForm, UserProfileUpdateForm, SetPasswordForm
+from . forms import SetPasswordFormWithConfirm, VidUploadForm, VidRequestForm, UserRegistrationForm, UserUpdateForm, UserInfoUpdateForm, UserProfileUpdateForm, UserProfileUpdateForm, SetPasswordForm
 
 
 class VideoDetailView(DetailView):
@@ -180,3 +180,32 @@ def logout_view(request):
     if user.is_authenticated:
         logout(request)
     return redirect('stream:home')  # or wherever you want to redirect after logout
+
+@login_required
+def changepassword(request):
+    if request.method == "POST":
+        passwordform = SetPasswordForm(request.POST, instance=request.user)
+        passwordform = SetPasswordFormWithConfirm(request.user, request.POST)
+
+        if passwordform.is_valid():
+            new_password1 = passwordform.cleaned_data['new_password1']
+            new_password2 = passwordform.cleaned_data['new_password2']
+
+            # Check if the new passwords match
+            if new_password1 == new_password2:
+                user = passwordform.save(commit=False)
+                user.password = make_password(new_password1)
+                user.save()
+                return redirect("setting")
+            else:
+                passwordform.add_error('new_password2', 'Passwords do not match')
+                return redirect("profile")
+        else:
+            return redirect("notifications")
+    else:
+        passwordform = SetPasswordForm(instance=request.user)
+
+    context = {
+        'passwordform': passwordform,
+    }
+    return render(request, 'streamers/setting.html', context)
