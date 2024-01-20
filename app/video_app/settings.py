@@ -153,14 +153,10 @@ LOGIN_URL = 'login'
 # # Add your path in the STATICFILES_STORAGE
 # STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
-# # MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-# MEDIA_URL = f'{CLOUDFRONT_DOMAIN}/videos/'
-# MEDIA_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIAFILES_LOCATION = 'media'
 MEDIA_URL = "https://%s/%s/" % (CLOUDFRONT_DOMAIN, MEDIAFILES_LOCATION)
-# DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 #solves vidstream auto-created primary key error
 DEFAULT_AUTO_FIELD='django.db.models.AutoField'
