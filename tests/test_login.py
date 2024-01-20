@@ -23,7 +23,7 @@ def login_page_test(driver, username, password):
     time.sleep(0.5)
 
     # Send the password to the password input
-    password_input_element.send_keys("123")
+    password_input_element.send_keys("Admin123")
     time.sleep(0.5)
 
     # Scroll down the login page
@@ -58,7 +58,7 @@ wait = WebDriverWait(driver, 60)
 driver.get('http://localhost:8000/login')
 
 # Call the login page test function with appropriate input values
-login_page_test(driver, 'linus', '123')  # Replace with actual credentials
+login_page_test(driver, 'linus', 'Admin123')  # Replace with actual credentials
 
 # Close the webdriver
 driver.quit()
