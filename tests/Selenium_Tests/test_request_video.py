@@ -32,6 +32,7 @@ def login(driver, username, password):
 
     # Find the element with the id "Login Submit Button" and click it
     login_submit_button_element = driver.find_element(By.ID, "login")
+    wait.until(EC.element_to_be_clickable((By.ID, "login")))
     login_submit_button_element.click()
 
     # Wait for the URL to change to the home page URL
@@ -44,6 +45,7 @@ def login(driver, username, password):
 def request_video_test(driver):
     # Find the element with the id "Video Request Button" and click it
     video_button_element = driver.find_element(By.ID, "Video Request Button")
+    wait.until(EC.element_to_be_clickable((By.ID, "Video Request Button")))
     video_button_element.click()
     # Wait for the URL to change to the video page URL
     wait.until(EC.url_contains('/request-video'))
@@ -85,11 +87,11 @@ wait = WebDriverWait(driver, 60)
 driver.get('http://localhost:8000/login')
 
 # Call the login page test function with appropriate input values
-print("Login Page test Start")
+print("Request Page test Start")
 login(driver, 'linus', 'Admin123')  # Replace with actual credentials
 time.sleep(0.5)
 request_video_test(driver)
-print("Login Page test Completed")
+print("Request Page test Completed")
 
 # Close the webdriver
 driver.quit()

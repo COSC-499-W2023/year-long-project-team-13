@@ -53,6 +53,7 @@ def admin_test(driver, username, password):
 
 
     admin_element = driver.find_element(By.ID, "Admin Button")
+    wait.until(EC.element_to_be_clickable((By.ID, "Admin Button")))
     admin_element.click()
 
     # Wait for the URL to change to the admin page URL

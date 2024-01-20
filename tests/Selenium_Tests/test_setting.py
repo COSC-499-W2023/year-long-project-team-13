@@ -48,6 +48,7 @@ def setting_test(driver, username, password):
     time.sleep(0.5)
 
     setting_element = driver.find_element(By.ID, "Setting Button")
+    wait.until(EC.element_to_be_clickable((By.ID, "Setting Button")))
     setting_element.click()
 
     # Wait for the URL to change to the admin page URL
