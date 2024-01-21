@@ -10,7 +10,7 @@
     </div>
     {% endif %}
     <div>
-        <img class="rounded-circle border-dark" src="{{ object.streamer.profile.image.url }}" width='50' height='50'>
+        <img class="rounded-circle border-dark" src="{{ 'https://d18u3jaflgrcvn.cloudfront.net/media/'|add:object.streamer.profile.image.url|cut:'https://elasticbeanstalk-ca-central-1-841071745826.s3.amazonaws.com/' }}" width='50' height='50'>
         <h8 style="font-size:30px">{{ object.streamer.username }}</h12>
     </div>
     <div>
