@@ -208,7 +208,23 @@ Notifications and Design Milestone
   Notifications and Add Contact Function
   - Among these tasks, which have you completed/in progress in the last week?
 Notifications and Design Milestone before Christmas break.
+
+- Applicable date range
+##  Week 2 Term 2 01/15/24~01/21/24
+
+ # Preferred name -> Ssc name -> Github name
+
+- Herman -> Herman Sood -> Herman Sood
+
+![Tasks](./images/tasks/Term2Week1Herman.png)
+
+- Recap on your week's goals-Which features were yours in the project plan for this milestone? For term 2 week 2 I added some functionality to the add contact branch in which one a user has a registered account, they have the ability to add any other existing contact and it will show a message on the top of the screen stating that the user was added successfully. If the user does not exist, then a message saying will show. I am now in the phase of writing a unit test for this. I should have probably written it prior to the functions for the add contact which I will try to be mindful of for future. 
+  - Which tasks from the project board are associated with these features?
+  Add Contact Function
+  - Among these tasks, which have you completed/in progress in the last week?
+Add Contact Function (testing left)
  
+ ![Tasks](./images/tasks/Week2Term2HermanAddContact.png)
 
 
 
