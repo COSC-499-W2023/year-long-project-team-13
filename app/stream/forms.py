@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from . models import VidStream, VidRequest, Profile, UserInfo, Setting
 # , Contact
 from django.contrib.auth import password_validation
+from django.contrib import auth
 # from django.utils.translation import gettext_lazy as _
 
 class VidUploadForm(forms.ModelForm):
@@ -125,9 +126,29 @@ class SetPasswordForm(forms.ModelForm):
 #         }),
 #     )
 
-#     def clean_new_password2(self):
-#         password1 = self.cleaned_data.get('new_password1')
-#         password2 = self.cleaned_data.get('new_password2')
+# class ValidatingPasswordChangeForm(auth.forms.PasswordChangeForm):
+#     MIN_LENGTH = 8
+
+#     def clean_password(self):
+#         password = self.cleaned_data.get('password')
+
+#         # At least MIN_LENGTH long
+#         if len(password) < self.MIN_LENGTH:
+#             raise forms.ValidationError("The new password must be at least %d characters long." % self.MIN_LENGTH)
+
+#         # At least one letter and one non-letter
+#         first_isalpha = password[0].isalpha()
+#         if all(c.isalpha() == first_isalpha for c in password):
+#             raise forms.ValidationError("The new password must contain at least one letter and at least one digit or" \
+#                                         " punctuation character.")
+
+#         # ... any other validation you want ...
+
+#         return password
+
+#     def clean_password2(self):
+#         password1 = self.cleaned_data.get('password')
+#         password2 = self.cleaned_data.get('password2')
 
 #         if password1 and password2 and password1 != password2:
 #             raise forms.ValidationError(('The two password fields must match.'))
@@ -139,4 +160,4 @@ class SetPasswordForm(forms.ModelForm):
 
 #     class Meta:
 #         model = User
-#         fields = ['new_password1', 'new_password2']
+#         fields = ['password', 'password2']

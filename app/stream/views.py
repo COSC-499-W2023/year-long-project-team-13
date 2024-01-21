@@ -10,7 +10,7 @@ from django.dispatch import Signal
 
 from . models import VidStream, Notification, Profile, UserInfo, Setting
 from . forms import VidUploadForm, VidRequestForm, UserRegistrationForm, UserUpdateForm, UserInfoUpdateForm, UserProfileUpdateForm, UserProfileUpdateForm, SetPasswordForm
-# SetPasswordFormWithConfirm,
+# SetPasswordFormWithConfirm, ValidatingPasswordChangeForm,
 
 class VideoDetailView(DetailView):
     template_name = "stream/video-detail.html"
@@ -185,7 +185,7 @@ def logout_view(request):
 def settings(request):
     if request.method == "POST":
         passwordform = SetPasswordForm(request.POST, instance=request.user)
-        # passwordform = SetPasswordFormWithConfirm(request.user, request.POST)
+        # passwordform = ValidatingPasswordChangeForm(request.POST)
 
         if passwordform.is_valid():
             # new_password1 = passwordform.cleaned_data['new_password1']
@@ -195,6 +195,7 @@ def settings(request):
             # if new_password1 == new_password2:
             usertemp = passwordform.save(commit=False)
             usertemp.password = make_password(usertemp.password)
+            #usertemp.set_password(new_password1)
             usertemp.save()
             return redirect("stream:login")
 

@@ -125,7 +125,7 @@
                             {% comment %} <input type="password" class="form-control" id="id_new_password1" name = "new_password1"> {% endcomment %}
                             <div class="row mb-3">
                                 <div class="col-sm-3">
-                                    <h6 class="mb-0">Password</h6>
+                                    <h6 class="mb-0">Chnage Password</h6>
                                 </div>
                                 {% comment %} <div class="col-sm-9 text-secondary"> {% endcomment %}
                                     <form method = "post" enctype="multipart/form-data">
@@ -133,9 +133,13 @@
                                     <div>
                                 {{ passwordform.password.errors }}
                                 {{ passwordform.password }}
-                                {% comment %} {{ passwordform.password2.errors }}
-                                {{ passwordform.password2 }} {% endcomment %}
-                                    </div>
+                                {% comment %} <div class="col-sm-3">
+                                    <h6 class="mb-0">Confirm Password</h6>
+                                </div>
+                                <div class name = "password2">
+                                {{ passwordform.password2.errors }}
+                                {{ passwordform.password2 }}
+                                    </div> {% endcomment %}
                                     <div class="row mt-5">
 
                                         <div class="col">
