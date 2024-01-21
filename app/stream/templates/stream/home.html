@@ -25,9 +25,12 @@
                     {% if user.is_authenticated %}
                     <div class="dropdown">
                         <li class="nav-item nav-link">
-                        <button class="nav-link active">VIDEOS
-                          <i class="fa fa-caret-down" color:"white"></i>
-                        </button>
+                            <button class="nav-link active">
+                                <a>
+                                    VIDEOS
+                                </a>
+                            <i class="fa fa-caret-down" color:"white"></i>
+                            </button>
                         </li>
                         <div class="dropdown-content">
                             <li class="nav-item nav-link"><a class="nav-link active" href=" {% url 'stream:video-list' %} " id="Video Button">Videos</a></li>
@@ -39,7 +42,10 @@
                       <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:notifications' %}" id="Notification Button">Notifications</a></li>
                       <div class="dropdown">
                         <li class="nav-item nav-link">
-                        <button class="nav-link active">USER
+                        <button class="nav-link active">
+                            <a>
+                                USER
+                            </a>
                           <i class="fa fa-caret-down"></i>
                         </button>
                         </li>
