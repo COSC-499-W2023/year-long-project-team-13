@@ -156,7 +156,7 @@ def notifications(request):
     user = request.user
     if user.is_authenticated:
         notifications = Notification.objects.filter(user=user).order_by('-timestamp')
-        return render(request, 'stream/notification.html', {'stream:notifications': notifications})
+        return render(request, 'stream/notification.html', {'notifications': notifications})
     else:
         return redirect('stream:login')  # or wherever you want to redirect unauthenticated users
 

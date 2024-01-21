@@ -10,8 +10,8 @@ from django.urls import reverse
 
 # Video Request Table
 class VidRequest(models.Model):
-    id = models.IntegerField((""), primary_key=True)
-    # auto_increment_id = models.AutoField(primary_key=True)
+    id = models.TextField((""), primary_key=True)
+    # request_id = models.AutoField(primary_key=True)
     sender = models.ForeignKey(User, related_name="user_sender", on_delete=models.CASCADE)
     reciever = models.ForeignKey(User, related_name="user_reciever", on_delete=models.CASCADE)
     description = models.TextField(max_length=600)
@@ -19,7 +19,7 @@ class VidRequest(models.Model):
 
 
     def __str__(self):
-        return self.id
+        return f"{self.sender} Request"
 
     # def get_absolute_url(self):
     #     return reverse("video-detail", kwargs={"pk": self.pk})
@@ -29,17 +29,19 @@ class VidRequest(models.Model):
 
 # Video Stream Table (Table stores all videos) [Video List table]
 class VidStream(models.Model):
-    # id = models.OneToOneField(VidRequest, on_delete=models.CASCADE)
+    # video_id = models.AutoField(primary_key=True)
     streamer = models.ForeignKey(User, on_delete=models.CASCADE)
+    #
     title = models.CharField(max_length=300)
     description = models.TextField(max_length=600)
+    #
     upload_date = models.DateTimeField(default=timezone.now)
     video = models.FileField(upload_to='')
 
 
     def __str__(self):
         return self.title
-        # return self.id
+        # return f"{self.video_id} {self.streamer}"
 
     def get_absolute_url(self):
         return reverse("video-detail", kwargs={"pk": self.pk})
@@ -82,16 +84,20 @@ class VidStream(models.Model):
 
 # Post of video table
 # class Post(models.Model):
-#     id = models.OneToOneField(VidRequest, on_delete=models.CASCADE)
-#     sender = models.ForeignKey(User, on_delete=models.CASCADE)
-#     reciever = models.ForeignKey(User, on_delete=models.CASCADE)
-#     sendtime = models.DateTimeField(default=timezone.now)
-#     timelimit = models.DateTimeField(default=timezone.now)
-#     video = models.FileField(upload_to='')
+#     post_id = models.AutoField(primary_key=True)
+#     post_sender = models.ForeignKey(User, on_delete=models.CASCADE)
+#     post_reciever = models.ForeignKey(User, on_delete=models.CASCADE)
+#     post_title = models.CharField(max_length=300)
+#     post_description = models.TextField(max_length=600)
+#     post_sendtime = models.DateTimeField(default=timezone.now)
+#     post_timelimit = models.DateTimeField(default=timezone.now)
+#     post_video = models.FileField(upload_to='')
+#     video_id = models.ForeignKey(VidStream, on_delete=models.CASCADE)
+#     request_id = models.ForeignKey(VidRequest, on_delete=models.CASCADE)
 
 
 #     def __str__(self):
-#         return self.id
+#         return f"{self.post_id} {self.sender} Post"
 
 #     def get_absolute_url(self):
 #         return reverse("video-detail", kwargs={"pk": self.pk})
@@ -134,16 +140,23 @@ class UserInfo(models.Model):
     birthdate = models.DateField(default=date.today)
 
     def __str__(self):
-        return f"{self.user.username} PersonalInfo "
+        return f"{self.user.username} PersonalInfo"
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
 
 # Login Notifications table
 class Notification(models.Model):
+    # notification_id = models.AutoField(primary_key=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     message = models.CharField(max_length=200)
     timestamp = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.user.username} Notification "
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
 
 @receiver(user_logged_in)
 def user_logged_in(sender, user, request, **kwargs):
@@ -171,7 +184,7 @@ class Setting(models.Model):
     # defaultoption =
 
     def __str__(self):
-        return f"{self.user.username} Settings "
+        return f"{self.user.username} Settings"
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
