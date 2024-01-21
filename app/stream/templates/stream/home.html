@@ -19,16 +19,16 @@
     <nav class="navbar navbar-expand-md fixed-top navbar-light" id="mainNav">
         <div class="container"><a class="navbar-brand" href=" {% url 'stream:home' %} " id="Home Button">
             Vnonymous
-        </div>
-        <div class="navbar-collapse collapse" id="navbarResponsive">
           </a><button data-bs-toggle="collapse" class="navbar-toggler navbar-toggler-right" data-bs-target="#navbarResponsive" type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" value="Menu"><i class="fa fa-bars"></i></button>
             <div class="navbar" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto">
                     {% if user.is_authenticated %}
                     <div class="dropdown">
-                        <button class="nav-link active">Videos
-                          <i class="fa fa-caret-down"></i>
+                        <li class="nav-item nav-link">
+                        <button class="nav-link active">VIDEOS
+                          <i class="fa fa-caret-down" color:"white"></i>
                         </button>
+                        </li>
                         <div class="dropdown-content">
                             <li class="nav-item nav-link"><a class="nav-link active" href=" {% url 'stream:video-list' %} " id="Video Button">Videos</a></li>
                             <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:video-create' %}" id="New Video Button">New Video</a>
@@ -38,9 +38,11 @@
                       <li class="nav-item nav-link"><a class="nav-link active" href=" {% url 'stream:contact' %} " id="Add Contacts Button">Add Contacts</a></li>
                       <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:notifications' %}" id="Notification Button">Notifications</a></li>
                       <div class="dropdown">
-                        <button class="dropbtn">User
+                        <li class="nav-item nav-link">
+                        <button class="nav-link active">USER
                           <i class="fa fa-caret-down"></i>
                         </button>
+                        </li>
                         <div class="dropdown-content">
                             <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:profile' %}" id="Profile Button">Profile</a>
                             <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:setting' %}" id="Setting Button">Setting</a>
