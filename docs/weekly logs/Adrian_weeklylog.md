@@ -354,7 +354,7 @@ UML for SQL Database
 ## Term 2 Week 1 2023/12/04~2023/01/14
 
 - Task I have worked on this week and winter break.
-![Weekly Task 11/12](./images/tasks/AdrianFong_T2_Week1_Task.jpg)
+![Weekly Task T2-1](./images/tasks/AdrianFong_T2_Week1_Task.jpg)
 
 ## Recap on your week's goals
 
@@ -404,3 +404,40 @@ UML for SQL Database
 - I did encounter a lot of challenge on setting up RDS database and Elastic Beanstalk server on AWS with Django and Python which it does not have a proper setup guide from the internet. After few weeks of tries, I successfully setup database and server on AWS.
 - Also, I encounter to update new tables on SQL database which the admin page was not showing or updating any new table or data. Now, it is showing both new tables with data on admin page which serval code fixes.
 - We had meetings on Tuesday, Thursday and Saturday this week.
+
+# Preferred name -> Ssc name -> Github name
+
+- Adrian -> Adrian Fong -> AdrianFWM
+
+## Term 2 Week 2 2023/01/15~2023/01/21
+
+- Task I have worked on this week and winter break.
+![Weekly Task T2-2](./images/tasks/AdrianFong_T2_Week2_Task.jpg)
+
+## Recap on your week's goals
+
+### Rearrange Folders (Combine files/folders from Streamer to Stream)/ Tests
+- Worked on "rearrange folders" on project board, every html/css/functions are combined from Streamer folder to Stream folder, all files works properly on Stream folder, so we do need to import and deal with conflict error across Streamer and Stream folder files.
+- Fixed all tests to run properly after combining 2 folder files. All tests passes after fixes.
+  - [Rearrange Folder Pull Request/Commit](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/116)
+  - Rearrange Folder Before screenshot (have Streamer folder)
+![Rearrange Folder Before screenshot](./images/Adrian_images/T2_Week_2/Rearrange_Folder_Before.jpg)
+  - Rearrange Folder After screenshot (without Streamer folder)
+![Rearrange Folder After screenshot](./images/Adrian_images/T2_Week_2/Rearrange_Folder_After.jpg)
+  - Rearrange Folder Test screenshot
+![Rearrange Folder Test screenshot](./images/Adrian_images/T2_Week_2/Rearrange_Test.jpg)
+
+### Update Database Structure (In-Progress)
+- Working on "Update Database structure" on project board, after rearranging folders from streamer to stream, I deleted "Profiles" and "User Infos" table from Streamers and moved them to Stream. Also, added "Settings" table and "Notifications" table on SQL database. Notification page are able to display user login notifications from database. For "Setting" table, users can save their prefer settings.
+
+added "Settings" table and "Notifications" table on SQL database. Both table are connect to the "Users" table. New added tables display data on admin page.
+
+
+every html/css/functions are combined from Streamer folder to Stream folder, all files works properly on Stream folder, so we do need to import and deal with conflict error across Streamer and Stream folder files.
+- Fixed all tests to run properly after combining 2 folder files. All tests passes after fixes.
+  - [Rearrange Folder Pull Request/Commit](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/116)
+  - [AWS EC2/Elastic Beanstalk branch](https://github.com/COSC-499-W2023/year-long-project-team-13/tree/aws-testing)
+  - Rearrange Folder Before screenshot (have Streamer folder)
+![Rearrange Folder Before screenshot](./images/Adrian_images/T2_Week_2/Rearrange_Folder_Before.jpg)
+  - Rearrange Folder After screenshot (without Streamer folder)
+
