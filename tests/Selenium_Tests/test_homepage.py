@@ -44,6 +44,7 @@ def add_contact_page_test(driver):
 def home_page_test(driver):
     # Find the element with the id "Home Button" and click it
     home_button_element = driver.find_element(By.ID, "Home Button")
+    wait.until(EC.element_to_be_clickable((By.ID, "Home Button")))
     home_button_element.click()
 
     # Wait for the URL to change to the home page URL
