@@ -9,7 +9,7 @@
         </div>
     </div>
     {% endif %}
-    <div>
+    <div style="padding-top: 100px">
         <img class="rounded-circle border-dark" src="{{ 'https://d18u3jaflgrcvn.cloudfront.net/media/'|add:object.streamer.profile.image.url|cut:'https://elasticbeanstalk-ca-central-1-841071745826.s3.amazonaws.com/' }}" width='50' height='50'>
         <h8 style="font-size:30px">{{ object.streamer.username }}</h12>
     </div>
@@ -24,7 +24,9 @@
             </div>
         {% endif %}
         <video controls>
-            <source src="{{ object.video.url }}" type="video/mp4">
+            <source src="{{ 'https://d18u3jaflgrcvn.cloudfront.net/media/'|add:object.video.url|cut:'https://elasticbeanstalk-ca-central-1-841071745826.s3.amazonaws.com/' }}" type="video/mp4">
+            {% comment %} <source src="{{ object.video.url }}" type="video/mp4"> {% endcomment %}
+
         </video>
 
     </div>
