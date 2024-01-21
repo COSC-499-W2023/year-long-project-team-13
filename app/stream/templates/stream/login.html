@@ -1,8 +1,3 @@
-{% comment %}
-{% extends 'stream/base.html'%}
-{% load static %}
-{% block content%}
-{% endcomment %}
 
 {% load bootstrap5 %}
 {% bootstrap_css %}
@@ -15,36 +10,59 @@
     <title>Vnonymous</title>
     <link rel="stylesheet" href= "{%static 'assets/bootstrap/css/bootstrap.min.css' %}">
     <link href="{% static 'css/styleLogin.css' %}" rel="stylesheet">
+    <link href="{% static 'css/styleTopBar.css' %}" rel="stylesheet">
   </head>
 
   <!--style in body change the website side/top/bottom background-->
   <body id="page-top" data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="77"  style="background-size: cover; background-image: url(' {% static 'assets/img/login-background-image.jpg' %} ');">
     <nav class="navbar navbar-expand-md fixed-top navbar-light" id="mainNav">
       <div class="container"><a class="navbar-brand" href=" {% url 'stream:home' %} " id="Home Button">
-        Vnonymous
-      </a><button data-bs-toggle="collapse" class="navbar-toggler navbar-toggler-right" data-bs-target="#navbarResponsive" type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" value="Menu"><i class="fa fa-bars"></i></button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ms-auto">
-            <li class="nav-item nav-link"><a class="nav-link active" href=" {% url 'stream:video-list' %} " id="Video Button">Videos</a></li>
-            <li class="nav-item nav-link"><a class="nav-link active" href=" {% url 'stream:contact' %} " id="Add Contacts Button">Add Contacts</a></li>
-            {% if user.is_authenticated %}
-              <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:video-create' %}" id="New Video Button">New Video</a>
-                <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:notifications' %}" id="Notification Button">Notifications</a></li>
-              {% if user.is_superuser %}
-                <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'admin:index' %}" id="Admin Button">Admin</a>
-              {% endif %}
-              <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:request-video' %}" id="Video Request Button">Video Request</a>
-              <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:profile' %}" id="Profile Button">Profile</a>
-              <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:setting' %}" id="Setting Button">Setting</a>
-              <li class="nav-item nav-link"><a class="nav-link active"  href='#'onclick='overlay()' id="Logout Button">Logout</a>
-            {% else %}
-                <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:login' %}" id="Login Button">Login</a></li>
-                <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:register' %}" id="Register Button">Register</a></li>
-            {% endif %}
-        </ul>
-    </div>
+          Vnonymous
+        </a><button data-bs-toggle="collapse" class="navbar-toggler navbar-toggler-right" data-bs-target="#navbarResponsive" type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" value="Menu"><i class="fa fa-bars"></i></button>
+          <div class="navbar" id="navbarResponsive">
+              <ul class="navbar-nav ms-auto">
+                  {% if user.is_authenticated %}
+                  <div class="dropdown">
+                      <li class="nav-item nav-link">
+                          <button class="nav-link active">
+                              <a>
+                                  VIDEOS &#9660;
+                              </a>
+                          </button>
+                      </li>
+                      <div class="dropdown-content">
+                          <li class="nav-item nav-link"><a class="nav-link active" href=" {% url 'stream:video-list' %} " id="Video Button">Videos</a></li>
+                          <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:video-create' %}" id="New Video Button">New Video</a>
+                          <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:request-video' %}" id="Video Request Button">Video Request</a>
+                      </div>
+                    </div>
+                    <li class="nav-item nav-link"><a class="nav-link active" href=" {% url 'stream:contact' %} " id="Add Contacts Button">Add Contacts</a></li>
+                    <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:notifications' %}" id="Notification Button">Notifications</a></li>
+                    <div class="dropdown">
+                      <li class="nav-item nav-link">
+                      <button class="nav-link active">
+                          <a>
+                              USER &#9660;
+                          </a>
+                      </button>
+                      </li>
+                      <div class="dropdown-content">
+                          <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:profile' %}" id="Profile Button">Profile</a>
+                          <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:setting' %}" id="Setting Button">Setting</a>
+                          {% if user.is_superuser %}
+                              <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'admin:index' %}" id="Admin Button">Admin</a>
+                          {% endif %}
+                          <li class="nav-item nav-link"><a class="nav-link active"  href='#'onclick='overlay()' id="Logout Button">Logout</a>
+                      </div>
+                    </div>
+                  {% else %}
+                      <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:login' %}" id="Login Button">Login</a></li>
+                      <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:register' %}" id="Register Button">Register</a></li>
+                  {% endif %}
+              </ul>
+          </div>
       </div>
-    </nav>
+  </nav>
 
     <!--style in section change the website background-->
     {% comment %} <section class="h-100 gradient-form" style="background-size: cover; background-image: url(' {% static 'assets/img/login-background-image.jpg' %} '); margin-top: 25px;"> {% endcomment %}
