@@ -16,6 +16,7 @@
     <link href="{% static 'css/logoutUI.css' %}" rel="stylesheet">
     <link href="{% static 'css/styleProfile.css' %}" rel="stylesheet">
     <link href="{% static 'css/styleVideo.css' %}" rel="stylesheet">
+    <link href="{% static 'css/styleTopBar.css' %}" rel="stylesheet">
 </head>
 
 <body id="page-top" data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="77" style="background-size: cover; background-image: url(' {% static 'assets/img/intro-bg.jpg' %} ');">
@@ -81,13 +82,13 @@
 
     <div class="container">
         <div class="row d-flex justify-content-center align-items-center h-100">
-          <div class="col-lg-15">
+          <div class="col-lg-15" style="padding-top: 50px">
             <h1>SEND A VIDEO REQUEST</h1>
             <div class="card mb-3" style="width: 75%; box-shadow: 12em; margin: auto;">
             <form method="POST" enctype="multipart/form-data">
               {% csrf_token %}
               <div style = "padding-top: 25px;">
-              <select name="contacts" id="contacts" class="dropdown buttonRound">
+              <select name="contacts" id="contacts" class="dropdown2 buttonRound">
                 <option value="Choose">Choose a Contact</option>
                 <option value="Ethan">Ethan</option>
                 <option value="Adrian">Adrian</option>
@@ -111,7 +112,7 @@
               </div>
               <div style = "padding-top: 15px;">
                 <a href="{% url 'stream:home' %}" >
-                  <button class="button buttonRound" :hover type="button" id="send">SEND</button>
+                  <button class="button2 buttonRound" :hover type="button2" id="send">SEND</button>
                 </a>
               </div>
             </form>
