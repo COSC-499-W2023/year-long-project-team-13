@@ -212,3 +212,20 @@
     - ![AWS S3-3](./images/Ethan_stuff/t2w1/s3_upload_cloudfront_view_video_3.png)
   - The tasks associated are the following:
     - [S3 Buckets](https://github.com/COSC-499-W2023/year-long-project-team-13/issues/96)
+
+# Preferred name -> Ssc name -> Github name
+
+- Ethan -> Ethan Hsu -> YuchenHsu
+
+## Week 2 2024/01/15 ~ 2024/01/21
+
+- Type of tasks you worked on (screenshot from Peer Eval question)
+
+![Tasks](./images/tasks/ethan_term2_week2.png)
+
+- This week, I worked on making the video list page, originally I was planning on working with one of the blurring features, but when the rds database was implemented the s3 bucket and cloudfront stopped working. So I had to work on fixing that.
+  - The tasks associated are the following:
+  - [S3 cloudfront branch](https://github.com/COSC-499-W2023/year-long-project-team-13/issues/96)
+  - ![Video List Page Video](./images/Ethan_stuff/t2w2/s3_updated_database_version.png)
+  - ![Video List Page Image](./images/Ethan_stuff/t2w2/s3_updated_database_version_2.png)
+
