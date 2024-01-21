@@ -226,6 +226,8 @@ Add Contact Function (testing left)
  
  ![Tasks](./images/tasks/Week2Term2HermanAddContact.png)
 
+ ![Tasks](./images/tasks/Week2Term2HermanPeerEval.png)
+
 
 
 
