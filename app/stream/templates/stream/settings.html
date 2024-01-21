@@ -118,8 +118,7 @@
                     </form> {% endcomment %}
 {% comment %} enctype = "multipart/form-data" {% endcomment %}
 <div class="col-lg-8">
-                    <form method = "post" enctype="multipart/form-data">
-                        {% csrf_token %}
+
 
 
                             {% comment %} <label for= "id_new_password1">Password</label> {% endcomment %}
@@ -129,10 +128,29 @@
                                     <h6 class="mb-0">Password</h6>
                                 </div>
                                 {% comment %} <div class="col-sm-9 text-secondary"> {% endcomment %}
-                                    <p>
+                                    <form method = "post" enctype="multipart/form-data">
+                                        {% csrf_token %}
+                                    <div>
                                 {{ passwordform.password.errors }}
                                 {{ passwordform.password }}
-                                    </p>
+                                {% comment %} {{ passwordform.password2.errors }}
+                                {{ passwordform.password2 }} {% endcomment %}
+                                    </div>
+                                    <div class="row mt-5">
+
+                                        <div class="col">
+
+                                            <button type="submit" class="btn btn-primary btn-block">Save Changes</button>
+
+                                        </div>
+
+                                        <div class="col">
+
+                                            <a href="{% url 'stream:setting' %}" class="btn btn-default btn-block">Cancel</a>
+
+                                        </div>
+                                    </div>
+                                </form>
                             {% comment %} </div> {% endcomment %}
                         </div>
 
@@ -145,22 +163,9 @@
 
                         </div> {% endcomment %}
 
-                        <div class="row mt-5">
 
-                            <div class="col">
 
-                                <button type="submit" class="btn btn-primary btn-block">Save Changes</button>
 
-                            </div>
-
-                            <div class="col">
-
-                                <a href="{% url 'stream:setting' %}" class="btn btn-default btn-block">Cancel</a>
-
-                            </div>
-                        </div>
-
-                    </form>
                 </div>
                 </div>
 

@@ -135,26 +135,20 @@ def profile(request):
         userform = UserUpdateForm(request.POST, instance=request.user)
         personalinfoform = UserInfoUpdateForm(request.POST, instance=request.user.userinfo)
         profileform = UserProfileUpdateForm(request.POST, request.FILES, instance=request.user.profile)
-        # passwordform = SetPasswordForm(request.POST, instance=request.user)
         if userform.is_valid() and personalinfoform.is_valid and profileform.is_valid():
-            # user = passwordform.save(commit=False)
-            # user.password = make_password(user.password)
-            # user.save()
             userform.save()
             personalinfoform.save()
             profileform.save()
-            return redirect("stream:profile")
+            return redirect("stream:login")
     else:
         userform = UserUpdateForm(instance=request.user)
         personalinfoform = UserInfoUpdateForm(instance=request.user.userinfo)
         profileform = UserProfileUpdateForm(instance=request.user.profile)
-        # passwordform = SetPasswordForm(instance=request.user)
 
     context = {
         'userform': userform,
         'personalinfoform': personalinfoform,
         'profileform': profileform,
-        # 'passwordform': passwordform,
     }
     return render(request, 'stream/profile.html', context)
 
@@ -188,7 +182,7 @@ def logout_view(request):
     return redirect('stream:home')  # or wherever you want to redirect after logout
 
 @login_required
-def changepassword(request):
+def settings(request):
     if request.method == "POST":
         passwordform = SetPasswordForm(request.POST, instance=request.user)
         # passwordform = SetPasswordFormWithConfirm(request.user, request.POST)
@@ -199,13 +193,11 @@ def changepassword(request):
 
             # Check if the new passwords match
             # if new_password1 == new_password2:
-            user = passwordform.save(commit=False)
-            user.password = make_password(user.password)
-            user.save()
-            return redirect("stream:setting")
-            # else:
-                # passwordform.add_error('new_password2', 'Passwords do not match')
-                # return redirect("profile")
+            usertemp = passwordform.save(commit=False)
+            usertemp.password = make_password(usertemp.password)
+            usertemp.save()
+            return redirect("stream:login")
+
     else:
         passwordform = SetPasswordForm(instance=request.user)
 

@@ -32,7 +32,7 @@ urlpatterns = [
     path('register/',stream_views.register, name="register"),
     path('login', auth_views.LoginView.as_view(template_name='stream/login.html'), name="login"),
     path('logout',auth_views.LogoutView.as_view(template_name='stream/logout.html'), name="logout"),
-    path('setting',auth_views.LoginView.as_view(template_name='stream/settings.html'), name="setting"),
-    path('theme',auth_views.LoginView.as_view(template_name='stream/theme.html'), name="theme"),
+    path('setting',stream_views.settings, name="setting"),
+    path('theme',stream_views.settings, name="theme"),
     path('notifications',stream_views.notifications, name="notifications"),
 ]
