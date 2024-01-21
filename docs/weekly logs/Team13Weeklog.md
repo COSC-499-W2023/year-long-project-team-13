@@ -334,4 +334,4 @@ In progress Tasks
 ![In Progress](./images/in-prog/term2_week2_inprogress_2.png)
 Test Report
 
-- Test report file is in the same directory [here](./report.md)
+- Test report file is in the same directory [here](./report.txt)
