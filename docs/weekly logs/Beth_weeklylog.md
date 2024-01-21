@@ -107,3 +107,8 @@ My feature this week was to work on the CI testing pipeline. This is associated 
 
 #### Quick snap shot of the most recent error
 ![CIPipelineError](./images/Ralston_stuff/term2_w1_ci_pipeline.png)
+
+### Week 2 Jan 15 - 21
+![Week2Tasks](./images/tasks/Ralston_term2_w2_tasks.png)
+
+For this week, I focused on updating the Selenium tests to have clearer print messages and to eliminates the reacurring clickable bugs. As well as to create a proper test report file to pipe the master tests into. This is the testing structure task in the project board which is in the review phase from my other team members. I also worked on updating the top bar to include a drop down menu. The drop down menu works on all but one page and I have not yet got a passing test for it. This is associated with the reorganize top bar task. Ethan was a big help with figuring out some weird topbar css bugs.
