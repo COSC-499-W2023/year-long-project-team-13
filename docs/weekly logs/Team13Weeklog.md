@@ -316,8 +316,9 @@ In progress Tasks
   - S3 bucket and cloudfront routing for the videos uploaded and profile pitctures.
   - We also fixed all the testing and generate output of testing.
   - Reorganized the topbar structure.
+  - Combined Streamer folder content to Stream folder, we don't need to have anymore import errors/conflicts.
   - RDS database setup on AWS.
-  - Updating the database structure and the models and change some processes for different pages (profile page, admin page).
+  - Updating the database structure (notification, setting tables) and the models and change some processes for different pages (profile page, admin page).
   - Add contact page function is working and testing is still WiP.
   - Settings page is being worked on for themes and changing password.
 
