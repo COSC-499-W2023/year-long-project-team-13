@@ -32,6 +32,7 @@ def login_page_test(driver, username, password):
 
     # Find the element with the id "Login Submit Button" and click it
     login_submit_button_element = driver.find_element(By.ID, "login")
+    wait.until(EC.element_to_be_clickable((By.ID, "login")))
     login_submit_button_element.click()
 
     # Wait for the URL to change to the home page URL
