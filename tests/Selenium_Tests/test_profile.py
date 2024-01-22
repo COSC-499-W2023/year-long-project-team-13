@@ -55,6 +55,7 @@ def profile_page_test(driver, username, password, firstName, lastName, email, bi
     # Navigate to the profile page
     # driver.get('http://localhost:8000/profile')
 
+    wait.until(EC.element_to_be_clickable((By.ID, "Profile Button")))
     profile_button_element = driver.find_element(By.ID, "Profile Button")
     profile_button_element.click()
 
