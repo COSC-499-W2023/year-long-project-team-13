@@ -285,7 +285,7 @@ Changes to urls.py
 
 Change password (current html)
 
-![Change password (current html)](./images/Sitt_images/Term_2_Week_2/changepassword.png)
+![Change password (current html)](./images/Sitt_images/Term_2_Week_2/Changepassword.png)
 
 ### Additional
 - Worked on my own weekly log, contribute to team weekly log.
