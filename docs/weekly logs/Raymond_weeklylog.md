@@ -257,4 +257,36 @@ Coding for change/confirm password (in progress)
 - Learn new information from online to use for my project.
 
 
+## Term 2 Week 2 2024/01/15 ~ 2024/01/21
 
+- Type of tasks you worked on
+
+![Tasks](./images/tasks/SittPaing_T2W2-Task.png)
+
+## Recap of week's goals
+
+For this week, I have worked on the change password/confirm password and remove unnecessary things in html on the setting page and make some adjustment to the page. The original plan was to finish the change/confirm password and jump to new task and get a head start, but they are some delays due to coding issues. I was assuming that it’s the database problem since previously the new password entered by the user is not working. After the database is fixed, the problem still exists, and I have to check my code to make some changes in html as well as other interconnected files (forms.py , views.py, urls.py). After changing everything which is necessary, the problem still exist much to my utmost frustration, which are the forms for user input required for changing password is missing but instead, the login form that is from different page is appearing on the setting page which makes me, and my team members perplexed when I run my code although the code in the setting page is there without any errors. Due to this problem, I have tried numerous solutions online trying to tackle on how to make just a single original form appear to make password change. I asked my teammate members for assistance but they could find the solution but during the weekend, much to our surprises, me and Adrian find the problem that cause the issues which is just a careless mistakes (shows no error but the code used in that line is wrong in the urls.py) which make us feel very annoyed but in the end the user is now able to change password and able to login with new password and I am working on confirm password during the weekend the code throws no error but not working as intended so currently i commented them out so that i does not affect the current working program. On the other hand, I have started searching up on how to view date/time for my later task using online resources so that i am prepared in advance.
+
+Adjustment to html and Removal of unnecessary stuffs
+
+![Adjustment to html and Removal of unnecessary stuffs](./images/Sitt_images/Term_2_Week_2/html_code.png)
+
+Changes to forms.py and commented out code for confirm password
+
+![Changes to forms.py and commented out code for confirm password](./images/Sitt_images/Term_2_Week_2/forms_code.png)
+
+Changes to views.py and commented out code for confirm password
+
+![Changes to views.py and commented out code for confirm password](./images/Sitt_images/Term_2_Week_2/views_code.png)
+
+Changes to urls.py
+
+![Changes to urls.py](./images/Sitt_images/Term_2_Week_2/url_changes.png)
+
+Change password (current html)
+
+![Change password (current html)](./images/Sitt_images/Term_2_Week_2/changepassword.png)
+
+### Additional
+- Worked on my own weekly log, contribute to team weekly log.
+- Learn new information from online to use for my project.
