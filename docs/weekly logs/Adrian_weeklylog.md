@@ -428,16 +428,33 @@ UML for SQL Database
 ![Rearrange Folder Test screenshot](./images/Adrian_images/T2_Week_2/Rearrange_Test.jpg)
 
 ### Update Database Structure (In-Progress)
-- Working on "Update Database structure" on project board, after rearranging folders from streamer to stream, I deleted "Profiles" and "User Infos" table from Streamers and moved them to Stream. Also, added "Settings" table and "Notifications" table on SQL database. Notification page are able to display user login notifications from database. For "Setting" table, users can save their prefer settings.
+- Working on "Update Database structure" on project board, after rearranging folders from streamer to stream, I deleted "Profiles" and "User Infos" table from Streamers and moved them to Stream. Also, added "Settings" table and "Notifications" table on SQL database. Notification page are able to display user login notifications from database. For "Setting" table, users can save their prefer settings
+- Only 2 more tables needed to be update which are "Posts" and "Contacts" tables, I will finish both table next week.
+  - [Update Database Structure Pull Request/Commit](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/116)
+  - [Update Database Structure branch](https://github.com/COSC-499-W2023/year-long-project-team-13/tree/update_database)
+  - Update Database Structure screenshot
+![Update Database Structure screenshot](./images/Adrian_images/T2_Week_2/Database_Update_Stream.jpg)
+  - Settings Table screenshot
+![Notification Table screenshot](./images/Adrian_images/T2_Week_2/Database_Setting.jpg)
+  - Notification Page screenshot (with login notifications)
+![Notification Page screenshot](./images/Adrian_images/T2_Week_2/Notification.jpg)
+  - Database structure we aim to update to
+![Database structure we aim to update to](./images/Adrian_images/T2_Week_1/Cosc_499_UML.drawio.png)
 
-added "Settings" table and "Notifications" table on SQL database. Both table are connect to the "Users" table. New added tables display data on admin page.
+### RDS Database / EC2 / Elastic Beanstalk
+- Upload RDS database connection to our local device, so we all can use the RDS database (and have the same database data) and not to have local SQL database error(Everyone with different database data).
+- Update EC2/Elastic Beanstalk server with our newest version of our website after database update and folder rearrangement. The server runs the newest website properly.
+  - [Update RDS Database / EC2 / Elastic Beanstalk Pull Request/Commit](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/119)
+  - Update RDS Database / EC2 / Elastic Beanstalk screenshot (Red arrow update time and version)
+![Update RDS Database / EC2 / Elastic Beanstalk screenshot](./images/Adrian_images/T2_Week_2/EC2_update.jpg)
 
+### Change Password Function (Setting Page) (In-Progress)
+- Worked on change password function for Setting Page, it successfully updates user's password to the database with encryption.
+- However, Raymond still need to work on confirming password function before changing password.
+- Helped Raymond on Setting Page and wrote change password form(front-end) and function(back-end) during team-meeting.
+  - [Setting branch](https://github.com/COSC-499-W2023/year-long-project-team-13/tree/setting)
+  - Change Password Function screenshot
+![Change Password Function screenshot](./images/Adrian_images/T2_Week_2/Change_Password_Setting.jpg)
 
-every html/css/functions are combined from Streamer folder to Stream folder, all files works properly on Stream folder, so we do need to import and deal with conflict error across Streamer and Stream folder files.
-- Fixed all tests to run properly after combining 2 folder files. All tests passes after fixes.
-  - [Rearrange Folder Pull Request/Commit](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/116)
-  - [AWS EC2/Elastic Beanstalk branch](https://github.com/COSC-499-W2023/year-long-project-team-13/tree/aws-testing)
-  - Rearrange Folder Before screenshot (have Streamer folder)
-![Rearrange Folder Before screenshot](./images/Adrian_images/T2_Week_2/Rearrange_Folder_Before.jpg)
-  - Rearrange Folder After screenshot (without Streamer folder)
-
+### Weekly Log / Team Weekly Log / Additional
+- Worked on my own weekly log, contribute to team weeklog.
