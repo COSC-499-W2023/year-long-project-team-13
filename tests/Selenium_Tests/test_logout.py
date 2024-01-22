@@ -48,6 +48,7 @@ def logout_test(driver, username, password):
     login_page_test(driver, username, password)
     time.sleep(0.5)
 
+    wait.until(EC.element_to_be_clickable((By.ID, "Logout Button")))
     logout_element = driver.find_element(By.ID, "Logout Button")
     logout_element.click()
     wait.until(EC.url_contains('/#'))
