@@ -19,15 +19,16 @@
                 <div class="input-group-prepend">
                 </div>
                 <input type="text" class="form-control" name="contact_name" placeholder="Enter name to add as contact">
-                <button type="submit" class="btn btn-dark">Add Contact</button>
+                <a href=" {% url 'stream:video-list' %}" class="btn btn-dark" id="search button">Add Contact</a>
+                {% comment %} <button type="submit" class="btn btn-dark" id="search button">Add Contact</button> {% endcomment %}
             </div>
         </form>
     </div>
     {% comment %} <div>
         {% for item in videos%}
         <div class="card" style="width: 40rem; margin: 20px; box-shadow: 12em;">
-            <img class="rounded-circle border-dark" src="{{ item.streamer.profile.image.url }}" style="border-color: red;" width="30" height="30">
-            <a class="mr-2" href="{% url 'stream:user-videos' item.streamer.username %}" style="text-align: start;">{{ item.streamer }}</a>
+            <img class="rounded-circle border-dark" src="{{ item.stream.profile.image.url }}" style="border-color: red;" width="30" height="30">
+            <a class="mr-2" href="{% url 'stream:user-videos' item.stream.username %}" style="text-align: start;">{{ item.stream }}</a>
             <h12 style="text-align: start;">{{ item.upload_date }}</h12>
             <video class="card-image-top" controls>
                 <source src="{{ item.video.url }}" type="video/mp4">
