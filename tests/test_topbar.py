@@ -41,13 +41,23 @@ def login(driver):
     print("fully logged in")
 
 # test hover over topbar
-def topbar_hover_test(driver):
+def topbar_videos_hover_test(driver):
+
     # Find the element with the id "Topbar" and hover over it
+    wait.until(EC.presence_of_element_located((By.ID, "Videos Hover")))
     topbar_element = driver.find_element(By.ID, "Videos Hover")
     hover = ActionChains(driver).move_to_element(topbar_element)
     hover.perform()
     wait.until(EC.presence_of_element_located((By.ID, "Videos Hover")))
     print("TEST: 0 `Videos hover` successful")
+
+def topbar_user_hover_test(driver):
+    # Find the element with the id "Topbar" and hover over it
+    topbar_element = driver.find_element(By.ID, "User Hover")
+    hover = ActionChains(driver).move_to_element(topbar_element)
+    hover.perform()
+    wait.until(EC.presence_of_element_located((By.ID, "User Hover")))
+    print("TEST: 1 `User hover` successful")
 
 # Create a ChromeOptions object with the log level set to 3
 chrome_options = webdriver.ChromeOptions()
@@ -66,7 +76,9 @@ driver.get('http://localhost:8000/login')
 print("Topbar test Start")
 login(driver)
 time.sleep(0.5)
-topbar_hover_test(driver)
+topbar_videos_hover_test(driver)
+time.sleep(0.5)
+topbar_user_hover_test(driver)
 print("Topbar test Completed")
 
 # close the webdriver
