@@ -49,7 +49,8 @@ def topbar_videos_hover_test(driver):
     hover = ActionChains(driver).move_to_element(topbar_element)
     hover.perform()
     wait.until(EC.presence_of_element_located((By.ID, "Videos Hover")))
-    print("TEST: 0 `Videos hover` successful")
+    if EC.presence_of_element_located((By.ID, "Videos Hover")):
+        print("TEST: 0 `Videos hover` successful")
     viewvideos_element = driver.find_element(By.ID, "Video Button")
     wait.until(EC.presence_of_element_located((By.ID, "Video Button")))
     hover = ActionChains(driver).move_to_element(viewvideos_element)
