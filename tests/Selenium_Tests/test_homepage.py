@@ -140,6 +140,7 @@ def logout_page_test(driver):
 def login(driver):
     # Find the element with the id "Username Input" and click it
     username_input_element = driver.find_element(By.ID, "id_username")
+    wait.until(EC.element_to_be_clickable((By.ID, "id_username")))
     username_input_element.click()
     wait.until(EC.presence_of_element_located((By.ID, "id_username")))
 
