@@ -50,6 +50,14 @@ def topbar_videos_hover_test(driver):
     hover.perform()
     wait.until(EC.presence_of_element_located((By.ID, "Videos Hover")))
     print("TEST: 0 `Videos hover` successful")
+    viewvideos_element = driver.find_element(By.ID, "Video Button")
+    wait.until(EC.presence_of_element_located((By.ID, "Video Button")))
+    hover = ActionChains(driver).move_to_element(viewvideos_element)
+    hover.perform()
+    wait.until(EC.element_to_be_clickable((By.ID, "Video Button")))
+    ActionChains(driver).click(viewvideos_element).perform()
+    if(driver.current_url == "http://localhost:8000/videos/"):
+        print("TEST: 1 `Videos click` successful")
 
 def topbar_user_hover_test(driver):
     # Find the element with the id "Topbar" and hover over it
@@ -57,7 +65,7 @@ def topbar_user_hover_test(driver):
     hover = ActionChains(driver).move_to_element(topbar_element)
     hover.perform()
     wait.until(EC.presence_of_element_located((By.ID, "User Hover")))
-    print("TEST: 1 `User hover` successful")
+    print("TEST: 2 `User hover` successful")
 
 # Create a ChromeOptions object with the log level set to 3
 chrome_options = webdriver.ChromeOptions()
