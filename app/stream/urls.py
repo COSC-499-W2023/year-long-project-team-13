@@ -8,6 +8,9 @@ from . views import (
     VideoDeleteView,
 )
 from django.urls import path
+from stream import views as stream_views
+from django.contrib.auth import views as auth_views
+
 
 
 app_name = "stream"
@@ -23,6 +26,13 @@ urlpatterns = [
     path('',views.home,name="home"),
     path('video',GeneralVideoListView.as_view(), name="video-list"),
     path('contact',views.contact,name="contact"),
-    path('request-video',views.request_video,name="request-video")
+    path('request-video',views.request_video,name="request-video"),
 
+    path('profile',stream_views.profile, name="profile"),
+    path('register/',stream_views.register, name="register"),
+    path('login', auth_views.LoginView.as_view(template_name='stream/login.html'), name="login"),
+    path('logout',auth_views.LogoutView.as_view(template_name='stream/logout.html'), name="logout"),
+    path('setting',auth_views.LoginView.as_view(template_name='stream/settings.html'), name="setting"),
+    path('theme',auth_views.LoginView.as_view(template_name='stream/theme.html'), name="theme"),
+    path('notifications',stream_views.notifications, name="notifications"),
 ]
