@@ -6,6 +6,8 @@ from django.dispatch import receiver
 from PIL import Image, ImageOps
 from datetime import date
 from django.urls import reverse
+from django.core.files.storage import default_storage as storage
+
 # Create your models here.
 
 # Video Request Table
@@ -101,20 +103,26 @@ class VidStream(models.Model):
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     image = models.ImageField(default="mountain.jpg", upload_to='profile-pics')
+    contacts = models.ManyToManyField("self", blank=True)
+    notifications = models.TextField(default = " ", blank=True)
 
     def __str__(self):
         return f"{self.user.username} Profile "
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
+        # fh = storage.open(self.image.url, "wb")
+        # format = 'png'  # You need to set the correct image format here
+        # self.image.save(fh, format)
+        # fh.close()
+        # img = Image.open(self.image.path)
+        # img.save(self.image.path)
+        # fixed_image = ImageOps.exif_transpose(img)
 
-        img = Image.open(self.image.path)
-        fixed_image = ImageOps.exif_transpose(img)
-
-        if img.height > 300 or img.width > 300:
-            output_size = (300, 300)
-            fixed_image.thumbnail(output_size)
-            fixed_image.save(self.image.path)
+        # if img.height > 300 or img.width > 300:
+        #     output_size = (300, 300)
+        #     fixed_image.thumbnail(output_size)
+        #     fixed_image.save(self.image.path)
 
 # Update User's First & Last Name
 # class Person(models.Model):
