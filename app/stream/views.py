@@ -139,7 +139,7 @@ def profile(request):
             userform.save()
             personalinfoform.save()
             profileform.save()
-            return redirect("stream:login")
+            return redirect("stream:profile")
     else:
         userform = UserUpdateForm(instance=request.user)
         personalinfoform = UserInfoUpdateForm(instance=request.user.userinfo)
