@@ -18,6 +18,7 @@ def video_page_test(driver):
     hover = ActionChains(driver).move_to_element(topbar_element)
     hover.perform()
     wait.until(EC.presence_of_element_located((By.ID, "Videos Hover")))
+    print("TEST: 0 `Videos hover` successful")
     # Find the element with the id "Video Button" and click it
     video_button_element = driver.find_element(By.ID, "Video Button")
     wait.until(EC.presence_of_element_located((By.ID, "Video Button")))
@@ -31,9 +32,9 @@ def video_page_test(driver):
 
     # Check if the URL contains the expected video page URL
     if '/video' in driver.current_url:
-        print("TEST: 0 `Video page` successful")
+        print("TEST: 1 `Video page` successful")
     else:
-        print("TEST 0: `Video page` failed")
+        print("TEST 1: `Video page` failed")
 
 # add contact page test function
 def add_contact_page_test(driver):
@@ -47,9 +48,9 @@ def add_contact_page_test(driver):
 
     # Check if the URL contains the expected contact page URL
     if '/contact' in driver.current_url:
-        print("TEST 1: `Add contact` successful")
+        print("TEST 2: `Add contact` successful")
     else:
-        print("TEST 1: `Add contact` failed")
+        print("TEST 2: `Add contact` failed")
 
 
 # add login page test function
@@ -111,9 +112,9 @@ def add_contact_page_search_test(driver):
 
     # Check if the URL contains the expected contact page URL
     if '/video' in driver.current_url:
-        print("TEST 2: `Add contact search` successful")
+        print("TEST 3: `Add contact search` successful")
     else:
-        print("TEST 2: `Add contact search` failed")
+        print("TEST 3: `Add contact search` failed")
 # Create a ChromeOptions object with the log level set to 3
 chrome_options = webdriver.ChromeOptions()
 chrome_options.add_argument("--log-level=3")  # Set log level to suppress warnings

@@ -46,6 +46,7 @@ def create_video_test(driver):
     hover = ActionChains(driver).move_to_element(topbar_element)
     hover.perform()
     wait.until(EC.presence_of_element_located((By.ID, "Videos Hover")))
+    print("TEST: 0 `Videos hover` successful")
 
     # Find the element with the id "New Video Button" and click it
     video_button_element = driver.find_element(By.ID, "New Video Button")
@@ -58,9 +59,9 @@ def create_video_test(driver):
     wait.until(EC.url_contains('/new'))
     # Check if the URL contains the expected page URL
     if '/new' in driver.current_url:
-        print("TEST: 0 `Create Video` Successful")
+        print("TEST: 1 `Create Video` Successful")
     else:
-        print("TEST 0: `Create Video` Failed")
+        print("TEST 1: `Create Video` Failed")
 
 # Create a ChromeOptions object with the log level set to 3
 chrome_options = webdriver.ChromeOptions()
