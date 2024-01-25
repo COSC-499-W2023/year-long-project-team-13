@@ -11,20 +11,20 @@ def login(driver, username, password):
     # Find the element with the id "Username Input" and click it
     username_input_element = driver.find_element(By.ID, "id_username")
     username_input_element.click()
-    time.sleep(0.5)
+    wait.until(EC.presence_of_element_located((By.ID, "id_username")))
 
     # Send the username to the username input
     username_input_element.send_keys("linus")
-    time.sleep(0.5)
+    wait.until(EC.text_to_be_present_in_element_value((By.ID, "id_username"), "linus"))
 
     # Find the element with the id "Password Input" and click it
     password_input_element = driver.find_element(By.ID, "id_password")
     password_input_element.click()
-    time.sleep(0.5)
+    wait.until(EC.presence_of_element_located((By.ID, "id_password")))
 
     # Send the password to the password input
     password_input_element.send_keys("Admin123")
-    time.sleep(0.5)
+    wait.until(EC.text_to_be_present_in_element_value((By.ID, "id_password"), "Admin123"))
 
     # Scroll down the login page
     html = driver.find_element(By.TAG_NAME, "html")
@@ -33,46 +33,22 @@ def login(driver, username, password):
     # Find the element with the id "Login Submit Button" and click it
     login_submit_button_element = driver.find_element(By.ID, "login")
     login_submit_button_element.click()
-    time.sleep(0.5)
 
     # Wait for the URL to change to the home page URL
     wait.until(EC.url_contains('/'))
-    time.sleep(0.5)
-    if '/' in driver.current_url:
-        print("Login Successful")
-    else:
-        print("Login Failed")
+    print("Login Successful")
 
-def request_video_test(driver):
-    # Find the element with the id "Video Request Button" and click it
-    video_button_element = driver.find_element(By.ID, "Video Request Button")
+def create_video_test(driver):
+    # Find the element with the id "New Video Button" and click it
+    video_button_element = driver.find_element(By.ID, "New Video Button")
     video_button_element.click()
     # Wait for the URL to change to the video page URL
-    wait.until(EC.url_contains('/request-video'))
-    time.sleep(0.5)
-    # Check contacts button
-    video_button_element = driver.find_element(By.ID, "contacts")
-    video_button_element.click()
-    time.sleep(0.5)
-    # Check message text area
-    video_button_element = driver.find_element(By.ID, "message")
-    video_button_element.click()
-    time.sleep(0.5)
-    # Check due date button
-    video_button_element = driver.find_element(By.ID, "dueDate")
-    video_button_element.click()
-    time.sleep(0.5)
-    # Check that the send button goes to home page
-    video_button_element = driver.find_element(By.ID, "send")
-    video_button_element.click()
-    time.sleep(0.5)
-    # Wait for the URL to change to the home page URL
-    wait.until(EC.url_contains('/'))
+    wait.until(EC.url_contains('/new'))
     # Check if the URL contains the expected page URL
-    if '/' in driver.current_url:
-        print("Request Video Successful")
+    if '/new' in driver.current_url:
+        print("TEST: 0 `Create Video` Successful")
     else:
-        print("Request Video Failed")
+        print("TEST 0: `Create Video` Failed")
 
 # Create a ChromeOptions object with the log level set to 3
 chrome_options = webdriver.ChromeOptions()
@@ -89,9 +65,11 @@ wait = WebDriverWait(driver, 60)
 driver.get('http://localhost:8000/login')
 
 # Call the login page test function with appropriate input values
+print("Create Video Test Start")
 login(driver, 'linus', 'Admin123')  # Replace with actual credentials
 time.sleep(0.5)
-request_video_test(driver)
+create_video_test(driver)
+print("Create Video Test Completed")
 
 # Close the webdriver
 driver.quit()
