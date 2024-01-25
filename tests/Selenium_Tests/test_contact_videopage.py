@@ -7,13 +7,24 @@ from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.keys import Keys
 from selenium import webdriver
+from selenium.webdriver.common.action_chains import ActionChains
 import time
 
 # video page test function
 def video_page_test(driver):
+    # Find the element with the id "Videos Hover" and hover over it
+    wait.until(EC.presence_of_element_located((By.ID, "Videos Hover")))
+    topbar_element = driver.find_element(By.ID, "Videos Hover")
+    hover = ActionChains(driver).move_to_element(topbar_element)
+    hover.perform()
+    wait.until(EC.presence_of_element_located((By.ID, "Videos Hover")))
     # Find the element with the id "Video Button" and click it
     video_button_element = driver.find_element(By.ID, "Video Button")
-    video_button_element.click()
+    wait.until(EC.presence_of_element_located((By.ID, "Video Button")))
+    hover = ActionChains(driver).move_to_element(video_button_element)
+    hover.perform()
+    wait.until(EC.element_to_be_clickable((By.ID, "Video Button")))
+    ActionChains(driver).click(video_button_element).perform()
 
     # Wait for the URL to change to the video page URL
     wait.until(EC.url_contains('/video'))
@@ -26,6 +37,7 @@ def video_page_test(driver):
 
 # add contact page test function
 def add_contact_page_test(driver):
+
     # Find the element with the id "Contact Button" and click it
     contact_button_element = driver.find_element(By.ID, "Add Contacts Button")
     contact_button_element.click()
@@ -118,9 +130,9 @@ driver.get('http://localhost:8000')
 
 # Call the video page test function
 print("Contact Video Page Test Start")
-video_page_test(driver)
 login_page_test(driver)
 login(driver)
+video_page_test(driver)
 add_contact_page_test(driver)
 add_contact_page_search_test(driver)
 print("Contact Video Page Test Completed")
