@@ -5,6 +5,8 @@ from . models import VidStream, VidRequest, Profile, UserInfo, Setting
 # , Contact
 from django.contrib.auth import password_validation
 from django.contrib import auth
+from django.contrib.auth.password_validation import validate_password
+from django.contrib.auth.hashers import check_password
 # from django.utils.translation import gettext_lazy as _
 
 class VidUploadForm(forms.ModelForm):
@@ -129,7 +131,7 @@ class SettingForm(forms.ModelForm):
 class ValidatingPasswordChangeForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder' :'Password',
                                                                   'style': 'width: 400px; height: 45px; margin-left: auto; margin-right: auto; margin-bottom: 25px; border: 2px groove lightgreen;',
-                                                                  'class': 'form-control', 'required': True}))
+                                                                  'class': 'form-control', 'required': True}),validators=[validate_password])
     password2 = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder' :'Confirm Password',
                                                                   'style': 'width: 400px; height: 45px; margin-left: auto; margin-right: auto; margin-bottom: 27px; border: 2px groove lightgreen;',
                                                                   'class': 'form-control', 'required': True}))
@@ -159,9 +161,6 @@ class ValidatingPasswordChangeForm(forms.ModelForm):
 
         if password1 and password2 and password1 != password2:
             raise forms.ValidationError(('The two password fields must match.'))
-
-        # Validate the password using Django's password validation
-        # password_validation.validate_password(password2, self.user)
 
         return password2
 
