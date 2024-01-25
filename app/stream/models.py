@@ -101,6 +101,8 @@ class VidStream(models.Model):
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     image = models.ImageField(default="mountain.jpg", upload_to='profile-pics')
+    contacts = models.ManyToManyField('self', blank=True)
+    notifications = models.TextField(default='', blank=True)
 
     def __str__(self):
         return f"{self.user.username} Profile "
@@ -175,3 +177,5 @@ class Setting(models.Model):
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
+
+
