@@ -52,40 +52,40 @@ class VidStream(models.Model):
         return reverse("video-detail", kwargs={"pk": self.pk})
 
 # Contact/Friends Table
-# class Contact(models.Model):
-#     id = models.IntegerField((""), primary_key=True)
-#     sender = models.ForeignKey(User, related_name="user_sender", on_delete=models.CASCADE)
-#     reciever = models.ForeignKey(User, related_name="user_reciever", on_delete=models.CASCADE)
-#     #     status = models.BooleanField(default=False)
+class Contact(models.Model):
+    id = models.AutoField(primary_key=True)
+    sender = models.ForeignKey(User, related_name="contact_sender", on_delete=models.CASCADE)
+    reciever = models.ForeignKey(User, related_name="contact_reciever", on_delete=models.CASCADE)
+    #     status = models.BooleanField(default=False)
 
 
-#     def __str__(self):
-#         return self.id
+    def __str__(self):
+        return self.id
 
-#     def save(self, *args, **kwargs):
-#         super().save(*args, **kwargs)
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
 
 # Pending friend request table
-# class FriendRequset(models.Model):
-    # # create a tuple to manage different options for your request status
-    # STATUS_CHOICES = (
-    #   (1, 'Pending'),
-    #   (2, 'Accepted'),
-    #   (3, 'Rejected'),
-    #  )
-    # id = models.IntegerField((""), primary_key=True)
-    # sender = models.ForeignKey(User, related_name="requests_sent", on_delete=models.CASCADE)
-    # reciever = models.ForeignKey(User, related_name="requests_received", on_delete=models.CASCADE)
-    # sent_on = models.DateTimeField(default=timezone.now)
+class FriendRequset(models.Model):
+    # create a tuple to manage different options for your request status
+    STATUS_CHOICES = (
+      (1, 'Pending'),
+      (2, 'Accepted'),
+      (3, 'Rejected'),
+     )
+    id = models.AutoField(primary_key=True)
+    sender = models.ForeignKey(User, on_delete=models.CASCADE, related_name="requests_sender")
+    reciever = models.ForeignKey(User, related_name="requests_receiver", on_delete=models.CASCADE)
+    sent_on = models.DateTimeField(default=timezone.now)
 
-    # # store this as an integer, Django handles the verbose choice options
-    # status = models.IntegerField(choices=STATUS_CHOICES, default=1)
+    # store this as an integer, Django handles the verbose choice options
+    status = models.IntegerField(choices=STATUS_CHOICES, default=1)
 
-#     def __str__(self):
-#         return self.id
+    def __str__(self):
+        return self.id
 
-#     def save(self, *args, **kwargs):
-#         super().save(*args, **kwargs)
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
 
 # Post of video table
 class Post(models.Model):
