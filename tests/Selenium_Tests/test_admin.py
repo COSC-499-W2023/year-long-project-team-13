@@ -58,6 +58,7 @@ def admin_test(driver, username, password):
     hover = ActionChains(driver).move_to_element(topbar_element)
     hover.perform()
     wait.until(EC.presence_of_element_located((By.ID, "User Hover")))
+    print("TEST: 0 `User hover` successful")
 
     # Find the element with the id "Admin Button" and click it
     admin_element = driver.find_element(By.ID, "Admin Button")
@@ -72,9 +73,9 @@ def admin_test(driver, username, password):
 
     # Check if the URL contains the expected profile page URL
     if '/admin' in driver.current_url:
-        print("TEST: 0 `Admin` successful")
+        print("TEST: 1 `Admin` successful")
     else:
-        print("TEST: 0 `Admin` failed")
+        print("TEST: 1 `Admin` failed")
 
     # Wait for the profile page to load
     # WebDriverWait(driver, 60).until(EC.url_contains('/profile'))
