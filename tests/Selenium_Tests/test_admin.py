@@ -5,6 +5,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium import webdriver
+from selenium.webdriver.common.action_chains import ActionChains
 import time
 
 def login_page_test(driver, username, password):
@@ -51,10 +52,20 @@ def admin_test(driver, username, password):
     login_page_test(driver, username, password)
     time.sleep(0.5)
 
+    # Find the element with the id "Topbar" and hover over it
+    wait.until(EC.presence_of_element_located((By.ID, "User Hover")))
+    topbar_element = driver.find_element(By.ID, "User Hover")
+    hover = ActionChains(driver).move_to_element(topbar_element)
+    hover.perform()
+    wait.until(EC.presence_of_element_located((By.ID, "User Hover")))
 
+    # Find the element with the id "Admin Button" and click it
     admin_element = driver.find_element(By.ID, "Admin Button")
+    wait.until(EC.presence_of_element_located((By.ID, "Admin Button")))
+    hover = ActionChains(driver).move_to_element(admin_element)
+    hover.perform()
     wait.until(EC.element_to_be_clickable((By.ID, "Admin Button")))
-    admin_element.click()
+    ActionChains(driver).click(admin_element).perform()
 
     # Wait for the URL to change to the admin page URL
     wait.until(EC.url_contains('/admin'))
