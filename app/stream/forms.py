@@ -104,17 +104,17 @@ class SettingForm(forms.ModelForm):
 #         fields = ['password']
 
 
-class SetPasswordForm(forms.ModelForm):
-    password = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder' :'Password',
-                                                                  'style': 'width: 400px; height: 45px; margin-left: auto; margin-right: auto; margin-bottom: 25px; border: 2px groove lightgreen;',
-                                                                  'class': 'form-control', 'required': True}))
-    # password2 = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder' :'Confirm Password',
-    #                                                               'style': 'width: 400px; height: 45px; margin-left: auto; margin-right: auto; margin-bottom: 27px; border: 2px groove lightgreen;',
-    #                                                               'class': 'form-control', 'required': True}))
+# class SetPasswordForm(forms.ModelForm):
+#     password = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder' :'Password',
+#                                                                   'style': 'width: 400px; height: 45px; margin-left: auto; margin-right: auto; margin-bottom: 25px; border: 2px groove lightgreen;',
+#                                                                   'class': 'form-control', 'required': True}))
+#     password2 = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder' :'Confirm Password',
+#                                                                   'style': 'width: 400px; height: 45px; margin-left: auto; margin-right: auto; margin-bottom: 27px; border: 2px groove lightgreen;',
+#                                                                   'class': 'form-control', 'required': True}))
 
-    class Meta:
-        model = User
-        fields = ['password']
+#     class Meta:
+#         model = User
+#         fields = ['password']
 
 # class SetPasswordFormWithConfirm(SetPasswordForm):
 #     new_password2 = forms.CharField(
@@ -126,38 +126,44 @@ class SetPasswordForm(forms.ModelForm):
 #         }),
 #     )
 
-# class ValidatingPasswordChangeForm(auth.forms.PasswordChangeForm):
-#     MIN_LENGTH = 8
+class ValidatingPasswordChangeForm(forms.ModelForm):
+    password = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder' :'Password',
+                                                                  'style': 'width: 400px; height: 45px; margin-left: auto; margin-right: auto; margin-bottom: 25px; border: 2px groove lightgreen;',
+                                                                  'class': 'form-control', 'required': True}))
+    password2 = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder' :'Confirm Password',
+                                                                  'style': 'width: 400px; height: 45px; margin-left: auto; margin-right: auto; margin-bottom: 27px; border: 2px groove lightgreen;',
+                                                                  'class': 'form-control', 'required': True}))
+    MIN_LENGTH = 8
 
-#     def clean_password(self):
-#         password = self.cleaned_data.get('password')
+    def clean_password(self):
+        password = self.cleaned_data.get('password')
 
-#         # At least MIN_LENGTH long
-#         if len(password) < self.MIN_LENGTH:
-#             raise forms.ValidationError("The new password must be at least %d characters long." % self.MIN_LENGTH)
+        # At least MIN_LENGTH long
+        if len(password) < self.MIN_LENGTH:
+            raise forms.ValidationError("The new password must be at least %d characters long." % self.MIN_LENGTH)
 
-#         # At least one letter and one non-letter
-#         first_isalpha = password[0].isalpha()
-#         if all(c.isalpha() == first_isalpha for c in password):
-#             raise forms.ValidationError("The new password must contain at least one letter and at least one digit or" \
-#                                         " punctuation character.")
+        # At least one letter and one non-letter
+        first_isalpha = password[0].isalpha()
+        if all(c.isalpha() == first_isalpha for c in password):
+            raise forms.ValidationError("The new password must contain at least one letter and at least one digit or" \
+                                        " punctuation character.")
 
-#         # ... any other validation you want ...
+        # ... any other validation you want ...
 
-#         return password
+        return password
 
-#     def clean_password2(self):
-#         password1 = self.cleaned_data.get('password')
-#         password2 = self.cleaned_data.get('password2')
+    def clean_password2(self):
+        password1 = self.cleaned_data.get('password')
+        password2 = self.cleaned_data.get('password2')
 
-#         if password1 and password2 and password1 != password2:
-#             raise forms.ValidationError(('The two password fields must match.'))
+        if password1 and password2 and password1 != password2:
+            raise forms.ValidationError(('The two password fields must match.'))
 
-#         # Validate the password using Django's password validation
-#         password_validation.validate_password(password2, self.user)
+        # Validate the password using Django's password validation
+        # password_validation.validate_password(password2, self.user)
 
-#         return password2
+        return password2
 
-#     class Meta:
-#         model = User
-#         fields = ['password', 'password2']
+    class Meta:
+        model = User
+        fields = ['password']

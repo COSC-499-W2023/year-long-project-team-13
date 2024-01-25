@@ -9,8 +9,8 @@ from django.contrib.auth import logout, authenticate, login
 from django.dispatch import Signal
 
 from . models import VidStream, Notification, Profile, UserInfo, Setting
-from . forms import VidUploadForm, VidRequestForm, UserRegistrationForm, UserUpdateForm, UserInfoUpdateForm, UserProfileUpdateForm, UserProfileUpdateForm, SetPasswordForm
-# SetPasswordFormWithConfirm, ValidatingPasswordChangeForm,
+from . forms import VidUploadForm, VidRequestForm, UserRegistrationForm, UserUpdateForm, UserInfoUpdateForm, UserProfileUpdateForm, UserProfileUpdateForm,  ValidatingPasswordChangeForm
+# SetPasswordFormWithConfirm, ValidatingPasswordChangeForm,SetPasswordForm,
 
 class VideoDetailView(DetailView):
     template_name = "stream/video-detail.html"
@@ -184,23 +184,22 @@ def logout_view(request):
 @login_required
 def settings(request):
     if request.method == "POST":
-        passwordform = SetPasswordForm(request.POST, instance=request.user)
-        # passwordform = ValidatingPasswordChangeForm(request.POST)
+        # passwordform = SetPasswordForm(request.POST, instance=request.user)
+        passwordform = ValidatingPasswordChangeForm(request.POST, instance=request.user)
 
         if passwordform.is_valid():
-            # new_password1 = passwordform.cleaned_data['new_password1']
-            # new_password2 = passwordform.cleaned_data['new_password2']
+            new_password1 = passwordform.cleaned_data['password']
+            new_password2 = passwordform.cleaned_data['password2']
 
             # Check if the new passwords match
-            # if new_password1 == new_password2:
-            usertemp = passwordform.save(commit=False)
-            usertemp.password = make_password(usertemp.password)
-            #usertemp.set_password(new_password1)
-            usertemp.save()
-            return redirect("stream:login")
+            if new_password1 == new_password2:
+                usertemp = passwordform.save(commit=False)
+                usertemp.password = make_password(usertemp.password)
+                usertemp.save()
+                return redirect("stream:login")
 
     else:
-        passwordform = SetPasswordForm(instance=request.user)
+        passwordform = ValidatingPasswordChangeForm(instance=request.user)
 
     context = {
         'passwordform': passwordform,
