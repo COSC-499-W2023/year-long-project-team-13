@@ -5,6 +5,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium import webdriver
+from selenium.webdriver.common.action_chains import ActionChains
 import time
 
 def login_page_test(driver, username, password):
@@ -44,18 +45,29 @@ def login_page_test(driver, username, password):
 
 
 def setting_test(driver, username, password):
+    # Find the element with the id "Topbar" and hover over it
+    topbar_element = driver.find_element(By.ID, "User Hover")
+    hover = ActionChains(driver).move_to_element(topbar_element)
+    hover.perform()
+    wait.until(EC.presence_of_element_located((By.ID, "User Hover")))
+    print("TEST: 0 `User hover` successful")
+
     # call setting page
     setting_element = driver.find_element(By.ID, "Setting Button")
-    setting_element.click()
+    wait.until(EC.presence_of_element_located((By.ID, "Setting Button")))
+    hover = ActionChains(driver).move_to_element(setting_element)
+    hover.perform()
+    wait.until(EC.element_to_be_clickable((By.ID, "Setting Button")))
+    ActionChains(driver).click(setting_element).perform()
 
     # Wait for the URL to change to the admin page URL
     wait.until(EC.url_contains('/setting'))
 
     # Check if the URL contains the expected profile page URL
     if '/setting' in driver.current_url:
-        print("TEST: 0 `Setting` successful")
+        print("TEST: 1 `Setting` successful")
     else:
-        print("TEST: 0 `Setting` failed")
+        print("TEST: 1 `Setting` failed")
 
 
 def theme_test(driver, username, password):
@@ -74,9 +86,9 @@ def theme_test(driver, username, password):
 
     # Check if the URL contains the expected profile page URL
     if '/theme' in driver.current_url:
-        print("TEST: 1 `Theme` successful")
+        print("TEST: 2 `Theme` successful")
     else:
-        print("TEST: 1 `Theme` failed")
+        print("TEST: 2 `Theme` failed")
 
 
 
