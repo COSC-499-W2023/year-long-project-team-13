@@ -4,6 +4,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.common.action_chains import ActionChains
 from selenium import webdriver
 import time
 
@@ -43,10 +44,21 @@ def login(driver, username, password):
         print("Login Failed")
 
 def request_video_test(driver):
+    # Find the element with the id "Topbar" and hover over it
+    wait.until(EC.presence_of_element_located((By.ID, "Videos Hover")))
+    topbar_element = driver.find_element(By.ID, "Videos Hover")
+    hover = ActionChains(driver).move_to_element(topbar_element)
+    hover.perform()
+    wait.until(EC.presence_of_element_located((By.ID, "Videos Hover")))
+    print("TEST: 0 `Videos hover` successful")
+
     # Find the element with the id "Video Request Button" and click it
     video_button_element = driver.find_element(By.ID, "Video Request Button")
+    wait.until(EC.presence_of_element_located((By.ID, "Video Request Button")))
+    hover = ActionChains(driver).move_to_element(video_button_element)
+    hover.perform()
     wait.until(EC.element_to_be_clickable((By.ID, "Video Request Button")))
-    video_button_element.click()
+    ActionChains(driver).click(video_button_element).perform()
     # Wait for the URL to change to the video page URL
     wait.until(EC.url_contains('/request-video'))
     # Check contacts button
@@ -68,9 +80,9 @@ def request_video_test(driver):
     wait.until(EC.url_contains('/'))
     # Check if the URL contains the expected page URL
     if '/' in driver.current_url:
-        print("TEST: 0 `Request Video` Successful")
+        print("TEST: 1 `Request Video` Successful")
     else:
-        print("TEST: 0 `Request Video` Failed")
+        print("TEST: 1 `Request Video` Failed")
 
 # Create a ChromeOptions object with the log level set to 3
 chrome_options = webdriver.ChromeOptions()
