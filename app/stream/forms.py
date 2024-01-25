@@ -149,6 +149,7 @@ class ValidatingPasswordChangeForm(forms.ModelForm):
                                         " punctuation character.")
 
         # ... any other validation you want ...
+        # Check Password not similar to username and email information
 
         return password
 
