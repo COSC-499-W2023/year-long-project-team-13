@@ -185,7 +185,7 @@ def logout_view(request):
 def settings(request):
     if request.method == "POST":
         # passwordform = SetPasswordForm(request.POST, instance=request.user)
-        passwordform = ValidatingPasswordChangeForm(data=request.POST, user=request.user, instance=request.user)
+        passwordform = ValidatingPasswordChangeForm(data=request.POST, user=request.user)
 
         if passwordform.is_valid():
             new_password1 = passwordform.cleaned_data['password']
@@ -199,7 +199,7 @@ def settings(request):
                 return redirect("stream:login")
 
     else:
-        passwordform = ValidatingPasswordChangeForm(user=request.user, instance=request.user)
+        passwordform = ValidatingPasswordChangeForm(user=request.user)
 
     context = {
         'passwordform': passwordform,
