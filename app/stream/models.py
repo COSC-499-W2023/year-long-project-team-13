@@ -97,8 +97,8 @@ class Post(models.Model):
     sendtime = models.DateTimeField(default=timezone.now)
     timelimit = models.DateTimeField(default=timezone.now)
     video = models.FileField(upload_to='')
-    video_id = models.ForeignKey(VidStream, on_delete=models.CASCADE)
-    request_id = models.ForeignKey(VidRequest, on_delete=models.CASCADE)
+    video_id = models.ForeignKey(VidStream, on_delete=models.SET_NULL, null=True)
+    request_id = models.ForeignKey(VidRequest, on_delete=models.SET_NULL, null=True)
 
 
     def __str__(self):
