@@ -1,5 +1,10 @@
 {% extends 'stream/base.html'%}
 {% block content %}
+{% for message in messages %}
+<div>
+    {{ message }}
+</div>
+{% endfor %}
     <div class="center_journal" style="margin-top: 25px;">
         {% comment %} <h1>Search </h1> {% endcomment %}
     </div>
