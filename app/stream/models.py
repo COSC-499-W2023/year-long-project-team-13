@@ -75,7 +75,7 @@ class FriendRequset(models.Model):
      )
     id = models.AutoField(primary_key=True)
     sender = models.ForeignKey(User, on_delete=models.CASCADE, related_name="requests_sender")
-    reciever = models.ForeignKey(User, related_name="requests_receiver", on_delete=models.CASCADE)
+    reciever = models.ForeignKey(User, on_delete=models.CASCADE, related_name="requests_receiver")
     sent_on = models.DateTimeField(default=timezone.now)
 
     # store this as an integer, Django handles the verbose choice options
@@ -113,8 +113,13 @@ class Post(models.Model):
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     image = models.ImageField(default="mountain.jpg", upload_to='profile-pics')
+
+
+    # Need to delete 2 code lines after {
     contacts = models.ManyToManyField('self', blank=True)
     notifications = models.TextField(default='', blank=True)
+    # }
+
 
     def __str__(self):
         return f"{self.user.username} Profile "
