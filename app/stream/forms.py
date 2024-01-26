@@ -138,16 +138,16 @@ class ValidatingPasswordChangeForm(forms.ModelForm):
                                                                   'class': 'form-control', 'required': True}))
     MIN_LENGTH = 8
 
-    def __init__(self, *args, **kwargs):
-        self.user = kwargs.pop('user', None)
-        super(ValidatingPasswordChangeForm, self).__init__(*args, **kwargs)
+    # def __init__(self, *args, **kwargs):
+    #     self.user = kwargs.pop('user', None)
+    #     super(ValidatingPasswordChangeForm, self).__init__(*args, **kwargs)
 
     def clean_password(self):
         password = self.cleaned_data.get('password')
         # if not password:
         #     return password
-        username = self.user.username
-        email = self.user.email
+        username = self.instance.username
+        email = self.instance.email
 
         # At least MIN_LENGTH long
         if len(password) < self.MIN_LENGTH:
