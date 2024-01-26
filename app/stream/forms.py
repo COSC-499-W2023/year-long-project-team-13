@@ -7,6 +7,7 @@ from django.contrib.auth import password_validation
 from django.contrib import auth
 from django.contrib.auth.password_validation import validate_password
 from django.contrib.auth.hashers import check_password
+import difflib
 # from django.utils.translation import gettext_lazy as _
 
 class VidUploadForm(forms.ModelForm):
@@ -137,8 +138,16 @@ class ValidatingPasswordChangeForm(forms.ModelForm):
                                                                   'class': 'form-control', 'required': True}))
     MIN_LENGTH = 8
 
+    def __init__(self, *args, **kwargs):
+        self.user = kwargs.pop('user', None)
+        super(ValidatingPasswordChangeForm, self).__init__(*args, **kwargs)
+
     def clean_password(self):
         password = self.cleaned_data.get('password')
+        # if not password:
+        #     return password
+        username = self.user.username
+        email = self.user.email
 
         # At least MIN_LENGTH long
         if len(password) < self.MIN_LENGTH:
@@ -152,6 +161,15 @@ class ValidatingPasswordChangeForm(forms.ModelForm):
 
         # ... any other validation you want ...
         # Check Password not similar to username and email information
+        # if password.lower() == username.lower() or password.lower() == email.lower():
+        #     raise forms.ValidationError("The new password cannot be similar to your username or email.")
+        username_similarity = difflib.SequenceMatcher(None, password.lower(), username.lower()).ratio()
+        email_similarity = difflib.SequenceMatcher(None, password.lower(), email.lower()).ratio()
+
+        similarity_threshold = 0.6  # Adjust this threshold as needed
+
+        if username_similarity > similarity_threshold or email_similarity > similarity_threshold:
+            raise forms.ValidationError("The new password cannot be too similar to your username or email.")
 
         return password
 
