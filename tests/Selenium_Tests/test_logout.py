@@ -5,6 +5,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium import webdriver
+from selenium.webdriver.common.action_chains import ActionChains
 import time
 
 def login_page_test(driver, username, password):
@@ -49,40 +50,52 @@ def logout_test(driver, username, password):
     login_page_test(driver, username, password)
     time.sleep(0.5)
 
-    wait.until(EC.element_to_be_clickable((By.ID, "Logout Button")))
+    # Find the element with the id "Topbar" and hover over it
+    topbar_element = driver.find_element(By.ID, "User Hover")
+    hover = ActionChains(driver).move_to_element(topbar_element)
+    hover.perform()
+    wait.until(EC.presence_of_element_located((By.ID, "User Hover")))
+    print("TEST: 0 `User hover` successful")
+    # Find the element with the id "Logout Button" and click it
     logout_element = driver.find_element(By.ID, "Logout Button")
-    logout_element.click()
+    wait.until(EC.presence_of_element_located((By.ID, "Logout Button")))
+    hover = ActionChains(driver).move_to_element(logout_element)
+    hover.perform()
+    wait.until(EC.element_to_be_clickable((By.ID, "Logout Button")))
+    ActionChains(driver).click(logout_element).perform()
     wait.until(EC.url_contains('/#'))
-
+    # Cancel logout
     logout_confirm_element = driver.find_element(By.ID, "cancel")
     logout_confirm_element.click()
 
-
+    # Wait for the URL to change to the home page URL
     wait.until(EC.url_contains('/'))
-
+    # Find the element with the id "User Hover" and hover over it
+    topbar_element = driver.find_element(By.ID, "User Hover")
+    hover = ActionChains(driver).move_to_element(topbar_element)
+    hover.perform()
+    wait.until(EC.presence_of_element_located((By.ID, "User Hover")))
+    print("TEST: 1 `User hover` successful")
+    # Find the element with the id "Logout Button" and click it
     logout_element = driver.find_element(By.ID, "Logout Button")
-    logout_element.click()
+    wait.until(EC.presence_of_element_located((By.ID, "Logout Button")))
+    hover = ActionChains(driver).move_to_element(logout_element)
+    hover.perform()
+    wait.until(EC.element_to_be_clickable((By.ID, "Logout Button")))
+    ActionChains(driver).click(logout_element).perform()
     wait.until(EC.url_contains('/#'))
-
+    # Confirm logout
     logout_confirm_element = driver.find_element(By.ID, "logout")
     logout_confirm_element.click()
 
     # Wait for the URL to change to the logout page URL
     wait.until(EC.url_contains('/logout'))
 
-    # Check if the URL contains the expected profile page URL
+    # Check if the URL contains the expected logout page URL
     if '/logout' in driver.current_url:
-        print("TEST 0: `Logout` successful")
+        print("TEST 2: `Logout` successful")
     else:
-        print("TEST: 0 `Logout` failed")
-
-    # Wait for the profile page to load
-    # WebDriverWait(driver, 60).until(EC.url_contains('/profile'))
-
-    # Check if the profile page elements are present and correct
-    #assert WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, "img[src*='user.profile.image.url']")))
-    #assert WebDriverWait(driver, 10).until(EC.text_to_be_present_in_element((By.ID, "username"), username))
-    #assert WebDriverWait(driver, 10).until(EC.text_to_be_present_in_element((By.ID, "email"), email))
+        print("TEST: 2 `Logout` failed")
 
 # Create a ChromeOptions object with the log level set to 3
 chrome_options = webdriver.ChromeOptions()
