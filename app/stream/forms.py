@@ -67,8 +67,7 @@ class UserUpdateForm(forms.ModelForm):
 
 class UserInfoUpdateForm(forms.ModelForm):
     birthdate = forms.DateField(widget=forms.TextInput(attrs={'placeholder' :'Select a date',
-                                                              'style': 'width: 400px; height: 45px;margin-left: auto; margin-right: auto; margin-bottom: 25px;border: 2px groove lightgreen;',
-                                                              'class': 'form-control', 'type': 'date','required': True}))
+                                                              'style': 'width: 400px; height: 45px;margin-left: auto; margin-right: auto; margin-bottom: 25px;border: 2px groove lightgreen;', 'class': 'form-control', 'type': 'date','required': True}))
     class Meta:
         model = UserInfo
         fields = ['birthdate']

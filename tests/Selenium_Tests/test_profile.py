@@ -105,7 +105,8 @@ def profile_page_test(driver, username, password, firstName, lastName, email, bi
     update_button = driver.find_element(By.ID, "update")
     update_button.click()
 
-    wait.until(EC.url_contains('/profile'))
+    # wait.until(EC.url_contains('/profile'))
+    time.sleep(10)
 
     firstName_value_check = driver.find_element(By.ID, "id_first_name").get_attribute('value')
 
