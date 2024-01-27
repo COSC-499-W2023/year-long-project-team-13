@@ -139,6 +139,10 @@ class ValidatingPasswordChangeForm(forms.ModelForm):
                                                                   'class': 'form-control', 'required': True}))
     MIN_LENGTH = 8
 
+    def __init__(self, *args, user=None, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.user = user
+
     # def __init__(self, *args, **kwargs):
     #     self.user = kwargs.pop('user', None)
     #     super(ValidatingPasswordChangeForm, self).__init__(*args, **kwargs)
