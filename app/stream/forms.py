@@ -149,10 +149,9 @@ class ValidatingPasswordChangeForm(forms.ModelForm):
 
     def clean_password(self):
         password = self.cleaned_data.get('password')
-        # if not password:
-        #     return password
         username = self.instance.username
         email = self.instance.email
+        email = re.sub(r'@[A-Za-z]*\.?[A-Za-z0-9]*',"", email)
 
         # At least MIN_LENGTH long
         if len(password) < self.MIN_LENGTH:
@@ -166,8 +165,6 @@ class ValidatingPasswordChangeForm(forms.ModelForm):
 
         # ... any other validation you want ...
         # Check Password not similar to username and email information
-        # if password.lower() == username.lower() or password.lower() == email.lower():
-        #     raise forms.ValidationError("The new password cannot be similar to your username or email.")
         username_similarity = difflib.SequenceMatcher(None, password.lower(), username.lower()).ratio()
         email_similarity = difflib.SequenceMatcher(None, password.lower(), email.lower()).ratio()
 
@@ -175,10 +172,6 @@ class ValidatingPasswordChangeForm(forms.ModelForm):
 
         if username_similarity > similarity_threshold or email_similarity > similarity_threshold:
             raise forms.ValidationError("The new password cannot be too similar to your username or email.")
-        
-        #Validation for repeated characters in password. Cannot have 4 of the same characters in a row.
-        if re.search(r'(.{2,}).*\1', password):
-            raise forms.ValidationError("The new password cannot have 4 of the same characters in a row.")
 
         return password
 
@@ -194,3 +187,8 @@ class ValidatingPasswordChangeForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ['password']
+
+     #Validation for repeated characters in password. Cannot have 4 of the same characters in a row.
+        # if re.search(r'(.{2,}).*\1', password):
+        #     raise forms.ValidationError("The new password cannot have 4 of the same characters in a row.")
+        # raise forms.ValidationError(email)
