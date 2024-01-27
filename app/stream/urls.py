@@ -25,7 +25,9 @@ urlpatterns = [
     path('search',views.search,name="search"),
     path('',views.home,name="home"),
     path('video',GeneralVideoListView.as_view(), name="video-list"),
+    # Use friendRequest if it is complete instead of contact
     path('contact',views.contact,name="contact"),
+    # path('contact',views.friendRequest,name="contact"),
     path('request-video',views.request_video,name="request-video"),
 
     path('profile',stream_views.profile, name="profile"),

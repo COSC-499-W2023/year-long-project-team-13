@@ -11,7 +11,7 @@ from stream.models import UserInfo
 from stream.forms import UserInfoUpdateForm
 
 from . models import VidStream, Notification, Profile, UserInfo, Setting
-from . forms import VidUploadForm, VidRequestForm, UserRegistrationForm, UserUpdateForm, UserInfoUpdateForm, UserProfileUpdateForm, UserProfileUpdateForm, SetPasswordForm
+from . forms import VidUploadForm, VidRequestForm, UserRegistrationForm, UserUpdateForm, UserInfoUpdateForm, UserProfileUpdateForm, UserProfileUpdateForm, SetPasswordForm, AddContactForm
 
 
 class VideoDetailView(DetailView):
@@ -36,6 +36,23 @@ def search(request):
 def home(request):
     return render(request, 'stream/home.html')
 
+# Send friend request
+def friendRequest(request):
+    if request.method == "POST":
+        addcontactform = AddContactForm(request.POST, instance=request.user)
+        if addcontactform.is_valid():
+            addcontactform.save()
+            return redirect("stream:contact")
+
+    else:
+        addcontactform = AddContactForm(instance=request.user)
+
+    context = {
+        'addcontactform': addcontactform,
+    }
+    return render(request, 'stream/contact.html', context)
+
+# temporary contact to show text message after click add contact a:link
 def contact(request):
     if request.method == 'POST':
         contact_name = request.POST.get('contact_name')
@@ -168,7 +185,7 @@ def notifications(request):
     user = request.user
     if user.is_authenticated:
         notifications = Notification.objects.filter(user=user).order_by('-timestamp')
-        return render(request, 'stream/notification.html', {'stream:notifications': notifications})
+        return render(request, 'stream/notification.html', {'notifications': notifications})
     else:
         return redirect('stream:login')  # or wherever you want to redirect unauthenticated users
 
