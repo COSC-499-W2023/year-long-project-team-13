@@ -24,7 +24,10 @@
                 <div class="input-group-prepend">
                 </div>
                 <input type="text" class="form-control" name="contact_name" placeholder="Enter name to add as contact">
+                {% comment %} {{ addcontactform.reciever.error }}
+                {{ addcontactform.reciever }} {% endcomment %}
                 <a href=" {% url 'stream:video-list' %}" class="btn btn-dark" id="search button">Add Contact</a>
+                {% comment %} <button class="btn btn-dark" id="search button" type="submit">Add Contact</button> {% endcomment %}
                 {% comment %} <button type="submit" class="btn btn-dark" id="search button">Add Contact</button> {% endcomment %}
             </div>
         </form>
