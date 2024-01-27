@@ -1,5 +1,14 @@
 {% extends 'stream/base.html' %}
 {% block content %}
+    {% if user.is_authenticated %}
+    <div id="overlay" class="float-center" style="position:fixed; top:30%;">
+        <div>
+            <p class="text-dark">Are you sure to logout?</p>
+            <button id="logout" class="float-left submit-button" >Logout</button>
+            <button id="cancel" class="float-left submit-button">Cancel</button>
+        </div>
+    </div>
+    {% endif %}
     <div>
         <img class="rounded-circle border-dark" src="{{ object.streamer.profile.image.url }}">
         <h12>{{ object.streamer.username }}</h12>
@@ -17,6 +26,6 @@
         <video controls>
             <source src="{{ object.video.url }}" type="video/mp4">
         </video>
-        
+
     </div>
 {% endblock content %}

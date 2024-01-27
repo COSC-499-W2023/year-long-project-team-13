@@ -190,9 +190,71 @@ Change Password Code (Commented Out)
 ![Change Password Code (Commented Out)](./images/Sitt_images/Week_11_12/Change_Password_Code.png)
 
 
+## Week 13 2023/11/27 ~ 2023/12/03
+
+-Types of tasks that I have worked on
+
+![Task_Done](./images/tasks/SittPaing_W13-Task.png)
+
+## Recap of week's goals
+For this week, I work on the test for the setting and theme to check the linking of the page and both are successful after fixing issues that is throwing an error. I also fix the function of the theme since it is not working and its is currently working but need some fixing on the css as well as I have fixed/changed html/css of setting and theme webpage. I also worked on the design document and collaborate with the team to draw diagram like DFD diagram, ER diagram, system architecture diagram and write a document and also contribute in the making of video demo for our project.
 
 
+Test for Setting Page
 
+![Test for Setting Page](./images/Sitt_images/Week_13/Setting_test_code.png)
+
+Test for Theme Page
+
+![Test for Theme Page](./images/Sitt_images/Week_13/Theme_test_code.png)
+
+Test Successful for Setting Page
+
+![Test Successful for Setting Page](./images/Sitt_images/Week_13/Setting_test_successful.png)
+
+Test Successful for Theme Page
+
+![Test Successful for Theme Page](./images/Sitt_images/Week_13/Theme_test_successful.png)
+
+Commits
+
+![Commits](./images/Sitt_images/Week_13/Commits.png)
+
+Light(Original) Mode for the Theme
+
+![Light(Original) Mode for the Theme](./images/Sitt_images/Week_13/Light(Original)_Mode.png)
+
+Dark Mode for the Theme
+
+![Dark Mode for the Theme](./images/Sitt_images/Week_13/Dark_Mode.png)
+
+
+## Term 2 Week 1 2024/01/08 ~ 2024/01/14
+
+-Types of tasks that I have worked on
+![Task_Done](./images/tasks/SittPaing_T2W1-Task.png)
+
+## Recap of week's goals
+This week, we discussed during the team meeting about what we have done in term 1 and list them out so we know what we need to work on for this term as well as update our Kanban Board and focus on the matter at hand. I have worked on change password/confirm password but there are issues that need to be fixed since the new password input does not overwrite the old password in the database so the user cannot log in with the new password. I am also trying to figure out on the theme page by learning through online resources since the theme function need to be applied to all the pages, not just one page.
+
+Discussion and Making Lists of Things to be done
+
+![Discussion and Making Lists of Things to be done](./images/Sitt_images/Term_2_Week_1/List_1.png)
+![Discussion and Making Lists of Things to be done](./images/Sitt_images/Term_2_Week_1/List_2.png)
+
+Coding for change/confirm password (in progress)
+
+![Coding for change/confirm password (in progress)](./images/Sitt_images/Term_2_Week_1/forms.py_password.png)
+
+![Coding for change/confirm password (in progress)](./images/Sitt_images/Term_2_Week_1/views.py_password.png)
+
+![Coding for change/confirm password (in progress)](./images/Sitt_images/Term_2_Week_1/Html_changes_password.png)
+
+
+### Additional
+- Worked on my own weekly log, contribute to team weekly log.
+- Discuss with teammates to clarify doubts and things that need to be focus on.
+- Learn new information from online to use for my project.
 
 
 

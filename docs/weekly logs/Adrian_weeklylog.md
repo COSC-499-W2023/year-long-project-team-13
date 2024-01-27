@@ -221,6 +221,10 @@ Profile Upload Successful
 UML for SQL Database
 ![UML](./images/uml/uml.png)
 
+# Preferred name -> Ssc name -> Github name
+
+- Adrian -> Adrian Fong -> AdrianFWM
+
 ## Week 11/12 2023/11/12~2023/11/26
 
 - Task I have worked on this week.
@@ -276,3 +280,127 @@ UML for SQL Database
 - Additional: Following images are the screenshot of the whole website testing:
   - Whole Website Test Screenshot
 ![Whole Website Test](./images/Adrian_images/Week_12/Whole_Test.png)
+
+# Preferred name -> Ssc name -> Github name
+
+- Adrian -> Adrian Fong -> AdrianFWM
+
+## Week 13 2023/11/27~2023/12/03
+
+- Task I have worked on this week.
+![Weekly Task 13](./images/tasks/AdrianFong_Week13_Task.png)
+
+## Recap on your week's goals
+
+### Edit Profile Page/Testing
+- Worked on updating "Edit Profile" on project board, added "First Name" and "Last Name" in Django Form and replaced "Username" form because "Username" is our primary key in SQL database, so we decide not to change username instead users are able to change their "First Name" and "Last Name".
+  - [Edit Profile Form Function Updated / Testing](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/80)
+  - New Edit Profile Page
+![Edit Profile Page](./images/Adrian_images/Week_13/Edit_Profile_Page.png)
+  - New Edit Profile Page Form Function Updated
+![Edit Profile Page Form Function](./images/Adrian_images/Week_13/Edit_Profile_Page_Function.png)
+- Worked on Edit Profile test updated, it will check the same form from last week and also check the first and last name form profile user information as well, it can run with other tests with no error.
+  - Edit Profile Testing Screenshot
+![Edit Profile Page Testing](./images/Adrian_images/Week_13/Edit_Profile_Test.png)
+
+### Logout UI/Testing / Fix other page Logout
+- Worked on "Logout" on project board, the logout page allow users to logout from any page after the user had logged in. After confirming by clicking the logout button, it will redirect to "Successful Logout" page, I modified this page to make it match the theme.
+- Also, worked on fixing Notification Page cannot logout, it logs out now.
+- The logout testing runs with no error,and work with other tests too.
+  - [Logout Page Layout Updated](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/81)
+  - [Fixed Notification Page cannot logout](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/85)
+  - Logout Successful Screenshot
+![Logout Successful](./images/Adrian_images/Week_13/Logout_Page.png)
+  - Logout Testing Screenshot
+![Logout Testing](./images/Adrian_images/Week_13/Logout_Test.png)
+  - Notification Page Logout Fix Screenshot
+![Notification Page Logout Fix](./images/Adrian_images/Week_13/Notification_Fix.png)
+
+### Review Pull Request
+- Worked on review other people's code in pull requests, approved and merged Herman's Notifications Page request, Sitt's Setting and Theme Page request, and Beth's Request Video Page request.
+  - [Notifications Pull Request](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/82)
+  - Review Notifications Pull Request Screenshot
+![Review Notifications Pull Request Screenshot](./images/Adrian_images/Week_13/Review_Notification.png)
+  - [Setting & Theme Pull Request](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/84)
+  - Review Setting & Theme Pull Request Screenshot
+![Review Setting & Theme Pull Request Screenshot](./images/Adrian_images/Week_13/Review_Setting_Theme.png)
+  - [Request Video Pull Request](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/86)
+  - Review Request Video Pull Request Screenshot
+![Review Request Video Pull Request Screenshot](./images/Adrian_images/Week_13/Review_Request_Video.png)
+
+### Design Video & Document & Diagrams
+- Worked on writing Design Document this week, along with new UI Diagrams and ER Diagrams for Design Documents.
+- Worked on recording Design Video.
+  - Design Document Screenshot
+![Design Document Screenshot](./images/Adrian_images/Week_13/Design_Document.png)
+  - UI Diagrams Screenshot
+![UI Diagram 1 Screenshot](./images/Adrian_images/Week_13/UI_Diagram1.png)
+![UI Diagram 2 Screenshot](./images/Adrian_images/Week_13/UI_Diagram2.png)
+  - ER Diagram Screenshot
+![ER Diagram Screenshot](./images/Adrian_images/Week_13/ER_Diagram.png)
+  - Design Video Screenshot
+![Design Video Screenshot](./images/Adrian_images/Week_13/Design_Video.png)
+
+### Weekly Log / Team Weekly Log / Additional
+- Worked on my own weekly log, contribute to team weeklog.
+- Additional: Following images are the screenshot of the whole website testing:
+  - Whole Website Test Screenshot
+![Whole Website Test Report](./images/tests_completion/week13_test.png)
+
+# Preferred name -> Ssc name -> Github name
+
+- Adrian -> Adrian Fong -> AdrianFWM
+
+## Term 2 Week 1 2023/12/04~2023/01/14
+
+- Task I have worked on this week and winter break.
+![Weekly Task 11/12](./images/tasks/AdrianFong_T2_Week1_Task.jpg)
+
+## Recap on your week's goals
+
+### RDS Database
+- Worked on "RDS Database setup" on project board, successfully made a connection from local SQLite to RDS PostgreSQL database, and made a new database on RDS with our current SQL database structure.
+  - [AWS RDS Database branch](https://github.com/COSC-499-W2023/year-long-project-team-13/tree/aws-testing)
+  - RDS database screenshot
+![RDS database screenshot](./images/Adrian_images/T2_Week_1/RDS_Database.jpg)
+
+### EC2 / Elastic Beanstalk
+- Worked on "AWS Cloud server setup" on project board, successfully made an Elastic Beanstalk web server with EC2 ip connection, and connect to RDS database. Our website is able to deploy and use it on AWS Elastic Beanstalk server.
+  - [AWS EC2/Elastic Beanstalk branch](https://github.com/COSC-499-W2023/year-long-project-team-13/tree/aws-testing)
+  - EC2 screenshot
+![EC2 screenshot](./images/Adrian_images/T2_Week_1/EC2.jpg)
+  - Elastic Beanstalk screenshot
+![Elastic Beanstalk screenshot](./images/Adrian_images/T2_Week_1/Elastic_Beanstalk.jpg)
+  - Elastic Beanstalk load with our webpage screenshot
+![Elastic Beanstalk load with our webpage screenshot](./images/Adrian_images/T2_Week_1/Elastic_Beanstalk_WebServer.jpg)
+
+### Update Database Structure (In-Progress)
+- Working on "Update Database structure" on project board, added "User Information" table and "Video Request" table on SQL database. Both table are connect to the "Users" table. New added tables display data on admin page.
+  - [Update Database Structure branch](https://github.com/COSC-499-W2023/year-long-project-team-13/tree/update_database)
+  - Admin page table screenshot
+![Admin page table screenshot](./images/Adrian_images/T2_Week_1/Admin.jpg)
+  - User information table content screenshot
+![User information table content screenshot](./images/Adrian_images/T2_Week_1/Birthdate.jpg)
+  - Video request table content screenshot
+![ideo request table content screenshot](./images/Adrian_images/T2_Week_1/Video_request.jpg)
+  - Database structure we aim to update to
+![Database structure we aim to update to](./images/Adrian_images/T2_Week_1/Cosc_499_UML.drawio.png)
+  - Our original database stucture
+![Our original database stucture](./images/Adrian_images/T2_Week_1/Copy_of_Cosc_499_UML.drawio.png)
+
+### Edit Profile (Birthdate) / Testing
+- Worked on updating the profile page with users able to view and edit their birthdate. As we updated the database structure, and added birthdate into user's profile.
+- Testing on Profile page successfully pass.
+  - [Update Database Structure branch](https://github.com/COSC-499-W2023/year-long-project-team-13/tree/update_database)
+  - Edit birthdate on profile page screenshot (Red Arrows: birthdate)
+![Edit birthdate on profile page screenshot](./images/Adrian_images/T2_Week_1/EditProfile_Birthdate.jpg)
+  - Edit profile (with birthdate) screenshot
+![Edit profile (with birthdate) screenshot](./images/Adrian_images/T2_Week_1/Profile_Birthdate_Test.jpg)
+
+### Weekly Log / Team Weekly Log / Additional
+- Worked on my own weekly log, contribute to team weeklog.
+- I got some help from Ethan for setting up Elastic Beanstalk server with IAM user identity roles.
+- Helped Raymond on changing password on setting page.
+- I did encounter a lot of challenge on setting up RDS database and Elastic Beanstalk server on AWS with Django and Python which it does not have a proper setup guide from the internet. After few weeks of tries, I successfully setup database and server on AWS.
+- Also, I encounter to update new tables on SQL database which the admin page was not showing or updating any new table or data. Now, it is showing both new tables with data on admin page which serval code fixes.
+- We had meetings on Tuesday, Thursday and Saturday this week.
