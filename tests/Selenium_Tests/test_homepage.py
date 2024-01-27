@@ -7,22 +7,35 @@ from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.keys import Keys
 from selenium import webdriver
+from selenium.webdriver.common.action_chains import ActionChains
 import time
 
 # video page test function
 def video_page_test(driver):
+    # Find the element with the id "Videos Hover" and hover over it
+    wait.until(EC.presence_of_element_located((By.ID, "Videos Hover")))
+    topbar_element = driver.find_element(By.ID, "Videos Hover")
+    hover = ActionChains(driver).move_to_element(topbar_element)
+    hover.perform()
+    wait.until(EC.presence_of_element_located((By.ID, "Videos Hover")))
+    print("TEST: 0 `Videos hover` successful")
+
     # Find the element with the id "Video Button" and click it
     video_button_element = driver.find_element(By.ID, "Video Button")
-    video_button_element.click()
+    wait.until(EC.presence_of_element_located((By.ID, "Video Button")))
+    hover = ActionChains(driver).move_to_element(video_button_element)
+    hover.perform()
+    wait.until(EC.element_to_be_clickable((By.ID, "Video Button")))
+    ActionChains(driver).click(video_button_element).perform()
 
     # Wait for the URL to change to the video page URL
     wait.until(EC.url_contains('/video'))
 
     # Check if the URL contains the expected video page URL
     if '/video' in driver.current_url:
-        print("TEST 0: `video page` test passed")
+        print("TEST 1: `video page` test passed")
     else:
-        print("TEST 0: `video page` test failed")
+        print("TEST 1: `video page` test failed")
 
 
 # add contact page test function
@@ -36,14 +49,15 @@ def add_contact_page_test(driver):
 
     # Check if the URL contains the expected contact page URL
     if '/contact' in driver.current_url:
-        print("TEST 1: `contact page` test passed")
+        print("TEST 2: `contact page` test passed")
     else:
-        print("TEST 1: `contact page` test failed")
+        print("TEST 2: `contact page` test failed")
 
 # add home page test function
 def home_page_test(driver):
     # Find the element with the id "Home Button" and click it
     home_button_element = driver.find_element(By.ID, "Home Button")
+    wait.until(EC.element_to_be_clickable((By.ID, "Home Button")))
     home_button_element.click()
 
     # Wait for the URL to change to the home page URL
@@ -51,9 +65,9 @@ def home_page_test(driver):
 
     # Check if the URL contains the expected home page URL
     if '/' in driver.current_url:
-        print("Test 2: `home page` successful")
+        print("TEST 3: `home page` successful")
     else:
-        print("Test 2: `home page` failed")
+        print("TEST 3: `home page` failed")
 
 # add login page test function
 def login_page_test(driver):
@@ -66,9 +80,9 @@ def login_page_test(driver):
 
     # Check if the URL contains the expected login page URL
     if '/login' in driver.current_url:
-        print("Test 3: `login` successful")
+        print("TEST 4: `login` successful")
     else:
-        print("Test 3: `login` failed")
+        print("TEST 4: `login` failed")
 
 # add register page test function
 def register_page_test(driver):
@@ -81,45 +95,79 @@ def register_page_test(driver):
 
     # Check if the URL contains the expected register page URL
     if '/register' in driver.current_url:
-        print("Test 4: `register` successful")
+        print("TEST 5: `register` successful")
     else:
-        print("Test 4: `register` failed")
+        print("TEST 5: `register` failed")
 
 # add profile page test function
 def profile_page_test(driver):
+    # Find the element with the id "User Hover" and hover over it
+    topbar_element = driver.find_element(By.ID, "User Hover")
+    hover = ActionChains(driver).move_to_element(topbar_element)
+    hover.perform()
+    wait.until(EC.presence_of_element_located((By.ID, "User Hover")))
+    print("TEST: 6 `User hover` successful")
+
     # Find the element with the id "Profile Button" and click it
     profile_button_element = driver.find_element(By.ID, "Profile Button")
-    profile_button_element.click()
+    wait.until(EC.presence_of_element_located((By.ID, "Profile Button")))
+    hover = ActionChains(driver).move_to_element(profile_button_element)
+    hover.perform()
+    wait.until(EC.element_to_be_clickable((By.ID, "Profile Button")))
+    ActionChains(driver).click(profile_button_element).perform()
 
     # Wait for the URL to change to the profile page URL
     wait.until(EC.url_contains('/profile'))
 
     # Check if the URL contains the expected profile page URL
     if '/profile' in driver.current_url:
-        print("Test 5: `profile` successful")
+        print("TEST 7: `profile` successful")
     else:
-        print("Test 5: `profile` failed")
+        print("TEST 7: `profile` failed")
 
 # add new video page test function
 def new_video_page_test(driver):
+    # Find the element with the id "Videos Hover" and hover over it
+    wait.until(EC.presence_of_element_located((By.ID, "Videos Hover")))
+    topbar_element = driver.find_element(By.ID, "Videos Hover")
+    hover = ActionChains(driver).move_to_element(topbar_element)
+    hover.perform()
+    wait.until(EC.presence_of_element_located((By.ID, "Videos Hover")))
+    print("TEST: 8 `Videos hover` successful")
+
     # Find the element with the id "New Video Button" and click it
     new_video_button_element = driver.find_element(By.ID, "New Video Button")
-    new_video_button_element.click()
-
+    wait.until(EC.presence_of_element_located((By.ID, "New Video Button")))
+    hover = ActionChains(driver).move_to_element(new_video_button_element)
+    hover.perform()
+    wait.until(EC.element_to_be_clickable((By.ID, "New Video Button")))
+    ActionChains(driver).click(new_video_button_element).perform()
     # Wait for the URL to change to the new video page URL
     wait.until(EC.url_contains('/new'))
 
     # Check if the URL contains the expected new video page URL
     if '/new' in driver.current_url:
-        print("Test 6: `new video page` successful")
+        print("TEST 9: `new video page` successful")
     else:
-        print("Test 6: `new video page` failed")
+        print("TEST 9: `new video page` failed")
 
 # add logout page test function
 def logout_page_test(driver):
+
+    # Find the element with the id "User Hover" and hover over it
+    topbar_element = driver.find_element(By.ID, "User Hover")
+    hover = ActionChains(driver).move_to_element(topbar_element)
+    hover.perform()
+    wait.until(EC.presence_of_element_located((By.ID, "User Hover")))
+    print("TEST: 10 `User hover` successful")
+
     # Find the element with the id "Logout Button" and click it
     logout_button_element = driver.find_element(By.ID, "Logout Button")
-    logout_button_element.click()
+    wait.until(EC.presence_of_element_located((By.ID, "Logout Button")))
+    hover = ActionChains(driver).move_to_element(logout_button_element)
+    hover.perform()
+    wait.until(EC.element_to_be_clickable((By.ID, "Logout Button")))
+    ActionChains(driver).click(logout_button_element).perform()
 
     logout_confirm_element = driver.find_element(By.ID, "logout")
     logout_confirm_element.click()
@@ -129,14 +177,15 @@ def logout_page_test(driver):
 
     # Check if the URL contains the expected logout page URL
     if '/logout' in driver.current_url:
-        print("Test7: `logout` successful")
+        print("TEST 11: `logout` successful")
     else:
-        print("Test 7: `logout` failed")
+        print("TEST 11: `logout` failed")
 
 # login to the page
 def login(driver):
     # Find the element with the id "Username Input" and click it
     username_input_element = driver.find_element(By.ID, "id_username")
+    wait.until(EC.element_to_be_clickable((By.ID, "id_username")))
     username_input_element.click()
     wait.until(EC.presence_of_element_located((By.ID, "id_username")))
 
@@ -159,6 +208,7 @@ def login(driver):
 
     # Find the element with the id "Login Submit Button" and click it
     login_submit_button_element = driver.find_element(By.ID, "login")
+    wait.until(EC.element_to_be_clickable((By.ID, "login")))
     login_submit_button_element.click()
 
     # Wait for the URL to change to the home page URL
@@ -181,14 +231,6 @@ driver.get('http://localhost:8000')
 
 # Call the video page test function
 print("Home Page test Start")
-video_page_test(driver)
-time.sleep(0.5)
-home_page_test(driver)
-time.sleep(0.5)
-add_contact_page_test(driver)
-time.sleep(0.5)
-home_page_test(driver)
-time.sleep(0.5)
 register_page_test(driver)
 time.sleep(0.5)
 home_page_test(driver)
@@ -197,6 +239,14 @@ login_page_test(driver)
 time.sleep(0.5)
 # actually login
 login(driver)
+time.sleep(0.5)
+video_page_test(driver)
+time.sleep(0.5)
+home_page_test(driver)
+time.sleep(0.5)
+add_contact_page_test(driver)
+time.sleep(0.5)
+home_page_test(driver)
 time.sleep(0.5)
 profile_page_test(driver)
 time.sleep(0.5)

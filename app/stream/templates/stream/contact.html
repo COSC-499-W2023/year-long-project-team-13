@@ -1,5 +1,10 @@
 {% extends 'stream/base.html'%}
 {% block content %}
+{% for message in messages %}
+<div>
+    {{ message }}
+</div>
+{% endfor %}
     <div class="center_journal" style="margin-top: 25px;">
         {% comment %} <h1>Search </h1> {% endcomment %}
     </div>
@@ -19,26 +24,13 @@
                 <div class="input-group-prepend">
                 </div>
                 <input type="text" class="form-control" name="contact_name" placeholder="Enter name to add as contact">
+                {% comment %} {{ addcontactform.reciever.error }}
+                {{ addcontactform.reciever }} {% endcomment %}
                 <a href=" {% url 'stream:video-list' %}" class="btn btn-dark" id="search button">Add Contact</a>
+                {% comment %} <button class="btn btn-dark" id="search button" type="submit">Add Contact</button> {% endcomment %}
                 {% comment %} <button type="submit" class="btn btn-dark" id="search button">Add Contact</button> {% endcomment %}
             </div>
         </form>
     </div>
-    {% comment %} <div>
-        {% for item in videos%}
-        <div class="card" style="width: 40rem; margin: 20px; box-shadow: 12em;">
-            <img class="rounded-circle border-dark" src="{{ item.stream.profile.image.url }}" style="border-color: red;" width="30" height="30">
-            <a class="mr-2" href="{% url 'stream:user-videos' item.stream.username %}" style="text-align: start;">{{ item.stream }}</a>
-            <h12 style="text-align: start;">{{ item.upload_date }}</h12>
-            <video class="card-image-top" controls>
-                <source src="{{ item.video.url }}" type="video/mp4">
-            </video>
-            <div class="card-body">
-              <h5 class="card-title"><a href="{% url 'stream:video-detail' item.id  %}">{{ item.title }}</a></h5>
-              <p class="card-text">{{item.description }}</p>
-            </div>
-            <hr>
-          </div>
-        {% endfor %}
-    </div> {% endcomment %}
+
 {% endblock content %}

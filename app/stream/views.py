@@ -7,10 +7,12 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth import logout, authenticate, login
 from django.dispatch import Signal
+from stream.models import UserInfo
+from stream.forms import UserInfoUpdateForm
 
 from . models import VidStream, Notification, Profile, UserInfo, Setting
-from . forms import VidUploadForm, VidRequestForm, UserRegistrationForm, UserUpdateForm, UserInfoUpdateForm, UserProfileUpdateForm, UserProfileUpdateForm,  ValidatingPasswordChangeForm
-# SetPasswordFormWithConfirm, ValidatingPasswordChangeForm,SetPasswordForm,
+from . forms import VidUploadForm, VidRequestForm, UserRegistrationForm, UserUpdateForm, UserInfoUpdateForm, UserProfileUpdateForm, UserProfileUpdateForm,  ValidatingPasswordChangeForm, AddContactForm
+# SetPasswordFormWithConfirm, ValidatingPasswordChangeForm,SetPasswordForm, AddContactForm,
 
 class VideoDetailView(DetailView):
     template_name = "stream/video-detail.html"
@@ -34,14 +36,36 @@ def search(request):
 def home(request):
     return render(request, 'stream/home.html')
 
+# Send friend request
+def friendRequest(request):
+    if request.method == "POST":
+        addcontactform = AddContactForm(request.POST, instance=request.user)
+        if addcontactform.is_valid():
+            addcontactform.save()
+            return redirect("stream:contact")
+
+    else:
+        addcontactform = AddContactForm(instance=request.user)
+
+    context = {
+        'addcontactform': addcontactform,
+    }
+    return render(request, 'stream/contact.html', context)
+
+# temporary contact to show text message after click add contact a:link
 def contact(request):
     if request.method == 'POST':
         contact_name = request.POST.get('contact_name')
         user_to_add = User.objects.filter(username=contact_name).first()
         if user_to_add:
-            # Assuming you have a Contact model and it has a ManyToMany field for storing contacts
+            # Add the user to the current user's contacts
             request.user.profile.contacts.add(user_to_add.profile)
-            messages.success(request, f'Contact {user_to_add.username} added successfully!')
+
+            # Add a notification to the user being added
+            user_to_add.profile.notifications += f"You have received a contact request from {request.user.username}.\n"
+            user_to_add.profile.save()
+
+            messages.success(request, f'Add request to {user_to_add.username} sent successfully!')
         else:
             messages.error(request, f'User {contact_name} not found.')
         return redirect('stream:contact')
@@ -131,11 +155,16 @@ def register(request):
 
 @login_required
 def profile(request):
+    if not hasattr(request.user, 'userinfo'):
+        UserInfo.objects.create(user=request.user)
+    if not hasattr(request.user, 'profile'):
+        Profile.objects.create(user=request.user)
+
     if request.method == "POST":
         userform = UserUpdateForm(request.POST, instance=request.user)
         personalinfoform = UserInfoUpdateForm(request.POST, instance=request.user.userinfo)
         profileform = UserProfileUpdateForm(request.POST, request.FILES, instance=request.user.profile)
-        if userform.is_valid() and personalinfoform.is_valid and profileform.is_valid():
+        if userform.is_valid() and personalinfoform.is_valid() and profileform.is_valid():
             userform.save()
             personalinfoform.save()
             profileform.save()
@@ -156,7 +185,7 @@ def notifications(request):
     user = request.user
     if user.is_authenticated:
         notifications = Notification.objects.filter(user=user).order_by('-timestamp')
-        return render(request, 'stream/notification.html', {'stream:notifications': notifications})
+        return render(request, 'stream/notification.html', {'notifications': notifications})
     else:
         return redirect('stream:login')  # or wherever you want to redirect unauthenticated users
 
