@@ -5,6 +5,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium import webdriver
+from selenium.webdriver.common.action_chains import ActionChains
 import time
 
 def login_page_test(driver, username, password):
@@ -51,19 +52,30 @@ def admin_test(driver, username, password):
     login_page_test(driver, username, password)
     time.sleep(0.5)
 
+    # Find the element with the id "Topbar" and hover over it
+    wait.until(EC.presence_of_element_located((By.ID, "User Hover")))
+    topbar_element = driver.find_element(By.ID, "User Hover")
+    hover = ActionChains(driver).move_to_element(topbar_element)
+    hover.perform()
+    wait.until(EC.presence_of_element_located((By.ID, "User Hover")))
+    print("TEST: 0 `User hover` successful")
 
+    # Find the element with the id "Admin Button" and click it
     admin_element = driver.find_element(By.ID, "Admin Button")
+    wait.until(EC.presence_of_element_located((By.ID, "Admin Button")))
+    hover = ActionChains(driver).move_to_element(admin_element)
+    hover.perform()
     wait.until(EC.element_to_be_clickable((By.ID, "Admin Button")))
-    admin_element.click()
+    ActionChains(driver).click(admin_element).perform()
 
     # Wait for the URL to change to the admin page URL
     wait.until(EC.url_contains('/admin'))
 
     # Check if the URL contains the expected profile page URL
     if '/admin' in driver.current_url:
-        print("TEST: 0 `Admin` successful")
+        print("TEST: 1 `Admin` successful")
     else:
-        print("TEST: 0 `Admin` failed")
+        print("TEST: 1 `Admin` failed")
 
     # Wait for the profile page to load
     # WebDriverWait(driver, 60).until(EC.url_contains('/profile'))
