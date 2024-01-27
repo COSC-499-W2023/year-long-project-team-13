@@ -9,6 +9,7 @@ from django.contrib.auth.password_validation import validate_password
 from django.contrib.auth.hashers import check_password
 import difflib
 # from django.utils.translation import gettext_lazy as _
+import re
 
 class VidUploadForm(forms.ModelForm):
 
@@ -170,6 +171,10 @@ class ValidatingPasswordChangeForm(forms.ModelForm):
 
         if username_similarity > similarity_threshold or email_similarity > similarity_threshold:
             raise forms.ValidationError("The new password cannot be too similar to your username or email.")
+        
+        #Validation for repeated characters in password. Cannot have 4 of the same characters in a row.
+        if re.search(r'(.{2,}).*\1', password):
+            raise forms.ValidationError("The new password cannot have 4 of the same characters in a row.")
 
         return password
 
