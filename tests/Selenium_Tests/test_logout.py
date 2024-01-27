@@ -11,20 +11,20 @@ def login_page_test(driver, username, password):
     # Find the element with the id "Username Input" and click it
     username_input_element = driver.find_element(By.ID, "id_username")
     username_input_element.click()
-    time.sleep(0.5)
+    wait.until(EC.presence_of_element_located((By.ID, "id_username")))
 
     # Send the username to the username input
     username_input_element.send_keys(username)
-    time.sleep(0.5)
+    wait.until(EC.text_to_be_present_in_element_value((By.ID, "id_username"), username))
 
     # Find the element with the id "Password Input" and click it
     password_input_element = driver.find_element(By.ID, "id_password")
     password_input_element.click()
-    time.sleep(0.5)
+    wait.until(EC.presence_of_element_located((By.ID, "id_password")))
 
     # Send the password to the password input
     password_input_element.send_keys(password)
-    time.sleep(0.5)
+    wait.until(EC.text_to_be_present_in_element_value((By.ID, "id_password"), password))
 
     # Scroll down the login page
     html = driver.find_element(By.TAG_NAME, "html")
@@ -32,35 +32,49 @@ def login_page_test(driver, username, password):
 
     # Find the element with the id "Login Submit Button" and click it
     login_submit_button_element = driver.find_element(By.ID, "login")
+    wait.until(EC.element_to_be_clickable((By.ID, "login")))
     login_submit_button_element.click()
-    time.sleep(0.5)
 
     # Wait for the URL to change to the home page URL
     WebDriverWait(driver, 60).until(EC.url_contains('/'))
-    time.sleep(0.5)
+
     # Check if the URL contains the expected post-login page URL
     if '/login' in driver.current_url:
         print("Login failed")
     else:
         print("Login successful")
 
-def admin_test(driver, username, password):
+def logout_test(driver, username, password):
     # Call the login page test function
     login_page_test(driver, username, password)
     time.sleep(0.5)
 
-    admin_element = driver.find_element(By.ID, "Admin Button")
-    admin_element.click()
-    time.sleep(0.5)
+    wait.until(EC.element_to_be_clickable((By.ID, "Logout Button")))
+    logout_element = driver.find_element(By.ID, "Logout Button")
+    logout_element.click()
+    wait.until(EC.url_contains('/#'))
 
-    # Wait for the URL to change to the admin page URL
-    wait.until(EC.url_contains('/admin'))
+    logout_confirm_element = driver.find_element(By.ID, "cancel")
+    logout_confirm_element.click()
+
+
+    wait.until(EC.url_contains('/'))
+
+    logout_element = driver.find_element(By.ID, "Logout Button")
+    logout_element.click()
+    wait.until(EC.url_contains('/#'))
+
+    logout_confirm_element = driver.find_element(By.ID, "logout")
+    logout_confirm_element.click()
+
+    # Wait for the URL to change to the logout page URL
+    wait.until(EC.url_contains('/logout'))
 
     # Check if the URL contains the expected profile page URL
-    if '/admin' in driver.current_url:
-        print("Admin successful")
+    if '/logout' in driver.current_url:
+        print("TEST 0: `Logout` successful")
     else:
-        print("Admin failed")
+        print("TEST: 0 `Logout` failed")
 
     # Wait for the profile page to load
     # WebDriverWait(driver, 60).until(EC.url_contains('/profile'))
@@ -81,9 +95,10 @@ driver.maximize_window()
 wait = WebDriverWait(driver, 60)
 
 # Call the profile page test function with appropriate input values
+print("Logout test Start")
 driver.get('http://localhost:8000/login')
-admin_test(driver, 'linus', '123')
-time.sleep(0.5)
+logout_test(driver, 'linus', 'Admin123')
+print("Logout test Completed")
 
 # Close the webdriver
 driver.quit()

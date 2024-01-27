@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, SetPasswordForm
 from django.contrib.auth.models import User
-from . models import VidStream, VidRequest, Profile, UserInfo, Setting
+from . models import VidStream, VidRequest, Profile, UserInfo, Setting, FriendRequset
 # , Contact
 
 class VidUploadForm(forms.ModelForm):
@@ -20,13 +20,6 @@ class VidRequestForm(forms.ModelForm):
     class Meta:
         model = VidRequest
         fields = ["reciever","description", "due_date"]
-
-# class AddContactForm(forms.ModelForm):
-#     # reciever =
-
-#     class Meta:
-#         model = Contact
-#         fields = ["reciever"]
 
 # From Streamers
 class UserRegistrationForm(UserCreationForm):
@@ -80,6 +73,50 @@ class UserProfileUpdateForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = ['image']
+
+# Send friend request form to database
+class AddContactForm(forms.ModelForm):
+    sender = forms.CharField(widget=forms.HiddenInput)
+    # reciever = forms.CharField(widget=forms.TextInput(attrs={'placeholder' :'Enter name to add as contact',
+    #                                                         #  'style':'width: 400px; height: 45px; margin-left: auto; margin-right: auto; margin-bottom: 25px; border: 2px groove lightgreen;',
+    #                                                          'class': 'form-control', 'required': True}))
+    reciever = forms.ModelMultipleChoiceField(
+        queryset=User.objects.all(),
+        widget=forms.CheckboxSelectMultiple
+    )
+
+    # def __init__(self, *args, **kwargs):
+    #     super(SurveyForm, self).__init__(*args, **kwargs)
+    #     for field in self.fields.values():
+    #         if isinstance(field.widget, forms.Select):
+    #             field.widget = forms.RadioSelect()
+
+    # name = forms.CharField()
+    # date = forms.DateInput()
+    # members = forms.ModelMultipleChoiceField(
+    #     queryset=Member.objects.all(),
+    #     widget=forms.CheckboxSelectMultiple
+    # )
+
+    CHOICES = [
+        ('1', 'Option 1'),
+        ('2', 'Option 2'),
+    ]
+    like = forms.ChoiceField(
+        widget=forms.RadioSelect,
+        choices=CHOICES,
+    )
+
+    class Meta:
+        model = FriendRequset
+        fields = ['sender','reciever']
+
+    def clean_sender(self):
+        return User.objects.get(username=self.cleaned_data.get('sender'))
+
+
+    def clean_receiver(self):
+        return User.objects.get(username=self.cleaned_data.get('reciever'))
 
 class SettingForm(forms.ModelForm):
     YES_NO = (('Yes', 'True'),('No', 'False'),)

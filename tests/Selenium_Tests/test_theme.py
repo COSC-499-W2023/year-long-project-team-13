@@ -11,20 +11,20 @@ def login_page_test(driver, username, password):
     # Find the element with the id "Username Input" and click it
     username_input_element = driver.find_element(By.ID, "id_username")
     username_input_element.click()
-    time.sleep(0.5)
+    wait.until(EC.presence_of_element_located((By.ID, "id_username")))
 
     # Send the username to the username input
     username_input_element.send_keys(username)
-    time.sleep(0.5)
+    wait.until(EC.text_to_be_present_in_element_value((By.ID, "id_username"), username))
 
     # Find the element with the id "Password Input" and click it
     password_input_element = driver.find_element(By.ID, "id_password")
     password_input_element.click()
-    time.sleep(0.5)
+    wait.until(EC.presence_of_element_located((By.ID, "id_password")))
 
     # Send the password to the password input
     password_input_element.send_keys(password)
-    time.sleep(0.5)
+    wait.until(EC.text_to_be_present_in_element_value((By.ID, "id_password"), password))
 
     # Scroll down the login page
     html = driver.find_element(By.TAG_NAME, "html")
@@ -33,11 +33,9 @@ def login_page_test(driver, username, password):
     # Find the element with the id "Login Submit Button" and click it
     login_submit_button_element = driver.find_element(By.ID, "login")
     login_submit_button_element.click()
-    time.sleep(0.5)
 
     # Wait for the URL to change to the home page URL
-    WebDriverWait(driver, 60).until(EC.url_contains('/'))
-    time.sleep(0.5)
+    WebDriverWait(driver, 30).until(EC.url_contains('/'))
     # Check if the URL contains the expected post-login page URL
     if '/login' in driver.current_url:
         print("Login failed")
@@ -49,16 +47,15 @@ def setting_test(driver, username, password):
     # call setting page
     setting_element = driver.find_element(By.ID, "Setting Button")
     setting_element.click()
-    time.sleep(0.5)
 
     # Wait for the URL to change to the admin page URL
     wait.until(EC.url_contains('/setting'))
 
     # Check if the URL contains the expected profile page URL
     if '/setting' in driver.current_url:
-        print("Setting successful")
+        print("TEST: 0 `Setting` successful")
     else:
-        print("Setting failed")
+        print("TEST: 0 `Setting` failed")
 
 
 def theme_test(driver, username, password):
@@ -71,16 +68,15 @@ def theme_test(driver, username, password):
 
     setting_element = driver.find_element(By.ID, "Background Button")
     setting_element.click()
-    time.sleep(0.5)
 
     # Wait for the URL to change to the admin page URL
     wait.until(EC.url_contains('/theme'))
 
     # Check if the URL contains the expected profile page URL
     if '/theme' in driver.current_url:
-        print("Theme successful")
+        print("TEST: 1 `Theme` successful")
     else:
-        print("Theme failed")
+        print("TEST: 1 `Theme` failed")
 
 
 
@@ -103,9 +99,10 @@ driver.maximize_window()
 wait = WebDriverWait(driver, 60)
 
 # Call the profile page test function with appropriate input values
+print("Theme Page test Start")
 driver.get('http://localhost:8000/login')
-theme_test(driver, 'linus', '123')
-time.sleep(0.5)
+theme_test(driver, 'linus', 'Admin123')
+print("Theme Page test Completed")
 
 # Close the webdriver
 driver.quit()
