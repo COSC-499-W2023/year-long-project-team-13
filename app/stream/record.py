@@ -1,14 +1,21 @@
-import cv2
-
-class Record:
-    def __init__(self, filename):
-        self.filename = filename
-        self.fourcc = cv2.VideoWriter_fourcc(*'XVID')
-        self.out = cv2.VideoWriter(self.filename, self.fourcc, 20.0, (640, 480))
-
-    def write(self, frame):
-        self.out.write(frame)
-
-    def close(self):
-        self.out.release()
-
+import numpy as np
+import cv2 as cv
+cap = cv.VideoCapture(0)
+# Define the codec and create VideoWriter object
+fourcc = cv.VideoWriter_fourcc(*'mp4v')
+out = cv.VideoWriter('output.mp4', fourcc, 20.0, (1280, 360))
+while cap.isOpened():
+    ret, frame = cap.read()
+    if not ret:
+        print("Can't receive frame (stream end?). Exiting ...")
+        break
+    # frame = cv.flip(frame, 0)
+    # write the flipped frame
+    out.write(frame)
+    cv.imshow('frame', frame)
+    if cv.waitKey(1) == ord('q'):
+        break
+# Release everything if job is finished
+cap.release()
+out.release()
+cv.destroyAllWindows()
