@@ -366,7 +366,8 @@ Network Graph
 ![Network](./images/network/term2_week3_network_4.png)
 ![Network](./images/network/term2_week3_network_5.png)
 Completed Tasks
-![Completed](./images/completed/term2_week3_done.png)
+![Completed](./images/completed/term2_week3_done_1.png)
+![Completed](./images/completed/term2_week3_done_2.png)
 In progress Tasks
 ![In Progress](./images/in-prog/term2_week3_inprogress.png)
 Test Report
