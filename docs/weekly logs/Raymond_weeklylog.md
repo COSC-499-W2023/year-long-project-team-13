@@ -290,3 +290,47 @@ Change password (current html)
 ### Additional
 - Worked on my own weekly log, contribute to team weekly log.
 - Learn new information from online to use for my project.
+
+
+## Term 2 Week 3 2024/01/22 ~ 2024/01/28
+
+- Type of tasks you worked on
+
+![Tasks](./images/tasks/SittPaing_T2W3-Task.png)
+
+## Recap of week's goals
+
+I have worked on the confirm password function as well as add in different validity checker in the change password function for security. I encountered different issues such as validity checker not working as intended. One validity check that i have issue is that the user is allowed to change password that is similar to either either username or email, so i added a validity checker to tackle that issue, I used different online resources to resolve the issue but i am somehow able to prevent the user from changing their password similar to username but not an email unless the user put the exact email address as their password. It took me quite a while to tackle that problem until I use regular expression and worked with together with Adrian to overcome this issue. Now the user is able to change their password without any issues with a working validity checker. Herman helped me with the test and I made some changes to the test so that its run without any errors. I also make changes on the html/css although its not entirely working as some button and the form is out of place as well as we also discussed on what we want to present during the peer evaluation during our team meetings.
+
+Adjustment to html and checking the password (too common)
+
+![Adjustment to html and checking the password (too common)](./images/Sitt_images/Term_2_Week_3/Common.png)
+
+checking the password (all numeric)
+
+![checking the password (all numeric)](./images/Sitt_images/Term_2_Week_3/Numeric.png)
+
+checking the password (missing number/punctuation)
+
+![checking the password (missing number/punctuation)](./images/Sitt_images/Term_2_Week_3/Number.png)
+
+checking the password (Short)
+
+![checking the password (Short)](./images/Sitt_images/Term_2_Week_3/Short_password.png)
+
+checking the password (similar to email/username)
+
+![checking the password (similar to email/username)](./images/Sitt_images/Term_2_Week_3/similar.png)
+
+checking the password (not matching with confirm password)
+
+![checking the password (not matching with confirm password)](./images/Sitt_images/Term_2_Week_3/Matching.png)
+
+Test for setting
+
+![Test for setting](./images/Sitt_images/Term_2_Week_3/Test.png)
+
+
+### Additional
+- Worked on my own weekly log, contribute to team weekly log.
+- Learn new insights from online to resolve issues for my project.
