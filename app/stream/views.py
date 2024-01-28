@@ -41,8 +41,8 @@ def friendRequest(request):
     if request.method == "POST":
         addcontactform = AddContactForm(user=request.user, data=request.POST)
         if addcontactform.is_valid():
-            receiver = str(addcontactform.cleaned_data['receiver'])
-            Notification.objects.create(user=request.user, message=f'You have sent a friend request to '+ receiver +'.')
+            Notification.objects.create(user=request.user, message=f'You have sent a friend request to '+ str(addcontactform.cleaned_data['receiver']) +'.')
+            Notification.objects.create(user=addcontactform.cleaned_data['receiver'], message=f'You have received a friend request from '+ str(request.user) +'.')
             add_contact = addcontactform.save(commit=False)
             add_contact.sender = request.user  # Assuming sender is the currently logged-in user
             add_contact.save()

@@ -90,11 +90,7 @@ class AddContactForm(forms.ModelForm):
     def __init__(self, user, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['receiver'].queryset = User.objects.exclude(username=user.username)
-        self.fields['receiver'].queryset = self.fields['receiver'].queryset.exclude(contact_receiver__sender__username=user.username)
-
-    # def clean_receiver(self):
-    #     receiver = self.cleaned_data.get('receiver')
-    #     return receiver
+        self.fields['receiver'].queryset = self.fields['receiver'].queryset.exclude(contact_receiver__sender__username=user.username).exclude(contact_sender__receiver__username=user.username).exclude(requests_receiver__sender__username=user.username).exclude(requests_sender__receiver__username=user.username)
 
     class Meta:
         model = FriendRequest
