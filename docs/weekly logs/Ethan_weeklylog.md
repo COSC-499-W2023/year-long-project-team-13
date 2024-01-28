@@ -229,3 +229,18 @@
   - ![Video List Page Video](./images/Ethan_stuff/t2w2/s3_updated_database_version.png)
   - ![Video List Page Image](./images/Ethan_stuff/t2w2/s3_updated_database_version_2.png)
 
+# Preferred name -> Ssc name -> Github name
+
+- Ethan -> Ethan Hsu -> YuchenHsu
+
+## Week 3 2024/01/22 ~ 2024/01/28
+
+- Type of tasks you worked on (screenshot from Peer Eval question)
+
+![Tasks](./images/tasks/ethan_term2_week3.png)
+
+- This week, I worked on fixing the s3 cloudfront branch to try to make profile picture can be swapped out. That is the only thing that is not working right now. I also worked on the Upload Video Page and seperated the upload video part and the record video part so that on the same page the user can change whether they want to upload or record a video (default one is record).
+  - The tasks associated are the following:
+  - [S3 cloudfront branch](https://github.com/COSC-499-W2023/year-long-project-team-13/issues/96)
+  ![Upload Video Page](./images/Ethan_stuff/t2w3/upload_video.png)
+  ![Record Video Page](./images/Ethan_stuff/t2w3/record_video.png)

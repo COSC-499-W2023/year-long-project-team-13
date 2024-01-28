@@ -327,6 +327,8 @@ Burnup chart
 Network Graph
 ![Network](./images/network/term2_week2_network_1.png)
 ![Network](./images/network/term2_week2_network_2.png)
+![Network](./images/network/term2_week2_network_3.png)
+![Network](./images/network/term2_week2_network_4.png)
 Completed Tasks
 ![Completed](./images/completed/term2_week2_done_1.png)
 ![Completed](./images/completed/term2_week2_done_2.png)
@@ -336,3 +338,39 @@ In progress Tasks
 Test Report
 
 - Test report file is in the same directory [here](./report.txt)
+
+## Preferred name -> Ssc name -> Github name
+
+- Ethan -> Ethan Hsu -> YuchenHsu
+- Beth -> Beth Ralston -> mblackbeak (mblackbeak)
+- Herman -> Herman Sood -> herman-23
+- Raymond -> Sitt Paing -> SittHmuePaing
+- Adrian -> Adrian Fong -> AdrianFWM
+
+## Term 2 Week 3 2024/01/22 ~ 2024/01/28
+
+- Which features were in the project plan for this milestone?
+  - S3 bucket and cloudfront routing for the videos uploaded and profile pitctures.
+  - Seperated uploading videos (working) from recording videos (work in progress).
+  - Reorganized the topbar structure and tested the new top bar.
+  - Updated all tests to include the hover feature of the new top bar.
+  - Updating the database structure (notification, setting tables) and the models and change some processes for different pages (profile page, admin page).
+  - Change password is done.
+
+Burnup chart
+![Burnup](./images/burnup/term2_week3_burnup.png)
+Network Graph
+![Network](./images/network/term2_week3_network_1.png)
+![Network](./images/network/term2_week3_network_2.png)
+![Network](./images/network/term2_week3_network_3.png)
+![Network](./images/network/term2_week3_network_4.png)
+![Network](./images/network/term2_week3_network_5.png)
+Completed Tasks
+![Completed](./images/completed/term2_week3_done.png)
+In progress Tasks
+![In Progress](./images/in-prog/term2_week3_inprogress.png)
+Test Report
+
+- Test report file is in the same directory [here](./report.txt)
+- ![Test Report](./images/tests_completion/term2_week3_pytest_1.png)
+- ![Test Report](./images/tests_completion/term2_week3_pytest_2.png)
