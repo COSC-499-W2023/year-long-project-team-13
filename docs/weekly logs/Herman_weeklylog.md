@@ -244,6 +244,7 @@ Add contact in progress.
 
  ![Tasks](./images/tasks/Week3Term2HermanSettingUnittests.png)
 
+ ![Tasks](./images/tasks/Week3Term2Herman.png)
  
 
 
