@@ -227,6 +227,24 @@ Add Contact Function (testing left)
  ![Tasks](./images/tasks/Week2Term2HermanAddContact.png)
 
  ![Tasks](./images/tasks/Week2Term2HermanPeerEval.png)
+ 
+
+ - Applicable date range
+##  Week 3 Term 2 01/22/24~01/28/24
+
+ # Preferred name -> Ssc name -> Github name
+
+- Herman -> Herman Sood -> Herman Sood
+
+- Recap on your week's goals-Which features were yours in the project plan for this milestone? For term 2 week 3 I helped Raymond with the setting branch a little and wrote two unit tests in which one checks for valid passwords when doing a password change and the other test looks for invalid passwords. I also added in an additional validity checker where a user cannot add more than 4 of the same characters in a row in the password but that may be removed. I plan to get back to the add contact branch and get a search bar and everything once things are set on the database side from Adrian. 
+  - Which tasks from the project board are associated with these features? Settings - Change Password
+  - Among these tasks, which have you completed/in progress in the last week?
+Settings - Change Password (unit tests),
+Add contact in progress.
+
+ ![Tasks](./images/tasks/Week3Term2HermanSettingUnittests.png)
+
+ 
 
 
 
