@@ -112,3 +112,8 @@ My feature this week was to work on the CI testing pipeline. This is associated 
 ![Week2Tasks](./images/tasks/Ralston_term2_w2_tasks.png)
 
 For this week, I focused on updating the Selenium tests to have clearer print messages and to eliminates the reacurring clickable bugs. As well as to create a proper test report file to pipe the master tests into. This is the testing structure task in the project board which is in the review phase from my other team members. I also worked on updating the top bar to include a drop down menu. The drop down menu works on all pages and I have not yet got a passing test for it. This is associated with the reorganize top bar task. Ethan was a big help with figuring out some weird topbar css bugs.
+
+### Week 3 Jan 22 - Jan 28
+![Week3Tasks](./images/tasks/Ralston_term2_w3_tasks.png)
+
+For this week, I worked on the Record a video functionality and testing and updating the tests to include the hover feature in the topbar. These are associated with the Create Video Function task and reorganize topbar task in the project board. The topbar testing has been completed and merged into the master branch after team members reviewed it. I have been able to get the record a video functional but I have not been able to connect it to the HTML button on the website.
