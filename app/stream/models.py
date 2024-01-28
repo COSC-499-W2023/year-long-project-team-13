@@ -170,9 +170,9 @@ class Notification(models.Model):
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
 
-@receiver(user_logged_in)
-def user_logged_in(sender, user, request, **kwargs):
-    Notification.objects.create(user=user, message='You have logged in.')
+# @receiver(user_logged_in)
+# def user_logged_in(sender, user, request, **kwargs):
+#     Notification.objects.create(user=user, message='You have logged in.')
 
 # Video request notification table
 # class VidRequestNotification(models.Model):

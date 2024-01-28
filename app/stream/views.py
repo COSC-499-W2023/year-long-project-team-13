@@ -174,26 +174,26 @@ def notifications(request):
     else:
         return redirect('stream:login')  # or wherever you want to redirect unauthenticated users
 
-def login_view(request):
-    if request.method == 'POST':
-        username = request.POST['username']
-        password = request.POST['password']
-        user = authenticate(request, username=username, password=password)
-        print("user:", user)  # and this
-        if user is not None:
-           Notification.objects.create(user=user, message='You have logged in.')
-           login(request, user)
-           return redirect('stream:home')  # or wherever you want to redirect after login
-        else:
-            return render(request, 'stream/login.html', {'error': 'Invalid username or password'})
-    else:
-        return render(request, 'stream/login.html')
+# def login_view(request):
+#     if request.method == 'POST':
+#         username = request.POST['username']
+#         password = request.POST['password']
+#         user = authenticate(request, username=username, password=password)
+#         # print("user:", user)  # and this
+#         if user is not None:
+#         #    Notification.objects.create(user=user, message='You have logged in.')
+#         #    login(request, user)
+#            return redirect('stream:home')  # or wherever you want to redirect after login
+#         else:
+#             return render(request, 'stream/login.html', {'error': 'Invalid username or password'})
+#     else:
+#         return render(request, 'stream/login.html')
 
-def logout_view(request):
-    user = request.user
-    if user.is_authenticated:
-        logout(request)
-    return redirect('stream:home')  # or wherever you want to redirect after logout
+# def logout_view(request):
+#     user = request.user
+#     if user.is_authenticated:
+#         logout(request)
+#     return redirect('stream:home')  # or wherever you want to redirect after logout
 
 @login_required
 def settings(request):
