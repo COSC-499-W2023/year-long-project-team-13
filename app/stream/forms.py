@@ -3,6 +3,13 @@ from django.contrib.auth.forms import UserCreationForm, SetPasswordForm
 from django.contrib.auth.models import User
 from . models import VidStream, VidRequest, Profile, UserInfo, Setting, FriendRequset
 # , Contact
+from django.contrib.auth import password_validation
+from django.contrib import auth
+from django.contrib.auth.password_validation import validate_password
+from django.contrib.auth.hashers import check_password
+import difflib
+# from django.utils.translation import gettext_lazy as _
+import re
 
 class VidUploadForm(forms.ModelForm):
 
@@ -117,11 +124,97 @@ class SettingForm(forms.ModelForm):
         model = Setting
         fields = ['darkmode', 'emailnotification']
 
-class SetPasswordForm(forms.ModelForm):
+# class SetPasswordForm(forms.ModelForm):
+#     password = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder' :'Password',
+#                                                                   'style': 'width: 400px; height: 45px; margin-left: auto; margin-right: auto; margin-bottom: 25px; border: 2px groove lightgreen;',
+#                                                                   'class': 'form-control', 'required': True}))
+
+#     class Meta:
+#         model = User
+#         fields = ['password']
+
+
+# class SetPasswordForm(forms.ModelForm):
+#     password = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder' :'Password',
+#                                                                   'style': 'width: 400px; height: 45px; margin-left: auto; margin-right: auto; margin-bottom: 25px; border: 2px groove lightgreen;',
+#                                                                   'class': 'form-control', 'required': True}))
+#     password2 = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder' :'Confirm Password',
+#                                                                   'style': 'width: 400px; height: 45px; margin-left: auto; margin-right: auto; margin-bottom: 27px; border: 2px groove lightgreen;',
+#                                                                   'class': 'form-control', 'required': True}))
+
+#     class Meta:
+#         model = User
+#         fields = ['password']
+
+# class SetPasswordFormWithConfirm(SetPasswordForm):
+#     new_password2 = forms.CharField(
+#         widget=forms.PasswordInput(attrs={
+#             'placeholder': 'Confirm Password',
+#             'style': 'width: 400px; height: 45px; margin-left: auto; margin-right: auto; margin-bottom: 25px; border: 2px groove lightgreen;',
+#             'class': 'form-control',
+#             'required': True,
+#         }),
+#     )
+
+class ValidatingPasswordChangeForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder' :'Password',
                                                                   'style': 'width: 400px; height: 45px; margin-left: auto; margin-right: auto; margin-bottom: 25px; border: 2px groove lightgreen;',
+                                                                  'class': 'form-control', 'required': True}),validators=[validate_password])
+    password2 = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder' :'Confirm Password',
+                                                                  'style': 'width: 400px; height: 45px; margin-left: auto; margin-right: auto; margin-bottom: 27px; border: 2px groove lightgreen;',
                                                                   'class': 'form-control', 'required': True}))
+    MIN_LENGTH = 8
+
+    def __init__(self, *args, user=None, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.user = user
+
+    # def __init__(self, *args, **kwargs):
+    #     self.user = kwargs.pop('user', None)
+    #     super(ValidatingPasswordChangeForm, self).__init__(*args, **kwargs)
+
+    def clean_password(self):
+        password = self.cleaned_data.get('password')
+        username = self.instance.username
+        email = self.instance.email
+        email = re.sub(r'@[A-Za-z]*\.?[A-Za-z0-9]*',"", email)
+
+        # At least MIN_LENGTH long
+        if len(password) < self.MIN_LENGTH:
+            raise forms.ValidationError("The new password must be at least %d characters long." % self.MIN_LENGTH)
+
+        # At least one letter and one non-letter
+        first_isalpha = password[0].isalpha()
+        if all(c.isalpha() == first_isalpha for c in password):
+            raise forms.ValidationError("The new password must contain at least one letter and at least one digit or" \
+                                        " punctuation character.")
+
+        # ... any other validation you want ...
+        # Check Password not similar to username and email information
+        username_similarity = difflib.SequenceMatcher(None, password.lower(), username.lower()).ratio()
+        email_similarity = difflib.SequenceMatcher(None, password.lower(), email.lower()).ratio()
+
+        similarity_threshold = 0.6  # Adjust this threshold as needed
+
+        if username_similarity > similarity_threshold or email_similarity > similarity_threshold:
+            raise forms.ValidationError("The new password cannot be too similar to your username or email.")
+
+        return password
+
+    def clean_password2(self):
+        password1 = self.cleaned_data.get('password')
+        password2 = self.cleaned_data.get('password2')
+
+        if password1 and password2 and password1 != password2:
+            raise forms.ValidationError(('The two password fields must match.'))
+
+        return password2
 
     class Meta:
         model = User
         fields = ['password']
+
+     #Validation for repeated characters in password. Cannot have 4 of the same characters in a row.
+        # if re.search(r'(.{2,}).*\1', password):
+        #     raise forms.ValidationError("The new password cannot have 4 of the same characters in a row.")
+        # raise forms.ValidationError(email)
