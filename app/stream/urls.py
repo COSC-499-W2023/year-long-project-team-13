@@ -6,7 +6,7 @@ from . views import (
     GeneralVideoListView,
     VideoUpdateView,
     VideoDeleteView,
-    FriendRequset,
+    FriendRequest,
 )
 from django.urls import path
 from stream import views as stream_views

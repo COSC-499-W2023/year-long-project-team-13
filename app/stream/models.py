@@ -66,7 +66,7 @@ class Contact(models.Model):
         super().save(*args, **kwargs)
 
 # Pending friend request table
-class FriendRequset(models.Model):
+class FriendRequest(models.Model):
     # create a tuple to manage different options for your request status
     STATUS_CHOICES = (
       (1, 'Pending'),
@@ -82,7 +82,7 @@ class FriendRequset(models.Model):
     status = models.IntegerField(choices=STATUS_CHOICES, default=1)
 
     def __str__(self):
-        return self.id
+        return f"{self.id}"
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
@@ -115,10 +115,10 @@ class Profile(models.Model):
     image = models.ImageField(default="mountain.jpg", upload_to='profile-pics')
 
 
-    # Need to delete 2 code lines after {
-    contacts = models.ManyToManyField('self', blank=True)
-    notifications = models.TextField(default='', blank=True)
-    # }
+    # # Need to delete 2 code lines after {
+    # contacts = models.ManyToManyField('self', blank=True)
+    # notifications = models.TextField(default='', blank=True)
+    # # }
 
 
     def __str__(self):

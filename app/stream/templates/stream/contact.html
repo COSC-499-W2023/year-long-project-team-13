@@ -18,16 +18,20 @@
     </div>
     {% endif %}
     <div style="padding-top: 150px;">
-        <form method="POST" action="{% url 'stream:contact' %}">
+        <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="input-group">
                 <div class="input-group-prepend">
                 </div>
-                <input type="text" class="form-control" name="contact_name" placeholder="Enter name to add as contact">
+                {% comment %} <input type="text" class="form-control" name="contact_name" placeholder="Enter name to add as contact"> {% endcomment %}
+                {% comment %} {{ addcontactform.sender.error }}
+                {{ addcontactform.sender }}
                 {{ addcontactform.reciever.error }}
-                {{ addcontactform.reciever }}
-                <a href=" {% url 'stream:video-list' %}" class="btn btn-dark" id="search button">Add Contact</a>
-                {% comment %} <button class="btn btn-dark" id="search button" type="submit">Add Contact</button> {% endcomment %}
+                {{ addcontactform.reciever }} {% endcomment %}
+                {{ addcontactform.errors }}
+                {{ addcontactform.as_p }}
+                {% comment %} <a href=" {% url 'stream:video-list' %}" class="btn btn-dark" id="search button">Add Contact</a> {% endcomment %}
+                <button class="btn btn-dark" id="Add Contact" type="submit">Add Contact</button>
                 {% comment %} <button type="submit" class="btn btn-dark" id="search button">Add Contact</button> {% endcomment %}
             </div>
         </form>

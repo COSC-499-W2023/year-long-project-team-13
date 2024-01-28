@@ -10,7 +10,7 @@ from django.dispatch import Signal
 from stream.models import UserInfo
 from stream.forms import UserInfoUpdateForm
 
-from . models import VidStream, Notification, Profile, UserInfo, Setting, FriendRequset
+from . models import VidStream, Notification, Profile, UserInfo, Setting, FriendRequest
 from . forms import VidUploadForm, VidRequestForm, UserRegistrationForm, UserUpdateForm, UserInfoUpdateForm, UserProfileUpdateForm, UserProfileUpdateForm,  ValidatingPasswordChangeForm, AddContactForm
 # SetPasswordFormWithConfirm, SetPasswordForm,
 
@@ -154,22 +154,28 @@ def register(request):
 
 # Send friend request
 def friendRequest(request):
-    # form_class = ContactForm(request=request,
-    #                          initial={'contact_name': request.user.first_name})
     if request.method == "POST":
-        addcontactform = AddContactForm(request.POST, instance=request.user)
-        # request.user.details.get().favourites.add(article)
+        addcontactform = AddContactForm(request.POST)
         if addcontactform.is_valid():
-            addcontactform.save()
-            return redirect("stream:contact")
+            add_contact = addcontactform.save(commit=False)
+            add_contact.sender = request.user  # Assuming sender is the currently logged-in user
+            add_contact.save()
+            return redirect("stream:home")
 
     else:
-        addcontactform = AddContactForm(instance=request.user)
+        addcontactform = AddContactForm()
 
     context = {
         'addcontactform': addcontactform,
     }
     return render(request, 'stream/contact.html', context)
+            # form = addcontactform.save(commit=False)
+            # form.sender = request.user
+            # form.save()
+            # addcontactform.save(sender=request.user)
+                    # , user=request.user
+                            # , user=request.user
+                            # , instance=request.user
 
 @login_required
 def profile(request):

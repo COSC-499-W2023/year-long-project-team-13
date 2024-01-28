@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, SetPasswordForm
 from django.contrib.auth.models import User
-from . models import VidStream, VidRequest, Profile, UserInfo, Setting, FriendRequset
+from . models import VidStream, VidRequest, Profile, UserInfo, Setting, FriendRequest
 # , Contact
 from django.contrib.auth import password_validation
 from django.contrib import auth
@@ -83,33 +83,66 @@ class UserProfileUpdateForm(forms.ModelForm):
 
 # Send friend request form to database
 class AddContactForm(forms.ModelForm):
+
+    # sender = forms.CharField(widget=forms.HiddenInput)
+    # sender = forms.ModelChoiceField(attrs={'class': 'form-control'},
+    #     queryset = None,
+    # )
+    # reciever = forms.ModelChoiceField(
+    #     queryset = None,
+    # )
+    # reciever = forms.CharField(widget=forms.TextInput(attrs={'placeholder' :'Name',
+    #                                                          'style':'width: 400px; height: 45px; margin-left: auto; margin-right: auto; margin-bottom: 25px; border: 2px groove lightgreen;',
+    #                                                          'class': 'form-control', 'required': True}), max_length=50)
+    # attrs={'class': 'form-control'},
+    class Meta:
+        model = FriendRequest
+        fields = ['sender','reciever','sent_on','status']
+# ,'status'
+    # def __init__(self, user, *args, **kwargs):
+    #     super().__init__(*args, **kwargs)
+    #     # self.fields['reciever'].queryset = User.objects.exclude(username=user.username)
+    #     self.fields['sender'].queryset = User.objects.filter(username=user.username)
+    #     # self.fields['sender'].initial = user.username
+    #     self.fields['reciever'].queryset = User.objects.exclude(username=user.username)
+
+    # def save(self, commit=True, sender=None):
+    #     instance = super().save(commit=False)
+    #     # instance.sender = sender
+    #     if commit:
+    #         instance.save()
+    #     return instance
+
+    # def clean_sender(self):
+    #     sender = self.cleaned_data['sender']
+    #     return sender
+
+    # def clean_receiver(self):
+    #     receiver = self.cleaned_data.get('reciever')
+    #     return receiver
+
+    # class Meta:
+    #     model = FriendRequset
+    #     fields = ['reciever']
+# 'sender',
+
+    # def save(self, commit=True):
+    #     instance = super().save(commit=False)
+    #     instance.sender = self.user
+    #     if commit:
+    #         instance.save()
+    #     return instance
+
+
     # def __init__(self, *args, **kwargs):
     #     self.request = kwargs.pop('request')
     #     super(AddContactForm, self).__init__(*args, **kwargs)
     #     self.fields['reciever'].queryset = User.objects.exclude(user=self.request.user)
 
-    def __init__(self, user, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.fields['receiver'].queryset = User.objects.exclude(username=user.username)
-
-    # def clean_sender(self):
-    #     return User.objects.get(username=self.cleaned_data.get('sender'))
-
+    # return User.objects.get(username=self.cleaned_data.get('sender'))
 
     # def clean_receiver(self):
     #     return User.objects.get(username=self.cleaned_data.get('reciever'))
-    def clean_receiver(self):
-        receiver = self.cleaned_data['receiver']
-        return receiver
-
-    class Meta:
-        model = FriendRequset
-        fields = ['sender','reciever']
-
-    sender = forms.CharField(widget=forms.HiddenInput)
-    reciever = forms.ModelChoiceField(
-        queryset = None,
-    )
 
         # queryset=User.objects.all(),
         # widget=forms.CheckboxSelectMultiple
