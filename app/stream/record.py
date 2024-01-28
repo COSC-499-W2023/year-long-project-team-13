@@ -1,21 +1,24 @@
-import numpy as np
-import cv2 as cv
-cap = cv.VideoCapture(0)
-# Define the codec and create VideoWriter object
-fourcc = cv.VideoWriter_fourcc(*'mp4v')
-out = cv.VideoWriter('output.mp4', fourcc, 20.0, (1280, 360))
-while cap.isOpened():
-    ret, frame = cap.read()
-    if not ret:
-        print("Can't receive frame (stream end?). Exiting ...")
+import cv2
+
+video= cv2.VideoCapture(0)
+
+width= int(video.get(cv2.CAP_PROP_FRAME_WIDTH))
+height= int(video.get(cv2.CAP_PROP_FRAME_HEIGHT))
+
+writer= cv2.VideoWriter('basicvideo.mp4', cv2.VideoWriter_fourcc(*'mp4v'), 20, (width,height))
+
+
+while True:
+    ret,frame= video.read()
+
+    writer.write(frame)
+
+    cv2.imshow('frame', frame)
+
+    if cv2.waitKey(1) & 0xFF == 27:
         break
-    # frame = cv.flip(frame, 0)
-    # write the flipped frame
-    out.write(frame)
-    cv.imshow('frame', frame)
-    if cv.waitKey(1) == ord('q'):
-        break
-# Release everything if job is finished
-cap.release()
-out.release()
-cv.destroyAllWindows()
+
+
+video.release()
+writer.release()
+cv2.destroyAllWindows()
