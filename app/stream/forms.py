@@ -26,7 +26,7 @@ class VidRequestForm(forms.ModelForm):
 
     class Meta:
         model = VidRequest
-        fields = ["reciever","description", "due_date"]
+        fields = ["receiver","description", "due_date"]
 
 # From Streamers
 class UserRegistrationForm(UserCreationForm):
@@ -97,7 +97,7 @@ class AddContactForm(forms.ModelForm):
     # attrs={'class': 'form-control'},
     class Meta:
         model = FriendRequest
-        fields = ['sender','reciever','sent_on','status']
+        fields = ['sender','receiver','sent_on','status']
 # ,'status'
     # def __init__(self, user, *args, **kwargs):
     #     super().__init__(*args, **kwargs)

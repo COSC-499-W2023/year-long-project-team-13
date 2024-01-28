@@ -15,7 +15,7 @@ class VidRequest(models.Model):
     id = models.AutoField(primary_key=True)
     # request_id = models.AutoField(primary_key=True)
     sender = models.ForeignKey(User, related_name="user_sender", on_delete=models.CASCADE)
-    reciever = models.ForeignKey(User, related_name="user_reciever", on_delete=models.CASCADE)
+    receiver = models.ForeignKey(User, related_name="user_receiver", on_delete=models.CASCADE)
     description = models.TextField(max_length=600)
     due_date = models.DateTimeField(default=timezone.now)
 
@@ -55,7 +55,7 @@ class VidStream(models.Model):
 class Contact(models.Model):
     id = models.AutoField(primary_key=True)
     sender = models.ForeignKey(User, related_name="contact_sender", on_delete=models.CASCADE)
-    reciever = models.ForeignKey(User, related_name="contact_reciever", on_delete=models.CASCADE)
+    receiver = models.ForeignKey(User, related_name="contact_receiver", on_delete=models.CASCADE)
     #     status = models.BooleanField(default=False)
 
 
@@ -75,7 +75,7 @@ class FriendRequest(models.Model):
      )
     id = models.AutoField(primary_key=True)
     sender = models.ForeignKey(User, on_delete=models.CASCADE, related_name="requests_sender")
-    reciever = models.ForeignKey(User, on_delete=models.CASCADE, related_name="requests_receiver")
+    receiver = models.ForeignKey(User, on_delete=models.CASCADE, related_name="requests_receiver")
     sent_on = models.DateTimeField(default=timezone.now)
 
     # store this as an integer, Django handles the verbose choice options
@@ -91,7 +91,7 @@ class FriendRequest(models.Model):
 class Post(models.Model):
     id = models.AutoField(primary_key=True)
     sender = models.ForeignKey(User, on_delete=models.CASCADE, related_name='post_sender')
-    reciever = models.ForeignKey(User, on_delete=models.CASCADE, related_name='post_reciever')
+    receiver = models.ForeignKey(User, on_delete=models.CASCADE, related_name='post_receiver')
     title = models.CharField(max_length=300)
     description = models.TextField(max_length=600)
     sendtime = models.DateTimeField(default=timezone.now)
