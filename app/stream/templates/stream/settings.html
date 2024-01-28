@@ -12,7 +12,7 @@
       {% comment %} <link href="{% static 'css/styleProfile.css' %}" rel="stylesheet"> {% endcomment %}
       <link href="{% static 'css/logoutUI.css' %}" rel="stylesheet">
       <link href="{% static 'css/styleSetting.css' %}" rel="stylesheet">
-      <link href="{% static 'css/styleVideo.css' %}" rel="stylesheet">
+      {% comment %} <link href="{% static 'css/styleVideo.css' %}" rel="stylesheet"> {% endcomment %}
       <link href="{% static 'css/styleTopBar.css' %}" rel="stylesheet">
     </head>
 
@@ -85,12 +85,12 @@
 
     <div class="col-md-3 d-none d-md-block" style="height:100%" >
 
-        <div class="container-fluid nav sidebar flex-column">
-
+        {% comment %} <div class="container-fluid nav sidebar flex-column"> {% endcomment %}
+{% comment %}
             <a href="{% url 'stream:setting' %}" class="nav-link active mt-auto"><i class="far fa-user-circle"></i> Change Password</a>
-            <a href="{% url 'stream:theme' %}" class="nav-link mb-auto" id="Background Button"><i class="fas fa-cogs"></i> Background</a>
+            <a href="{% url 'stream:theme' %}" class="nav-link mb-auto" id="Background Button"><i class="fas fa-cogs"></i> Background</a> {% endcomment %}
 
-        </div>
+        {% comment %} </div> {% endcomment %}
 
     </div>
 
@@ -137,15 +137,12 @@
                         </div>
                     </form> {% endcomment %}
 {% comment %} enctype = "multipart/form-data" {% endcomment %}
-<div class="col-lg-8">
-
-
-
-                            {% comment %} <label for= "id_new_password1">Password</label> {% endcomment %}
-                            {% comment %} <input type="password" class="form-control" id="id_new_password1" name = "new_password1"> {% endcomment %}
-                            <div class="row mb-3">
-                                <div class="col-sm-3">
-                                    <h6 class="mb-0">Change Password</h6>
+<div class= "card">
+    <div class="container">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col-lg-15" style="padding-top: 50px">
+            <div class="card mb-3" style="width: 75%; box-shadow: 12em; margin: auto;">
+                                    <h1 class="mb-0">Change Password</h1>
                                 </div>
                                 {% comment %} <div class="col-sm-9 text-secondary"> {% endcomment %}
                                     <form method = "post" enctype="multipart/form-data">
@@ -205,6 +202,7 @@
 
 </div>
 
+</div>
 </div>
 </div>
 {% comment %} {% endblock content %} {% endcomment %}
