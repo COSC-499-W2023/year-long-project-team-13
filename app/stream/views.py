@@ -86,9 +86,18 @@ class VideoCreateView(LoginRequiredMixin   ,CreateView):
     model = VidStream
     success_url = "/"
     template_name = 'stream/post-video.html'
+    # template_name = 'stream/upload.html'
     fields = ['title', 'description','video']
+    #this is to make sure that the logged in user is the one to upload the content
+    def form_valid(self, form):
+        form.instance.streamer = self.request.user
+        return super().form_valid(form)
 
-
+class VideoUploadView(LoginRequiredMixin   ,CreateView):
+    model = VidStream
+    success_url = "/"
+    template_name = 'stream/upload.html'
+    fields = ['title', 'description','video']
     #this is to make sure that the logged in user is the one to upload the content
     def form_valid(self, form):
         form.instance.streamer = self.request.user
