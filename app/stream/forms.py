@@ -85,27 +85,32 @@ class UserProfileUpdateForm(forms.ModelForm):
 class AddContactForm(forms.ModelForm):
 
     # sender = forms.CharField(widget=forms.HiddenInput)
-    # sender = forms.ModelChoiceField(attrs={'class': 'form-control'},
+    # sender = forms.ModelChoiceField(
     #     queryset = None,
     # )
-    # reciever = forms.ModelChoiceField(
-    #     queryset = None,
-    # )
+    receiver = forms.ModelChoiceField(
+        # queryset = None,
+        queryset=User.objects.none()
+    )
     # reciever = forms.CharField(widget=forms.TextInput(attrs={'placeholder' :'Name',
     #                                                          'style':'width: 400px; height: 45px; margin-left: auto; margin-right: auto; margin-bottom: 25px; border: 2px groove lightgreen;',
     #                                                          'class': 'form-control', 'required': True}), max_length=50)
     # attrs={'class': 'form-control'},
+
+    def __init__(self, user, *args, **kwargs):
+        # user = kwargs.pop('user', None)
+        super().__init__(*args, **kwargs)
+        # self.fields['reciever'].queryset = User.objects.exclude(username=user.username)
+        # self.fields['sender'].queryset = User.objects.filter(username=user.username)
+        # self.fields['sender'].initial = user.username
+        # if user is not None:
+        self.fields['receiver'].queryset = User.objects.exclude(username=user.username)
+        # self.fields['receiver'].queryset = User.objects.exclude(username=user)
+
     class Meta:
         model = FriendRequest
-        fields = ['sender','receiver','sent_on','status']
+        fields = ['receiver']
 # ,'status'
-    # def __init__(self, user, *args, **kwargs):
-    #     super().__init__(*args, **kwargs)
-    #     # self.fields['reciever'].queryset = User.objects.exclude(username=user.username)
-    #     self.fields['sender'].queryset = User.objects.filter(username=user.username)
-    #     # self.fields['sender'].initial = user.username
-    #     self.fields['reciever'].queryset = User.objects.exclude(username=user.username)
-
     # def save(self, commit=True, sender=None):
     #     instance = super().save(commit=False)
     #     # instance.sender = sender

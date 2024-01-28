@@ -155,15 +155,15 @@ def register(request):
 # Send friend request
 def friendRequest(request):
     if request.method == "POST":
-        addcontactform = AddContactForm(request.POST)
+        addcontactform = AddContactForm(user=request.user, data=request.POST)
         if addcontactform.is_valid():
             add_contact = addcontactform.save(commit=False)
             add_contact.sender = request.user  # Assuming sender is the currently logged-in user
             add_contact.save()
-            return redirect("stream:home")
+            return redirect("stream:notifications")
 
     else:
-        addcontactform = AddContactForm()
+        addcontactform = AddContactForm(user=request.user)
 
     context = {
         'addcontactform': addcontactform,
