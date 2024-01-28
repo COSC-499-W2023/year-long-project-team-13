@@ -36,39 +36,25 @@ def search(request):
 def home(request):
     return render(request, 'stream/home.html')
 
-# class FriendRequset(CreateView):
+# Send friend request
+def friendRequest(request):
+    if request.method == "POST":
+        addcontactform = AddContactForm(user=request.user, data=request.POST)
+        if addcontactform.is_valid():
+            receiver = str(addcontactform.cleaned_data['receiver'])
+            Notification.objects.create(user=request.user, message=f'You have sent a friend request to '+ receiver +'.')
+            add_contact = addcontactform.save(commit=False)
+            add_contact.sender = request.user  # Assuming sender is the currently logged-in user
+            add_contact.save()
+            return redirect("stream:notifications")
 
-#     model = FriendRequset
-#     form_class = AddContactForm
-#     template_name = 'stream/contact.html'
-#     success_url = "stream:contact"
+    else:
+        addcontactform = AddContactForm(user=request.user)
 
-#     def get_form_kwargs(self):
-#         """ Passes the request object to the form class.
-#          This is necessary to only display members that belong to a given user"""
-
-#         kwargs = super(FriendRequset, self).get_form_kwargs()
-#         kwargs['request'] = self.request
-#         return kwargs
-
-# temporary contact to show text message after click add contact a:link
-# def contact(request):
-#     if request.method == 'POST':
-#         contact_name = request.POST.get('contact_name')
-#         user_to_add = User.objects.filter(username=contact_name).first()
-#         if user_to_add:
-#             # Add the user to the current user's contacts
-#             request.user.profile.contacts.add(user_to_add.profile)
-
-#             # Add a notification to the user being added
-#             user_to_add.profile.notifications += f"You have received a contact request from {request.user.username}.\n"
-#             user_to_add.profile.save()
-
-#             messages.success(request, f'Add request to {user_to_add.username} sent successfully!')
-#         else:
-#             messages.error(request, f'User {contact_name} not found.')
-#         return redirect('stream:contact')
-#     return render(request, 'stream/contact.html')
+    context = {
+        'addcontactform': addcontactform,
+    }
+    return render(request, 'stream/contact.html', context)
 
 def request_video(request):
     if request.method == "POST":
@@ -151,31 +137,6 @@ def register(request):
     else:
         form = UserRegistrationForm()
     return render(request, 'stream/register.html', {"form":form })
-
-# Send friend request
-def friendRequest(request):
-    if request.method == "POST":
-        addcontactform = AddContactForm(user=request.user, data=request.POST)
-        if addcontactform.is_valid():
-            add_contact = addcontactform.save(commit=False)
-            add_contact.sender = request.user  # Assuming sender is the currently logged-in user
-            add_contact.save()
-            return redirect("stream:notifications")
-
-    else:
-        addcontactform = AddContactForm(user=request.user)
-
-    context = {
-        'addcontactform': addcontactform,
-    }
-    return render(request, 'stream/contact.html', context)
-            # form = addcontactform.save(commit=False)
-            # form.sender = request.user
-            # form.save()
-            # addcontactform.save(sender=request.user)
-                    # , user=request.user
-                            # , user=request.user
-                            # , instance=request.user
 
 @login_required
 def profile(request):

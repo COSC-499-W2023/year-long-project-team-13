@@ -56,11 +56,10 @@ class Contact(models.Model):
     id = models.AutoField(primary_key=True)
     sender = models.ForeignKey(User, related_name="contact_sender", on_delete=models.CASCADE)
     receiver = models.ForeignKey(User, related_name="contact_receiver", on_delete=models.CASCADE)
-    #     status = models.BooleanField(default=False)
 
 
     def __str__(self):
-        return self.id
+        return f"{self.id}"
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
