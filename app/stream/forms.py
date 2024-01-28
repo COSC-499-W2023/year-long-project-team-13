@@ -81,12 +81,19 @@ class AddContactForm(forms.ModelForm):
     #     super(AddContactForm, self).__init__(*args, **kwargs)
     #     self.fields['reciever'].queryset = User.objects.exclude(user=self.request.user)
 
-    def clean_sender(self):
-        return User.objects.get(username=self.cleaned_data.get('sender'))
+    def __init__(self, user, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['receiver'].queryset = User.objects.exclude(username=user.username)
+
+    # def clean_sender(self):
+    #     return User.objects.get(username=self.cleaned_data.get('sender'))
 
 
+    # def clean_receiver(self):
+    #     return User.objects.get(username=self.cleaned_data.get('reciever'))
     def clean_receiver(self):
-        return User.objects.get(username=self.cleaned_data.get('reciever'))
+        receiver = self.cleaned_data['receiver']
+        return receiver
 
     class Meta:
         model = FriendRequset
@@ -94,9 +101,11 @@ class AddContactForm(forms.ModelForm):
 
     sender = forms.CharField(widget=forms.HiddenInput)
     reciever = forms.ModelChoiceField(
-        queryset=User.objects.all(),
-        # widget=forms.CheckboxSelectMultiple
+        queryset = None,
     )
+
+        # queryset=User.objects.all(),
+        # widget=forms.CheckboxSelectMultiple
 
 class SettingForm(forms.ModelForm):
     YES_NO = (('Yes', 'True'),('No', 'False'),)

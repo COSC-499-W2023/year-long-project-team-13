@@ -157,14 +157,14 @@ def friendRequest(request):
     # form_class = ContactForm(request=request,
     #                          initial={'contact_name': request.user.first_name})
     if request.method == "POST":
-        addcontactform = AddContactForm(request.POST, instance=request.user.requests_receiver.get())
+        addcontactform = AddContactForm(request.POST, instance=request.user)
         # request.user.details.get().favourites.add(article)
         if addcontactform.is_valid():
             addcontactform.save()
             return redirect("stream:contact")
 
     else:
-        addcontactform = AddContactForm(instance=request.user.requests_receiver.get())
+        addcontactform = AddContactForm(instance=request.user)
 
     context = {
         'addcontactform': addcontactform,
