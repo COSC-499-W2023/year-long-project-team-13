@@ -354,8 +354,9 @@ Test Report
   - Seperated uploading videos (working) from recording videos (work in progress).
   - Reorganized the topbar structure and tested the new top bar.
   - Updated all tests to include the hover feature of the new top bar.
-  - Updating the database structure (notification, setting tables) and the models and change some processes for different pages (profile page, admin page).
-  - Change password is done.
+  - Updating the database structure (post, contact, friend request tables) and the models and change some processes for different pages (contact page, notification page, admin page), new database is complete.
+  - Change/Confirm password is done.
+  - Friend request (Add contact page)/ friend request notification functions are working and in progress.
 
 Burnup chart
 ![Burnup](./images/burnup/term2_week3_burnup.png)

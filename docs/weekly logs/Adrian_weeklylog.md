@@ -458,3 +458,55 @@ UML for SQL Database
 
 ### Weekly Log / Team Weekly Log / Additional
 - Worked on my own weekly log, contribute to team weeklog.
+
+# Preferred name -> Ssc name -> Github name
+
+- Adrian -> Adrian Fong -> AdrianFWM
+
+## Term 2 Week 3 2023/01/22~2023/01/28
+
+- Task I have worked on this week and winter break.
+![Weekly Task T2-3](./images/tasks/AdrianFong_T2_Week3_Task.jpg)
+
+## Recap on your week's goals
+
+### Update Database Structure (Post, Contact, Friend Request table) [Complete]
+- Worked on "Update Database structure" on project board, finished updating to the new database with "Post", "Friend Request", and "Contact" tables. "Post" table allow users to make post of their uploaded videos, "Friend Request" table allow users to send friend request to each other. After users confirmed the friend request, "Contact" table will store both users' usernames and make them as friends.
+- Make a new dbsqlite3 database with new data, so it won't create conflict between old data and new data within the database.
+  - [Update Database Structure (Post, Contact, Friend Request table) Pull Request/Commit](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/124)
+  - New Database screenshot
+![New Database screenshot](./images/Adrian_images/T2_Week_3/New_Database.jpg)
+  - Post table screenshot
+![Post table screenshot](./images/Adrian_images/T2_Week_3/Post.jpg)
+  - Friend Request table screenshot
+![Friend Request table screenshot](./images/Adrian_images/T2_Week_3/Request.jpg)
+  - Contact table screenshot
+![Contact table screenshot](./images/Adrian_images/T2_Week_3/Contact.jpg)
+
+### Change Password/Confirm Password function (Worked with Raymond)
+- Worked on "Settings - Change Password", we finished up the change password functions that will check if the new password follows our password requirement lists (cannot be contact username/email information, cannot be commonly used password, must be longer than 8 characters, must be a mixed of letters and numbers), and confirm password to make sure both password are the same before submitting it into the database.
+  - [Change Password/Confirm Password function Pull Request/Commit](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/126)
+  - Change Password/Confirm Password screenshot
+![Change Password/Confirm Password screenshot](./images/Adrian_images/T2_Week_3/Change_Password.jpg)
+
+### Friend Request function/Notification (In-Progress)
+- Working on "Add Contact function", "Friend Request UI (Contact Page)", and "Notification for friend request", I wrote functions to allow users to send friend requests to each other (Contact Page), and friend request notification will appear after friend request has been sent.
+- Once the friend request has been sent to a user, users cannot send another request to the same user.
+- If both users are friend in the "Contact" table in the database, they cannot send a friend request to each other.
+- It is still missing a test for it, and it will be finish before the peer testing.
+  - [Friend Request/Add Contact Branch](https://github.com/COSC-499-W2023/year-long-project-team-13/tree/add_contact)
+  - Friend Request UI (Contact Page) screenshot
+![Friend Request UI (Contact Page) screenshot](./images/Adrian_images/T2_Week_3/Add_Friend_Request.jpg)
+  - Usernames in User table (Red other users, Green account logged in) screenshot
+![Usernames in User table (Red other users, Green account logged in) screenshot](./images/Adrian_images/T2_Week_3/Users_Friend.jpg)
+  - Friend Request Notification (After request sent) screenshot
+![Friend Request Notification (After request sent) screenshot](./images/Adrian_images/T2_Week_3/Notification_Friend_Request.jpg)
+
+### Review other team member's pull request
+- Reviewed Beth's "Testing" and "Topbar" pull request, and tested all tests and passed.
+  - [Testing Pull Request/Commit](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/120)
+  - [Topbar Pull Request/Commit](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/125)
+
+### Weekly Log / Team Weekly Log / Additional
+- Worked on my own weekly log, contribute to team weeklog.
+
