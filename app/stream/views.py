@@ -195,6 +195,7 @@ def notifications(request):
 #         logout(request)
 #     return redirect('stream:home')  # or wherever you want to redirect after logout
 
+# Change Password
 @login_required
 def settings(request):
     if request.method == "POST":
