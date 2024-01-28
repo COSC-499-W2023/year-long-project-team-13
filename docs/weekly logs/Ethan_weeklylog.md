@@ -239,7 +239,8 @@
 
 ![Tasks](./images/tasks/ethan_term2_week3.png)
 
-- This week, I worked on fixing the s3 cloudfront branch to try to make profile picture can be swapped out. That is the only thing that is not working right now. I also worked on the Upload Video Page and seperated the upload video part and the record video part so that on the same page the user can change whether they want to upload or record a video (default one is record).
+- This week, I worked on fixing the s3 cloudfront branch to try to make profile picture can be swapped out. That is the only thing that is not working right now.
+- I also worked on the Upload Video Page and seperated the upload video part and the record video part so that on the same page the user can change whether they want to upload or record a video (default one is record).
   - The tasks associated are the following:
   - [S3 cloudfront branch](https://github.com/COSC-499-W2023/year-long-project-team-13/issues/96)
 
