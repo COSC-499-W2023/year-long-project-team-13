@@ -11,8 +11,8 @@ from stream.models import UserInfo
 from stream.forms import UserInfoUpdateForm
 
 from . models import VidStream, Notification, Profile, UserInfo, Setting
-from . forms import VidUploadForm, VidRequestForm, UserRegistrationForm, UserUpdateForm, UserInfoUpdateForm, UserProfileUpdateForm, UserProfileUpdateForm, SetPasswordForm, AddContactForm
-
+from . forms import VidUploadForm, VidRequestForm, UserRegistrationForm, UserUpdateForm, UserInfoUpdateForm, UserProfileUpdateForm, UserProfileUpdateForm,  ValidatingPasswordChangeForm, AddContactForm
+# SetPasswordFormWithConfirm, ValidatingPasswordChangeForm,SetPasswordForm, AddContactForm,
 
 class VideoDetailView(DetailView):
     template_name = "stream/video-detail.html"
@@ -209,3 +209,28 @@ def logout_view(request):
     if user.is_authenticated:
         logout(request)
     return redirect('stream:home')  # or wherever you want to redirect after logout
+
+@login_required
+def settings(request):
+    if request.method == "POST":
+        # passwordform = SetPasswordForm(request.POST, instance=request.user)
+        passwordform = ValidatingPasswordChangeForm(data=request.POST, instance=request.user)
+
+        if passwordform.is_valid():
+            new_password1 = passwordform.cleaned_data['password']
+            new_password2 = passwordform.cleaned_data['password2']
+
+            # Check if the new passwords match
+            if new_password1 == new_password2:
+                usertemp = passwordform.save(commit=False)
+                usertemp.password = make_password(usertemp.password)
+                usertemp.save()
+                return redirect("stream:login")
+
+    else:
+        passwordform = ValidatingPasswordChangeForm(instance=request.user)
+
+    context = {
+        'passwordform': passwordform,
+    }
+    return render(request, 'stream/settings.html', context)

@@ -9,10 +9,10 @@
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <link rel="stylesheet" href= "{%static 'assets/bootstrap/css/bootstrap.min.css' %}">
       <title>Vnonymous</title>
-      <link href="{% static 'css/styleProfile.css' %}" rel="stylesheet">
+      {% comment %} <link href="{% static 'css/styleProfile.css' %}" rel="stylesheet"> {% endcomment %}
       <link href="{% static 'css/logoutUI.css' %}" rel="stylesheet">
       <link href="{% static 'css/styleSetting.css' %}" rel="stylesheet">
-      <link href="{% static 'css/styleVideo.css' %}" rel="stylesheet">
+      {% comment %} <link href="{% static 'css/styleVideo.css' %}" rel="stylesheet"> {% endcomment %}
       <link href="{% static 'css/styleTopBar.css' %}" rel="stylesheet">
     </head>
 
@@ -85,12 +85,12 @@
 
     <div class="col-md-3 d-none d-md-block" style="height:100%" >
 
-        <div class="container-fluid nav sidebar flex-column">
-
+        {% comment %} <div class="container-fluid nav sidebar flex-column"> {% endcomment %}
+{% comment %}
             <a href="{% url 'stream:setting' %}" class="nav-link active mt-auto"><i class="far fa-user-circle"></i> Change Password</a>
-            <a href="{% url 'stream:theme' %}" class="nav-link mb-auto" id="Background Button"><i class="fas fa-cogs"></i> Background</a>
+            <a href="{% url 'stream:theme' %}" class="nav-link mb-auto" id="Background Button"><i class="fas fa-cogs"></i> Background</a> {% endcomment %}
 
-        </div>
+        {% comment %} </div> {% endcomment %}
 
     </div>
 
@@ -110,18 +110,18 @@
 
         <div class="row" style="height:100%">
 
-            <div class="col-md-3">
+            {% comment %} <div class="col-md-3">
 
                 <div href=# class="d-inline"><img src="https://image.flaticon.com/icons/svg/236/236831.svg" width=130px style="margin:0;"><br><p class="pl-2 mt-2"><a href="#" class="btn" style="color:#8f9096;font-weight:600">Edit Picture</a></p></div>
 
 
-            </div>
+            </div> {% endcomment %}
 
             <div class="col-md-9">
 
                 <div class="container">
 
-                    <form>
+                    {% comment %} <form>
 
                         <div class="form-group">
 
@@ -135,37 +135,61 @@
                             <input type="email" class="form-control" id="email">
 
                         </div>
-                        <div class="form-group">
+                    </form> {% endcomment %}
+{% comment %} enctype = "multipart/form-data" {% endcomment %}
+<div class= "card">
+    <div class="container">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col-lg-15" style="padding-top: 50px">
+            <div class="card mb-3" style="width: 75%; box-shadow: 12em; margin: auto;">
+                                    <h1 class="mb-0">Change Password</h1>
+                                </div>
+                                {% comment %} <div class="col-sm-9 text-secondary"> {% endcomment %}
+                                    <form method = "post" enctype="multipart/form-data">
+                                        {% csrf_token %}
+                                    <div>
+                                {{ passwordform.password.errors }}
+                                {{ passwordform.password }}
+                                {{ passwordform.password2.errors }}
+                                {{ passwordform.password2 }}
+                                {% comment %} <div class="col-sm-3">
+                                    <h6 class="mb-0">Confirm Password</h6>
+                                </div>
+                                <div class name = "password2">
+                                {{ passwordform.password2.errors }}
+                                {{ passwordform.password2 }}
+                                    </div> {% endcomment %}
+                                    <div class="row mt-5">
 
-                            <label for=pass>Password</label>
-                            <input type="password" class="form-control" id="pass">
+                                        <div class="col">
 
+                                            <button type="submit" class="btn btn-primary btn-block">Save Changes</button>
+
+                                        </div>
+
+                                        <div class="col">
+
+                                            <a href="{% url 'stream:setting' %}" class="btn btn-default btn-block">Cancel</a>
+
+                                        </div>
+                                    </div>
+                                </form>
+                            {% comment %} </div> {% endcomment %}
                         </div>
-                        <div class="form-group ">
 
-                            <label for=pass2>Confirm Password</label>
-                            <input type="confirm password" class="form-control" id="pass2">
+                        {% comment %} <div class="form-group ">
 
-                        </div>
+                            <label for= "id_new_password2">Confirm Password</label>
+                            <input type="password" class="form-control" id = "id_new_password2" name ="new_password2">
+                            {{passwordform.new_password2.errors}}
+                            {{passwordform.new_password2}}
 
-                        <div class="row mt-5">
+                        </div> {% endcomment %}
 
-                            <div class="col">
 
-                                <button type="button" class="btn btn-primary btn-block">Save Changes</button>
 
-                            </div>
 
-                            <div class="col">
-
-                                <button type="button" class="btn btn-default btn-block">Cancel</button>
-
-                            </div>
-
-                        </div>
-
-                    </form>
-
+                </div>
                 </div>
 
             </div>
@@ -178,6 +202,7 @@
 
 </div>
 
+</div>
 </div>
 </div>
 {% comment %} {% endblock content %} {% endcomment %}
