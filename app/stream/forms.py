@@ -76,40 +76,10 @@ class UserProfileUpdateForm(forms.ModelForm):
 
 # Send friend request form to database
 class AddContactForm(forms.ModelForm):
-    sender = forms.CharField(widget=forms.HiddenInput)
-    # reciever = forms.CharField(widget=forms.TextInput(attrs={'placeholder' :'Enter name to add as contact',
-    #                                                         #  'style':'width: 400px; height: 45px; margin-left: auto; margin-right: auto; margin-bottom: 25px; border: 2px groove lightgreen;',
-    #                                                          'class': 'form-control', 'required': True}))
-    reciever = forms.ModelMultipleChoiceField(
-        queryset=User.objects.all(),
-        widget=forms.CheckboxSelectMultiple
-    )
-
     # def __init__(self, *args, **kwargs):
-    #     super(SurveyForm, self).__init__(*args, **kwargs)
-    #     for field in self.fields.values():
-    #         if isinstance(field.widget, forms.Select):
-    #             field.widget = forms.RadioSelect()
-
-    # name = forms.CharField()
-    # date = forms.DateInput()
-    # members = forms.ModelMultipleChoiceField(
-    #     queryset=Member.objects.all(),
-    #     widget=forms.CheckboxSelectMultiple
-    # )
-
-    CHOICES = [
-        ('1', 'Option 1'),
-        ('2', 'Option 2'),
-    ]
-    like = forms.ChoiceField(
-        widget=forms.RadioSelect,
-        choices=CHOICES,
-    )
-
-    class Meta:
-        model = FriendRequset
-        fields = ['sender','reciever']
+    #     self.request = kwargs.pop('request')
+    #     super(AddContactForm, self).__init__(*args, **kwargs)
+    #     self.fields['reciever'].queryset = User.objects.exclude(user=self.request.user)
 
     def clean_sender(self):
         return User.objects.get(username=self.cleaned_data.get('sender'))
@@ -117,6 +87,16 @@ class AddContactForm(forms.ModelForm):
 
     def clean_receiver(self):
         return User.objects.get(username=self.cleaned_data.get('reciever'))
+
+    class Meta:
+        model = FriendRequset
+        fields = ['sender','reciever']
+
+    sender = forms.CharField(widget=forms.HiddenInput)
+    reciever = forms.ModelChoiceField(
+        queryset=User.objects.all(),
+        # widget=forms.CheckboxSelectMultiple
+    )
 
 class SettingForm(forms.ModelForm):
     YES_NO = (('Yes', 'True'),('No', 'False'),)
