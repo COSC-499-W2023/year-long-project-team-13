@@ -1,10 +1,10 @@
 {% extends 'stream/base.html'%}
 {% block content %}
-{% for message in messages %}
-<div>
+{% comment %} {% for message in messages %} {% endcomment %}
+{% comment %} <div>
     {{ message }}
-</div>
-{% endfor %}
+</div> {% endcomment %}
+{% comment %} {% endfor %} {% endcomment %}
     <div class="center_journal" style="margin-top: 25px;">
         {% comment %} <h1>Search </h1> {% endcomment %}
     </div>
@@ -18,7 +18,7 @@
     </div>
     {% endif %}
     <div style="padding-top: 150px;">
-        <form method="POST" enctype="multipart/form-data">
+        <form method="POST" enctype="multipart/form-data" action="{% url 'stream:contact' %}">
             {% csrf_token %}
             <div class="input-group">
                 <div class="input-group-prepend">
@@ -28,13 +28,25 @@
                 {{ addcontactform.sender }}
                 {{ addcontactform.reciever.error }}
                 {{ addcontactform.reciever }} {% endcomment %}
+                {% comment %} {{ addcontactform.search_username }} {% endcomment %}
                 {{ addcontactform.errors }}
                 {{ addcontactform.as_p }}
                 {% comment %} <a href=" {% url 'stream:video-list' %}" class="btn btn-dark" id="search button">Add Contact</a> {% endcomment %}
-                <button class="btn btn-dark" id="Add Contact" type="submit">Add Contact</button>
+                <button class="btn btn-dark" id="SearchButton" type="button">Search</button>
+                <button class="btn btn-dark" id="AddContact" type="submit">Add Contact</button>
                 {% comment %} <button type="submit" class="btn btn-dark" id="search button">Add Contact</button> {% endcomment %}
             </div>
         </form>
     </div>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            // Event handler for the search button
+            $("#SearchButton").click(function() {
+                // Trigger form submission to apply the search filter
+                $("addcontactform").submit();
+            });
+        });
+    </script>
 
 {% endblock content %}

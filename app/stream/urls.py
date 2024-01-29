@@ -30,6 +30,7 @@ urlpatterns = [
     # path('contact',views.contact,name="contact"),
     path('contact',views.friendRequest,name="contact"),
     # path('contact',FriendRequset.as_view(),name="contact"),
+    path('getfilteredusers',views.getfilteredusers,name="getfilteredusers"),
 
     path('request-video',views.request_video,name="request-video"),
 

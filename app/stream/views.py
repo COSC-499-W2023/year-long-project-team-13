@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.http import JsonResponse
 from django.views.generic import DetailView, DeleteView, UpdateView, ListView, CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.models import User
@@ -55,6 +56,13 @@ def friendRequest(request):
         'addcontactform': addcontactform,
     }
     return render(request, 'stream/contact.html', context)
+
+def getfilteredusers(request):
+    search_username = request.GET.get('search_username', '')
+    users = User.objects.filter(username__icontains=search_username).exclude(username=request.user.username)
+    user_list = [{'id': user.id, 'text': user.username} for user in users]
+    return JsonResponse({'results': user_list})
+
 
 def request_video(request):
     if request.method == "POST":

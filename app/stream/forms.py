@@ -83,6 +83,11 @@ class UserProfileUpdateForm(forms.ModelForm):
 
 # Send friend request form to database
 class AddContactForm(forms.ModelForm):
+    search_username = forms.CharField(
+        max_length=100,
+        required=False,
+        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Search for a username'}),
+    )
     receiver = forms.ModelChoiceField(
         queryset=User.objects.none()
     )
@@ -90,7 +95,11 @@ class AddContactForm(forms.ModelForm):
     def __init__(self, user, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['receiver'].queryset = User.objects.exclude(username=user.username)
-        self.fields['receiver'].queryset = self.fields['receiver'].queryset.exclude(contact_receiver__sender__username=user.username).exclude(contact_sender__receiver__username=user.username).exclude(requests_receiver__sender__username=user.username).exclude(requests_sender__receiver__username=user.username)
+        if 'search_username' in self.data:
+            search_username = self.data.get('search_username')
+            self.fields['receiver'].queryset = User.objects.filter(username__icontains=search_username)
+            # .exclude(username=user.username)
+            self.fields['receiver'].queryset = self.fields['receiver'].queryset.exclude(contact_receiver__sender__username=user.username).exclude(contact_sender__receiver__username=user.username).exclude(requests_receiver__sender__username=user.username).exclude(requests_sender__receiver__username=user.username)
 
     class Meta:
         model = FriendRequest
