@@ -10,9 +10,9 @@ from django.dispatch import Signal
 from stream.models import UserInfo
 from stream.forms import UserInfoUpdateForm
 
-from . models import VidStream, Notification, Profile, UserInfo, Setting
-from . forms import VidUploadForm, VidRequestForm, UserRegistrationForm, UserUpdateForm, UserInfoUpdateForm, UserProfileUpdateForm, UserProfileUpdateForm, SetPasswordForm, AddContactForm
-
+from . models import VidStream, Notification, Profile, UserInfo, Setting, FriendRequest
+from . forms import VidUploadForm, VidRequestForm, UserRegistrationForm, UserUpdateForm, UserInfoUpdateForm, UserProfileUpdateForm, UserProfileUpdateForm,  ValidatingPasswordChangeForm, AddContactForm
+# SetPasswordFormWithConfirm, SetPasswordForm,
 
 class VideoDetailView(DetailView):
     template_name = "stream/video-detail.html"
@@ -39,37 +39,22 @@ def home(request):
 # Send friend request
 def friendRequest(request):
     if request.method == "POST":
-        addcontactform = AddContactForm(request.POST, instance=request.user)
+        addcontactform = AddContactForm(user=request.user, data=request.POST)
         if addcontactform.is_valid():
-            addcontactform.save()
-            return redirect("stream:contact")
+            Notification.objects.create(user=request.user, message=f'You have sent a friend request to '+ str(addcontactform.cleaned_data['receiver']) +'.')
+            Notification.objects.create(user=addcontactform.cleaned_data['receiver'], message=f'You have received a friend request from '+ str(request.user) +'.')
+            add_contact = addcontactform.save(commit=False)
+            add_contact.sender = request.user  # Assuming sender is the currently logged-in user
+            add_contact.save()
+            return redirect("stream:notifications")
 
     else:
-        addcontactform = AddContactForm(instance=request.user)
+        addcontactform = AddContactForm(user=request.user)
 
     context = {
         'addcontactform': addcontactform,
     }
     return render(request, 'stream/contact.html', context)
-
-# temporary contact to show text message after click add contact a:link
-def contact(request):
-    if request.method == 'POST':
-        contact_name = request.POST.get('contact_name')
-        user_to_add = User.objects.filter(username=contact_name).first()
-        if user_to_add:
-            # Add the user to the current user's contacts
-            request.user.profile.contacts.add(user_to_add.profile)
-
-            # Add a notification to the user being added
-            user_to_add.profile.notifications += f"You have received a contact request from {request.user.username}.\n"
-            user_to_add.profile.save()
-
-            messages.success(request, f'Add request to {user_to_add.username} sent successfully!')
-        else:
-            messages.error(request, f'User {contact_name} not found.')
-        return redirect('stream:contact')
-    return render(request, 'stream/contact.html')
 
 def request_video(request):
     if request.method == "POST":
@@ -198,23 +183,49 @@ def notifications(request):
     else:
         return redirect('stream:login')  # or wherever you want to redirect unauthenticated users
 
-def login_view(request):
-    if request.method == 'POST':
-        username = request.POST['username']
-        password = request.POST['password']
-        user = authenticate(request, username=username, password=password)
-        print("user:", user)  # and this
-        if user is not None:
-           Notification.objects.create(user=user, message='You have logged in.')
-           login(request, user)
-           return redirect('stream:home')  # or wherever you want to redirect after login
-        else:
-            return render(request, 'stream/login.html', {'error': 'Invalid username or password'})
-    else:
-        return render(request, 'stream/login.html')
+# def login_view(request):
+#     if request.method == 'POST':
+#         username = request.POST['username']
+#         password = request.POST['password']
+#         user = authenticate(request, username=username, password=password)
+#         # print("user:", user)  # and this
+#         if user is not None:
+#         #    Notification.objects.create(user=user, message='You have logged in.')
+#         #    login(request, user)
+#            return redirect('stream:home')  # or wherever you want to redirect after login
+#         else:
+#             return render(request, 'stream/login.html', {'error': 'Invalid username or password'})
+#     else:
+#         return render(request, 'stream/login.html')
 
-def logout_view(request):
-    user = request.user
-    if user.is_authenticated:
-        logout(request)
-    return redirect('stream:home')  # or wherever you want to redirect after logout
+# def logout_view(request):
+#     user = request.user
+#     if user.is_authenticated:
+#         logout(request)
+#     return redirect('stream:home')  # or wherever you want to redirect after logout
+
+# Change Password
+@login_required
+def settings(request):
+    if request.method == "POST":
+        # passwordform = SetPasswordForm(request.POST, instance=request.user)
+        passwordform = ValidatingPasswordChangeForm(data=request.POST, instance=request.user)
+
+        if passwordform.is_valid():
+            new_password1 = passwordform.cleaned_data['password']
+            new_password2 = passwordform.cleaned_data['password2']
+
+            # Check if the new passwords match
+            if new_password1 == new_password2:
+                usertemp = passwordform.save(commit=False)
+                usertemp.password = make_password(usertemp.password)
+                usertemp.save()
+                return redirect("stream:login")
+
+    else:
+        passwordform = ValidatingPasswordChangeForm(instance=request.user)
+
+    context = {
+        'passwordform': passwordform,
+    }
+    return render(request, 'stream/settings.html', context)

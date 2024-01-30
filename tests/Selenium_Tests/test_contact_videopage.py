@@ -9,6 +9,8 @@ from selenium.webdriver.common.keys import Keys
 from selenium import webdriver
 from selenium.webdriver.common.action_chains import ActionChains
 import time
+# For selecting dropdown username
+from selenium.webdriver.support.select import Select
 
 # video page test function
 def video_page_test(driver):
@@ -103,15 +105,22 @@ def login(driver):
     print("fully logged in")
 
 def add_contact_page_search_test(driver):
-    # Find the element with the id "Contact Button" and click it
-    contact_button_element = driver.find_element(By.ID, "search button")
+
+    receiver_element = driver.find_element(By.ID, "id_receiver")
+
+    # Select username "adrian"
+    usernameSelect = Select(receiver_element)
+    usernameSelect.select_by_index(1)
+
+    # Find the element with the id "Add Contact" and click it
+    contact_button_element = driver.find_element(By.ID, "add contact button")
     contact_button_element.click()
 
     # Wait for the URL to change to the contact page URL
-    wait.until(EC.url_contains('/video'))
+    wait.until(EC.url_contains('/notifications'))
 
     # Check if the URL contains the expected contact page URL
-    if '/video' in driver.current_url:
+    if '/notifications' in driver.current_url:
         print("TEST 3: `Add contact search` successful")
     else:
         print("TEST 3: `Add contact search` failed")
