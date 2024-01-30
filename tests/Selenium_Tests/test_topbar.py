@@ -1,14 +1,15 @@
-from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
-from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.common.keys import Keys
 from selenium import webdriver
+from selenium.webdriver.common.action_chains import ActionChains
 import time
 
-def login(driver, username, password):
+# login to the page
+def login(driver):
     # Find the element with the id "Username Input" and click it
     username_input_element = driver.find_element(By.ID, "id_username")
     username_input_element.click()
@@ -37,31 +38,35 @@ def login(driver, username, password):
 
     # Wait for the URL to change to the home page URL
     wait.until(EC.url_contains('/'))
-    print("Login Successful")
+    print("fully logged in")
 
-def create_video_test(driver):
-    # Find the element with the id "videos hover" and hover over it
+# test hover over topbar
+def topbar_videos_hover_test(driver):
+
+    # Find the element with the id "Topbar" and hover over it
     wait.until(EC.presence_of_element_located((By.ID, "Videos Hover")))
     topbar_element = driver.find_element(By.ID, "Videos Hover")
     hover = ActionChains(driver).move_to_element(topbar_element)
     hover.perform()
     wait.until(EC.presence_of_element_located((By.ID, "Videos Hover")))
-    print("TEST: 0 `Videos hover` successful")
-
-    # Find the element with the id "New Video Button" and click it
-    video_button_element = driver.find_element(By.ID, "New Video Button")
-    wait.until(EC.presence_of_element_located((By.ID, "New Video Button")))
-    hover = ActionChains(driver).move_to_element(video_button_element)
+    if EC.presence_of_element_located((By.ID, "Videos Hover")):
+        print("TEST: 0 `Videos hover` successful")
+    viewvideos_element = driver.find_element(By.ID, "Video Button")
+    wait.until(EC.presence_of_element_located((By.ID, "Video Button")))
+    hover = ActionChains(driver).move_to_element(viewvideos_element)
     hover.perform()
-    wait.until(EC.element_to_be_clickable((By.ID, "New Video Button")))
-    ActionChains(driver).click(video_button_element).perform()
-    # Wait for the URL to change to the video page URL
-    wait.until(EC.url_contains('/new'))
-    # Check if the URL contains the expected page URL
-    if '/new' in driver.current_url:
-        print("TEST: 1 `Create Video` Successful")
-    else:
-        print("TEST 1: `Create Video` Failed")
+    wait.until(EC.element_to_be_clickable((By.ID, "Video Button")))
+    ActionChains(driver).click(viewvideos_element).perform()
+    if(driver.current_url == "http://localhost:8000/videos/"):
+        print("TEST: 1 `Videos click` successful")
+
+def topbar_user_hover_test(driver):
+    # Find the element with the id "Topbar" and hover over it
+    topbar_element = driver.find_element(By.ID, "User Hover")
+    hover = ActionChains(driver).move_to_element(topbar_element)
+    hover.perform()
+    wait.until(EC.presence_of_element_located((By.ID, "User Hover")))
+    print("TEST: 2 `User hover` successful")
 
 # Create a ChromeOptions object with the log level set to 3
 chrome_options = webdriver.ChromeOptions()
@@ -72,18 +77,18 @@ driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), opti
 driver.maximize_window()
 
 # Set the wait time for the driver
-wait = WebDriverWait(driver, 60)
+wait = WebDriverWait(driver, 10)
 
 # Navigate to the homepage
 driver.get('http://localhost:8000/login')
 
-# Call the login page test function with appropriate input values
-print("Create Video Test Start")
-login(driver, 'linus', 'Admin123')  # Replace with actual credentials
+print("Topbar test Start")
+login(driver)
 time.sleep(0.5)
-create_video_test(driver)
-print("Create Video Test Completed")
+topbar_videos_hover_test(driver)
+time.sleep(0.5)
+topbar_user_hover_test(driver)
+print("Topbar test Completed")
 
-# Close the webdriver
+# close the webdriver
 driver.quit()
-
