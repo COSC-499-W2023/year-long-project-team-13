@@ -18,16 +18,29 @@
     </div>
     {% endif %}
     <div style="padding-top: 150px;">
-        <form method="POST" action="{% url 'stream:contact' %}">
+        <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="input-group">
                 <div class="input-group-prepend">
                 </div>
-                <input type="text" class="form-control" name="contact_name" placeholder="Enter name to add as contact">
-                {% comment %} {{ addcontactform.reciever.error }}
+                {% comment %} <input type="text" class="form-control" name="contact_name" placeholder="Enter name to add as contact"> {% endcomment %}
+                {% comment %} {{ addcontactform.sender.error }}
+                {{ addcontactform.sender }}
+                {{ addcontactform.reciever.error }}
                 {{ addcontactform.reciever }} {% endcomment %}
-                <a href=" {% url 'stream:video-list' %}" class="btn btn-dark" id="search button">Add Contact</a>
-                {% comment %} <button class="btn btn-dark" id="search button" type="submit">Add Contact</button> {% endcomment %}
+                {% comment %} <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-lg-15" style="padding-top: 50px"> {% endcomment %}
+                <div class="mb-3" style="width: 20%;">
+                    <p>Select a user to add: </p>
+                </div>
+                <div class="mb-2">
+                    {{ addcontactform.receiver.errors }}
+                    {{ addcontactform.receiver }}
+                </div>
+                {% comment %} <a href=" {% url 'stream:video-list' %}" class="btn btn-dark" id="search button">Add Contact</a> {% endcomment %}
+                <div class="mb-3" style="width: 15%; ">
+                    <button class="btn btn-dark" id="add contact button" type="submit">Add Contact</button>
+                </div>
                 {% comment %} <button type="submit" class="btn btn-dark" id="search button">Add Contact</button> {% endcomment %}
             </div>
         </form>
