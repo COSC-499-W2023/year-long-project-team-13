@@ -1,5 +1,5 @@
 from django.contrib import admin
-from . models import VidRequest, VidStream,  Contact, FriendRequset, Post, Profile, UserInfo, Notification, Setting
+from . models import VidRequest, VidStream,  Contact, FriendRequest, Post, Profile, UserInfo, Notification, Setting
 # VidRequestNotification
 
 # Register your models here.
@@ -9,7 +9,7 @@ admin.site.register(VidStream)
 
 admin.site.register(Contact)
 
-admin.site.register(FriendRequset)
+admin.site.register(FriendRequest)
 
 admin.site.register(Post)
 
