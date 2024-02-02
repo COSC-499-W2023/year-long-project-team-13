@@ -106,9 +106,9 @@
 
         <div class="container content clear-fix">
 
-        <h2 class="mt-5 mb-5">Settings</h2>
+        <h1 class="mt-5 mb-5">Settings</h1>
 
-        <div class="row" style="height:100%">
+        <div class="row" style="height:70%">
 
             {% comment %} <div class="col-md-3">
 
@@ -117,94 +117,50 @@
 
             </div> {% endcomment %}
 
-            <div class="col-md-9">
-
-                <div class="container">
-
-                    {% comment %} <form>
-
-                        <div class="form-group">
-
-                            <label for=fullName>Full Name</label>
-                            <input type="text" class="form-control" id="fullName">
-
-                        </div>
-                        <div class="form-group">
-
-                            <label for=email>Email</label>
-                            <input type="email" class="form-control" id="email">
-
-                        </div>
-                    </form> {% endcomment %}
-{% comment %} enctype = "multipart/form-data" {% endcomment %}
-<div class= "card">
-    <div class="container">
-        <div class="row d-flex justify-content-center align-items-center h-100">
-          <div class="col-lg-15" style="padding-top: 50px">
-            <div class="card mb-3" style="width: 75%; box-shadow: 12em; margin: auto;">
-                                    <h1 class="mb-0">Change Password</h1>
-                                </div>
-                                {% comment %} <div class="col-sm-9 text-secondary"> {% endcomment %}
-                                    <form method = "post" enctype="multipart/form-data">
-                                        {% csrf_token %}
-                                    <div>
-                                {{ passwordform.password.errors }}
-                                {{ passwordform.password }}
-                                {{ passwordform.password2.errors }}
-                                {{ passwordform.password2 }}
-                                {% comment %} <div class="col-sm-3">
-                                    <h6 class="mb-0">Confirm Password</h6>
-                                </div>
-                                <div class name = "password2">
-                                {{ passwordform.password2.errors }}
-                                {{ passwordform.password2 }}
-                                    </div> {% endcomment %}
-                                    <div class="row mt-5">
-
-                                        <div class="col">
-
-                                            <button type="submit" class="btn btn-primary btn-block">Save Changes</button>
-
-                                        </div>
-
-                                        <div class="col">
-
-                                            <a href="{% url 'stream:setting' %}" class="btn btn-default btn-block">Cancel</a>
-
-                                        </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-10 mx-auto">
+                        <div class="card">
+                            <div class="row d-flex justify-content-center align-items-center h-100">
+                                <div class="col-lg-12" style="padding-top: 50px;">
+                                    <h1 class="text-center">Change Password</h1>
+                                    <div style="width: 75%; margin: auto;">
+                                        <form method="post" enctype="multipart/form-data">
+                                            {% csrf_token %}
+                                            <div class="form-group">
+                                                {{ passwordform.password.errors }}
+                                                {{ passwordform.password }}
+                                            </div>
+                                            <div class="form-group">
+                                                {{ passwordform.password2.errors }}
+                                                {{ passwordform.password2 }}
+                                            </div>
+                                            <!-- Uncomment the following lines if you want to include Confirm Password field -->
+                                            {% comment %}
+                                            <div class="form-group">
+                                                <label for="id_new_password2">Confirm Password</label>
+                                                <input type="password" class="form-control" id="id_new_password2" name="new_password2">
+                                                {{ passwordform.new_password2.errors }}
+                                                {{ passwordform.new_password2 }}
+                                            </div>
+                                            {% endcomment %}
+                                            <div class="row mt-4" style="padding-left:110px; padding-top:25px;">
+                                                <div class="col">
+                                                    <button type="submit" class="btn btn-primary btn-block">Save Changes</button>
+                                                </div>
+                                                <div class="col">
+                                                    <a href="{% url 'stream:setting' %}" class="btn btn-default btn-block">Cancel</a>
+                                                </div>
+                                            </div>
+                                        </form>
                                     </div>
-                                </form>
-                            {% comment %} </div> {% endcomment %}
+                                </div>
+                            </div>
                         </div>
-
-                        {% comment %} <div class="form-group ">
-
-                            <label for= "id_new_password2">Confirm Password</label>
-                            <input type="password" class="form-control" id = "id_new_password2" name ="new_password2">
-                            {{passwordform.new_password2.errors}}
-                            {{passwordform.new_password2}}
-
-                        </div> {% endcomment %}
-
-
-
-
+                    </div>
                 </div>
-                </div>
-
             </div>
 
-        </div>
-
-    </div>
-
-    </div>
-
-</div>
-
-</div>
-</div>
-</div>
 {% comment %} {% endblock content %} {% endcomment %}
 
 
