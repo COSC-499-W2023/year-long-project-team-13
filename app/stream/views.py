@@ -7,6 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth import logout, authenticate, login
 from django.dispatch import Signal
+from django.db.models import Q
 from stream.models import UserInfo
 from stream.forms import UserInfoUpdateForm
 
@@ -36,23 +37,25 @@ def search(request):
 def home(request):
     return render(request, 'stream/home.html')
 
-# Send friend request
 def friendRequest(request):
     if request.method == "POST":
-        addcontactform = AddContactForm(user=request.user, data=request.POST)
-        if addcontactform.is_valid():
-            Notification.objects.create(user=request.user, message=f'You have sent a friend request to '+ str(addcontactform.cleaned_data['receiver']) +'.')
-            Notification.objects.create(user=addcontactform.cleaned_data['receiver'], message=f'You have received a friend request from '+ str(request.user) +'.')
-            add_contact = addcontactform.save(commit=False)
-            add_contact.sender = request.user  # Assuming sender is the currently logged-in user
+        form = AddContactForm(request.user, request.POST)
+        if form.is_valid():
+            Notification.objects.create(user=request.user, message=f'You have sent a friend request to '+ str(form.cleaned_data['receiver']) +'.')
+            Notification.objects.create(user=form.cleaned_data['receiver'], message=f'You have received a friend request from '+ str(request.user) +'.')
+            add_contact = form.save(commit=False)
+            add_contact.sender = request.user
             add_contact.save()
             return redirect("stream:notifications")
-
     else:
-        addcontactform = AddContactForm(user=request.user)
+        form = AddContactForm(request.user)
+        search_query = request.GET.get('search', '')
+        # Existing users show in alphabetical order
+        users = User.objects.filter(Q(username__icontains=search_query) & ~Q(id=request.user.id) & ~Q(requests_sender__receiver=request.user, requests_sender__status=1) & ~Q(requests_receiver__sender=request.user)).order_by('username')
 
     context = {
-        'addcontactform': addcontactform,
+        'form': form,
+        'users': users,
     }
     return render(request, 'stream/contact.html', context)
 
