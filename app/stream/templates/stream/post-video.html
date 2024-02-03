@@ -53,29 +53,38 @@
 <head>
 </head>
 <body>
-    <div style = "margin-top: 25px; padding-top: 10em;">
-        <div class = "horizontal-buttons">
-            <a class="button" href=" {% url 'stream:video-create' %}" style="color: #FFFFFF">
-                Record
-            </a>
-            <a class="button" href=" {% url 'stream:video-upload' %}" style="color: #FFFFFF">
-                Upload
+    {% if user.userinfo.permission == 1 %}
+        <div style = "margin-top: 25px; padding-top: 10em;">
+            <div class = "horizontal-buttons">
+                <a class="button" href=" {% url 'stream:video-create' %}" style="color: #FFFFFF">
+                    Record
+                </a>
+                <a class="button" href=" {% url 'stream:video-upload' %}" style="color: #FFFFFF">
+                    Upload
+                </a>
+            </div>
+            <h1 style="text-align: center; color: white; padding: 5%">Record a Video</h1>
+            <div style = "padding-top: 75px;">
+                <div class="video-box">
+                    <video controls>
+                        <source src="{{ item.video.url }}" type="video/mp4">
+                    </video>
+                </div>
+                <div class="horizontal-buttons">
+                    <button class="button">Start/Re-record</button>
+                    <button class="button">Stop Recording</button>
+                    <button class="button">NEXT</button>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <div class="redirect">
+            <h1>Permission Denied</h1>
+            <a href=" {% url 'stream:home' %}">
+                <button class="button" type="button">Back to home page</button>
             </a>
         </div>
-        <h1 style="text-align: center; color: white; padding: 5%">Record a Video</h1>
-        <div style = "padding-top: 75px;">
-            <div class="video-box">
-                <video controls>
-                    <source src="{{ item.video.url }}" type="video/mp4">
-                </video>
-            </div>
-            <div class="horizontal-buttons">
-                <button class="button">Start/Re-record</button>
-                <button class="button">Stop Recording</button>
-                <button class="button">NEXT</button>
-            </div>
-        </div>
-    </div>
+    {% endif %}
 </body>
 
         {% comment %} <div>
