@@ -113,13 +113,6 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     image = models.ImageField(default="mountain.jpg", upload_to='profile-pics')
 
-
-    # # Need to delete 2 code lines after {
-    # contacts = models.ManyToManyField('self', blank=True)
-    # notifications = models.TextField(default='', blank=True)
-    # # }
-
-
     def __str__(self):
         return f"{self.user.username} Profile "
 
@@ -148,8 +141,14 @@ class Profile(models.Model):
 
 # Update User's Birthdate
 class UserInfo(models.Model):
+    STATUS_CHOICES = (
+      (1, 'Patient'),
+      (2, 'Doctor'),
+      (3, 'Admin'),
+     )
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     birthdate = models.DateField(default=date.today)
+    permission = models.IntegerField(choices=STATUS_CHOICES, default=1)
 
     def __str__(self):
         return f"{self.user.username} PersonalInfo"
