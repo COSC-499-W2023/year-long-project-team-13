@@ -53,7 +53,7 @@
 <head>
 </head>
 <body>
-    {% if user.userinfo.permission == 1 %}
+    {% if user.userinfo.permission == 1 or user.is_superuser %}
         <div style = "margin-top: 25px; padding-top: 10em;">
             <div class = "horizontal-buttons">
                 <a class="button" href=" {% url 'stream:video-create' %}" style="color: #FFFFFF">
@@ -78,11 +78,13 @@
             </div>
         </div>
     {% else %}
-        <div class="redirect">
+        <div class="container">
             <h1>Permission Denied</h1>
-            <a href=" {% url 'stream:home' %}">
-                <button class="button" type="button">Back to home page</button>
-            </a>
+            <div class="col-lg-8 mx-auto">
+                <a href=" {% url 'stream:home' %}">
+                    <button class="btn-lg btn-default" type="button" style="background-color">Back to home page</button>
+                </a>
+            </div>
         </div>
     {% endif %}
 </body>

@@ -53,7 +53,7 @@
         </style>
     </head>
     <body>
-        {% if user.userinfo.permission == 1 %}
+        {% if user.userinfo.permission == 1 or user.is_superuser %}
             <div style = "margin-top: 25px;">
                 <div class = "horizontal-buttons">
                     <a class="button" href=" {% url 'stream:video-create' %}" style="color: #FFFFFF">
@@ -67,7 +67,7 @@
                     {% csrf_token %}
                     <h1>Upload a video</h1>
                         {{ form.as_p }}
-                    <button class="btn btn-outline-info" type="submit">Upload</button>
+                        <button class="btn-lg btn-default" type="button" style="background-color">Upload</button>
                 </form>
             </div>
         {% else %}
