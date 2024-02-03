@@ -84,6 +84,7 @@
     <div class="container">
         <div class="row d-flex justify-content-center align-items-center h-100">
           <div class="col-lg-15" style="padding-top: 50px">
+            {% if user.userinfo.permission == 2 or user.is_superuser%}
             <h1>SEND A VIDEO REQUEST</h1>
             <div class="card mb-3" style="width: 75%; box-shadow: 12em; margin: auto;">
             <form method="POST" enctype="multipart/form-data">
@@ -118,6 +119,13 @@
               </div>
             </form>
             </div>
+              {% else %}
+                <div class="redirect">
+                  <h1> You do not have permission to send a video request. </h1>
+                  <a href="{% url 'stream:home' %}" >
+                    <button class="button buttonRound" :hover type="button" id="send">Home</button>
+                </div>
+              {% endif %}
           </div>
         </div>
       </div>
