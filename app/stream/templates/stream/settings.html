@@ -11,6 +11,7 @@
       <title>Vnonymous</title>
       {% comment %} <link href="{% static 'css/styleProfile.css' %}" rel="stylesheet"> {% endcomment %}
       <link href="{% static 'css/logoutUI.css' %}" rel="stylesheet">
+      <link href="{% static 'css/ChangePasswordUI.css' %}" rel="stylesheet">
       <link href="{% static 'css/styleSetting.css' %}" rel="stylesheet">
       {% comment %} <link href="{% static 'css/styleVideo.css' %}" rel="stylesheet"> {% endcomment %}
       <link href="{% static 'css/styleTopBar.css' %}" rel="stylesheet">
@@ -102,6 +103,14 @@
        </div>
     </div>
 
+    {% comment %} <div id="overlay" class="float-center "style="position:fixed;top:30%;">
+        <div>
+            <p class="text-dark">Are you sure you want to change your password?</p>
+            <button id="Update" class="float-left submit-button" >Update</button>
+            <button id="Cancel" class="float-left submit-button">Cancel</button>
+       </div>
+    </div> {% endcomment %}
+
     <div class="col-md-6">
 
         <div class="container content clear-fix">
@@ -146,11 +155,23 @@
                                             {% endcomment %}
                                             <div class="row mt-4" style="padding-left:110px; padding-top:25px;">
                                                 <div class="col">
-                                                    <button type="submit" class="btn btn-primary btn-block">Save Changes</button>
+                                                    <button type="button" href="{% url 'stream:setting' %}" class="btn btn-primary btn-block submit-button" onclick='Password_Overlay()'>
+                                                        {% comment %} <a  onclick='Password_Overlay()'> {% endcomment %}
+                                                            Save Changes
+                                                        {% comment %} </a> {% endcomment %}
+                                                    </button>
                                                 </div>
                                                 <div class="col">
-                                                    <a href="{% url 'stream:setting' %}" class="btn btn-default btn-block">Cancel</a>
+                                                    <button type="reset" class="btn btn-default btn-block">Cancel</button>
                                                 </div>
+                                            </div>
+                                            <div id="overlay1" class="float-center"style="position:fixed; top:30%;">
+                                                <div style="">
+                                                    <p class="text-dark">Are you sure you want to change your password?</p>
+                                                    <button type = "submit" id="Update" class="float-left btn btn-primary btn-block" onclick="Password_Overlay()">Update</button>
+                                                    <button type="button" class="float-left btn btn-default btn-block" onclick="Password_Overlay()">Cancel</button>
+                                                    {% comment %} <a href="{% url 'stream:setting' %}" id="Cancel" class="float-left btn btn-default btn-block">Cancel</a> {% endcomment %}
+                                               </div>
                                             </div>
                                         </form>
                                     </div>
@@ -185,3 +206,17 @@
                 location.href = "{% url 'stream:setting' %}";
             };
         </script>
+
+         {% comment %} <!-- This js ask user before user change the password  -->
+         <script src=" {% static 'assets/js/logout.js'%} "></script> {% endcomment %}
+
+         <!-- ChangePassword popup UI -->
+         <script src=" {% static 'assets/js/ChangePasswordUI.js'%} "></script>
+         <script>
+            {% comment %} document.getElementById("Update").onclick = function () {
+                 location.href = "{% url 'stream:login' %}";
+             }; {% endcomment %}
+             document.getElementById("Cancel").onclick = function () {
+                 location.href = "{% url 'stream:setting' %}";
+             };
+         </script>
