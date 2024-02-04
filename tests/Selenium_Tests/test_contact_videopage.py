@@ -72,23 +72,16 @@ def login_page_test(driver):
 
 
 
-# login to the page
 def login(driver):
-    # Find the element with the id "Username Input" and click it
+    # Find the element with the id "Username Input" and send keys
     username_input_element = driver.find_element(By.ID, "id_username")
-    username_input_element.click()
     wait.until(EC.presence_of_element_located((By.ID, "id_username")))
-
-    # Send the username to the username input
     username_input_element.send_keys("linus")
     wait.until(EC.text_to_be_present_in_element_value((By.ID, "id_username"), "linus"))
 
-    # Find the element with the id "Password Input" and click it
+    # Find the element with the id "Password Input" and send keys
     password_input_element = driver.find_element(By.ID, "id_password")
-    password_input_element.click()
     wait.until(EC.presence_of_element_located((By.ID, "id_password")))
-
-    # Send the password to the password input
     password_input_element.send_keys("Admin123")
     wait.until(EC.text_to_be_present_in_element_value((By.ID, "id_password"), "Admin123"))
 
@@ -104,26 +97,34 @@ def login(driver):
     wait.until(EC.url_contains('/'))
     print("fully logged in")
 
-def add_contact_page_search_test(driver):
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.by import By
 
-    receiver_element = driver.find_element(By.ID, "id_receiver")
+def add_contact_page_search_test(driver, wait):
+    # Wait until the page is loaded
+    wait = WebDriverWait(driver, 10) 
 
-    # Select username "adrian"
-    usernameSelect = Select(receiver_element)
-    usernameSelect.select_by_index(1)
+    # Find the search input field and submit button
+    search_input = wait.until(EC.presence_of_element_located((By.NAME, "search")))
+    search_button = wait.until(EC.presence_of_element_located((By.ID, "search button")))
 
-    # Find the element with the id "Add Contact" and click it
-    contact_button_element = driver.find_element(By.ID, "add contact button")
-    contact_button_element.click()
+    # Enter a search query and click the search button
+    search_input.send_keys("test")  # replace "test" with your actual search query
+    search_button.click()
 
-    # Wait for the URL to change to the contact page URL
+    # Wait until the first add contact button is clickable
+    first_add_contact_button = wait.until(EC.element_to_be_clickable((By.ID, "add contact button")))
+
+    # Click the first add contact button
+    first_add_contact_button.click()
+
+    # Wait for the URL to change to the notification page URL
     wait.until(EC.url_contains('/notifications'))
 
-    # Check if the URL contains the expected contact page URL
-    if '/notifications' in driver.current_url:
-        print("TEST 3: `Add contact search` successful")
-    else:
-        print("TEST 3: `Add contact search` failed")
+    # Check if the URL contains the expected notification page URL
+    assert '/notifications' in driver.current_url, "TEST: `Add contact search` failed"
+    print("TEST: `Add contact search` successful")
 # Create a ChromeOptions object with the log level set to 3
 chrome_options = webdriver.ChromeOptions()
 chrome_options.add_argument("--log-level=3")  # Set log level to suppress warnings
@@ -144,7 +145,7 @@ login_page_test(driver)
 login(driver)
 video_page_test(driver)
 add_contact_page_test(driver)
-add_contact_page_search_test(driver)
+add_contact_page_search_test(driver,wait)
 print("Contact Video Page Test Completed")
 
 # close the webdriver
