@@ -27,14 +27,6 @@ TEST: 0 `User hover` successful
 TEST: 1 `User hover` successful
 TEST 2: `Logout` successful
 Logout test Completed
-Profile Page test Start
-Login successful
-TEST: 0 `User hover` successful
-TEST: 1 `Profile page found` successful
-TEST: 2 `First Name input` successful
-TEST: 3 `Last Name input` successful
-TEST: 4 `Email input` successful
-TEST: 5 `Birthdate input` successful
 Admin Page test Start
 Login successful
 TEST: 0 `User hover` successful
@@ -46,7 +38,7 @@ fully logged in
 TEST: 0 `Videos hover` successful
 TEST: 1 `Video page` successful
 TEST 2: `Add contact` successful
-TEST 3: `Add contact search` successful
+TEST: `Add contact search` successful
 Contact Video Page Test Completed
 Create Video Test Start
 Login Successful
@@ -62,17 +54,32 @@ Login successful
 TEST: 0 `User hover` successful
 TEST: 1 `Setting` successful
 Setting Page test Completed
-Theme Page test Start
-Login successful
-TEST: 0 `User hover` successful
-TEST: 1 `Setting` successful
-TEST: 2 `Theme` successful
-Theme Page test Completed
 Request Page test Start
 Login Successful
 TEST: 0 `Videos hover` successful
 TEST: 1 `Request Video` Successful
 Request Page test Completed
+Login successful
+TEST: 0 `User hover` successful
+TEST: 1 `Profile page found` successful
+TEST: 2 `First Name input` successful
+TEST: 3 `Last Name input` successful
+TEST: 4 `Email input` successful
+TEST: 5 `Birthdate input` successful
 Register Page test Start
 TEST: 0 `Registration` successful
 Register Page test End
+Profile Page test Start
+Login successful
+TEST: 0 `User hover` successful
+TEST: 1 `Profile page found` successful
+TEST: 2 `First Name input` successful
+TEST: 3 `Last Name input` successful
+TEST: 4 `Email input` successful
+TEST: 5 `Birthdate input` successful
+TEST: 6 `name check` successful
+TEST: 7 `email check` successful
+TEST: 8 `birthdate check` successful
+TEST: 9 `image check` successful
+TEST: 10 `Edit Profile` successful
+Profile Page test Completed
