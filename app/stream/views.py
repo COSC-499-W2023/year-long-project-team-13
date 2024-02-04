@@ -12,7 +12,7 @@ from stream.models import UserInfo
 from stream.forms import UserInfoUpdateForm
 
 from . models import VidStream, Notification, Profile, UserInfo, Setting, FriendRequest
-from . forms import VidUploadForm, VidRequestForm, UserRegistrationForm, UserUpdateForm, UserInfoUpdateForm, UserProfileUpdateForm, UserProfileUpdateForm,  ValidatingPasswordChangeForm, AddContactForm
+from . forms import VidUploadForm, VidRequestForm, UserRegistrationForm, UserUpdateForm, UserInfoUpdateForm, UserProfileUpdateForm, UserProfileUpdateForm,  ValidatingPasswordChangeForm, AddContactForm, UserPermissionForm
 # SetPasswordFormWithConfirm, SetPasswordForm,
 
 class VideoDetailView(DetailView):
@@ -140,15 +140,25 @@ user_signed_up = Signal()
 def register(request):
     if request.method == "POST":
         form = UserRegistrationForm(request.POST)
-        if form.is_valid():
+        userpermissionform = UserPermissionForm(request.POST)
+        if form.is_valid() and userpermissionform.is_valid():
             new_user = form.save()
             user_signed_up.send(sender=User, user=new_user)
-            UserInfo.objects.create(user=new_user, birthdate='2024-01-01')
             Setting.objects.create(user=new_user, darkmode=False, emailnotification=True)
+            userinfo = userpermissionform.save(commit=False)
+            userinfo.user = new_user
+            userinfo.birthdate = '2024-01-01'
+            userinfo.save()
             return redirect('stream:login')
     else:
         form = UserRegistrationForm()
-    return render(request, 'stream/register.html', {"form":form })
+        userpermissionform = UserPermissionForm()
+
+    context = {
+        'form': form,
+        'userpermissionform': userpermissionform,
+    }
+    return render(request, 'stream/register.html', context)
 
 @login_required
 def profile(request):
