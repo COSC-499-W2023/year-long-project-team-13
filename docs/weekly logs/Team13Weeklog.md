@@ -376,3 +376,41 @@ Test Report
 - Test report file is in the same directory [here](./report.txt)
   ![Test Report](./images/tests_completion/term2_week3_pytest_1.png)
   ![Test Report](./images/tests_completion/term2_week3_pytest_2.png)
+
+## Preferred name -> Ssc name -> Github name
+
+- Ethan -> Ethan Hsu -> YuchenHsu
+- Beth -> Beth Ralston -> mblackbeak (mblackbeak)
+- Herman -> Herman Sood -> herman-23
+- Raymond -> Sitt Paing -> SittHmuePaing
+- Adrian -> Adrian Fong -> AdrianFWM
+
+## Term 2 Week 4 2024/01/29 ~ 2024/02/04
+
+- Which features were in the project plan for this milestone?
+  - Updated the database and pages to include permission settings.
+    - Based on the user's role, the user can access different pages.
+    - If the user are on a role they don't have access to it will show them a permission denied message on where the page would be.
+  - Updated the register page to include a role selection.
+  - Updated the add contact function to actually send friend requests.
+  - Updated the search contact page to show all the users in the database that can be added.
+  - Notifications are still work in progress.
+  - Proccessed the peer testing feedback and reorganized tasks and task priorities.
+
+Burnup chart
+![Burnup](./images/burnup/term2_week4_burnup.png)
+Network Graph
+![Network](./images/network/term2_week4_network_1.png)
+![Network](./images/network/term2_week4_network_2.png)
+![Network](./images/network/term2_week4_network_3.png)
+Completed Tasks
+![Completed](./images/completed/term2_week4_done_1.png)
+![Completed](./images/completed/term2_week4_done_2.png)
+![Completed](./images/completed/term2_week4_done_3.png)
+In progress Tasks
+![In Progress](./images/in-prog/term2_week4_inprogress.png)
+Test Report
+
+- Test report file is in the same directory [here](./report.txt)
+  ![Test Report](./images/tests_completion/term2_week3_pytest_1.png)
+  ![Test Report](./images/tests_completion/term2_week4_pytest.png)
