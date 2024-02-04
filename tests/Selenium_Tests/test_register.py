@@ -7,7 +7,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium import webdriver
 import time
 
-def register_page_test(driver, username, email, password):
+def register_page_test(driver, username, email, password, permission):
     html = driver.find_element(By.TAG_NAME, "html")
 
     # Find the username, email, and password fields and fill them out
@@ -30,6 +30,11 @@ def register_page_test(driver, username, email, password):
 
     # Scroll down the register page
     html.send_keys(Keys.PAGE_DOWN)
+    
+    # Find the permission dropdown and select the appropriate permission
+    permission_element = driver.find_element(By.ID, "id_permission")
+    permission_element.click()
+    
 
      # Find the checkbox and click it
     checkbox_element = driver.find_element(By.XPATH, "//input[@type='checkbox']")
@@ -69,7 +74,9 @@ driver.get('http://localhost:8000/register/')  # Update the URL if needed
 
 # Call the register page test function with appropriate input values
 print("Register Page test Start")
-register_page_test(driver, 'abcde', 'abcde@email.com', 'herman1234')
+register_page_test(driver, 'abcde', 'abcde@email.com', 'herman1234', 1)
+time.sleep(0.5)
+register_page_test(driver, 'abcdef', 'abcdef@email.com', 'herman1234', 2)
 print("Register Page test End")
 
 # Close the webdriver
