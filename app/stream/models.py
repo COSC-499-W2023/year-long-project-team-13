@@ -176,8 +176,6 @@ class Notification(models.Model):
     post_id = models.ForeignKey(Post, on_delete=models.SET_NULL, null=True)
     video_id = models.ForeignKey(VidStream, on_delete=models.SET_NULL, null=True)
 
-
-
     def __str__(self):
         return f"{self.user.username} Notification {self.id} {self.type}"
 
