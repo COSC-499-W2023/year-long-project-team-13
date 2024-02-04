@@ -22,7 +22,7 @@ class VidRequest(models.Model):
 
     def __str__(self):
         # return f"{self.sender} Request"
-        return f"{self.id}"
+        return f"{self.sender} {self.id} {self.receiver}"
 
     # def get_absolute_url(self):
     #     return reverse("video-detail", kwargs={"pk": self.pk})
@@ -44,7 +44,7 @@ class VidStream(models.Model):
 
 
     def __str__(self):
-        return f"{self.id}"
+        return f"{self.streamer} {self.id}"
     # return self.title
         # return f"{self.video_id} {self.streamer}"
 
@@ -59,7 +59,7 @@ class Contact(models.Model):
 
 
     def __str__(self):
-        return f"{self.id}"
+        return f"{self.sender} {self.id} {self.receiver}"
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
@@ -81,7 +81,7 @@ class FriendRequest(models.Model):
     status = models.IntegerField(choices=STATUS_CHOICES, default=1)
 
     def __str__(self):
-        return f"{self.id}"
+        return f"{self.sender} {self.id} {self.receiver}"
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
@@ -102,7 +102,7 @@ class Post(models.Model):
 
     def __str__(self):
         # return f"{self.post_id} {self.sender} Post"
-        return f"{self.id}"
+        return f"{self.sender} {self.id} {self.receiver}"
 
 #     def get_absolute_url(self):
 #         return reverse("video-detail", kwargs={"pk": self.pk})
