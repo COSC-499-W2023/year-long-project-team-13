@@ -103,14 +103,14 @@ from selenium.webdriver.common.by import By
 
 def add_contact_page_search_test(driver, wait):
     # Wait until the page is loaded
-    wait = WebDriverWait(driver, 10) 
+    wait = WebDriverWait(driver, 10)
 
     # Find the search input field and submit button
     search_input = wait.until(EC.presence_of_element_located((By.NAME, "search")))
     search_button = wait.until(EC.presence_of_element_located((By.ID, "search button")))
 
     # Enter a search query and click the search button
-    search_input.send_keys("test")  # replace "test" with your actual search query
+    search_input.send_keys("adrian")  # replace "test" with your actual search query
     search_button.click()
 
     # Wait until the first add contact button is clickable
