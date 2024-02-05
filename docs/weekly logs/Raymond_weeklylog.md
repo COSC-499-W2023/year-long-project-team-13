@@ -334,3 +334,36 @@ Test for setting
 ### Additional
 - Worked on my own weekly log, contribute to team weekly log.
 - Learn new insights from online to resolve issues for my project.
+
+
+## Term 2 Week 4 2024/01/29 ~ 2024/02/04
+
+- Type of tasks you worked on
+
+![Tasks](./images/tasks/SittPaing_T2W4-Task.png)
+
+## Recap of week's goals
+
+This week our team discuss about what we need to make changes based on the feedback we received during the peer evaluation as well as plan and clarify doubts about tasks we need to prioritize on for our project. I worked on html/bootstrap on my setting page since it is out of place(also received a feedback about making adjustment) so I fixed the issues, although it takes quite some time for making adjustments due to issues encountered but now it appear on the setting page that we have intended. I also added basic instruction on the setting to let the user know ahead on what the password should include before they changed their password. I also added the notification pop up which is a suggestion that we received form feedback to let the user confirm before they change their password instead of password changed directly once the save changes button is clicked. I encountered various issues like the notification pop up not showing up when the save changes button but instead change password directly, also see the pop up notification for a few second when save changes is clicked and password changes, and password changes when we clicked on either update or cancel button on the notification but which is not what I wanted it. I searched for online resources as well as get helped from my teammates to tackle the issues but took quite a while before its works as we intended.
+
+
+Adjustment to html/bootstrap and added instruction for password change
+
+![Adjustment to html/bootstrap and added instruction for password change](./images/Sitt_images/Term_2_Week_4/Setting_Page_Changes.png)
+
+Added Notification Pop up when user clicked save changes
+
+![Added Notification Pop up when user clicked save changes](./images/Sitt_images/Term_2_Week_4/Added_Notification.png)
+
+Throwing message if the password is not filled after update button is clicked
+
+![Throwing message if the password is not filled after update button is clicked](./images/Sitt_images/Term_2_Week_4/Password_Blank.png)
+
+Updating Password and Pop up Notification
+
+![Updating Password and Pop up Notification](./images/Sitt_images/Term_2_Week_4/Password_Update.png)
+
+### Additional
+- Worked on my own weekly log, contribute to team weekly log.
+- Learn new insights from online to resolve issues for my project.
+- Currently planning to work on old password validation(suggestion received from evaluation feedback) to check for the user old password before changing to a new password.
