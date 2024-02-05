@@ -510,3 +510,43 @@ UML for SQL Database
 ### Weekly Log / Team Weekly Log / Additional
 - Worked on my own weekly log, contribute to team weeklog.
 
+# Preferred name -> Ssc name -> Github name
+
+- Adrian -> Adrian Fong -> AdrianFWM
+
+## Term 2 Week 4 2023/01/29~2023/02/04
+
+- Task I have worked on this week and winter break.
+![Weekly Task T2-4](./images/tasks/AdrianFong_T2_Week4_Task.jpg)
+
+## Recap on your week's goals
+
+### Task priorities (Received feedback from peer testing)
+- We received feedbacks from peer testing, so we decide which feedback should we start this week.
+- Therefore, I decide to continue working on add contact page (send friend request/search bar) with Herman, working on update database (feedbacks), working on notification page (accept/reject friend request), working on edit profile page (change password button to setting page).
+  - Feedback List screenshot
+![Feedback List screenshot](./images/Adrian_images/T2_Week_4/Planning1.jpg)
+  - Feedback List screenshot
+![Feedback List screenshot](./images/Adrian_images/T2_Week_4/Planning2.jpg)
+
+### Update Database Structure (Notification table, Permission) [Complete]
+- Worked on "Update Database structure" on project board, finished updating Userinfo table with "Permission" to clarify user is an "Admin", "Doctor" or "Patient", and the website layout will be slightly different for each permission type. Also, updated the notification table with type which identify which type of notification is stored,
+id connect to "friend request", "video request", "post", and "video" table.
+- Next week, I will be working on accept/reject function on Notification page with new notification database structure.
+
+  - [Update Database Structure (permission [Userinfo table], type, foreign id [notification table]) Pull Request/Commit](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/135)
+  - Permission (Userinfo table) screenshot
+![Permission (Userinfo table) screenshot](./images/Adrian_images/T2_Week_4/Permission.jpg)
+  - Notification table screenshot
+![Notification table screenshot](./images/Adrian_images/T2_Week_4/NotificationDatabase.jpg)
+
+### Update Database Structure (Notification table, Permission) [Complete]
+- Worked on "Update Database structure" on project board, finished updating Userinfo table with "Permission" to clarify user is an "Admin", "Doctor" or "Patient", and the website layout will be slightly different for each permission type. Also, updated the notification table with type which identify which type of notification is stored,
+id connect to "friend request", "video request", "post", and "video" table.
+- Next week, I will be working on accept/reject function on Notification page with new notification database structure.
+
+  - [Update Database Structure (permission [Userinfo table], type, foreign id [notification table]) Pull Request/Commit](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/135)
+  - Permission (Userinfo table) screenshot
+![Permission (Userinfo table) screenshot](./images/Adrian_images/T2_Week_4/Permission.jpg)
+  - Notification table screenshot
+![Notification table screenshot](./images/Adrian_images/T2_Week_4/NotificationDatabase.jpg)
