@@ -540,13 +540,33 @@ id connect to "friend request", "video request", "post", and "video" table.
   - Notification table screenshot
 ![Notification table screenshot](./images/Adrian_images/T2_Week_4/NotificationDatabase.jpg)
 
-### Update Database Structure (Notification table, Permission) [Complete]
-- Worked on "Update Database structure" on project board, finished updating Userinfo table with "Permission" to clarify user is an "Admin", "Doctor" or "Patient", and the website layout will be slightly different for each permission type. Also, updated the notification table with type which identify which type of notification is stored,
-id connect to "friend request", "video request", "post", and "video" table.
-- Next week, I will be working on accept/reject function on Notification page with new notification database structure.
+### Send Friend Request (Add contact page) [Complete]
+- Worked on "Add Contact Function", "Notification for friend request", "Friend Request UI" on project board, I created a friend request page with a drop down bar to let users to choose friends that they want to add, and send a friend request. After friend request has been sent, both receiver and sender of the friend request will have a friend request notification.
+- I wrote tests for friend request/notification. All testing was done before the peer testing, all testing passed.
+- After peer testing, we received some UI feedback for add contact page, so herman added a search bar to let users to search for usernames.
+- I fixed some testing issue and filter issue for search bar.
+- All tests pass now.
 
-  - [Update Database Structure (permission [Userinfo table], type, foreign id [notification table]) Pull Request/Commit](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/135)
-  - Permission (Userinfo table) screenshot
-![Permission (Userinfo table) screenshot](./images/Adrian_images/T2_Week_4/Permission.jpg)
-  - Notification table screenshot
-![Notification table screenshot](./images/Adrian_images/T2_Week_4/NotificationDatabase.jpg)
+  - [Add contact page (Send friend request), access new database Pull Request/Commit - Before Peer Testing](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/127)
+  - [Add contact page (Search Bar) Pull Request/Commit - Before Peer Testing](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/134)
+  - Friend Request UI - before peer testing screenshot
+![Friend Request UI - before peer testing screenshot](./images/Adrian_images/T2_Week_3/Add_Friend_Request.jpg)
+  - New friend request UI - fixed with peer testing feedback layout screenshot
+![New friend request UI - fixed with peer testing feedback layout screenshot](./images/Adrian_images/T2_Week_4/AddContactPage.jpg)
+
+### Change Password Button (Profile page) [In-Progress]
+- Working on "Change Password Button (Profile Page)" on project board, make a button to redirect to change password form on setting page. The button can go to setting page now, but still need to fix some css/bootstrap code (little out of place).
+
+  - [Edit Profile Branch](https://github.com/COSC-499-W2023/year-long-project-team-13/tree/editprofile)
+  - Change Password Button screenshot
+![Change Password Button screenshot](./images/Adrian_images/T2_Week_4/ChangePasswordButton.jpg)
+
+### Review other team member's pull request
+- Reviewed Beth's "Create video" pull request, reviewed Herman's code for search bar on add contact page, and tested all tests and passed.
+  - [Create video Pull Request/Commit](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/132)
+  - [Add contact Pull Request/Commit](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/134)
+
+### Weekly Log / Team Weekly Log / Additional
+- Worked on my own weekly log, contribute to team weeklog.
+- Added some code to fix add contact search bar function, and worked on add contact tests fix.
+- Fixed on some confirm password UI problem.
