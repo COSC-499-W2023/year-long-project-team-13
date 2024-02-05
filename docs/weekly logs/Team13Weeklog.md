@@ -391,10 +391,12 @@ Test Report
   - Updated the database and pages to include permission settings.
     - Based on the user's role, the user can access different pages.
     - If the user are on a role they don't have access to it will show them a permission denied message on where the page would be.
+  - Updated the database with notification link to other request/post/video table with notification type.
   - Updated the register page to include a role selection.
   - Updated the add contact function to actually send friend requests.
   - Updated the search contact page to show all the users in the database that can be added.
-  - Notifications are still work in progress.
+  - Notifications(accept/reject friend request) are still work in progress.
+  - Change Password Button (profile page) is still work in progress.
   - Proccessed the peer testing feedback and reorganized tasks and task priorities.
 
 Burnup chart
