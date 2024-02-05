@@ -245,6 +245,23 @@ Add contact in progress.
  ![Tasks](./images/tasks/Week3Term2HermanSettingUnittests.png)
 
  ![Tasks](./images/tasks/Week3Term2Herman.png)
+
+  - Applicable date range
+##  Week 4 Term 2 01/29/24~02/04/24
+
+ # Preferred name -> Ssc name -> Github name
+
+- Herman -> Herman Sood -> Herman Sood
+
+- Recap on your week's goals-Which features were yours in the project plan for this milestone? For term 2 week 4 I worked on the add contact branch and made modifications to the page. Now, there is a search bar on the page rather than a direct add contact and with the search bar you can search for existing users and add them. There is also a list of existing users with add contact buttons next to each user beneath the search bar. You can also search a user by typing a couple letters and search and the results will match the most closely associated users to add. Lastly I wrote a selenium test and updated unit tests for this. 
+  - Which tasks from the project board are associated with these features? Add Contact function, Add contact UI
+  - Among these tasks, which have you completed/in progress in the last week?
+Add Contact Function, Add contact UI
+
+
+ ![Tasks](./images/tasks/Week4Term2AddContact.png)
+
+ ![Tasks](./images/tasks/Week4Term2PeerEval.png)
  
 
 
