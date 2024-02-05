@@ -117,3 +117,8 @@ For this week, I focused on updating the Selenium tests to have clearer print me
 ![Week3Tasks](./images/tasks/Ralston_term2_w3_tasks.png)
 
 For this week, I worked on the Record a video functionality and testing and updating the tests to include the hover feature in the topbar. These are associated with the Create Video Function task and reorganize topbar task in the project board. The topbar testing has been completed and merged into the master branch after team members reviewed it. I have been able to get the record a video functional but I have not been able to connect it to the HTML button on the website.
+
+### Week 4 Jan 29 - Feb 4
+![Week3Tasks](./images/tasks/Ralston_term2_w4_tasks.png)
+
+For this week, we focused on the peer testing preparation and redefining task priorities after the peer testing. As well, I worked on adding in a permission feature to allow for the two user groups to access the respective pages. This is associated with the Update Permissions on Pages task. This is close to being completed and my next step is to update the tests that are associated with those certain pages. Ethan and I worked on this together as there were two pages so we each worked on one page and worked together to get the styling to be the same on each page. 
