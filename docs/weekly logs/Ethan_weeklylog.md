@@ -246,3 +246,22 @@
 
 ![Upload Video Page](./images/Ethan_stuff/t2w3/upload_video.png)
 ![Record Video Page](./images/Ethan_stuff/t2w3/record_video.png)
+
+# Preferred name -> Ssc name -> Github name
+
+- Ethan -> Ethan Hsu -> YuchenHsu
+
+## Week 4 2024/01/29 ~ 2024/02/04
+
+- Type of tasks you worked on (screenshot from Peer Eval question)
+
+![Tasks](./images/tasks/ethan_term2_week4.png)
+
+- This week, I worked on implementing the permission system to the website, I did the permission and form with Adrian's help.
+- And I also worked on the page to make it display the correct information based on the user's permission.
+- I also added a dropdown bar when registering to let the user define what kind of user they are.
+- When a user selected a permission they will not be able to change it.
+  - The user can choose from being a doctor or a patient when registering.
+  - ![Permission Choice](./images/Ethan_stuff/t2w4/new_register_1.png)
+  - The message will be shown when the user access a page that they don't have permission to access.
+  - ![Permission Denied](./images/Ethan_stuff/t2w4/upload_record_denied_1.png)
