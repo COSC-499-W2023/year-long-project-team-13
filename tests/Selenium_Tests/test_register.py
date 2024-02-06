@@ -33,11 +33,14 @@ def register_page_test(driver, username, email, password, permission):
     
     # Find the permission dropdown and select the appropriate permission
     permission_element = driver.find_element(By.ID, "id_permission")
+    wait.until(EC.element_to_be_clickable((By.ID, "id_permission")))
     permission_element.click()
+    permission_element.select_by_value("1")
     
 
      # Find the checkbox and click it
     checkbox_element = driver.find_element(By.XPATH, "//input[@type='checkbox']")
+    wait.until(EC.element_to_be_clickable((By.XPATH, "//input[@type='checkbox']")))
     checkbox_element.click()
     wait.until(EC.presence_of_element_located((By.XPATH, "//input[@type='checkbox']")))
 
