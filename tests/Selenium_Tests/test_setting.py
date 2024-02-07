@@ -64,9 +64,9 @@ def profileChangePassword(driver):
     change_password_button_element.click()
 
     if '/setting' in driver.current_url:
-        print("Change Password redirect successful")
+        print("TEST: 1 Change Password redirect successful")
     else:
-        print("Change Password redirect failed")
+        print("TEST: 1 Change Password redirect failed")
 
 
 def setting_test(driver, username, password):
@@ -82,7 +82,7 @@ def setting_test(driver, username, password):
     hover = ActionChains(driver).move_to_element(topbar_element)
     hover.perform()
     wait.until(EC.presence_of_element_located((By.ID, "User Hover")))
-    print("TEST: 0 `User hover` successful")
+    print("TEST: 2 `User hover` successful")
 
     # Find the element with the id "Setting Button" and click it
     setting_element = driver.find_element(By.ID, "Setting Button")
@@ -97,9 +97,9 @@ def setting_test(driver, username, password):
 
     # Check if the URL contains the expected profile page URL
     if '/setting' in driver.current_url:
-        print("TEST: 1 `Setting` successful")
+        print("TEST: 3 `Setting` successful")
     else:
-        print("TEST: 1 `Setting` failed")
+        print("TEST: 3 `Setting` failed")
 
 
 
