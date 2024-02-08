@@ -7,12 +7,13 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth import logout, authenticate, login
 from django.dispatch import Signal
+from django.db.models import Q
 from stream.models import UserInfo
 from stream.forms import UserInfoUpdateForm
 
-from . models import VidStream, Notification, Profile, UserInfo, Setting
-from . forms import VidUploadForm, VidRequestForm, UserRegistrationForm, UserUpdateForm, UserInfoUpdateForm, UserProfileUpdateForm, UserProfileUpdateForm, SetPasswordForm
-
+from . models import VidStream, Notification, Profile, UserInfo, Setting, FriendRequest
+from . forms import VidUploadForm, VidRequestForm, UserRegistrationForm, UserUpdateForm, UserInfoUpdateForm, UserProfileUpdateForm, UserProfileUpdateForm,  ValidatingPasswordChangeForm, AddContactForm
+# SetPasswordFormWithConfirm, SetPasswordForm,
 
 class VideoDetailView(DetailView):
     template_name = "stream/video-detail.html"
@@ -36,23 +37,27 @@ def search(request):
 def home(request):
     return render(request, 'stream/home.html')
 
-def contact(request):
-    if request.method == 'POST':
-        contact_name = request.POST.get('contact_name')
-        user_to_add = User.objects.filter(username=contact_name).first()
-        if user_to_add:
-            # Add the user to the current user's contacts
-            request.user.profile.contacts.add(user_to_add.profile)
+def friendRequest(request):
+    if request.method == "POST":
+        form = AddContactForm(request.user, request.POST)
+        if form.is_valid():
+            Notification.objects.create(user=request.user, message=f'You have sent a friend request to '+ str(form.cleaned_data['receiver']) +'.')
+            Notification.objects.create(user=form.cleaned_data['receiver'], message=f'You have received a friend request from '+ str(request.user) +'.')
+            add_contact = form.save(commit=False)
+            add_contact.sender = request.user
+            add_contact.save()
+            return redirect("stream:notifications")
+    else:
+        form = AddContactForm(request.user)
+        search_query = request.GET.get('search', '')
+        # Existing users show in alphabetical order
+        users = User.objects.filter(Q(username__icontains=search_query) & ~Q(id=request.user.id) & ~Q(requests_sender__receiver=request.user, requests_sender__status=1) & ~Q(requests_receiver__sender=request.user) & ~Q(contact_sender__receiver=request.user) & ~Q(contact_receiver__sender=request.user)).order_by('username')
 
-            # Add a notification to the user being added
-            user_to_add.profile.notifications += f"You have received a contact request from {request.user.username}.\n"
-            user_to_add.profile.save()
-
-            messages.success(request, f'Add request to {user_to_add.username} sent successfully!')
-        else:
-            messages.error(request, f'User {contact_name} not found.')
-        return redirect('stream:contact')
-    return render(request, 'stream/contact.html')
+    context = {
+        'form': form,
+        'users': users,
+    }
+    return render(request, 'stream/contact.html', context)
 
 def request_video(request):
     if request.method == "POST":
@@ -69,9 +74,18 @@ class VideoCreateView(LoginRequiredMixin   ,CreateView):
     model = VidStream
     success_url = "/"
     template_name = 'stream/post-video.html'
-    fields = ['title', 'description', 'video']
+    # template_name = 'stream/upload.html'
+    fields = ['title', 'description','video']
+    #this is to make sure that the logged in user is the one to upload the content
+    def form_valid(self, form):
+        form.instance.streamer = self.request.user
+        return super().form_valid(form)
 
-
+class VideoUploadView(LoginRequiredMixin   ,CreateView):
+    model = VidStream
+    success_url = "/"
+    template_name = 'stream/upload.html'
+    fields = ['title', 'description','video']
     #this is to make sure that the logged in user is the one to upload the content
     def form_valid(self, form):
         form.instance.streamer = self.request.user
@@ -168,27 +182,53 @@ def notifications(request):
     user = request.user
     if user.is_authenticated:
         notifications = Notification.objects.filter(user=user).order_by('-timestamp')
-        return render(request, 'stream/notification.html', {'stream:notifications': notifications})
+        return render(request, 'stream/notification.html', {'notifications': notifications})
     else:
         return redirect('stream:login')  # or wherever you want to redirect unauthenticated users
 
-def login_view(request):
-    if request.method == 'POST':
-        username = request.POST['username']
-        password = request.POST['password']
-        user = authenticate(request, username=username, password=password)
-        print("user:", user)  # and this
-        if user is not None:
-           Notification.objects.create(user=user, message='You have logged in.')
-           login(request, user)
-           return redirect('stream:home')  # or wherever you want to redirect after login
-        else:
-            return render(request, 'stream/login.html', {'error': 'Invalid username or password'})
-    else:
-        return render(request, 'stream/login.html')
+# def login_view(request):
+#     if request.method == 'POST':
+#         username = request.POST['username']
+#         password = request.POST['password']
+#         user = authenticate(request, username=username, password=password)
+#         # print("user:", user)  # and this
+#         if user is not None:
+#         #    Notification.objects.create(user=user, message='You have logged in.')
+#         #    login(request, user)
+#            return redirect('stream:home')  # or wherever you want to redirect after login
+#         else:
+#             return render(request, 'stream/login.html', {'error': 'Invalid username or password'})
+#     else:
+#         return render(request, 'stream/login.html')
 
-def logout_view(request):
-    user = request.user
-    if user.is_authenticated:
-        logout(request)
-    return redirect('stream:home')  # or wherever you want to redirect after logout
+# def logout_view(request):
+#     user = request.user
+#     if user.is_authenticated:
+#         logout(request)
+#     return redirect('stream:home')  # or wherever you want to redirect after logout
+
+# Change Password
+@login_required
+def settings(request):
+    if request.method == "POST":
+        # passwordform = SetPasswordForm(request.POST, instance=request.user)
+        passwordform = ValidatingPasswordChangeForm(data=request.POST, instance=request.user)
+
+        if passwordform.is_valid():
+            new_password1 = passwordform.cleaned_data['password']
+            new_password2 = passwordform.cleaned_data['password2']
+
+            # Check if the new passwords match
+            if new_password1 == new_password2:
+                usertemp = passwordform.save(commit=False)
+                usertemp.password = make_password(usertemp.password)
+                usertemp.save()
+                return redirect("stream:login")
+
+    else:
+        passwordform = ValidatingPasswordChangeForm(instance=request.user)
+
+    context = {
+        'passwordform': passwordform,
+    }
+    return render(request, 'stream/settings.html', context)
