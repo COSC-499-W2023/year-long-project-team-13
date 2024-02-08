@@ -4,6 +4,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.common.action_chains import ActionChains
 from selenium import webdriver
 import time
 
@@ -39,16 +40,28 @@ def login(driver, username, password):
     print("Login Successful")
 
 def create_video_test(driver):
+    # Find the element with the id "videos hover" and hover over it
+    wait.until(EC.presence_of_element_located((By.ID, "Videos Hover")))
+    topbar_element = driver.find_element(By.ID, "Videos Hover")
+    hover = ActionChains(driver).move_to_element(topbar_element)
+    hover.perform()
+    wait.until(EC.presence_of_element_located((By.ID, "Videos Hover")))
+    print("TEST: 0 `Videos hover` successful")
+
     # Find the element with the id "New Video Button" and click it
     video_button_element = driver.find_element(By.ID, "New Video Button")
-    video_button_element.click()
+    wait.until(EC.presence_of_element_located((By.ID, "New Video Button")))
+    hover = ActionChains(driver).move_to_element(video_button_element)
+    hover.perform()
+    wait.until(EC.element_to_be_clickable((By.ID, "New Video Button")))
+    ActionChains(driver).click(video_button_element).perform()
     # Wait for the URL to change to the video page URL
     wait.until(EC.url_contains('/new'))
     # Check if the URL contains the expected page URL
     if '/new' in driver.current_url:
-        print("TEST: 0 `Create Video` Successful")
+        print("TEST: 1 `Create Video` Successful")
     else:
-        print("TEST 0: `Create Video` Failed")
+        print("TEST 1: `Create Video` Failed")
 
 # Create a ChromeOptions object with the log level set to 3
 chrome_options = webdriver.ChromeOptions()
