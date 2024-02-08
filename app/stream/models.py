@@ -22,7 +22,7 @@ class VidRequest(models.Model):
 
     def __str__(self):
         # return f"{self.sender} Request"
-        return f"{self.id}"
+        return f"{self.sender} {self.id} {self.receiver}"
 
     # def get_absolute_url(self):
     #     return reverse("video-detail", kwargs={"pk": self.pk})
@@ -44,7 +44,7 @@ class VidStream(models.Model):
 
 
     def __str__(self):
-        return f"{self.id}"
+        return f"{self.streamer} {self.id}"
     # return self.title
         # return f"{self.video_id} {self.streamer}"
 
@@ -59,7 +59,7 @@ class Contact(models.Model):
 
 
     def __str__(self):
-        return f"{self.id}"
+        return f"{self.sender} {self.id} {self.receiver}"
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
@@ -81,7 +81,7 @@ class FriendRequest(models.Model):
     status = models.IntegerField(choices=STATUS_CHOICES, default=1)
 
     def __str__(self):
-        return f"{self.id}"
+        return f"{self.sender} {self.id} {self.receiver}"
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
@@ -102,7 +102,7 @@ class Post(models.Model):
 
     def __str__(self):
         # return f"{self.post_id} {self.sender} Post"
-        return f"{self.id}"
+        return f"{self.sender} {self.id} {self.receiver}"
 
 #     def get_absolute_url(self):
 #         return reverse("video-detail", kwargs={"pk": self.pk})
@@ -158,13 +158,26 @@ class UserInfo(models.Model):
 
 # Login Notifications table
 class Notification(models.Model):
+    TYPE_CHOICES = (
+      (1, 'Friend Request Send'),
+      (2, 'Accept/Reject Friend Request'),
+      (3, 'Video Request Send'),
+      (4, 'Video Request Receive'),
+      (5, 'Post Upload'),
+      (6, 'Video Upload'),
+     )
     id = models.AutoField(primary_key=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     message = models.CharField(max_length=200)
     timestamp = models.DateTimeField(auto_now_add=True)
+    type = models.IntegerField(choices=TYPE_CHOICES, null=True)
+    friendRequest_id = models.ForeignKey(FriendRequest, on_delete=models.SET_NULL, null=True)
+    videoRequest_id = models.ForeignKey(VidRequest, on_delete=models.SET_NULL, null=True)
+    post_id = models.ForeignKey(Post, on_delete=models.SET_NULL, null=True)
+    video_id = models.ForeignKey(VidStream, on_delete=models.SET_NULL, null=True)
 
     def __str__(self):
-        return f"{self.user.username} Notification {self.user.id}"
+        return f"{self.user.username} Notification {self.id} {self.type}"
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)

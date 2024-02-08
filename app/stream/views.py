@@ -51,7 +51,7 @@ def friendRequest(request):
         form = AddContactForm(request.user)
         search_query = request.GET.get('search', '')
         # Existing users show in alphabetical order
-        users = User.objects.filter(Q(username__icontains=search_query) & ~Q(id=request.user.id) & ~Q(requests_sender__receiver=request.user, requests_sender__status=1) & ~Q(requests_receiver__sender=request.user)).order_by('username')
+        users = User.objects.filter(Q(username__icontains=search_query) & ~Q(id=request.user.id) & ~Q(requests_sender__receiver=request.user, requests_sender__status=1) & ~Q(requests_receiver__sender=request.user) & ~Q(contact_sender__receiver=request.user) & ~Q(contact_receiver__sender=request.user)).order_by('username')
 
     context = {
         'form': form,
