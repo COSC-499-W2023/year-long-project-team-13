@@ -75,8 +75,8 @@ class UserInfoUpdateForm(forms.ModelForm):
 
 class UserPermissionForm(forms.ModelForm):
     STATUS_CHOICES = (
-      (1, 'Patient'),
-      (2, 'Doctor'),
+      (1, 'Sender'),
+      (2, 'Reciever'),
      )
     permission = forms.ChoiceField(choices=STATUS_CHOICES, widget=forms.Select(attrs={'style': 'width: 400px; height: 45px;margin-left: auto; margin-right: auto; margin-bottom: 25px;border: 2px groove lightgreen;',
                                                               'class': 'form-control', 'required': True}))
