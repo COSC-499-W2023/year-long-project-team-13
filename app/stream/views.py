@@ -10,6 +10,7 @@ from django.dispatch import Signal
 from django.db.models import Q
 from stream.models import UserInfo
 from stream.forms import UserInfoUpdateForm
+from .models import Post
 
 from . models import VidStream, Notification, Profile, UserInfo, Setting, FriendRequest
 from . forms import VidUploadForm, VidRequestForm, UserRegistrationForm, UserUpdateForm, UserInfoUpdateForm, UserProfileUpdateForm, UserProfileUpdateForm,  ValidatingPasswordChangeForm, AddContactForm
@@ -17,13 +18,15 @@ from . forms import VidUploadForm, VidRequestForm, UserRegistrationForm, UserUpd
 
 class VideoDetailView(DetailView):
     template_name = "stream/video-detail.html"
-    model = VidStream
+    model = Post
+    def get_queryset(self):
+        return super().get_queryset().order_by('-created_at')
 
 class GeneralVideoListView(ListView):
-    model = VidStream
+    model = Post
     template_name = 'stream/video-list.html'
-    context_object_name = 'videos'
-    ordering = ['-upload_date']
+    context_object_name = 'posts'
+    ordering = ['-created_at']
 
 def search(request):
     if request.method == "POST":
@@ -71,29 +74,31 @@ def request_video(request):
 
 
 class VideoCreateView(LoginRequiredMixin   ,CreateView):
-    model = VidStream
+    model = Post
     success_url = "/"
     template_name = 'stream/post-video.html'
     # template_name = 'stream/upload.html'
     fields = ['title', 'description','video']
     #this is to make sure that the logged in user is the one to upload the content
     def form_valid(self, form):
-        form.instance.streamer = self.request.user
+        form.instance.sender = self.request.user
+        form.instance.receiver = self.request.user  
         return super().form_valid(form)
 
 class VideoUploadView(LoginRequiredMixin   ,CreateView):
-    model = VidStream
+    model = Post
     success_url = "/"
     template_name = 'stream/upload.html'
     fields = ['title', 'description','video']
     #this is to make sure that the logged in user is the one to upload the content
     def form_valid(self, form):
-        form.instance.streamer = self.request.user
+        form.instance.sender = self.request.user
+        form.instance.receiver = self.request.user 
         return super().form_valid(form)
 
 
 class VideoUpdateView(LoginRequiredMixin, UserPassesTestMixin ,UpdateView):
-    model = VidStream
+    model = Post
     template_name = 'stream/post-video.html'
     success_url = "/"
     fields = ['title','description','video']
@@ -101,12 +106,12 @@ class VideoUpdateView(LoginRequiredMixin, UserPassesTestMixin ,UpdateView):
 
     #this is to make sure that the logged in user is the one to upload the content
     def form_valid(self, form):
-        form.instance.streamer = self.request.user
+        form.instance.author = self.request.user
         return super().form_valid(form)
     #this function prevents other people from updating your videos
     def test_func(self):
         video = self.get_object()
-        if self.request.user == video.streamer:
+        if self.request.user == video.author:
             return True
         return False
 
@@ -116,24 +121,24 @@ class VideoUpdateView(LoginRequiredMixin, UserPassesTestMixin ,UpdateView):
 class VideoDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     template_name = "stream/video-confirm-delete.html"
     success_url = "/"
-    model = VidStream
+    model = Post
 
     def test_func(self):
         video = self.get_object()
-        if self.request.user == video.streamer:
+        if self.request.user == video.author:
             return True
         return False
 
 
 
 class UserVideoListView(ListView):
-    model = VidStream
+    model = Post
     template_name = "stream/user_videos.html"
-    context_object_name = 'videos'
+    context_object_name = 'posts'
 
     def get_queryset(self):
         user = get_object_or_404(User, username=self.kwargs.get('username'))
-        return VidStream.objects.filter(streamer=user).order_by('-upload_date')
+        return Post.objects.filter(author=user).order_by('-created_at')
 
 #From Streamers
 user_signed_up = Signal()

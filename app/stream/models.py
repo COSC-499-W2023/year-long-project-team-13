@@ -98,10 +98,8 @@ class Post(models.Model):
     video = models.FileField(upload_to='')
     video_id = models.ForeignKey(VidStream, on_delete=models.SET_NULL, null=True)
     request_id = models.ForeignKey(VidRequest, on_delete=models.SET_NULL, null=True)
-
-
+    created_at = models.DateTimeField(auto_now_add=True, null=False)
     def __str__(self):
-        # return f"{self.post_id} {self.sender} Post"
         return f"{self.sender} {self.id} {self.receiver}"
 
 #     def get_absolute_url(self):
