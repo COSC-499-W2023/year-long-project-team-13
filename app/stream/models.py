@@ -42,8 +42,8 @@ class VidStream(models.Model):
     description = models.TextField(max_length=600)
     #
     upload_date = models.DateTimeField(default=timezone.now)
-    # video = models.FileField(upload_to='')
-    video = models.URLField(max_length=200, default='')
+    video = models.FileField(upload_to='')
+    # video = models.URLField(max_length=200, default='')
 
 
     def __str__(self):
