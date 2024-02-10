@@ -10,6 +10,7 @@ from django.contrib.auth.hashers import check_password
 import difflib
 # from django.utils.translation import gettext_lazy as _
 import re
+from django.contrib.auth import authenticate
 
 class VidUploadForm(forms.ModelForm):
 
@@ -168,6 +169,9 @@ class SettingForm(forms.ModelForm):
 #     )
 
 class ValidatingPasswordChangeForm(forms.ModelForm):
+    oldpassword = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder' :'Old Password',
+                                                                  'style': 'width: 400px; height: 45px; margin-left: auto; margin-right: auto; margin-bottom: 25px; border: 2px groove lightgreen;',
+                                                                  'class': 'form-control', 'required': True}))
     password = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder' :'Password',
                                                                   'style': 'width: 400px; height: 45px; margin-left: auto; margin-right: auto; margin-bottom: 25px; border: 2px groove lightgreen;',
                                                                   'class': 'form-control', 'required': True}),validators=[validate_password])
@@ -180,15 +184,38 @@ class ValidatingPasswordChangeForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         self.user = user
 
+
+    def clean_oldpassword(self):
+        old_password = self.cleaned_data.get("oldpassword")
+        password1 = self.cleaned_data.get('password')
+        user = self.instance
+        if not authenticate(username=user.username, password=old_password):
+            raise forms.ValidationError("Your old password was entered incorrectly. Please enter it again.")
+        if old_password and password1 and old_password == password1:
+            raise forms.ValidationError(("You cannot use your old password as the new password. Please try a different password."))
+        return old_password
+
+
+
+    # MIN_LENGTH = 8
+
     # def __init__(self, *args, **kwargs):
     #     self.user = kwargs.pop('user', None)
     #     super(ValidatingPasswordChangeForm, self).__init__(*args, **kwargs)
 
     def clean_password(self):
         password = self.cleaned_data.get('password')
+        old_password = self.cleaned_data.get('oldpassword')  # Fetch the old password
         username = self.instance.username
         email = self.instance.email
         email = re.sub(r'@[A-Za-z]*\.?[A-Za-z0-9]*',"", email)
+
+         # Ensure oldpassword field is added to cleaned_data
+        if password == old_password:
+            raise forms.ValidationError("You cannot use your old password as the new password.")
+
+        # if password and old_password and password == old_password:
+        #     raise forms.ValidationError("You cannot use your old password as the new password.")
 
         # At least MIN_LENGTH long
         if len(password) < self.MIN_LENGTH:

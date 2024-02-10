@@ -142,7 +142,12 @@
                                                 <br>
                                                 Your password can’t be a commonly used password.
                                                 <br>
-                                                Your password can’t be entirely numeric.</p>
+                                                Your password can’t be entirely numeric.
+                                                <br>The new password must contain at least one letter and at least one digit or punctuation character.</p>
+                                            <div class="form-group">
+                                                {{ passwordform.oldpassword.errors }}
+                                                {{ passwordform.oldpassword }}
+                                            </div>
                                             <div class="form-group">
                                                 {{ passwordform.password.errors }}
                                                 {{ passwordform.password }}
@@ -169,7 +174,7 @@
                                                     </button>
                                                 </div>
                                                 <div class="col">
-                                                    <button type="reset" class="btn btn-default btn-block">Cancel</button>
+                                                    <button type="reset" class="btn btn-default btn-block">Reset</button>
                                                 </div>
                                             </div>
                                             <div id="overlay1" class="float-center"style="position:fixed; top:30%;">
