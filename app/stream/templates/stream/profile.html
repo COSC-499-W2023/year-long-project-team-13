@@ -31,9 +31,9 @@
                             </button>
                         </li>
                         <div class="dropdown-content">
-                            <li class="nav-item nav-link"><a class="nav-link active" href=" {% url 'stream:video-list' %} " id="Video Button">Videos</a></li>
-                            <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:video-create' %}" id="New Video Button">New Video</a>
-                            <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:request-video' %}" id="Video Request Button">Video Request</a>
+                            <li class="nav-item nav-link"><a class="nav-link active" href=" {% url 'stream:video-list' %} " id="Video Button">View Videos</a></li>
+                            <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:video-create' %}" id="New Video Button">Send Video</a>
+                            <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:request-video' %}" id="Video Request Button">Request Video</a>
                         </div>
                       </div>
                       <li class="nav-item nav-link"><a class="nav-link active" href=" {% url 'stream:contact' %} " id="Add Contacts Button">Add Contacts</a></li>
@@ -49,7 +49,7 @@
                         </li>
                         <div class="dropdown-content">
                             <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:profile' %}" id="Profile Button">Profile</a>
-                            <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:setting' %}" id="Setting Button">Setting</a>
+                            <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:setting' %}" id="Setting Button">Settings</a>
                             {% if user.is_superuser %}
                                 <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'admin:index' %}" id="Admin Button">Admin</a>
                             {% endif %}
@@ -207,11 +207,22 @@
                               </div>
                           </div> {% endcomment %}
                           <div class="row" style = "padding-top: 25px;">
-                              <div class="col-sm-1"></div>
-                              <div class="col-sm-9 text-secondary d-flex justify-content-center">
+                              <div class="col-sm-4"></div>
+                              <div class="col-sm-3 text-secondary d-flex justify-content-center">
                                   {% comment %} <input type="button" class="btn btn-primary px-4" value="Save Changes"> {% endcomment %}
-                                  <button id="update" class="btn btn-outline-info btn-primary px-4 text-dark" type="submit">Update</button>
+                                <button id="update" class="btn btn-outline-info btn-primary px-4 text-dark" type="submit">Update</button>
                               </div>
+                              <div class="col-sm-4 text-secondary d-flex justify-content-center">
+                                <button id="change password" class="btn btn-outline-info btn-outline-primary px-4 text-dark" type="button" onclick="location.href='{% url 'stream:setting' %}'">Change Password</button>
+                              </div>
+                              {% comment %} <div class="col-sm-9 d-flex justify-content-center"> {% endcomment %}
+
+                              {% comment %} </div> {% endcomment %}
+                              {% comment %} <div class="col-sm-9 text-secondary d-flex justify-content-center">
+                                {% comment %} <button onclick="location.href='http://www.example.com'" type="button">
+                                    www.example.com</button>
+                                <button class="btn btn-outline-info btn-primary px-4 text-dark" type="button" onclick="{% url 'stream:setting' %}">Change Password</button>
+                            </div> {% endcomment %}
                           </div>
                       </div>
                   </form>

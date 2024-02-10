@@ -149,8 +149,8 @@ class Profile(models.Model):
 # Update User's Birthdate
 class UserInfo(models.Model):
     STATUS_CHOICES = (
-      (1, 'Patient'),
-      (2, 'Doctor'),
+      (1, 'Sender'),
+      (2, 'Receiver'),
       (3, 'Admin'),
      )
     user = models.OneToOneField(User, on_delete=models.CASCADE)
