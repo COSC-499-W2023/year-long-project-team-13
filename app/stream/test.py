@@ -1,11 +1,10 @@
 import boto3
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image, ImageDraw, ImageFont, ImageFilter
 
 # Let's use Amazon S3
 s3 = boto3.resource('s3')
-# Print out bucket names
-for bucket in s3.buckets.all():
-    print(bucket.name)
+
+# s3.Bucket('elasticbeanstalk-ca-central-1-841071745826').download_file('mountain.jpg', 'mountain.jpg')
 
 rekognition = boto3.client('rekognition')
 font = ImageFont.truetype('arial.ttf', 30)
@@ -21,9 +20,7 @@ def detect_faces_and_emotions(image_name: str):
 
     image = Image.open(image_name)
     image_width, image_height = image.size
-    draw = ImageDraw.Draw(image)
 
-    line_width = 3
     for item in rekognition_response.get('FaceDetails'):
         bounding_box = item['BoundingBox']
         width = image_width * bounding_box['Width']
@@ -36,22 +33,14 @@ def detect_faces_and_emotions(image_name: str):
         width = int(width) + left
         height = int(height) + top
 
-        draw.rectangle(((left, top), (width, height)),
-                    outline='red', width=line_width)
+        mask = Image.new('L',image.size)
+        draw = ImageDraw.Draw(mask)
 
-        face_emotion_confidence = 0
-        face_emotion = None
-        for emotion in item.get('Emotions'):
-            if emotion.get('Confidence') >= face_emotion_confidence:
-                face_emotion_confidence = emotion['Confidence']
-                face_emotion = emotion.get('Type')
+        draw.ellipse(((left, top), (width, height)),fill=255)
 
-        draw.text((left, top), face_emotion, 'white', font=font)
+        blurred = image.filter(ImageFilter.GaussianBlur(radius=50))
 
-    return image
+        comp = Image.composite(blurred, image, mask)
+        comp.save(image_name.split('.')[0] + '_blurred.jpg')
 
-result_1 = detect_faces_and_emotions('./IMG_9958.jpg')
-# save the result into a result.file
-
-result_1.save('result_1.jpg')
-
+detect_faces_and_emotions('IMG_9958.jpg')
