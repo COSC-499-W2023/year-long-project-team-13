@@ -433,6 +433,7 @@ Test Report
   - Remove friend request function and UI.
   - Notification page for all freind requests related notifications.
   - Friend list on contact table in the database.
+  - Admin database layout adjustment to display all columns/rows of data on each table.
   - View video branch to store the video to the post table in the database.
   - Record video function implementation attempts.
   - Aws rekognition for image to mark where the face is and processing to make the image's face blurred.
