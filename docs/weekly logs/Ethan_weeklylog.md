@@ -265,3 +265,22 @@
   - ![Permission Choice](./images/Ethan_stuff/t2w4/new_register_1.png)
   - The message will be shown when the user access a page that they don't have permission to access.
   - ![Permission Denied](./images/Ethan_stuff/t2w4/upload_record_denied_1.png)
+
+# Preferred name -> Ssc name -> Github name
+
+- Ethan -> Ethan Hsu -> YuchenHsu
+
+## Week 5 2024/02/05 ~ 2024/02/11
+
+- Type of tasks you worked on (screenshot from Peer Eval question)
+
+![Tasks](./images/tasks/ethan_term2_week5.png)
+
+- This week, I tried to make s3 work, managed to successfully download and upload to the s3 bucket.
+- I also started working on aws rekognition and blurring faces, I have managed to blur a face on an image, but haven't gotten to do it on a video yet.
+  - Here's the result of the blurring face on an image
+  - ![Blurred Face](./images/Ethan_stuff/t2w5/face_blurring.png)
+- The tasks associated are the following:
+  - [S3 cloudfront branch](https://github.com/COSC-499-W2023/year-long-project-team-13/tree/s3_cloudfront)
+  - [Blur Face](https://github.com/COSC-499-W2023/year-long-project-team-13/tree/rekognition)
+

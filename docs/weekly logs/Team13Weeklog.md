@@ -442,10 +442,10 @@ Burnup chart
 Network Graph
 ![Network](./images/network/term2_week5_network_1.png)
 ![Network](./images/network/term2_week5_network_2.png)
-![Network](./images/network/term2_week5_network_3.png)
 Completed Tasks
 ![Completed](./images/completed/term2_week5_done_1.png)
 ![Completed](./images/completed/term2_week5_done_2.png)
+![Completed](./images/completed/term2_week5_done_3.png)
 In progress Tasks
 ![In Progress](./images/in-prog/term2_week5_inprogress.png)
 Test Report
