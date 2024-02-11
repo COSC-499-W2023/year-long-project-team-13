@@ -136,7 +136,7 @@
                                     <div style="width: 75%; margin: auto;">
                                         <form method="post" enctype="multipart/form-data">
                                             {% csrf_token %}
-                                            <p id="instruction">Your password can’t be too similar to your other personal information.
+                                            <p class="text-center" id="instruction">Your password can’t be too similar to your other personal information.
                                                 <br>
                                                 Your password must contain at least 8 characters.
                                                 <br>
@@ -144,7 +144,8 @@
                                                 <br>
                                                 Your password can’t be entirely numeric.
                                                 <br>The new password must contain at least one letter and at least one digit or punctuation character.</p>
-                                            <div class="form-group">
+                                            <div class = "form-center" style= "margin: auto;"
+                                                <div class="form-group">
                                                 {{ passwordform.oldpassword.errors }}
                                                 {{ passwordform.oldpassword }}
                                             </div>
@@ -177,6 +178,7 @@
                                                     <button type="reset" class="btn btn-default btn-block">Reset</button>
                                                 </div>
                                             </div>
+                                        </div>
                                             <div id="overlay1" class="float-center"style="position:fixed; top:30%;">
                                                 <div style="">
                                                     <p class="text-dark">Are you sure you want to change your password?</p>
