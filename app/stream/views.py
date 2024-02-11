@@ -41,11 +41,13 @@ def friendRequest(request):
     if request.method == "POST":
         form = AddContactForm(request.user, request.POST)
         if form.is_valid():
-            Notification.objects.create(user=request.user, message=f'You have sent a friend request to '+ str(form.cleaned_data['receiver']) +'.', type=1)
-            Notification.objects.create(user=form.cleaned_data['receiver'], message=f'You have received a friend request from '+ str(request.user) +'.', type=2)
             add_contact = form.save(commit=False)
             add_contact.sender = request.user
             add_contact.save()
+            # link recent created friendRequest from friend request table to Notification table
+            recentFriendRequest = FriendRequest.objects.filter(sender=request.user).first()
+            Notification.objects.create(user=request.user, message=f'You have sent a friend request to '+ str(form.cleaned_data['receiver']) +'.', type=1, friendRequest_id=recentFriendRequest)
+            Notification.objects.create(user=form.cleaned_data['receiver'], message=f'You have received a friend request from '+ str(request.user) +'.', type=2,friendRequest_id=recentFriendRequest)
             return redirect("stream:notifications")
     else:
         form = AddContactForm(request.user)
@@ -187,14 +189,23 @@ def notifications(request):
                 # delete notification of sender and receiver friend request
                 # make both sender and receiver notification of successful delete the sent friend request
 
-            elif 'acceptFriendRequest' in request.POST:
-                # make a contact data with sender and receiver username
-                # delete the friend request
-                # delete notification of sender and receiver friend request
-                # make both sender and receiver notification of successful become friends
-            elif 'rejectFriendRequest' in request.POST:
-                # delete the friend request
-                # delete notification of the sender and receiver friend request
+                # User.objects.filter(Q(username__icontains=search_query) & ~Q(id=request.user.id) & ~Q(requests_sender__receiver=request.user, requests_sender__status=1) & ~Q(requests_receiver__sender=request.user) & ~Q(contact_sender__receiver=request.user) & ~Q(contact_receiver__sender=request.user)).order_by('username')
+
+                notificationid = request.POST.get('notifID')
+                friendRequestid = Notification.objects.get(id=notificationid).friendRequest_id.id
+                receiver = FriendRequest.objects.get(id=friendRequestid).receiver
+                sender = request.user
+                FriendRequest.objects.filter(id=friendRequestid).delete()
+                Notification.objects.create(user=sender, message=f'You have successfully deleted a friend request to '+ str(receiver) +'.', type=7)
+                return redirect("stream:notifications")
+            # elif 'acceptFriendRequest' in request.POST:
+            #     # make a contact data with sender and receiver username
+            #     # delete the friend request
+            #     # delete notification of sender and receiver friend request
+            #     # make both sender and receiver notification of successful become friends
+            # elif 'rejectFriendRequest' in request.POST:
+            #     # delete the friend request
+            #     # delete notification of the sender and receiver friend request
             else:
                 notifications = Notification.objects.filter(user=user).order_by('-timestamp')
                 return render(request, 'stream/notification.html', {'notifications': notifications})
