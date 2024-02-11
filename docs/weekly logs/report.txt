@@ -68,6 +68,8 @@ TEST: 4 `Email input` successful
 TEST: 5 `Birthdate input` successful
 Register Page test Start
 TEST: 0 `Registration` successful
+Register Page test end for permission 1
+TEST: 0 `Registration` successful
 Register Page test End
 Profile Page test Start
 Login successful
