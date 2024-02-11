@@ -416,3 +416,39 @@ Test Report
 - Test report file is in the same directory [here](./report.txt)
   ![Test Report](./images/tests_completion/term2_week3_pytest_1.png)
   ![Test Report](./images/tests_completion/term2_week4_pytest.png)
+
+## Preferred name -> Ssc name -> Github name
+
+- Ethan -> Ethan Hsu -> YuchenHsu
+- Beth -> Beth Ralston -> mblackbeak (mblackbeak)
+- Herman -> Herman Sood -> herman-23
+- Raymond -> Sitt Paing -> SittHmuePaing
+- Adrian -> Adrian Fong -> AdrianFWM
+
+## Term 2 Week 5 2024/02/05 ~ 2024/02/11
+
+- Which features were in the project plan for this milestone?
+  - Updated the register test to reflect the new role selection.
+  - Finished the acept/reject friend request function and UI.
+  - Remove friend request function and UI.
+  - Notification page for all freind requests related notifications.
+  - Friend list on contact table in the database.
+  - View video branch to store the video to the post table in the database.
+  - Record video function implementation attempts.
+  - Aws rekognition for image to mark where the face is and processing to make the image's face blurred.
+
+Burnup chart
+![Burnup](./images/burnup/term2_week5_burnup.png)
+Network Graph
+![Network](./images/network/term2_week5_network_1.png)
+![Network](./images/network/term2_week5_network_2.png)
+![Network](./images/network/term2_week5_network_3.png)
+Completed Tasks
+![Completed](./images/completed/term2_week5_done_1.png)
+![Completed](./images/completed/term2_week5_done_2.png)
+In progress Tasks
+![In Progress](./images/in-prog/term2_week5_inprogress.png)
+Test Report
+
+- Test report file is in the same directory [here](./report.txt)
+  ![Test Report](./images/tests_completion/term2_week5_pytest.png)
