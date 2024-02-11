@@ -263,9 +263,21 @@ Add Contact Function, Add contact UI
 
  ![Tasks](./images/tasks/Week4Term2PeerEval.png)
  
+  - Applicable date range
+##  Week 4 Term 2 01/29/24~02/04/24
+
+ # Preferred name -> Ssc name -> Github name
+
+- Herman -> Herman Sood -> Herman Sood
+
+- Recap on your week's goals-Which features were yours in the project plan for this milestone? For term 2 week 5 I worked on a new branch that I created called view_video. What I have done so far is that for videos that get uploaded, admin users can go to the admin page and can see all the videos that have been uploaded under posts in stream. I plan to try and make changes next though to the view video page next because on that page it doesnt show the new uploaded videos at the moment. 
+  - Which tasks from the project board are associated with these features? View video function
+  - Among these tasks, which have you completed/in progress in the last week? Started new task so just view video in progress right now. 
 
 
+ ![Tasks](./images/tasks/Week5Term2Hermanview_video.png)
 
+ 
 
 
 
