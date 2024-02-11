@@ -1,5 +1,5 @@
 from django.contrib import admin
-from . models import VidRequest, VidStream,  Contact, FriendRequest, Post, Profile, UserInfo, Notification, Setting
+from . models import VidRequest, VidStream, Contact, FriendRequest, Post, Profile, UserInfo, Notification, Setting
 # VidRequestNotification
 
 # Make table layout display for admin

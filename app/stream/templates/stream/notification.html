@@ -87,13 +87,12 @@
                     <form method="POST" enctype="multipart/form-data">
                       {% csrf_token %}
                       <input type="hidden" name="notifID" value="{{ notification.id }}">
-                      <input type="hidden" name="sender" value="{{ user.id }}">
                       <button class="btn btn-dark" id="delete friend request button" name="deleteFriendRequest" type="submit">Remove Friend Request</button>
                     </form>
                     {% elif notification.type == 2 %}
                     <form method="POST" enctype="multipart/form-data">
                       {% csrf_token %}
-                      <input type="hidden" name="receiver" value="{{ user.id }}">
+                      <input type="hidden" name="notifID" value="{{ notification.id }}">
                       <button class="btn btn-dark" id="accept friend request button" name="acceptFriendRequest" type="submit">Accept</button>
                       <button class="btn btn-dark" id="reject friend request button" name="rejectFriendRequest" type="submit">Reject</button>
                     </form>
