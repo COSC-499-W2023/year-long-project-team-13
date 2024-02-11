@@ -22,3 +22,4 @@ while True:
 video.release()
 writer.release()
 cv2.destroyAllWindows()
+    
