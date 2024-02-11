@@ -5,6 +5,7 @@ from PIL import Image, ImageDraw, ImageFont, ImageFilter
 s3 = boto3.resource('s3')
 
 # s3.Bucket('elasticbeanstalk-ca-central-1-841071745826').download_file('mountain.jpg', 'mountain.jpg')
+s3.Bucket('elasticbeanstalk-ca-central-1-841071745826').upload_file('IMG_9958.jpg', 'IMG_9958.jpg')
 
 rekognition = boto3.client('rekognition')
 font = ImageFont.truetype('arial.ttf', 30)
