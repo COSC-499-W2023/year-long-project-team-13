@@ -374,3 +374,30 @@ Updating Password and Pop up Notification
 - Worked on my own weekly log, contribute to team weekly log.
 - Learn new insights from online to resolve issues for my project.
 - Currently planning to work on old password validation(suggestion received from evaluation feedback) to check for the user old password before changing to a new password.
+
+
+## Term 2 Week 5 2023/02/05~2023/02/11
+
+- Type of tasks you worked on
+
+![Tasks](./images/tasks/SittPaing_T2W5-Task.png)
+
+## Recap of week's goals
+This week I worked on setting page based on the feedback i received from the peer evaluation and i have currently added an old password form for the user to add in their old password before changing to the new password. If the user added in the wrong old password and proceed to change the password, they will received and error message, saying that the old password they entered is incorrectly and asked them to try again. If the user added the correct old password but set the new password as the old password again, they will also received and error message saying that they cannot see an old password as a new password and ask the user to try again. If they user put in the correct password and set their different password for new password, they will be able to change their password without any issue. It take me quite awhile to do them since they are not working as intended like the not throwing error messages when user set the new password as their old existing password, the system not comparing the new password and old password and error message not showing up when the user input the wrong password but I am able to fixed them with the help of online resources and try working in my own way. I also add one more instruction in the setting page so that you know exact what they do to mind before changing their password. I also made some adjustment to the html and css since the stuff on the page went out of page when the user minimize or maximize the page but its still not functioning as expected so i am currently working on it. Also for the tests i am also checking on it to see what i need to make changes and test on since i have made various changes. I have tried working on selenium test but its not working as intended so I am currently working on it for the following week.
+
+Adding old password form and instruction
+
+![Added Notification Pop up when user clicked save changes](./images/Sitt_images/Term_2_Week_5/OldPassword_Form.png)
+
+Putting Wrong old password
+
+![Throwing message if the password is not filled after update button is clicked](./images/Sitt_images/Term_2_Week_5/OldPassword_Wrong.png)
+
+Old password the same as new password
+
+![Updating Password and Pop up Notification](./images/Sitt_images/Term_2_Week_5/OldPassword_NewPassword.png)
+
+### Additional
+- Worked on my own weekly log, contribute to team weekly log.
+- Learn new insights from online to resolve issues for my project.
+- Currently working on the html/css as well as on the tests for the setting page.
