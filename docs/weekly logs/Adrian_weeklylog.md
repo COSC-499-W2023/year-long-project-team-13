@@ -570,3 +570,68 @@ id connect to "friend request", "video request", "post", and "video" table.
 - Worked on my own weekly log, contribute to team weeklog.
 - Added some code to fix add contact search bar function, and worked on add contact tests fix.
 - Fixed on some confirm password UI problem.
+
+# Preferred name -> Ssc name -> Github name
+
+- Adrian -> Adrian Fong -> AdrianFWM
+
+## Term 2 Week 5 2023/02/05~2023/02/11
+
+- Task I have worked on this week and winter break.
+![Weekly Task T2-5](./images/tasks/AdrianFong_T2_Week5_Task.jpg)
+
+## Recap on your week's goals
+
+### Change Password Button CSS/Testing (Profile Page) [Complete]
+- Worked on "Change Password Button (Profile Page)" and "Change Password Button (profile page) test" on project board, finished up the css for the change password button, and also wrote test for the change password button.
+
+  - [Editprofile (Change Password Button) Pull Request/Commit](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/137)
+  - Change Password Button new CSS layout screenshot
+![Change Password Button new CSS layout screenshot](./images/Adrian_images/T2_Week_5/ChangePassword.jpg)
+  - Redirect to Setting Page screenshot
+![Redirect to Setting Page screenshot screenshot](./images/Adrian_images/T2_Week_5/RedirectSetting.jpg)
+  - Change Password Button Testing screenshot
+![Change Password Button Testing screenshot](./images/Adrian_images/T2_Week_5/SettingTest.jpg)
+
+### Remove Friend Request (Notification page) [Sender side]
+- Worked on "Remove Friend Request - UI" and "Remove Friend Request - Function" on project board, users of the friend request sender are able to remove friend request on the notificaiton page after friend request sent to receiver. After the sender remove friend request, the friend request notification and friend request will be removed from the database and have a new "successful remove" message on notificaiton page, and sender can resend another new friend request to receiver. On receiver side, if the friend request is removed, then their notification of friend request will also be removed from database as well.
+- All the functions and css layout are finished, just need to finish up testings next week.
+
+  - [Notifications (remove friend request) Pull Request/Commit](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/144)
+  - Remove friend request layout (Notification page) screenshot
+![Remove friend request layout (Notification page) screenshot](./images/Adrian_images/T2_Week_5/RemoveRequest.jpg)
+  - After remove friend request has been clicked (Notification page) screenshot
+![After remove friend request has been clicked (Notification page) screenshot](./images/Adrian_images/T2_Week_5/RemoveRequestNoti.jpg)
+  - Friend request reappeared (Add contact page) screenshot
+![Friend request reappeared (Add contact page) screenshot](./images/Adrian_images/T2_Week_5/AddContact.jpg)
+  - Another friend requets (Notification page) screenshot
+![Another friend requets (Notification page) screenshot](./images/Adrian_images/T2_Week_5/AnotherRequest.jpg)
+
+### Accept/Reject Friend Request (Notification page) [Receiver side]
+- Worked on "Accept/Reject Friend Request - UI" and "Accept/Reject Friend Request - Function" on project board, users of the friend request receiver are able to accept or reject friend request on the notificaiton page after friend request sent from sender. After the friend request has been accepted, the friend request and friend request notification will be removed from the database, and add both sender and receiver into Contact table (friend list) in database; also, create a "successfully become friends" message on notificaiton page. If friend request has been rejected by the receiver, the friend request and friend request notification will be removed from the database, and create a "reject friend request" message on notification page.
+- All the functions and css layout are finished, just need to finish up testings next week.
+
+  - [Notifications (accept/reject friend request) Pull Request/Commit](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/144)
+  - Accept/Reject friend request layout (Notification page) screenshot
+![Accept/Reject friend request layout (Notification page) screenshot](./images/Adrian_images/T2_Week_5/Accept_Reject.jpg)
+  - After reject friend request has been clicked (Notification page) screenshot
+![After reject friend request has been clicked (Notification page) screenshot](./images/Adrian_images/T2_Week_5/RejectNoti.jpg)
+  - After accept friend request has been clicked (Notification page) screenshot
+![After accept friend request has been clicked (Notification page) screenshot](./images/Adrian_images/T2_Week_5/AcceptNoti.jpg)
+  - Contact table (friend list) new data (sender/receiver) screenshot
+![Contact table (friend list) new data (sender/receiver) screenshot](./images/Adrian_images/T2_Week_5/FriendListDatabase.jpg)
+
+### Admin model display adjustment to all tables
+- Worked on "Admin table adjustment" on project board, admin table are able to display all data with details (all columns) without clicking into the data id which makes admin users easier to read data.
+
+  - [Admin Display Adjustment Pull Request/Commit](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/144)
+  - Database layout (Notification table) screenshot
+![Database layout (Notification table) screenshot](./images/Adrian_images/T2_Week_5/DatabaseLayout_Noti.jpg)
+  - Database layout (Userinfo table) screenshot
+![Database layout (Userinfo table) screenshot](./images/Adrian_images/T2_Week_5/DatabaseLayout_Userinfo.jpg)
+  - Database layout (Contact table) screenshot
+![Database layout (Contact table) screenshot](./images/Adrian_images/T2_Week_5/FriendListDatabase.jpg)
+
+### Weekly Log / Team Weekly Log / Additional
+- Worked on my own weekly log, contribute to team weeklog.
+- Manually testing on Raymond's change password/confirm password form and css UI layout (Setting page)
