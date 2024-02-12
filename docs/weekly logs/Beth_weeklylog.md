@@ -119,6 +119,11 @@ For this week, I focused on updating the Selenium tests to have clearer print me
 For this week, I worked on the Record a video functionality and testing and updating the tests to include the hover feature in the topbar. These are associated with the Create Video Function task and reorganize topbar task in the project board. The topbar testing has been completed and merged into the master branch after team members reviewed it. I have been able to get the record a video functional but I have not been able to connect it to the HTML button on the website.
 
 ### Week 4 Jan 29 - Feb 4
-![Week3Tasks](./images/tasks/Ralston_term2_w4_tasks.png)
+![Week4Tasks](./images/tasks/Ralston_term2_w4_tasks.png)
 
 For this week, we focused on the peer testing preparation and redefining task priorities after the peer testing. As well, I worked on adding in a permission feature to allow for the two user groups to access the respective pages. This is associated with the Update Permissions on Pages task. This is close to being completed and my next step is to update the tests that are associated with those certain pages. Ethan and I worked on this together as there were two pages so we each worked on one page and worked together to get the styling to be the same on each page. 
+
+### Week 5 Feb 5 - 11
+![Week5Tasks](./images/tasks/Ralston_term2_w5_tasks.png)
+
+This week my features were the Record a video as well as finishing up the testing for the permissions for users. These are associated with the Create Video function and Update Permissions on Pages tasks on the project board. I was able to sucessfully complete all of the testing for the permissions and once that was reviewed it was merged in. I tried several ways to connect the record python function to the html button. None were sucessful. I tried running the python file using a onclick javascript function. I tried linking the python file in pyscript as well as running the python code in pyscript. I then tried connecting the python file through views and urls in django. Finally, I tried remaking the file in javascript and connecting it from there. That was what I had the most sucess with as I was able to at least get a video to appear on the screen but it does not record and save the video. I am hoping I will have more sucess next week. I may also ask peers to see how they approached this.
