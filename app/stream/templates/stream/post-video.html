@@ -54,7 +54,7 @@
     <link rel="stylesheet" href="https://pyscript.net/releases/2022.12.1/pyscript.css" />
 </head>
 <body>
-    <div style = "margin-top: 25px; padding-top: 10em;">
+    <div style = "margin-top: 8em; padding-top: 10em;">
         <div class = "horizontal-buttons">
             <a class="button" href=" {% url 'stream:video-create' %}" style="color: #FFFFFF">
                 Record
@@ -63,17 +63,17 @@
                 Upload
             </a>
         </div>
-        <h1 style="text-align: center; color: white; padding: 5%">Record a Video</h1>
-        <div style = "padding-top: 75px;">
-            <button id="start-camera">Start Camera</button>
-            <div class="video-box" style="padding: 5em;">              
+        <h1 style="text-align: center; color: white;">Record a Video</h1>
+        <div style = "padding-top: 2%;">
+            <button id="start-camera" style="height: 50%; width: 50%; background-color: black; color: #FFFFFF; margin-bottom: 10%;">Start Camera</button>
+            <div class="video-box" style="padding-bottom: 10%; display: none; margin-bottom:10%;">              
                 <video id="video" width="320" height="240" autoplay></video>
             </div>
             <div class="horizontal-buttons">
                 <button class="button" id="start-record">Start/Re-record</button>
                 <button class="button" id="stop-record">Stop Recording</button>
                 <button class="button">NEXT</button>
-                <a id="download-video" download="test.webm">Download Video</a>
+                <a class="button" id="download-video" download="test.webm" style="text-decoration: none; color: #FFFFFF">Download Video</a>
             </div>
         </div>
     </div>
@@ -90,6 +90,9 @@
 
         camera_button.addEventListener('click', async function() {
             camera_stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
+            videobox = document.querySelector('.video-box');
+            videobox.style.display = 'block';
+            camera_button.style.display = 'none';
             video.srcObject = camera_stream;
         });
 
