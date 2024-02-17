@@ -83,22 +83,24 @@
         let start_button = document.querySelector("#start-record");
         let stop_button = document.querySelector("#stop-record");
         let download_link = document.querySelector("#download-video");
+        let  videobox = document.querySelector('.video-box');
 
         let camera_stream = null;
         let media_recorder = null;
         let blobs_recorded = [];
 
         camera_button.addEventListener('click', async function() {
-            camera_stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
-            videobox = document.querySelector('.video-box');
+            camera_stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });       
             videobox.style.display = 'block';
             camera_button.style.display = 'none';
             video.srcObject = camera_stream;
         });
 
         start_button.addEventListener('click', function() {
+            blobs_recorded = [];
             // set MIME type of recording as video/webm
             media_recorder = new MediaRecorder(camera_stream, { mimeType: 'video/webm' });
+            video.style.border = '10px solid red';
 
             // event : new recorded video blob available 
             media_recorder.addEventListener('dataavailable', function(e) {
@@ -118,6 +120,7 @@
 
         stop_button.addEventListener('click', function() {
             media_recorder.stop(); 
+            video.style.border = '2px solid black';
         });
     </script>
 </body>
