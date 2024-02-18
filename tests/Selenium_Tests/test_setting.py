@@ -43,7 +43,7 @@ def login_page_test(driver, username, password):
     else:
         print("Login successful")
 
-def setting_test(driver, username, password):
+def setting_test(driver, username, password, newpassword):
     # Call the login page test function
     login_page_test(driver, username, password)
     time.sleep(0.5)
@@ -63,14 +63,112 @@ def setting_test(driver, username, password):
     wait.until(EC.element_to_be_clickable((By.ID, "Setting Button")))
     ActionChains(driver).click(setting_element).perform()
 
+    oldpassword_input_element = driver.find_element(By.ID, "id_oldpassword")
+    oldpassword_input_element.click()
+    wait.until(EC.presence_of_element_located((By.ID, "id_oldpassword")))
+
+    print("Test 1 : oldpassword successful")
+
+    password_input_element = driver.find_element(By.ID, "id_password")
+    password_input_element.click()
+    wait.until(EC.presence_of_element_located((By.ID, "id_password")))
+
+    print("Test 2 : newpassword successful")
+
+    password2_input_element = driver.find_element(By.ID, "id_password2")
+    password2_input_element.click()
+    wait.until(EC.presence_of_element_located((By.ID, "id_password2")))
+
+    print("Test 3 : confirmpassword successful")
+
+    save_input_element = driver.find_element(By.ID, "Save")
+    save_input_element.click()
+    wait.until(EC.presence_of_element_located((By.ID, "Save")))
+
+    print("Test 4 : Save successful")
+
+
+    update_input_element = driver.find_element(By.ID, "Update")
+    update_input_element.click()
+    wait.until(EC.presence_of_element_located((By.ID, "Update")))
+
+    print("Test 5 : Update successful")
+
+    save_input_element = driver.find_element(By.ID, "Save")
+    save_input_element.click()
+    wait.until(EC.presence_of_element_located((By.ID, "Save")))
+
+    print("Test 6 : Save successful")
+
+    cancel_input_element = driver.find_element(By.ID, "Cancel")
+    wait.until(EC.element_to_be_clickable((By.ID, "Cancel")))
+    cancel_input_element.click()
+    wait.until(EC.presence_of_element_located((By.ID, "Cancel")))
+
+
+    print("Test 7 : Cancel successful")
+
+    reset_input_element = driver.find_element(By.ID, "Reset")
+    reset_input_element.click()
+    wait.until(EC.presence_of_element_located((By.ID, "Reset")))
+
+    print("Test 8 : Reset successful")
+
+    oldpassword_input_element = driver.find_element(By.ID, "id_oldpassword")
+    oldpassword_input_element.click()
+    wait.until(EC.presence_of_element_located((By.ID, "id_oldpassword")))
+
+    oldpassword_input_element.send_keys(password)
+    wait.until(EC.text_to_be_present_in_element_value((By.ID, "id_oldpassword"), password))
+
+    print("oldpassword filled successfully")
+
+
+    password_input_element = driver.find_element(By.ID, "id_password")
+    password_input_element.click()
+    wait.until(EC.presence_of_element_located((By.ID, "id_password")))
+
+    password_input_element.send_keys(newpassword)
+    wait.until(EC.text_to_be_present_in_element_value((By.ID, "id_password"), newpassword))
+
+    print("newpassword filled successfully")
+
+    password2_input_element = driver.find_element(By.ID, "id_password2")
+    password2_input_element.click()
+    wait.until(EC.presence_of_element_located((By.ID, "id_password2")))
+
+    password2_input_element.send_keys(newpassword)
+    wait.until(EC.text_to_be_present_in_element_value((By.ID, "id_password2"), newpassword))
+
+    print("confirmpassword filled successfully")
+
+    save_input_element = driver.find_element(By.ID, "Save")
+    save_input_element.click()
+    wait.until(EC.presence_of_element_located((By.ID, "Save")))
+
+    print("Save successful")
+
+    update_input_element = driver.find_element(By.ID, "Update")
+    update_input_element.click()
+    # wait.until(EC.presence_of_element_located((By.ID, "Update")))
+
+    print("Update successful")
+
+
+
+
+
+    # password2_input_element.send_keys(password)
+    # wait.until(EC.text_to_be_present_in_element_value((By.ID, "id_password2"), password))
+
     # Wait for the URL to change to the admin page URL
-    wait.until(EC.url_contains('/setting'))
+    wait.until(EC.url_contains('/login'))
 
     # Check if the URL contains the expected profile page URL
-    if '/setting' in driver.current_url:
-        print("TEST: 1 `Setting` successful")
+    if '/login' in driver.current_url:
+        print("TEST: 9 `Setting` successful")
     else:
-        print("TEST: 1 `Setting` failed")
+        print("TEST: 9 `Setting` failed")
 
 
 
@@ -95,7 +193,10 @@ wait = WebDriverWait(driver, 60)
 # Call the profile page test function with appropriate input values
 print("Setting Page test Start")
 driver.get('http://localhost:8000/login')
-setting_test(driver, 'linus', 'Admin123')
+setting_test(driver, 'adrian', 'cclemon0912', 'bigproject5')
+time.sleep(0.5)
+driver.get('http://localhost:8000/login')
+setting_test(driver, 'adrian', 'bigproject5' , 'cclemon0912')
 print("Setting Page test Completed")
 
 # Close the webdriver
