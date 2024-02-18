@@ -478,6 +478,8 @@ Network Graph
 Completed Tasks
 ![Completed](./images/completed/term2_week6_done_1.png)
 ![Completed](./images/completed/term2_week6_done_2.png)
+![Completed](./images/completed/term2_week6_done_3.png)
+![Completed](./images/completed/term2_week6_done_4.png)
 In progress Tasks
 ![In Progress](./images/in-prog/term2_week6_inprogress.png)
 Test Report
