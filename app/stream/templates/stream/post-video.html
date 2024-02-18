@@ -22,7 +22,7 @@
 
         .button {
           background-color: transparent;
-          margin-bottom: 10px;
+          margin: 0 auto 3em auto;
           padding: 10px;
           color: white;
           border: 1px solid white;
@@ -70,10 +70,10 @@
                 <video id="video" width="320" height="240" autoplay></video>
             </div>
             <div class="horizontal-buttons">
-                <button class="button" id="start-record">Start/Re-record</button>
-                <button class="button" id="stop-record">Stop Recording</button>
-                <button class="button">NEXT</button>
-                <a class="button" id="download-video" download="test.webm" style="text-decoration: none; color: #FFFFFF">Download Video</a>
+                <button class="button" id="start-record" style="display: none">Start/Re-record</button>
+                <button class="button" id="stop-record" style="display: none">Stop Recording</button>
+                <button class="button" id="next" style="display: none">NEXT</button>
+                <a class="button" id="download-video" download="test.webm" style="text-decoration: none; color: #FFFFFF; display: none;">Download Video</a>
             </div>
         </div>
     </div>
@@ -84,6 +84,7 @@
         let stop_button = document.querySelector("#stop-record");
         let download_link = document.querySelector("#download-video");
         let  videobox = document.querySelector('.video-box');
+        let next_button = document.querySelector("#next");
 
         let camera_stream = null;
         let media_recorder = null;
@@ -93,11 +94,16 @@
             camera_stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });       
             videobox.style.display = 'block';
             camera_button.style.display = 'none';
+            start_button.style.display = 'block';
             video.srcObject = camera_stream;
+
         });
 
         start_button.addEventListener('click', function() {
             blobs_recorded = [];
+            //add the stop button and remove the start button
+            stop_button.style.display = 'block';
+            start_button.style.display = 'none';
             // set MIME type of recording as video/webm
             media_recorder = new MediaRecorder(camera_stream, { mimeType: 'video/webm' });
             video.style.border = '10px solid red';
@@ -112,6 +118,11 @@
                 // create local object URL from the recorded video blobs
                 let video_local = URL.createObjectURL(new Blob(blobs_recorded, { type: 'video/webm' }));
                 download_link.href = video_local;
+                // remove stop button and add start button and download button and next button
+                stop_button.style.display = 'none';
+                start_button.style.display = 'block';
+                download_link.style.display = 'block';
+                next_button.style.display = 'block';
             });
 
             // start recording with each recorded blob having 1 second video
