@@ -133,3 +133,7 @@ This week my features were the Record a video as well as finishing up the testin
 
 This week my features to work on were the Record a video page functionality. This is associated with the Create Video Function on the project board. I was able to sucessfully use javascript to stream a video in the webpage and record that video to then save it to your local computer. I also then updated some css and html for that page, as well as design, with Ethan, the next few pages to connect to the blurring face options. I manually tested my code, trying out different senarios to see what would happen. This coming week I will be writing automated testing for that page. I also helped Raymond with the selenium testing of his settings page.
 Please see a few screen shots below of what I was able to complete for the record video page.
+
+![RecordingPageStart](./images/Ralston_stuff/T2_week6/start_view.png)
+![RecordingPageRecord](./images/Ralston_stuff/T2_week6/recording_view.png)
+![RecordingPageEnd](./images/Ralston_stuff/T2_week6/end_view.png)
