@@ -36,9 +36,9 @@
                         </button>
                     </li>
                     <div class="dropdown-content">
-                        <li class="nav-item nav-link"><a class="nav-link active" href=" {% url 'stream:video-list' %} " id="Video Button">Videos</a></li>
-                        <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:video-create' %}" id="New Video Button">New Video</a>
-                        <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:request-video' %}" id="Video Request Button">Video Request</a>
+                      <li class="nav-item nav-link"><a class="nav-link active" href=" {% url 'stream:video-list' %} " id="Video Button">View Videos</a></li>
+                      <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:video-create' %}" id="New Video Button">Send Video</a>
+                      <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:request-video' %}" id="Video Request Button">Request Video</a>
                     </div>
                   </div>
                   <li class="nav-item nav-link"><a class="nav-link active" href=" {% url 'stream:contact' %} " id="Add Contacts Button">Add Contacts</a></li>
@@ -54,7 +54,7 @@
                     </li>
                     <div class="dropdown-content">
                         <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:profile' %}" id="Profile Button">Profile</a>
-                        <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:setting' %}" id="Setting Button">Setting</a>
+                        <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:setting' %}" id="Setting Button">Settings</a>
                         {% if user.is_superuser %}
                             <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'admin:index' %}" id="Admin Button">Admin</a>
                         {% endif %}
@@ -84,6 +84,7 @@
     <div class="container">
         <div class="row d-flex justify-content-center align-items-center h-100">
           <div class="col-lg-15" style="padding-top: 50px">
+            {% if user.userinfo.permission == 2 or user.is_superuser%}
             <h1>SEND A VIDEO REQUEST</h1>
             <div class="card mb-3" style="width: 75%; box-shadow: 12em; margin: auto;">
             <form method="POST" enctype="multipart/form-data">
@@ -118,6 +119,14 @@
               </div>
             </form>
             </div>
+              {% else %}
+                <div class="redirect">
+                  <h2>Oops! It seems you’ve reached a page where access is restricted. <br>
+                    No worries, just click the button below to return to the home page. Thank you!</h2>
+                  <a href="{% url 'stream:home' %}" >
+                    <button class="btn btn-primary btn-lg btn-default" type="button" >Back to home page</button>
+                </div>
+              {% endif %}
           </div>
         </div>
       </div>
