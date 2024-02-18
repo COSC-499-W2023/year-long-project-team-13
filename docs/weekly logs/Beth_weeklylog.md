@@ -127,3 +127,9 @@ For this week, we focused on the peer testing preparation and redefining task pr
 ![Week5Tasks](./images/tasks/Ralston_term2_w5_tasks.png)
 
 This week my features were the Record a video as well as finishing up the testing for the permissions for users. These are associated with the Create Video function and Update Permissions on Pages tasks on the project board. I was able to sucessfully complete all of the testing for the permissions and once that was reviewed it was merged in. I tried several ways to connect the record python function to the html button. None were sucessful. I tried running the python file using a onclick javascript function. I tried linking the python file in pyscript as well as running the python code in pyscript. I then tried connecting the python file through views and urls in django. Finally, I tried remaking the file in javascript and connecting it from there. That was what I had the most sucess with as I was able to at least get a video to appear on the screen but it does not record and save the video. I am hoping I will have more sucess next week. I may also ask peers to see how they approached this.
+
+### Week 6 Feb 12 - 18
+![Week6Tasks](./images/tasks/Ralston_term2_w6_tasks.png)
+
+This week my features to work on were the Record a video page functionality. This is associated with the Create Video Function on the project board. I was able to sucessfully use javascript to stream a video in the webpage and record that video to then save it to your local computer. I also then updated some css and html for that page, as well as design, with Ethan, the next few pages to connect to the blurring face options. I manually tested my code, trying out different senarios to see what would happen. This coming week I will be writing automated testing for that page. I also helped Raymond with the selenium testing of his settings page.
+Please see a few screen shots below of what I was able to complete for the record video page.
