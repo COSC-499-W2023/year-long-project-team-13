@@ -47,7 +47,7 @@ def login(driver, username, password):
 
 
 # logout function
-def logout(driver):
+def logout(driver, location):
 
     # Find the element with the id "Topbar" and hover over it
     topbar_element = driver.find_element(By.ID, "User Hover")
@@ -62,9 +62,11 @@ def logout(driver):
     hover.perform()
     wait.until(EC.element_to_be_clickable((By.ID, "Logout Button")))
     ActionChains(driver).click(logout_element).perform()
+    wait.until(EC.url_contains(location))
 
     # Confirm logout
     logout_confirm_element = driver.find_element(By.ID, "logout")
+    wait.until(EC.presence_of_element_located((By.ID, "logout")))
     logout_confirm_element.click()
 
     # Wait for the URL to change to the logout page URL
@@ -77,7 +79,8 @@ def logout(driver):
         print("`Logout` failed")
 
     # click login again button
-    login_again_element = driver.find_element(By.ID, "btn")
+    login_again_element = driver.find_element(By.ID, "login again")
+    wait.until(EC.presence_of_element_located((By.ID, "login again")))
     login_again_element.click()
 
     # Wait for the URL to change to the logout page URL
@@ -105,6 +108,8 @@ def hoverTest(buttonID, location, message):
     hover.perform()
     wait.until(EC.element_to_be_clickable((By.ID, buttonID)))
     ActionChains(driver).click(notification_button_element).perform()
+
+    wait.until(EC.url_contains(location))
 
     # Check if the URL contains the expected notification page URL
     if location in driver.current_url:
@@ -167,14 +172,14 @@ def remove_friend_request_test(driver, username, password):
     else:
         print("TEST 1: `Remove Friend Request` successful")
 
-    logout(driver)
+    logout(driver, '/notifications#')
 
 
 # Reject friend request test function for receiver
 def reject_friend_request_test(driver, usernameAdmin, passwordAdmin, usernamePaitent, passwordPaitent):
 
     add_contact_page_search_and_friend_request_test(driver, usernameAdmin, passwordAdmin)
-    logout(driver)
+    logout(driver, '/notifications#')
     login(driver, usernamePaitent, passwordPaitent)
 
     hoverTest("Notification Button", '/notifications', "`Notifications`")
@@ -194,13 +199,13 @@ def reject_friend_request_test(driver, usernameAdmin, passwordAdmin, usernamePai
     else:
         print("TEST 2: `Reject Friend Request` successful")
 
-    logout(driver)
+    logout(driver, '/notifications#')
 
 # Accept friend request test function for receiver
 def accept_friend_request_test(driver, usernameAdmin, passwordAdmin, usernamePaitent, passwordPaitent):
 
     add_contact_page_search_and_friend_request_test(driver, usernameAdmin, passwordAdmin)
-    logout(driver)
+    logout(driver, '/notifications#')
     login(driver, usernamePaitent, passwordPaitent)
 
     hoverTest("Notification Button", '/notifications', "`Notifications`")
@@ -220,7 +225,7 @@ def accept_friend_request_test(driver, usernameAdmin, passwordAdmin, usernamePai
     else:
         print("TEST 3: `Accept Friend Request` successful")
 
-    logout(driver)
+    logout(driver, '/notifications#')
 
 
 # Create a ChromeOptions object with the log level set to 3
