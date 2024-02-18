@@ -284,3 +284,20 @@
   - [S3 cloudfront branch](https://github.com/COSC-499-W2023/year-long-project-team-13/tree/s3_cloudfront)
   - [Blur Face](https://github.com/COSC-499-W2023/year-long-project-team-13/tree/rekognition)
 
+# Preferred name -> Ssc name -> Github name
+
+- Ethan -> Ethan Hsu -> YuchenHsu
+
+## Week 6 2024/02/12 ~ 2024/02/18
+
+- Type of tasks you worked on (screenshot from Peer Eval question)
+
+![Tasks](./images/tasks/ethan_term2_week6.png)
+
+- This week, I worked on making the rekognition and face blurring work on videos, here's the guide I followed and failed to to make them work so far.
+  - [rekognition with lambda](https://awstip.com/aws-rekognition-using-lambda-with-sqs-and-sns-part-1-ca66c37dad7e)
+  - [SQS and SNS setup for lambda function](https://awstip.com/aws-rekognition-using-lambda-with-sqs-and-sns-part-2-b2eeca1a9c3d)
+- I also worked on the record video page with Beth and designed the pages following the recording of the video.
+  - ![Record Video Page](./images/Ethan_stuff/t2w6/record_video.png)
+  - ![Details Page](./images/Ethan_stuff/t2w6/detail_page.png)
+  - ![Review Page](./images/Ethan_stuff/t2w6/review_page.png)
