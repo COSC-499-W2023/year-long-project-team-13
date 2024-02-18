@@ -19,13 +19,13 @@ TEST 11: `logout` successful
 TEST 3: `home page` successful
 Home page test completed
 Login Page test Start
-TEST: 0 `Login` successful
+TEST 0: `Login` failed Did not go home
 Login Page test Completed
 Logout test Start
 Login successful
 TEST: 0 `User hover` successful
 TEST: 1 `User hover` successful
-TEST 2: `Logout` successful
+TEST: 2 `Logout` successful
 Logout test Completed
 Admin Page test Start
 Login successful
@@ -34,11 +34,46 @@ TEST: 1 `Admin` successful
 Admin Page test Completed
 Contact Video Page Test Start
 Login successful
-fully logged in
-TEST: 0 `Videos hover` successful
-TEST: 1 `Video page` successful
-TEST 2: `Add contact` successful
+`User hover` successful
+`Add Contact page found` successful
 TEST: `Add contact search` successful
+TEST: `Friend Request sent` successful
+`User hover` successful
+`Notifications` successful
+TEST 1: `Remove Friend Request` successful
+`User hover` successful
+`Logout` successful
+`Login again page` successful
+Login successful
+`User hover` successful
+`Add Contact page found` successful
+TEST: `Add contact search` successful
+TEST: `Friend Request sent` successful
+`User hover` successful
+`Logout` successful
+`Login again page` successful
+Login successful
+`User hover` successful
+`Notifications` successful
+TEST 2: `Reject Friend Request` successful
+`User hover` successful
+`Logout` successful
+`Login again page` successful
+Login successful
+`User hover` successful
+`Add Contact page found` successful
+TEST: `Add contact search` successful
+TEST: `Friend Request sent` successful
+`User hover` successful
+`Logout` successful
+`Login again page` successful
+Login successful
+`User hover` successful
+`Notifications` successful
+TEST 3: `Accept Friend Request` successful
+`User hover` successful
+`Logout` successful
+`Login again page` successful
 Contact Video Page Test Completed
 Create Video Test Start
 Login Successful
@@ -47,25 +82,21 @@ TEST: 1 `Create Video` Successful
 Create Video Test Completed
 Notification Page test Start
 Login successful
-TEST 0: `Notifications` successful
+TEST: 0 `User hover` successful
+TEST 1: `Notifications` successful
 Notification Page test completed
 Setting Page test Start
 Login successful
 TEST: 0 `User hover` successful
-TEST: 1 `Setting` successful
+TEST: 1 Change Password redirect successful
+TEST: 2 `User hover` successful
+TEST: 3 `Setting` successful
 Setting Page test Completed
 Request Page test Start
 Login Successful
 TEST: 0 `Videos hover` successful
 TEST: 1 `Request Video` Successful
 Request Page test Completed
-Login successful
-TEST: 0 `User hover` successful
-TEST: 1 `Profile page found` successful
-TEST: 2 `First Name input` successful
-TEST: 3 `Last Name input` successful
-TEST: 4 `Email input` successful
-TEST: 5 `Birthdate input` successful
 Register Page test Start
 TEST: 0 `Registration` successful
 Register Page test end for permission 1
