@@ -264,7 +264,7 @@ Add Contact Function, Add contact UI
  ![Tasks](./images/tasks/Week4Term2PeerEval.png)
  
   - Applicable date range
-##  Week 4 Term 2 01/29/24~02/04/24
+##  Week 5 Term 2 02/05/24~02/11/24
 
  # Preferred name -> Ssc name -> Github name
 
@@ -278,6 +278,20 @@ Add Contact Function, Add contact UI
  ![Tasks](./images/tasks/Week5Term2Hermanview_video.png)
   ![Tasks](./images/tasks/Week5Term2HermanPeerEval.png)
 
+
+- Applicable date range
+##  Week 6 Term 2 02/12/24~02/18/24
+
+ # Preferred name -> Ssc name -> Github name
+
+- Herman -> Herman Sood -> Herman Sood
+
+- Recap on your week's goals-Which features were yours in the project plan for this milestone? For term 2 week 6 I unfortunately ran into some issues with my laptop and was unable to get anything done. I did attend the meeting however and am on base with the team for what we are planning to do for the peer testing 2 coming up in a few weeks. I hope to get some more stuff done over the break which is my goal with a balance of all my other courses. 
+  - Which tasks from the project board are associated with these features? View video function
+  - Among these tasks, which have you completed/in progress in the last week? View video in progress right now. 
+
+
+![Tasks](./images/tasks/Week6Term2HermanPeerEval.png)
 
  
 
