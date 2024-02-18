@@ -452,3 +452,34 @@ In progress Tasks
 Test Report
 
 - Test report file is in the same directory [here](./report.txt)
+
+## Preferred name -> Ssc name -> Github name
+
+- Ethan -> Ethan Hsu -> YuchenHsu
+- Beth -> Beth Ralston -> mblackbeak (mblackbeak)
+- Herman -> Herman Sood -> herman-23
+- Raymond -> Sitt Paing -> SittHmuePaing
+- Adrian -> Adrian Fong -> AdrianFWM
+
+## Term 2 Week 6 2024/02/12 ~ 2024/02/18
+
+- Which features were in the project plan for this milestone?
+  - Finished the record video function and UI.
+  - Finished the selenium and pytest for contact and friend request functions and UI.
+  - AWS rekognition for videos still work in progress.
+  - AWS rekognition for images is working.
+  - AWS lambda to use rekognition automatically on images and videos still work in progress.
+
+Burnup chart
+![Burnup](./images/burnup/term2_week6_burnup.png)
+Network Graph
+![Network](./images/network/term2_week6_network_1.png)
+![Network](./images/network/term2_week6_network_2.png)
+Completed Tasks
+![Completed](./images/completed/term2_week6_done_1.png)
+![Completed](./images/completed/term2_week6_done_2.png)
+In progress Tasks
+![In Progress](./images/in-prog/term2_week6_inprogress.png)
+Test Report
+
+- Test report file is in the same directory [here](./report.txt)
