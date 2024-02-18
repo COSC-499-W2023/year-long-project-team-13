@@ -42,6 +42,6 @@ def detect_faces_and_emotions(image_name: str):
         blurred = image.filter(ImageFilter.GaussianBlur(radius=50))
 
         comp = Image.composite(blurred, image, mask)
-        comp.save(image_name.split('.')[0] + '_blurred.jpg')
+        comp.save(image_name.split('.')[0] + '_blurred_1.jpg')
 
-detect_faces_and_emotions('girl_-_45132 (1080p).mp4')
+detect_faces_and_emotions('IMG_9958.jpg')

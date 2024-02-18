@@ -13,7 +13,6 @@ def analyze_video(video_s3_bucket, video_s3_key):
                     'Name': video_s3_key
                 }
             },
-            MinConfidence=50,  # Adjust confidence threshold as needed
         )
 
         job_id = response['JobId']
