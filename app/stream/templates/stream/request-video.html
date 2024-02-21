@@ -90,13 +90,6 @@
                 <form method="POST" enctype="multipart/form-data">
                   {% csrf_token %}
                   <div style = "padding-top: 25px;">
-                    {% comment %} <select name="contacts" id="contacts" class="dropdown2 buttonRound">
-                      <option value="Choose">Choose a Contact</option>
-                      <option value="Ethan">Ethan</option>
-                      <option value="Adrian">Adrian</option>
-                      <option value="Herman">Herman</option>
-                      <option value="Raymond">Raymond</option>
-                    </select> {% endcomment %}
                     <div class="justified">
                       <div class="col-lg-13">
                         <label class="receiver">Receiver:</label>
@@ -121,10 +114,6 @@
                           </div>
                             <div class="col-lg-3" id="message">
                             {{ requestvideoform.due_date }}
-                            {% comment %} </div> {% endcomment %}
-                            {% comment %} <div class="col-lg-3" id="dueDate"> {% endcomment %}
-                            {% comment %} <input type="date" id="dueDate" name="dueDate" class="input buttonRound"> {% endcomment %}
-
                           </div>
                         </div>
                       </div>
