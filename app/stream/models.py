@@ -8,7 +8,6 @@ from datetime import date
 from django.urls import reverse
 # Create your models here.
 
-# CASCADE
 # Video Request Table
 class VidRequest(models.Model):
     # id = models.TextField((""), primary_key=True)
