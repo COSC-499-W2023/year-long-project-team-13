@@ -12,7 +12,7 @@
     <link rel="stylesheet" href= "{%static 'assets/bootstrap/css/bootstrap.min.css' %}">
     <title>Vnonymous</title>
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
-    <link href="{% static 'css/styleRequest.css' %}" rel="stylesheet">
+    <link href="{% static 'css/styleVideoRequest.css' %}" rel="stylesheet">
     <link href="{% static 'css/logoutUI.css' %}" rel="stylesheet">
     <link href="{% static 'css/styleProfile.css' %}" rel="stylesheet">
     <link href="{% static 'css/styleVideo.css' %}" rel="stylesheet">
@@ -84,50 +84,67 @@
     <div class="container">
         <div class="row d-flex justify-content-center align-items-center h-100">
           <div class="col-lg-15" style="padding-top: 50px">
-            {% if user.userinfo.permission == 1 or user.is_superuser %}
-            <h1>SEND A VIDEO REQUEST</h1>
-            <div class="card mb-3" style="width: 75%; box-shadow: 12em; margin: auto;">
-            <form method="POST" enctype="multipart/form-data">
-              {% csrf_token %}
-              <div style = "padding-top: 25px;">
-              {% comment %} <select name="contacts" id="contacts" class="dropdown2 buttonRound">
-                <option value="Choose">Choose a Contact</option>
-                <option value="Ethan">Ethan</option>
-                <option value="Adrian">Adrian</option>
-                <option value="Herman">Herman</option>
-                <option value="Raymond">Raymond</option>
-              </select> {% endcomment %}
-                {{ requestvideoform.receiver }}
-              <div style = "padding-top: 5px;">
-              <br>
-              <div class="justified">
-              <div class="col-lg-13">
-                <h6>Enter a Message:</h6>
-                </div>
-                <div class="col-lg-3" id="message">
-                    {{ requestvideoform.description }}
-                </div>
+            {% if user.userinfo.permission == 2 or user.is_superuser %}
+              <h1>SEND A VIDEO REQUEST</h1>
+              <div class="card mb-3" style="width: 75%; box-shadow: 12em; margin: auto;">
+                <form method="POST" enctype="multipart/form-data">
+                  {% csrf_token %}
+                  <div style = "padding-top: 25px;">
+                    {% comment %} <select name="contacts" id="contacts" class="dropdown2 buttonRound">
+                      <option value="Choose">Choose a Contact</option>
+                      <option value="Ethan">Ethan</option>
+                      <option value="Adrian">Adrian</option>
+                      <option value="Herman">Herman</option>
+                      <option value="Raymond">Raymond</option>
+                    </select> {% endcomment %}
+                    <div class="justified">
+                      <div class="col-lg-13">
+                        <label class="receiver">Receiver:</label>
+                      </div>
+                      <div class="col-lg-3" id="message">
+                        {{ requestvideoform.receiver }}
+                      </div>
+                    </div>
+                    <div style = "padding-top: 15px;">
+                      <div class="justified">
+                        <div class="col-lg-13">
+                          <label class="description">Enter a Message:</label>
+                        </div>
+                        <div class="col-lg-3" id="message">
+                            {{ requestvideoform.description }}
+                        </div>
+                      </div>
+                      <div style = "padding-top: 15px;">
+                        <div class="justified">
+                          <div class="col-lg-15">
+                            <label class="due_date">DUE DATE:</label>
+                          </div>
+                            <div class="col-lg-3" id="message">
+                            {{ requestvideoform.due_date }}
+                            {% comment %} </div> {% endcomment %}
+                            {% comment %} <div class="col-lg-3" id="dueDate"> {% endcomment %}
+                            {% comment %} <input type="date" id="dueDate" name="dueDate" class="input buttonRound"> {% endcomment %}
+
+                          </div>
+                        </div>
+                      </div>
+                      <div style = "padding-top: 15px;">
+                        <a href="{% url 'stream:home' %}" >
+                          <button class="button2 buttonRound" :hover type="button2" id="send">SEND</button>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </form>
               </div>
-              <div style = "padding-top: 15px;">
-                <div class="col-lg-11">
-              <label for="duedate" class="label">DUE DATE:</label>
-              <input type="date" id="dueDate" name="dueDate" class="input buttonRound">
-              </div>
-              <div style = "padding-top: 15px;">
+            {% else %}
+              <div class="redirect">
+                <h2>Oops! It seems you’ve reached a page where access is restricted. <br>
+                  No worries, just click the button below to return to the home page. Thank you!</h2>
                 <a href="{% url 'stream:home' %}" >
-                  <button class="button2 buttonRound" :hover type="button2" id="send">SEND</button>
-                </a>
+                  <button class="btn btn-primary btn-lg btn-default" type="button" >Back to home page</button>
               </div>
-            </form>
-            </div>
-              {% else %}
-                <div class="redirect">
-                  <h2>Oops! It seems you’ve reached a page where access is restricted. <br>
-                    No worries, just click the button below to return to the home page. Thank you!</h2>
-                  <a href="{% url 'stream:home' %}" >
-                    <button class="btn btn-primary btn-lg btn-default" type="button" >Back to home page</button>
-                </div>
-              {% endif %}
+            {% endif %}
           </div>
         </div>
       </div>

@@ -64,7 +64,13 @@ def request_video(request):
     if request.method == "POST":
         requestvideoform = VidRequestForm(request.user, request.POST)
         if requestvideoform.is_valid():
-            requestvideoform.save()
+            request_video = requestvideoform.save(commit=False)
+            request_video.sender = request.user
+            request_video.save()
+            # link recent created video request from VidRequest table to Notification table
+            recentVideoRequest = VidRequest.objects.filter(sender=request.user).first()
+            Notification.objects.create(user=request.user, message=f'You have sent a video request to '+ str(requestvideoform.cleaned_data['receiver']) +'.', type=3, videoRequest_id=recentVideoRequest)
+            Notification.objects.create(user=requestvideoform.cleaned_data['receiver'], message=f'You have received a video request from '+ str(request.user) +'.', type=4,videoRequest_id=recentVideoRequest)
             return redirect('stream:notifications')
     else:
         requestvideoform = VidRequestForm(request.user)

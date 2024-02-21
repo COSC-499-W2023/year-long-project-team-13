@@ -19,12 +19,16 @@ class VidUploadForm(forms.ModelForm):
 
 class VidRequestForm(forms.ModelForm):
     receiver = forms.ModelChoiceField(
-        queryset=User.objects.none()
+        queryset=User.objects.none(),
+        widget=forms.Select(attrs={'style': 'width: 207px; border: 2px groove lightgreen;',
+                                    'required': True})
     )
-    description = forms.CharField(widget=forms.Textarea(attrs={"rows":5, "cols":20, 'style': 'boarder: 2px groove lightgreen;','required': True}))
-    due_date = forms.DateField(widget=forms.TextInput(attrs={'placeholder' :'Select a due date',
-                                                              'style': '',
-                                                              'class': 'form-control', 'type': 'date','required': True}))
+    description = forms.CharField(widget=forms.Textarea(attrs={"rows":5, "cols":23,
+                                                               'style': 'border: 2px groove lightgreen;',
+                                                               'required': True}))
+    due_date = forms.DateTimeField(widget=forms.TextInput(attrs={'placeholder' :'Select a due date',
+                                                              'style': 'width: 210px; margin-left: auto; margin-right: auto; border: 2px groove lightgreen;',
+                                                              'class': 'form-control', 'type': 'datetime-local','required': True}))
 
     def __init__(self, user, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -139,10 +143,6 @@ class ValidatingPasswordChangeForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         self.user = user
 
-    # def __init__(self, *args, **kwargs):
-    #     self.user = kwargs.pop('user', None)
-    #     super(ValidatingPasswordChangeForm, self).__init__(*args, **kwargs)
-
     def clean_password(self):
         password = self.cleaned_data.get('password')
         username = self.instance.username
@@ -159,7 +159,6 @@ class ValidatingPasswordChangeForm(forms.ModelForm):
             raise forms.ValidationError("The new password must contain at least one letter and at least one digit or" \
                                         " punctuation character.")
 
-        # ... any other validation you want ...
         # Check Password not similar to username and email information
         username_similarity = difflib.SequenceMatcher(None, password.lower(), username.lower()).ratio()
         email_similarity = difflib.SequenceMatcher(None, password.lower(), email.lower()).ratio()
@@ -183,8 +182,3 @@ class ValidatingPasswordChangeForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ['password']
-
-     #Validation for repeated characters in password. Cannot have 4 of the same characters in a row.
-        # if re.search(r'(.{2,}).*\1', password):
-        #     raise forms.ValidationError("The new password cannot have 4 of the same characters in a row.")
-        # raise forms.ValidationError(email)
