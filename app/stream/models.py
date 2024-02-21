@@ -14,8 +14,8 @@ class VidRequest(models.Model):
     # id = models.TextField((""), primary_key=True)
     id = models.AutoField(primary_key=True)
     # request_id = models.AutoField(primary_key=True)
-    sender = models.ForeignKey(User, related_name="user_sender", on_delete=models.CASCADE)
-    receiver = models.ForeignKey(User, related_name="user_receiver", on_delete=models.CASCADE)
+    sender = models.ForeignKey(User, related_name="video_sender", on_delete=models.CASCADE)
+    receiver = models.ForeignKey(User, related_name="video_receiver", on_delete=models.CASCADE)
     description = models.TextField(max_length=600)
     due_date = models.DateTimeField(default=timezone.now)
 

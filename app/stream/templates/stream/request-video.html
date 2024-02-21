@@ -137,9 +137,6 @@
     <!-- This js makes the header change to black colour when scrolling -->
     <script src=" {% static 'assets/js/grayscale.js' %} "></script>
 
-    <!-- This js ask user before logout  -->
-    <script src=" {% static 'assets/js/logout.js'%} "></script>
-
     <!-- Logout popup UI -->
     <script src=" {% static 'assets/js/logoutUI.js'%} "></script>
     <script>
@@ -147,7 +144,8 @@
             location.href = "{% url 'stream:logout' %}";
         };
         document.getElementById("cancel").onclick = function () {
-            location.href = "{% url 'stream:request-video' %}";
+            // location.href = "{% url 'stream:request-video' %}";
+            overlay();
         };
     </script>
 
