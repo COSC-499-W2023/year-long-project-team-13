@@ -12,7 +12,6 @@ from stream.forms import UserInfoUpdateForm
 
 from . models import VidRequest, VidStream, Contact, FriendRequest, Post, Profile, UserInfo, Notification, Setting
 from . forms import VidUploadForm, VidRequestForm, UserRegistrationForm, UserUpdateForm, UserInfoUpdateForm, UserProfileUpdateForm, UserProfileUpdateForm,  ValidatingPasswordChangeForm, AddContactForm, UserPermissionForm
-# SetPasswordFormWithConfirm, SetPasswordForm,
 
 class VideoDetailView(DetailView):
     template_name = "stream/video-detail.html"
@@ -59,7 +58,7 @@ def friendRequest(request):
         'users': users,
     }
     return render(request, 'stream/contact.html', context)
-# & ~Q(user_permissions = request.user.userinfo.permission) & ~Q(user_permissions = 3)
+
 
 def request_video(request):
     if request.method == "POST":

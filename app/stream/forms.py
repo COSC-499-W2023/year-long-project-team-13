@@ -118,38 +118,6 @@ class SettingForm(forms.ModelForm):
         model = Setting
         fields = ['darkmode', 'emailnotification']
 
-# class SetPasswordForm(forms.ModelForm):
-#     password = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder' :'Password',
-#                                                                   'style': 'width: 400px; height: 45px; margin-left: auto; margin-right: auto; margin-bottom: 25px; border: 2px groove lightgreen;',
-#                                                                   'class': 'form-control', 'required': True}))
-
-#     class Meta:
-#         model = User
-#         fields = ['password']
-
-
-# class SetPasswordForm(forms.ModelForm):
-#     password = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder' :'Password',
-#                                                                   'style': 'width: 400px; height: 45px; margin-left: auto; margin-right: auto; margin-bottom: 25px; border: 2px groove lightgreen;',
-#                                                                   'class': 'form-control', 'required': True}))
-#     password2 = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder' :'Confirm Password',
-#                                                                   'style': 'width: 400px; height: 45px; margin-left: auto; margin-right: auto; margin-bottom: 27px; border: 2px groove lightgreen;',
-#                                                                   'class': 'form-control', 'required': True}))
-
-#     class Meta:
-#         model = User
-#         fields = ['password']
-
-# class SetPasswordFormWithConfirm(SetPasswordForm):
-#     new_password2 = forms.CharField(
-#         widget=forms.PasswordInput(attrs={
-#             'placeholder': 'Confirm Password',
-#             'style': 'width: 400px; height: 45px; margin-left: auto; margin-right: auto; margin-bottom: 25px; border: 2px groove lightgreen;',
-#             'class': 'form-control',
-#             'required': True,
-#         }),
-#     )
-
 # Change Password
 class ValidatingPasswordChangeForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder' :'Password',
