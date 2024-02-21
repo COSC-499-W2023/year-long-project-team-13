@@ -18,11 +18,18 @@ class VidUploadForm(forms.ModelForm):
         fields = ["title","description", "video"]
 
 class VidRequestForm(forms.ModelForm):
-    # reciever =
+    receiver = forms.ModelChoiceField(
+        queryset=User.objects.none()
+    )
     description = forms.CharField(widget=forms.Textarea(attrs={"rows":5, "cols":20, 'style': 'boarder: 2px groove lightgreen;','required': True}))
     due_date = forms.DateField(widget=forms.TextInput(attrs={'placeholder' :'Select a due date',
                                                               'style': '',
                                                               'class': 'form-control', 'type': 'date','required': True}))
+
+    def __init__(self, user, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['receiver'].queryset = User.objects.exclude(username=user.username)
+        self.fields['receiver'].queryset = self.fields['receiver'].queryset.exclude(contact_receiver__sender__username=user.username).exclude(contact_sender__receiver__username=user.username).exclude(requests_receiver__sender__username=user.username).exclude(requests_sender__receiver__username=user.username)
 
     class Meta:
         model = VidRequest

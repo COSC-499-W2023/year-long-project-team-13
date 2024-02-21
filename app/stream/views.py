@@ -37,24 +37,24 @@ def home(request):
 
 def friendRequest(request):
     if request.method == "POST":
-        form = AddContactForm(request.user, request.POST)
-        if form.is_valid():
-            add_contact = form.save(commit=False)
+        addcontactform = AddContactForm(request.user, request.POST)
+        if addcontactform.is_valid():
+            add_contact = addcontactform.save(commit=False)
             add_contact.sender = request.user
             add_contact.save()
             # link recent created friendRequest from friend request table to Notification table
             recentFriendRequest = FriendRequest.objects.filter(sender=request.user).first()
-            Notification.objects.create(user=request.user, message=f'You have sent a friend request to '+ str(form.cleaned_data['receiver']) +'.', type=1, friendRequest_id=recentFriendRequest)
-            Notification.objects.create(user=form.cleaned_data['receiver'], message=f'You have received a friend request from '+ str(request.user) +'.', type=2,friendRequest_id=recentFriendRequest)
+            Notification.objects.create(user=request.user, message=f'You have sent a friend request to '+ str(addcontactform.cleaned_data['receiver']) +'.', type=1, friendRequest_id=recentFriendRequest)
+            Notification.objects.create(user=addcontactform.cleaned_data['receiver'], message=f'You have received a friend request from '+ str(request.user) +'.', type=2,friendRequest_id=recentFriendRequest)
             return redirect("stream:notifications")
     else:
-        form = AddContactForm(request.user)
+        addcontactform = AddContactForm(request.user)
         search_query = request.GET.get('search', '')
         # Existing users show in alphabetical order
         users = User.objects.filter(Q(username__icontains=search_query) & ~Q(id=request.user.id) & ~Q(requests_sender__receiver=request.user, requests_sender__status=1) & ~Q(requests_receiver__sender=request.user) & ~Q(contact_sender__receiver=request.user) & ~Q(contact_receiver__sender=request.user) & ~Q(userinfo__permission=request.user.userinfo.permission) & ~Q(userinfo__permission=3)).order_by('username')
 
     context = {
-        'form': form,
+        'addcontactform': addcontactform,
         'users': users,
     }
     return render(request, 'stream/contact.html', context)
@@ -62,13 +62,17 @@ def friendRequest(request):
 
 def request_video(request):
     if request.method == "POST":
-        form = VidRequestForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('stream:home')
+        requestvideoform = VidRequestForm(request.user, request.POST)
+        if requestvideoform.is_valid():
+            requestvideoform.save()
+            return redirect('stream:notifications')
     else:
-        form = VidRequestForm()
-        return render(request, 'stream/request-video.html', {'form':form})
+        requestvideoform = VidRequestForm(request.user)
+
+    context = {
+        'requestvideoform': requestvideoform
+    }
+    return render(request, 'stream/request-video.html', context)
 
 
 class VideoCreateView(LoginRequiredMixin   ,CreateView):
@@ -140,10 +144,10 @@ class UserVideoListView(ListView):
 user_signed_up = Signal()
 def register(request):
     if request.method == "POST":
-        form = UserRegistrationForm(request.POST)
+        registrationform = UserRegistrationForm(request.POST)
         userpermissionform = UserPermissionForm(request.POST)
-        if form.is_valid() and userpermissionform.is_valid():
-            new_user = form.save()
+        if registrationform.is_valid() and userpermissionform.is_valid():
+            new_user = registrationform.save()
             user_signed_up.send(sender=User, user=new_user)
             Setting.objects.create(user=new_user, darkmode=False, emailnotification=True)
             userinfo = userpermissionform.save(commit=False)
@@ -152,11 +156,11 @@ def register(request):
             userinfo.save()
             return redirect('stream:login')
     else:
-        form = UserRegistrationForm()
+        registrationform = UserRegistrationForm()
         userpermissionform = UserPermissionForm()
 
     context = {
-        'form': form,
+        'registrationform': registrationform,
         'userpermissionform': userpermissionform,
     }
     return render(request, 'stream/register.html', context)

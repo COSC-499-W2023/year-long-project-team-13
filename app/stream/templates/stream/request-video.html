@@ -84,7 +84,7 @@
     <div class="container">
         <div class="row d-flex justify-content-center align-items-center h-100">
           <div class="col-lg-15" style="padding-top: 50px">
-            {% if user.userinfo.permission == 2 or user.is_superuser%}
+            {% if user.userinfo.permission == 1 or user.is_superuser %}
             <h1>SEND A VIDEO REQUEST</h1>
             <div class="card mb-3" style="width: 75%; box-shadow: 12em; margin: auto;">
             <form method="POST" enctype="multipart/form-data">
@@ -104,7 +104,7 @@
                 <h6>Enter a Message:</h6>
                 </div>
                 <div class="col-lg-3" id="message">
-                    {{ form.description }}
+                    {{ requestvideoform.description }}
                 </div>
               </div>
               <div style = "padding-top: 15px;">
