@@ -63,7 +63,72 @@ def create_video_test(driver):
     else:
         print("TEST 1: `Create Video` Failed")
         
-    # 
+    # Find the element with the id "start-camera" and click it
+    start_camera_element = driver.find_element(By.ID, "start-camera")
+    wait.until(EC.element_to_be_clickable((By.ID, "start-camera")))
+    start_camera_element.click()
+    print("TEST: 2 `Start Camera` Successful")
+    
+    # Find the element with the id "start-record" and click it
+    start_record_element = driver.find_element(By.ID, "start-record")
+    wait.until(EC.element_to_be_clickable((By.ID, "start-record")))
+    start_record_element.click()
+    print("TEST: 3 `Start Record` Successful")
+    
+    # Find the element with the id "stop-record" and click it
+    stop_record_element = driver.find_element(By.ID, "stop-record")
+    wait.until(EC.element_to_be_clickable((By.ID, "stop-record")))
+    stop_record_element.click()
+    print("TEST: 4 `Stop Record` Successful")
+    
+    # Find the element with the id "next" and click it
+    next_element = driver.find_element(By.ID, "next")
+    wait.until(EC.element_to_be_clickable((By.ID, "next")))
+    next_element.click()
+    print("TEST: 5 `Next` Successful")
+    
+    # Find the element with the id "preview" and click it
+    preview_element = driver.find_element(By.ID, "preview")
+    wait.until(EC.element_to_be_clickable((By.ID, "preview")))
+    preview_element.click()
+    print("TEST: 6 `Preview` Successful")
+    
+    # Find the element with the id "back-details" and click it
+    back_details_element = driver.find_element(By.ID, "back-details")
+    wait.until(EC.element_to_be_clickable((By.ID, "back-details")))
+    back_details_element.click()
+    print("TEST: 7 `Back Details` Successful")
+    
+    # Find the element with the id "back-record" and click it
+    back_record_element = driver.find_element(By.ID, "back-record")
+    wait.until(EC.element_to_be_clickable((By.ID, "back-record")))
+    back_record_element.click()
+    print("TEST: 8 `Back Record` Successful")
+    
+    # Find the element with the id "start-record" and click it
+    start_record_element = driver.find_element(By.ID, "start-record")
+    wait.until(EC.element_to_be_clickable((By.ID, "start-record")))
+    start_record_element.click()
+    print("TEST: 9 `Start Record 2` Successful")
+    
+    # Find the element with the id "stop-record" and click it
+    stop_record_element = driver.find_element(By.ID, "stop-record")
+    wait.until(EC.element_to_be_clickable((By.ID, "stop-record")))
+    stop_record_element.click()
+    print("TEST: 10 `Stop Record 2` Successful")
+    
+    # Find the element with the id "download-video" and click it
+    download_video_element = driver.find_element(By.ID, "download-video")
+    wait.until(EC.element_to_be_clickable((By.ID, "download-video")))
+    download_video_element.click()
+    print("TEST: 11 `Download Video` Successful")
+    
+    # Find the element with the id "next" and click it
+    next_element = driver.find_element(By.ID, "next")
+    wait.until(EC.element_to_be_clickable((By.ID, "next")))
+    next_element.click()
+    
+    # Find the element with th
 
 # Create a ChromeOptions object with the log level set to 3
 chrome_options = webdriver.ChromeOptions()
