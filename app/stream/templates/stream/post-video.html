@@ -184,6 +184,12 @@
         let submit_button = document.querySelector('#submit');
         let preview_button = document.querySelector('#preview');
         let submit_success = document.querySelector('.submit-success');
+        let title_input_id = document.querySelector('#title');
+        let title_input = "Title";
+        let description_input_id = document.querySelector('#description');
+        let description_input = "Description";
+        let contact_id = document.querySelector('#contact')
+        let contact_input = "contact"
 
         next_button.addEventListener('click', function() {
             detailsPage.style.display = 'block';
@@ -194,6 +200,7 @@
             preview_button.style.display = 'block';
             back_record.style.display = 'block';
             videobox.style.display = 'none';
+
         });
 
         back_record.addEventListener('click', function() {
@@ -214,6 +221,12 @@
             submit_button.style.display = 'block';
             back_details.style.display = 'block';
             back_record.style.display = 'none';
+            // get title, description, and contact inputed from user
+            title_input = title_input_id.value;
+            description_input = description_input_id.value;
+            contact_input = contact_id.value;
+            // display title, description, and contact username
+            
         });
 
         back_details.addEventListener('click', function() {
