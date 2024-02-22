@@ -29,7 +29,6 @@ urlpatterns = [
     path('',views.home,name="home"),
     path('video',GeneralVideoListView.as_view(), name="video-list"),
     path('contact',views.friendRequest,name="contact"),
-
     path('request-video',views.request_video,name="request-video"),
 
     path('profile',stream_views.profile, name="profile"),
