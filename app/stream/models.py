@@ -7,6 +7,7 @@ from PIL import Image, ImageOps
 from datetime import date
 from django.urls import reverse
 from django.core.files.storage import default_storage as storage
+from s3direct.fields import S3DirectField
 
 # Create your models here.
 
@@ -42,9 +43,9 @@ class VidStream(models.Model):
     description = models.TextField(max_length=600)
     #
     upload_date = models.DateTimeField(default=timezone.now)
-    video = models.FileField(upload_to='')
+    # video = models.FileField(upload_to='')
     # video = models.URLField(max_length=200, default='')
-
+    video = S3DirectField(dest='primary_destination', blank=True)
 
     def __str__(self):
         return f"{self.id}"

@@ -27,7 +27,7 @@ urlpatterns = [
     path('admin/logout/', auth_views.LogoutView.as_view(template_name='stream/logout.html')),
     path('admin/', admin.site.urls, name="admin"),
     # path('', include('django_drive_app.urls')),
-    # path('s3direct/', include('s3direct.urls')),
+    path('s3direct/', include('s3direct.urls')),
 ]
 
 if settings.DEBUG:
