@@ -3,7 +3,7 @@ h6{
     font-weight: bold;
     }
 
-.button {
+.button2 {
     background-color: transparent;
     margin-bottom: 10px;
     padding: 10px;
@@ -21,7 +21,7 @@ h6{
     border-radius: 12px;
 }
 
-.button:hover {
+.button2:hover {
     background-color: #3e8e41;
     }
 
@@ -39,7 +39,7 @@ h6{
     border: 2px solid #3e8e41;
     }
 
-.dropdown{
+.dropdown2{
     border: 2px solid #3e8e41;
     }
 

@@ -5,32 +5,40 @@
     {{ message }}
 </div>
 {% endfor %}
-    <div class="center_journal" style="margin-top: 25px;">
-        {% comment %} <h1>Search </h1> {% endcomment %}
+<div class="center_journal" style="margin-top: 25px;">
+    <h1>Search </h1>
+</div>
+{% if user.is_authenticated %}
+<div id="overlay" class="float-center" style="position:fixed; top:30%;">
+    <div>
+        <p class="text-dark">Are you sure to logout?</p>
+        <button id="logout" class="float-left submit-button" >Logout</button>
+        <button id="cancel" class="float-left submit-button">Cancel</button>
     </div>
-    {% if user.is_authenticated %}
-    <div id="overlay" class="float-center" style="position:fixed; top:30%;">
-        <div>
-            <p class="text-dark">Are you sure to logout?</p>
-            <button id="logout" class="float-left submit-button" >Logout</button>
-            <button id="cancel" class="float-left submit-button">Cancel</button>
+</div>
+{% endif %}
+<div style="padding-top: 150px;">
+    <form method="GET">
+        <div class="input-group">
+            <input type="text" class="form-control" name="search" placeholder="Search for users">
+            <button class="btn btn-dark" id="search button" type="submit">Search</button>
+        </div>
+    </form>
+    <div style="display: flex; flex-direction: column; align-items: center;">
+        <h2>Existing Users</h2>
+        <div style="display: grid; grid-template-columns: max-content max-content; gap: 10px;">
+            {% for user in users %}
+            <div style="display: contents;">
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <input type="hidden" name="receiver" value="{{ user.id }}">
+                    <button class="btn btn-dark" id="add contact button" type="submit">Add Contact</button>
+                </form>
+                <p>{{ user.username }}</p>
+            </div>
+            {% endfor %}
         </div>
     </div>
-    {% endif %}
-    <div style="padding-top: 150px;">
-        <form method="POST" action="{% url 'stream:contact' %}">
-            {% csrf_token %}
-            <div class="input-group">
-                <div class="input-group-prepend">
-                </div>
-                <input type="text" class="form-control" name="contact_name" placeholder="Enter name to add as contact">
-                {% comment %} {{ addcontactform.reciever.error }}
-                {{ addcontactform.reciever }} {% endcomment %}
-                <a href=" {% url 'stream:video-list' %}" class="btn btn-dark" id="search button">Add Contact</a>
-                {% comment %} <button class="btn btn-dark" id="search button" type="submit">Add Contact</button> {% endcomment %}
-                {% comment %} <button type="submit" class="btn btn-dark" id="search button">Add Contact</button> {% endcomment %}
-            </div>
-        </form>
-    </div>
+</div>
 
 {% endblock content %}

@@ -15,7 +15,7 @@ class VidRequest(models.Model):
     id = models.AutoField(primary_key=True)
     # request_id = models.AutoField(primary_key=True)
     sender = models.ForeignKey(User, related_name="user_sender", on_delete=models.CASCADE)
-    reciever = models.ForeignKey(User, related_name="user_reciever", on_delete=models.CASCADE)
+    receiver = models.ForeignKey(User, related_name="user_receiver", on_delete=models.CASCADE)
     description = models.TextField(max_length=600)
     due_date = models.DateTimeField(default=timezone.now)
 
@@ -55,18 +55,17 @@ class VidStream(models.Model):
 class Contact(models.Model):
     id = models.AutoField(primary_key=True)
     sender = models.ForeignKey(User, related_name="contact_sender", on_delete=models.CASCADE)
-    reciever = models.ForeignKey(User, related_name="contact_reciever", on_delete=models.CASCADE)
-    #     status = models.BooleanField(default=False)
+    receiver = models.ForeignKey(User, related_name="contact_receiver", on_delete=models.CASCADE)
 
 
     def __str__(self):
-        return self.id
+        return f"{self.id}"
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
 
 # Pending friend request table
-class FriendRequset(models.Model):
+class FriendRequest(models.Model):
     # create a tuple to manage different options for your request status
     STATUS_CHOICES = (
       (1, 'Pending'),
@@ -75,14 +74,14 @@ class FriendRequset(models.Model):
      )
     id = models.AutoField(primary_key=True)
     sender = models.ForeignKey(User, on_delete=models.CASCADE, related_name="requests_sender")
-    reciever = models.ForeignKey(User, on_delete=models.CASCADE, related_name="requests_receiver")
+    receiver = models.ForeignKey(User, on_delete=models.CASCADE, related_name="requests_receiver")
     sent_on = models.DateTimeField(default=timezone.now)
 
     # store this as an integer, Django handles the verbose choice options
     status = models.IntegerField(choices=STATUS_CHOICES, default=1)
 
     def __str__(self):
-        return self.id
+        return f"{self.id}"
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
@@ -91,7 +90,7 @@ class FriendRequset(models.Model):
 class Post(models.Model):
     id = models.AutoField(primary_key=True)
     sender = models.ForeignKey(User, on_delete=models.CASCADE, related_name='post_sender')
-    reciever = models.ForeignKey(User, on_delete=models.CASCADE, related_name='post_reciever')
+    receiver = models.ForeignKey(User, on_delete=models.CASCADE, related_name='post_receiver')
     title = models.CharField(max_length=300)
     description = models.TextField(max_length=600)
     sendtime = models.DateTimeField(default=timezone.now)
@@ -113,13 +112,6 @@ class Post(models.Model):
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     image = models.ImageField(default="mountain.jpg", upload_to='profile-pics')
-
-
-    # Need to delete 2 code lines after {
-    contacts = models.ManyToManyField('self', blank=True)
-    notifications = models.TextField(default='', blank=True)
-    # }
-
 
     def __str__(self):
         return f"{self.user.username} Profile "
@@ -149,8 +141,14 @@ class Profile(models.Model):
 
 # Update User's Birthdate
 class UserInfo(models.Model):
+    STATUS_CHOICES = (
+      (1, 'Sender'),
+      (2, 'Receiver'),
+      (3, 'Admin'),
+     )
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     birthdate = models.DateField(default=date.today)
+    permission = models.IntegerField(choices=STATUS_CHOICES, default=1)
 
     def __str__(self):
         return f"{self.user.username} PersonalInfo"
@@ -160,20 +158,34 @@ class UserInfo(models.Model):
 
 # Login Notifications table
 class Notification(models.Model):
+    TYPE_CHOICES = (
+      (1, 'Friend Request Send'),
+      (2, 'Accept/Reject Friend Request'),
+      (3, 'Video Request Send'),
+      (4, 'Video Request Receive'),
+      (5, 'Post Upload'),
+      (6, 'Video Upload'),
+      (7, 'Text')
+     )
     id = models.AutoField(primary_key=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     message = models.CharField(max_length=200)
     timestamp = models.DateTimeField(auto_now_add=True)
+    type = models.IntegerField(choices=TYPE_CHOICES, null=True)
+    friendRequest_id = models.ForeignKey(FriendRequest, on_delete=models.CASCADE, null=True)
+    videoRequest_id = models.ForeignKey(VidRequest, on_delete=models.SET_NULL, null=True)
+    post_id = models.ForeignKey(Post, on_delete=models.SET_NULL, null=True)
+    video_id = models.ForeignKey(VidStream, on_delete=models.SET_NULL, null=True)
 
     def __str__(self):
-        return f"{self.user.username} Notification {self.user.id}"
+        return f"{self.id}"
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
 
-@receiver(user_logged_in)
-def user_logged_in(sender, user, request, **kwargs):
-    Notification.objects.create(user=user, message='You have logged in.')
+# @receiver(user_logged_in)
+# def user_logged_in(sender, user, request, **kwargs):
+#     Notification.objects.create(user=user, message='You have logged in.')
 
 # Video request notification table
 # class VidRequestNotification(models.Model):

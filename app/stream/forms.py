@@ -2,7 +2,7 @@ from django import forms
 from django.core.exceptions import ValidationError
 from django.contrib.auth.forms import UserCreationForm, SetPasswordForm
 from django.contrib.auth.models import User
-from . models import VidStream, VidRequest, Profile, UserInfo, Setting, FriendRequset
+from . models import VidStream, VidRequest, Profile, UserInfo, Setting, FriendRequest, Notification
 # , Contact
 from django.contrib.auth import password_validation
 from django.contrib import auth
@@ -28,7 +28,7 @@ class VidRequestForm(forms.ModelForm):
 
     class Meta:
         model = VidRequest
-        fields = ["reciever","description", "due_date"]
+        fields = ["receiver","description", "due_date"]
 
 # From Streamers
 class UserRegistrationForm(UserCreationForm):
@@ -75,6 +75,18 @@ class UserInfoUpdateForm(forms.ModelForm):
         model = UserInfo
         fields = ['birthdate']
 
+class UserPermissionForm(forms.ModelForm):
+    STATUS_CHOICES = (
+      (1, 'Sender'),
+      (2, 'Reciever'),
+     )
+    permission = forms.ChoiceField(choices=STATUS_CHOICES, widget=forms.Select(attrs={'style': 'width: 400px; height: 45px;margin-left: auto; margin-right: auto; margin-bottom: 25px;border: 2px groove lightgreen;',
+                                                              'class': 'form-control', 'required': True}))
+
+    class Meta:
+        model = UserInfo
+        fields = ['permission']
+
 class UserProfileUpdateForm(forms.ModelForm):
 
     image = forms.ImageField(widget=forms.FileInput(attrs={'class': 'form-control-file'}))
@@ -85,47 +97,18 @@ class UserProfileUpdateForm(forms.ModelForm):
 
 # Send friend request form to database
 class AddContactForm(forms.ModelForm):
-    sender = forms.CharField(widget=forms.HiddenInput)
-    # reciever = forms.CharField(widget=forms.TextInput(attrs={'placeholder' :'Enter name to add as contact',
-    #                                                         #  'style':'width: 400px; height: 45px; margin-left: auto; margin-right: auto; margin-bottom: 25px; border: 2px groove lightgreen;',
-    #                                                          'class': 'form-control', 'required': True}))
-    reciever = forms.ModelMultipleChoiceField(
-        queryset=User.objects.all(),
-        widget=forms.CheckboxSelectMultiple
+    receiver = forms.ModelChoiceField(
+        queryset=User.objects.none()
     )
 
-    # def __init__(self, *args, **kwargs):
-    #     super(SurveyForm, self).__init__(*args, **kwargs)
-    #     for field in self.fields.values():
-    #         if isinstance(field.widget, forms.Select):
-    #             field.widget = forms.RadioSelect()
-
-    # name = forms.CharField()
-    # date = forms.DateInput()
-    # members = forms.ModelMultipleChoiceField(
-    #     queryset=Member.objects.all(),
-    #     widget=forms.CheckboxSelectMultiple
-    # )
-
-    CHOICES = [
-        ('1', 'Option 1'),
-        ('2', 'Option 2'),
-    ]
-    like = forms.ChoiceField(
-        widget=forms.RadioSelect,
-        choices=CHOICES,
-    )
+    def __init__(self, user, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['receiver'].queryset = User.objects.exclude(username=user.username)
+        self.fields['receiver'].queryset = self.fields['receiver'].queryset.exclude(contact_receiver__sender__username=user.username).exclude(contact_sender__receiver__username=user.username).exclude(requests_receiver__sender__username=user.username).exclude(requests_sender__receiver__username=user.username)
 
     class Meta:
-        model = FriendRequset
-        fields = ['sender','reciever']
-
-    def clean_sender(self):
-        return User.objects.get(username=self.cleaned_data.get('sender'))
-
-
-    def clean_receiver(self):
-        return User.objects.get(username=self.cleaned_data.get('reciever'))
+        model = FriendRequest
+        fields = ['receiver']
 
 class SettingForm(forms.ModelForm):
     YES_NO = (('Yes', 'True'),('No', 'False'),)
@@ -181,6 +164,7 @@ class SettingForm(forms.ModelForm):
 #         }),
 #     )
 
+# Change Password
 class ValidatingPasswordChangeForm(forms.ModelForm):
     oldpassword = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder' :'Old Password',
                                                                   'style': 'width: 400px; height: 45px; margin-left: auto; margin-right: auto; margin-bottom: 25px; border: 2px groove lightgreen;',
