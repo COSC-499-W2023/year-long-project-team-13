@@ -67,6 +67,8 @@ def create_video_test(driver):
     start_camera_element = driver.find_element(By.ID, "start-camera")
     wait.until(EC.element_to_be_clickable((By.ID, "start-camera")))
     start_camera_element.click()
+    wait.until(EC.alert_is_present())
+    driver.switch_to.alert.accept()
     print("TEST: 2 `Start Camera` Successful")
     
     # Find the element with the id "start-record" and click it

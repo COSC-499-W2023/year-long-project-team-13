@@ -92,15 +92,15 @@
             <div class="previewPage" style="display: none;">
                 <div class="card mb-3" style="width: 75%; box-shadow: 12em; margin: auto;">
                     <img class="rounded-circle border-dark" src="{{ "https://d18u3jaflgrcvn.cloudfront.net/media/mountain.jpg" }}" style="border-color: red;" width="50" height="50">
-                    <a class="mr-2" style="text-align: start;">Username1</a>
-                    <p>Request From: Username1</p>
+                    <a class="mr-2" style="text-align: start;" >Username1</a>
+                    <p id="preview-contact">Request From: Username1</p>
                     <h12 style="text-align: start;">{{ item.upload_date }}</h12>
                     <video class="card-img-top" controls style="width: 100%; height: auto;">
                         <source src="{{ "https://d18u3jaflgrcvn.cloudfront.net/media/Tree_Clouds__Greenry___Free_stock_footage___Free_HD_Videos_-_no_copyright.mp4" }}" type="video/mp4">
                     </video>
                     <div class="card-body">
-                        <h5 class="card-title"><a>Title</a></h5>
-                        <p class="card-text">Description</p>
+                        <h5 class="card-title" id="preview-title"><a>Title</a></h5>
+                        <p class="card-text" id="preview-description">Description</p>
                     </div>
                     <hr>
                 </div>
@@ -190,6 +190,9 @@
         let description_input = "Description";
         let contact_id = document.querySelector('#contact')
         let contact_input = "contact"
+        let title_display = document.querySelector('#preview-title');
+        let description_display = document.querySelector('#preview-description');
+        let contact_display = document.querySelector('#preview-contact');
 
         next_button.addEventListener('click', function() {
             detailsPage.style.display = 'block';
@@ -226,6 +229,9 @@
             description_input = description_input_id.value;
             contact_input = contact_id.value;
             // display title, description, and contact username
+            title_display.innerHTML = title_input;
+            description_display.innerHTML = description_input;
+            contact_display.innerHTML = "Request From: " + contact_input;
             
         });
 
