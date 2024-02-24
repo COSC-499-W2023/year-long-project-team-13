@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     # 'streamers.apps.StreamersConfig',
     'bootstrap5',
     'storages',
+    's3direct',
 ]
 
 MIDDLEWARE = [
@@ -161,7 +162,6 @@ AWS_S3_SIGNATURE_VERSION = "s3v4"
 AWS_QUERYSTRING_EXPIRE = 604800
 CLOUDFRONT_DOMAIN = 'd18u3jaflgrcvn.cloudfront.net'
 AWS_CLOUDFRONT_DOMAIN = 'd18u3jaflgrcvn.cloudfront.net'
-
 AWS_S3_REGION_NAME = 'ca-central-1'
 AWS_S3_ENDPOINT_URL = 'https://s3.amazonaws.com'
 
