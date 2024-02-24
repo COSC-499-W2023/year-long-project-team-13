@@ -1,4 +1,5 @@
 from django import forms
+from django.core.exceptions import ValidationError
 from django.contrib.auth.forms import UserCreationForm, SetPasswordForm
 from django.contrib.auth.models import User
 from . models import VidStream, VidRequest, Profile, UserInfo, Setting, FriendRequset
@@ -135,6 +136,18 @@ class SettingForm(forms.ModelForm):
     class Meta:
         model = Setting
         fields = ['darkmode', 'emailnotification']
+
+    def clean_darkmode(self):
+        darkmode = self.cleaned_data.get('darkmode')
+        if darkmode not in [True, False]:
+            raise ValidationError("Invalid value for darkmode")
+        return darkmode
+
+    def clean_emailnotification(self):
+        emailnotification = self.cleaned_data.get('emailnotification')
+        if emailnotification not in [True, False]:
+            raise ValidationError("Invalid value for emailnotification")
+        return emailnotification
 
 # class SetPasswordForm(forms.ModelForm):
 #     password = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder' :'Password',
