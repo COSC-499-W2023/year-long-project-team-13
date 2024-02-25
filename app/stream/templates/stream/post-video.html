@@ -54,218 +54,8 @@
     <link rel="stylesheet" href="https://pyscript.net/releases/2022.12.1/pyscript.css" />
 </head>
 <body>
-    <div style = "margin-top: 8em; padding-top: 10em;">
-        <div class = "horizontal-buttons">
-            <a class="button" href=" {% url 'stream:video-create' %}" style="color: #FFFFFF">
-                Record
-            </a>
-            <a class="button" href=" {% url 'stream:video-upload' %}" style="color: #FFFFFF">
-                Upload
-            </a>
-        </div>
-        <h1 style="text-align: center; color: white;">Record a Video</h1>
-        <div style = "padding-top: 2%;">
-            <button id="start-camera" style="height: 50%; width: 50%; background-color: black; color: #FFFFFF; margin-bottom: 10%;">Start Camera</button>
-            <div class="video-box" style="padding-bottom: 10%; display: none; margin-bottom:10%;">
-                <video id="video" width="320" height="240" autoplay></video>
-            </div>
-            <div class="detailsPage card mb-3" style="display: none; width: 50%; margin: auto;">
-                <div class="form-group">
-                    <label for="contact">Contact</label>
-                    <select class="form-control" id="contact" name="contact">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="title">Title</label>
-                    <input type="text" class="form-control" id="title" name="title" placeholder="Enter title">
-                </div>
-                <div class="form-group">
-                    <label for="description">Description</label>
-                    <textarea class="form-control" id="description" name="description" placeholder="Enter description" style="height: 30%"></textarea>
-                </div>
-            </div>
-            <div class="previewPage" style="display: none;">
-                <div class="card mb-3" style="width: 75%; box-shadow: 12em; margin: auto;">
-                    <img class="rounded-circle border-dark" src="{{ "https://d18u3jaflgrcvn.cloudfront.net/media/mountain.jpg" }}" style="border-color: red;" width="50" height="50">
-                    <a class="mr-2" style="text-align: start;" >Username1</a>
-                    <p id="preview-contact">Request From: Username1</p>
-                    <h12 style="text-align: start;">{{ item.upload_date }}</h12>
-                    <video class="card-img-top" controls style="width: 100%; height: auto;">
-                        <source src="{{ "https://d18u3jaflgrcvn.cloudfront.net/media/Tree_Clouds__Greenry___Free_stock_footage___Free_HD_Videos_-_no_copyright.mp4" }}" type="video/mp4">
-                    </video>
-                    <div class="card-body">
-                        <h5 class="card-title" id="preview-title"><a>Title</a></h5>
-                        <p class="card-text" id="preview-description">Description</p>
-                    </div>
-                    <hr>
-                </div>
-            </div>
-            <div class="submit-success" style="display: none;">
-                <h1 id="success-msg">Video Submitted Successfully</h1>
-            </div>
-            <div class="horizontal-buttons">
-                <button class="button" id="back-record" style="display: none">Back</button>
-                <button class="button" id="back-details" style="display: none">Back</button>
-                <button class="button" id="start-record" style="display: none">Start/Re-record</button>
-                <button class="button" id="stop-record" style="display: none">Stop Recording</button>
-                <button class="button" id="next" style="display: none">NEXT</button>
-                <button class="button" id="preview" style="display: none">Preview</button>
-                <button class="button" id="submit" style="display: none">Submit</button>
-                <a class="button" id="download-video" download="test.webm" style="text-decoration: none; color: #FFFFFF; display: none;">Download Video</a>
-            </div>
-        </div>
-    </div>
-    <script>
-        let camera_button = document.querySelector("#start-camera");
-        let video = document.querySelector("#video");
-        let start_button = document.querySelector("#start-record");
-        let stop_button = document.querySelector("#stop-record");
-        let download_link = document.querySelector("#download-video");
-        let  videobox = document.querySelector('.video-box');
-        let next_button = document.querySelector("#next");
-
-        let camera_stream = null;
-        let media_recorder = null;
-        let blobs_recorded = [];
-
-        camera_button.addEventListener('click', async function() {
-            camera_stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
-            videobox.style.display = 'block';
-            camera_button.style.display = 'none';
-            start_button.style.display = 'block';
-            video.srcObject = camera_stream;
-
-        });
-
-        start_button.addEventListener('click', function() {
-            blobs_recorded = [];
-            //add the stop button and remove the start button
-            stop_button.style.display = 'block';
-            start_button.style.display = 'none';
-            // set MIME type of recording as video/webm
-            media_recorder = new MediaRecorder(camera_stream, { mimeType: 'video/webm' });
-            video.style.border = '10px solid red';
-
-            // event : new recorded video blob available
-            media_recorder.addEventListener('dataavailable', function(e) {
-                blobs_recorded.push(e.data);
-            });
-
-            // event : recording stopped & all blobs sent
-            media_recorder.addEventListener('stop', function() {
-                // create local object URL from the recorded video blobs
-                let video_local = URL.createObjectURL(new Blob(blobs_recorded, { type: 'video/webm' }));
-                download_link.href = video_local;
-                // remove stop button and add start button and download button and next button
-                stop_button.style.display = 'none';
-                start_button.style.display = 'block';
-                download_link.style.display = 'block';
-                next_button.style.display = 'block';
-            });
-
-            // start recording with each recorded blob having 1 second video
-            media_recorder.start(1000);
-        });
-
-        stop_button.addEventListener('click', function() {
-            media_recorder.stop();
-            video.style.border = '2px solid black';
-        });
-
-        let detailsPage = document.querySelector('.detailsPage');
-        let previewPage = document.querySelector('.previewPage');
-        let back_record = document.querySelector('#back-record');
-        let back_details = document.querySelector('#back-details');
-        let submit_button = document.querySelector('#submit');
-        let preview_button = document.querySelector('#preview');
-        let submit_success = document.querySelector('.submit-success');
-        let title_input_id = document.querySelector('#title');
-        let title_input = "Title";
-        let description_input_id = document.querySelector('#description');
-        let description_input = "Description";
-        let contact_id = document.querySelector('#contact')
-        let contact_input = "contact"
-        let title_display = document.querySelector('#preview-title');
-        let description_display = document.querySelector('#preview-description');
-        let contact_display = document.querySelector('#preview-contact');
-
-        next_button.addEventListener('click', function() {
-            detailsPage.style.display = 'block';
-            start_button.style.display = 'none';
-            stop_button.style.display = 'none';
-            download_link.style.display = 'none';
-            next_button.style.display = 'none';
-            preview_button.style.display = 'block';
-            back_record.style.display = 'block';
-            videobox.style.display = 'none';
-
-        });
-
-        back_record.addEventListener('click', function() {
-            detailsPage.style.display = 'none';
-            start_button.style.display = 'block';
-            stop_button.style.display = 'none';
-            download_link.style.display = 'block';
-            next_button.style.display = 'block';
-            preview_button.style.display = 'none';
-            back_record.style.display = 'none';
-            videobox.style.display = 'block';
-        });
-
-        preview_button.addEventListener('click', function() {
-            previewPage.style.display = 'block';
-            detailsPage.style.display = 'none';
-            preview_button.style.display = 'none';
-            submit_button.style.display = 'block';
-            back_details.style.display = 'block';
-            back_record.style.display = 'none';
-            // get title, description, and contact inputed from user
-            title_input = title_input_id.value;
-            description_input = description_input_id.value;
-            contact_input = contact_id.value;
-            // display title, description, and contact username
-            title_display.innerHTML = title_input;
-            description_display.innerHTML = description_input;
-            contact_display.innerHTML = "Request From: " + contact_input;
-
-        });
-
-        back_details.addEventListener('click', function() {
-            previewPage.style.display = 'none';
-            detailsPage.style.display = 'block';
-            preview_button.style.display = 'block';
-            submit_button.style.display = 'none';
-            back_details.style.display = 'none';
-            back_record.style.display = 'block';
-        });
-
-        submit_button.addEventListener('click', function() {
-            previewPage.style.display = 'none';
-            detailsPage.style.display = 'none';
-            start_button.style.display = 'none';
-            stop_button.style.display = 'none';
-            download_link.style.display = 'none';
-            next_button.style.display = 'none';
-            preview_button.style.display = 'none';
-            submit_button.style.display = 'none';
-            back_details.style.display = 'none';
-            back_record.style.display = 'none';
-            camera_button.style.display = 'none';
-            videobox.style.display = 'none';
-            submit_success.style.display = 'block';
-            video.srcObject = null;
-            camera_stream.getTracks().forEach(function(track) {
-                track.stop();
-            });
-        });
-    </script>
     {% if user.userinfo.permission == 1 or user.is_superuser %}
-        <div style = "margin-top: 25px; padding-top: 10em;">
+        <div style = "margin-top: 8em; padding-top: 10em;">
             <div class = "horizontal-buttons">
                 <a class="button" href=" {% url 'stream:video-create' %}" style="color: #FFFFFF">
                     Record
@@ -274,20 +64,207 @@
                     Upload
                 </a>
             </div>
-            <h1 style="text-align: center; color: white; padding: 5%">Record a Video</h1>
-            <div style = "padding-top: 75px;">
-                <div class="video-box">
-                    <video controls>
-                        <source src="{{ item.video.url }}" type="video/mp4">
-                    </video>
+            <h1 style="text-align: center; color: white;">Record a Video</h1>
+            <div style = "padding-top: 2%;">
+                <button id="start-camera" style="height: 50%; width: 50%; background-color: black; color: #FFFFFF; margin-bottom: 10%;">Start Camera</button>
+                <div class="video-box" style="padding-bottom: 10%; display: none; margin-bottom:10%;">
+                    <video id="video" width="320" height="240" autoplay></video>
+                </div>
+                <div class="detailsPage card mb-3" style="display: none; width: 50%; margin: auto;">
+                    <div class="form-group">
+                        <label for="contact">Contact</label>
+                        <select class="form-control" id="contact" name="contact">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="title">Title</label>
+                        <input type="text" class="form-control" id="title" name="title" placeholder="Enter title">
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <textarea class="form-control" id="description" name="description" placeholder="Enter description" style="height: 30%"></textarea>
+                    </div>
+                </div>
+                <div class="previewPage" style="display: none;">
+                    <div class="card mb-3" style="width: 75%; box-shadow: 12em; margin: auto;">
+                        <img class="rounded-circle border-dark" src="{{ "https://d18u3jaflgrcvn.cloudfront.net/media/mountain.jpg" }}" style="border-color: red;" width="50" height="50">
+                        <a class="mr-2" style="text-align: start;" >Username1</a>
+                        <p id="preview-contact">Request From: Username1</p>
+                        <h12 style="text-align: start;">{{ item.upload_date }}</h12>
+                        <video class="card-img-top" controls style="width: 100%; height: auto;">
+                            <source src="{{ "https://d18u3jaflgrcvn.cloudfront.net/media/Tree_Clouds__Greenry___Free_stock_footage___Free_HD_Videos_-_no_copyright.mp4" }}" type="video/mp4">
+                        </video>
+                        <div class="card-body">
+                            <h5 class="card-title" id="preview-title"><a>Title</a></h5>
+                            <p class="card-text" id="preview-description">Description</p>
+                        </div>
+                        <hr>
+                    </div>
+                </div>
+                <div class="submit-success" style="display: none;">
+                    <h1 id="success-msg">Video Submitted Successfully</h1>
                 </div>
                 <div class="horizontal-buttons">
-                    <button class="button">Start/Re-record</button>
-                    <button class="button">Stop Recording</button>
-                    <button class="button">NEXT</button>
+                    <button class="button" id="back-record" style="display: none">Back</button>
+                    <button class="button" id="back-details" style="display: none">Back</button>
+                    <button class="button" id="start-record" style="display: none">Start/Re-record</button>
+                    <button class="button" id="stop-record" style="display: none">Stop Recording</button>
+                    <button class="button" id="next" style="display: none">NEXT</button>
+                    <button class="button" id="preview" style="display: none">Preview</button>
+                    <button class="button" id="submit" style="display: none">Submit</button>
+                    <a class="button" id="download-video" download="test.webm" style="text-decoration: none; color: #FFFFFF; display: none;">Download Video</a>
                 </div>
             </div>
         </div>
+        <script>
+            let camera_button = document.querySelector("#start-camera");
+            let video = document.querySelector("#video");
+            let start_button = document.querySelector("#start-record");
+            let stop_button = document.querySelector("#stop-record");
+            let download_link = document.querySelector("#download-video");
+            let  videobox = document.querySelector('.video-box');
+            let next_button = document.querySelector("#next");
+
+            let camera_stream = null;
+            let media_recorder = null;
+            let blobs_recorded = [];
+
+            camera_button.addEventListener('click', async function() {
+                camera_stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
+                videobox.style.display = 'block';
+                camera_button.style.display = 'none';
+                start_button.style.display = 'block';
+                video.srcObject = camera_stream;
+
+            });
+
+            start_button.addEventListener('click', function() {
+                blobs_recorded = [];
+                //add the stop button and remove the start button
+                stop_button.style.display = 'block';
+                start_button.style.display = 'none';
+                // set MIME type of recording as video/webm
+                media_recorder = new MediaRecorder(camera_stream, { mimeType: 'video/webm' });
+                video.style.border = '10px solid red';
+
+                // event : new recorded video blob available
+                media_recorder.addEventListener('dataavailable', function(e) {
+                    blobs_recorded.push(e.data);
+                });
+
+                // event : recording stopped & all blobs sent
+                media_recorder.addEventListener('stop', function() {
+                    // create local object URL from the recorded video blobs
+                    let video_local = URL.createObjectURL(new Blob(blobs_recorded, { type: 'video/webm' }));
+                    download_link.href = video_local;
+                    // remove stop button and add start button and download button and next button
+                    stop_button.style.display = 'none';
+                    start_button.style.display = 'block';
+                    download_link.style.display = 'block';
+                    next_button.style.display = 'block';
+                });
+
+                // start recording with each recorded blob having 1 second video
+                media_recorder.start(1000);
+            });
+
+            stop_button.addEventListener('click', function() {
+                media_recorder.stop();
+                video.style.border = '2px solid black';
+            });
+
+            let detailsPage = document.querySelector('.detailsPage');
+            let previewPage = document.querySelector('.previewPage');
+            let back_record = document.querySelector('#back-record');
+            let back_details = document.querySelector('#back-details');
+            let submit_button = document.querySelector('#submit');
+            let preview_button = document.querySelector('#preview');
+            let submit_success = document.querySelector('.submit-success');
+            let title_input_id = document.querySelector('#title');
+            let title_input = "Title";
+            let description_input_id = document.querySelector('#description');
+            let description_input = "Description";
+            let contact_id = document.querySelector('#contact')
+            let contact_input = "contact"
+            let title_display = document.querySelector('#preview-title');
+            let description_display = document.querySelector('#preview-description');
+            let contact_display = document.querySelector('#preview-contact');
+
+            next_button.addEventListener('click', function() {
+                detailsPage.style.display = 'block';
+                start_button.style.display = 'none';
+                stop_button.style.display = 'none';
+                download_link.style.display = 'none';
+                next_button.style.display = 'none';
+                preview_button.style.display = 'block';
+                back_record.style.display = 'block';
+                videobox.style.display = 'none';
+
+            });
+
+            back_record.addEventListener('click', function() {
+                detailsPage.style.display = 'none';
+                start_button.style.display = 'block';
+                stop_button.style.display = 'none';
+                download_link.style.display = 'block';
+                next_button.style.display = 'block';
+                preview_button.style.display = 'none';
+                back_record.style.display = 'none';
+                videobox.style.display = 'block';
+            });
+
+            preview_button.addEventListener('click', function() {
+                previewPage.style.display = 'block';
+                detailsPage.style.display = 'none';
+                preview_button.style.display = 'none';
+                submit_button.style.display = 'block';
+                back_details.style.display = 'block';
+                back_record.style.display = 'none';
+                // get title, description, and contact inputed from user
+                title_input = title_input_id.value;
+                description_input = description_input_id.value;
+                contact_input = contact_id.value;
+                // display title, description, and contact username
+                title_display.innerHTML = title_input;
+                description_display.innerHTML = description_input;
+                contact_display.innerHTML = "Request From: " + contact_input;
+
+            });
+
+            back_details.addEventListener('click', function() {
+                previewPage.style.display = 'none';
+                detailsPage.style.display = 'block';
+                preview_button.style.display = 'block';
+                submit_button.style.display = 'none';
+                back_details.style.display = 'none';
+                back_record.style.display = 'block';
+            });
+
+            submit_button.addEventListener('click', function() {
+                previewPage.style.display = 'none';
+                detailsPage.style.display = 'none';
+                start_button.style.display = 'none';
+                stop_button.style.display = 'none';
+                download_link.style.display = 'none';
+                next_button.style.display = 'none';
+                preview_button.style.display = 'none';
+                submit_button.style.display = 'none';
+                back_details.style.display = 'none';
+                back_record.style.display = 'none';
+                camera_button.style.display = 'none';
+                videobox.style.display = 'none';
+                submit_success.style.display = 'block';
+                video.srcObject = null;
+                camera_stream.getTracks().forEach(function(track) {
+                    track.stop();
+                });
+            });
+        </script>
     {% else %}
         <div class="container">
             <h2>Oops! It seems you’ve reached a page where access is restricted. <br>
