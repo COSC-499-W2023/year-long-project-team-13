@@ -93,7 +93,7 @@ def logout_test(driver, username, password):
 
     # Check if the URL contains the expected logout page URL
     if '/logout' in driver.current_url:
-        print("TEST: 2 `Logout` successful")
+        print("TEST 2: `Logout` successful")
     else:
         print("TEST: 2 `Logout` failed")
 

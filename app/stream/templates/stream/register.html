@@ -30,9 +30,9 @@
                           </button>
                       </li>
                       <div class="dropdown-content">
-                        <li class="nav-item nav-link"><a class="nav-link active" href=" {% url 'stream:video-list' %} " id="Video Button">View Videos</a></li>
-                        <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:video-create' %}" id="New Video Button">Send Video</a>
-                        <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:request-video' %}" id="Video Request Button">Request Video</a>
+                          <li class="nav-item nav-link"><a class="nav-link active" href=" {% url 'stream:video-list' %} " id="Video Button">Videos</a></li>
+                          <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:video-create' %}" id="New Video Button">New Video</a>
+                          <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:request-video' %}" id="Video Request Button">Video Request</a>
                       </div>
                     </div>
                     <li class="nav-item nav-link"><a class="nav-link active" href=" {% url 'stream:contact' %} " id="Add Contacts Button">Add Contacts</a></li>
@@ -48,7 +48,7 @@
                       </li>
                       <div class="dropdown-content">
                           <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:profile' %}" id="Profile Button">Profile</a>
-                          <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:setting' %}" id="Setting Button">Settings</a>
+                          <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:setting' %}" id="Setting Button">Setting</a>
                           {% if user.is_superuser %}
                               <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'admin:index' %}" id="Admin Button">Admin</a>
                           {% endif %}
@@ -116,18 +116,12 @@
                     {{ form.password2 }}
                     {% comment %} <p id="intruction">Enter the same password as before, for verification.</p> {% endcomment %}
 
-
-                    <p id="instruction" style="margin-top: 1px; margin-left: auto; margin-right: auto; font-size: 14px; width: 75%;">Click on the dropdown menu and select the user group you are.</p>
-                    {% comment %} userpermissionform {% endcomment %}
-                    {{ userpermissionform.permission.errors }}
-                    {{ userpermissionform.permission }}
-
                     <div class="form-check d-flex justify-content-center mb-5">
                       <div class="checkbox">
                         <input class="form-check-input me-2 border-success" type="checkbox" value="" id="form2Example3cg" />
                       </div>
                       <label class="form-check-label" for="form2Example3g">
-                        I agree to all statements in <a href="#!" class="text-body"><u>Terms of service</u></a>
+                        I agree all statements in <a href="#!" class="text-body"><u>Terms of service</u></a>
                       </label>
                     </div>
 

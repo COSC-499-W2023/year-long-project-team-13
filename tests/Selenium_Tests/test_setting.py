@@ -43,46 +43,17 @@ def login_page_test(driver, username, password):
     else:
         print("Login successful")
 
-def profileChangePassword(driver):
+def setting_test(driver, username, password):
+    # Call the login page test function
+    login_page_test(driver, username, password)
+    time.sleep(0.5)
+
     # Find the element with the id "Topbar" and hover over it
     topbar_element = driver.find_element(By.ID, "User Hover")
     hover = ActionChains(driver).move_to_element(topbar_element)
     hover.perform()
     wait.until(EC.presence_of_element_located((By.ID, "User Hover")))
     print("TEST: 0 `User hover` successful")
-
-    # Find the element with the id "Setting Button" and click it
-    profile_element = driver.find_element(By.ID, "Profile Button")
-    wait.until(EC.presence_of_element_located((By.ID, "Profile Button")))
-    hover = ActionChains(driver).move_to_element(profile_element)
-    hover.perform()
-    wait.until(EC.element_to_be_clickable((By.ID, "Setting Button")))
-    ActionChains(driver).click(profile_element).perform()
-
-    # Find the element with the id "Login Submit Button" and click it
-    change_password_button_element = driver.find_element(By.ID, "change password")
-    change_password_button_element.click()
-
-    if '/setting' in driver.current_url:
-        print("TEST: 1 Change Password redirect successful")
-    else:
-        print("TEST: 1 Change Password redirect failed")
-
-
-def setting_test(driver, username, password):
-    # Call the login page test function
-    login_page_test(driver, username, password)
-    time.sleep(0.5)
-
-    profileChangePassword(driver)
-    time.sleep(0.5)
-
-    # Find the element with the id "Topbar" and hover over it
-    topbar_element = driver.find_element(By.ID, "User Hover")
-    hover = ActionChains(driver).move_to_element(topbar_element)
-    hover.perform()
-    wait.until(EC.presence_of_element_located((By.ID, "User Hover")))
-    print("TEST: 2 `User hover` successful")
 
     # Find the element with the id "Setting Button" and click it
     setting_element = driver.find_element(By.ID, "Setting Button")
@@ -97,9 +68,9 @@ def setting_test(driver, username, password):
 
     # Check if the URL contains the expected profile page URL
     if '/setting' in driver.current_url:
-        print("TEST: 3 `Setting` successful")
+        print("TEST: 1 `Setting` successful")
     else:
-        print("TEST: 3 `Setting` failed")
+        print("TEST: 1 `Setting` failed")
 
 
 
