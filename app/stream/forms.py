@@ -10,8 +10,10 @@ from django.contrib.auth.hashers import check_password
 import difflib
 # from django.utils.translation import gettext_lazy as _
 import re
+from s3direct.widgets import S3DirectWidget
 
 class VidUploadForm(forms.ModelForm):
+    video = forms.FileField(widget=S3DirectWidget(dest='primary_destination', attrs={'style': 'border: 2px groove lightgreen;'}))
 
     class Meta:
         model = VidStream
