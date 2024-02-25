@@ -232,7 +232,7 @@
             title_display.innerHTML = title_input;
             description_display.innerHTML = description_input;
             contact_display.innerHTML = "Request From: " + contact_input;
-            
+
         });
 
         back_details.addEventListener('click', function() {
@@ -264,6 +264,41 @@
             });
         });
     </script>
+    {% if user.userinfo.permission == 1 or user.is_superuser %}
+        <div style = "margin-top: 25px; padding-top: 10em;">
+            <div class = "horizontal-buttons">
+                <a class="button" href=" {% url 'stream:video-create' %}" style="color: #FFFFFF">
+                    Record
+                </a>
+                <a class="button" href=" {% url 'stream:video-upload' %}" style="color: #FFFFFF">
+                    Upload
+                </a>
+            </div>
+            <h1 style="text-align: center; color: white; padding: 5%">Record a Video</h1>
+            <div style = "padding-top: 75px;">
+                <div class="video-box">
+                    <video controls>
+                        <source src="{{ item.video.url }}" type="video/mp4">
+                    </video>
+                </div>
+                <div class="horizontal-buttons">
+                    <button class="button">Start/Re-record</button>
+                    <button class="button">Stop Recording</button>
+                    <button class="button">NEXT</button>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <div class="container">
+            <h2>Oops! It seems you’ve reached a page where access is restricted. <br>
+                No worries, just click the button below to return to the home page. Thank you!</h2>
+            <div class="col-lg-8 mx-auto">
+                <a href=" {% url 'stream:home' %}">
+                    <button class="btn-lg btn-default" type="button" style="background-color">Back to home page</button>
+                </a>
+            </div>
+        </div>
+    {% endif %}
 </body>
 
         {% comment %} <div>

@@ -53,22 +53,32 @@
         </style>
     </head>
     <body>
-        <div style = "margin-top: 25px;">
-            <div class = "horizontal-buttons">
-                <a class="button" href=" {% url 'stream:video-create' %}" style="color: #FFFFFF">
-                    Record
-                </a>
-                <a class="button" href=" {% url 'stream:video-upload' %}" style="color: #FFFFFF">
-                    Upload
+        {% if user.userinfo.permission == 1 or user.is_superuser %}
+            <div style = "margin-top: 25px;">
+                <div class = "horizontal-buttons">
+                    <a class="button" href=" {% url 'stream:video-create' %}" style="color: #FFFFFF">
+                        Record
+                    </a>
+                    <a class="button" href=" {% url 'stream:video-upload' %}" style="color: #FFFFFF">
+                        Upload
+                    </a>
+                </div>
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <h1>Upload a video</h1>
+                        {{ form.as_p }}
+                        <button class="btn-lg btn-default" type="button" style="background-color">Upload</button>
+                </form>
+            </div>
+        {% else %}
+            <div class="redirect">
+                <h1>Oops! It seems you’ve reached a page where access is restricted. No worries, just click the button below to return to the home page. Thank you!</h1>
+                <a href=" {% url 'stream:home' %}">
+                    <button class="button" type="button">Back to home page</button>
                 </a>
             </div>
-            <form method="POST" enctype="multipart/form-data">
-                {% csrf_token %}
-                <h1>Upload a video</h1>
-                    {{ form.as_p }}
-                <button class="btn btn-outline-info" type="submit">Upload</button>
-            </form>
-        </div>
+        {% endif %}
+
     </body>
         {% if user.is_authenticated %}
             <div id="overlay" class="float-center" style="position:fixed; top:30%;">
