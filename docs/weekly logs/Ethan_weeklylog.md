@@ -301,3 +301,14 @@
   - ![Record Video Page](./images/Ethan_stuff/t2w6/record_video.png)
   - ![Details Page](./images/Ethan_stuff/t2w6/detail_page.png)
   - ![Review Page](./images/Ethan_stuff/t2w6/review_page.png)
+
+# Preferred name -> Ssc name -> Github name
+
+- Ethan -> Ethan Hsu -> YuchenHsu
+
+## Week 7 2024/02/19 ~ 2024/02/25
+
+- This week, I tried to make the blurring work with videos but so far I haven't have any success. I also worked on the linking of our database to the s3 buckets. So far the upload never goes into the bucket but it is trying its best.
+  - This is the guide I followed:
+    - [Uploading to the S3 and store the URL in the database](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/PostgreSQL.Procedural.Importing.html)
+  - ![upload_fails](./images/Ethan_stuff/t2w7/failed_s3_upload.png)
