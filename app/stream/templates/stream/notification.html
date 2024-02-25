@@ -31,9 +31,9 @@
                           </button>
                       </li>
                       <div class="dropdown-content">
-                          <li class="nav-item nav-link"><a class="nav-link active" href=" {% url 'stream:video-list' %} " id="Video Button">Videos</a></li>
-                          <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:video-create' %}" id="New Video Button">New Video</a>
-                          <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:request-video' %}" id="Video Request Button">Video Request</a>
+                        <li class="nav-item nav-link"><a class="nav-link active" href=" {% url 'stream:video-list' %} " id="Video Button">View Videos</a></li>
+                        <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:video-create' %}" id="New Video Button">Send Video</a>
+                        <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:request-video' %}" id="Video Request Button">Request Video</a>
                       </div>
                     </div>
                     <li class="nav-item nav-link"><a class="nav-link active" href=" {% url 'stream:contact' %} " id="Add Contacts Button">Add Contacts</a></li>
@@ -49,7 +49,7 @@
                       </li>
                       <div class="dropdown-content">
                           <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:profile' %}" id="Profile Button">Profile</a>
-                          <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:setting' %}" id="Setting Button">Setting</a>
+                          <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:setting' %}" id="Setting Button">Settings</a>
                           {% if user.is_superuser %}
                               <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'admin:index' %}" id="Admin Button">Admin</a>
                           {% endif %}
@@ -85,6 +85,23 @@
                     {{ notification.message }}
                     <br>
                     <small class="text-muted">{{ notification.timestamp }}</small>
+                    {% comment %} <p></p> {% endcomment %}
+                    {% if notification.type == 1 %}
+                    <form method="POST" enctype="multipart/form-data">
+                      {% csrf_token %}
+                      <input type="hidden" name="notifID" value="{{ notification.id }}">
+                      <button class="btn btn-dark mt-4" id="delete friend request button" name="deleteFriendRequest" type="submit">Remove Friend Request</button>
+                    </form>
+                    {% elif notification.type == 2 %}
+                    <form method="POST" enctype="multipart/form-data">
+                      {% csrf_token %}
+                      <input type="hidden" name="notifID" value="{{ notification.id }}">
+                      <button class="btn btn-dark ms-1 me-3 mt-4" id="accept friend request button" name="acceptFriendRequest" type="submit">Accept</button>
+                      <button class="btn btn-dark mt-4" id="reject friend request button" name="rejectFriendRequest" type="submit">Reject</button>
+                    </form>
+                    {% else %}
+                    {% endif %}
+                    {% comment %} <br> {% endcomment %}
                   </div>
                 {% empty %}
                   <p>No notifications</p>
