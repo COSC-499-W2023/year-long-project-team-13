@@ -119,13 +119,13 @@ class Profile(models.Model):
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
 
-        img = Image.open(self.image.path)
-        fixed_image = ImageOps.exif_transpose(img)
+        # img = Image.open(self.image.path)
+        # fixed_image = ImageOps.exif_transpose(img)
 
-        if img.height > 300 or img.width > 300:
-            output_size = (300, 300)
-            fixed_image.thumbnail(output_size)
-            fixed_image.save(self.image.path)
+        # if img.height > 300 or img.width > 300:
+        #     output_size = (300, 300)
+        #     fixed_image.thumbnail(output_size)
+        #     fixed_image.save(self.image.path)
 
 # Update User's First & Last Name
 # class Person(models.Model):
