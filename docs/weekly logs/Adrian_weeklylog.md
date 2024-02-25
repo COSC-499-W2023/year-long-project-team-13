@@ -635,3 +635,31 @@ id connect to "friend request", "video request", "post", and "video" table.
 ### Weekly Log / Team Weekly Log / Additional
 - Worked on my own weekly log, contribute to team weeklog.
 - Manually testing on Raymond's change password/confirm password form and css UI layout (Setting page)
+
+# Preferred name -> Ssc name -> Github name
+
+- Adrian -> Adrian Fong -> AdrianFWM
+
+## Term 2 Week 6 2023/02/12~2023/02/18
+
+- Task I have worked on this week and winter break.
+![Weekly Task T2-6](./images/tasks/AdrianFong_T2_Week6_Task.jpg)
+
+## Recap on your week's goals
+
+### Remove/Accept/Reject Friend Request Selenium/pytest [Complete]
+- Worked on "Accept/Reject Friend Request - Test" and "Remove Friend Request - Test" on project board, finished Selenium test and pytest for remove/accept/reject friend request, and send/receiver friendlist function (contact table).
+- Added all the test to master test.
+- All Selenium test and pytest passes with no issue/error.
+- All functions on Add Contact page, Notification, Admin page new functions are merged to master branch.
+
+  - [Notifications (remove/accept/reject friend request), pytest, Selenium test, Admin page reorganized Pull Request/Commit](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/144)
+  - Add contact/Friend request Selenium test screenshot
+![Add contact/Friend request Selenium test screenshot](./images/Adrian_images/T2_Week_6/Add_Contact_test.jpg)
+  - Master Selenium test screenshot (with add contact test included)
+![Master Selenium test screenshot (with add contact test included)](./images/Adrian_images/T2_Week_6/master_test.jpg)
+  - Add contact/Friend request pytest screenshot
+![Add contact/Friend request pytest screenshot](./images/Adrian_images/T2_Week_6/add_contact_pytest.jpg)
+
+### Weekly Log / Team Weekly Log / Additional
+- Worked on my own weekly log, contribute to team weeklog.

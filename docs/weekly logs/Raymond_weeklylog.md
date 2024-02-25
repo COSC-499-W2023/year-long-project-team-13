@@ -401,3 +401,23 @@ Old password the same as new password
 - Worked on my own weekly log, contribute to team weekly log.
 - Learn new insights from online to resolve issues for my project.
 - Currently working on the html/css as well as on the tests for the setting page.
+
+
+## Term 2 Week 6 2024/02/12 ~ 2024/02/18
+
+- Type of tasks you worked on
+
+![Tasks](./images/tasks/SittPaing_T2W6-Task.png)
+
+## Recap of week's goals
+
+This week, I have worked on the UI of setting page since the issue occurs when the users minimize or maximize the windows and I tried to make various changes to identify the issues but as of now I am unable to find out the root cause of an issue after trying for quite sometime so I move on to work on my selenium test for the setting page to see whether the functions in the setting page is working. First off, I checked whether all the forms and the buttons are clicked one by one and if successfully, the test moved on to the form to fill in the existing password, new password and confirm password and save changes and update it. Once successfully it will redirect to login to login with the new password. Finally after that is done, I made the test in the way so that once login in is successful with new passwords, change back to the original password (the starting password). While doing those I encountered various errors but I am able to solve them and work my way through with the help of one of my teammate, Beth. Also I worked on the unit test for the setting page but I encountered errors due to my lack of knowledge of python unit test so I planned to ask my teammates for help so that I learn and finish it at the same time. Our team also come up with the draft for what we want to present for our upcoming peer evaluation and questions that we may have to clarify with the professor.
+
+![Peer Evaluation 2 Draft](./images/Sitt_images/Term_2_Week_6/Peer_Evaluation2.png)
+
+![Selenium Test Setting](./images/Sitt_images/Term_2_Week_6/Selenium_Test_Setting.png)
+
+### Additional
+- Worked on my own weekly log, contribute to team weekly log.
+- Learn new insights from online to resolve issues for my project and for the theme page.
+
