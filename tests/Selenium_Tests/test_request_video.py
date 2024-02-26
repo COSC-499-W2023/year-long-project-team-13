@@ -7,6 +7,8 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium import webdriver
 import time
+# For selecting dropdown username
+from selenium.webdriver.support.select import Select
 
 def login(driver, username, password):
     # Find the element with the id "Username Input" and click it
@@ -43,46 +45,125 @@ def login(driver, username, password):
     else:
         print("Login Failed")
 
-def request_video_test(driver):
+def logout(driver, location):
+
     # Find the element with the id "Topbar" and hover over it
-    wait.until(EC.presence_of_element_located((By.ID, "Videos Hover")))
-    topbar_element = driver.find_element(By.ID, "Videos Hover")
+    topbar_element = driver.find_element(By.ID, "User Hover")
     hover = ActionChains(driver).move_to_element(topbar_element)
     hover.perform()
-    wait.until(EC.presence_of_element_located((By.ID, "Videos Hover")))
-    print("TEST: 0 `Videos hover` successful")
-
-    # Find the element with the id "Video Request Button" and click it
-    video_button_element = driver.find_element(By.ID, "Video Request Button")
-    wait.until(EC.presence_of_element_located((By.ID, "Video Request Button")))
-    hover = ActionChains(driver).move_to_element(video_button_element)
+    wait.until(EC.presence_of_element_located((By.ID, "User Hover")))
+    print("`User hover` successful")
+    # Find the element with the id "Logout Button" and click it
+    logout_element = driver.find_element(By.ID, "Logout Button")
+    wait.until(EC.presence_of_element_located((By.ID, "Logout Button")))
+    hover = ActionChains(driver).move_to_element(logout_element)
     hover.perform()
-    wait.until(EC.element_to_be_clickable((By.ID, "Video Request Button")))
-    ActionChains(driver).click(video_button_element).perform()
-    # Wait for the URL to change to the video page URL
-    wait.until(EC.url_contains('/request-video'))
-    # Check contacts button
-    video_button_element = driver.find_element(By.ID, "contacts")
-    video_button_element.click()
-    wait.until(EC.presence_of_element_located((By.ID, "contacts")))
-    # Check message text area
-    video_button_element = driver.find_element(By.ID, "message")
-    video_button_element.click()
-    wait.until(EC.presence_of_element_located((By.ID, "message")))
-    # Check due date button
-    video_button_element = driver.find_element(By.ID, "dueDate")
-    video_button_element.click()
-    wait.until(EC.presence_of_element_located((By.ID, "dueDate")))
-    # Check that the send button goes to home page
-    video_button_element = driver.find_element(By.ID, "send")
-    video_button_element.click()
-    # Wait for the URL to change to the home page URL
-    wait.until(EC.url_contains('/'))
-    # Check if the URL contains the expected page URL
-    if '/' in driver.current_url:
-        print("TEST: 1 `Request Video` Successful")
+    wait.until(EC.element_to_be_clickable((By.ID, "Logout Button")))
+    ActionChains(driver).click(logout_element).perform()
+    wait.until(EC.url_contains(location))
+
+    # Confirm logout
+    logout_confirm_element = driver.find_element(By.ID, "logout")
+    wait.until(EC.presence_of_element_located((By.ID, "logout")))
+    logout_confirm_element.click()
+
+    # Wait for the URL to change to the logout page URL
+    wait.until(EC.url_contains('/logout'))
+
+    # Check if the URL contains the expected logout page URL
+    if '/logout' in driver.current_url:
+        print("`Logout` successful")
     else:
-        print("TEST: 1 `Request Video` Failed")
+        print("`Logout` failed")
+
+def hoverTest(hoverButton, buttonID, location, message):
+
+    # Find the element with the id "Topbar" and hover over it
+    topbar_element = driver.find_element(By.ID, hoverButton)
+    hover = ActionChains(driver).move_to_element(topbar_element)
+    hover.perform()
+    wait.until(EC.presence_of_element_located((By.ID, hoverButton)))
+    print("`Video hover` successful")
+
+    # Find the element with the buttonID and click it
+    hover_button_element = driver.find_element(By.ID, buttonID)
+    wait.until(EC.presence_of_element_located((By.ID, buttonID)))
+    hover = ActionChains(driver).move_to_element(hover_button_element)
+    hover.perform()
+    wait.until(EC.element_to_be_clickable((By.ID, buttonID)))
+    ActionChains(driver).click(hover_button_element).perform()
+
+    wait.until(EC.url_contains(location))
+
+    # Check if the URL contains the expected notification page URL
+    if location in driver.current_url:
+        print(message + " successful")
+    else:
+        print(message + " failed")
+
+
+def request_video_test(driver, receiver, description, dueDateYear, dueDateTime):
+    # Find the element with the id "Topbar" and hover over it
+    hoverTest("Videos Hover","Video Request Button", '/request-video', "`Video Request page found`")
+
+    # Check receiver button
+    receiver_button_element = driver.find_element(By.ID, "id_receiver")
+    receiver_button_element.click()
+    wait.until(EC.presence_of_element_located((By.ID, "id_receiver")))
+    # Select username "adrian"
+    usernameSelect = Select(receiver_button_element)
+    usernameSelect.select_by_index(1)
+
+    # Check description text area
+    description_button_element = driver.find_element(By.ID, "id_description")
+    description_button_element.click()
+    wait.until(EC.presence_of_element_located((By.ID, "id_description")))
+    description_button_element.send_keys(description)
+    wait.until(EC.text_to_be_present_in_element_value((By.ID, "id_description"), description))
+
+
+    # Check due date button
+    dueDate_button_element = driver.find_element(By.ID, "id_due_date")
+    dueDate_button_element.click()
+    wait.until(EC.presence_of_element_located((By.ID, "id_due_date")))
+    dueDate_button_element.send_keys(dueDateYear)
+    time.sleep(0.5)
+    dueDate_button_element.send_keys(Keys.TAB)
+    dueDate_button_element.send_keys(dueDateTime)
+    time.sleep(0.5)
+
+    # Check that the send button goes to home page
+    send_button_element = driver.find_element(By.ID, "send")
+    send_button_element.click()
+
+    # Wait for the URL to change to the home page URL
+    wait.until(EC.url_contains('/notifications'))
+
+    # Check if the URL contains the expected page URL
+    if '/notifications' in driver.current_url:
+        print("TEST: 0 `Request Video` Successful")
+    else:
+        print("TEST: 0 `Request Video` Failed")
+
+def remove_video_test(driver, receiver, description, dueDateYear, dueDateTime):
+    # Find the remove video request button
+    remove_video_request_button = wait.until(EC.presence_of_element_located((By.ID, "delete video request button")))
+
+    # Click the remove video request button
+    remove_video_request_button.click()
+
+    # Wait for the URL to change to the notification page URL
+    wait.until(EC.url_contains('/notifications'))
+
+    # Check if the URL contains the expected notification page URL
+    if '/notifications' in driver.current_url:
+        print("TEST 1: `Remove Video Request` successful")
+    else:
+        print("TEST 1: `Remove Video Request` Failed")
+
+    request_video_test(driver, receiver, description, dueDateYear, dueDateTime)
+
+    logout(driver, '/notifications#')
 
 # Create a ChromeOptions object with the log level set to 3
 chrome_options = webdriver.ChromeOptions()
@@ -102,7 +183,8 @@ driver.get('http://localhost:8000/login')
 print("Request Page test Start")
 login(driver, 'linus', 'Admin123')  # Replace with actual credentials
 time.sleep(0.5)
-request_video_test(driver)
+request_video_test(driver, "adrian", "request video description testing", "2024", "01011000AM")
+remove_video_test(driver, "adrian", "request video description testing", "2024", "01011000AM")
 print("Request Page test Completed")
 
 # Close the webdriver

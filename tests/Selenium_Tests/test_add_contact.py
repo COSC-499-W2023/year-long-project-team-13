@@ -102,12 +102,12 @@ def hoverTest(buttonID, location, message):
     print("`User hover` successful")
 
     # Find the element with the buttonID and click it
-    notification_button_element = driver.find_element(By.ID, buttonID)
+    hover_button_element = driver.find_element(By.ID, buttonID)
     wait.until(EC.presence_of_element_located((By.ID, buttonID)))
-    hover = ActionChains(driver).move_to_element(notification_button_element)
+    hover = ActionChains(driver).move_to_element(hover_button_element)
     hover.perform()
     wait.until(EC.element_to_be_clickable((By.ID, buttonID)))
-    ActionChains(driver).click(notification_button_element).perform()
+    ActionChains(driver).click(hover_button_element).perform()
 
     wait.until(EC.url_contains(location))
 
@@ -170,7 +170,7 @@ def remove_friend_request_test(driver, username, password):
     if '/notifications' in driver.current_url:
         print("TEST 1: `Remove Friend Request` successful")
     else:
-        print("TEST 1: `Remove Friend Request` successful")
+        print("TEST 1: `Remove Friend Request` failed")
 
     logout(driver, '/notifications#')
 
@@ -197,7 +197,7 @@ def reject_friend_request_test(driver, usernameAdmin, passwordAdmin, usernamePai
     if '/notifications' in driver.current_url:
         print("TEST 2: `Reject Friend Request` successful")
     else:
-        print("TEST 2: `Reject Friend Request` successful")
+        print("TEST 2: `Reject Friend Request` failed")
 
     logout(driver, '/notifications#')
 
@@ -223,7 +223,7 @@ def accept_friend_request_test(driver, usernameAdmin, passwordAdmin, usernamePai
     if '/notifications' in driver.current_url:
         print("TEST 3: `Accept Friend Request` successful")
     else:
-        print("TEST 3: `Accept Friend Request` successful")
+        print("TEST 3: `Accept Friend Request` failed")
 
     logout(driver, '/notifications#')
 
