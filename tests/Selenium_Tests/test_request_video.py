@@ -101,8 +101,8 @@ def hoverTest(hoverButton, buttonID, location, message):
     else:
         print(message + " failed")
 
-
-def request_video_test(driver, receiver, description, dueDateYear, dueDateTime):
+# Send video request test function for sender
+def request_video_test(driver, description, dueDateYear, dueDateMonthDay, dueDateTime):
     # Find the element with the id "Topbar" and hover over it
     hoverTest("Videos Hover","Video Request Button", '/request-video', "`Video Request page found`")
 
@@ -126,10 +126,11 @@ def request_video_test(driver, receiver, description, dueDateYear, dueDateTime):
     dueDate_button_element = driver.find_element(By.ID, "id_due_date")
     dueDate_button_element.click()
     wait.until(EC.presence_of_element_located((By.ID, "id_due_date")))
-    dueDate_button_element.send_keys(dueDateYear)
+    dueDate_button_element.send_keys(dueDateTime)
     time.sleep(0.5)
     dueDate_button_element.send_keys(Keys.TAB)
-    dueDate_button_element.send_keys(dueDateTime)
+    dueDate_button_element.send_keys(dueDateYear)
+    dueDate_button_element.send_keys(dueDateMonthDay)
     time.sleep(0.5)
 
     # Check that the send button goes to home page
@@ -145,7 +146,8 @@ def request_video_test(driver, receiver, description, dueDateYear, dueDateTime):
     else:
         print("TEST: 0 `Request Video` Failed")
 
-def remove_video_test(driver, receiver, description, dueDateYear, dueDateTime):
+# Remove video request test function on sender
+def remove_request_video_test(driver, description, dueDateYear, dueDateMonthDay, dueDateTime):
     # Find the remove video request button
     remove_video_request_button = wait.until(EC.presence_of_element_located((By.ID, "delete video request button")))
 
@@ -161,7 +163,7 @@ def remove_video_test(driver, receiver, description, dueDateYear, dueDateTime):
     else:
         print("TEST 1: `Remove Video Request` Failed")
 
-    request_video_test(driver, receiver, description, dueDateYear, dueDateTime)
+    request_video_test(driver, description, dueDateYear, dueDateMonthDay, dueDateTime)
 
     logout(driver, '/notifications#')
 
@@ -183,8 +185,8 @@ driver.get('http://localhost:8000/login')
 print("Request Page test Start")
 login(driver, 'linus', 'Admin123')  # Replace with actual credentials
 time.sleep(0.5)
-request_video_test(driver, "adrian", "request video description testing", "2024", "01011000AM")
-remove_video_test(driver, "adrian", "request video description testing", "2024", "01011000AM")
+request_video_test(driver, "request video description testing", "2024", "0101", "1000AM")
+remove_request_video_test(driver, "request video description testing", "2024", "0101", "1000AM")
 print("Request Page test Completed")
 
 # Close the webdriver
