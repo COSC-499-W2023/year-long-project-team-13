@@ -1,7 +1,13 @@
-h6{
+.receiver {
     color: black;
     font-weight: bold;
-    }
+    padding-left:59px;
+}
+
+.description {
+    color: black;
+    font-weight: bold;
+}
 
 .button2 {
     background-color: transparent;
@@ -15,33 +21,33 @@ h6{
     font-size: 16px;
     width: 50%; /* Set a width if needed */
     cursor: pointer; /* Mouse pointer on change to hand on hover */
-    }
+}
 
-.buttonRound{
+.buttonRound {
     border-radius: 12px;
 }
 
 .button2:hover {
     background-color: #3e8e41;
-    }
+}
 
 .textarea {
     border: 2px solid #3e8e41;
-    }
+}
 
-.label{
+.due_date {
     color: black;
     font-weight: bold;
-    padding-right:120px;
-    }
+    padding-left:47px;
+}
 
-.input{
+.input {
     border: 2px solid #3e8e41;
-    }
+}
 
-.dropdown2{
+.dropdown2 {
     border: 2px solid #3e8e41;
-    }
+}
 
 .card {
     position: relative;
@@ -61,4 +67,4 @@ h6{
 .justified {
     display: flex;
     justify-content: center;
-    }
+}
