@@ -13,7 +13,6 @@ import test_create # runs create video test
 import test_notification # runs notification test
 import test_setting # runs setting test
 #import test_theme # runs theme test
-import test_request_video # runs request video test
 import test_register # runs register test
 import test_profile # runs profile test
 

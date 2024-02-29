@@ -77,6 +77,7 @@ WSGI_APPLICATION = 'video_app.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
+# Local SQLite3 database
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -84,6 +85,7 @@ DATABASES = {
     }
 }
 
+# AWS RDS database
 # DATABASES = {
 #   'default': {
 #     'ENGINE': 'django.db.backends.postgresql_psycopg2',

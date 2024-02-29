@@ -81,28 +81,34 @@
               <div class="card-body p-5">
                 <h2 class="text-uppercase text-center mb-5">Your notifications</h2>
                 {% for notification in notifications %}
-                  <div class="alert alert-info" role="alert">
-                    {{ notification.message }}
-                    <br>
-                    <small class="text-muted">{{ notification.timestamp }}</small>
-                    {% comment %} <p></p> {% endcomment %}
-                    {% if notification.type == 1 %}
-                    <form method="POST" enctype="multipart/form-data">
-                      {% csrf_token %}
-                      <input type="hidden" name="notifID" value="{{ notification.id }}">
-                      <button class="btn btn-dark mt-4" id="delete friend request button" name="deleteFriendRequest" type="submit">Remove Friend Request</button>
-                    </form>
-                    {% elif notification.type == 2 %}
-                    <form method="POST" enctype="multipart/form-data">
-                      {% csrf_token %}
-                      <input type="hidden" name="notifID" value="{{ notification.id }}">
-                      <button class="btn btn-dark ms-1 me-3 mt-4" id="accept friend request button" name="acceptFriendRequest" type="submit">Accept</button>
-                      <button class="btn btn-dark mt-4" id="reject friend request button" name="rejectFriendRequest" type="submit">Reject</button>
-                    </form>
-                    {% else %}
-                    {% endif %}
-                    {% comment %} <br> {% endcomment %}
-                  </div>
+                  <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="alert alert-info" role="alert">
+                      {{ notification.message }}
+                      <br>
+                      <small class="text-muted">{{ notification.timestamp }}</small>
+                      <br>
+                      {% comment %} <p></p> {% endcomment %}
+                      {% if notification.type == 1 %}
+                      {% comment %} <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %} {% endcomment %}
+                        <input type="hidden" name="notifID" value="{{ notification.id }}">
+                        <button class="btn btn-dark mt-3 mb-1" id="delete friend request button" name="deleteFriendRequest" type="submit">Remove Friend Request</button>
+                      {% comment %} </form> {% endcomment %}
+                      {% elif notification.type == 2 %}
+                      {% comment %} <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %} {% endcomment %}
+                        <input type="hidden" name="notifID" value="{{ notification.id }}">
+                        <button class="btn btn-dark ms-1 me-3 mt-3 mb-1" id="accept friend request button" name="acceptFriendRequest" type="submit">Accept</button>
+                        <button class="btn btn-dark mt-3 mb-1" id="reject friend request button" name="rejectFriendRequest" type="submit">Reject</button>
+                      {% comment %} </form> {% endcomment %}
+                      {% elif notification.type == 3 %}
+                        <input type="hidden" name="notifID" value="{{ notification.id }}">
+                        <button class="btn btn-dark mt-3 mb-1" id="delete video request button" name="deleteVideoRequest" type="submit">Remove Video Request</button>
+                      {% else %}
+                      {% endif %}
+                    </div>
+                  </form>
                 {% empty %}
                   <p>No notifications</p>
                 {% endfor %}

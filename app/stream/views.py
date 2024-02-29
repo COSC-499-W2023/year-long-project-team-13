@@ -12,7 +12,6 @@ from stream.forms import UserInfoUpdateForm
 
 from . models import VidRequest, VidStream, Contact, FriendRequest, Post, Profile, UserInfo, Notification, Setting
 from . forms import VidUploadForm, VidRequestForm, UserRegistrationForm, UserUpdateForm, UserInfoUpdateForm, UserProfileUpdateForm, UserProfileUpdateForm,  ValidatingPasswordChangeForm, AddContactForm, UserPermissionForm
-# SetPasswordFormWithConfirm, SetPasswordForm,
 
 class VideoDetailView(DetailView):
     template_name = "stream/video-detail.html"
@@ -38,38 +37,48 @@ def home(request):
 
 def friendRequest(request):
     if request.method == "POST":
-        form = AddContactForm(request.user, request.POST)
-        if form.is_valid():
-            add_contact = form.save(commit=False)
+        addcontactform = AddContactForm(request.user, request.POST)
+        if addcontactform.is_valid():
+            add_contact = addcontactform.save(commit=False)
             add_contact.sender = request.user
             add_contact.save()
             # link recent created friendRequest from friend request table to Notification table
-            recentFriendRequest = FriendRequest.objects.filter(sender=request.user).first()
-            Notification.objects.create(user=request.user, message=f'You have sent a friend request to '+ str(form.cleaned_data['receiver']) +'.', type=1, friendRequest_id=recentFriendRequest)
-            Notification.objects.create(user=form.cleaned_data['receiver'], message=f'You have received a friend request from '+ str(request.user) +'.', type=2,friendRequest_id=recentFriendRequest)
+            recentFriendRequest = FriendRequest.objects.filter(sender=request.user).last()
+            Notification.objects.create(user=request.user, message=f'You have sent a friend request to '+ str(addcontactform.cleaned_data['receiver']) +'.', type=1, friendRequest_id=recentFriendRequest)
+            Notification.objects.create(user=addcontactform.cleaned_data['receiver'], message=f'You have received a friend request from '+ str(request.user) +'.', type=2,friendRequest_id=recentFriendRequest)
             return redirect("stream:notifications")
     else:
-        form = AddContactForm(request.user)
+        addcontactform = AddContactForm(request.user)
         search_query = request.GET.get('search', '')
         # Existing users show in alphabetical order
         users = User.objects.filter(Q(username__icontains=search_query) & ~Q(id=request.user.id) & ~Q(requests_sender__receiver=request.user, requests_sender__status=1) & ~Q(requests_receiver__sender=request.user) & ~Q(contact_sender__receiver=request.user) & ~Q(contact_receiver__sender=request.user) & ~Q(userinfo__permission=request.user.userinfo.permission) & ~Q(userinfo__permission=3)).order_by('username')
 
     context = {
-        'form': form,
+        'addcontactform': addcontactform,
         'users': users,
     }
     return render(request, 'stream/contact.html', context)
-# & ~Q(user_permissions = request.user.userinfo.permission) & ~Q(user_permissions = 3)
+
 
 def request_video(request):
     if request.method == "POST":
-        form = VidRequestForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('stream:home')
+        requestvideoform = VidRequestForm(request.user, request.POST)
+        if requestvideoform.is_valid():
+            request_video = requestvideoform.save(commit=False)
+            request_video.sender = request.user
+            request_video.save()
+            # link recent created video request from VidRequest table to Notification table
+            recentVideoRequest = VidRequest.objects.filter(sender=request.user).last()
+            Notification.objects.create(user=request.user, message=f'You have sent a video request to '+ str(requestvideoform.cleaned_data['receiver']) +'.', type=3, videoRequest_id=recentVideoRequest)
+            Notification.objects.create(user=requestvideoform.cleaned_data['receiver'], message=f'You have received a video request from '+ str(request.user) +'.', type=4,videoRequest_id=recentVideoRequest)
+            return redirect('stream:notifications')
     else:
-        form = VidRequestForm()
-        return render(request, 'stream/request-video.html', {'form':form})
+        requestvideoform = VidRequestForm(request.user)
+
+    context = {
+        'requestvideoform': requestvideoform
+    }
+    return render(request, 'stream/request-video.html', context)
 
 
 class VideoCreateView(LoginRequiredMixin   ,CreateView):
@@ -141,10 +150,10 @@ class UserVideoListView(ListView):
 user_signed_up = Signal()
 def register(request):
     if request.method == "POST":
-        form = UserRegistrationForm(request.POST)
+        registrationform = UserRegistrationForm(request.POST)
         userpermissionform = UserPermissionForm(request.POST)
-        if form.is_valid() and userpermissionform.is_valid():
-            new_user = form.save()
+        if registrationform.is_valid() and userpermissionform.is_valid():
+            new_user = registrationform.save()
             user_signed_up.send(sender=User, user=new_user)
             Setting.objects.create(user=new_user, darkmode=False, emailnotification=True)
             userinfo = userpermissionform.save(commit=False)
@@ -153,11 +162,11 @@ def register(request):
             userinfo.save()
             return redirect('stream:login')
     else:
-        form = UserRegistrationForm()
+        registrationform = UserRegistrationForm()
         userpermissionform = UserPermissionForm()
 
     context = {
-        'form': form,
+        'registrationform': registrationform,
         'userpermissionform': userpermissionform,
     }
     return render(request, 'stream/register.html', context)
@@ -197,7 +206,7 @@ def notifications(request):
             if 'deleteFriendRequest' in request.POST:
                 # delete the friend request
                 # delete notification of sender and receiver friend request
-                # make both sender notification of successful delete the sent friend request
+                # make sender notification of successful delete the sent friend request
                 notificationid = request.POST.get('notifID')
                 friendRequestid = Notification.objects.get(id=notificationid).friendRequest_id.id
                 receiver = FriendRequest.objects.get(id=friendRequestid).receiver
@@ -222,12 +231,24 @@ def notifications(request):
             elif 'rejectFriendRequest' in request.POST:
                 # delete the friend request
                 # delete notification of the sender and receiver friend request
+                # make receiver notification of successful reject friend request
                 notificationid = request.POST.get('notifID')
                 friendRequestid = Notification.objects.get(id=notificationid).friendRequest_id.id
                 sender = FriendRequest.objects.get(id=friendRequestid).sender
                 receiver = request.user
                 FriendRequest.objects.filter(id=friendRequestid).delete()
                 Notification.objects.create(user=receiver, message=f'You have rejected a friend request from '+ str(sender) +'.', type=7)
+                return redirect("stream:notifications")
+            elif 'deleteVideoRequest' in request.POST:
+                # delete the video request
+                # delete notification of sender and receiver video request
+                # make sender notification of successful delete the sent video request
+                notificationid = request.POST.get('notifID')
+                videoRequestid = Notification.objects.get(id=notificationid).videoRequest_id.id
+                receiver = VidRequest.objects.get(id=videoRequestid).receiver
+                sender = request.user
+                VidRequest.objects.filter(id=videoRequestid).delete()
+                Notification.objects.create(user=sender, message=f'You have successfully deleted a video request to '+ str(receiver) +'.', type=7)
                 return redirect("stream:notifications")
             else:
                 notifications = Notification.objects.filter(user=user).order_by('-timestamp')
