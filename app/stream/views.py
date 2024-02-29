@@ -13,12 +13,13 @@ from stream.forms import UserInfoUpdateForm
 from .models import Post
 
 from . models import VidStream, Notification, Profile, UserInfo, Setting, FriendRequest
-from . forms import VidUploadForm, VidRequestForm, UserRegistrationForm, UserUpdateForm, UserInfoUpdateForm, UserProfileUpdateForm, UserProfileUpdateForm,  ValidatingPasswordChangeForm, AddContactForm
+from . forms import PostUploadForm, VidRequestForm, UserRegistrationForm, UserUpdateForm, UserInfoUpdateForm, UserProfileUpdateForm, UserProfileUpdateForm,  ValidatingPasswordChangeForm, AddContactForm
 # SetPasswordFormWithConfirm, SetPasswordForm,
 
 class VideoDetailView(DetailView):
     template_name = "stream/video-detail.html"
     model = Post
+
     def get_queryset(self):
         return super().get_queryset().order_by('-created_at')
 
@@ -32,7 +33,7 @@ def search(request):
     if request.method == "POST":
         query = request.POST.get('title', None)
         if query:
-            results = VidStream.objects.filter(title__contains=query)
+            results = Post.objects.filter(title__contains=query)
             return render(request, 'stream/search.html',{'videos':results})
 
     return render(request, 'stream/search.html')
@@ -73,24 +74,23 @@ def request_video(request):
         return render(request, 'stream/request-video.html', {'form':form})
 
 
-class VideoCreateView(LoginRequiredMixin   ,CreateView):
+class VideoCreateView(LoginRequiredMixin, CreateView):
     model = Post
     success_url = "/"
     template_name = 'stream/post-video.html'
-    # template_name = 'stream/upload.html'
     fields = ['title', 'description','video']
-    #this is to make sure that the logged in user is the one to upload the content
+
     def form_valid(self, form):
         form.instance.sender = self.request.user
         form.instance.receiver = self.request.user  
         return super().form_valid(form)
 
-class VideoUploadView(LoginRequiredMixin   ,CreateView):
+class VideoUploadView(LoginRequiredMixin, CreateView):
     model = Post
     success_url = "/"
     template_name = 'stream/upload.html'
     fields = ['title', 'description','video']
-    #this is to make sure that the logged in user is the one to upload the content
+
     def form_valid(self, form):
         form.instance.sender = self.request.user
         form.instance.receiver = self.request.user 
@@ -237,3 +237,7 @@ def settings(request):
         'passwordform': passwordform,
     }
     return render(request, 'stream/settings.html', context)
+
+def video_list(request):
+    videos = Post.objects.all()
+    return render(request, 'video_list.html', {'videos': videos, 'MEDIA_URL': settings.MEDIA_URL})

@@ -11,9 +11,9 @@
     {% endif %}
     <div>
         {% for post in posts %}
-        <h3>Video belonging to {{ post.author.username }}</h4>
+        <h3>Video belonging to {{ post.sender.username }}</h4>
         <h4><a href="{% url 'stream:video-detail' post.id %}">{{ post.title }}</a></h1>
-        <h12>{{ post.upload_date}}</h12>
+        <h12>{{ post.created_at}}</h12>
         <p>{{ post.description}}</p>
         <video controls>
             <source src="{{ post.video.url }}" type="video/mp4">

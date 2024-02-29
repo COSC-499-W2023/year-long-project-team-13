@@ -2,7 +2,7 @@ from django.contrib import admin
 from . models import VidRequest, VidStream,  Contact, FriendRequest, Post, Profile, UserInfo, Notification, Setting
 # VidRequestNotification
 class PostAdmin(admin.ModelAdmin):
-    list_display = ('id', 'title', 'video_id', 'request_id')  
+    list_display = ('title', 'description', 'video')
 # Register your models here.
 admin.site.register(VidRequest)
 

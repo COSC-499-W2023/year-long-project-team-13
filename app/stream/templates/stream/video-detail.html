@@ -10,14 +10,14 @@
     </div>
     {% endif %}
     <div>
-        <img class="rounded-circle border-dark" src="{{ post.author.profile.image.url }}">
-        <h12>{{ post.author.username }}</h12>
+        <img class="rounded-circle border-dark" src="{{ post.sender.profile.image.url }}">
+        <h12>{{ post.sender.username }}</h12>
     </div>
     <div>
         <h1>{{ post.title }}</h1>
-        <h12>The video was uploaded on {{ post.upload_date }}</h12>
+        <h12>The video was uploaded on {{ post.created_at }}</h12>
         <p>{{ post.description}}</p>
-        {% if post.author == user %}
+        {% if post.sender == user %}
             <div>
                 <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'stream:video-update' post.id %}">Update</a>
                 <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'stream:video-delete' post.id %}">Delete</a>

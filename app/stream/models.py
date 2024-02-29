@@ -6,23 +6,23 @@ from django.dispatch import receiver
 from PIL import Image, ImageOps
 from datetime import date
 from django.urls import reverse
+from django.views.generic.list import ListView
 # Create your models here.
 
 # CASCADE
 # Video Request Table
 class VidRequest(models.Model):
-    # id = models.TextField((""), primary_key=True)
     id = models.AutoField(primary_key=True)
-    # request_id = models.AutoField(primary_key=True)
     sender = models.ForeignKey(User, related_name="user_sender", on_delete=models.CASCADE)
     receiver = models.ForeignKey(User, related_name="user_receiver", on_delete=models.CASCADE)
     description = models.TextField(max_length=600)
     due_date = models.DateTimeField(default=timezone.now)
 
-
     def __str__(self):
-        # return f"{self.sender} Request"
         return f"{self.sender} {self.id} {self.receiver}"
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
 
     # def get_absolute_url(self):
     #     return reverse("video-detail", kwargs={"pk": self.pk})
@@ -57,7 +57,6 @@ class Contact(models.Model):
     sender = models.ForeignKey(User, related_name="contact_sender", on_delete=models.CASCADE)
     receiver = models.ForeignKey(User, related_name="contact_receiver", on_delete=models.CASCADE)
 
-
     def __str__(self):
         return f"{self.sender} {self.id} {self.receiver}"
 
@@ -66,7 +65,6 @@ class Contact(models.Model):
 
 # Pending friend request table
 class FriendRequest(models.Model):
-    # create a tuple to manage different options for your request status
     STATUS_CHOICES = (
       (1, 'Pending'),
       (2, 'Accepted'),
@@ -76,8 +74,6 @@ class FriendRequest(models.Model):
     sender = models.ForeignKey(User, on_delete=models.CASCADE, related_name="requests_sender")
     receiver = models.ForeignKey(User, on_delete=models.CASCADE, related_name="requests_receiver")
     sent_on = models.DateTimeField(default=timezone.now)
-
-    # store this as an integer, Django handles the verbose choice options
     status = models.IntegerField(choices=STATUS_CHOICES, default=1)
 
     def __str__(self):
@@ -95,10 +91,10 @@ class Post(models.Model):
     description = models.TextField(max_length=600)
     sendtime = models.DateTimeField(default=timezone.now)
     timelimit = models.DateTimeField(default=timezone.now)
-    video = models.FileField(upload_to='')
-    video_id = models.ForeignKey(VidStream, on_delete=models.SET_NULL, null=True)
+    video = models.FileField(upload_to='videos/')
     request_id = models.ForeignKey(VidRequest, on_delete=models.SET_NULL, null=True)
     created_at = models.DateTimeField(auto_now_add=True, null=False)
+
     def __str__(self):
         return f"{self.sender} {self.id} {self.receiver}"
 
@@ -211,4 +207,14 @@ class Setting(models.Model):
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
 
+    model = Post
+    template_name = 'stream/video-list.html'
+    context_object_name = 'videos'
 
+class UserVideoListView(ListView):
+    model = Post
+    template_name = 'stream/user-videos.html'
+    context_object_name = 'posts'
+
+    def get_queryset(self):
+        return Post.objects.filter(sender=self.request.user)

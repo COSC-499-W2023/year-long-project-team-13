@@ -14,17 +14,17 @@
         </div>
         {% endif %}
         <div style="padding-top: 50px;">
-            {% for item in videos %}
+            {% for post in posts %}
                 <div class="card mb-3" style="width: 75%; box-shadow: 12em; margin: auto;">
-                    <img class="rounded-circle border-dark" src="{{ item.streamer.profile.image.url }}" style="border-color: red;" width="50" height="50">
-                    <a class="mr-2" href="{% url 'stream:user-videos' item.streamer.username %}" style="text-align: start;">{{ item.streamer }}</a>
-                    <h12 style="text-align: start;">{{ item.upload_date }}</h12>
+                    <img class="rounded-circle border-dark" src="{{ post.sender.profile.image.url }}" style="border-color: red;" width="50" height="50">
+                    <a class="mr-2" href="{% url 'stream:user-videos' post.sender.username %}" style="text-align: start;">{{ post.sender }}</a>
+                    <h12 style="text-align: start;">{{ post.created_at }}</h12>
                     <video class="card-img-top" controls style="width: 100%; height: auto;">
-                        <source src="{{ item.video.url }}" type="video/mp4">
+                        <source src="{{ post.video.url }}" type="video/mp4">
                     </video>
                     <div class="card-body">
-                        <h5 class="card-title"><a href="{% url 'stream:video-detail' item.id  %}">{{ item.title }}</a></h5>
-                        <p class="card-text">{{ item.description }}</p>
+                        <h5 class="card-title"><a href="{% url 'stream:video-detail' post.id  %}">{{ post.title }}</a></h5>
+                        <p class="card-text">{{ post.description }}</p>
                     </div>
                     <hr>
                 </div>

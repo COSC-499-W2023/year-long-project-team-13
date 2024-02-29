@@ -10,11 +10,12 @@ from django.contrib.auth.hashers import check_password
 import difflib
 # from django.utils.translation import gettext_lazy as _
 import re
+from .models import Post
 
-class VidUploadForm(forms.ModelForm):
+class PostUploadForm(forms.ModelForm):
 
     class Meta:
-        model = VidStream
+        model = Post
         fields = ["title","description", "video"]
 
 class VidRequestForm(forms.ModelForm):

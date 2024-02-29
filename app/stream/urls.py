@@ -12,6 +12,8 @@ from . views import (
 from django.urls import path
 from stream import views as stream_views
 from django.contrib.auth import views as auth_views
+from django.conf import settings
+from django.conf.urls.static import static
 
 
 
@@ -43,3 +45,6 @@ urlpatterns = [
     path('theme',stream_views.settings, name="theme"),
     path('notifications',stream_views.notifications, name="notifications"),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
