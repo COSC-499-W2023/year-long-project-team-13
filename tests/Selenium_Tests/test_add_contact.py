@@ -31,9 +31,11 @@ def login(driver, username, password):
     # Scroll down the login page
     html = driver.find_element(By.TAG_NAME, "html")
     html.send_keys(Keys.PAGE_DOWN)
+    html.send_keys(Keys.END)
 
     # Find the element with the id "Login Submit Button" and click it
     login_submit_button_element = driver.find_element(By.ID, "login")
+    wait.until(EC.element_to_be_clickable((By.ID, "login")))
     login_submit_button_element.click()
 
     # Wait for the URL to change to the home page URL
@@ -95,6 +97,7 @@ def logout(driver, location):
 def hoverTest(buttonID, location, message):
 
     # Find the element with the id "Topbar" and hover over it
+    wait.until(EC.presence_of_element_located((By.ID, "User Hover")))
     topbar_element = driver.find_element(By.ID, "User Hover")
     hover = ActionChains(driver).move_to_element(topbar_element)
     hover.perform()
