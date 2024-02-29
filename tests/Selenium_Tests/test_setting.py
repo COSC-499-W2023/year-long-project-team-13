@@ -69,7 +69,7 @@ def profileChangePassword(driver):
         print("TEST: 1 Change Password redirect failed")
 
 
-def setting_test(driver, username, password):
+def setting_test(driver, username, password, newpassword):
     # Call the login page test function
     login_page_test(driver, username, password)
     time.sleep(0.5)
