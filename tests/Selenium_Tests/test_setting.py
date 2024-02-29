@@ -194,10 +194,10 @@ def setting_test(driver, username, password, newpassword):
     wait.until(EC.url_contains('/login'))
 
     # Check if the URL contains the expected profile page URL
-    if '/setting' in driver.current_url:
-        print("TEST: 3 `Setting` successful")
+    if '/login' in driver.current_url:
+        print("TEST: 9 `Setting` successful")
     else:
-        print("TEST: 3 `Setting` failed")
+        print("TEST: 9 `Setting` failed")
 
 
 
