@@ -15,7 +15,7 @@ class SimpleTest(TestCase):
             receiver = User.objects.get(username='user2')
             FriendRequest.objects.create(sender=self.user1, receiver=receiver)  # Send a add contact request from user1 to user2
 
-            recentFriendRequest = FriendRequest.objects.filter(sender=self.user1).first()
+            recentFriendRequest = FriendRequest.objects.filter(sender=self.user1).last()
             Notification.objects.create(user=self.user1, message=f'You have sent a friend request to '+ str(receiver) +'.', type=1, friendRequest_id=recentFriendRequest)   # create notification for sender
             Notification.objects.create(user=receiver, message=f'You have received a friend request from '+ str(self.user1) +'.', type=2,friendRequest_id=recentFriendRequest)  # create notificaiton for receiver
 
@@ -38,10 +38,10 @@ class SimpleTest(TestCase):
             receiver = User.objects.get(username='user2')
             FriendRequest.objects.create(sender=sender, receiver=receiver)  # Send a add contact request from user1 to user2
 
-            recentFriendRequest = FriendRequest.objects.filter(sender=sender).first()
+            recentFriendRequest = FriendRequest.objects.filter(sender=sender).last()
             Notification.objects.create(user=sender, message=f'You have sent a friend request to '+ str(receiver) +'.', type=1, friendRequest_id=recentFriendRequest)
 
-            notificationIDsender = Notification.objects.filter(user=sender, type=1, friendRequest_id=recentFriendRequest).first()
+            notificationIDsender = Notification.objects.filter(user=sender, type=1, friendRequest_id=recentFriendRequest).last()
 
             Notification.objects.create(user=receiver, message=f'You have received a friend request from '+ str(sender) +'.', type=2,friendRequest_id=recentFriendRequest)
 
@@ -53,7 +53,7 @@ class SimpleTest(TestCase):
 
             FriendRequest.objects.filter(id=friendRequestid).delete()   # delete friend request
             Notification.objects.create(user=sender, message=f'You have successfully deleted a friend request to '+ str(receiver) +'.', type=7) # create notification message for sender
-            notificationMessage = Notification.objects.filter(user=sender, type=7).first()
+            notificationMessage = Notification.objects.filter(user=sender, type=7).last()
 
             self.assertFalse(FriendRequest.objects.filter(sender=sender, receiver=receiver).exists())  # Check if friend request not exists (deleted)
 
@@ -68,11 +68,11 @@ class SimpleTest(TestCase):
             receiver = User.objects.get(username='user2')
             FriendRequest.objects.create(sender=sender, receiver=receiver)  # Send a add contact request from user1 to user2
 
-            recentFriendRequest = FriendRequest.objects.filter(sender=sender).first()
+            recentFriendRequest = FriendRequest.objects.filter(sender=sender).last()
             Notification.objects.create(user=sender, message=f'You have sent a friend request to '+ str(receiver) +'.', type=1, friendRequest_id=recentFriendRequest)
 
             Notification.objects.create(user=receiver, message=f'You have received a friend request from '+ str(sender) +'.', type=2,friendRequest_id=recentFriendRequest)
-            notificationIDreceiver = Notification.objects.filter(user=receiver, type=2, friendRequest_id=recentFriendRequest).first()
+            notificationIDreceiver = Notification.objects.filter(user=receiver, type=2, friendRequest_id=recentFriendRequest).last()
 
             notificationid = notificationIDreceiver.id
             friendRequestid = Notification.objects.get(id=notificationid).friendRequest_id.id
@@ -83,7 +83,7 @@ class SimpleTest(TestCase):
             Notification.objects.create(user=sender, message=f'You and '+ str(receiver) +' had become friends.', type=7)
             notificationMessageSender = Notification.objects.filter(user=sender, type=7).first()    # create notification message for sender
             Notification.objects.create(user=receiver, message=f'You and '+ str(sender) +' had become friends.', type=7)
-            notificationMessageReceiver = Notification.objects.filter(user=receiver, type=7).first()    # create notification message for receiver
+            notificationMessageReceiver = Notification.objects.filter(user=receiver, type=7).last()    # create notification message for receiver
 
             self.assertFalse(FriendRequest.objects.filter(sender=sender, receiver=receiver).exists())  # Check if friend request not exists (deleted)
 
@@ -98,11 +98,11 @@ class SimpleTest(TestCase):
             receiver = User.objects.get(username='user2')
             FriendRequest.objects.create(sender=sender, receiver=receiver)  # Send a add contact request from user1 to user2
 
-            recentFriendRequest = FriendRequest.objects.filter(sender=sender).first()
+            recentFriendRequest = FriendRequest.objects.filter(sender=sender).last()
             Notification.objects.create(user=sender, message=f'You have sent a friend request to '+ str(receiver) +'.', type=1, friendRequest_id=recentFriendRequest)
 
             Notification.objects.create(user=receiver, message=f'You have received a friend request from '+ str(sender) +'.', type=2,friendRequest_id=recentFriendRequest)
-            notificationIDreceiver = Notification.objects.filter(user=receiver, type=2, friendRequest_id=recentFriendRequest).first()
+            notificationIDreceiver = Notification.objects.filter(user=receiver, type=2, friendRequest_id=recentFriendRequest).last()
 
             notificationid = notificationIDreceiver.id
             friendRequestid = Notification.objects.get(id=notificationid).friendRequest_id.id
@@ -110,7 +110,7 @@ class SimpleTest(TestCase):
 
             FriendRequest.objects.filter(id=friendRequestid).delete()   # delete friend request
             Notification.objects.create(user=receiver, message=f'You have rejected a friend request from '+ str(sender) +'.', type=7)
-            notificationMessageReceiver = Notification.objects.filter(user=receiver, type=7).first()    # create notification message for receiver
+            notificationMessageReceiver = Notification.objects.filter(user=receiver, type=7).last()    # create notification message for receiver
 
             self.assertFalse(FriendRequest.objects.filter(sender=sender, receiver=receiver).exists())  # Check if friend request not exists (deleted)
 

@@ -68,7 +68,7 @@ def request_video(request):
             request_video.sender = request.user
             request_video.save()
             # link recent created video request from VidRequest table to Notification table
-            recentVideoRequest = VidRequest.objects.filter(sender=request.user).first()
+            recentVideoRequest = VidRequest.objects.filter(sender=request.user).last()
             Notification.objects.create(user=request.user, message=f'You have sent a video request to '+ str(requestvideoform.cleaned_data['receiver']) +'.', type=3, videoRequest_id=recentVideoRequest)
             Notification.objects.create(user=requestvideoform.cleaned_data['receiver'], message=f'You have received a video request from '+ str(request.user) +'.', type=4,videoRequest_id=recentVideoRequest)
             return redirect('stream:notifications')
