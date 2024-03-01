@@ -15,13 +15,14 @@ from . forms import VidUploadForm, VidRequestForm, UserRegistrationForm, UserUpd
 
 class VideoDetailView(DetailView):
     template_name = "stream/video-detail.html"
-    model = VidStream
+    model = Post
 
 class GeneralVideoListView(ListView):
-    model = VidStream
+    model = Post
     template_name = 'stream/video-list.html'
     context_object_name = 'videos'
-    ordering = ['-upload_date']
+    ordering = ['-sendtime']
+
 
 def search(request):
     if request.method == "POST":
@@ -32,8 +33,10 @@ def search(request):
 
     return render(request, 'stream/search.html')
 
+
 def home(request):
     return render(request, 'stream/home.html')
+
 
 def friendRequest(request):
     if request.method == "POST":
@@ -82,71 +85,68 @@ def request_video(request):
 
 
 class VideoCreateView(LoginRequiredMixin   ,CreateView):
-    model = VidStream
+    model = Post
     success_url = "/"
     template_name = 'stream/post-video.html'
     # template_name = 'stream/upload.html'
     fields = ['title', 'description','video']
     #this is to make sure that the logged in user is the one to upload the content
     def form_valid(self, form):
-        form.instance.streamer = self.request.user
+        form.instance.sender = self.request.user
         return super().form_valid(form)
 
+
 class VideoUploadView(LoginRequiredMixin   ,CreateView):
-    model = VidStream
+    model = Post
     success_url = "/"
     template_name = 'stream/upload.html'
     fields = ['title', 'description','video']
     #this is to make sure that the logged in user is the one to upload the content
     def form_valid(self, form):
-        form.instance.streamer = self.request.user
+        form.instance.sender = self.request.user
         return super().form_valid(form)
 
 
 class VideoUpdateView(LoginRequiredMixin, UserPassesTestMixin ,UpdateView):
-    model = VidStream
+    model = Post
     template_name = 'stream/post-video.html'
     success_url = "/"
     fields = ['title','description','video']
 
-
     #this is to make sure that the logged in user is the one to upload the content
     def form_valid(self, form):
-        form.instance.streamer = self.request.user
+        form.instance.sender = self.request.user
         return super().form_valid(form)
     #this function prevents other people from updating your videos
     def test_func(self):
         video = self.get_object()
-        if self.request.user == video.streamer:
+        if self.request.user == video.sender:
             return True
         return False
-
-
 
 
 class VideoDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     template_name = "stream/video-confirm-delete.html"
     success_url = "/"
-    model = VidStream
+    model = Post
 
     def test_func(self):
         video = self.get_object()
-        if self.request.user == video.streamer:
+        if self.request.user == video.sender:
             return True
         return False
 
 
-
 class UserVideoListView(ListView):
-    model = VidStream
+    model = Post
     template_name = "stream/user_videos.html"
     context_object_name = 'videos'
 
     def get_queryset(self):
         user = get_object_or_404(User, username=self.kwargs.get('username'))
-        return VidStream.objects.filter(streamer=user).order_by('-upload_date')
+        return Post.objects.filter(sender=user).order_by('-sendtime')
 
-#From Streamers
+
 user_signed_up = Signal()
 def register(request):
     if request.method == "POST":
@@ -170,6 +170,7 @@ def register(request):
         'userpermissionform': userpermissionform,
     }
     return render(request, 'stream/register.html', context)
+
 
 @login_required
 def profile(request):
@@ -198,6 +199,7 @@ def profile(request):
         'profileform': profileform,
     }
     return render(request, 'stream/profile.html', context)
+
 
 def notifications(request):
     user = request.user

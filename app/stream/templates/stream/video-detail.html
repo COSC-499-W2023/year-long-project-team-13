@@ -4,23 +4,23 @@
     <div id="overlay" class="float-center" style="position:fixed; top:30%;">
         <div>
             <p class="text-dark">Are you sure to logout?</p>
-            <button id="logout" class="float-left submit-button" >Logout</button>
+            <button id="logout" class="float-left submit-button me-1">Logout</button>
             <button id="cancel" class="float-left submit-button">Cancel</button>
         </div>
     </div>
     {% endif %}
-    <div>
-        <img class="rounded-circle border-dark" src="{{ object.streamer.profile.image.url }}">
-        <h12>{{ object.streamer.username }}</h12>
+    <div style = "margin-top: 25px; padding-top: 75px; padding-bottom: 25px;">
+        <img class="rounded-circle border-dark" src="{{ object.sender.profile.image.url }}">
+        <h12>{{ object.sender.username }}</h12>
     </div>
-    <div>
+    <div style = "padding-bottom: 60px;">
         <h1>{{ object.title }}</h1>
-        <h12>The video was uploaded on {{ object.upload_date }}</h12>
+        <h12>The video was uploaded on {{ object.sendtime }}</h12>
         <p>{{ object.description}}</p>
-        {% if object.streamer == user %}
+        {% if object.sender == user %}
             <div>
-                <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'stream:video-update' object.id %}">Update</a>
-                <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'stream:video-delete' object.id %}">Delete</a>
+                <a class="btn btn-secondary btn-sm mb-4 me-3" href="{% url 'stream:video-update' object.id %}">Update</a>
+                <a class="btn btn-danger btn-sm mb-4" href="{% url 'stream:video-delete' object.id %}">Delete</a>
             </div>
         {% endif %}
         <video controls>

@@ -18,7 +18,6 @@ class VidRequest(models.Model):
     description = models.TextField(max_length=600)
     due_date = models.DateTimeField(default=timezone.now)
 
-
     def __str__(self):
         # return f"{self.sender} Request"
         return f"{self.id}"
@@ -32,15 +31,9 @@ class VidRequest(models.Model):
 # Video Stream Table (Table stores all videos) [Video List table]
 class VidStream(models.Model):
     id = models.AutoField(primary_key=True)
-    # video_id = models.AutoField(primary_key=True)
     streamer = models.ForeignKey(User, on_delete=models.CASCADE)
-    #
-    title = models.CharField(max_length=300)
-    description = models.TextField(max_length=600)
-    #
     upload_date = models.DateTimeField(default=timezone.now)
     video = models.FileField(upload_to='')
-
 
     def __str__(self):
         return f"{self.id}"
@@ -55,7 +48,6 @@ class Contact(models.Model):
     id = models.AutoField(primary_key=True)
     sender = models.ForeignKey(User, related_name="contact_sender", on_delete=models.CASCADE)
     receiver = models.ForeignKey(User, related_name="contact_receiver", on_delete=models.CASCADE)
-
 
     def __str__(self):
         return f"{self.id}"
@@ -98,13 +90,12 @@ class Post(models.Model):
     video_id = models.ForeignKey(VidStream, on_delete=models.SET_NULL, null=True)
     request_id = models.ForeignKey(VidRequest, on_delete=models.SET_NULL, null=True)
 
-
     def __str__(self):
         # return f"{self.post_id} {self.sender} Post"
         return f"{self.id}"
 
-#     def get_absolute_url(self):
-#         return reverse("video-detail", kwargs={"pk": self.pk})
+    def get_absolute_url(self):
+        return reverse("video-detail", kwargs={"pk": self.pk})
 
 # From Streamers
 # Update User's Profile Picture

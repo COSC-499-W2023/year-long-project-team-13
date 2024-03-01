@@ -4,12 +4,12 @@
         <div id="overlay" class="float-center" style="position:fixed; top:30%;">
             <div>
                 <p class="text-dark">Are you sure to logout?</p>
-                <button id="logout" class="float-left submit-button" >Logout</button>
+                <button id="logout" class="float-left submit-button me-1">Logout</button>
                 <button id="cancel" class="float-left submit-button">Cancel</button>
             </div>
         </div>
     {% endif %}
-    <div style="margin-top: 1%;">
+    <div style = "margin-top: 25px; padding-top: 75px;">
         <form method="POST">
             {% csrf_token %}
             <h3>Are you sure you want to delete the video {{ object.title }} ?</h3>
