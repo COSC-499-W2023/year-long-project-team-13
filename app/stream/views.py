@@ -28,7 +28,7 @@ def search(request):
     if request.method == "POST":
         query = request.POST.get('title', None)
         if query:
-            results = VidStream.objects.filter(title__contains=query)
+            results = Post.objects.filter(title__contains=query)
             return render(request, 'stream/search.html',{'videos':results})
 
     return render(request, 'stream/search.html')

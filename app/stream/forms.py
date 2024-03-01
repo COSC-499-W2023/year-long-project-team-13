@@ -1,8 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, SetPasswordForm
 from django.contrib.auth.models import User
-from . models import VidStream, VidRequest, Profile, UserInfo, Setting, FriendRequest, Notification
-# , Contact
+from . models import VidRequest, VidStream, Contact, FriendRequest, Post, Profile, UserInfo, Notification, Setting
 from django.contrib.auth import password_validation
 from django.contrib import auth
 from django.contrib.auth.password_validation import validate_password
@@ -14,7 +13,7 @@ import re
 class VidUploadForm(forms.ModelForm):
 
     class Meta:
-        model = VidStream
+        model = Post
         fields = ["title","description", "video"]
 
 class VidRequestForm(forms.ModelForm):
