@@ -1,13 +1,13 @@
 {% extends 'stream/base.html'%}
 {% block content %}
 
-{% load bootstrap5 %}
+{% comment %} {% load bootstrap5 %}
 {% bootstrap_css %}
-{% bootstrap_javascript %}
+{% bootstrap_javascript %} {% endcomment %}
 {% load static %}
-<!DOCTYPE html>
-<html data-bs-theme="light" lang="en">
-    <style>
+{% comment %} <!DOCTYPE html> {% endcomment %}
+{% comment %} <html data-bs-theme="light" lang="en"> {% endcomment %}
+    {% comment %} <style>
         body {
             margin: 0;
             display: flex;
@@ -49,11 +49,12 @@
             height: auto;
             display: block;
         }
-      </style>
-<head>
+      </style> {% endcomment %}
+{% comment %} <head> {% endcomment %}
     <link rel="stylesheet" href="https://pyscript.net/releases/2022.12.1/pyscript.css" />
-</head>
-<body>
+    <link href="{% static 'css/styleVideoCreate.css' %}" rel="stylesheet">
+{% comment %} </head> {% endcomment %}
+{% comment %} <body> {% endcomment %}
     {% if user.userinfo.permission == 1 or user.is_superuser %}
         <div style = "margin-top: 8em; padding-top: 10em;">
             <div class = "horizontal-buttons">
@@ -276,7 +277,7 @@
             </div>
         </div>
     {% endif %}
-</body>
+{% comment %} </body> {% endcomment %}
 
         {% comment %} <div>
             <form method="POST" enctype="multipart/form-data">

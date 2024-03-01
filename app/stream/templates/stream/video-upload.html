@@ -1,13 +1,15 @@
 {% extends 'stream/base.html'%}
 {% block content %}
 
-{% load bootstrap5 %}
+{% comment %} {% load bootstrap5 %}
 {% bootstrap_css %}
-{% bootstrap_javascript %}
+{% bootstrap_javascript %} {% endcomment %}
 {% load static %}
-<!DOCTYPE html>
+{% comment %} <!DOCTYPE html>
 <html data-bs-theme="light" lang="en">
-<head>
+<head> {% endcomment %}
+<link href="{% static 'css/styleVideoUpload.css' %}" rel="stylesheet">
+{% comment %}
     <style>
         body {
             margin: 0;
@@ -52,7 +54,7 @@
         }
         </style>
     </head>
-    <body>
+    <body>{% endcomment %}
         {% if user.userinfo.permission == 1 or user.is_superuser %}
             <div style = "margin-top: 25px;">
                 <div class = "horizontal-buttons">
@@ -79,7 +81,7 @@
             </div>
         {% endif %}
 
-    </body>
+    {% comment %} </body> {% endcomment %}
         {% if user.is_authenticated %}
             <div id="overlay" class="float-center" style="position:fixed; top:30%;">
                 <div>

@@ -87,7 +87,7 @@ def request_video(request):
 class VideoCreateView(LoginRequiredMixin   ,CreateView):
     model = Post
     success_url = "/"
-    template_name = 'stream/post-video.html'
+    template_name = 'stream/video-create.html'
     # template_name = 'stream/upload.html'
     fields = ['title', 'description','video']
     #this is to make sure that the logged in user is the one to upload the content
@@ -99,7 +99,7 @@ class VideoCreateView(LoginRequiredMixin   ,CreateView):
 class VideoUploadView(LoginRequiredMixin   ,CreateView):
     model = Post
     success_url = "/"
-    template_name = 'stream/upload.html'
+    template_name = 'stream/video-upload.html'
     fields = ['title', 'description','video']
     #this is to make sure that the logged in user is the one to upload the content
     def form_valid(self, form):
@@ -109,7 +109,7 @@ class VideoUploadView(LoginRequiredMixin   ,CreateView):
 
 class VideoUpdateView(LoginRequiredMixin, UserPassesTestMixin ,UpdateView):
     model = Post
-    template_name = 'stream/post-video.html'
+    template_name = 'stream/video-create.html'
     success_url = "/"
     fields = ['title','description','video']
 
