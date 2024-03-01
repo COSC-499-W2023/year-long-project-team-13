@@ -15,7 +15,7 @@
         {% endif %}
         <div style="margin-top: 25px; padding-top: 75px;">
             {% for item in videos %}
-                {% if item.sender.username == user.username or item.receiver.username == user.username %}
+                {% if item.sender == user or item.receiver == user %}
                     <div class="card mb-3" style="width: 75%; box-shadow: 12em; margin: auto;">
                         <img class="rounded-circle border-dark" src="{{ item.sender.profile.image.url }}" style="border-color: red;" width="50" height="50">
                         <a class="mr-2" href="{% url 'stream:user-videos' item.sender.username %}" style="text-align: start;">{{ item.sender }}</a>

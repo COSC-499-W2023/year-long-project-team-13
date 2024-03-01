@@ -11,7 +11,7 @@
     {% endif %}
     <div style = "margin-top: 25px; padding-top: 75px; padding-bottom: 20px;">
         {% for item in videos %}
-            {% if item.sender.username == user.username or item.receiver.username == user.username %}
+            {% if item.sender == user or item.receiver == user %}
                 <div style ="padding-bottom: 25px;">
                     <h3>Video belonging to {{ item.sender.username }}</h4>
                     <h4><a href="{% url 'stream:video-detail' item.id %}">{{ item.title }}</a></h1>
