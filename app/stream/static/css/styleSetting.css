@@ -174,3 +174,10 @@ form .btn{
 .expand-menu.animate{
     width : 100%;
 }
+
+.card {
+    width: 550px; 
+    margin: 0 auto;
+    box-sizing: border-box;
+    padding-right: 20px;
+}
