@@ -136,7 +136,7 @@
                                     <div style="width: 75%; margin: auto;">
                                         <form method="post" enctype="multipart/form-data">
                                             {% csrf_token %}
-                                            <p class="text-center" id="instruction" style="padding-right: 100px;">Your password can’t be too similar to your other personal information.
+                                            <p class="text-center" id="instruction" style="padding-right: 140px;">Your password can’t be too similar to your other personal information.
                                                 <br>
                                                 Your password must contain at least 8 characters.
                                                 <br>
@@ -144,16 +144,16 @@
                                                 <br>
                                                 Your password can’t be entirely numeric.
                                                 <br>The new password must contain at least one letter and at least one digit or punctuation character.</p>
-                                            <div class = "form-center" id= "oldpassword" style= "margin: auto; padding-right: 100px;"
+                                            <div class = "form-center" id= "oldpassword" style= "margin: auto; padding-right: 140px;"
                                                 <div class="form-group">
                                                 {{ passwordform.oldpassword.errors }}
                                                 {{ passwordform.oldpassword }}
                                             </div>
-                                            <div class="form-group" id = "newpassword"  style= "margin: auto; padding-right: 100px;">
+                                            <div class="form-group" id = "newpassword"  style= "margin: auto; padding-right: 140px;">
                                                 {{ passwordform.password.errors }}
                                                 {{ passwordform.password }}
                                             </div>
-                                            <div class="form-group" id = "confirmpassword" style= "margin: auto; padding-right: 100px;">
+                                            <div class="form-group" id = "confirmpassword" style= "margin: auto; padding-right: 140px;">
                                                 {{ passwordform.password2.errors }}
                                                 {{ passwordform.password2 }}
                                             </div>
@@ -166,7 +166,7 @@
                                                 {{ passwordform.new_password2 }}
                                             </div>
                                             {% endcomment %}
-                                            <div class="row mt-4 d-flex justify-content-center" style="padding-top:25px; margin-right: 100px;">
+                                            <div class="row mt-4 d-flex justify-content-center" style="padding-top:25px; margin-right: 140px;">
                                                 <div class="col-auto">
                                                     <button type="button" href="{% url 'stream:setting' %}" id="Save" class="btn btn-primary btn-block submit-button" onclick='Password_Overlay()'>
                                                         {% comment %} <a  onclick='Password_Overlay()'> {% endcomment %}
