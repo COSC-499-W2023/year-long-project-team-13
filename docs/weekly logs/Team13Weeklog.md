@@ -488,9 +488,37 @@ Test Report
   ![Test Report](./images/tests_completion/term2_week6_pytest_1.png)
   ![Test Report](./images/tests_completion/term2_week6_pytest_2.png)
 
-## Term 2 Week 7 2024/02/19 ~ 2024/03/03
+## Preferred name -> Ssc name -> Github name
+
+- Ethan -> Ethan Hsu -> YuchenHsu
+- Beth -> Beth Ralston -> mblackbeak (mblackbeak)
+- Herman -> Herman Sood -> herman-23
+- Raymond -> Sitt Paing -> SittHmuePaing
+- Adrian -> Adrian Fong -> AdrianFWM
+
+## Term 2 Week 7 ~ 8 2024/02/26 ~ 2024/03/10
 
 - Which features were in the project plan for this milestone?
-  - Finish Video request function (send/remove/notification) and UI, tests.
-  - Finish Video upload form function and notification, working a selenium test and pytest.
- - Video create/upload is still in process.
+  - Finished Video request function (send/remove/notification) and UI, tests.
+  - Finished Video upload form function and notification, working on a selenium test and pytest.
+  - Finished video recording UI, functions other than connecting to database.
+  - Fixed UI bugs for password change, video upload, and video recording pages.
+  - Updated register UI to make the error message more prevalent.
+
+Burnup chart
+![Burnup](./images/burnup/term2_week8_burnup.png)
+Network Graph
+![Network](./images/network/term2_week8_network_1.png)
+![Network](./images/network/term2_week8_network_2.png)
+Completed Tasks
+![Completed](./images/completed/term2_week8_done_1.png)
+![Completed](./images/completed/term2_week8_done_2.png)
+![Completed](./images/completed/term2_week8_done_3.png)
+![Completed](./images/completed/term2_week8_done_4.png)
+In progress Tasks
+![In Progress](./images/in-prog/term2_week8_inprogress.png)
+Test Report
+
+- Test report file is in the same directory [here](./report.txt)
+  ![Test Report](./images/tests_completion/term2_week8_pytest_1.png)
+  ![Test Report](./images/tests_completion/term2_week8_pytest_2.png)
