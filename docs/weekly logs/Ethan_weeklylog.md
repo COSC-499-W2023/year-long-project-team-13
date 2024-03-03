@@ -312,3 +312,18 @@
   - This is the guide I followed:
     - [Uploading to the S3 and store the URL in the database](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/PostgreSQL.Procedural.Importing.html)
   - ![upload_fails](./images/Ethan_stuff/t2w7/failed_s3_upload.png)
+
+# Preferred name -> Ssc name -> Github name
+
+- Ethan -> Ethan Hsu -> YuchenHsu
+
+## Week 8 2024/02/26 ~ 2024/03/03
+
+- Type of tasks you worked on (screenshot from Peer Eval question)
+
+![Tasks](./images/tasks/ethan_term2_week8.png)
+
+- The past two weeks I worked with Beth to finish (and salvage) the record/upload video page
+- Made the UIs and the preview work on the record page.
+- Fixed multiple UI bugs on the record/upload video page.
+- Also fixed the testing for the record/upload video page.
