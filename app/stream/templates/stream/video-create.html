@@ -66,63 +66,78 @@
                     Upload
                 </a>
             </div>
-            <h1 style="text-align: center; color: white;">Record a Video</h1>
-            <div>
-                {% comment %} style = "padding-top: 2%;" {% endcomment %}
-                <button id="start-camera" style="height: 50%; width: 50%; background-color: black; color: #FFFFFF; margin-bottom: 10%;">Start Camera</button>
-                <div class="video-box" style="padding-bottom: 10%; display: none; margin-bottom:10%;">
-                    <video id="video" width="320" height="240" autoplay></video>
-                </div>
-                <div class="detailsPage card mb-3" style="display: none; width: 50%; margin: auto;">
-                    <div class="form-group">
-                        <label for="contact">Contact</label>
-                        <select class="form-control" id="contact" name="contact">
-                            <option value="Adrian">Adrian</option>
-                            <option value="Ethan">Ethan</option>
-                            <option value="Herman">Herman</option>
-                            <option value="Raymond">Raymond</option>
-                            <option value="Beth">Beth</option>
-                        </select>
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <h1 style="text-align: center; color: white;">Record a Video</h1>
+                <div>
+                    {% comment %} style = "padding-top: 2%;" {% endcomment %}
+                    <button id="start-camera" style="height: 50%; width: 50%; background-color: black; color: #FFFFFF; margin-bottom: 10%;">Start Camera</button>
+                    <div class="video-box" style="padding-bottom: 10%; display: none; margin-bottom:10%;">
+                        <video id="video" width="320" height="240" autoplay></video>
                     </div>
-                    <div class="form-group">
-                        <label for="title">Title</label>
-                        <input type="text" class="form-control" id="title" name="title" placeholder="Enter title">
-                    </div>
-                    <div class="form-group">
-                        <label for="description">Description</label>
-                        <textarea class="form-control" id="description" name="description" placeholder="Enter description" style="height: 30%"></textarea>
-                    </div>
-                </div>
-                <div class="previewPage" style="display: none;">
-                    <div class="card mb-3" style="width: 75%; box-shadow: 12em; margin: auto;">
-                        <img class="rounded-circle border-dark" src="{{ "https://d18u3jaflgrcvn.cloudfront.net/media/mountain.jpg" }}" style="border-color: red;" width="50" height="50">
-                        <a class="mr-2" style="text-align: start;" >Username1</a>
-                        <p id="preview-contact">Request From: Username1</p>
-                        <h12 style="text-align: start;">{{ item.upload_date }}</h12>
-                        <video class="card-img-top" controls style="width: 100%; height: 25%;" id="vid-box">
-                            <source type="video/mp4" id="vid-source">
-                        </video>
-                        <div class="card-body">
-                            <h5 class="card-title" id="preview-title"><a>Title</a></h5>
-                            <p class="card-text" id="preview-description">Description</p>
+                    <div class="detailsPage card mb-3" style="display: none; width: 50%; margin: auto;">
+                        <div class="form-group">
+                            <label for="contact">Contact</label>
+                            {% comment %} <select class="form-control" id="contact" name="contact">
+                                <option value="Adrian">Adrian</option>
+                                <option value="Ethan">Ethan</option>
+                                <option value="Herman">Herman</option>
+                                <option value="Raymond">Raymond</option>
+                                <option value="Beth">Beth</option>
+                            </select> {% endcomment %}
+                            {{ createvideoform.request_id.errors }}
+                            {{ createvideoform.request_id }}
                         </div>
-                        <hr>
+                        <div class="form-group">
+                            <label for="title">Title</label>
+                            {% comment %} <input type="text" class="form-control" id="title" name="title" placeholder="Enter title"> {% endcomment %}
+                            {{ createvideoform.title.errors }}
+                            {{ createvideoform.title }}
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Description</label>
+                            {% comment %} <textarea class="form-control" id="description" name="description" placeholder="Enter description" style="height: 30%"></textarea> {% endcomment %}
+                            {{ createvideoform.description.errors }}
+                            {{ createvideoform.description }}
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Time Limit Date</label>
+                            {% comment %} <textarea class="form-control" id="description" name="description" placeholder="Enter description" style="height: 30%"></textarea> {% endcomment %}
+                            {{ createvideoform.timelimit.errors }}
+                            {{ createvideoform.timelimit }}
+                        </div>
+                    </div>
+                    <div class="previewPage" style="display: none;">
+                        <div class="card mb-3" style="width: 75%; box-shadow: 12em; margin: auto;">
+                            <img class="rounded-circle border-dark" src="{{ "https://d18u3jaflgrcvn.cloudfront.net/media/mountain.jpg" }}" style="border-color: red;" width="50" height="50">
+                            <a class="mr-2" style="text-align: start;" >Username1</a>
+                            <p id="preview-contact">Request From: Username1</p>
+                            <h12 style="text-align: start;">{{ item.upload_date }}</h12>
+                            <video class="card-img-top" controls style="width: 100%; height: 25%;" id="vid-box">
+                                <source type="video/mp4" id="vid-source">
+                            </video>
+                            <div class="card-body">
+                                <h5 class="card-title" id="preview-title"><a>Title</a></h5>
+                                <p class="card-text" id="preview-description">Description</p>
+                            </div>
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="submit-success" style="display: none;">
+                        <h1 id="success-msg">Video Submitted Successfully</h1>
+                    </div>
+                    <div class="horizontal-buttons">
+                        <button class="button" id="back-record" style="display: none">Back</button>
+                        <button class="button" id="back-details" style="display: none">Back</button>
+                        <button class="button" id="start-record" style="display: none">Start/Re-record</button>
+                        <button class="button" id="stop-record" style="display: none">Stop Recording</button>
+                        <button class="button" id="next" style="display: none">NEXT</button>
+                        <button class="button" id="preview" style="display: none">Preview</button>
+                        <button class="button" id="submit" style="display: none">Submit</button>
+                        <a class="button" id="download-video" download="test.webm" style="text-decoration: none; color: #FFFFFF; display: none;">Download Video</a>
                     </div>
                 </div>
-                <div class="submit-success" style="display: none;">
-                    <h1 id="success-msg">Video Submitted Successfully</h1>
-                </div>
-                <div class="horizontal-buttons">
-                    <button class="button" id="back-record" style="display: none">Back</button>
-                    <button class="button" id="back-details" style="display: none">Back</button>
-                    <button class="button" id="start-record" style="display: none">Start/Re-record</button>
-                    <button class="button" id="stop-record" style="display: none">Stop Recording</button>
-                    <button class="button" id="next" style="display: none">NEXT</button>
-                    <button class="button" id="preview" style="display: none">Preview</button>
-                    <button class="button" id="submit" style="display: none">Submit</button>
-                    <a class="button" id="download-video" download="test.webm" style="text-decoration: none; color: #FFFFFF; display: none;">Download Video</a>
-                </div>
-            </div>
+            </form>
         </div>
         <script>
             let camera_button = document.querySelector("#start-camera");
@@ -231,13 +246,13 @@
                 back_details.style.display = 'block';
                 back_record.style.display = 'none';
                 // get title, description, and contact inputed from user
-                title_input = title_input_id.value;
+                /*title_input = title_input_id.value;
                 description_input = description_input_id.value;
-                contact_input = contact_id.value;
+                contact_input = contact_id.value;*/
                 // display title, description, and contact username
-                title_display.innerHTML = title_input;
+                /*title_display.innerHTML = title_input;
                 description_display.innerHTML = description_input;
-                contact_display.innerHTML = "Request From: " + contact_input;
+                contact_display.innerHTML = "Request From: " + contact_input;*/
 
                 // do an asynchronous update to show the video
                 video_display.src = download_link.href;

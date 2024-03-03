@@ -11,7 +11,7 @@ from django.db.models import Q
 from stream.forms import UserInfoUpdateForm
 
 from . models import VidRequest, VidStream, Contact, FriendRequest, Post, Profile, UserInfo, Notification, Setting
-from . forms import VidUploadForm, VidRequestForm, UserRegistrationForm, UserUpdateForm, UserInfoUpdateForm, UserProfileUpdateForm, UserProfileUpdateForm,  ValidatingPasswordChangeForm, AddContactForm, UserPermissionForm
+from . forms import VidUploadForm, VidCreateForm, VidRequestForm, UserRegistrationForm, UserUpdateForm, UserInfoUpdateForm, UserProfileUpdateForm, UserProfileUpdateForm,  ValidatingPasswordChangeForm, AddContactForm, UserPermissionForm
 
 class VideoDetailView(DetailView):
     template_name = "stream/video-detail.html"
@@ -96,6 +96,39 @@ class VideoCreateView(LoginRequiredMixin   ,CreateView):
         return super().form_valid(form)
 
 
+def create_video(request):
+    if request.method == "POST":
+        createvideoform = VidCreateForm(request.user, request.POST, request.FILES)
+        if createvideoform.is_valid():
+
+            request_id = createvideoform.cleaned_data['request_id']
+
+            upload_video = createvideoform.save(commit=False)
+
+            # instance = Post(video=request.FILES['video'])
+            # instance.save()
+            # self.fields['receiver'].queryset = User.objects.exclude(username=user.username)
+            # self.fields['receiver'].queryset = self.fields['receiver'].queryset.filter(video_sender__receiver__username=user.username)
+
+            upload_video.sender = request.user
+            receiverfilter = User.objects.get(username=VidRequest.objects.get(id=request_id.id).sender)
+            upload_video.receiver = receiverfilter
+            upload_video.save()
+            # link recent uploaded video request from Post table to Notification table
+            recentVideoUpload = Post.objects.filter(sender=request.user).last()
+
+            Notification.objects.create(user=request.user, message=f'You have post a video to '+ str(receiverfilter) +'.', type=5, post_id=recentVideoUpload)
+            Notification.objects.create(user=receiverfilter, message=f'You have received a video post from '+ str(request.user) +'.', type=7, post_id=recentVideoUpload)
+            return redirect('stream:video-list')
+    else:
+        createvideoform = VidCreateForm(request.user)
+
+    context = {
+        'createvideoform': createvideoform
+    }
+    return render(request, 'stream/video-create.html', context)
+
+
 class VideoUploadView(LoginRequiredMixin   ,CreateView):
     model = Post
     success_url = "/"
@@ -154,38 +187,6 @@ class VideoUpdateView(LoginRequiredMixin, UserPassesTestMixin ,UpdateView):
         if self.request.user == video.sender:
             return True
         return False
-
-def upload_video(request):
-    if request.method == "POST":
-        uploadvideoform = VidUploadForm(request.user, request.POST, request.FILES)
-        if uploadvideoform.is_valid():
-
-            request_id = uploadvideoform.cleaned_data['request_id']
-
-            upload_video = uploadvideoform.save(commit=False)
-
-            # instance = Post(video=request.FILES['video'])
-            # instance.save()
-            # self.fields['receiver'].queryset = User.objects.exclude(username=user.username)
-            # self.fields['receiver'].queryset = self.fields['receiver'].queryset.filter(video_sender__receiver__username=user.username)
-
-            upload_video.sender = request.user
-            receiverfilter = User.objects.get(username=VidRequest.objects.get(id=request_id.id).sender)
-            upload_video.receiver = receiverfilter
-            upload_video.save()
-            # link recent uploaded video request from Post table to Notification table
-            recentVideoUpload = Post.objects.filter(sender=request.user).last()
-
-            Notification.objects.create(user=request.user, message=f'You have post a video to '+ str(receiverfilter) +'.', type=5, post_id=recentVideoUpload)
-            Notification.objects.create(user=receiverfilter, message=f'You have received a video post from '+ str(request.user) +'.', type=7, post_id=recentVideoUpload)
-            return redirect('stream:video-list')
-    else:
-        uploadvideoform = VidUploadForm(request.user)
-
-    context = {
-        'uploadvideoform': uploadvideoform
-    }
-    return render(request, 'stream/video-upload.html', context)
 
 
 class VideoDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
