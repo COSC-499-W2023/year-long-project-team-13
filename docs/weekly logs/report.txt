@@ -19,7 +19,7 @@ TEST 11: `logout` successful
 TEST 3: `home page` successful
 Home page test completed
 Login Page test Start
-TEST 0: `Login` failed Did not go home
+TEST: 0 `Login` successful
 Login Page test Completed
 Logout test Start
 Login successful
@@ -79,28 +79,29 @@ Create Video Test Start
 Login Successful
 TEST: 0 `Videos hover` successful
 TEST: 1 `Create Video` Successful
+TEST: 2 `Start Camera` Successful
+TEST: 3 `Start Record` Successful
+TEST: 4 `Stop Record` Successful
+TEST: 5 `Next` Successful
+TEST: 6 `Preview` Successful
+TEST: 7 `Back Details` Successful
+TEST: 8 `Back Record` Successful
+TEST: 9 `Start Record 2` Successful
+TEST: 10 `Stop Record 2` Successful
+TEST: 11 `Download Video` Successful
+TEST: 12 `Video Info` Successful
+TEST: 13 `Submit` Successful
 Create Video Test Completed
 Notification Page test Start
 Login successful
 TEST: 0 `User hover` successful
 TEST 1: `Notifications` successful
 Notification Page test completed
-Setting Page test Start
-Login successful
-TEST: 0 `User hover` successful
-TEST: 1 Change Password redirect successful
-TEST: 2 `User hover` successful
-TEST: 3 `Setting` successful
-Setting Page test Completed
-Request Page test Start
-Login Successful
-TEST: 0 `Videos hover` successful
-TEST: 1 `Request Video` Successful
-Request Page test Completed
 Register Page test Start
 TEST: 0 `Registration` successful
 Register Page test end for permission 1
 TEST: 0 `Registration` successful
+Register Page test end for permission 2
 Register Page test End
 Profile Page test Start
 Login successful
@@ -116,3 +117,41 @@ TEST: 8 `birthdate check` successful
 TEST: 9 `image check` successful
 TEST: 10 `Edit Profile` successful
 Profile Page test Completed
+Setting Page test Start
+Login successful
+TEST: 0 `User hover` successful
+TEST: 1 Change Password redirect successful
+TEST: 2 `User hover` successful
+Test 1 : oldpassword successful
+Test 2 : newpassword successful
+Test 3 : confirmpassword successful
+Test 4 : Save successful
+Test 5 : Update successful
+Test 6 : Save successful
+Test 7 : Cancel successful
+Test 8 : Reset successful
+oldpassword filled successfully
+newpassword filled successfully
+confirmpassword filled successfully
+Save successful
+Update successful
+TEST: 9 `Setting` successful
+Login successful
+TEST: 0 `User hover` successful
+TEST: 1 Change Password redirect successful
+TEST: 2 `User hover` successful
+Test 1 : oldpassword successful
+Test 2 : newpassword successful
+Test 3 : confirmpassword successful
+Test 4 : Save successful
+Test 5 : Update successful
+Test 6 : Save successful
+Test 7 : Cancel successful
+Test 8 : Reset successful
+oldpassword filled successfully
+newpassword filled successfully
+confirmpassword filled successfully
+Save successful
+Update successful
+TEST: 9 `Setting` successful
+Setting Page test Completed
