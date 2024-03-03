@@ -663,3 +663,86 @@ id connect to "friend request", "video request", "post", and "video" table.
 
 ### Weekly Log / Team Weekly Log / Additional
 - Worked on my own weekly log, contribute to team weeklog.
+
+# Preferred name -> Ssc name -> Github name
+
+- Adrian -> Adrian Fong -> AdrianFWM
+
+## Term 2 Week 7/8 2023/02/19~2023/03/03
+
+- Task I have worked on this week and winter break.
+![Weekly Task T2-7](./images/tasks/AdrianFong_T2_Week7_Task.jpg)
+
+## Recap on your week's goals
+
+### Send/Remove Video Request function and Selenium/pytest, Notification messages [Complete]
+- Worked on "Request Video Function", "Request Video UI", "Notification of video requests (Display/ Remove video request function)" and "Video Request Selenium test/pytest" on project board, finished receiver permission account can access video request page and send video request to users in their friend list with sender permission. Video request form can choose receiver of video request name from friend list(sender permission), description message and a due date.
+- After request has been sent, notification message will appear. Sender of video request can remove video request. And it will show "successfully remove video request" message.
+- On the receiver of video request side, they can see message of "received a video request".
+- Finished Selenium test and pytest for send/remove video request.
+- Added all the test to master test.
+- All Selenium test and pytest passes with no issue/error.
+- All functions on Video request page and Notification are merged to master branch.
+
+  - [Video request page & functions & selenium/pytest Pull Request/Commit](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/149)
+  - Video Request form screenshot (Receiver permission)
+![Video Request form screenshot (Receiver permission)](./images/Adrian_images/T2_Week_7/videoRequest.jpg)
+  - Video Request notification screenshot (Receiver permission) [with request ID]
+![Video Request notification screenshot (Receiver permission)](./images/Adrian_images/T2_Week_7/video_request_noti.jpg)
+  - Remove Video Request screenshot (Receiver permission)
+![Remove Video Request screenshot (Receiver permission)](./images/Adrian_images/T2_Week_7/remove_video_request.jpg)
+  - Video Request notification screenshot (Sender permission) [with request ID]
+![Video Request notification screenshot (Sender permission)](./images/Adrian_images/T2_Week_7/recieve_video_request.jpg)
+
+### Upload Video Post function and notification
+- Worked on "Upload Video Function" on project board, finished upload video function which sender permission account can send a video post with selected video request ID, title, description, time limit date and video file.
+- After the video is uploaded, sender of video post and receiver of video post will both receive notification message.
+- The video will display on view video.
+- Still need to fix CSS layout of form.
+- Need to write selenium test and pytest for it.
+
+  - [Upload Video Post Branch](https://github.com/COSC-499-W2023/year-long-project-team-13/tree/post_video)
+  - Video Upload Post form screenshot (Sender permission)
+![Video Upload Post form screenshot (Sender permission)](./images/Adrian_images/T2_Week_7/upload_video.jpg)
+  - Video Upload Post notification screenshot (Sender permission)
+![Video Upload Post notification screenshot (Sender permission)](./images/Adrian_images/T2_Week_7/video_post_noti.jpg)
+  - View Uploaded Video Post  screenshot
+![View Uploaded Video Post screenshot](./images/Adrian_images/T2_Week_7/view_video.jpg)
+
+### View Video/Confirm Delete/Video List/Video Detail Function and UI [Complete]
+- Worked on "View video - Function" on project board, finished view video post for sender or receiver of video post can view video.
+- Also, sender of video post can delete the video on video detail page.
+- Sender or receiver of video posts can see list of video from sender's account.
+- Finished UI for view video, video detail, video list, confirm delete video.
+
+  - [View Video Branch](https://github.com/COSC-499-W2023/year-long-project-team-13/tree/post_video)
+  - View Video screenshot (Sender/Receiver of Post)
+![View Video screenshot (Sender/Receiver of Post)](./images/Adrian_images/T2_Week_7/view_video.jpg)
+  - Video Detail screenshot (Sender of Post with update/delete button)
+![Video Detail screenshot (Sender of Post with update/delete button)](./images/Adrian_images/T2_Week_7/video_detail.jpg)
+  - Confirm Delete Video Post screenshot [Sender of Post]
+![Confirm Delete Video Post screenshot [Sender of Post]](./images/Adrian_images/T2_Week_7/confirm_delete.jpg)
+  - Video Post List from sender user screenshot [Sender/Receiver of Post]
+![Video Post List from sender user screenshot [Sender/Receiver of Post]](./images/Adrian_images/T2_Week_7/video_list.jpg)
+
+### Create/Record Video Post function and notification [In-Progress]
+- Working on "Create/Record Video Function" on project board, finished the form for create/record video page, but still need to find a way to upload recorded video into database.
+- The page can record using webcamera, users can download the video or preview the video.
+- Need to fix css layout of the form.
+- Need Selenium/pytest.
+
+  - [Create/Record Video Post Branch](https://github.com/COSC-499-W2023/year-long-project-team-13/tree/post_video)
+  - Record Video using webcamera screenshot (Sender permission)
+![Record Video using webcamera screenshot (Sender permission)](./images/Adrian_images/T2_Week_7/record_video.jpg)
+  - Video create/record Post form screenshot (Sender permission)
+![Video create/record Post form screenshot (Sender permission)](./images/Adrian_images/T2_Week_7/record_video_form.jpg)
+
+### Review other team member's pull request
+- Reviewed Herman's and Raymond's "Setting branch" pull request, reviewed Ethan's and Beth's "create video branch" and "post video preview" pull requests, and tested all tests and passed.
+  - [Setting branch changes Pull Request/Commit](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/147)
+  - [Merge the create video branch to master Request/Commit](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/148)
+  - [post video preview (not supposed to be here) Request/Commit](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/152)
+
+### Weekly Log / Team Weekly Log / Additional
+- Worked on my own weekly log, contribute to team weeklog.
+- Assign Task to Herman to work on register/setting/login page error colour to red from this week.

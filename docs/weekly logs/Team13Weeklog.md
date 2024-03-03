@@ -487,3 +487,10 @@ Test Report
 - Test report file is in the same directory [here](./report.txt)
   ![Test Report](./images/tests_completion/term2_week6_pytest_1.png)
   ![Test Report](./images/tests_completion/term2_week6_pytest_2.png)
+
+## Term 2 Week 7 2024/02/19 ~ 2024/03/03
+
+- Which features were in the project plan for this milestone?
+  - Finish Video request function (send/remove/notification) and UI, tests.
+  - Finish Video upload form function and notification, working a selenium test and pytest.
+ - Video create/upload is still in process.
