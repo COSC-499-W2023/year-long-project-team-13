@@ -57,7 +57,7 @@
 {% comment %} </head> {% endcomment %}
 {% comment %} <body> {% endcomment %}
     {% if user.userinfo.permission == 1 or user.is_superuser %}
-        <div style = "margin-top: 8em; padding-top: 10em;">
+        <div style = "margin-top: 30%; padding-top: 10em;">
             <div class = "horizontal-buttons">
                 <a class="button" href=" {% url 'stream:video-create' %}" style="color: #FFFFFF">
                     Record
@@ -77,11 +77,11 @@
                     <div class="form-group">
                         <label for="contact">Contact</label>
                         <select class="form-control" id="contact" name="contact">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
+                            <option value="Adrian">Adrian</option>
+                            <option value="Ethan">Ethan</option>
+                            <option value="Herman">Herman</option>
+                            <option value="Raymond">Raymond</option>
+                            <option value="Beth">Beth</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -99,8 +99,8 @@
                         <a class="mr-2" style="text-align: start;" >Username1</a>
                         <p id="preview-contact">Request From: Username1</p>
                         <h12 style="text-align: start;">{{ item.upload_date }}</h12>
-                        <video class="card-img-top" controls style="width: 100%; height: auto;">
-                            <source src="{{ "https://d18u3jaflgrcvn.cloudfront.net/media/Tree_Clouds__Greenry___Free_stock_footage___Free_HD_Videos_-_no_copyright.mp4" }}" type="video/mp4">
+                        <video class="card-img-top" controls style="width: 100%; height: 25%;" id="vid-box">
+                            <source type="video/mp4" id="vid-source">
                         </video>
                         <div class="card-body">
                             <h5 class="card-title" id="preview-title"><a>Title</a></h5>
@@ -197,6 +197,8 @@
             let title_display = document.querySelector('#preview-title');
             let description_display = document.querySelector('#preview-description');
             let contact_display = document.querySelector('#preview-contact');
+            let video_display = document.querySelector('#vid-source');
+            let video_box = document.querySelector('#vid-box');
 
             next_button.addEventListener('click', function() {
                 detailsPage.style.display = 'block';
@@ -237,6 +239,10 @@
                 description_display.innerHTML = description_input;
                 contact_display.innerHTML = "Request From: " + contact_input;
 
+                // do an asynchronous update to show the video
+                video_display.src = download_link.href;
+                video_box.load();
+                video_box.play();
             });
 
             back_details.addEventListener('click', function() {
