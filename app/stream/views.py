@@ -72,8 +72,8 @@ def request_video(request):
             request_video.save()
             # link recent created video request from VidRequest table to Notification table
             recentVideoRequest = VidRequest.objects.filter(sender=request.user).last()
-            Notification.objects.create(user=request.user, message=f'You have sent a video request to '+ str(requestvideoform.cleaned_data['receiver']) +'.', type=3, videoRequest_id=recentVideoRequest)
-            Notification.objects.create(user=requestvideoform.cleaned_data['receiver'], message=f'You have received a video request from '+ str(request.user) + ' with Video Request ID: ' + recentVideoRequest +'.', type=4, videoRequest_id=recentVideoRequest)
+            Notification.objects.create(user=request.user, message=f'You have sent a video request to '+ str(requestvideoform.cleaned_data['receiver']) + ' with Video Request ID: ' + str(recentVideoRequest) +'.', type=3, videoRequest_id=recentVideoRequest)
+            Notification.objects.create(user=requestvideoform.cleaned_data['receiver'], message=f'You have received a video request from '+ str(request.user) + ' with Video Request ID: ' + str(recentVideoRequest) +'.', type=4, videoRequest_id=recentVideoRequest)
             return redirect('stream:notifications')
     else:
         requestvideoform = VidRequestForm(request.user)
@@ -108,21 +108,28 @@ class VideoUploadView(LoginRequiredMixin   ,CreateView):
 
 def upload_video(request):
     if request.method == "POST":
-        uploadvideoform = VidUploadForm(request.user, request.POST)
+        uploadvideoform = VidUploadForm(request.user, request.POST, request.FILES)
         if uploadvideoform.is_valid():
 
             request_id = uploadvideoform.cleaned_data['request_id']
 
             upload_video = uploadvideoform.save(commit=False)
+
+            # instance = Post(video=request.FILES['video'])
+            # instance.save()
+            # self.fields['receiver'].queryset = User.objects.exclude(username=user.username)
+            # self.fields['receiver'].queryset = self.fields['receiver'].queryset.filter(video_sender__receiver__username=user.username)
+
             upload_video.sender = request.user
-            upload_video.receiver = VidRequest.objects.filter(id=request_id).sender
+            receiverfilter = User.objects.get(username=VidRequest.objects.get(id=request_id.id).sender)
+            upload_video.receiver = receiverfilter
             upload_video.save()
             # link recent uploaded video request from Post table to Notification table
             recentVideoUpload = Post.objects.filter(sender=request.user).last()
 
-            Notification.objects.create(user=request.user, message=f'You have post a video to '+ str(uploadvideoform.cleaned_data['receiver']) +'.', type=5, post_id=recentVideoUpload)
-            Notification.objects.create(user=uploadvideoform.cleaned_data['receiver'], message=f'You have received a video post from '+ str(request.user) +'.', type=7, post_id=recentVideoUpload)
-            return redirect('stream:video-upload')
+            Notification.objects.create(user=request.user, message=f'You have post a video to '+ str(receiverfilter) +'.', type=5, post_id=recentVideoUpload)
+            Notification.objects.create(user=receiverfilter, message=f'You have received a video post from '+ str(request.user) +'.', type=7, post_id=recentVideoUpload)
+            return redirect('stream:video-list')
     else:
         uploadvideoform = VidUploadForm(request.user)
 

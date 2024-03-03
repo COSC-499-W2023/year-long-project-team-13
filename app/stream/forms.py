@@ -7,6 +7,7 @@ from django.contrib import auth
 from django.contrib.auth.password_validation import validate_password
 from django.contrib.auth.hashers import check_password
 import difflib
+from django.db.models import Q
 # from django.utils.translation import gettext_lazy as _
 import re
 
@@ -25,7 +26,7 @@ class VidUploadForm(forms.ModelForm):
     timelimit = forms.DateTimeField(widget=forms.TextInput(attrs={'placeholder' :'Select a time limit date',
                                                               'style': 'width: 210px; margin-left: auto; margin-right: auto; border: 2px groove lightgreen;',
                                                               'class': 'form-control', 'type': 'datetime-local','required': True}))
-    video = forms.FileField(widget=forms.FileInput(attrs={'class': 'form-control-file'}))
+    video = forms.FileField()
     request_id = forms.ModelChoiceField(
         queryset=User.objects.none(),
         widget=forms.Select(attrs={'style': 'width: 207px; border: 2px groove lightgreen;',
@@ -34,11 +35,14 @@ class VidUploadForm(forms.ModelForm):
 
     def __init__(self, user, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['request_id'].queryset = self.fields['request_id'].queryset.filter(video_receiver_username=user.username)
+        # self.fields['receiver'].queryset = User.objects.exclude(username=user.username)
+        # self.fields['receiver'].queryset = self.fields['receiver'].queryset.filter(video_sender__receiver__username=user.username)
+        self.fields['request_id'].queryset = VidRequest.objects.filter(receiver__username=user.username)
 
     class Meta:
         model = Post
         fields = ['title','description','timelimit','video','request_id']
+        # ,'receiver'
 
 class VidRequestForm(forms.ModelForm):
     receiver = forms.ModelChoiceField(
@@ -56,7 +60,7 @@ class VidRequestForm(forms.ModelForm):
     def __init__(self, user, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['receiver'].queryset = User.objects.exclude(username=user.username)
-        self.fields['receiver'].queryset = self.fields['receiver'].queryset.filter(contact_receiver__sender__username=user.username)
+        self.fields['receiver'].queryset = self.fields['receiver'].queryset.filter(Q(contact_receiver__sender__username=user.username) | Q(contact_sender__receiver__username=user.username))
 
     class Meta:
         model = VidRequest
