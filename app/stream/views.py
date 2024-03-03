@@ -48,7 +48,7 @@ def friendRequest(request):
             # link recent created friendRequest from friend request table to Notification table
             recentFriendRequest = FriendRequest.objects.filter(sender=request.user).last()
             Notification.objects.create(user=request.user, message=f'You have sent a friend request to '+ str(addcontactform.cleaned_data['receiver']) +'.', type=1, friendRequest_id=recentFriendRequest)
-            Notification.objects.create(user=addcontactform.cleaned_data['receiver'], message=f'You have received a friend request from '+ str(request.user) +'.', type=2,friendRequest_id=recentFriendRequest)
+            Notification.objects.create(user=addcontactform.cleaned_data['receiver'], message=f'You have received a friend request from '+ str(request.user) +'.', type=2, friendRequest_id=recentFriendRequest)
             return redirect("stream:notifications")
     else:
         addcontactform = AddContactForm(request.user)
@@ -72,8 +72,8 @@ def request_video(request):
             request_video.save()
             # link recent created video request from VidRequest table to Notification table
             recentVideoRequest = VidRequest.objects.filter(sender=request.user).last()
-            Notification.objects.create(user=request.user, message=f'You have sent a video request to '+ str(requestvideoform.cleaned_data['receiver']) +'.', type=3, videoRequest_id=recentVideoRequest)
-            Notification.objects.create(user=requestvideoform.cleaned_data['receiver'], message=f'You have received a video request from '+ str(request.user) +'.', type=4,videoRequest_id=recentVideoRequest)
+            Notification.objects.create(user=request.user, message=f'You have sent a video request to '+ str(requestvideoform.cleaned_data['receiver']) + ' with Video Request ID: ' + str(recentVideoRequest) +'.', type=3, videoRequest_id=recentVideoRequest)
+            Notification.objects.create(user=requestvideoform.cleaned_data['receiver'], message=f'You have received a video request from '+ str(request.user) + ' with Video Request ID: ' + str(recentVideoRequest) +'.', type=4, videoRequest_id=recentVideoRequest)
             return redirect('stream:notifications')
     else:
         requestvideoform = VidRequestForm(request.user)
@@ -106,6 +106,37 @@ class VideoUploadView(LoginRequiredMixin   ,CreateView):
         form.instance.sender = self.request.user
         return super().form_valid(form)
 
+def upload_video(request):
+    if request.method == "POST":
+        uploadvideoform = VidUploadForm(request.user, request.POST, request.FILES)
+        if uploadvideoform.is_valid():
+
+            request_id = uploadvideoform.cleaned_data['request_id']
+
+            upload_video = uploadvideoform.save(commit=False)
+
+            # instance = Post(video=request.FILES['video'])
+            # instance.save()
+            # self.fields['receiver'].queryset = User.objects.exclude(username=user.username)
+            # self.fields['receiver'].queryset = self.fields['receiver'].queryset.filter(video_sender__receiver__username=user.username)
+
+            upload_video.sender = request.user
+            receiverfilter = User.objects.get(username=VidRequest.objects.get(id=request_id.id).sender)
+            upload_video.receiver = receiverfilter
+            upload_video.save()
+            # link recent uploaded video request from Post table to Notification table
+            recentVideoUpload = Post.objects.filter(sender=request.user).last()
+
+            Notification.objects.create(user=request.user, message=f'You have post a video to '+ str(receiverfilter) +'.', type=5, post_id=recentVideoUpload)
+            Notification.objects.create(user=receiverfilter, message=f'You have received a video post from '+ str(request.user) +'.', type=7, post_id=recentVideoUpload)
+            return redirect('stream:video-list')
+    else:
+        uploadvideoform = VidUploadForm(request.user)
+
+    context = {
+        'uploadvideoform': uploadvideoform
+    }
+    return render(request, 'stream/video-upload.html', context)
 
 class VideoUpdateView(LoginRequiredMixin, UserPassesTestMixin ,UpdateView):
     model = Post
