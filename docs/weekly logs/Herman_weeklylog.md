@@ -293,7 +293,20 @@ Add Contact Function, Add contact UI
 
 ![Tasks](./images/tasks/Week6Term2HermanPeerEval.png)
 
- 
+ - Applicable date range
+##  Week 7 Term 2 and Week 8 Term 2 02/19/24~03/03/24
+
+ # Preferred name -> Ssc name -> Github name
+
+- Herman -> Herman Sood -> Herman Sood
+
+- Recap on your week's goals-Which features were yours in the project plan for this milestone? For term 2 week 7(the reading break) I went on to help Raymond with some unit tests for the setting page to check for valid and invalid passwords and the form setting. I also helped out with the html/css to fix the issue of the text overflowing from the box when the screen size is shrunk. For week 8 I worked on the view video page and made some changes to get videos that are uploaded by the user to be viewable. I also made a small touch to the register page in which now instead of black text that shows indicating a potential error a user has made when registering for an account, the text is in red for ease of user viewability.  
+  - Which tasks from the project board are associated with these features? View video function, Setting Page UI 
+  - Among these tasks, which have you completed/in progress in the last week? View video function and Setting Page UI.
+
+
+![Tasks](./images/tasks/Week7And8Term2PeerEval.png)
+![Tasks](./images/tasks/ViewVideoHerman.png)
 
 
 
