@@ -56,7 +56,7 @@
     </head>
     <body>{% endcomment %}
         {% if user.userinfo.permission == 1 or user.is_superuser %}
-            <div style = "margin-top: 25px;">
+            <div style = "margin-top: 25px; padding-top: 75px;">
                 <div class = "horizontal-buttons">
                     <a class="button" href=" {% url 'stream:video-create' %}" style="color: #FFFFFF">
                         Record
@@ -68,8 +68,22 @@
                 <form method="POST" enctype="multipart/form-data">
                     {% csrf_token %}
                     <h1>Upload a video</h1>
-                        {{ form.as_p }}
-                        <button class="btn-lg btn-default" type="button" style="background-color">Upload</button>
+                    <p>Title</p>
+                    {{ uploadvideoform.title.errors }}
+                    {{ uploadvideoform.title }}
+                    <p>Description</p>
+                    {{ uploadvideoform.description.errors }}
+                    {{ uploadvideoform.description }}
+                    <p>Time Limit Date</p>
+                    {{ uploadvideoform.timelimit.errors }}
+                    {{ uploadvideoform.timelimit }}
+                    <p>Video Upload</p>
+                    {{ uploadvideoform.video.errors }}
+                    {{ uploadvideoform.video }}
+                    <p>Video Request ID</p>
+                    {{ uploadvideoform.request_id.errors }}
+                    {{ uploadvideoform.request_id }}
+                    <button class="btn-lg btn-default" type="submit" style="background-color">Upload</button>
                 </form>
             </div>
         {% else %}
