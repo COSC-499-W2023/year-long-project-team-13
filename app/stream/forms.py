@@ -1,4 +1,5 @@
 from django import forms
+from django.core.exceptions import ValidationError
 from django.contrib.auth.forms import UserCreationForm, SetPasswordForm
 from django.contrib.auth.models import User
 from . models import VidRequest, VidStream, Contact, FriendRequest, Post, Profile, UserInfo, Notification, Setting
@@ -10,6 +11,7 @@ import difflib
 from django.db.models import Q
 # from django.utils.translation import gettext_lazy as _
 import re
+from django.contrib.auth import authenticate
 
 class VidUploadForm(forms.ModelForm):
     # receiver = forms.ModelChoiceField(
@@ -156,8 +158,55 @@ class SettingForm(forms.ModelForm):
         model = Setting
         fields = ['darkmode', 'emailnotification']
 
+    def clean_darkmode(self):
+        darkmode = self.cleaned_data.get('darkmode')
+        if darkmode not in [True, False]:
+            raise ValidationError("Invalid value for darkmode")
+        return darkmode
+
+    def clean_emailnotification(self):
+        emailnotification = self.cleaned_data.get('emailnotification')
+        if emailnotification not in [True, False]:
+            raise ValidationError("Invalid value for emailnotification")
+        return emailnotification
+
+# class SetPasswordForm(forms.ModelForm):
+#     password = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder' :'Password',
+#                                                                   'style': 'width: 400px; height: 45px; margin-left: auto; margin-right: auto; margin-bottom: 25px; border: 2px groove lightgreen;',
+#                                                                   'class': 'form-control', 'required': True}))
+
+#     class Meta:
+#         model = User
+#         fields = ['password']
+
+
+# class SetPasswordForm(forms.ModelForm):
+#     password = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder' :'Password',
+#                                                                   'style': 'width: 400px; height: 45px; margin-left: auto; margin-right: auto; margin-bottom: 25px; border: 2px groove lightgreen;',
+#                                                                   'class': 'form-control', 'required': True}))
+#     password2 = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder' :'Confirm Password',
+#                                                                   'style': 'width: 400px; height: 45px; margin-left: auto; margin-right: auto; margin-bottom: 27px; border: 2px groove lightgreen;',
+#                                                                   'class': 'form-control', 'required': True}))
+
+#     class Meta:
+#         model = User
+#         fields = ['password']
+
+# class SetPasswordFormWithConfirm(SetPasswordForm):
+#     new_password2 = forms.CharField(
+#         widget=forms.PasswordInput(attrs={
+#             'placeholder': 'Confirm Password',
+#             'style': 'width: 400px; height: 45px; margin-left: auto; margin-right: auto; margin-bottom: 25px; border: 2px groove lightgreen;',
+#             'class': 'form-control',
+#             'required': True,
+#         }),
+#     )
+
 # Change Password
 class ValidatingPasswordChangeForm(forms.ModelForm):
+    oldpassword = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder' :'Old Password',
+                                                                  'style': 'width: 400px; height: 45px; margin-left: auto; margin-right: auto; margin-bottom: 25px; border: 2px groove lightgreen;',
+                                                                  'class': 'form-control', 'required': True}))
     password = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder' :'Password',
                                                                   'style': 'width: 400px; height: 45px; margin-left: auto; margin-right: auto; margin-bottom: 25px; border: 2px groove lightgreen;',
                                                                   'class': 'form-control', 'required': True}),validators=[validate_password])
@@ -170,11 +219,38 @@ class ValidatingPasswordChangeForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         self.user = user
 
+
+    def clean_oldpassword(self):
+        old_password = self.cleaned_data.get("oldpassword")
+        password1 = self.cleaned_data.get('password')
+        user = self.instance
+        if not authenticate(username=user.username, password=old_password):
+            raise forms.ValidationError("Your old password was entered incorrectly. Please enter it again.")
+        if old_password and password1 and old_password == password1:
+            raise forms.ValidationError(("You cannot use your old password as the new password. Please try a different password."))
+        return old_password
+
+
+
+    # MIN_LENGTH = 8
+
+    # def __init__(self, *args, **kwargs):
+    #     self.user = kwargs.pop('user', None)
+    #     super(ValidatingPasswordChangeForm, self).__init__(*args, **kwargs)
+
     def clean_password(self):
         password = self.cleaned_data.get('password')
+        old_password = self.cleaned_data.get('oldpassword')  # Fetch the old password
         username = self.instance.username
         email = self.instance.email
         email = re.sub(r'@[A-Za-z]*\.?[A-Za-z0-9]*',"", email)
+
+         # Ensure oldpassword field is added to cleaned_data
+        if password == old_password:
+            raise forms.ValidationError("You cannot use your old password as the new password.")
+
+        # if password and old_password and password == old_password:
+        #     raise forms.ValidationError("You cannot use your old password as the new password.")
 
         # At least MIN_LENGTH long
         if len(password) < self.MIN_LENGTH:
