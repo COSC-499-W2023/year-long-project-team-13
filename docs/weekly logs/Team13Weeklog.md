@@ -510,6 +510,8 @@ Burnup chart
 Network Graph
 ![Network](./images/network/term2_week8_network_1.png)
 ![Network](./images/network/term2_week8_network_2.png)
+![Network](./images/network/term2_week8_network_3.png)
+![Network](./images/network/term2_week8_network_4.png)
 Completed Tasks
 ![Completed](./images/completed/term2_week8_done_1.png)
 ![Completed](./images/completed/term2_week8_done_2.png)
