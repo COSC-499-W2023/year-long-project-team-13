@@ -121,7 +121,7 @@ For this week, I worked on the Record a video functionality and testing and upda
 ### Week 4 Jan 29 - Feb 4
 ![Week4Tasks](./images/tasks/Ralston_term2_w4_tasks.png)
 
-For this week, we focused on the peer testing preparation and redefining task priorities after the peer testing. As well, I worked on adding in a permission feature to allow for the two user groups to access the respective pages. This is associated with the Update Permissions on Pages task. This is close to being completed and my next step is to update the tests that are associated with those certain pages. Ethan and I worked on this together as there were two pages so we each worked on one page and worked together to get the styling to be the same on each page. 
+For this week, we focused on the peer testing preparation and redefining task priorities after the peer testing. As well, I worked on adding in a permission feature to allow for the two user groups to access the respective pages. This is associated with the Update Permissions on Pages task. This is close to being completed and my next step is to update the tests that are associated with those certain pages. Ethan and I worked on this together as there were two pages so we each worked on one page and worked together to get the styling to be the same on each page.
 
 ### Week 5 Feb 5 - 11
 ![Week5Tasks](./images/tasks/Ralston_term2_w5_tasks.png)
@@ -137,3 +137,9 @@ Please see a few screen shots below of what I was able to complete for the recor
 ![RecordingPageStart](./images/Ralston_stuff/T2_week6/start_view.png)
 ![RecordingPageRecord](./images/Ralston_stuff/T2_week6/recording_view.png)
 ![RecordingPageEnd](./images/Ralston_stuff/T2_week6/end_view.png)
+
+### Week 7-8 Feb 19 - Mar 3
+![Week8Tasks](./images/tasks/Ralston_term2_w8_tasks.png)
+
+This week my features were working on bug fixing and finishing testing for the record video page. This is associated with bug fixing on the project board and create video function. I worked with Adrian on making sure that the dropdown buttons appear properly when hosted on aws which now works. I also fixed a strange bug where one of the drop down top bar buttons was slightly shorter than all the other top bar buttons on the record video page. Turns out it was a link that I forgot to delete when trying the record video in python. I also worked with Ethan on fixing the background color in the topbar menu that was disapearing when on the upload video page. Ethan and I also worked together to get the recorded video to display on the review page using Javascript. Finally, I wrote the selenium test for record video page but it will need to be updated later this week as we work on connecting the database to that page.
+
