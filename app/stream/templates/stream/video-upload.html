@@ -60,6 +60,97 @@
     </head>
     <body>{% endcomment %}
         {% if user.userinfo.permission == 1 or user.is_superuser %}
+            <div style = "margin-top: 15%; padding-top: 10em;">
+                <div class = "horizontal-buttons">
+                    <a class="button" href=" {% url 'stream:video-create' %}" style="color: #FFFFFF">
+                        Record
+                    </a>
+                    <a class="button" href=" {% url 'stream:video-upload' %}" style="color: #FFFFFF">
+                        Upload
+                    </a>
+                </div>
+                <div class="container">
+                    <div class="row d-flex justify-content-center align-items-center h-100">
+                        <div class="col-lg-15">
+                            <h1>POST A VIDEO</h1>
+                            <div class="card mb-3" style="width: 75%; box-shadow: 12em; margin: auto;">
+                                <form method="POST" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    <div style = "padding-top: 25px;">
+                                        <div class="justified">
+                                            <div class="col-lg-13">
+                                                <label class="requestID">Video Request ID:</label>
+                                            </div>
+                                            <div class="col-lg-13" id="message">
+                                                {{ uploadvideoform.request_id.errors }}
+                                                {{ uploadvideoform.request_id }}
+                                            </div>
+                                        </div>
+                                        <div style = "padding-top: 15px;">
+                                            <div class="justified">
+                                                <div class="col-lg-13">
+                                                    <label class="title">Title:</label>
+                                                </div>
+                                                <div class="col-lg-13" id="message">
+                                                    {{ uploadvideoform.title.errors }}
+                                                    {{ uploadvideoform.title }}
+                                                </div>
+                                            </div>
+                                            <div style = "">
+                                                <div class="justified">
+                                                    <div class="col-lg-15">
+                                                        <label class="description">Description:</label>
+                                                    </div>
+                                                    <div class="col-lg-13" id="message">
+                                                        {{ uploadvideoform.description.errors }}
+                                                        {{ uploadvideoform.description }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div style = "padding-top: 15px;">
+                                                <div class="justified">
+                                                    <div class="col-lg-15">
+                                                        <label class="timelimit">Time Limit Date:</label>
+                                                    </div>
+                                                    <div class="col-lg-13" id="message">
+                                                        {{ uploadvideoform.timelimit.errors }}
+                                                        {{ uploadvideoform.timelimit }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div style = "padding-top: 15px;">
+                                                <div class="justified">
+                                                    <div class="col-lg-15">
+                                                        <label class="video">Video:</label>
+                                                    </div>
+                                                    <div class="col-lg-13" id="message">
+                                                        {{ uploadvideoform.video.errors }}
+                                                        {{ uploadvideoform.video }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div style = "padding-top: 15px;">
+                                                <button class="btn-lg btn-default" type="submit" style="background-color">Upload</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            <div class="redirect">
+                <h1>Oops! It seems you’ve reached a page where access is restricted. No worries, just click the button below to return to the home page. Thank you!</h1>
+                <a href=" {% url 'stream:home' %}">
+                    <button class="button" type="button">Back to home page</button>
+                </a>
+            </div>
+        {% endif %}
+
+
+        {% comment %} {% if user.userinfo.permission == 1 or user.is_superuser %}
             <div style = "margin-top: 25px; padding-top: 75px;">
                 <div class = "horizontal-buttons">
                     <a class="button" href=" {% url 'stream:video-create' %}" style="color: #FFFFFF">
@@ -97,7 +188,7 @@
                     <button class="button" type="button">Back to home page</button>
                 </a>
             </div>
-        {% endif %}
+        {% endif %} {% endcomment %}
 
     {% comment %} </body> {% endcomment %}
         {% if user.is_authenticated %}

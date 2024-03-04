@@ -39,3 +39,24 @@ video {
     height: auto;
     display: block;
 }
+
+.requestID {
+  color: black;
+  font-weight: bold;
+  /* padding-left:47px; */
+}
+
+.title {
+  color: black;
+  font-weight: bold;
+}
+
+.description {
+  color: black;
+  font-weight: bold;
+}
+
+.timelimit {
+  color: black;
+  font-weight: bold;
+}
