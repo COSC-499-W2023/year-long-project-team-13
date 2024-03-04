@@ -429,6 +429,31 @@ This week, I have worked on the UI of setting page since the issue occurs when t
 
 ## Recap of week's goals
 
-During Week 7 (the reading break), I try to fix the html/css problem on my setting page by making various changes to identify the issue but its does not work due to my frustration but I am able to overcome this issue with the help of my teammate, Herman as well as Herman help me with my unit tests for my setting page, since its has issue when I am working on it.
+During Week 7 (the reading break), I try to fix the html/css problem on my setting page by making various changes to identify the issue but its does not work due to my frustration but I am able to overcome this issue with the help of my teammate, Herman as well as Herman help me with my unit tests for my setting page, since its has issue when I am working on it. Now the elements on the setting page is no longer moving when the user zoom in or zoom out of the window.
 
 During week 8, I tried to work on the theme page and I am able to create the toggle button but the the issue is that when the toggle button is made, the forms on the setting page disappeared due to my surprise so I give it another try by starting from the scratch but its also give off another issues like the toggle button shape not changing (sun for light and moon for dark) when the user want to change to dark mode. My teammates and I later decided to leave the theme the page since its not that much of a priority and focusses on tasks that we want to show for the upcoming peer evaluation. I also worked on together with Herman to make the error message red instead of black to improve the user's viewability on pages and Herman works on register page and I work on my setting page and login page.
+
+
+Setting page fixed
+
+![Setting page fixed](./images/Sitt_images/Week_13/Setting_Page_Fixed.png)
+
+Setting Page Zoom In
+
+![Setting Page Zoom In](./images/Sitt_images/Week_13/Setting_Page_ZoomIn.png)
+
+Setting Page Zoom Out
+
+![Setting Page Zoom Out](./images/Sitt_images/Week_13/Setting_Page_ZoomOut.png)
+
+Red Error Message Login Page
+
+![Red Error Message Login Page](./images/Sitt_images/Week_13/Red_Error_Message_Login.png)
+
+Red Error Message Setting Page (Old)
+
+![Red Error Message Setting Page (Old)](./images/Sitt_images/Week_13/Red_Error_Message_OldSetting.png)
+
+### Additional
+- Worked on my own weekly log, contribute to team weekly log.
+- Learn new insights from online to resolve issues for my project and for the theme page.
