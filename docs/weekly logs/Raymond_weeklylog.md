@@ -436,23 +436,23 @@ During week 8, I tried to work on the theme page and I am able to create the tog
 
 Setting page fixed
 
-![Setting page fixed](./images/Sitt_images/Week_13/Setting_Page_Fixed.png)
+![Setting page fixed](./images/Sitt_images/Term_2_Week7_8/Setting_Page_Fixed.png)
 
 Setting Page Zoom In
 
-![Setting Page Zoom In](./images/Sitt_images/Week_13/Setting_Page_ZoomIn.png)
+![Setting Page Zoom In](./images/Sitt_images/Term_2_Week7_8/Setting_Page_ZoomIn.png)
 
 Setting Page Zoom Out
 
-![Setting Page Zoom Out](./images/Sitt_images/Week_13/Setting_Page_ZoomOut.png)
+![Setting Page Zoom Out](./images/Sitt_images/Term_2_Week7_8/Setting_Page_ZoomOut.png)
 
 Red Error Message Login Page
 
-![Red Error Message Login Page](./images/Sitt_images/Week_13/Red_Error_Message_Login.png)
+![Red Error Message Login Page](./images/Sitt_images/Term_2_Week7_8/Red_Error_Message_Login.png)
 
 Red Error Message Setting Page (Old)
 
-![Red Error Message Setting Page (Old)](./images/Sitt_images/Week_13/Red_Error_Message_OldSetting.png)
+![Red Error Message Setting Page (Old)](./images/Sitt_images/Term_2_Week7_8/Red_Error_Message_OldSetting.png)
 
 ### Additional
 - Worked on my own weekly log, contribute to team weekly log.
