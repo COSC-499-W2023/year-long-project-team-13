@@ -1,13 +1,13 @@
 body {
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 .horizontal-buttons {
   flex-direction: row;
-    display: flex;
+  display: flex;
 }
 
 .button {
@@ -29,15 +29,15 @@ body {
 }
 
 .video-box{
-    margin: 0 auto;
-    width: 50%;
-    height: 50%;
+  margin: 0 auto;
+  width: 50%;
+  height: 50%;
 }
 
 video {
-    width: 100%;
-    height: auto;
-    display: block;
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
 .requestID {
