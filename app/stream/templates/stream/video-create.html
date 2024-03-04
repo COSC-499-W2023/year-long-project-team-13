@@ -106,6 +106,7 @@
                             {{ createvideoform.timelimit.errors }}
                             {{ createvideoform.timelimit }}
                         </div>
+                        <input type="hidden" name="video_blob" id="video_blob" value="your_blob_data_here" />
                     </div>
                     <div class="previewPage" style="display: none;">
                         <div class="card mb-3" style="width: 75%; box-shadow: 12em; margin: auto;">
@@ -145,7 +146,7 @@
             let start_button = document.querySelector("#start-record");
             let stop_button = document.querySelector("#stop-record");
             let download_link = document.querySelector("#download-video");
-            let  videobox = document.querySelector('.video-box');
+            let videobox = document.querySelector('.video-box');
             let next_button = document.querySelector("#next");
 
             let camera_stream = null;
@@ -177,9 +178,22 @@
 
                 // event : recording stopped & all blobs sent
                 media_recorder.addEventListener('stop', function() {
+                    let blob = new Blob(blobs_recorded, {type: "video/webm",}); // create blob from blobs_recorded
+
+                    let reader = new FileReader();  // read file
+
+                    reader.onloadend = function () {
+                        let base64data = reader.result.split(',')[1];
+                        document.getElementById('video_blob').value = base64data;   // store the video input value into form
+                    };
+
+                    reader.readAsDataURL(blob); // read the data of video, so can load it into mp4 file
+
                     // create local object URL from the recorded video blobs
-                    let video_local = URL.createObjectURL(new Blob(blobs_recorded, { type: 'video/webm' }));
+                    //let video_local = URL.createObjectURL(new Blob(blobs_recorded, { type: 'video/webm' }));
+                    let video_local = URL.createObjectURL(blob);
                     download_link.href = video_local;
+
                     // remove stop button and add start button and download button and next button
                     stop_button.style.display = 'none';
                     start_button.style.display = 'block';
@@ -271,18 +285,18 @@
 
             submit_button.addEventListener('click', function() {
                 previewPage.style.display = 'none';
-                detailsPage.style.display = 'none';
+                detailsPage.style.display = 'block';
                 start_button.style.display = 'none';
                 stop_button.style.display = 'none';
                 download_link.style.display = 'none';
                 next_button.style.display = 'none';
-                preview_button.style.display = 'none';
+                preview_button.style.display = 'block';
                 submit_button.style.display = 'none';
                 back_details.style.display = 'none';
-                back_record.style.display = 'none';
+                back_record.style.display = 'block';
                 camera_button.style.display = 'none';
                 videobox.style.display = 'none';
-                submit_success.style.display = 'block';
+                submit_success.style.display = 'none';
                 video.srcObject = null;
                 camera_stream.getTracks().forEach(function(track) {
                     track.stop();

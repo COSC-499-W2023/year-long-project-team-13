@@ -13,6 +13,9 @@ from stream.forms import UserInfoUpdateForm
 from . models import VidRequest, VidStream, Contact, FriendRequest, Post, Profile, UserInfo, Notification, Setting
 from . forms import VidUploadForm, VidCreateForm, VidRequestForm, UserRegistrationForm, UserUpdateForm, UserInfoUpdateForm, UserProfileUpdateForm, UserProfileUpdateForm,  ValidatingPasswordChangeForm, AddContactForm, UserPermissionForm
 
+import base64
+from django.core.files.base import ContentFile
+
 class VideoDetailView(DetailView):
     template_name = "stream/video-detail.html"
     model = Post
@@ -89,10 +92,18 @@ class VideoCreateView(LoginRequiredMixin   ,CreateView):
     success_url = "/"
     template_name = 'stream/video-create.html'
     # template_name = 'stream/upload.html'
-    fields = ['title', 'description','video']
+    form_class = VidCreateForm
+    # fields = ['title', 'description','video']
+    # ['title','description','timelimit','video','request_id']
     #this is to make sure that the logged in user is the one to upload the content
     def form_valid(self, form):
         form.instance.sender = self.request.user
+        request_id = form.cleaned_data['request_id']
+        # form.instance.receiver = User.objects.get(username=VidRequest.objects.get(id=request_id.id).sender)
+        title = form.cleaned_data['title']
+        description = form.cleaned_data['description']
+        timelimit = form.cleaned_data['timelimit']
+        video = form.cleaned_data['video']
         return super().form_valid(form)
 
 
@@ -100,20 +111,20 @@ def create_video(request):
     if request.method == "POST":
         createvideoform = VidCreateForm(request.user, request.POST, request.FILES)
         if createvideoform.is_valid():
-
             request_id = createvideoform.cleaned_data['request_id']
 
             upload_video = createvideoform.save(commit=False)
-
-            # instance = Post(video=request.FILES['video'])
-            # instance.save()
-            # self.fields['receiver'].queryset = User.objects.exclude(username=user.username)
-            # self.fields['receiver'].queryset = self.fields['receiver'].queryset.filter(video_sender__receiver__username=user.username)
-
             upload_video.sender = request.user
             receiverfilter = User.objects.get(username=VidRequest.objects.get(id=request_id.id).sender)
             upload_video.receiver = receiverfilter
+
+            # Decode and save the blob data
+            blob_data = request.POST['video_blob']  # Get blob video data from html input
+            decoded_data = base64.b64decode(blob_data)  # Convert the video data to 64 byte type
+            upload_video.video.save('video_filename.mp4', ContentFile(decoded_data), save=True) # Save into video field with 64 byte content file (video name)
+
             upload_video.save()
+
             # link recent uploaded video request from Post table to Notification table
             recentVideoUpload = Post.objects.filter(sender=request.user).last()
 

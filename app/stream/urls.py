@@ -24,6 +24,7 @@ urlpatterns = [
     path('video/<int:pk>/delete/', VideoDeleteView.as_view(), name="video-delete"),
     path('user/<str:username>', UserVideoListView.as_view(), name="user-videos"),
     # VideoCreateView.as_view()
+    # stream_views.create_video
     path('video/new/',stream_views.create_video, name="video-create"),
     # VideoUploadView.as_view()
     path('video/new',stream_views.upload_video, name="video-upload"),
