@@ -57,7 +57,7 @@
 {% comment %} <body> {% endcomment %}
     {% if user.userinfo.permission == 1 or user.is_superuser %}
         <div style = "margin-top: 15%; padding-top: 10em;">
-            <div class = "horizontal-buttons" style="flex-direction: row; display: flex;">
+            <div class = "horizontal-buttons">
                 <a class="button" href=" {% url 'stream:video-create' %}" style="color: #FFFFFF">
                     Record
                 </a>
