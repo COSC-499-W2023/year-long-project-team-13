@@ -153,23 +153,37 @@ def create_video_test(driver):
     time.sleep(3)
     next_element.click()
 
-    # Find the element with the id "video-title" and click it
-    title_element = driver.find_element(By.ID, "title")
-    wait.until(EC.presence_of_element_located((By.ID, "title")))
+    # Find the element with the form request id and click it
+    title_element = driver.find_element(By.ID, "id_request_id")
+    wait.until(EC.presence_of_element_located((By.ID, "id_request_id")))
     title_element.click()
     title_element.send_keys("Test Video")
-    wait.until(EC.text_to_be_present_in_element_value((By.ID, "title"), "Test Video"))
+    wait.until(EC.text_to_be_present_in_element_value((By.ID, "id_request_id"), "Test Request ID"))
 
-    # Find the element with the id "video-description" and click it
-    description_element = driver.find_element(By.ID, "description")
-    wait.until(EC.presence_of_element_located((By.ID, "description")))
+    # Find the element with the form title and click it
+    title_element = driver.find_element(By.ID, "id_title")
+    wait.until(EC.presence_of_element_located((By.ID, "id_title")))
+    title_element.click()
+    title_element.send_keys("Test Video")
+    wait.until(EC.text_to_be_present_in_element_value((By.ID, "id_title"), "Test Video"))
+
+    # Find the element with the form description and click it
+    description_element = driver.find_element(By.ID, "id_description")
+    wait.until(EC.presence_of_element_located((By.ID, "id_description")))
     description_element.click()
-    description_element.send_keys("This is a test video")
-    wait.until(EC.text_to_be_present_in_element_value((By.ID, "description"), "This is a test video"))
+    description_element.send_keys("Test Description")
+    wait.until(EC.text_to_be_present_in_element_value((By.ID, "id_description"), "Test Description"))
+
+    # Find the element with the form timelimit and click it
+    timelimit_element = driver.find_element(By.ID, "id_timelimit")
+    wait.until(EC.presence_of_element_located((By.ID, "id_timelimit")))
+    timelimit_element.click()
+    timelimit_element.send_keys("Test Timelimit")
+    wait.until(EC.text_to_be_present_in_element_value((By.ID, "id_timelimit"), "Test Timelimit, This is a test video"))
 
     # Find the contact dropdown and select the appropriate permission
     contact_element = Select(driver.find_element(By.ID, "contact"))
-    contact_element.select_by_value("1")
+    contact_element.select_by_index(1)
     print("TEST: 12 `Video Info` Successful")
 
     # Find the element with the id "preview" and click it
