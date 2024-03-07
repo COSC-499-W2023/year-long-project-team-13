@@ -161,10 +161,11 @@ class Notification(models.Model):
       (1, 'Friend Request Send'),
       (2, 'Accept/Reject Friend Request'),
       (3, 'Video Request Send'),
-      (4, 'Video Request Receive'),
+      (4, 'Video Request Receive'), #go to record video
       (5, 'Post Upload'),
-      (6, 'Video Upload'),
-      (7, 'Text')
+      (6, 'Post Receive'), #go to view post
+      (7, 'Video Upload'),
+      (8, 'Text')
      )
     id = models.AutoField(primary_key=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
