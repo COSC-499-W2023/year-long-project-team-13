@@ -105,6 +105,9 @@
                       {% elif notification.type == 3 %}
                         <input type="hidden" name="notifID" value="{{ notification.id }}">
                         <button class="btn btn-dark mt-3 mb-1" id="delete video request button" name="deleteVideoRequest" type="submit">Remove Video Request</button>
+                      {% elif notification.type == 4 %}
+                        <input type="hidden" name="notifID" value="{{ notification.id }}">
+                        <button class="btn btn-dark mt-3 mb-1" id="Send Video" name="deleteVideoRequest" type="submit">Remove Video Request</button>
                       {% else %}
                       {% endif %}
                     </div>
