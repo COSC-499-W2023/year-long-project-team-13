@@ -4,21 +4,24 @@
         <div id="overlay" class="float-center" style="position:fixed; top:30%;">
             <div>
                 <p class="text-dark">Are you sure to logout?</p>
-                <button id="logout" class="float-left submit-button" >Logout</button>
+                <button id="logout" class="float-left submit-button me-1">Logout</button>
                 <button id="cancel" class="float-left submit-button">Cancel</button>
             </div>
         </div>
     {% endif %}
-    <div>
+    <div style = "margin-top: 25px; padding-top: 75px; padding-bottom: 20px;">
         {% for item in videos %}
-        <h3>Video belonging to {{ item.streamer.username }}</h4>
-        <h4><a href="{% url 'stream:video-detail' item.id %}">{{ item.title }}</a></h1>
-        <h12>{{ item.upload_date}}</h12>
-        <p>{{ item.description}}</p>
-        <video controls>
-            <source src="{{ item.video.url }}" type="video/mp4">
-          </video>
-
+            {% if item.sender == user or item.receiver == user %}
+                <div style ="padding-bottom: 25px;">
+                    <h3>Video belonging to {{ item.sender.username }}</h4>
+                    <h4><a href="{% url 'stream:video-detail' item.id %}">{{ item.title }}</a></h1>
+                    <h12>{{ item.sendtime}}</h12>
+                    <p>{{ item.description}}</p>
+                    <video controls>
+                        <source src="{{ item.video.url }}" type="video/mp4">
+                    </video>
+                </div>
+            {% endif %}
         {% endfor %}
     </div>
 {% endblock content %}

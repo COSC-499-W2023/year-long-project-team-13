@@ -7,7 +7,7 @@ class VidRequestAdmin(admin.ModelAdmin):
     list_display = ('id', 'sender', 'receiver', 'description', 'due_date')
 
 class VidStreamAdmin(admin.ModelAdmin):
-    list_display = ('id', 'streamer', 'title', 'description', 'upload_date', 'video')
+    list_display = ('id', 'streamer', 'upload_date', 'video')
 
 class ContactAdmin(admin.ModelAdmin):
     list_display = ('id', 'sender', 'receiver')

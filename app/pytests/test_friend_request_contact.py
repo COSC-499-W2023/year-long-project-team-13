@@ -52,8 +52,8 @@ class SimpleTest(TestCase):
             sender = User.objects.get(username='user1')
 
             FriendRequest.objects.filter(id=friendRequestid).delete()   # delete friend request
-            Notification.objects.create(user=sender, message=f'You have successfully deleted a friend request to '+ str(receiver) +'.', type=7) # create notification message for sender
-            notificationMessage = Notification.objects.filter(user=sender, type=7).last()
+            Notification.objects.create(user=sender, message=f'You have successfully deleted a friend request to '+ str(receiver) +'.', type=8) # create notification message for sender
+            notificationMessage = Notification.objects.filter(user=sender, type=8).last()
 
             self.assertFalse(FriendRequest.objects.filter(sender=sender, receiver=receiver).exists())  # Check if friend request not exists (deleted)
 
@@ -80,10 +80,10 @@ class SimpleTest(TestCase):
 
             Contact.objects.create(sender=sender, receiver=receiver)    # create friend list with both sender/receiver in contact
             FriendRequest.objects.filter(id=friendRequestid).delete()   # delete friend request
-            Notification.objects.create(user=sender, message=f'You and '+ str(receiver) +' had become friends.', type=7)
-            notificationMessageSender = Notification.objects.filter(user=sender, type=7).first()    # create notification message for sender
-            Notification.objects.create(user=receiver, message=f'You and '+ str(sender) +' had become friends.', type=7)
-            notificationMessageReceiver = Notification.objects.filter(user=receiver, type=7).last()    # create notification message for receiver
+            Notification.objects.create(user=sender, message=f'You and '+ str(receiver) +' had become friends.', type=8)
+            notificationMessageSender = Notification.objects.filter(user=sender, type=8).first()    # create notification message for sender
+            Notification.objects.create(user=receiver, message=f'You and '+ str(sender) +' had become friends.', type=8)
+            notificationMessageReceiver = Notification.objects.filter(user=receiver, type=8).last()    # create notification message for receiver
 
             self.assertFalse(FriendRequest.objects.filter(sender=sender, receiver=receiver).exists())  # Check if friend request not exists (deleted)
 
@@ -109,8 +109,8 @@ class SimpleTest(TestCase):
             sender = FriendRequest.objects.get(id=friendRequestid).sender
 
             FriendRequest.objects.filter(id=friendRequestid).delete()   # delete friend request
-            Notification.objects.create(user=receiver, message=f'You have rejected a friend request from '+ str(sender) +'.', type=7)
-            notificationMessageReceiver = Notification.objects.filter(user=receiver, type=7).last()    # create notification message for receiver
+            Notification.objects.create(user=receiver, message=f'You have rejected a friend request from '+ str(sender) +'.', type=8)
+            notificationMessageReceiver = Notification.objects.filter(user=receiver, type=8).last()    # create notification message for receiver
 
             self.assertFalse(FriendRequest.objects.filter(sender=sender, receiver=receiver).exists())  # Check if friend request not exists (deleted)
 
