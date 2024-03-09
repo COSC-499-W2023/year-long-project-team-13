@@ -327,6 +327,17 @@ def notifications(request):
                 VidRequest.objects.filter(id=videoRequestid).delete()
                 Notification.objects.create(user=sender, message=f'You have successfully deleted a video request to '+ str(receiver) +'.', type=8)
                 return redirect("stream:notifications")
+            elif 'deleteVideoPost' in request.POST:
+                # delete the video post
+                # delete notification of sender and receiver video post
+                # make sender notification of successful delete the sent video post
+                notificationid = request.POST.get('notifID')
+                postid = Notification.objects.get(id=notificationid).post_id.id
+                receiver = Post.objects.get(id=postid).receiver
+                sender = request.user
+                Post.objects.filter(id=postid).delete()
+                Notification.objects.create(user=sender, message=f'You have successfully deleted a video post to '+ str(receiver) +'.', type=8)
+                return redirect("stream:notifications")
             else:
                 notifications = Notification.objects.filter(user=user).order_by('-timestamp')
                 return render(request, 'stream/notification.html', {'notifications': notifications})

@@ -164,7 +164,7 @@ class Notification(models.Model):
     type = models.IntegerField(choices=TYPE_CHOICES, null=True)
     friendRequest_id = models.ForeignKey(FriendRequest, on_delete=models.CASCADE, null=True)
     videoRequest_id = models.ForeignKey(VidRequest, on_delete=models.CASCADE, null=True)
-    post_id = models.ForeignKey(Post, on_delete=models.SET_NULL, null=True)
+    post_id = models.ForeignKey(Post, on_delete=models.CASCADE, null=True)
     video_id = models.ForeignKey(VidStream, on_delete=models.SET_NULL, null=True)
 
     def __str__(self):
