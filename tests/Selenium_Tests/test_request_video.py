@@ -133,11 +133,11 @@ def request_video_test(driver, description, dueDateYear, dueDateMonthDay, dueDat
     dueDate_button_element.send_keys(dueDateMonthDay)
     time.sleep(0.5)
 
-    # Check that the send button goes to home page
+    # Check that the send button goes to notification page
     send_button_element = driver.find_element(By.ID, "send")
     send_button_element.click()
 
-    # Wait for the URL to change to the home page URL
+    # Wait for the URL to change to the notification page URL
     wait.until(EC.url_contains('/notifications'))
 
     # Check if the URL contains the expected page URL

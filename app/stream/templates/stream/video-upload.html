@@ -1,71 +1,16 @@
 {% extends 'stream/base.html'%}
 {% block content %}
-
-{% comment %} {% load bootstrap5 %}
-{% bootstrap_css %}
-{% bootstrap_javascript %} {% endcomment %}
 {% load static %}
-{% comment %} <!DOCTYPE html>
-<html data-bs-theme="light" lang="en">
-<head> {% endcomment %}
+
 <link href="{% static 'css/styleVideoUpload.css' %}" rel="stylesheet">
-{% comment %}
-    <style>
-        body {
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-        .horizontal-buttons {
-          flex-direction: row;
-            display: flex;
-        }
 
-        button.nav-link, a.nav-link {
-            background-color: #FFFFFF4D;
-        }
-
-        .button {
-          background-color: transparent;
-          margin: 0 auto 3em auto;
-          padding: 10px;
-          color: white;
-          border: 1px solid white;
-          text-align: center;
-          text-decoration: none;
-          display: inline-block;
-          font-size: 16px;
-          width: 75%; /* Set a width if needed */
-          cursor: pointer; /* Mouse pointer on change to hand on hover */
-        }
-
-        .button:hover {
-          background-color: #3e8e41;
-        }
-
-        .video-box{
-            margin: 0 auto;
-            width: 50%;
-            height: 50%;
-        }
-
-        video {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-        </style>
-    </head>
-    <body>{% endcomment %}
         {% if user.userinfo.permission == 1 or user.is_superuser %}
             <div style = "margin-top: 15%; padding-top: 10em;">
                 <div class = "horizontal-buttons">
-                    <a class="button" href=" {% url 'stream:video-create' %}" style="color: #FFFFFF">
+                    <a class="button" id="top_record" href=" {% url 'stream:video-create' %}" style="color: #FFFFFF">
                         Record
                     </a>
-                    <a class="button" href=" {% url 'stream:video-upload' %}" style="color: #FFFFFF">
+                    <a class="button" id="top_upload" href=" {% url 'stream:video-upload' %}" style="color: #FFFFFF">
                         Upload
                     </a>
                 </div>
@@ -130,7 +75,7 @@
                                                 </div>
                                             </div>
                                             <div style = "padding-top: 15px;">
-                                                <button class="btn-lg btn-default" type="submit" style="background-color">Upload</button>
+                                                <button class="btn-lg btn-default" id="upload" type="submit" style="background-color">Upload</button>
                                             </div>
                                         </div>
                                     </div>
@@ -149,48 +94,6 @@
             </div>
         {% endif %}
 
-
-        {% comment %} {% if user.userinfo.permission == 1 or user.is_superuser %}
-            <div style = "margin-top: 25px; padding-top: 75px;">
-                <div class = "horizontal-buttons">
-                    <a class="button" href=" {% url 'stream:video-create' %}" style="color: #FFFFFF">
-                        Record
-                    </a>
-                    <a class="button" href=" {% url 'stream:video-upload' %}" style="color: #FFFFFF">
-                        Upload
-                    </a>
-                </div>
-                <form method="POST" enctype="multipart/form-data">
-                    {% csrf_token %}
-                    <h1>Upload a video</h1>
-                    <p>Title</p>
-                    {{ uploadvideoform.title.errors }}
-                    {{ uploadvideoform.title }}
-                    <p>Description</p>
-                    {{ uploadvideoform.description.errors }}
-                    {{ uploadvideoform.description }}
-                    <p>Time Limit Date</p>
-                    {{ uploadvideoform.timelimit.errors }}
-                    {{ uploadvideoform.timelimit }}
-                    <p>Video Upload</p>
-                    {{ uploadvideoform.video.errors }}
-                    {{ uploadvideoform.video }}
-                    <p>Video Request ID</p>
-                    {{ uploadvideoform.request_id.errors }}
-                    {{ uploadvideoform.request_id }}
-                    <button class="btn-lg btn-default" type="submit" style="background-color">Upload</button>
-                </form>
-            </div>
-        {% else %}
-            <div class="redirect">
-                <h1>Oops! It seems you’ve reached a page where access is restricted. No worries, just click the button below to return to the home page. Thank you!</h1>
-                <a href=" {% url 'stream:home' %}">
-                    <button class="button" type="button">Back to home page</button>
-                </a>
-            </div>
-        {% endif %} {% endcomment %}
-
-    {% comment %} </body> {% endcomment %}
         {% if user.is_authenticated %}
             <div id="overlay" class="float-center" style="position:fixed; top:30%;">
                 <div>
