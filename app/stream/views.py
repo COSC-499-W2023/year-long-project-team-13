@@ -154,16 +154,9 @@ def upload_video(request):
     if request.method == "POST":
         uploadvideoform = VidUploadForm(request.user, request.POST, request.FILES)
         if uploadvideoform.is_valid():
-
             request_id = uploadvideoform.cleaned_data['request_id']
 
             upload_video = uploadvideoform.save(commit=False)
-
-            # instance = Post(video=request.FILES['video'])
-            # instance.save()
-            # self.fields['receiver'].queryset = User.objects.exclude(username=user.username)
-            # self.fields['receiver'].queryset = self.fields['receiver'].queryset.filter(video_sender__receiver__username=user.username)
-
             upload_video.sender = request.user
             receiverfilter = User.objects.get(username=VidRequest.objects.get(id=request_id.id).sender)
             upload_video.receiver = receiverfilter
