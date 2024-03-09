@@ -17,8 +17,8 @@ def login(driver, username, password):
     wait.until(EC.presence_of_element_located((By.ID, "id_username")))
 
     # Send the username to the username input
-    username_input_element.send_keys("linus")
-    wait.until(EC.text_to_be_present_in_element_value((By.ID, "id_username"), "linus"))
+    username_input_element.send_keys(username)
+    wait.until(EC.text_to_be_present_in_element_value((By.ID, "id_username"), username))
 
     # Find the element with the id "Password Input" and click it
     password_input_element = driver.find_element(By.ID, "id_password")
@@ -26,8 +26,8 @@ def login(driver, username, password):
     wait.until(EC.presence_of_element_located((By.ID, "id_password")))
 
     # Send the password to the password input
-    password_input_element.send_keys("Admin123")
-    wait.until(EC.text_to_be_present_in_element_value((By.ID, "id_password"), "Admin123"))
+    password_input_element.send_keys(password)
+    wait.until(EC.text_to_be_present_in_element_value((By.ID, "id_password"), password))
 
     # Scroll down the login page
     html = driver.find_element(By.TAG_NAME, "html")

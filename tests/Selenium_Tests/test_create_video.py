@@ -18,8 +18,8 @@ def login(driver, username, password):
     wait.until(EC.presence_of_element_located((By.ID, "id_username")))
 
     # Send the username to the username input
-    username_input_element.send_keys("linus")
-    wait.until(EC.text_to_be_present_in_element_value((By.ID, "id_username"), "linus"))
+    username_input_element.send_keys(username)
+    wait.until(EC.text_to_be_present_in_element_value((By.ID, "id_username"), username))
 
     # Find the element with the id "Password Input" and click it
     password_input_element = driver.find_element(By.ID, "id_password")
@@ -27,8 +27,8 @@ def login(driver, username, password):
     wait.until(EC.presence_of_element_located((By.ID, "id_password")))
 
     # Send the password to the password input
-    password_input_element.send_keys("Admin123")
-    wait.until(EC.text_to_be_present_in_element_value((By.ID, "id_password"), "Admin123"))
+    password_input_element.send_keys(password)
+    wait.until(EC.text_to_be_present_in_element_value((By.ID, "id_password"), password))
 
     # Scroll down the login page
     html = driver.find_element(By.TAG_NAME, "html")
@@ -101,7 +101,7 @@ def hoverTest(hoverButton, buttonID, location, message):
         print(message + " failed")
 
 
-def create_record_video_test(driver):
+def create_record_video_test(driver, dueDateYear, dueDateMonthDay, dueDateTime):
     # Find the element with the id "videos hover" and hover over it
     hoverTest("Videos Hover","New Video Button", '/new', "`Send Video page found`")
 
@@ -144,7 +144,7 @@ def create_record_video_test(driver):
     print("TEST: 5 `Preview` Successful")
 
     # Find the element with the id "back-details" and click it
-    wait.until(EC.visibility_of_element_located((By.ID, "preview-contact")))
+    wait.until(EC.visibility_of_element_located((By.ID, "preview-title")))
     html.send_keys(Keys.PAGE_DOWN)
     wait.until(EC.visibility_of_element_located((By.ID, "back-details")))
     wait.until(EC.presence_of_element_located((By.ID, "back-details")))
@@ -195,9 +195,20 @@ def create_record_video_test(driver):
     # Find the element with the form request id and click it
     request_id_element = driver.find_element(By.ID, "id_request_id")
     wait.until(EC.presence_of_element_located((By.ID, "id_request_id")))
-    request_id_element.click()
-    request_id_element.select_by_index(1)
-    wait.until(EC.text_to_be_present_in_element_value((By.ID, "id_request_id"), "Test Request ID"))
+    # Select username "adrian"
+    # requestSelect = Select(request_id_element)
+    # requestSelect.select_by_index(1)
+    Select(request_id_element).select_by_index(1)
+    # request_id_element.click()
+    # request_id_element.select_by_index(1)
+    # wait.until(EC.text_to_be_present_in_element_value((By.ID, "id_request_id"), "Test Request ID"))
+    time.sleep(0.5)
+
+    # receiver_element = driver.find_element(By.ID, "id_receiver")
+
+    # # Select username "adrian"
+    # usernameSelect = Select(receiver_element)
+    # usernameSelect.select_by_index(1)
 
     # Find the element with the form title and click it
     title_element = driver.find_element(By.ID, "id_title")
@@ -217,8 +228,12 @@ def create_record_video_test(driver):
     timelimit_element = driver.find_element(By.ID, "id_timelimit")
     wait.until(EC.presence_of_element_located((By.ID, "id_timelimit")))
     timelimit_element.click()
-    timelimit_element.send_keys("Test Timelimit")
-    wait.until(EC.text_to_be_present_in_element_value((By.ID, "id_timelimit"), "Test Timelimit, This is a test video"))
+    timelimit_element.send_keys(dueDateTime)
+    time.sleep(0.5)
+    timelimit_element.send_keys(Keys.TAB)
+    timelimit_element.send_keys(dueDateYear)
+    timelimit_element.send_keys(dueDateMonthDay)
+    time.sleep(0.5)
 
     # Find the contact dropdown and select the appropriate permission
     # contact_element = Select(driver.find_element(By.ID, "contact"))
@@ -231,7 +246,7 @@ def create_record_video_test(driver):
     preview_element.click()
 
     # Find the element with the id "submit" and click it
-    wait.until(EC.visibility_of_element_located((By.ID, "preview-contact")))
+    wait.until(EC.visibility_of_element_located((By.ID, "preview-title")))
     html.send_keys(Keys.PAGE_DOWN)
     wait.until(EC.visibility_of_element_located((By.ID, "submit")))
     wait.until(EC.presence_of_element_located((By.ID, "submit")))
@@ -241,10 +256,10 @@ def create_record_video_test(driver):
     submit_element.click()
 
     # Wait for the URL to change to the home page URL
-    wait.until(EC.url_contains('/video-list'))
+    wait.until(EC.url_contains('/video'))
 
     # Check if the URL contains the expected page URL
-    if '/video-list' in driver.current_url:
+    if '/video' in driver.current_url:
         print("TEST: `Send Video` Successful")
     else:
         print("TEST: `Send Video` Failed")
@@ -281,9 +296,9 @@ driver.get('http://localhost:8000/login')
 
 # Call the login page test function with appropriate input values
 print("Create Video Test Start")
-login(driver, 'linus', 'Admin123')  # Replace with actual credentials
+login(driver, 'adrian', 'cclemon0912')  # Replace with actual credentials
 time.sleep(0.5)
-create_record_video_test(driver)
+create_record_video_test(driver, "2024", "0101", "1000AM")
 print("Create Video Test Completed")
 
 # Close the webdriver

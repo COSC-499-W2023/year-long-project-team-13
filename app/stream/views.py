@@ -129,7 +129,7 @@ def create_video(request):
             recentVideoUpload = Post.objects.filter(sender=request.user).last()
 
             Notification.objects.create(user=request.user, message=f'You have post a video to '+ str(receiverfilter) +'.', type=5, post_id=recentVideoUpload)
-            Notification.objects.create(user=receiverfilter, message=f'You have received a video post from '+ str(request.user) +'.', type=7, post_id=recentVideoUpload)
+            Notification.objects.create(user=receiverfilter, message=f'You have received a video post from '+ str(request.user) +'.', type=8, post_id=recentVideoUpload)
             return redirect('stream:video-list')
     else:
         createvideoform = VidCreateForm(request.user)
@@ -172,7 +172,7 @@ def upload_video(request):
             recentVideoUpload = Post.objects.filter(sender=request.user).last()
 
             Notification.objects.create(user=request.user, message=f'You have post a video to '+ str(receiverfilter) +'.', type=5, post_id=recentVideoUpload)
-            Notification.objects.create(user=receiverfilter, message=f'You have received a video post from '+ str(request.user) +'.', type=7, post_id=recentVideoUpload)
+            Notification.objects.create(user=receiverfilter, message=f'You have received a video post from '+ str(request.user) +'.', type=8, post_id=recentVideoUpload)
             return redirect('stream:video-list')
     else:
         uploadvideoform = VidUploadForm(request.user)
@@ -289,7 +289,7 @@ def notifications(request):
                 receiver = FriendRequest.objects.get(id=friendRequestid).receiver
                 sender = request.user
                 FriendRequest.objects.filter(id=friendRequestid).delete()
-                Notification.objects.create(user=sender, message=f'You have successfully deleted a friend request to '+ str(receiver) +'.', type=7)
+                Notification.objects.create(user=sender, message=f'You have successfully deleted a friend request to '+ str(receiver) +'.', type=8)
                 return redirect("stream:notifications")
             elif 'acceptFriendRequest' in request.POST:
                 # make a contact data with sender and receiver username
@@ -302,8 +302,8 @@ def notifications(request):
                 receiver = request.user
                 Contact.objects.create(sender=sender, receiver=receiver)
                 FriendRequest.objects.filter(id=friendRequestid).delete()
-                Notification.objects.create(user=sender, message=f'You and '+ str(receiver) +' had become friends.', type=7)
-                Notification.objects.create(user=receiver, message=f'You and '+ str(sender) +' had become friends.', type=7)
+                Notification.objects.create(user=sender, message=f'You and '+ str(receiver) +' had become friends.', type=8)
+                Notification.objects.create(user=receiver, message=f'You and '+ str(sender) +' had become friends.', type=8)
                 return redirect("stream:notifications")
             elif 'rejectFriendRequest' in request.POST:
                 # delete the friend request
@@ -314,7 +314,7 @@ def notifications(request):
                 sender = FriendRequest.objects.get(id=friendRequestid).sender
                 receiver = request.user
                 FriendRequest.objects.filter(id=friendRequestid).delete()
-                Notification.objects.create(user=receiver, message=f'You have rejected a friend request from '+ str(sender) +'.', type=7)
+                Notification.objects.create(user=receiver, message=f'You have rejected a friend request from '+ str(sender) +'.', type=8)
                 return redirect("stream:notifications")
             elif 'deleteVideoRequest' in request.POST:
                 # delete the video request
@@ -325,7 +325,7 @@ def notifications(request):
                 receiver = VidRequest.objects.get(id=videoRequestid).receiver
                 sender = request.user
                 VidRequest.objects.filter(id=videoRequestid).delete()
-                Notification.objects.create(user=sender, message=f'You have successfully deleted a video request to '+ str(receiver) +'.', type=7)
+                Notification.objects.create(user=sender, message=f'You have successfully deleted a video request to '+ str(receiver) +'.', type=8)
                 return redirect("stream:notifications")
             else:
                 notifications = Notification.objects.filter(user=user).order_by('-timestamp')

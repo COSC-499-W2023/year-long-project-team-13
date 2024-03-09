@@ -153,8 +153,9 @@ class Notification(models.Model):
       (3, 'Video Request Send'),
       (4, 'Video Request Receive'),
       (5, 'Post Upload'),
-      (6, 'Video Upload'),
-      (7, 'Text')
+      (6, 'Post Receive'),
+      (7, 'Video Upload'),
+      (8, 'Text')
      )
     id = models.AutoField(primary_key=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
