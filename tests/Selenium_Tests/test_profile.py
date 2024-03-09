@@ -106,12 +106,8 @@ def profile_page_test(driver, username, password, firstName, lastName, email, bi
     time.sleep(0.5)
     print("TEST: 5 `Birthdate input` successful")
 
-    #By.xpath("//input[@id='file_up']")
-    #profileform.image user.profile.image.url user.profile.image
     uploadImg = driver.find_element(By.ID, "id_image")
     uploadImg.send_keys(image)
-    #uploadImg_name = uploadImg.get_attribute('value')
-    #print(uploadImg_name)
     time.sleep(0.5)
 
     update_button = driver.find_element(By.ID, "update")

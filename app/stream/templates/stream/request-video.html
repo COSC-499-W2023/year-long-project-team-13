@@ -74,7 +74,7 @@
         <div id="overlay" class="float-center" style="position:fixed; top:30%;">
             <div>
                 <p class="text-dark">Are you sure to logout?</p>
-                <button id="logout" class="float-left submit-button" >Logout</button>
+                <button id="logout" class="float-left submit-button me-1">Logout</button>
                 <button id="cancel" class="float-left submit-button">Cancel</button>
             </div>
         </div>
@@ -95,6 +95,7 @@
                         <label class="receiver">Receiver:</label>
                       </div>
                       <div class="col-lg-3" id="message">
+                        {{ requestvideoform.receiver.errors }}
                         {{ requestvideoform.receiver }}
                       </div>
                     </div>
@@ -104,7 +105,8 @@
                           <label class="description">Enter a Message:</label>
                         </div>
                         <div class="col-lg-3" id="message">
-                            {{ requestvideoform.description }}
+                          {{ requestvideoform.description.errors }}
+                          {{ requestvideoform.description }}
                         </div>
                       </div>
                       <div style = "padding-top: 15px;">
@@ -113,7 +115,8 @@
                             <label class="due_date">DUE DATE:</label>
                           </div>
                             <div class="col-lg-3" id="message">
-                            {{ requestvideoform.due_date }}
+                              {{ requestvideoform.due_date.errors }}
+                              {{ requestvideoform.due_date }}
                           </div>
                         </div>
                       </div>

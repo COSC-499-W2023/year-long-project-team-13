@@ -117,9 +117,11 @@ def setting_test(driver, username, password, newpassword):
     print("Test 4 : Save successful")
 
 
-    update_input_element = driver.find_element(By.ID, "Update")
-    update_input_element.click()
+    wait.until(EC.visibility_of_element_located((By.ID, "Update")))
     wait.until(EC.presence_of_element_located((By.ID, "Update")))
+    update_input_element = driver.find_element(By.ID, "Update")
+    wait.until(EC.element_to_be_clickable((By.ID, "Update")))
+    update_input_element.click()
 
     print("Test 5 : Update successful")
 
@@ -172,20 +174,18 @@ def setting_test(driver, username, password, newpassword):
     print("confirmpassword filled successfully")
 
     save_input_element = driver.find_element(By.ID, "Save")
-    save_input_element.click()
     wait.until(EC.presence_of_element_located((By.ID, "Save")))
+    save_input_element.click()
 
     print("Save successful")
 
+    wait.until(EC.visibility_of_element_located((By.ID, "Update")))
+    wait.until(EC.presence_of_element_located((By.ID, "Update")))
     update_input_element = driver.find_element(By.ID, "Update")
+    wait.until(EC.element_to_be_clickable((By.ID, "Update")))
     update_input_element.click()
-    # wait.until(EC.presence_of_element_located((By.ID, "Update")))
 
     print("Update successful")
-
-
-
-
 
     # password2_input_element.send_keys(password)
     # wait.until(EC.text_to_be_present_in_element_value((By.ID, "id_password2"), password))
@@ -222,9 +222,8 @@ wait = WebDriverWait(driver, 60)
 # Call the profile page test function with appropriate input values
 print("Setting Page test Start")
 driver.get('http://localhost:8000/login')
-setting_test(driver, 'adrian', 'cclemon0912', 'bigproject5')
 time.sleep(0.5)
-driver.get('http://localhost:8000/login')
+setting_test(driver, 'adrian', 'cclemon0912', 'bigproject5')
 setting_test(driver, 'adrian', 'bigproject5' , 'cclemon0912')
 print("Setting Page test Completed")
 
