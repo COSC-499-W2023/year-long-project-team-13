@@ -48,8 +48,8 @@ class SimpleTest(TestCase):
             notificationid = notificationIDsender.id
             videoRequestid = Notification.objects.get(id=notificationid).videoRequest_id.id
             VidRequest.objects.filter(id=videoRequestid).delete()
-            Notification.objects.create(user=sender, message=f'You have successfully deleted a video request to '+ str(receiver) +'.', type=7)
-            notificationMessage = Notification.objects.filter(user=sender, type=7).last()
+            Notification.objects.create(user=sender, message=f'You have successfully deleted a video request to '+ str(receiver) +'.', type=8)
+            notificationMessage = Notification.objects.filter(user=sender, type=8).last()
 
             self.assertFalse(VidRequest.objects.filter(sender=sender, receiver=receiver, description="Testing", due_date="2024-02-28 15:32:19").exists())  # Check if video request not exists (deleted)
 
