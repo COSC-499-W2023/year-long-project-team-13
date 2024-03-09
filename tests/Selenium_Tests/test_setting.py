@@ -117,9 +117,11 @@ def setting_test(driver, username, password, newpassword):
     print("Test 4 : Save successful")
 
 
-    update_input_element = driver.find_element(By.ID, "Update")
-    update_input_element.click()
+    wait.until(EC.visibility_of_element_located((By.ID, "Update")))
     wait.until(EC.presence_of_element_located((By.ID, "Update")))
+    update_input_element = driver.find_element(By.ID, "Update")
+    wait.until(EC.element_to_be_clickable((By.ID, "Update")))
+    update_input_element.click()
 
     print("Test 5 : Update successful")
 
@@ -177,7 +179,7 @@ def setting_test(driver, username, password, newpassword):
 
     print("Save successful")
 
-    wait.until(EC.presence_of_element_located((By.ID, "Update")))
+    wait.until(EC.visibility_of_element_located((By.ID, "Update")))
     wait.until(EC.presence_of_element_located((By.ID, "Update")))
     update_input_element = driver.find_element(By.ID, "Update")
     wait.until(EC.element_to_be_clickable((By.ID, "Update")))

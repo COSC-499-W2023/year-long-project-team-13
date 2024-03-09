@@ -326,7 +326,7 @@ def upload_video_test(driver, dueDateYear, dueDateMonthDay, dueDateTime, video):
     html.send_keys(Keys.PAGE_DOWN)
 
     # Check that the upload button goes to home page
-    wait.until(EC.presence_of_element_located((By.ID, "upload")))
+    wait.until(EC.visibility_of_element_located((By.ID, "upload")))
     wait.until(EC.presence_of_element_located((By.ID, "upload")))
     upload_button_element = driver.find_element(By.ID, "upload")
     wait.until(EC.element_to_be_clickable((By.ID, "upload")))
