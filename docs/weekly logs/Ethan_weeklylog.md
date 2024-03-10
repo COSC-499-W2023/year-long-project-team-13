@@ -327,3 +327,19 @@
 - Made the UIs and the preview work on the record page.
 - Fixed multiple UI bugs on the record/upload video page.
 - Also fixed the testing for the record/upload video page.
+
+# Preferred name -> Ssc name -> Github name
+
+- Ethan -> Ethan Hsu -> YuchenHsu
+
+## Week 9 2024/03/04 ~ 2024/03/10
+
+- Type of tasks you worked on (screenshot from Peer Eval question)
+
+![Tasks](./images/tasks/ethan_term2_week9.png)
+
+- I have been sick since last week (before the peer eval) so I haven't been the most productive for the project. I still showed up to most meetings to help with some minor problems.
+- This week I worked on fixing some styling problems, namely the user videos, video details, and profile page. I worked on the video record page as well but haven't fixed that yet.
+  - ![User Videos](./images/Ethan_stuff/t2w9/user_video_page.png)
+  - ![Video Details](./images/Ethan_stuff/t2w9/video_detail_page.png)
+  - ![Profile Page](./images/Ethan_stuff/t2w9/profile_page.png)
