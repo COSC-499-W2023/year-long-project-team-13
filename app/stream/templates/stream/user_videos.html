@@ -10,6 +10,7 @@
         </div>
     {% endif %}
     <div style = "margin-top: 25px; padding-top: 75px; padding-bottom: 20px;">
+        <h1>Videos For {{ user }}</h1>
         {% for item in videos %}
             {% if item.sender == user or item.receiver == user %}
                 <div class="card mb-3" style="width: 75%; box-shadow: 12em; margin: auto;">
