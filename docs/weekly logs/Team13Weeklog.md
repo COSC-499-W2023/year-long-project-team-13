@@ -496,7 +496,7 @@ Test Report
 - Raymond -> Sitt Paing -> SittHmuePaing
 - Adrian -> Adrian Fong -> AdrianFWM
 
-## Term 2 Week 7 ~ 8 2024/02/26 ~ 2024/03/10
+## Term 2 Week 7 ~ 8 2024/02/19 ~ 2024/03/3
 
 - Which features were in the project plan for this milestone?
   - Finished Video request function (send/remove/notification) and UI, tests.
@@ -523,3 +523,33 @@ Test Report
 
 - Test report file is in the same directory [here](./report.txt)
   ![Test Report](./images/tests_completion/term2_week8_pytest_1.png)
+
+## Preferred name -> Ssc name -> Github name
+
+- Ethan -> Ethan Hsu -> YuchenHsu
+- Beth -> Beth Ralston -> mblackbeak (mblackbeak)
+- Herman -> Herman Sood -> herman-23
+- Raymond -> Sitt Paing -> SittHmuePaing
+- Adrian -> Adrian Fong -> AdrianFWM
+
+## Term 2 Week 9 2024/03/4 ~ 2024/03/10
+
+- Which features were in the project plan for this milestone?
+  - Fixed the UIs of the user_video page, the video detail page, and the profile page.
+  - UI fix for the video upload page is still in progress.
+  - Updated the topbar to show only respective pages for the user's role.
+
+Burnup chart
+![Burnup](./images/burnup/term2_week9_burnup.png)
+Network Graph
+![Network](./images/network/term2_week9_network_1.png)
+![Network](./images/network/term2_week9_network_2.png)
+Completed Tasks
+![Completed](./images/completed/term2_week9_done_1.png)
+![Completed](./images/completed/term2_week9_done_2.png)
+In progress Tasks
+![In Progress](./images/in-prog/term2_week9_inprogress.png)
+Test Report
+
+- Test report file is in the same directory [here](./report.txt)
+  ![Test Report](./images/tests_completion/term2_week9_pytest_1.png)
