@@ -153,7 +153,7 @@ class Notification(models.Model):
       (3, 'Video Request Send'),
       (4, 'Video Request Receive'), #go to record video
       (5, 'Post Upload'),
-      (6, 'Post Receive'), #go to view video
+      (6, 'Post Receive'),
       (7, 'Video Upload'),
       (8, 'Text')
      )

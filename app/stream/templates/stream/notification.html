@@ -104,6 +104,9 @@
                       {% elif notification.type == 5 %}
                         <input type="hidden" name="notifID" value="{{ notification.id }}">
                         <button class="btn btn-dark mt-3 mb-1" id="delete video post button" name="deleteVideoPost" type="submit">Remove Video Post</button>
+                        {% elif notification.type == 6 %}
+                        <input type="hidden" name="notifID" value="{{ notification.id }}">
+                        <a href="{% url 'stream:video-detail' notification.post_id %}" class="btn btn-dark mt-3 mb-1" id="View Video" name="viewVideoLink" >View Video</a>
                         {% else %}
                       {% endif %}
                     </div>

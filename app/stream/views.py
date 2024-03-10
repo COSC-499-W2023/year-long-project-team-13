@@ -129,7 +129,7 @@ def create_video(request):
             recentVideoUpload = Post.objects.filter(sender=request.user).last()
 
             Notification.objects.create(user=request.user, message=f'You have post a video to '+ str(receiverfilter) +'.', type=5, post_id=recentVideoUpload)
-            Notification.objects.create(user=receiverfilter, message=f'You have received a video post from '+ str(request.user) +'.', type=8, post_id=recentVideoUpload)
+            Notification.objects.create(user=receiverfilter, message=f'You have received a video post from '+ str(request.user) +'.', type=6, post_id=recentVideoUpload)
             return redirect('stream:video-list')
     else:
         createvideoform = VidCreateForm(request.user)
@@ -165,7 +165,7 @@ def upload_video(request):
             recentVideoUpload = Post.objects.filter(sender=request.user).last()
 
             Notification.objects.create(user=request.user, message=f'You have post a video to '+ str(receiverfilter) +'.', type=5, post_id=recentVideoUpload)
-            Notification.objects.create(user=receiverfilter, message=f'You have received a video post from '+ str(request.user) +'.', type=8, post_id=recentVideoUpload)
+            Notification.objects.create(user=receiverfilter, message=f'You have received a video post from '+ str(request.user) +'.', type=6, post_id=recentVideoUpload)
             return redirect('stream:video-list')
     else:
         uploadvideoform = VidUploadForm(request.user)
@@ -215,7 +215,7 @@ def update_video(request, pk):
             recentVideoUpload = Post.objects.filter(sender=request.user).last()
 
             Notification.objects.create(user=request.user, message=f'You have post a video to '+ str(receiverfilter) +'.', type=5, post_id=recentVideoUpload)
-            Notification.objects.create(user=receiverfilter, message=f'You have received a video post from '+ str(request.user) +'.', type=8, post_id=recentVideoUpload)
+            Notification.objects.create(user=receiverfilter, message=f'You have received a video post from '+ str(request.user) +'.', type=6, post_id=recentVideoUpload)
             return redirect('stream:video-list')
     else:
         createvideoform = VidUpdateForm(request.user)
