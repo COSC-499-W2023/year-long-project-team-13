@@ -20,7 +20,7 @@ class VidRequest(models.Model):
 
     def __str__(self):
         # return f"{self.sender} Request"
-        return f"{self.id}"
+        return f"{self.sender} {self.id}"
 
     # def get_absolute_url(self):
     #     return reverse("video-detail", kwargs={"pk": self.pk})
@@ -153,8 +153,9 @@ class Notification(models.Model):
       (3, 'Video Request Send'),
       (4, 'Video Request Receive'),
       (5, 'Post Upload'),
-      (6, 'Video Upload'),
-      (7, 'Text')
+      (6, 'Post Receive'),
+      (7, 'Video Upload'),
+      (8, 'Text')
      )
     id = models.AutoField(primary_key=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -163,7 +164,7 @@ class Notification(models.Model):
     type = models.IntegerField(choices=TYPE_CHOICES, null=True)
     friendRequest_id = models.ForeignKey(FriendRequest, on_delete=models.CASCADE, null=True)
     videoRequest_id = models.ForeignKey(VidRequest, on_delete=models.CASCADE, null=True)
-    post_id = models.ForeignKey(Post, on_delete=models.SET_NULL, null=True)
+    post_id = models.ForeignKey(Post, on_delete=models.CASCADE, null=True)
     video_id = models.ForeignKey(VidStream, on_delete=models.SET_NULL, null=True)
 
     def __str__(self):
