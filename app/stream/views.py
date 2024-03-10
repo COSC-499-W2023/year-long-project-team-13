@@ -272,6 +272,7 @@ def profile(request):
         'userform': userform,
         'personalinfoform': personalinfoform,
         'profileform': profileform,
+        'videos': Post.objects.filter(sender=request.user).order_by('-sendtime'),
     }
     return render(request, 'stream/profile.html', context)
 
