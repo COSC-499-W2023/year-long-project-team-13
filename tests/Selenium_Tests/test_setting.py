@@ -110,12 +110,20 @@ def setting_test(driver, username, password, newpassword):
 
     print("Test 3 : confirmpassword successful")
 
-    save_input_element = driver.find_element(By.ID, "Save")
-    save_input_element.click()
+    # Scroll down the page
+    html = driver.find_element(By.TAG_NAME, "html")
+    html.send_keys(Keys.PAGE_DOWN)
+    html.send_keys(Keys.PAGE_DOWN)
+
+    time.sleep(0.5)
+
+    wait.until(EC.visibility_of_element_located((By.ID, "Save")))
     wait.until(EC.presence_of_element_located((By.ID, "Save")))
+    save_input_element = driver.find_element(By.ID, "Save")
+    wait.until(EC.element_to_be_clickable((By.ID, "Save")))
+    save_input_element.click()
 
     print("Test 4 : Save successful")
-
 
     wait.until(EC.visibility_of_element_located((By.ID, "Update")))
     wait.until(EC.presence_of_element_located((By.ID, "Update")))
@@ -125,25 +133,29 @@ def setting_test(driver, username, password, newpassword):
 
     print("Test 5 : Update successful")
 
-    save_input_element = driver.find_element(By.ID, "Save")
-    save_input_element.click()
+    wait.until(EC.visibility_of_element_located((By.ID, "Reset")))
+    wait.until(EC.presence_of_element_located((By.ID, "Reset")))
+    reset_input_element = driver.find_element(By.ID, "Reset")
+    wait.until(EC.element_to_be_clickable((By.ID, "Reset")))
+    reset_input_element.click()
+
+    print("Test 6 : Reset successful")
+
+    wait.until(EC.visibility_of_element_located((By.ID, "Save")))
     wait.until(EC.presence_of_element_located((By.ID, "Save")))
+    save_input_element = driver.find_element(By.ID, "Save")
+    wait.until(EC.element_to_be_clickable((By.ID, "Save")))
+    save_input_element.click()
 
-    print("Test 6 : Save successful")
+    print("Test 7 : Save successful")
 
+    wait.until(EC.visibility_of_element_located((By.ID, "Cancel")))
+    wait.until(EC.presence_of_element_located((By.ID, "Cancel")))
     cancel_input_element = driver.find_element(By.ID, "Cancel")
     wait.until(EC.element_to_be_clickable((By.ID, "Cancel")))
     cancel_input_element.click()
-    wait.until(EC.presence_of_element_located((By.ID, "Cancel")))
 
-
-    print("Test 7 : Cancel successful")
-
-    reset_input_element = driver.find_element(By.ID, "Reset")
-    reset_input_element.click()
-    wait.until(EC.presence_of_element_located((By.ID, "Reset")))
-
-    print("Test 8 : Reset successful")
+    print("Test 8 : Cancel successful")
 
     oldpassword_input_element = driver.find_element(By.ID, "id_oldpassword")
     oldpassword_input_element.click()
@@ -153,7 +165,6 @@ def setting_test(driver, username, password, newpassword):
     wait.until(EC.text_to_be_present_in_element_value((By.ID, "id_oldpassword"), password))
 
     print("oldpassword filled successfully")
-
 
     password_input_element = driver.find_element(By.ID, "id_password")
     password_input_element.click()
@@ -173,8 +184,17 @@ def setting_test(driver, username, password, newpassword):
 
     print("confirmpassword filled successfully")
 
-    save_input_element = driver.find_element(By.ID, "Save")
+    # Scroll down the page
+    html = driver.find_element(By.TAG_NAME, "html")
+    html.send_keys(Keys.PAGE_DOWN)
+    html.send_keys(Keys.PAGE_DOWN)
+
+    time.sleep(0.5)
+
+    wait.until(EC.visibility_of_element_located((By.ID, "Save")))
     wait.until(EC.presence_of_element_located((By.ID, "Save")))
+    save_input_element = driver.find_element(By.ID, "Save")
+    wait.until(EC.element_to_be_clickable((By.ID, "Save")))
     save_input_element.click()
 
     print("Save successful")
@@ -187,9 +207,6 @@ def setting_test(driver, username, password, newpassword):
 
     print("Update successful")
 
-    # password2_input_element.send_keys(password)
-    # wait.until(EC.text_to_be_present_in_element_value((By.ID, "id_password2"), password))
-
     # Wait for the URL to change to the admin page URL
     wait.until(EC.url_contains('/login'))
 
@@ -199,15 +216,6 @@ def setting_test(driver, username, password, newpassword):
     else:
         print("TEST: 9 `Setting` failed")
 
-
-
-    # Wait for the profile page to load
-    # WebDriverWait(driver, 60).until(EC.url_contains('/profile'))
-
-    # Check if the profile page elements are present and correct
-    #assert WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, "img[src*='user.profile.image.url']")))
-    #assert WebDriverWait(driver, 10).until(EC.text_to_be_present_in_element((By.ID, "username"), username))
-    #assert WebDriverWait(driver, 10).until(EC.text_to_be_present_in_element((By.ID, "email"), email))
 
 # Create a ChromeOptions object with the log level set to 3
 chrome_options = webdriver.ChromeOptions()
