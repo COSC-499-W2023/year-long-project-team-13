@@ -46,6 +46,34 @@ class VidUploadForm(forms.ModelForm):
         fields = ['title','description','timelimit','video','request_id']
         # ,'receiver'
 
+class VidUpdateForm(forms.ModelForm):
+    # receiver = forms.ModelChoiceField(
+    #     queryset=User.objects.none(),
+    #     widget=forms.Select(attrs={'style': 'width: 207px; border: 2px groove lightgreen;',
+    #                                 'required': True})
+    # )
+    title = forms.CharField(widget=forms.TextInput(attrs={'placeholder' :'Title',
+                                                             'style':'width: 400px; height: 45px; margin-left: auto; margin-right: auto; margin-bottom: 25px; border: 2px groove lightgreen;',
+                                                             'class': 'form-control', 'required': True}))
+    description = forms.CharField(widget=forms.Textarea(attrs={"rows":5, "cols":23,
+                                                               'style': 'border: 2px groove lightgreen;',
+                                                               'required': True}))
+    timelimit = forms.DateTimeField(widget=forms.TextInput(attrs={'placeholder' :'Select a time limit date',
+                                                              'style': 'width: 210px; margin-left: auto; margin-right: auto; border: 2px groove lightgreen;',
+                                                              'class': 'form-control', 'type': 'datetime-local','required': True}))
+    video = forms.FileField()
+
+    def __init__(self, user, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        # self.fields['receiver'].queryset = User.objects.exclude(username=user.username)
+        # self.fields['receiver'].queryset = self.fields['receiver'].queryset.filter(video_sender__receiver__username=user.username)
+        self.fields['request_id'].queryset = VidRequest.objects.filter(receiver__username=user.username)
+
+    class Meta:
+        model = Post
+        fields = ['title','description','timelimit','video']
+        # ,'receiver'
+
 class VidCreateForm(forms.ModelForm):
     # receiver = forms.ModelChoiceField(
     #     queryset=User.objects.none(),
