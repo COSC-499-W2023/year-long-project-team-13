@@ -11,7 +11,7 @@ from django.db.models import Q
 from stream.forms import UserInfoUpdateForm
 
 from . models import VidRequest, VidStream, Contact, FriendRequest, Post, Profile, UserInfo, Notification, Setting
-from . forms import VidUploadForm, VidCreateForm, VidRequestForm, UserRegistrationForm, UserUpdateForm, UserInfoUpdateForm, UserProfileUpdateForm, UserProfileUpdateForm,  ValidatingPasswordChangeForm, AddContactForm, UserPermissionForm
+from . forms import VidUploadForm, VidCreateForm, VidRequestForm, UserRegistrationForm, UserUpdateForm, UserInfoUpdateForm, UserProfileUpdateForm, UserProfileUpdateForm,  ValidatingPasswordChangeForm, AddContactForm, UserPermissionForm, VidUpdateForm
 
 import base64
 from django.core.files.base import ContentFile
@@ -195,7 +195,7 @@ class VideoUpdateView(LoginRequiredMixin, UserPassesTestMixin ,UpdateView):
 
 def update_video(request, pk):
     if request.method == "POST":
-        createvideoform = VidCreateForm(request.user, request.POST, request.FILES)
+        createvideoform = VidUpdateForm(request.user, request.POST, request.FILES)
         if createvideoform.is_valid():
             request_id = createvideoform.cleaned_data['request_id']
 
@@ -218,7 +218,7 @@ def update_video(request, pk):
             Notification.objects.create(user=receiverfilter, message=f'You have received a video post from '+ str(request.user) +'.', type=8, post_id=recentVideoUpload)
             return redirect('stream:video-list')
     else:
-        createvideoform = VidCreateForm(request.user)
+        createvideoform = VidUpdateForm(request.user)
 
     context = {
         'createvideoform': createvideoform

@@ -67,7 +67,7 @@ class VidUpdateForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         # self.fields['receiver'].queryset = User.objects.exclude(username=user.username)
         # self.fields['receiver'].queryset = self.fields['receiver'].queryset.filter(video_sender__receiver__username=user.username)
-        self.fields['request_id'].queryset = VidRequest.objects.filter(receiver__username=user.username)
+        # self.fields['request_id'].queryset = VidRequest.objects.filter(receiver__username=user.username)
 
     class Meta:
         model = Post

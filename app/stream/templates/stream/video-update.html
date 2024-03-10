@@ -41,9 +41,12 @@
                             {% comment %} {{ notification.videoRequest_id}} {% endcomment %}
                             {% for item in notification %}
                                 {% if item.id == object.id%}
-                                    <input name="video_request_id" id="video_request_id" value=object.videoRequest_id />
+                                    <input name="video_request_id" id="video_request_id" value=object.videoRequest_id/>
+                                    <p>object.videoRequest_id</p>
                                 {% endif %}
+                                <p>hello</p>
                             {% endfor %}
+
                         </div>
                         <div class="form-group" style = "padding-top: 15px;">
                             <label class="title">Title:</label>
