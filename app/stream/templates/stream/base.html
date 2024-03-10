@@ -69,17 +69,17 @@
                       <li class="nav-item nav-link">
                           <button class="nav-link active">
                               <a id="Videos Hover">
-                                  VIDEOS 
+                                  VIDEOS
                                   &#9660;
                               </a>
                           </button>
                       </li>
                       <div class="dropdown-content">
                         <li class="nav-item nav-link"><a class="nav-link active" href=" {% url 'stream:video-list' %} " id="Video Button">View Videos</a></li>
-                        {% if user.userinfo.permission == 1 %}
+                        {% if user.userinfo.permission == 1 && user.is_superuser %}
                          <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:video-create' %}" id="New Video Button">Send Video</a>
                         {% endif %}
-                        {% if user.userinfo.permission == 2 %}
+                        {% if user.userinfo.permission == 2 && user.is_superuser %}
                           <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:request-video' %}" id="Video Request Button">Request Video</a>
                         {% endif %}
                       </div>
