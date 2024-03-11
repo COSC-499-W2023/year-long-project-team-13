@@ -562,4 +562,4 @@ In progress Tasks
 Test Report
 
 - Test report file is in the same directory [here](./report.txt)
-  ![Test Report](./images/tests_completion/term2_week9_pytest_1.png)
+  ![Test Report](./images/tests_completion/term2_week9_pytest.png)

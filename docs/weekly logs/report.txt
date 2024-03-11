@@ -32,6 +32,11 @@ Login successful
 TEST: 0 `User hover` successful
 TEST: 1 `Admin` successful
 Admin Page test Completed
+Notification Page test Start
+Login successful
+TEST: 0 `User hover` successful
+TEST 1: `Notifications` successful
+Notification Page test completed
 Contact Video Page Test Start
 Login successful
 `User hover` successful
@@ -75,28 +80,66 @@ TEST 3: `Accept Friend Request` successful
 `Logout` successful
 `Login again page` successful
 Contact Video Page Test Completed
+Request Page test Start
+Login Successful
+`Video hover` successful
+`Video Request page found` successful
+TEST: 0 `Request Video` Successful
+TEST 1: `Remove Video Request` successful
+`Video hover` successful
+`Video Request page found` successful
+TEST: 0 `Request Video` Successful
+`User hover` successful
+`Logout` successful
+Request Page test Completed
 Create Video Test Start
 Login Successful
-TEST: 0 `Videos hover` successful
-TEST: 1 `Create Video` Successful
-TEST: 2 `Start Camera` Successful
-TEST: 3 `Start Record` Successful
-TEST: 4 `Stop Record` Successful
-TEST: 5 `Next` Successful
-TEST: 6 `Preview` Successful
-TEST: 7 `Back Details` Successful
-TEST: 8 `Back Record` Successful
-TEST: 9 `Start Record 2` Successful
-TEST: 10 `Stop Record 2` Successful
-TEST: 11 `Download Video` Successful
-TEST: 12 `Video Info` Successful
-TEST: 13 `Submit` Successful
+`Video hover` successful
+`Send Video page found` successful
+TEST: 1 `Start Camera` Successful
+TEST: 2 `Start Record` Successful
+TEST: 3 `Stop Record` Successful
+TEST: 4 `Next` Successful
+TEST: 5 `Preview` Successful
+TEST: 6 `Back Details` Successful
+TEST: 7 `Back Record` Successful
+TEST: 8 `Start Record 2` Successful
+TEST: 9 `Stop Record 2` Successful
+TEST: 10 `Download Video` Successful
+TEST: 11 `Video Record Info` Successful
+TEST: 12 `Preview` Successful
+TEST 13: `Send Record Video` Successful
+`Video hover` successful
+`Notification page found` successful
+TEST 13: `Remove Video Post` successful
+`Video hover` successful
+`Send Video page found` successful
+Create Video Test Start
+Login Successful
+`Video hover` successful
+`Send Video page found` successful
+TEST: 1 `Start Camera` Successful
+TEST: 2 `Start Record` Successful
+TEST: 3 `Stop Record` Successful
+TEST: 4 `Next` Successful
+TEST: 5 `Preview` Successful
+TEST: 6 `Back Details` Successful
+TEST: 7 `Back Record` Successful
+TEST: 8 `Start Record 2` Successful
+TEST: 9 `Stop Record 2` Successful
+TEST: 10 `Download Video` Successful
+TEST: 11 `Video Record Info` Successful
+TEST: 12 `Preview` Successful
+TEST 13: `Send Record Video` Successful
+`Video hover` successful
+`Notification page found` successful
+TEST 13: `Remove Video Post` successful
+`Video hover` successful
+`Send Video page found` successful
+TEST: 14 `Video Upload Post` Successful
+`User hover` successful
+`Logout` successful
 Create Video Test Completed
-Notification Page test Start
-Login successful
-TEST: 0 `User hover` successful
-TEST 1: `Notifications` successful
-Notification Page test completed
 Register Page test Start
 TEST: 0 `Registration` successful
 Register Page test end for permission 1
