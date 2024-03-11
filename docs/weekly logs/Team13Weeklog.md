@@ -552,6 +552,9 @@ Network Graph
 Completed Tasks
 ![Completed](./images/completed/term2_week9_done_1.png)
 ![Completed](./images/completed/term2_week9_done_2.png)
+![Completed](./images/completed/term2_week9_done_3.png)
+![Completed](./images/completed/term2_week9_done_4.png)
+![Completed](./images/completed/term2_week9_done_5.png)
 In progress Tasks
 ![In Progress](./images/in-prog/term2_week9_inprogress.png)
 Test Report
