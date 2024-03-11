@@ -744,5 +744,62 @@ id connect to "friend request", "video request", "post", and "video" table.
   - [post video preview (not supposed to be here) Request/Commit](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/152)
 
 ### Weekly Log / Team Weekly Log / Additional
-- Worked on my own weekly log, contribute to team weeklog.
-- Assign Task to Herman to work on register/setting/login page error colour to red from this week.
+  - Worked on my own weekly log, contribute to team weeklog.
+  - Assign Task to Herman to work on register/setting/login page error colour to red from this week.
+
+# Preferred name -> Ssc name -> Github name
+
+- Adrian -> Adrian Fong -> AdrianFWM
+
+## Term 2 Week 9 2023/03/04~2023/03/10
+
+- Task I have worked on this week and winter break.
+![Weekly Task T2-9](./images/tasks/AdrianFong_T2_Week9_Task.jpg)
+
+## Recap on your week's goals
+
+### Task priorities (Received feedback from peer testing 2)
+- We received feedbacks from peer testing 2,so we decide which feedback should we start this week. Therefore, I decide to work on "Description of the request and due date on the notifications page", s3 cloud, and aws upload file size limit.
+  - Feedback List screenshot
+  ![Feedback List screenshot](./images/Adrian_images/T2_Week_8/peer_testing_feedback.jpg)
+
+### Record/Upload/Remove Video Post function/CSS layout and Selenium/pytest, Notification messages [Complete]
+- Worked on "Create/Record Video Function", "Upload Video Post Function
+", "Create/Upload Video Page Selenium Test/pytest
+", "Remove post video (notification page and video detail page)" and "Remove post video Selenium Test/pytest" on project board, sender permission account can record video on web browser and upload the recorded video to database with upload post form, and users can preview the recorded video before posting it. Sender and receiver of post can view the recorded video on view video page.
+- Changed the display options for video request ID for both record and upload video form, since we received feedback for user confused on which user will receive the video post because it was showing just video request ID number, and now it display number and receiver username.
+- Finished CSS layout fix for both video post record and upload form.
+- Sender of video post can delete post on notification page.
+- Finished Selenium test and pytest for record/upload/remove video request.
+- Added all the test to master test.
+- All Selenium test and pytest passes with no issue/error.
+
+  - [Post video (upload/record/remove) functions & selenium/pytest Pull Request/Commit](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/153)
+  - Upload Post Video form screenshot (Sender permission) [CSS change]
+![Upload Post Video form screenshot (Sender permission) [CSS change]](./images/Adrian_images/T2_Week_8/upload_video_layout.jpg)
+  - Record Post Video form screenshot (Sender permission) [request ID display change]
+![Record Post Video form screenshot (Sender permission) [request ID display change]](./images/Adrian_images/T2_Week_8/record_video_layout_idname.jpg)
+  - Record Post Video preview screenshot (Sender permission)
+![Record Post Video preview screenshot (Sender permission)](./images/Adrian_images/T2_Week_8/record_video_preview.jpg)
+  - View Record Post Video screenshot
+![View Record Post Video screenshot](./images/Adrian_images/T2_Week_8/view_video_record.jpg)
+  - Remove Post Video screenshot (Sender permission) [notification]
+![Remove Post Video screenshot (Sender permission) [notification]](./images/Adrian_images/T2_Week_8/remove_video_post.jpg)
+  - Post Video Selenium test screenshot
+![Post Video Selenium test screenshot](./images/Adrian_images/T2_Week_8/selenium_test.jpg)
+  - Post Video pytest screenshot
+![Post Video pytest screenshot](./images/Adrian_images/T2_Week_8/video_create_pytest.jpg)
+
+### Notification Database changes
+- Worked on "Notification Database update" on project board, update notification type in notification table in database. Because we received feedback from peer testing that they want to click the notificaiton for video post receiver to relocate to video detail page.
+
+  - [Notification database update Pull Request/Commit](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/153)
+  -Notication database screenshot
+![Notication database screenshot](./images/Adrian_images/T2_Week_8/Notification_database_type.jpg)
+
+### Review other team member's pull request
+- Reviewed Raymond's "Making changes to the pages with top bar" pull requests, and tested all tests and passed.
+  - [Making changes to the pages with top bar Pull Request/Commit](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/169)
+
+### Weekly Log / Team Weekly Log / Additional
+  - Worked on my own weekly log, contribute to team weeklog.

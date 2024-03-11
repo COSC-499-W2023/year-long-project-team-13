@@ -538,6 +538,11 @@ Test Report
   - Fixed the UIs of the user_video page, the video detail page, and the profile page.
   - UI fix for the video upload page is still in progress.
   - Updated the topbar to show only respective pages for the user's role.
+  - Upload/Record Post Video page/form layout and send video to database function.
+  - Remove post video function on notification page.
+  - Selenium test and pytest for upload/record/remove post video.
+  - Notification table changes (notificaiton type).
+  - Proccessed the peer testing 2 feedback and reorganized tasks and task priorities.
 
 Burnup chart
 ![Burnup](./images/burnup/term2_week9_burnup.png)
