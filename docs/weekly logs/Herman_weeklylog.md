@@ -309,6 +309,22 @@ Add Contact Function, Add contact UI
 ![Tasks](./images/tasks/ViewVideoHerman.png)
 
 
+- Applicable date range
+## Week 9 Term 2 03/04/24~03/10/24
+
+ # Preferred name -> Ssc name -> Github name
+
+- Herman -> Herman Sood -> Herman Sood
+
+- Recap on your week's goals-Which features were yours in the project plan for this milestone? For term 2 week 9, after the second peer evaluation session in class, my team and I discussed on features to be done or updated for the coming weeks and so we prioritized and assigned all members with some tasks to do and updated the Kanban board accordingly. I will be working on some of the UI updates for the upload video page and then later work on the password viewable on the login and register page afterward. 
+  - Which tasks from the project board are associated with these features? Upload video page UI updates and Password viewable.  
+  - Among these tasks, which have you completed/in progress in the last week? Upload video page UI. 
+
+
+![Tasks](./images/tasks/Week9Term2PeerEvalHerman.png)
+
+
+
 
 
 
