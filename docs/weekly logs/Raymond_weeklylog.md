@@ -421,7 +421,7 @@ This week, I have worked on the UI of setting page since the issue occurs when t
 - Worked on my own weekly log, contribute to team weekly log.
 - Learn new insights from online to resolve issues for my project and for the theme page.
 
-##  Week 7 Term 2 and Week 8 Term 2 02/19/24~03/03/24
+##  Term 2 Week 7 and Week 8 02/19/24~03/03/24
 
 - Type of tasks you worked on
 
@@ -457,3 +457,40 @@ Red Error Message Setting Page (Old)
 ### Additional
 - Worked on my own weekly log, contribute to team weekly log.
 - Learn new insights from online to resolve issues for my project and for the theme page.
+
+
+## Term 2 Week 9 2024/03/04 ~ 2024/03/10
+
+- Type of tasks you worked on
+
+![Tasks](./images/tasks/SittPaing_T2W9-Task.png)
+
+## Recap of week's goals
+
+This week, we discussed on what we want to present for our second peer evaluation (we made the lists during week 6 in advance but we finalize on things we want to show to the user this week) and come up with what we want to present and do the task so that we are fully prepared for the evaluation. We meet up on Monday before the evaluation on Tuesday and try those lists that we want to show by ourselves to ensure everything is working and fix any issue that might have occur when we are testing our website so that we are well prepared. After the evaluation, we received feedbacks on what changes we can made to improve our website so on Thursday during our meeting, we discuss about what we should prioritized on and what are the changes that we need to take note of from the feedback that would make our website function better and make it easy to use for the users so we split the workload based on priority and focus on them. I worked on hiding the button (send video or request video) based on whether the user is the sender or receiver. It is based on the feedback we received during the second peer evaluation. If the user is the receiver, the send video button is hidden and if the user is the sender, the request video button is hidden but for admin, the user is still able to access both features. When working on it, the issue I encounter is that I forgot to take note of admin when i am doing verifying whether the user is sender/receiver and hide the button according so when admin login to the website, both features are missing so I have to check the issue and later I am able to fix that with the help of my teammate Adrian. I also have another issue with the syntax since in django we use and/or instead or && or || so I have to take note of it and I am able to overcome the obstacle and now the website is working as I have intended. I have to make changes on every pages that has top bar so that the button will be hidden based on the user's status. I also run both the pytest and selenium test again so that its working properly since i made changes and all tests pass.
+
+Finalize Lists of what we want to present
+
+![Finalize Lists of what we want to present](./images/Sitt_images/Term_2_Week_9/Peer_Evaluation_2_Task.png)
+
+Second Peer Evaluation Feedback
+
+![Second Peer Evaluation Feedback](./images/Sitt_images/Term_2_Week_9/Peer_Evaluation_2_Feedback.png)
+
+Hide Send Video Button for Receiver
+
+![Hide Send Video Button for Receiver](./images/Sitt_images/Term_2_Week_9/Receiver_Request_Video.png)
+
+Hide Request Video Button for Sender
+
+![Hide Request Video Button for Sender](./images/Sitt_images/Term_2_Week_9/Sender_Send_Video.png)
+
+Admin send/request video
+
+![Admin send/request video](./images/Sitt_images/Term_2_Week_9/Admin_Send_Receive_Video.png)
+
+
+### Additional
+- Worked on my own weekly log, contribute to team weekly log.
+- Looking at how to work on forgot password on the login page so that user can reset the password when they totally forgot their password by getting a reset link through email and change to a new password.
+
