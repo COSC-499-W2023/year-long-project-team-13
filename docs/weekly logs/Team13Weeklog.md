@@ -542,6 +542,8 @@ Test Report
   - Remove post video function on notification page.
   - Selenium test and pytest for upload/record/remove post video.
   - Notification table changes (notificaiton type).
+  - Added buttons to notifications to go to view the submitted video
+  - added buttons to notification to go record a video is in progress
   - Proccessed the peer testing 2 feedback and reorganized tasks and task priorities.
 
 Burnup chart
