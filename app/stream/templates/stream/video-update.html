@@ -39,12 +39,13 @@
                             </select> {% endcomment %}
                             {% comment %} {{ createvideoform.request_id.errors }} {% endcomment %}
                             {% comment %} {{ notification.videoRequest_id}} {% endcomment %}
+
+                            {% comment %} {% if notification.videoRequest_id %}
+                                <input name="video_request_id" id="video_request_id" value=notification.videoRequest_id/>
+                                <p>notification.videoRequest_id</p>
+                            {% endif %} {% endcomment %}
                             {% for item in notification %}
-                                {% if item.id == object.id%}
-                                    <input name="video_request_id" id="video_request_id" value=object.videoRequest_id/>
-                                    <p>object.videoRequest_id</p>
-                                {% endif %}
-                                <p>hello</p>
+                                {{item.videoRequest_id}}
                             {% endfor %}
 
                         </div>

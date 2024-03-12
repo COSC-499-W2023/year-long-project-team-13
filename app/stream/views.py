@@ -220,10 +220,8 @@ def update_video(request, pk):
     else:
         createvideoform = VidUpdateForm(request.user)
 
-    context = {
-        'createvideoform': createvideoform
-    }
-    return render(request, 'stream/video-update.html', context)
+    context = {'notification': Notification.objects.filter(id=pk), 'createvideoform': createvideoform}
+    return render(request, 'stream/video-update.html', context )
 
 
 
