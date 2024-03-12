@@ -23,16 +23,17 @@ urlpatterns = [
     path('video/<int:pk>/update/', VideoUpdateView.as_view(), name="video-update"),
     path('video/<int:pk>/delete/', VideoDeleteView.as_view(), name="video-delete"),
     path('user/<str:username>', UserVideoListView.as_view(), name="user-videos"),
-    path('video/record',VideoCreateView.as_view(), name="video-create"),
-    path('video/upload',VideoUploadView.as_view(), name="video-upload"),
+    # VideoCreateView.as_view()
+    # stream_views.create_video
+    path('video/new/',stream_views.create_video, name="video-create"),
+    # VideoUploadView.as_view()
+    path('video/new',stream_views.upload_video, name="video-upload"),
+    # path('video/record',VideoCreateView.as_view(), name="video-create"),
+    # path('video/upload',VideoUploadView.as_view(), name="video-upload"),
     path('search',views.search,name="search"),
     path('',views.home,name="home"),
     path('video',GeneralVideoListView.as_view(), name="video-list"),
-    # Use friendRequest if it is complete instead of contact
-    # path('contact',views.contact,name="contact"),
     path('contact',views.friendRequest,name="contact"),
-    # path('contact',FriendRequset.as_view(),name="contact"),
-
     path('request-video',views.request_video,name="request-video"),
 
     path('profile',stream_views.profile, name="profile"),

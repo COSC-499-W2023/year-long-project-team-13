@@ -11,6 +11,11 @@
     <link rel="stylesheet" href= "{%static 'assets/bootstrap/css/bootstrap.min.css' %}">
     <link href="{% static 'css/styleRegister.css' %}" rel="stylesheet">
     <link href="{% static 'css/styleTopBar.css' %}" rel="stylesheet">
+    <style>
+      ul.errorlist {
+          color: red;
+      }
+  </style>
   </head>
   <!--style in body change the website side/top/bottom background-->
   <body id="page-top" data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="77" style="background-size: cover; background-image: url('{% static 'assets/img/register-background.jpg' %}');">
@@ -83,23 +88,23 @@
                       <input type="text" id="form3Example1cg" class="form-control form-control-lg" />
                       <label class="form-label" for="form3Example1cg">Your Name</label>
                     </div> {% endcomment %}
-                    {{ form.username.errors }}
-                    {{ form.username }}
+                    {{ registrationform.username.errors }}
+                    {{ registrationform.username }}
                     <p id="intruction">Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.</p>
 
                     {% comment %} <div class="form-outline mb-4">
                       <input type="email" id="form3Example3cg" class="form-control form-control-lg" />
                       <label class="form-label" for="form3Example3cg">Your Email</label>
                     </div> {% endcomment %}
-                    {{ form.email.errors }}
-                    {{ form.email }}
+                    {{ registrationform.email.errors }}
+                    {{ registrationform.email }}
 
                     {% comment %} <div class="form-outline mb-4">
                       <input type="password" id="form3Example4cg" class="form-control form-control-lg" />
                       <label class="form-label" for="form3Example4cg">Password</label>
                     </div> {% endcomment %}
-                    {{ form.password1.errors }}
-                    {{ form.password1 }}
+                    {{ registrationform.password1.errors }}
+                    {{ registrationform.password1 }}
                     <p id="intruction">Your password can’t be too similar to your other personal information.
                       <br>
                       Your password must contain at least 8 characters.
@@ -112,8 +117,8 @@
                       <input type="password" id="form3Example4cdg" class="form-control form-control-lg" />
                       <label class="form-label" for="form3Example4cdg">Repeat your password</label>
                     </div> {% endcomment %}
-                    {{ form.password2.errors }}
-                    {{ form.password2 }}
+                    {{ registrationform.password2.errors }}
+                    {{ registrationform.password2 }}
                     {% comment %} <p id="intruction">Enter the same password as before, for verification.</p> {% endcomment %}
 
 

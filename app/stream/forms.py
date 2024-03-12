@@ -1,34 +1,106 @@
 from django import forms
+from django.core.exceptions import ValidationError
 from django.contrib.auth.forms import UserCreationForm, SetPasswordForm
 from django.contrib.auth.models import User
-from . models import VidStream, VidRequest, Profile, UserInfo, Setting, FriendRequest, Notification
-# , Contact
+from . models import VidRequest, VidStream, Contact, FriendRequest, Post, Profile, UserInfo, Notification, Setting
 from django.contrib.auth import password_validation
 from django.contrib import auth
 from django.contrib.auth.password_validation import validate_password
 from django.contrib.auth.hashers import check_password
 import difflib
+from django.db.models import Q
 # from django.utils.translation import gettext_lazy as _
 import re
 from s3direct.widgets import S3DirectWidget
+from django.contrib.auth import authenticate
 
 class VidUploadForm(forms.ModelForm):
     video = forms.FileField(widget=S3DirectWidget(dest='primary_destination', attrs={'style': 'border: 2px groove lightgreen;'}))
+    # receiver = forms.ModelChoiceField(
+    #     queryset=User.objects.none(),
+    #     widget=forms.Select(attrs={'style': 'width: 207px; border: 2px groove lightgreen;',
+    #                                 'required': True})
+    # )
+    title = forms.CharField(widget=forms.TextInput(attrs={'placeholder' :'Title',
+                                                             'style':'width: 400px; height: 45px; margin-left: auto; margin-right: auto; margin-bottom: 25px; border: 2px groove lightgreen;',
+                                                             'class': 'form-control', 'required': True}))
+    description = forms.CharField(widget=forms.Textarea(attrs={"rows":5, "cols":23,
+                                                               'style': 'border: 2px groove lightgreen;',
+                                                               'required': True}))
+    timelimit = forms.DateTimeField(widget=forms.TextInput(attrs={'placeholder' :'Select a time limit date',
+                                                              'style': 'width: 210px; margin-left: auto; margin-right: auto; border: 2px groove lightgreen;',
+                                                              'class': 'form-control', 'type': 'datetime-local','required': True}))
+    video = forms.FileField()
+    request_id = forms.ModelChoiceField(
+        queryset=User.objects.none(),
+        widget=forms.Select(attrs={'style': 'width: 207px; border: 2px groove lightgreen;',
+                                    'required': True})
+    )
+
+    def __init__(self, user, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        # self.fields['receiver'].queryset = User.objects.exclude(username=user.username)
+        # self.fields['receiver'].queryset = self.fields['receiver'].queryset.filter(video_sender__receiver__username=user.username)
+        self.fields['request_id'].queryset = VidRequest.objects.filter(receiver__username=user.username)
+
+    class Meta:
+        model = Post
+        fields = ['title','description','timelimit','video','request_id']
+        # ,'receiver'
+
+class VidCreateForm(forms.ModelForm):
+    # receiver = forms.ModelChoiceField(
+    #     queryset=User.objects.none(),
+    #     widget=forms.Select(attrs={'style': 'width: 207px; border: 2px groove lightgreen;',
+    #                                 'required': True})
+    # )
+    title = forms.CharField(widget=forms.TextInput(attrs={'placeholder' :'Title',
+                                                             'style':'width: 400px; height: 45px; margin-left: auto; margin-right: auto; margin-bottom: 25px; border: 2px groove lightgreen;',
+                                                             'class': 'form-control', 'required': True}))
+    description = forms.CharField(widget=forms.Textarea(attrs={"rows":5, "cols":23,
+                                                               'style': 'border: 2px groove lightgreen;',
+                                                               'required': True}))
+    timelimit = forms.DateTimeField(widget=forms.TextInput(attrs={'placeholder' :'Select a time limit date',
+                                                              'style': 'width: 210px; margin-left: auto; margin-right: auto; border: 2px groove lightgreen;',
+                                                              'class': 'form-control', 'type': 'datetime-local','required': True}))
+    # video = forms.FileField(), widget=forms.HiddenInput
+    request_id = forms.ModelChoiceField(
+        queryset=User.objects.none(),
+        widget=forms.Select(attrs={'style': 'width: 207px; border: 2px groove lightgreen;',
+                                    'required': True})
+    )
+
+    def __init__(self, user, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        # self.fields['receiver'].queryset = User.objects.exclude(username=user.username)
+        # self.fields['receiver'].queryset = self.fields['receiver'].queryset.filter(video_sender__receiver__username=user.username)
+        self.fields['request_id'].queryset = VidRequest.objects.filter(receiver__username=user.username)
 
     class Meta:
         model = VidStream
-        fields = ["title", "description", "video"]
+        fields = ["title","description", "video"]
 
 class VidRequestForm(forms.ModelForm):
-    # reciever =
-    description = forms.CharField(widget=forms.Textarea(attrs={"rows":5, "cols":20, 'style': 'boarder: 2px groove lightgreen;','required': True}))
-    due_date = forms.DateField(widget=forms.TextInput(attrs={'placeholder' :'Select a due date',
-                                                              'style': '',
-                                                              'class': 'form-control', 'type': 'date','required': True}))
+    receiver = forms.ModelChoiceField(
+        queryset=User.objects.none(),
+        widget=forms.Select(attrs={'style': 'width: 207px; border: 2px groove lightgreen;',
+                                    'required': True})
+    )
+    description = forms.CharField(widget=forms.Textarea(attrs={"rows":5, "cols":23,
+                                                               'style': 'border: 2px groove lightgreen;',
+                                                               'required': True}))
+    due_date = forms.DateTimeField(widget=forms.TextInput(attrs={'placeholder' :'Select a due date',
+                                                              'style': 'width: 210px; margin-left: auto; margin-right: auto; border: 2px groove lightgreen;',
+                                                              'class': 'form-control', 'type': 'datetime-local','required': True}))
+
+    def __init__(self, user, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['receiver'].queryset = User.objects.exclude(username=user.username)
+        self.fields['receiver'].queryset = self.fields['receiver'].queryset.filter(Q(contact_receiver__sender__username=user.username) | Q(contact_sender__receiver__username=user.username))
 
     class Meta:
         model = VidRequest
-        fields = ["receiver","description", "due_date"]
+        fields = ['receiver','description','due_date']
 
 # From Streamers
 class UserRegistrationForm(UserCreationForm):
@@ -119,6 +191,18 @@ class SettingForm(forms.ModelForm):
         model = Setting
         fields = ['darkmode', 'emailnotification']
 
+    def clean_darkmode(self):
+        darkmode = self.cleaned_data.get('darkmode')
+        if darkmode not in [True, False]:
+            raise ValidationError("Invalid value for darkmode")
+        return darkmode
+
+    def clean_emailnotification(self):
+        emailnotification = self.cleaned_data.get('emailnotification')
+        if emailnotification not in [True, False]:
+            raise ValidationError("Invalid value for emailnotification")
+        return emailnotification
+
 # class SetPasswordForm(forms.ModelForm):
 #     password = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder' :'Password',
 #                                                                   'style': 'width: 400px; height: 45px; margin-left: auto; margin-right: auto; margin-bottom: 25px; border: 2px groove lightgreen;',
@@ -153,6 +237,9 @@ class SettingForm(forms.ModelForm):
 
 # Change Password
 class ValidatingPasswordChangeForm(forms.ModelForm):
+    oldpassword = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder' :'Old Password',
+                                                                  'style': 'width: 400px; height: 45px; margin-left: auto; margin-right: auto; margin-bottom: 25px; border: 2px groove lightgreen;',
+                                                                  'class': 'form-control', 'required': True}))
     password = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder' :'Password',
                                                                   'style': 'width: 400px; height: 45px; margin-left: auto; margin-right: auto; margin-bottom: 25px; border: 2px groove lightgreen;',
                                                                   'class': 'form-control', 'required': True}),validators=[validate_password])
@@ -165,15 +252,38 @@ class ValidatingPasswordChangeForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         self.user = user
 
+
+    def clean_oldpassword(self):
+        old_password = self.cleaned_data.get("oldpassword")
+        password1 = self.cleaned_data.get('password')
+        user = self.instance
+        if not authenticate(username=user.username, password=old_password):
+            raise forms.ValidationError("Your old password was entered incorrectly. Please enter it again.")
+        if old_password and password1 and old_password == password1:
+            raise forms.ValidationError(("You cannot use your old password as the new password. Please try a different password."))
+        return old_password
+
+
+
+    # MIN_LENGTH = 8
+
     # def __init__(self, *args, **kwargs):
     #     self.user = kwargs.pop('user', None)
     #     super(ValidatingPasswordChangeForm, self).__init__(*args, **kwargs)
 
     def clean_password(self):
         password = self.cleaned_data.get('password')
+        old_password = self.cleaned_data.get('oldpassword')  # Fetch the old password
         username = self.instance.username
         email = self.instance.email
         email = re.sub(r'@[A-Za-z]*\.?[A-Za-z0-9]*',"", email)
+
+         # Ensure oldpassword field is added to cleaned_data
+        if password == old_password:
+            raise forms.ValidationError("You cannot use your old password as the new password.")
+
+        # if password and old_password and password == old_password:
+        #     raise forms.ValidationError("You cannot use your old password as the new password.")
 
         # At least MIN_LENGTH long
         if len(password) < self.MIN_LENGTH:
@@ -185,7 +295,6 @@ class ValidatingPasswordChangeForm(forms.ModelForm):
             raise forms.ValidationError("The new password must contain at least one letter and at least one digit or" \
                                         " punctuation character.")
 
-        # ... any other validation you want ...
         # Check Password not similar to username and email information
         username_similarity = difflib.SequenceMatcher(None, password.lower(), username.lower()).ratio()
         email_similarity = difflib.SequenceMatcher(None, password.lower(), email.lower()).ratio()
@@ -209,8 +318,3 @@ class ValidatingPasswordChangeForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ['password']
-
-     #Validation for repeated characters in password. Cannot have 4 of the same characters in a row.
-        # if re.search(r'(.{2,}).*\1', password):
-        #     raise forms.ValidationError("The new password cannot have 4 of the same characters in a row.")
-        # raise forms.ValidationError(email)

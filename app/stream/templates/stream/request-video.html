@@ -12,7 +12,7 @@
     <link rel="stylesheet" href= "{%static 'assets/bootstrap/css/bootstrap.min.css' %}">
     <title>Vnonymous</title>
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
-    <link href="{% static 'css/styleRequest.css' %}" rel="stylesheet">
+    <link href="{% static 'css/styleVideoRequest.css' %}" rel="stylesheet">
     <link href="{% static 'css/logoutUI.css' %}" rel="stylesheet">
     <link href="{% static 'css/styleProfile.css' %}" rel="stylesheet">
     <link href="{% static 'css/styleVideo.css' %}" rel="stylesheet">
@@ -74,7 +74,7 @@
         <div id="overlay" class="float-center" style="position:fixed; top:30%;">
             <div>
                 <p class="text-dark">Are you sure to logout?</p>
-                <button id="logout" class="float-left submit-button" >Logout</button>
+                <button id="logout" class="float-left submit-button me-1">Logout</button>
                 <button id="cancel" class="float-left submit-button">Cancel</button>
             </div>
         </div>
@@ -84,49 +84,59 @@
     <div class="container">
         <div class="row d-flex justify-content-center align-items-center h-100">
           <div class="col-lg-15" style="padding-top: 50px">
-            {% if user.userinfo.permission == 2 or user.is_superuser%}
-            <h1>SEND A VIDEO REQUEST</h1>
-            <div class="card mb-3" style="width: 75%; box-shadow: 12em; margin: auto;">
-            <form method="POST" enctype="multipart/form-data">
-              {% csrf_token %}
-              <div style = "padding-top: 25px;">
-              <select name="contacts" id="contacts" class="dropdown2 buttonRound">
-                <option value="Choose">Choose a Contact</option>
-                <option value="Ethan">Ethan</option>
-                <option value="Adrian">Adrian</option>
-                <option value="Herman">Herman</option>
-                <option value="Raymond">Raymond</option>
-              </select>
-              <div style = "padding-top: 5px;">
-              <br>
-              <div class="justified">
-              <div class="col-lg-13">
-                <h6>Enter a Message:</h6>
-                </div>
-                <div class="col-lg-3" id="message">
-                    {{ form.description }}
-                </div>
+            {% if user.userinfo.permission == 2 or user.is_superuser %}
+              <h1>SEND A VIDEO REQUEST</h1>
+              <div class="card mb-3" style="width: 75%; box-shadow: 12em; margin: auto;">
+                <form method="POST" enctype="multipart/form-data">
+                  {% csrf_token %}
+                  <div style = "padding-top: 25px;">
+                    <div class="justified">
+                      <div class="col-lg-13">
+                        <label class="receiver">Receiver:</label>
+                      </div>
+                      <div class="col-lg-3" id="message">
+                        {{ requestvideoform.receiver.errors }}
+                        {{ requestvideoform.receiver }}
+                      </div>
+                    </div>
+                    <div style = "padding-top: 15px;">
+                      <div class="justified">
+                        <div class="col-lg-13">
+                          <label class="description">Enter a Message:</label>
+                        </div>
+                        <div class="col-lg-3" id="message">
+                          {{ requestvideoform.description.errors }}
+                          {{ requestvideoform.description }}
+                        </div>
+                      </div>
+                      <div style = "padding-top: 15px;">
+                        <div class="justified">
+                          <div class="col-lg-15">
+                            <label class="due_date">DUE DATE:</label>
+                          </div>
+                            <div class="col-lg-3" id="message">
+                              {{ requestvideoform.due_date.errors }}
+                              {{ requestvideoform.due_date }}
+                          </div>
+                        </div>
+                      </div>
+                      <div style = "padding-top: 15px;">
+                        <a href="{% url 'stream:home' %}" >
+                          <button class="button2 buttonRound" :hover type="button2" id="send">SEND</button>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </form>
               </div>
-              <div style = "padding-top: 15px;">
-                <div class="col-lg-11">
-              <label for="duedate" class="label">DUE DATE:</label>
-              <input type="date" id="dueDate" name="dueDate" class="input buttonRound">
-              </div>
-              <div style = "padding-top: 15px;">
+            {% else %}
+              <div class="redirect">
+                <h2>Oops! It seems you’ve reached a page where access is restricted. <br>
+                  No worries, just click the button below to return to the home page. Thank you!</h2>
                 <a href="{% url 'stream:home' %}" >
-                  <button class="button2 buttonRound" :hover type="button2" id="send">SEND</button>
-                </a>
+                  <button class="btn btn-primary btn-lg btn-default" type="button" >Back to home page</button>
               </div>
-            </form>
-            </div>
-              {% else %}
-                <div class="redirect">
-                  <h2>Oops! It seems you’ve reached a page where access is restricted. <br>
-                    No worries, just click the button below to return to the home page. Thank you!</h2>
-                  <a href="{% url 'stream:home' %}" >
-                    <button class="btn btn-primary btn-lg btn-default" type="button" >Back to home page</button>
-                </div>
-              {% endif %}
+            {% endif %}
           </div>
         </div>
       </div>
@@ -137,9 +147,6 @@
     <!-- This js makes the header change to black colour when scrolling -->
     <script src=" {% static 'assets/js/grayscale.js' %} "></script>
 
-    <!-- This js ask user before logout  -->
-    <script src=" {% static 'assets/js/logout.js'%} "></script>
-
     <!-- Logout popup UI -->
     <script src=" {% static 'assets/js/logoutUI.js'%} "></script>
     <script>
@@ -147,7 +154,8 @@
             location.href = "{% url 'stream:logout' %}";
         };
         document.getElementById("cancel").onclick = function () {
-            location.href = "{% url 'stream:request-video' %}";
+            // location.href = "{% url 'stream:request-video' %}";
+            overlay();
         };
     </script>
 

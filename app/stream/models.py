@@ -11,21 +11,19 @@ from s3direct.fields import S3DirectField
 
 # Create your models here.
 
-# CASCADE
 # Video Request Table
 class VidRequest(models.Model):
     # id = models.TextField((""), primary_key=True)
     id = models.AutoField(primary_key=True)
     # request_id = models.AutoField(primary_key=True)
-    sender = models.ForeignKey(User, related_name="user_sender", on_delete=models.CASCADE)
-    receiver = models.ForeignKey(User, related_name="user_receiver", on_delete=models.CASCADE)
+    sender = models.ForeignKey(User, related_name="video_sender", on_delete=models.CASCADE)
+    receiver = models.ForeignKey(User, related_name="video_receiver", on_delete=models.CASCADE)
     description = models.TextField(max_length=600)
     due_date = models.DateTimeField(default=timezone.now)
 
-
     def __str__(self):
         # return f"{self.sender} Request"
-        return f"{self.id}"
+        return f"{self.sender} {self.id}"
 
     # def get_absolute_url(self):
     #     return reverse("video-detail", kwargs={"pk": self.pk})
@@ -36,12 +34,7 @@ class VidRequest(models.Model):
 # Video Stream Table (Table stores all videos) [Video List table]
 class VidStream(models.Model):
     id = models.AutoField(primary_key=True)
-    # video_id = models.AutoField(primary_key=True)
     streamer = models.ForeignKey(User, on_delete=models.CASCADE)
-    #
-    title = models.CharField(max_length=300)
-    description = models.TextField(max_length=600)
-    #
     upload_date = models.DateTimeField(default=timezone.now)
     # video = models.FileField(upload_to='')
     # video = models.URLField(max_length=200, default='')
@@ -60,7 +53,6 @@ class Contact(models.Model):
     id = models.AutoField(primary_key=True)
     sender = models.ForeignKey(User, related_name="contact_sender", on_delete=models.CASCADE)
     receiver = models.ForeignKey(User, related_name="contact_receiver", on_delete=models.CASCADE)
-
 
     def __str__(self):
         return f"{self.id}"
@@ -103,15 +95,13 @@ class Post(models.Model):
     video_id = models.ForeignKey(VidStream, on_delete=models.SET_NULL, null=True)
     request_id = models.ForeignKey(VidRequest, on_delete=models.SET_NULL, null=True)
 
-
     def __str__(self):
         # return f"{self.post_id} {self.sender} Post"
         return f"{self.id}"
 
-#     def get_absolute_url(self):
-#         return reverse("video-detail", kwargs={"pk": self.pk})
+    def get_absolute_url(self):
+        return reverse("video-detail", kwargs={"pk": self.pk})
 
-# From Streamers
 # Update User's Profile Picture
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -172,8 +162,9 @@ class Notification(models.Model):
       (3, 'Video Request Send'),
       (4, 'Video Request Receive'),
       (5, 'Post Upload'),
-      (6, 'Video Upload'),
-      (7, 'Text')
+      (6, 'Post Receive'),
+      (7, 'Video Upload'),
+      (8, 'Text')
      )
     id = models.AutoField(primary_key=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -181,8 +172,8 @@ class Notification(models.Model):
     timestamp = models.DateTimeField(auto_now_add=True)
     type = models.IntegerField(choices=TYPE_CHOICES, null=True)
     friendRequest_id = models.ForeignKey(FriendRequest, on_delete=models.CASCADE, null=True)
-    videoRequest_id = models.ForeignKey(VidRequest, on_delete=models.SET_NULL, null=True)
-    post_id = models.ForeignKey(Post, on_delete=models.SET_NULL, null=True)
+    videoRequest_id = models.ForeignKey(VidRequest, on_delete=models.CASCADE, null=True)
+    post_id = models.ForeignKey(Post, on_delete=models.CASCADE, null=True)
     video_id = models.ForeignKey(VidStream, on_delete=models.SET_NULL, null=True)
 
     def __str__(self):

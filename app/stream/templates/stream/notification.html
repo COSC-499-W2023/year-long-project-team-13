@@ -68,7 +68,7 @@
     <div id="overlay" class="float-center "style="position:fixed;top:30%;">
       <div>
           <p class="text-dark">Are you sure to logout?</p>
-          <button id="logout" class="float-left submit-button" >Logout</button>
+          <button id="logout" class="float-left submit-button me-1">Logout</button>
           <button id="cancel" class="float-left submit-button">Cancel</button>
      </div>
   </div>
@@ -81,28 +81,30 @@
               <div class="card-body p-5">
                 <h2 class="text-uppercase text-center mb-5">Your notifications</h2>
                 {% for notification in notifications %}
-                  <div class="alert alert-info" role="alert">
-                    {{ notification.message }}
-                    <br>
-                    <small class="text-muted">{{ notification.timestamp }}</small>
-                    {% comment %} <p></p> {% endcomment %}
-                    {% if notification.type == 1 %}
-                    <form method="POST" enctype="multipart/form-data">
-                      {% csrf_token %}
-                      <input type="hidden" name="notifID" value="{{ notification.id }}">
-                      <button class="btn btn-dark mt-4" id="delete friend request button" name="deleteFriendRequest" type="submit">Remove Friend Request</button>
-                    </form>
-                    {% elif notification.type == 2 %}
-                    <form method="POST" enctype="multipart/form-data">
-                      {% csrf_token %}
-                      <input type="hidden" name="notifID" value="{{ notification.id }}">
-                      <button class="btn btn-dark ms-1 me-3 mt-4" id="accept friend request button" name="acceptFriendRequest" type="submit">Accept</button>
-                      <button class="btn btn-dark mt-4" id="reject friend request button" name="rejectFriendRequest" type="submit">Reject</button>
-                    </form>
-                    {% else %}
-                    {% endif %}
-                    {% comment %} <br> {% endcomment %}
-                  </div>
+                  <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="alert alert-info" role="alert">
+                      {{ notification.message }}
+                      <br>
+                      <small class="text-muted">{{ notification.timestamp }}</small>
+                      <br>
+                      {% if notification.type == 1 %}
+                        <input type="hidden" name="notifID" value="{{ notification.id }}">
+                        <button class="btn btn-dark mt-3 mb-1" id="delete friend request button" name="deleteFriendRequest" type="submit">Remove Friend Request</button>
+                      {% elif notification.type == 2 %}
+                        <input type="hidden" name="notifID" value="{{ notification.id }}">
+                        <button class="btn btn-dark ms-1 me-3 mt-3 mb-1" id="accept friend request button" name="acceptFriendRequest" type="submit">Accept</button>
+                        <button class="btn btn-dark mt-3 mb-1" id="reject friend request button" name="rejectFriendRequest" type="submit">Reject</button>
+                      {% elif notification.type == 3 %}
+                        <input type="hidden" name="notifID" value="{{ notification.id }}">
+                        <button class="btn btn-dark mt-3 mb-1" id="delete video request button" name="deleteVideoRequest" type="submit">Remove Video Request</button>
+                      {% elif notification.type == 5 %}
+                        <input type="hidden" name="notifID" value="{{ notification.id }}">
+                        <button class="btn btn-dark mt-3 mb-1" id="delete video post button" name="deleteVideoPost" type="submit">Remove Video Post</button>
+                      {% else %}
+                      {% endif %}
+                    </div>
+                  </form>
                 {% empty %}
                   <p>No notifications</p>
                 {% endfor %}

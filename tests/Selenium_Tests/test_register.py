@@ -33,13 +33,13 @@ def register_page_test(driver, username, email, password, permission):
 
     # Scroll down the register page
     html.send_keys(Keys.PAGE_DOWN)
-    
+
     # Find the permission dropdown and select the appropriate permission
     permission_element = Select(driver.find_element(By.NAME, "permission"))
     # wait.until(EC.element_to_be_clickable((By.ID, "id_permission")))
     # permission_element.click()
     permission_element.select_by_value(permission)
-    
+
 
      # Find the checkbox and click it
     checkbox_element = driver.find_element(By.XPATH, "//input[@type='checkbox']")
@@ -85,6 +85,7 @@ print("Register Page test end for permission 1")
 time.sleep(0.5)
 driver.get('http://localhost:8000/register/')  # Update the URL if needed
 register_page_test(driver, 'abcdef', 'abcdef@email.com', 'herman1234', "2")
+print("Register Page test end for permission 2")
 print("Register Page test End")
 
 # Close the webdriver
