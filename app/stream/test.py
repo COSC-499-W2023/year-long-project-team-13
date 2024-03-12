@@ -2,12 +2,12 @@ import boto3
 from PIL import Image, ImageDraw, ImageFont, ImageFilter
 
 # Let's use Amazon S3
-s3 = boto3.resource('s3')
+s3 = boto3.resource('s3', region_name='ca-central-1')
 
 # s3.Bucket('elasticbeanstalk-ca-central-1-841071745826').download_file('mountain.jpg', 'mountain.jpg')
 s3.Bucket('elasticbeanstalk-ca-central-1-841071745826').upload_file('IMG_9958.jpg', 'IMG_9958.jpg')
 
-rekognition = boto3.client('rekognition')
+rekognition = boto3.client('rekognition', region_name='ca-central-1')
 font = ImageFont.truetype('arial.ttf', 30)
 
 def detect_faces_and_emotions(image_name: str):
