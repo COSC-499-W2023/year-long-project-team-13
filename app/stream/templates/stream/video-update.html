@@ -30,20 +30,7 @@
                     <div class="detailsPage card mb-3" style="display: none; width: 75%; margin: auto;box-shadow: 12em;">
                         <div class="form-group" style = "padding-top: 25px;">
                             <label class="requestID">Video Request ID:</label>
-                            {% comment %} <select class="form-control" id="contact" name="contact">
-                                <option value="Adrian">Adrian</option>
-                                <option value="Ethan">Ethan</option>
-                                <option value="Herman">Herman</option>
-                                <option value="Raymond">Raymond</option>
-                                <option value="Beth">Beth</option>
-                            </select> {% endcomment %}
-                            {% comment %} {{ createvideoform.request_id.errors }} {% endcomment %}
-                            {% comment %} {{ notification.videoRequest_id}} {% endcomment %}
 
-                            {% comment %} {% if notification.videoRequest_id %}
-                                <input name="video_request_id" id="video_request_id" value=notification.videoRequest_id/>
-                                <p>notification.videoRequest_id</p>
-                            {% endif %} {% endcomment %}
                             {% for item in notification %}
                                 {{item.videoRequest_id}}
                             {% endfor %}
