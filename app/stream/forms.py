@@ -15,7 +15,7 @@ from s3direct.widgets import S3DirectWidget
 from django.contrib.auth import authenticate
 
 class VidUploadForm(forms.ModelForm):
-    video = forms.FileField(widget=S3DirectWidget(dest='primary_destination', attrs={'style': 'border: 2px groove lightgreen;'}))
+    # video = forms.FileField(widget=S3DirectWidget(dest='primary_destination', attrs={'style': 'border: 2px groove lightgreen;'}))
     # receiver = forms.ModelChoiceField(
     #     queryset=User.objects.none(),
     #     widget=forms.Select(attrs={'style': 'width: 207px; border: 2px groove lightgreen;',
