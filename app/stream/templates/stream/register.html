@@ -9,12 +9,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Vnonymous</title>
     <link rel="stylesheet" href= "{%static 'assets/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link href="{% static 'css/styleRegister.css' %}" rel="stylesheet">
     <link href="{% static 'css/styleTopBar.css' %}" rel="stylesheet">
     <style>
       ul.errorlist {
           color: red;
       }
+  </style>
+  <style>
+    .toggle-password {
+      margin-right: 6px;
+      margin-top: 15px;
+      position: relative;
+      z-index: 1;
+    }
   </style>
   </head>
   <!--style in body change the website side/top/bottom background-->
@@ -104,7 +114,12 @@
                       <label class="form-label" for="form3Example4cg">Password</label>
                     </div> {% endcomment %}
                     {{ registrationform.password1.errors }}
+                    <div class="input-group">
                     {{ registrationform.password1 }}
+                    <span toggle="#id_password1" class="input-group-addon toggle-password">
+                      <i class="fa fa-eye" aria-hidden="true"></i>
+                    </span>
+                  </div>
                     <p id="intruction">Your password can’t be too similar to your other personal information.
                       <br>
                       Your password must contain at least 8 characters.
@@ -118,7 +133,12 @@
                       <label class="form-label" for="form3Example4cdg">Repeat your password</label>
                     </div> {% endcomment %}
                     {{ registrationform.password2.errors }}
+                    <div class="input-group">
                     {{ registrationform.password2 }}
+                    <span toggle="#id_password2" class="input-group-addon toggle-password">
+                      <i class="fa fa-eye" aria-hidden="true"></i>
+                    </span>
+                  </div>
                     {% comment %} <p id="intruction">Enter the same password as before, for verification.</p> {% endcomment %}
 
 
@@ -203,5 +223,19 @@
 
     <!-- This js makes the header change to black colour when scrolling-->
     <script src=" {% static 'assets/js/grayscale.js' %} "></script>
+
+    <script>
+      $(document).ready(function() {
+        $(".toggle-password").click(function() {
+          $(this).toggleClass("fa-eye fa-eye-slash");
+          var input = $($(this).attr("toggle"));
+          if (input.attr("type") == "password") {
+            input.attr("type", "text");
+          } else {
+            input.attr("type", "password");
+          }
+        });
+      });
+    </script>
 
   </body>
