@@ -20,7 +20,7 @@ class VidUploadForm(forms.ModelForm):
     #                                 'required': True})
     # )
     title = forms.CharField(widget=forms.TextInput(attrs={'placeholder' :'Title',
-                                                             'style':'width: 400px; height: 45px; margin-left: auto; margin-right: auto; margin-bottom: 25px; border: 2px groove lightgreen;',
+                                                             'style':'width: 200px; height: 45px; margin-left: auto; margin-right: auto; margin-bottom: 25px; border: 2px groove lightgreen;',
                                                              'class': 'form-control', 'required': True}))
     description = forms.CharField(widget=forms.Textarea(attrs={"rows":5, "cols":23,
                                                                'style': 'border: 2px groove lightgreen;',
