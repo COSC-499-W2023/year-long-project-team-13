@@ -18,14 +18,6 @@
           color: red;
       }
   </style>
-  <style>
-    .toggle-password {
-      margin-right: 6px;
-      margin-top: 15px;
-      position: relative;
-      z-index: 1;
-    }
-  </style>
   </head>
   <!--style in body change the website side/top/bottom background-->
   <body id="page-top" data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="77" style="background-size: cover; background-image: url('{% static 'assets/img/register-background.jpg' %}');">
@@ -114,12 +106,12 @@
                       <label class="form-label" for="form3Example4cg">Password</label>
                     </div> {% endcomment %}
                     {{ registrationform.password1.errors }}
-                    <div class="input-group">
-                    {{ registrationform.password1 }}
-                    <span toggle="#id_password1" class="input-group-addon toggle-password">
-                      <i class="fa fa-eye" aria-hidden="true"></i>
-                    </span>
-                  </div>
+                    <div class="input-group" style="width: 75%; margin-left: 70px;">
+                        <div style="width: 90%;">
+                            {{ registrationform.password1 }}
+                        </div>
+                        <span toggle="#id_password1" class="input-group-addon toggle-password fas fa-eye" style="width: 10%; margin-top: 15px;"></span>
+                    </div>
                     <p id="intruction">Your password can’t be too similar to your other personal information.
                       <br>
                       Your password must contain at least 8 characters.
@@ -133,10 +125,11 @@
                       <label class="form-label" for="form3Example4cdg">Repeat your password</label>
                     </div> {% endcomment %}
                     {{ registrationform.password2.errors }}
-                    <div class="input-group">
+                    <div class="input-group" style="width: 75%; margin-left: 70px;">
+                      <div style="width: 90%;">
                     {{ registrationform.password2 }}
-                    <span toggle="#id_password2" class="input-group-addon toggle-password">
-                      <i class="fa fa-eye" aria-hidden="true"></i>
+                  </div>
+                    <span toggle="#id_password2" class="input-group-addon toggle-password fas fa-eye" style="width: 10%; margin-top: 15px;"></span>                      
                     </span>
                   </div>
                     {% comment %} <p id="intruction">Enter the same password as before, for verification.</p> {% endcomment %}
@@ -227,7 +220,7 @@
     <script>
       $(document).ready(function() {
         $(".toggle-password").click(function() {
-          $(this).toggleClass("fa-eye fa-eye-slash");
+          $(this).toggleClass("fas fa-eye fas fa-eye-slash");
           var input = $($(this).attr("toggle"));
           if (input.attr("type") == "password") {
             input.attr("type", "text");
