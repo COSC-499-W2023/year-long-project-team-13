@@ -85,6 +85,7 @@ let camera_button = document.querySelector("#start-camera");
             let contact_display = document.querySelector('#preview-contact');
             let video_display = document.querySelector('#vid-source');
             let video_box = document.querySelector('#vid-box');
+            let horizontal_button = document.querySelector('#hor-button');
 
             next_button.addEventListener('click', function() {
                 detailsPage.style.display = 'block';
@@ -110,6 +111,12 @@ let camera_button = document.querySelector("#start-camera");
             });
 
             preview_button.addEventListener('click', function() {
+                try {
+                    horizontal_button.style.marginTop = '0em';
+                    console.log("preview button clicked");
+                } catch (e) {
+                    console.log(e);
+                }
                 previewPage.style.display = 'block';
                 detailsPage.style.display = 'none';
                 preview_button.style.display = 'none';
@@ -132,6 +139,7 @@ let camera_button = document.querySelector("#start-camera");
             });
 
             back_details.addEventListener('click', function() {
+                horizontal_button.style.marginTop = '0em';
                 previewPage.style.display = 'none';
                 detailsPage.style.display = 'block';
                 preview_button.style.display = 'block';
