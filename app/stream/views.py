@@ -154,6 +154,7 @@ def upload_video(request):
     if request.method == "POST":
         uploadvideoform = VidUploadForm(request.user, request.POST, request.FILES)
         if uploadvideoform.is_valid():
+
             request_id = uploadvideoform.cleaned_data['request_id']
 
             upload_video = uploadvideoform.save(commit=False)
@@ -169,6 +170,7 @@ def upload_video(request):
             return redirect('stream:video-list')
     else:
         uploadvideoform = VidUploadForm(request.user)
+        print(form.errors.value())
 
     context = {
         'uploadvideoform': uploadvideoform
@@ -198,8 +200,9 @@ def update_video(request, pk):
         createvideoform = VidUpdateForm(request.user, request.POST, request.FILES)
         if createvideoform.is_valid():
             # request_id = createvideoform.cleaned_data['request_id']
-            #request_id = request.POST.get('video_request_id', None)
+            #request_id = request.POST.get('video_request_id')
             request_id = Notification.objects.filter(id=pk).first().videoRequest_id.id
+            print(request_id)
 
             upload_video = createvideoform.save(commit=False)
 
@@ -223,6 +226,7 @@ def update_video(request, pk):
             Notification.objects.create(user=receiverfilter, message=f'You have received a video post from '+ str(request.user) +'.', type=6, post_id=recentVideoUpload)
             return redirect('stream:video-list')
     else:
+        print("hello")
         createvideoform = VidUpdateForm(request.user)
 
     context = {'notification': Notification.objects.filter(id=pk), 'createvideoform': createvideoform}
