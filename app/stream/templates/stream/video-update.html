@@ -33,6 +33,7 @@
 
                             {% for item in notification %}
                                 {{item.videoRequest_id}}
+                                <input type="hidden" name="video_request_id" id="video_request_id" value="{{item.videoRequest_id}}" />
                             {% endfor %}
 
                         </div>
