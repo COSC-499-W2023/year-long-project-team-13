@@ -112,7 +112,7 @@ let camera_button = document.querySelector("#start-camera");
 
             preview_button.addEventListener('click', function() {
                 try {
-                    horizontal_button.style.marginTop = '0em';
+                    horizontal_button.style.marginTop = '20em';
                     console.log("preview button clicked");
                 } catch (e) {
                     console.log(e);
