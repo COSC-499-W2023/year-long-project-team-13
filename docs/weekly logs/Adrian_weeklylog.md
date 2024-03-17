@@ -794,7 +794,7 @@ id connect to "friend request", "video request", "post", and "video" table.
 - Worked on "Notification Database update" on project board, update notification type in notification table in database. Because we received feedback from peer testing that they want to click the notificaiton for video post receiver to relocate to video detail page.
 
   - [Notification database update Pull Request/Commit](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/153)
-  -Notication database screenshot
+  - Notication database screenshot
 ![Notication database screenshot](./images/Adrian_images/T2_Week_8/Notification_database_type.jpg)
 
 ### Review other team member's pull request
@@ -803,3 +803,24 @@ id connect to "friend request", "video request", "post", and "video" table.
 
 ### Weekly Log / Team Weekly Log / Additional
   - Worked on my own weekly log, contribute to team weeklog.
+
+# Preferred name -> Ssc name -> Github name
+
+- Adrian -> Adrian Fong -> AdrianFWM
+
+## Term 2 Week 10 2023/03/11~2023/03/17
+
+- Task I have worked on this week and winter break.
+![Weekly Task T2-10](./images/tasks/AdrianFong_T2_Week10_Task.jpg)
+
+## Recap on your week's goals
+
+### Notification Video Request Details and pytest update [Complete]
+- Worked on "Notification Video Request Details (ID, description, due date)" and "Notification video request pytest" on project board, added video request details on Notification message, so sender and receivers can see what are the video request ID, description and due date. This will benefit the receiver of video request to see request details before send or upload a video.
+- This is one of feedback we received from peer testing 2.
+- Video request pytest has been updated, and passed with no error.
+- Selenium tests all passed as well.
+
+  - [Notification video request details Pull Request/Commit](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/153)
+  - Notication database screenshot
+![Notication database screenshot](./images/Adrian_images/T2_Week_8/Notification_database_type.jpg)
