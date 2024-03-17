@@ -411,7 +411,7 @@ UML for SQL Database
 
 ## Term 2 Week 2 2023/01/15~2023/01/21
 
-- Task I have worked on this week and winter break.
+- Task I have worked on this week.
 ![Weekly Task T2-2](./images/tasks/AdrianFong_T2_Week2_Task.jpg)
 
 ## Recap on your week's goals
@@ -465,7 +465,7 @@ UML for SQL Database
 
 ## Term 2 Week 3 2023/01/22~2023/01/28
 
-- Task I have worked on this week and winter break.
+- Task I have worked on this week.
 ![Weekly Task T2-3](./images/tasks/AdrianFong_T2_Week3_Task.jpg)
 
 ## Recap on your week's goals
@@ -516,7 +516,7 @@ UML for SQL Database
 
 ## Term 2 Week 4 2023/01/29~2023/02/04
 
-- Task I have worked on this week and winter break.
+- Task I have worked on this week.
 ![Weekly Task T2-4](./images/tasks/AdrianFong_T2_Week4_Task.jpg)
 
 ## Recap on your week's goals
@@ -577,7 +577,7 @@ id connect to "friend request", "video request", "post", and "video" table.
 
 ## Term 2 Week 5 2023/02/05~2023/02/11
 
-- Task I have worked on this week and winter break.
+- Task I have worked on this week.
 ![Weekly Task T2-5](./images/tasks/AdrianFong_T2_Week5_Task.jpg)
 
 ## Recap on your week's goals
@@ -642,7 +642,7 @@ id connect to "friend request", "video request", "post", and "video" table.
 
 ## Term 2 Week 6 2023/02/12~2023/02/18
 
-- Task I have worked on this week and winter break.
+- Task I have worked on this week.
 ![Weekly Task T2-6](./images/tasks/AdrianFong_T2_Week6_Task.jpg)
 
 ## Recap on your week's goals
@@ -670,7 +670,7 @@ id connect to "friend request", "video request", "post", and "video" table.
 
 ## Term 2 Week 7/8 2023/02/19~2023/03/03
 
-- Task I have worked on this week and winter break.
+- Task I have worked on this week and reading break.
 ![Weekly Task T2-7](./images/tasks/AdrianFong_T2_Week7_Task.jpg)
 
 ## Recap on your week's goals
@@ -753,7 +753,7 @@ id connect to "friend request", "video request", "post", and "video" table.
 
 ## Term 2 Week 9 2023/03/04~2023/03/10
 
-- Task I have worked on this week and winter break.
+- Task I have worked on this week.
 ![Weekly Task T2-9](./images/tasks/AdrianFong_T2_Week9_Task.jpg)
 
 ## Recap on your week's goals
@@ -810,7 +810,7 @@ id connect to "friend request", "video request", "post", and "video" table.
 
 ## Term 2 Week 10 2023/03/11~2023/03/17
 
-- Task I have worked on this week and winter break.
+- Task I have worked on this week.
 ![Weekly Task T2-10](./images/tasks/AdrianFong_T2_Week10_Task.jpg)
 
 ## Recap on your week's goals
