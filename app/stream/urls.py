@@ -7,11 +7,14 @@ from . views import (
     VideoUpdateView,
     VideoDeleteView,
     FriendRequest,
+    PasswordResetView,
     VideoUploadView
 )
 from django.urls import path
 from stream import views as stream_views
 from django.contrib.auth import views as auth_views
+from django.urls import path
+
 
 
 
@@ -41,4 +44,9 @@ urlpatterns = [
     path('setting',stream_views.settings, name="setting"),
     path('theme',stream_views.settings, name="theme"),
     path('notifications',stream_views.notifications, name="notifications"),
+
+    path('password_reset/', auth_views.PasswordResetView.as_view(template_name='stream/password_reset_form.html'), name='password_reset'),
+    path('password_reset/done/', auth_views.PasswordResetDoneView.as_view(template_name='stream/password_reset_done.html'), name='password_reset_done'),
+    # path('reset/<uidb64>/<token>/',auth_views.PasswordResetConfirmView.as_view(),name='password_reset_confirm'),
+    # path('reset/done/',auth_views.PasswordResetCompleteView.as_view(),name='password_reset_complete'),
 ]

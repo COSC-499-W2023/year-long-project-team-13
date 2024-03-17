@@ -12,6 +12,8 @@ from stream.forms import UserInfoUpdateForm
 
 from . models import VidRequest, VidStream, Contact, FriendRequest, Post, Profile, UserInfo, Notification, Setting
 from . forms import VidUploadForm, VidCreateForm, VidRequestForm, UserRegistrationForm, UserUpdateForm, UserInfoUpdateForm, UserProfileUpdateForm, UserProfileUpdateForm,  ValidatingPasswordChangeForm, AddContactForm, UserPermissionForm
+from django.contrib.auth.views import PasswordResetView
+from django.urls import reverse_lazy
 
 import base64
 from django.core.files.base import ContentFile
@@ -386,3 +388,4 @@ def settings(request):
         'passwordform': passwordform,
     }
     return render(request, 'stream/settings.html', context)
+
