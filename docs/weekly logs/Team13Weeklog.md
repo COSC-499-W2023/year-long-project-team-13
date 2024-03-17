@@ -580,8 +580,9 @@ Test Report
   - Displayed the video request ID on the record video page.
   - Recorded video and post successfully to the database.
   - Notification details updated to include title, description, and due date of the video request.
-  - S3 video upload is working and the video can be viewed on the website.
+  - S3 video upload is working and the video can be viewed on the website and database.
   - S3 photo upload is still work in progress.
+  - Deleted pycache files, and added gitignore file to test if it work or not.
 
 Burnup chart
 ![Burnup](./images/burnup/term2_week10_burnup.png)

@@ -821,6 +821,57 @@ id connect to "friend request", "video request", "post", and "video" table.
 - Video request pytest has been updated, and passed with no error.
 - Selenium tests all passed as well.
 
-  - [Notification video request details Pull Request/Commit](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/153)
-  - Notication database screenshot
-![Notication database screenshot](./images/Adrian_images/T2_Week_8/Notification_database_type.jpg)
+  - [Notification video request details Pull Request/Commit](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/181)
+  - Video Request Form screenshot(Sender)
+![Video Request Form screenshot (Sender)](./images/Adrian_images/T2_Week_10/video_request_form.jpg)
+  - Video Request Detail (Notification Page) screenshot (Sender)
+![Video Request Detail (Notification Page) screenshot (Sender)](./images/Adrian_images/T2_Week_10/noti_request_detail.jpg)
+  - Video Request Detail (Notification Page) screenshot (Receiver)
+![Video Request Detail (Notification Page) screenshot (Receiver)](./images/Adrian_images/T2_Week_10/noti_request_detail_rec.jpg)
+  - Selenium Tests screenshot
+![Selenium Tests screenshot](./images/Adrian_images/T2_Week_10/noti_sel_test.jpg)
+  - Video Request and other pytests screenshot
+![Selenium Tests screenshot](./images/Adrian_images/T2_Week_10/noti_pytest.jpg)
+
+### S3-CloudFront Upload Video [In-Progress]
+- Working on "S3 Buckets" on project board, added upload video to S3 function. After user uploaded the video on Upload Video Page, the video will uploaded to S3 cloud server, and store the video S3 URL link into SQL database. When user view the uploaded S3 video, it will get the URL link from SQL database, and load the video through URL link to S3 cloud.
+- The S3 cloud shows the exact time and date when user uploaded video to S3 server.
+- Still need to work on uploading profile picture, recorded video to S3, and view video and pictures from S3. Only upload video and view video is working.
+- This code on works when I put my account access keys and token session key on Setting file, it changed everytime I log into AWS account.
+
+  - [S3 cloudfront video upload Pull Request/Commit](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/184)
+  - Upload Video Form Screenshot (Sender)
+![Upload Video Form Screenshot (Sender)](./images/Adrian_images/T2_Week_10/upload_video_form.jpg)
+  - View Uploaded Video to S3 Server (View Video Page) screenshot (Sender/Receiver)
+![View Uploaded Video to S3 Server (View Video Page) screenshot (Sender/Receiver)](./images/Adrian_images/T2_Week_10/view_upload_video.jpg)
+  - View Uploaded Video S3 link loaded (Red Arrow) (View Video Page) screenshot (Sender/Receiver)
+![View Uploaded Video S3 link loaded (Red Arrow) (View Video Page) screenshot (Sender/Receiver)](./images/Adrian_images/T2_Week_10/f12_view_video.jpg)
+  - Uploaded Video (Post) Database with uploaded video (Red Arrow)
+![Uploaded Video (Post) Database with uploaded video (Red Arrow)](./images/Adrian_images/T2_Week_10/database_video.jpg)
+  - Click and load Uploaded Video with S3 url link (Red Arrow) from Post Database
+![Click and load Uploaded Video with S3 url link from Post Database](./images/Adrian_images/T2_Week_10/click_database_video.jpg)
+  - Uploaded Video (Red Arrow) on S3 cloud server, displays the same date and time (Green Arrows) of uploading
+![Uploaded Video (Red Arrow) on S3 cloud server, displays the same date and time (Green Arrows) of uploading](./images/Adrian_images/T2_Week_10/s3_database.jpg)
+  - Setting accessing my AWS account access
+![Setting accessing my AWS account access](./images/Adrian_images/T2_Week_10/setting.jpg)
+
+### Pycache files delete and added Gitignore file [Testing]
+- Deleted all the pycache files in project folder, there was 2 thousand of pycache files.
+- Added gitignore file in app folder to see if it will ignore the pycache files.
+
+  - [Clean up pycache files Pull Request/Commit](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/185)
+  - Pycache deletion screenshot
+![Pycache deletion screenshot](./images/Adrian_images/T2_Week_10/pycache_delete.jpg)
+  - Gitignore file details screenshot
+![Gitignore file details screenshot](./images/Adrian_images/T2_Week_10/gitignore_testing.jpg)
+
+### Review other team member's pull request
+- Reviewed Ethan's "Post video" and "Updated user video, details, profile page styling" pull requests, Herman's "UI changes to video-upload" pull request, and Raymond's "Making changes to top bar" pull request.
+- All Selenium tests and pytests runs and passed.
+  - [Post video Pull Request/Commit](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/180)
+  - [Updated user video, details, profile page styling Request/Commit](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/172)
+  - [UI changes to video-upload Request/Commit](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/178)
+  - [Making changes to top bar Request/Commit](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/169)
+
+### Weekly Log / Team Weekly Log / Additional
+  - Worked on my own weekly log, contribute to team weeklog.
