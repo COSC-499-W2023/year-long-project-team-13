@@ -9,6 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Vnonymous</title>
     <link rel="stylesheet" href= "{%static 'assets/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link href="{% static 'css/styleLogin.css' %}" rel="stylesheet">
     <link href="{% static 'css/styleTopBar.css' %}" rel="stylesheet">
     <style>
@@ -95,25 +97,29 @@
                       <div id="please">
                           <p>Please login to your account</p>
                       </div>
-
+                    
                       <div id="form">
-                          {{ form.as_p }}
-                          {% comment %} {{ form.username }}
-                          {{ form.password }} {% endcomment %}
+                        <label for="{{ form.username.id_for_label }}">Username:</label>
+                        {{ form.username }}
+                        <div class="input-group">
+                          <div style="width: 90%;">
+                            <label for="{{ form.password.id_for_label }}" style="margin-left: 46px; margin-top: 10px;">Password:</label>
+                            {{ form.password }}
+                          </div>
+                          <span toggle="#{{ form.password.id_for_label }}" class="input-group-addon toggle-password fas fa-eye" style="position: relative; margin-top: 15px;"></span>
+                        </div>
                       </div>
-
+                    
                       <div class="text-center pt-1 mb-5 pb-1">
-                        <!--<button id="login" class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3 btn-outline-info" type="submit">Log In</button> -->
                         <button id="login" class="btn btn-primary btn-block fa-lg mb-3 btn-outline-info" type="submit">Log In</button>
                         <br>
                         <a class="text-muted" href="#!">Forgot password?</a>
                       </div>
-
+                    
                       <div class="d-flex align-items-center justify-content-center pb-4">
                         <p class="mb-0 me-2">Don't have an account?&nbsp;&nbsp;</p>
                         <button type="button" class="btn btn-outline-danger" onclick="window.location.href='{% url 'stream:register'%}';">Create new</button>
                       </div>
-
                     </form>
 
                   </div>
@@ -162,6 +168,19 @@
     <!-- This js makes the header change to black colour when scrolling -->
     <script src=" {% static 'assets/js/grayscale.js' %} "></script>
 
+    <script>
+      $(document).ready(function() {
+        $(".toggle-password").click(function() {
+          $(this).toggleClass("fas fa-eye fas fa-eye-slash");
+          var input = $($(this).attr("toggle"));
+          if (input.attr("type") == "password") {
+            input.attr("type", "text");
+          } else {
+            input.attr("type", "password");
+          }
+        });
+      });
+    </script>
   </body>
 {% comment %}
 {% endblock content %}
