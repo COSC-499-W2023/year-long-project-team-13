@@ -197,19 +197,22 @@ class VideoUpdateView(LoginRequiredMixin, UserPassesTestMixin ,UpdateView):
 
 def update_video(request, pk):
     if request.method == "POST":
+        print("request.method:", request.method)
         createvideoform = VidUpdateForm(request.user, request.POST, request.FILES)
         if createvideoform.is_valid():
+            print("createvideoform.isvalid:", createvideoform.is_valid())
             # request_id = createvideoform.cleaned_data['request_id']
-            #request_id = request.POST.get('video_request_id')
+            # request_id = request.POST.get('video_request_id')
             request_id = Notification.objects.filter(id=pk).first().videoRequest_id.id
             print(request_id)
 
             upload_video = createvideoform.save(commit=False)
 
-            upload_video.request_id = request_id
+            # upload_video.request_id = request_id
+            # upload_video.request_id = Notification.objects.filter(id=pk).first().videoRequest_id.cleaned_data['id']
 
             upload_video.sender = request.user
-            receiverfilter = User.objects.get(username=VidRequest.objects.get(id=request_id.id).sender)
+            receiverfilter = User.objects.get(username=VidRequest.objects.get(id=request_id).sender)
             upload_video.receiver = receiverfilter
 
             # Decode and save the blob data
@@ -225,8 +228,10 @@ def update_video(request, pk):
             Notification.objects.create(user=request.user, message=f'You have post a video to '+ str(receiverfilter) +'.', type=5, post_id=recentVideoUpload)
             Notification.objects.create(user=receiverfilter, message=f'You have received a video post from '+ str(request.user) +'.', type=6, post_id=recentVideoUpload)
             return redirect('stream:video-list')
+        else:
+            print(createvideoform.errors)
     else:
-        print("hello")
+        print(request.method)
         createvideoform = VidUpdateForm(request.user)
 
     context = {'notification': Notification.objects.filter(id=pk), 'createvideoform': createvideoform}

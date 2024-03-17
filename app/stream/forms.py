@@ -52,7 +52,6 @@ class VidUpdateForm(forms.ModelForm):
     #     widget=forms.Select(attrs={'style': 'width: 207px; border: 2px groove lightgreen;',
     #                                 'required': True})
     # )
-    request_id = forms.CharField()
     title = forms.CharField(widget=forms.TextInput(attrs={'placeholder' :'Title',
                                                              'style':'width: 400px; height: 45px; margin-left: auto; margin-right: auto; margin-bottom: 25px; border: 2px groove lightgreen;',
                                                              'class': 'form-control', 'required': True}))
@@ -62,7 +61,8 @@ class VidUpdateForm(forms.ModelForm):
     timelimit = forms.DateTimeField(widget=forms.TextInput(attrs={'placeholder' :'Select a time limit date',
                                                               'style': 'width: 210px; margin-left: auto; margin-right: auto; border: 2px groove lightgreen;',
                                                               'class': 'form-control', 'type': 'datetime-local','required': True}))
-    video = forms.FileField()
+    # video = forms.FileField()
+    # request_id = forms.CharField()
 
     def __init__(self, user, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -72,7 +72,7 @@ class VidUpdateForm(forms.ModelForm):
 
     class Meta:
         model = Post
-        fields = ['title','description','timelimit','video', 'request_id']
+        fields = ['title','description','timelimit']
         # ,'receiver'
 
 class VidCreateForm(forms.ModelForm):
