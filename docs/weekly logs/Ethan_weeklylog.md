@@ -343,3 +343,20 @@
   - ![User Videos](./images/Ethan_stuff/t2w9/user_video_page.png)
   - ![Video Details](./images/Ethan_stuff/t2w9/video_detail_page.png)
   - ![Profile Page](./images/Ethan_stuff/t2w9/profile_page.png)
+
+# Preferred name -> Ssc name -> Github name
+
+- Ethan -> Ethan Hsu -> YuchenHsu
+
+## Week 10 2024/03/11 ~ 2024/03/17
+
+- Type of tasks you worked on (screenshot from Peer Eval question)
+
+![Tasks](./images/tasks/ethan_term2_week10.png)
+
+- This week, I worked with the team and merged the updates after the peer evaluation.
+- Worked with Beth on making it so that when the user used the link from the notification to go to the record page, it does successfully go to the record page and the recordings gets successfully uploaded to the database.
+- Updated the post video page styling when the website is hosted on the Elastic Beanstalk
+  - The top horizontal buttons for switching between recording and uploading videos doesn't get overlapped under the top
+  - The bottom buttons for going between pages, doesn't get blocked by the recording box.
+  - ![Top horizontal buttons](./images/Ethan_stuff/t2w10/top_horizontal_button.png)
