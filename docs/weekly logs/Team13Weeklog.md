@@ -577,8 +577,8 @@ Test Report
 - Which features were in the project plan for this milestone?
   - Merged the branches to master.
   - Finished fixing the the record video UI.
-  - Displayed the video request ID on the record video page.
-  - Recorded video and post successfully to the database.
+  - Displayed the video request ID on the record video page and upload video page.
+  - Recorded video and post successfully saved to the database.
   - Notification details updated to include title, description, and due date of the video request.
   - S3 video upload is working and the video can be viewed on the website and database.
   - S3 photo upload is still work in progress.
