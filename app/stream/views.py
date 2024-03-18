@@ -11,7 +11,7 @@ from django.db.models import Q
 from stream.forms import UserInfoUpdateForm
 
 from . models import VidRequest, VidStream, Contact, FriendRequest, Post, Profile, UserInfo, Notification, Setting
-from . forms import VidUploadForm, VidCreateForm, VidRequestForm, UserRegistrationForm, UserUpdateForm, UserInfoUpdateForm, UserProfileUpdateForm, UserProfileUpdateForm,  ValidatingPasswordChangeForm, AddContactForm, UserPermissionForm, VidUpdateForm
+from . forms import VidUploadForm, VidCreateForm, VidRequestForm, UserRegistrationForm, UserUpdateForm, UserInfoUpdateForm, UserProfileUpdateForm, UserProfileUpdateForm,  ValidatingPasswordChangeForm, AddContactForm, UserPermissionForm, VidRecFilledForm
 
 import base64
 from django.core.files.base import ContentFile
@@ -170,16 +170,15 @@ def upload_video(request):
             return redirect('stream:video-list')
     else:
         uploadvideoform = VidUploadForm(request.user)
-        print(form.errors.value())
 
     context = {
         'uploadvideoform': uploadvideoform
     }
     return render(request, 'stream/video-upload.html', context)
 
-class VideoUpdateView(LoginRequiredMixin, UserPassesTestMixin ,UpdateView):
+class VideoRecordFilledView(LoginRequiredMixin, UserPassesTestMixin ,UpdateView):
     model = Post
-    template_name = 'stream/video-update.html'
+    template_name = 'stream/video-record-filled.html'
     success_url = "/"
     fields = ['title','description','timelimit','request_id']
 
@@ -195,16 +194,15 @@ class VideoUpdateView(LoginRequiredMixin, UserPassesTestMixin ,UpdateView):
         return False
 
 
-def update_video(request, pk):
+def record_filled_video(request, pk):
     if request.method == "POST":
         print("request.method:", request.method)
-        createvideoform = VidUpdateForm(request.user, request.POST, request.FILES)
+        createvideoform = VidRecFilledForm(request.user, request.POST, request.FILES)
         if createvideoform.is_valid():
             print("createvideoform.isvalid:", createvideoform.is_valid())
             # request_id = createvideoform.cleaned_data['request_id']
             # request_id = request.POST.get('video_request_id')
             request_id = Notification.objects.filter(id=pk).first().videoRequest_id.id
-            print(request_id)
 
             upload_video = createvideoform.save(commit=False)
 
@@ -232,10 +230,10 @@ def update_video(request, pk):
             print(createvideoform.errors)
     else:
         print(request.method)
-        createvideoform = VidUpdateForm(request.user)
+        createvideoform = VidRecFilledForm(request.user)
 
     context = {'notification': Notification.objects.filter(id=pk), 'createvideoform': createvideoform}
-    return render(request, 'stream/video-update.html', context )
+    return render(request, 'stream/video-record-filled.html', context )
 
 
 

@@ -46,7 +46,7 @@ class VidUploadForm(forms.ModelForm):
         fields = ['title','description','timelimit','video','request_id']
         # ,'receiver'
 
-class VidUpdateForm(forms.ModelForm):
+class VidRecFilledForm(forms.ModelForm):
     # receiver = forms.ModelChoiceField(
     #     queryset=User.objects.none(),
     #     widget=forms.Select(attrs={'style': 'width: 207px; border: 2px groove lightgreen;',
