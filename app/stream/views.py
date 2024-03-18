@@ -200,9 +200,8 @@ def record_filled_video(request, pk):
         createvideoform = VidRecFilledForm(request.user, request.POST, request.FILES)
         if createvideoform.is_valid():
             print("createvideoform.isvalid:", createvideoform.is_valid())
-            # request_id = createvideoform.cleaned_data['request_id']
-            # request_id = request.POST.get('video_request_id')
-            request_id = Notification.objects.filter(id=pk).first().videoRequest_id.id
+            request_id_filter = Notification.objects.get(id=pk).videoRequest_id.id
+            request_id = VidRequest.objects.get(id=request_id_filter)
 
             upload_video = createvideoform.save(commit=False)
 
@@ -210,8 +209,9 @@ def record_filled_video(request, pk):
             # upload_video.request_id = Notification.objects.filter(id=pk).first().videoRequest_id.cleaned_data['id']
 
             upload_video.sender = request.user
-            receiverfilter = User.objects.get(username=VidRequest.objects.get(id=request_id).sender)
+            receiverfilter = User.objects.get(username=VidRequest.objects.get(id=request_id_filter).sender)
             upload_video.receiver = receiverfilter
+            upload_video.request_id = request_id
 
             # Decode and save the blob data
             blob_data = request.POST['video_blob']  # Get blob video data from html input

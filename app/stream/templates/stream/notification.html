@@ -104,7 +104,7 @@
                         <button class="btn btn-dark mt-3 mb-1" id="delete video request button" name="deleteVideoRequest" type="submit">Remove Video Request</button>
                       {% elif notification.type == 4 %}
                         <input type="hidden" name="notifID" value="{{ notification.id }}">
-                        <a href="{% url 'stream:video-update' notification.id%}" class="btn btn-dark mt-3 mb-1" id="Send Video" name="sendVideoLink" >Send Video</a>
+                        <a href="{% url 'stream:video-record-filled' notification.id%}" class="btn btn-dark mt-3 mb-1" id="Send Video" name="sendVideoLink" >Send Video</a>
                       {% elif notification.type == 5 %}
                         <input type="hidden" name="notifID" value="{{ notification.id }}">
                         <button class="btn btn-dark mt-3 mb-1" id="delete video post button" name="deleteVideoPost" type="submit">Remove Video Post</button>
