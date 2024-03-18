@@ -10,12 +10,14 @@
     {% if user.userinfo.permission == 1 or user.is_superuser %}
         <div style = "margin-top: 15%; padding-top: 10em; clear: both;">
             <div class = "horizontal-buttons" id="hor-button">
-                <a class="button" id="top_record" href=" {% url 'stream:video-create' %}" style="color: #FFFFFF">
+                {% for item in notification %}
+                <a class="button" id="top_record" href=" {% url 'stream:video-record-filled' item.id%}" style="color: #FFFFFF">
                     Record
                 </a>
-                <a class="button" id="top_upload" href=" {% url 'stream:video-upload' %}" style="color: #FFFFFF">
+                <a class="button" id="top_upload" href=" {% url 'stream:video-upload-filled' item.id%}" style="color: #FFFFFF">
                     Upload
                 </a>
+                {% endfor %}
             </div>
             <form method="POST" enctype="multipart/form-data">
                 {% csrf_token %}

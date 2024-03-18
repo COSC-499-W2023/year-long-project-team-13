@@ -11,7 +11,7 @@ from django.db.models import Q
 from stream.forms import UserInfoUpdateForm
 
 from . models import VidRequest, VidStream, Contact, FriendRequest, Post, Profile, UserInfo, Notification, Setting
-from . forms import VidUploadForm, VidCreateForm, VidRequestForm, UserRegistrationForm, UserUpdateForm, UserInfoUpdateForm, UserProfileUpdateForm, UserProfileUpdateForm,  ValidatingPasswordChangeForm, AddContactForm, UserPermissionForm, VidRecFilledForm
+from . forms import VidUploadForm, VidCreateForm, VidRequestForm, UserRegistrationForm, UserUpdateForm, UserInfoUpdateForm, UserProfileUpdateForm, UserProfileUpdateForm,  ValidatingPasswordChangeForm, AddContactForm, UserPermissionForm, VidRecFilledForm, VidUpFilledForm
 
 import base64
 from django.core.files.base import ContentFile
@@ -175,6 +175,42 @@ def upload_video(request):
         'uploadvideoform': uploadvideoform
     }
     return render(request, 'stream/video-upload.html', context)
+
+class VideoUploadFilledView(LoginRequiredMixin   ,CreateView):
+    model = Post
+    success_url = "/"
+    template_name = 'stream/video-upload-filled.html'
+    fields = ['title', 'description','video']
+    #this is to make sure that the logged in user is the one to upload the content
+    def form_valid(self, form):
+        form.instance.sender = self.request.user
+        return super().form_valid(form)
+
+def upload_filled_video(request, pk):
+    if request.method == "POST":
+        uploadvideoform = VidUpFilledForm(request.user, request.POST, request.FILES)
+        if uploadvideoform.is_valid():
+
+            request_id_filter = Notification.objects.get(id=pk).videoRequest_id.id
+            request_id = VidRequest.objects.get(id=request_id_filter)
+
+            upload_video = uploadvideoform.save(commit=False)
+            upload_video.sender = request.user
+            receiverfilter = User.objects.get(username=VidRequest.objects.get(id=request_id.id).sender)
+            upload_video.receiver = receiverfilter
+            upload_video.request_id = request_id
+            upload_video.save()
+            # link recent uploaded video request from Post table to Notification table
+            recentVideoUpload = Post.objects.filter(sender=request.user).last()
+
+            Notification.objects.create(user=request.user, message=f'You have post a video to '+ str(receiverfilter) +'.', type=5, post_id=recentVideoUpload)
+            Notification.objects.create(user=receiverfilter, message=f'You have received a video post from '+ str(request.user) +'.', type=6, post_id=recentVideoUpload)
+            return redirect('stream:video-list')
+    else:
+        uploadvideoform = VidUpFilledForm(request.user)
+
+    context = {'notification': Notification.objects.filter(id=pk), 'uploadvideoform': uploadvideoform}
+    return render(request, 'stream/video-upload-filled.html', context)
 
 class VideoRecordFilledView(LoginRequiredMixin, UserPassesTestMixin ,UpdateView):
     model = Post
