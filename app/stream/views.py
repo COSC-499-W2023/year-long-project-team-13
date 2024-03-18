@@ -70,13 +70,16 @@ def request_video(request):
     if request.method == "POST":
         requestvideoform = VidRequestForm(request.user, request.POST)
         if requestvideoform.is_valid():
+            description = requestvideoform.cleaned_data['description']
+            due_date = requestvideoform.cleaned_data['due_date']
+
             request_video = requestvideoform.save(commit=False)
             request_video.sender = request.user
             request_video.save()
             # link recent created video request from VidRequest table to Notification table
             recentVideoRequest = VidRequest.objects.filter(sender=request.user).last()
-            Notification.objects.create(user=request.user, message=f'You have sent a video request to '+ str(requestvideoform.cleaned_data['receiver']) + ' with Video Request ID: ' + str(recentVideoRequest) +'.', type=3, videoRequest_id=recentVideoRequest)
-            Notification.objects.create(user=requestvideoform.cleaned_data['receiver'], message=f'You have received a video request from '+ str(request.user) + ' with Video Request ID: ' + str(recentVideoRequest) +'.', type=4, videoRequest_id=recentVideoRequest)
+            Notification.objects.create(user=request.user, message=f'You have sent a video request to '+ str(requestvideoform.cleaned_data['receiver']) + '.' + '\n\n&nbsp;&nbsp; Video Request ID: ' + str(recentVideoRequest) + '\n&nbsp;&nbsp; Description: ' + description + '\n&nbsp;&nbsp; Due DateTime: ' + due_date.strftime('%Y-%m-%d %H:%M:%S'), type=3, videoRequest_id=recentVideoRequest)
+            Notification.objects.create(user=requestvideoform.cleaned_data['receiver'], message=f'You have received a video request from '+ str(request.user) + '.' + '\n\n&nbsp; Video Request ID: ' + str(recentVideoRequest) + '\n&nbsp; Description: ' + description + '\n&nbsp; Due DateTime: ' + due_date.strftime('%Y-%m-%d %H:%M:%S'), type=4, videoRequest_id=recentVideoRequest)
             return redirect('stream:notifications')
     else:
         requestvideoform = VidRequestForm(request.user)
