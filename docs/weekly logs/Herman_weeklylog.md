@@ -323,7 +323,21 @@ Add Contact Function, Add contact UI
 
 ![Tasks](./images/tasks/Week9Term2PeerEvalHerman.png)
 
+- Applicable date range
+## Week 10 Term 2 03/11/24~03/17/24
 
+ # Preferred name -> Ssc name -> Github name
+
+- Herman -> Herman Sood -> Herman Sood
+
+- Recap on your week's goals-Which features were yours in the project plan for this milestone? For term 2 week 10, I fixed the UI structure for the upload video page to match the structure of page for sending a video. I also implemented a password viewable feature on the register page and almost finished doing the same thing for the login page using an eye icon that can be toggled to view or hide password when registering or logging into an account. I am also planning to add the feature to the setting page where users are able to create a new password if they want to change their password.
+  - Which tasks from the project board are associated with these features? Upload video page UI updates and Password viewable.  
+  - Among these tasks, which have you completed/in progress in the last week? Upload video page UI and Password Viewable. 
+
+
+![Tasks](./images/tasks/Week10Term2PeerEvalHerman.png)
+![Tasks](./images/tasks/Week10Term2UploadVideoHerman.png)
+![Tasks](./images/tasks/Week10Term2RegisterUpdatedHerman.png)
 
 
 
