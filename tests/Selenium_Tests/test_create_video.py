@@ -341,8 +341,162 @@ def upload_video_test(driver, dueDateYear, dueDateMonthDay, dueDateTime, video):
     else:
         print("TEST: 14 `Video Upload Post` Failed")
 
-    logout(driver, '/video#')
 
+
+def filled_record_video_test(driver, dueDateYear, dueDateMonthDay, dueDateTime):
+    # Find the element with the id "Notification Button" and hover over it
+    hoverTest("Notification Button","Notification Button", '/notifications', "`Notifications page found`")
+
+    # Find the element with the id "Send Video" and click it
+    send_video_element = driver.find_element(By.ID, "Send Video")
+    wait.until(EC.element_to_be_clickable((By.ID, "Send Video")))
+    send_video_element.click()
+    wait.until(EC.url_contains('/record'))
+    if EC.url_contains('/record'):
+        print("TEST: 15 `Send Video` Successful")
+    else:
+        print("TEST: 15 `Send Video` Failed")
+
+    # Find the element with the id "start-camera" and click it
+    wait.until(EC.visibility_of_element_located((By.ID, "start-camera")))
+    start_camera_element = driver.find_element(By.ID, "start-camera")
+    wait.until(EC.element_to_be_clickable((By.ID, "start-camera")))
+    start_camera_element.click()
+    print("TEST: 1 `Start Camera` Successful")
+    # time.sleep(10)
+    wait.until(EC.visibility_of_element_located((By.ID, "video")))
+
+    # Find the element with the id "start-record" and click it
+    # Scroll down the page
+    html = driver.find_element(By.TAG_NAME, "html")
+    html.send_keys(Keys.PAGE_DOWN)
+    wait.until(EC.visibility_of_element_located((By.ID, "start-record")))
+    wait.until(EC.presence_of_element_located((By.ID, "start-record")))
+    start_record_element = driver.find_element(By.ID, "start-record")
+    wait.until(EC.element_to_be_clickable((By.ID, "start-record")))
+    time.sleep(3)
+    start_record_element.click()
+    print("TEST: 2 `Start Record` Successful")
+
+    # Find the element with the id "stop-record" and click it
+    stop_record_element = driver.find_element(By.ID, "stop-record")
+    wait.until(EC.element_to_be_clickable((By.ID, "stop-record")))
+    stop_record_element.click()
+    print("TEST: 3 `Stop Record` Successful")
+
+    # Find the element with the id "next" and click it
+    next_element = driver.find_element(By.ID, "next")
+    wait.until(EC.element_to_be_clickable((By.ID, "next")))
+    next_element.click()
+    print("TEST: 4 `Next` Successful")
+
+    # Find the element with the id "preview" and click it
+    preview_element = driver.find_element(By.ID, "preview")
+    wait.until(EC.element_to_be_clickable((By.ID, "preview")))
+    preview_element.click()
+    print("TEST: 5 `Preview` Successful")
+
+    # Find the element with the id "back-details" and click it
+    wait.until(EC.visibility_of_element_located((By.ID, "preview-title")))
+    html.send_keys(Keys.PAGE_DOWN)
+    wait.until(EC.visibility_of_element_located((By.ID, "back-details")))
+    wait.until(EC.presence_of_element_located((By.ID, "back-details")))
+    back_details_element = driver.find_element(By.ID, "back-details")
+    wait.until(EC.element_to_be_clickable((By.ID, "back-details")))
+    html.send_keys(Keys.PAGE_DOWN)
+    time.sleep(3)
+    back_details_element.click()
+    print("TEST: 6 `Back Details` Successful")
+
+    # Find the element with the id "back-record" and click it
+    back_record_element = driver.find_element(By.ID, "back-record")
+    wait.until(EC.element_to_be_clickable((By.ID, "back-record")))
+    back_record_element.click()
+    print("TEST: 7 `Back Record` Successful")
+
+    # Find the element with the id "start-record" and click it
+    wait.until(EC.visibility_of_element_located((By.ID, "video")))
+    html.send_keys(Keys.PAGE_DOWN)
+    wait.until(EC.visibility_of_element_located((By.ID, "start-record")))
+    wait.until(EC.presence_of_element_located((By.ID, "start-record")))
+    start_record_element = driver.find_element(By.ID, "start-record")
+    wait.until(EC.element_to_be_clickable((By.ID, "start-record")))
+    time.sleep(3)
+    start_record_element.click()
+    print("TEST: 8 `Start Record 2` Successful")
+
+    # Find the element with the id "stop-record" and click it
+    stop_record_element = driver.find_element(By.ID, "stop-record")
+    wait.until(EC.element_to_be_clickable((By.ID, "stop-record")))
+    time.sleep(3)
+    stop_record_element.click()
+    print("TEST: 9 `Stop Record 2` Successful")
+
+    # Find the element with the id "download-video" and click it
+    download_video_element = driver.find_element(By.ID, "download-video")
+    wait.until(EC.element_to_be_clickable((By.ID, "download-video")))
+    time.sleep(3)
+    download_video_element.click()
+    print("TEST: 10 `Download Video` Successful")
+
+    # Find the element with the id "next" and click it
+    next_element = driver.find_element(By.ID, "next")
+    wait.until(EC.element_to_be_clickable((By.ID, "next")))
+    time.sleep(3)
+    next_element.click()
+
+    time.sleep(0.5)
+
+    # Find the element with the form title and click it
+    title_element = driver.find_element(By.ID, "id_title")
+    wait.until(EC.presence_of_element_located((By.ID, "id_title")))
+    title_element.click()
+    title_element.send_keys("Test Record Video Title")
+    wait.until(EC.text_to_be_present_in_element_value((By.ID, "id_title"), "Test Record Video Title"))
+
+    # Find the element with the form description and click it
+    description_element = driver.find_element(By.ID, "id_description")
+    wait.until(EC.presence_of_element_located((By.ID, "id_description")))
+    description_element.click()
+    description_element.send_keys("Test Record Video Description")
+    wait.until(EC.text_to_be_present_in_element_value((By.ID, "id_description"), "Test Record Video Description"))
+
+    # Find the element with the form timelimit and click it
+    timelimit_element = driver.find_element(By.ID, "id_timelimit")
+    wait.until(EC.presence_of_element_located((By.ID, "id_timelimit")))
+    timelimit_element.click()
+    timelimit_element.send_keys(dueDateTime)
+    time.sleep(0.5)
+    timelimit_element.send_keys(Keys.TAB)
+    timelimit_element.send_keys(dueDateYear)
+    timelimit_element.send_keys(dueDateMonthDay)
+    time.sleep(0.5)
+    print("TEST: 11 `Video Record Info` Successful")
+
+    # Find the element with the id "preview" and click it
+    preview_element = driver.find_element(By.ID, "preview")
+    wait.until(EC.element_to_be_clickable((By.ID, "preview")))
+    preview_element.click()
+    print("TEST: 12 `Preview` Successful")
+
+    # Find the element with the id "submit" and click it
+    wait.until(EC.visibility_of_element_located((By.ID, "preview-title")))
+    html.send_keys(Keys.PAGE_DOWN)
+    wait.until(EC.visibility_of_element_located((By.ID, "submit")))
+    wait.until(EC.presence_of_element_located((By.ID, "submit")))
+    submit_element = driver.find_element(By.ID, "submit")
+    wait.until(EC.element_to_be_clickable((By.ID, "submit")))
+    time.sleep(3)
+    submit_element.click()
+
+    # Wait for the URL to change to the video page URL
+    wait.until(EC.url_contains('/video'))
+
+    # Check if the URL contains the expected page URL
+    if '/video' in driver.current_url:
+        print("TEST 13: `Send Record from notifications Video` Successful")
+    else:
+        print("TEST 13: `Send Record notifications Video` Failed")
 
 # Create a ChromeOptions object with the log level set to 3
 opt = Options()
@@ -377,6 +531,8 @@ time.sleep(0.5)
 create_record_video_test(driver, "2024", "0101", "1000AM")
 remove_video_post_test(driver)
 upload_video_test(driver, "2024", "0101", "1000AM", os.path.abspath('../../app/media/Beautiful_City_SEA_VIEW___Creative_Commons_Videos___Free_HD_Videos_-_no_copyright.mp4'))
+filled_record_video_test(driver, "2024", "0101", "1000AM")
+logout(driver, '/video#')
 print("Create Video Test Completed")
 
 # Close the webdriver
