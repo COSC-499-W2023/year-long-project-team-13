@@ -151,7 +151,7 @@ This week my features were working adding buttons to notifications to link to th
 ### Week 10 Mar 11 - 17
 ![Week10Tasks](./images/tasks/Ralston_term2_w10_tasks.png)
 
-This week my features were working on making the button that connects the notification page to the record video page auto fill in the video request information.
+This week my features were working on making the button that connects the notification page to the record video page and upload video page auto fill in the video request information.
 This is associated with button from notifications to send video on the project board.
 I was able to sucessfully complete this but there was a bug where it was not saving in the database. I tried many different approaches to try and fix this. It wasn't until Ethan came to help me that we realized I has mistyped one line of code with then fixed the problem. I did lots of research on how to pass information through urls and retriving that information through a view and template in django. As well as how to save information in a database in using a combination of forms and views. We also spent time as a team to look over what we have and what we want to look at next. I manually tested my code and will be adding it into the manual tests this coming week. As well as applying what I did for record video to also work for upload video.
 
