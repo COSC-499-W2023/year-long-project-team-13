@@ -494,3 +494,25 @@ Admin send/request video
 - Worked on my own weekly log, contribute to team weekly log.
 - Looking at how to work on forgot password on the login page so that user can reset the password when they totally forgot their password by getting a reset link through email and change to a new password.
 
+## Term 2 Week 10 2024/03/10 ~ 2024/03/17
+
+- Type of tasks you worked on
+
+![Tasks](./images/tasks/SittPaing_T2W10-Task.png)
+
+## Recap of week's goals
+
+This week our teammates run all the tests again on different laptops to see if there is any errors in both the selenium tests and pytests and discuss what the cause of the issues and fix the bugs/issues so we currently got all our tests running without any issues. I am currently working on the forgot password, where the user is allowed to reset their password if they can't recall their existing password by just providing their email so that the reset password link can be sent to them for making a new password and they will be able to login with their new password. I am currently working on creating different pages that would be necessary for resetting the password and trying to link the pages with button but I am currently having trouble in linking since there are some error that I am encountering when I try to click on the button that I have linked with another pages. I have watch different youtube video to gain some insights and to try to help me to understand better so that I can work on my task smoothly without much of an issues. The task is currently in progress and I am trying on my own to see whether I can resolve the issues and keeping working on the later parts.
+
+Password password form after forgot password link is clicked
+
+![Password password form after forgot password link is clicked](./images/Sitt_images/Term_2_Week_10/Password_reset_form.png)
+
+Link the button after send me instruction button is clicked (in progress)
+
+![Link the button after send me instruction button is clicked (in progress)](./images/Sitt_images/Term_2_Week_10/Password_reset_done.png)
+
+
+### Additional
+- Worked on my own weekly log, contribute to team weekly log.
+- Looking at different youtube videos to gain insights on how to work on forgot password on the login page so that user can reset the password when they totally forgot their password by getting a reset link through email and change to a new password.
