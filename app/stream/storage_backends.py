@@ -9,3 +9,7 @@ class StaticStorage(S3Boto3Storage):
 class MediaStorage(S3Boto3Storage):
     location = settings.MEDIAFILES_LOCATION
     custom_domain = settings.CLOUDFRONT_DOMAIN
+
+class ProfilePictureStorage(S3Boto3Storage):
+    location = settings.PROFILE_PICTURE_FILES_LOCATION
+    custom_domain = settings.CLOUDFRONT_DOMAIN

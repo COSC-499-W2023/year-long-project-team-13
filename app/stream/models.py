@@ -8,8 +8,7 @@ from datetime import date
 from django.urls import reverse
 from django.core.files.storage import default_storage as storage
 from s3direct.fields import S3DirectField
-
-from stream.storage_backends import MediaStorage
+from stream.storage_backends import MediaStorage, ProfilePictureStorage
 
 # Create your models here.
 
@@ -108,7 +107,8 @@ class Post(models.Model):
 # Update User's Profile Picture
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    image = models.ImageField(default="mountain.jpg", upload_to='profile-pics')
+    # image = models.ImageField(default="mountain.jpg", upload_to='profile-pics')
+    image = models.ImageField(default="mountain.jpg", storage=ProfilePictureStorage())
 
     def __str__(self):
         return f"{self.user.username} Profile "

@@ -17,7 +17,7 @@
             {% for item in videos %}
 
                 <div class="card mb-3" style="width: 75%; box-shadow: 12em; margin: auto;">
-                    <img class="rounded-circle border-dark" src="{{ 'https://d18u3jaflgrcvn.cloudfront.net/media/'|add:item.sender.profile.image.url|cut:'https://elasticbeanstalk-ca-central-1-841071745826.s3.amazonaws.com/' }}" style="border-color: red;" width="50" height="50">
+                    <img class="rounded-circle border-dark" src="{{ user.profile.image.url }}" style="border-color: red;" width="50" height="50">
                     {% comment %} <img class="rounded-circle border-dark" src="{{ "https://d18u3jaflgrcvn.cloudfront.net/media/mountain.jpg" }}" style="border-color: red;" width="50" height="50"> {% endcomment %}
                     <a class="mr-2" href="{% url 'stream:user-videos' item.sender.username %}" style="text-align: start;">{{ item.sender }}</a>
                     <h12 style="text-align: start;">{{ item.upload_date }}</h12>

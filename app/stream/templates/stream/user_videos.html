@@ -15,7 +15,7 @@
                 <div style ="padding-bottom: 25px;">
                     <h3>Video belonging to {{ item.sender.username }}</h4>
                     <h4><a href="{% url 'stream:video-detail' item.id %}">{{ item.title }}</a></h1>
-                    <h12>{{ item.sendtime}}</h12>
+                    <h12>{{ item.sendtime }}</h12>
                     <p>{{ item.description}}</p>
                     <video controls>
                         <source src="{{ item.video.url }}" type="video/mp4">
