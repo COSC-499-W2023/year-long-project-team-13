@@ -29,37 +29,50 @@
                         {% comment %} padding-bottom: 10%; display: none; margin-bottom:10%; {% endcomment %}
                         <video id="video" width="320" height="240" autoplay></video>
                     </div>
-                    <div class="detailsPage card mb-3" style="display: none; width: 75%; margin: auto;box-shadow: 12em;">
-                        <div class="form-group" style = "padding-top: 25px;">
-                            <label class="requestID">Video Request ID:</label>
+                    <div id="mySidebar" class="sidebar">
+                        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                        <a href="#">About</a>
+                        <a href="#">Services</a>
+                        <a href="#">Clients</a>
+                        <a href="#">Contact</a>
+                      </div>
 
-                            {% for item in notification %}
-                                {{item.videoRequest_id}}
-                                <input type="hidden" name="video_request_id" id="video_request_id" value="{{item.videoRequest_id}}" />
-                            {% endfor %}
+                      <div id="main">
+                        <button class="openbtn" onclick="openNav()">&#9776; Open Sidebar</button>
+                            <div class="detailsPage card mb-3" style="display: none; width: 75%; margin: auto;box-shadow: 12em;">
 
-                        </div>
-                        <div class="form-group" style = "padding-top: 15px;">
-                            <label class="title">Title:</label>
-                            {% comment %} <input type="text" class="form-control" id="title" name="title" placeholder="Enter title"> {% endcomment %}
-                            {{ createvideoform.title.errors }}
-                            {{ createvideoform.title }}
-                        </div>
-                        <div class="form-group">
-                            <div class="col-lg-15">
-                                <label class="description">Description:</label>
+
+                            <div class="form-group" style = "padding-top: 25px;">
+                                <label class="requestID">Video Request ID:</label>
+
+                                {% for item in notification %}
+                                    {{item.videoRequest_id}}
+                                    <input type="hidden" name="video_request_id" id="video_request_id" value="{{item.videoRequest_id}}" />
+                                {% endfor %}
+
                             </div>
-                            {% comment %} <textarea class="form-control" id="description" name="description" placeholder="Enter description" style="height: 30%"></textarea> {% endcomment %}
-                            {{ createvideoform.description.errors }}
-                            {{ createvideoform.description }}
+                            <div class="form-group" style = "padding-top: 15px;">
+                                <label class="title">Title:</label>
+                                {% comment %} <input type="text" class="form-control" id="title" name="title" placeholder="Enter title"> {% endcomment %}
+                                {{ createvideoform.title.errors }}
+                                {{ createvideoform.title }}
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-15">
+                                    <label class="description">Description:</label>
+                                </div>
+                                {% comment %} <textarea class="form-control" id="description" name="description" placeholder="Enter description" style="height: 30%"></textarea> {% endcomment %}
+                                {{ createvideoform.description.errors }}
+                                {{ createvideoform.description }}
+                            </div>
+                            <div class="form-group" style = "padding-top: 15px; padding-bottom:25px;">
+                                <label class="timelimit">Time Limit Date:</label>
+                                {% comment %} <textarea class="form-control" id="description" name="description" placeholder="Enter description" style="height: 30%"></textarea> {% endcomment %}
+                                {{ createvideoform.timelimit.errors }}
+                                {{ createvideoform.timelimit }}
+                            </div>
+                            <input type="hidden" name="video_blob" id="video_blob" value="your_blob_data_here" />
                         </div>
-                        <div class="form-group" style = "padding-top: 15px; padding-bottom:25px;">
-                            <label class="timelimit">Time Limit Date:</label>
-                            {% comment %} <textarea class="form-control" id="description" name="description" placeholder="Enter description" style="height: 30%"></textarea> {% endcomment %}
-                            {{ createvideoform.timelimit.errors }}
-                            {{ createvideoform.timelimit }}
-                        </div>
-                        <input type="hidden" name="video_blob" id="video_blob" value="your_blob_data_here" />
                     </div>
                     <div class="previewPage" style="display: none;">
                         <div class="card mb-3" style="width: 75%; box-shadow: 12em; margin: auto;">
@@ -95,6 +108,7 @@
             </form>
         </div>
         <script src=" {% static 'assets/js/videoCreate.js'%} "></script>
+        <script src = " {% static 'assets/js/sideBar.js'%} "></script>
     {% else %}
         <div class="container">
             <h2>Oops! It seems you’ve reached a page where access is restricted. <br>
