@@ -90,3 +90,30 @@ Also, update your README.md file with the team and client/project information.  
 5. **Access the Website:** Open your web browser and navigate to [http://127.0.0.1:8000/](http://127.0.0.1:8000/) to access the locally hosted website.
 
 By following these steps, you'll have a Python virtual environment set up and activated, ensuring a clean and isolated environment for your Django project.
+
+## Testing Guide
+### Selenium Testing
+1. Start the django server
+2. Navigate to the folder Selenium_Tests in your command line
+3. To run all selenium tests, use the command:
+   ```console
+   python master_test.py
+   ```
+   or
+   ```console
+   py master_test.py
+   ```
+
+4. To run a specific test file, use the command:
+   ```console
+   # Replace with the specific test file name
+   python [your_file_name_here].py
+   ```
+   or
+   ```console
+   # Replace with the specific test file name
+   py [your_file_name_here].py
+   ```
+   Note: Selenium Testing can be finicky depending on how fast your computer can run. If something fails, most of the time if you run it again. The test will pass. Otherwise, add wait time to allow for the page to load.
+### Pytest Testing
+
