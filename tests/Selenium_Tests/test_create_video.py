@@ -403,7 +403,7 @@ create_record_video_test(driver, "2024", "0101", "1000AM")
 remove_video_post_test(driver)
 upload_video_test(driver, "2024", "0101", "1000AM", os.path.abspath('../../app/media/Beautiful_City_SEA_VIEW___Creative_Commons_Videos___Free_HD_Videos_-_no_copyright.mp4'))
 filled_record_video_test(driver)
-logout(driver, '/video#')
+logout(driver, '/upload/#')
 print("Create Video Test Completed")
 
 # Close the webdriver
