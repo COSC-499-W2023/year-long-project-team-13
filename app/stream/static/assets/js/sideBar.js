@@ -9,3 +9,11 @@ function openNav() {
     document.getElementById("mySidebar").style.width = "0";
     document.getElementById("main").style.marginLeft = "0";
   }
+
+  function toggleNav() {
+    if (document.getElementById("mySidebar").style.width == "250px") {
+      closeNav();
+    } else {
+      openNav();
+    }
+  }
