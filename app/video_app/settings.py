@@ -11,6 +11,10 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 from pathlib import Path
 import os
+
+AWS_ACCESS_KEY_ID="ASIA4HU6ILMRHUP7QZU3"
+AWS_SECRET_ACCESS_KEY="t4JR/Zv9eZuuNeC7PAsKU2+ywWiaGWUIza59oIqV"
+AWS_SESSION_TOKEN="IQoJb3JpZ2luX2VjEB0aDGNhLWNlbnRyYWwtMSJHMEUCIBIhbpDHe18KOL4W03aJdY9cz7mQ50HarbTIKSPnpviVAiEAw8+e5oT855dGTwNXA5aTl0LCiRLLsCs6jqoxf/jNZBQqigMINxAAGgw4NDEwNzE3NDU4MjYiDJo6wTLAONBpXHL7ayrnAjZIdfRa05UeCv/koLp5gtebz+2TJv9IqYFcP2L3y1kXqvE5pf8I8FSoHQhrrUntLdjNDjYrVR3UNM0Fkba7fvLbVR/icMaCyZw38J+KQ9AufiqZc+wtHuMgcVNT8Xc0SAMgHFDeRupkK4nv48kiU5YbVhlydmd7Sx+//WHZP6Gi3v2WRCQ0YuUInZrP0WsfKtQdNzeuV0CyV+h9bHLPesiUsYbO3b6cgJfkW0YqrY8w1VNDsUMY2tt5ihvT7upXetUGXv+5A+X4vOuEF3bizdGr010xGpq896DhM5OKWdzXkXMkO/kY/5OmHuc3L61f4TX4CoAY1Cz+IBz3QYY1G1vpWj10go/CZJ2K9GcPHzp3Ow3Mi4u79EFNwd6lrbZBiB8IV65r+CvxLK3f6GW7zdol+MWsyab+i3rQr9ftyfQ49KrZOelJv1NBge3q1LlwJ0UbAZ0A4EzbzcUggvb14Q8E2t3RxrmBMJvN8q8GOqYBmaAuXnB5mU1ksc4kNBvqKPEx0x5ZzdWhw5FlFFBiaqcAFWDllB7lmseiwJmldb6EbMIvg/bAarMKR7eoaHVL2qk61R5TKA+rcL44vs/BNI+6ToncbJUU4k3N9MyLjT7qFdzlVAwM89dy3oudIwDpSMEzlRgVpYO8618n17bI/93BjIMJuLVwWN8kL0lwKdEThCRmI552RC6fVxFkO6hyVCBHeJ1bIg=="
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 # BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -187,6 +191,7 @@ S3DIRECT_DESTINATIONS = {
 # STATIC_LOCATION = "static"
 # STATIC_URL = f'{CLOUDFRONT_DOMAIN}/static/'
 # STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
 
 # MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIAFILES_LOCATION = 'media'
