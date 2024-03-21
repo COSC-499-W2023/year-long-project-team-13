@@ -10,16 +10,20 @@
         </div>
     {% endif %}
     <div style = "margin-top: 25px; padding-top: 75px; padding-bottom: 20px;">
+        <h1>Videos For {{ user }}</h1>
         {% for item in videos %}
             {% if item.sender == user or item.receiver == user %}
-                <div style ="padding-bottom: 25px;">
-                    <h3>Video belonging to {{ item.sender.username }}</h4>
-                    <h4><a href="{% url 'stream:video-detail' item.id %}">{{ item.title }}</a></h1>
-                    <h12>{{ item.sendtime }}</h12>
-                    <p>{{ item.description}}</p>
-                    <video controls>
+                <div class="card mb-3" style="width: 75%; box-shadow: 12em; margin: auto;">
+                    <img class="rounded-circle border-dark" src="{{ item.sender.profile.image.url }}" style="border-color: red;" width="50" height="50">
+                    <a class="mr-2" href="{% url 'stream:user-videos' item.sender.username %}" style="text-align: start;">{{ item.sender }}</a>
+                    <h12 style="text-align: center; margin-top: 0.25em; font-size: 1.25em;">{{ item.sendtime }}</h12>
+                    <video class="card-img-top" controls style="width: 100%; height: auto;">
                         <source src="{{ item.video.url }}" type="video/mp4">
                     </video>
+                    <div class="card-body">
+                        <h5 class="card-title"><a href="{% url 'stream:video-detail' item.id  %}">{{ item.title }}</a></h5>
+                        <p class="card-text">{{ item.description }}</p>
+                    </div>
                 </div>
             {% endif %}
         {% endfor %}

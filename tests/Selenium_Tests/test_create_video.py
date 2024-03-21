@@ -341,8 +341,33 @@ def upload_video_test(driver, dueDateYear, dueDateMonthDay, dueDateTime, video):
     else:
         print("TEST: 14 `Video Upload Post` Failed")
 
-    logout(driver, '/video#')
 
+
+def filled_record_video_test(driver):
+    # Find the element with the id "Notification Button" and hover over it
+    hoverTest("Notification Button","Notification Button", '/notifications', "`Notifications page found`")
+
+    # Find the element with the id "Send Video" and click it
+    send_video_element = driver.find_element(By.ID, "Send Video")
+    wait.until(EC.element_to_be_clickable((By.ID, "Send Video")))
+    send_video_element.click()
+    wait.until(EC.url_contains('/record'))
+    if EC.url_contains('/record'):
+        print("TEST: 15 `Send Video` Successful")
+    else:
+        print("TEST: 15 `Send Video` Failed")
+
+    # Find the element with the id "top_upload" and click it
+    wait.until(EC.presence_of_all_elements_located((By.ID, "top_upload")))
+    top_upload_element = driver.find_element(By.ID, "top_upload")
+    wait.until(EC.element_to_be_clickable((By.ID, "top_upload")))
+    top_upload_element.click()
+
+    wait.until(EC.url_contains('/upload'))
+    if EC.url_contains('/upload'):
+        print("TEST: 16 `Upload Video` Successful")
+    else:
+        print("TEST: 16 `Upload Video` Failed")
 
 # Create a ChromeOptions object with the log level set to 3
 opt = Options()
@@ -377,6 +402,8 @@ time.sleep(0.5)
 create_record_video_test(driver, "2024", "0101", "1000AM")
 remove_video_post_test(driver)
 upload_video_test(driver, "2024", "0101", "1000AM", os.path.abspath('../../app/media/Beautiful_City_SEA_VIEW___Creative_Commons_Videos___Free_HD_Videos_-_no_copyright.mp4'))
+filled_record_video_test(driver)
+logout(driver, '/upload/#')
 print("Create Video Test Completed")
 
 # Close the webdriver

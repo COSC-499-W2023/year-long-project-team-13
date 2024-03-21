@@ -61,6 +61,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'video_app.urls'
@@ -205,3 +206,5 @@ DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 #solves vidstream auto-created primary key error
 DEFAULT_AUTO_FIELD='django.db.models.AutoField'
 
+STATIC_ROOT=os.path.join(BASE_DIR,'productionfiles')
+# MEDIA_ROOT=os.path.join(BASE_DIR,'static/media/')
