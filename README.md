@@ -114,6 +114,37 @@ By following these steps, you'll have a Python virtual environment set up and ac
    # Replace with the specific test file name
    py [your_file_name_here].py
    ```
-   Note: Selenium Testing can be finicky depending on how fast your computer can run. If something fails, most of the time if you run it again. The test will pass. Otherwise, add wait time to allow for the page to load.
+   Note: Selenium Testing can be finicky depending on how fast your computer can run. If something fails, most of the time, if you run it again, the test will pass. Otherwise, add wait time to allow for the page to load.
+
+   5. To save selenium test report into a txt file, Use the command:
+   ```console
+   # Can replace master_test.py with any other test file name
+   python master_test.py > report.txt
+   ```
+   or
+   ```console
+   py master_test.py > report.txt
+   ```
 ### Pytest Testing
+1. Navigate into the app folder in your command line
+2. To run all pytests, Use the command:
+```console
+python manage.py test pytests
+```
+or
+```console
+py manage.py test pytests
+```
+3. To run a specific pytest, use the command:
+```console
+# Replace with the specific test file name
+python manage.py test pytests.[your_file_name_here]
+```
+or
+```console
+# Replace with the specific test file name
+py manage.py test pytests.[your_file_name_here]
+```
+
+
 
