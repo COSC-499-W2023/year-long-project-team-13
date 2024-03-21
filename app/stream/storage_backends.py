@@ -10,6 +10,10 @@ class MediaStorage(S3Boto3Storage):
     location = settings.MEDIAFILES_LOCATION
     custom_domain = settings.CLOUDFRONT_DOMAIN
 
+class ProfilePictureStorage(S3Boto3Storage):
+    location = settings.PROFILE_PICTURE_FILES_LOCATION
+    custom_domain = settings.CLOUDFRONT_DOMAIN
+
     # def _save(self, name, content):
     #     # Get the username from the content object
     #     username = content.user.username
