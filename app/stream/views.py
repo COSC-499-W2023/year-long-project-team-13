@@ -116,17 +116,17 @@ def create_video(request):
         if createvideoform.is_valid():
             request_id = createvideoform.cleaned_data['request_id']
 
-            upload_record_video = createvideoform.save(commit=False)
-            upload_record_video.sender = request.user
+            upload_video = createvideoform.save(commit=False)
+            upload_video.sender = request.user
             receiverfilter = User.objects.get(username=VidRequest.objects.get(id=request_id.id).sender)
-            upload_record_video.receiver = receiverfilter
+            upload_video.receiver = receiverfilter
 
             # Decode and save the blob data
             blob_data = request.POST['video_blob']  # Get blob video data from html input
             decoded_data = base64.b64decode(blob_data)  # Convert the video data to 64 byte type
-            upload_record_video.video.save('video_filename.mp4', ContentFile(decoded_data), save=True) # Save into video field with 64 byte content file (video name)
+            upload_video.video.save('video_filename.mp4', ContentFile(decoded_data), save=True) # Save into video field with 64 byte content file (video name)
 
-            upload_record_video.save()
+            upload_video.save()
 
             # link recent uploaded video request from Post table to Notification table
             recentVideoUpload = Post.objects.filter(sender=request.user).last()
@@ -191,13 +191,13 @@ class VideoUploadFilledView(LoginRequiredMixin   ,CreateView):
 
 def upload_filled_video(request, pk):
     if request.method == "POST":
-        uploadvideoform = VidUpFilledForm(request.user, request.POST, request.FILES)
-        if uploadvideoform.is_valid():
+        filleduploadvideoform = VidUpFilledForm(request.user, request.POST, request.FILES)
+        if filleduploadvideoform.is_valid():
 
             request_id_filter = Notification.objects.get(id=pk).videoRequest_id.id
             request_id = VidRequest.objects.get(id=request_id_filter)
 
-            upload_video = uploadvideoform.save(commit=False)
+            upload_video = filleduploadvideoform.save(commit=False)
             upload_video.sender = request.user
             receiverfilter = User.objects.get(username=VidRequest.objects.get(id=request_id.id).sender)
             upload_video.receiver = receiverfilter
@@ -210,9 +210,12 @@ def upload_filled_video(request, pk):
             Notification.objects.create(user=receiverfilter, message=f'You have received a video post from '+ str(request.user) +'.', type=6, post_id=recentVideoUpload)
             return redirect('stream:video-list')
     else:
-        uploadvideoform = VidUpFilledForm(request.user)
+        filleduploadvideoform = VidUpFilledForm(request.user)
 
-    context = {'notification': Notification.objects.filter(id=pk), 'uploadvideoform': uploadvideoform}
+    context = {
+        'notification': Notification.objects.filter(id=pk),
+        'filleduploadvideoform': filleduploadvideoform
+    }
     return render(request, 'stream/video-upload-filled.html', context)
 
 class VideoRecordFilledView(LoginRequiredMixin, UserPassesTestMixin ,UpdateView):
@@ -235,43 +238,37 @@ class VideoRecordFilledView(LoginRequiredMixin, UserPassesTestMixin ,UpdateView)
 
 def record_filled_video(request, pk):
     if request.method == "POST":
-        # print("request.method:", request.method)
-        createvideoform = VidRecFilledForm(request.user, request.POST, request.FILES)
-        if createvideoform.is_valid():
-            # print("createvideoform.isvalid:", createvideoform.is_valid())
+        filledrecordvideoform = VidRecFilledForm(request.user, request.POST, request.FILES)
+        if filledrecordvideoform.is_valid():
             request_id_filter = Notification.objects.get(id=pk).videoRequest_id.id
-            request_id = VidRequest.objects.get(id=request_id_filter)
+            video_request_id = VidRequest.objects.get(id=request_id_filter)
 
-            upload_video = createvideoform.save(commit=False)
-
-            # upload_video.request_id = request_id
-            # upload_video.request_id = Notification.objects.filter(id=pk).first().videoRequest_id.cleaned_data['id']
-
-            upload_video.sender = request.user
-            receiverfilter = User.objects.get(username=VidRequest.objects.get(id=request_id_filter).sender)
-            upload_video.receiver = receiverfilter
-            upload_video.request_id = request_id
+            upload_record_video = filledrecordvideoform.save(commit=False)
+            upload_record_video.sender = request.user
+            receiver_filled_filter = User.objects.get(username=VidRequest.objects.get(id=request_id_filter).sender)
+            upload_record_video.receiver = receiver_filled_filter
+            upload_record_video.request_id = video_request_id
 
             # Decode and save the blob data
-            blob_data = request.POST['video_blob']  # Get blob video data from html input
-            decoded_data = base64.b64decode(blob_data)  # Convert the video data to 64 byte type
-            upload_video.video.save('video_filename.mp4', ContentFile(decoded_data), save=True) # Save into video field with 64 byte content file (video name)
+            blob_data_filled = request.POST['video_blob']  # Get blob video data from html input
+            decoded_data_filled = base64.b64decode(blob_data_filled)  # Convert the video data to 64 byte type
+            upload_record_video.video.save('video_filename.mp4', ContentFile(decoded_data_filled), save=True) # Save into video field with 64 byte content file (video name)
 
-            upload_video.save()
+            upload_record_video.save()
 
             # link recent uploaded video request from Post table to Notification table
-            recentVideoUpload = Post.objects.filter(sender=request.user).last()
+            recentVideoUploadFilled = Post.objects.filter(sender=request.user).last()
 
-            Notification.objects.create(user=request.user, message=f'You have post a video to '+ str(receiverfilter) +'.', type=5, post_id=recentVideoUpload)
-            Notification.objects.create(user=receiverfilter, message=f'You have received a video post from '+ str(request.user) +'.', type=6, post_id=recentVideoUpload)
+            Notification.objects.create(user=request.user, message=f'You have post a video to '+ str(receiver_filled_filter) +'.', type=5, post_id=recentVideoUploadFilled)
+            Notification.objects.create(user=receiver_filled_filter, message=f'You have received a video post from '+ str(request.user) +'.', type=6, post_id=recentVideoUploadFilled)
             return redirect('stream:video-list')
-        else:
-            print(createvideoform.errors)
     else:
-        print(request.method)
-        createvideoform = VidRecFilledForm(request.user)
+        filledrecordvideoform = VidRecFilledForm(request.user)
 
-    context = {'notification': Notification.objects.filter(id=pk), 'createvideoform': createvideoform}
+    context = {
+        'notification': Notification.objects.filter(id=pk),
+        'filledrecordvideoform': filledrecordvideoform
+    }
     return render(request, 'stream/video-record-filled.html', context )
 
 

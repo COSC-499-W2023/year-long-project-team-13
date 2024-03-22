@@ -42,22 +42,22 @@
                         <div class="form-group" style = "padding-top: 15px;">
                             <label class="title">Title:</label>
                             {% comment %} <input type="text" class="form-control" id="title" name="title" placeholder="Enter title"> {% endcomment %}
-                            {{ createvideoform.title.errors }}
-                            {{ createvideoform.title }}
+                            {{ filledrecordvideoform.title.errors }}
+                            {{ filledrecordvideoform.title }}
                         </div>
                         <div class="form-group">
                             <div class="col-lg-15">
                                 <label class="description">Description:</label>
                             </div>
                             {% comment %} <textarea class="form-control" id="description" name="description" placeholder="Enter description" style="height: 30%"></textarea> {% endcomment %}
-                            {{ createvideoform.description.errors }}
-                            {{ createvideoform.description }}
+                            {{ filledrecordvideoform.description.errors }}
+                            {{ filledrecordvideoform.description }}
                         </div>
                         <div class="form-group" style = "padding-top: 15px; padding-bottom:25px;">
                             <label class="timelimit">Time Limit Date:</label>
                             {% comment %} <textarea class="form-control" id="description" name="description" placeholder="Enter description" style="height: 30%"></textarea> {% endcomment %}
-                            {{ createvideoform.timelimit.errors }}
-                            {{ createvideoform.timelimit }}
+                            {{ filledrecordvideoform.timelimit.errors }}
+                            {{ filledrecordvideoform.timelimit }}
                         </div>
                         <input type="hidden" name="video_blob" id="video_blob" value="your_blob_data_here" />
                     </div>
