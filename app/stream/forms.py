@@ -134,8 +134,10 @@ class VidCreateForm(forms.ModelForm):
         self.fields['request_id'].queryset = VidRequest.objects.filter(receiver__username=user.username)
 
     class Meta:
-        model = VidStream
-        fields = ["title","description", "video"]
+        model = Post
+        fields = ['title','description','timelimit','request_id']
+
+        # video = forms.JSONField()
 
 class VidRequestForm(forms.ModelForm):
     receiver = forms.ModelChoiceField(

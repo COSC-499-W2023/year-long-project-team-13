@@ -116,17 +116,17 @@ def create_video(request):
         if createvideoform.is_valid():
             request_id = createvideoform.cleaned_data['request_id']
 
-            upload_video = createvideoform.save(commit=False)
-            upload_video.sender = request.user
+            upload_record_video = createvideoform.save(commit=False)
+            upload_record_video.sender = request.user
             receiverfilter = User.objects.get(username=VidRequest.objects.get(id=request_id.id).sender)
-            upload_video.receiver = receiverfilter
+            upload_record_video.receiver = receiverfilter
 
             # Decode and save the blob data
             blob_data = request.POST['video_blob']  # Get blob video data from html input
             decoded_data = base64.b64decode(blob_data)  # Convert the video data to 64 byte type
-            upload_video.video.save('video_filename.mp4', ContentFile(decoded_data), save=True) # Save into video field with 64 byte content file (video name)
+            upload_record_video.video.save('video_filename.mp4', ContentFile(decoded_data), save=True) # Save into video field with 64 byte content file (video name)
 
-            upload_video.save()
+            upload_record_video.save()
 
             # link recent uploaded video request from Post table to Notification table
             recentVideoUpload = Post.objects.filter(sender=request.user).last()
@@ -235,10 +235,10 @@ class VideoRecordFilledView(LoginRequiredMixin, UserPassesTestMixin ,UpdateView)
 
 def record_filled_video(request, pk):
     if request.method == "POST":
-        print("request.method:", request.method)
+        # print("request.method:", request.method)
         createvideoform = VidRecFilledForm(request.user, request.POST, request.FILES)
         if createvideoform.is_valid():
-            print("createvideoform.isvalid:", createvideoform.is_valid())
+            # print("createvideoform.isvalid:", createvideoform.is_valid())
             request_id_filter = Notification.objects.get(id=pk).videoRequest_id.id
             request_id = VidRequest.objects.get(id=request_id_filter)
 

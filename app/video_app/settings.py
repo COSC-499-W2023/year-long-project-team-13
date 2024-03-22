@@ -33,8 +33,8 @@ DEBUG = True
 
 # ALLOWED_HOSTS = ['*']
 
-# ALLOWED_HOSTS = ["*"]
-ALLOWED_HOSTS = ['ebdjango-env-1.eba-uzn2yvai.ca-central-1.elasticbeanstalk.com']
+ALLOWED_HOSTS = ["*"]
+# ALLOWED_HOSTS = ['ebdjango-env-1.eba-uzn2yvai.ca-central-1.elasticbeanstalk.com']
 
 # Application definition
 
@@ -88,24 +88,24 @@ WSGI_APPLICATION = 'video_app.wsgi.application'
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 # Local SQLite3 database
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
 
 # AWS RDS database
-DATABASES = {
-  'default': {
-    'ENGINE': 'django.db.backends.postgresql_psycopg2',
-    'NAME': 'djangodatabase',
-    'USER': 'masteruser',
-    'PASSWORD': 'masteruser',
-    'HOST': 'database-django.cqtxhhmhjnhu.ca-central-1.rds.amazonaws.com',
-    'PORT': '5432',
-  }
-}
+# DATABASES = {
+#   'default': {
+#     'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#     'NAME': 'djangodatabase',
+#     'USER': 'masteruser',
+#     'PASSWORD': 'masteruser',
+#     'HOST': 'database-django.cqtxhhmhjnhu.ca-central-1.rds.amazonaws.com',
+#     'PORT': '5432',
+#   }
+# }
 
 
 # Password validation
@@ -206,5 +206,6 @@ DEFAULT_AUTO_FIELD='django.db.models.AutoField'
 
 DATA_UPLOAD_MAX_MEMORY_SIZE = 1024 * 1024 * 50  # X is the size in megabytes - 50mb
 FILE_UPLOAD_MAX_MEMORY_SIZE = 1024 * 1024 * 50  # X is the size in megabytes - 50mb
-# STATIC_ROOT=os.path.join(BASE_DIR,'productionfiles')
+
+STATIC_ROOT=os.path.join(BASE_DIR,'productionfiles')
 # MEDIA_ROOT=os.path.join(BASE_DIR,'static/media/')
