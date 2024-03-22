@@ -95,7 +95,7 @@
                     <form method="POST">
                       {% csrf_token %}
                       <div id="please">
-                          <p>Please login to your account</p>
+                          <p style="text-align: center;">Please login to your account</p>
                       </div>
                     
                       <div id="form">
@@ -106,12 +106,12 @@
                             <label for="{{ form.password.id_for_label }}" style="margin-left: 46px; margin-top: 10px;">Password:</label>
                             {{ form.password }}
                           </div>
-                          <span toggle="#{{ form.password.id_for_label }}" class="input-group-addon toggle-password fas fa-eye" style="position: relative; margin-top: 15px;"></span>
+                          <span toggle="#{{ form.password.id_for_label }}" class="input-group-addon toggle-password fas fa-eye" style="position: absolute; margin-top: 15px; margin-left: 310px;"></span>
                         </div>
                       </div>
                     
                       <div class="text-center pt-1 mb-5 pb-1">
-                        <button id="login" class="btn btn-primary btn-block fa-lg mb-3 btn-outline-info" type="submit">Log In</button>
+                        <button id="login" class="btn btn-primary btn-block fa-lg mb-3 btn-outline-info" type="submit" style="margin-top: 20px;">Log In</button>
                         <br>
                         <a class="text-muted" href="#!">Forgot password?</a>
                       </div>
