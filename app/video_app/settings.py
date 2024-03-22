@@ -33,8 +33,8 @@ DEBUG = True
 
 # ALLOWED_HOSTS = ['*']
 
-ALLOWED_HOSTS = ["*"]
-# ALLOWED_HOSTS = ['ebdjango-env-1.eba-uzn2yvai.ca-central-1.elasticbeanstalk.com']
+# ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ['ebdjango-env-1.eba-uzn2yvai.ca-central-1.elasticbeanstalk.com']
 
 # Application definition
 
@@ -87,24 +87,24 @@ WSGI_APPLICATION = 'video_app.wsgi.application'
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 # Local SQLite3 database
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
 
 # AWS RDS database
-# DATABASES = {
-#   'default': {
-#     'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#     'NAME': 'djangodatabase',
-#     'USER': 'masteruser',
-#     'PASSWORD': 'masteruser',
-#     'HOST': 'database-django.cqtxhhmhjnhu.ca-central-1.rds.amazonaws.com',
-#     'PORT': '5432',
-#   }
-# }
+DATABASES = {
+  'default': {
+    'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    'NAME': 'djangodatabase',
+    'USER': 'masteruser',
+    'PASSWORD': 'masteruser',
+    'HOST': 'database-django.cqtxhhmhjnhu.ca-central-1.rds.amazonaws.com',
+    'PORT': '5432',
+  }
+}
 
 
 # Password validation
@@ -158,9 +158,9 @@ LOGIN_URL = 'login'
 # AWS_ACCESS_KEY_ID = 'ASIA4HU6ILMRHALXJ5UV'
 # AWS_SECRET_ACCESS_KEY = 'Qukq6847BUBvzckLohMB9sIUEhzb4swWl74O/HWE'
 # AWS_SESSION_TOKEN = ''
-AWS_ACCESS_KEY_ID="ASIA4HU6ILMRGPKOZQG7"
-AWS_SECRET_ACCESS_KEY="C94nYhy8jWM7lxglTZnQDhBuqrHEIbMU5AVrgRch"
-AWS_SESSION_TOKEN="IQoJb3JpZ2luX2VjENz//////////wEaDGNhLWNlbnRyYWwtMSJIMEYCIQCJRvpZBramldd5vSGuxUowQ6IWSj4Mp3U8PXhqOYLQbgIhAPyqbyws6md2BaEPzMdUPwdKAdOXwOAx+Tffnbruz+YjKpcDCOX//////////wEQABoMODQxMDcxNzQ1ODI2IgwrzF9Kwnwyhnbu3Pgq6wI4hjJeFkhappn7j6A0A1M5+/7M80g2DiyuDvSz0+6ZNgKRs/JZrdWCXolmaH1y/WIJesK/8Bz+/ZHzoeyO1BUUpPoNSPq9hIcLrnkZhVdbPDUeClHyOj19EcV/2x+BbTwv2XPmntRZWn3YB21MLoiZiP2vp5jJcdaBuE7vbInnhSCCLtBqh4vM7p/PLV3DMZSXX9C2dc57HonbSZQZGEutXQVjL4jrA6n54TtPiw5FyzfPDsCtmiqhr6sz3lUTwVMTRw7djFJyR1fu98dyE5NysxC7Rz//7I/9FYdUox1n4vmXf0fh6y6i867Al/gWFZ8D9dhl0yitO2ESYIG7GPQS4HZdogL74XMmvTcX6VzXLFV78+ePQGCzipNA3YNvL4YgRKTaEv5VO+BekWQDeceRYPrz6X+5gPTaaDRDLz8CiSa5GVgJz+BGvCqzCKIJ6lDwma5G4QR2Jzg+2be6RHFB6qLDgVySd7YAnvQwvJPkrwY6pQHcTFuNluhHjDtWCjhZ+DD7HiqhWSjkgCsXhq6afimQveV+F5zZ5Xu/KJRLrNTX+pOq+PRf8JjRx69gr07Ba7sK41tkQbnH8RB5C/tecsI8ETz/OrjeEYJRPXFrl3hA9O4ZFMEPMyS0+gOdTjbimsps3hx+YZQO+9pUXq6F7FfkVq6l5EWLPe7HEcSdl3IF+oGC9soMMrapNbk+Rj6laI7gXSNriSw="
+AWS_ACCESS_KEY_ID="ASIA4HU6ILMRCC44DAU7"
+AWS_SECRET_ACCESS_KEY="eMaDuV3vSHQKMSaumbz1QFL/jwzmjj3pYSUqlblL"
+AWS_SESSION_TOKEN="IQoJb3JpZ2luX2VjECQaDGNhLWNlbnRyYWwtMSJHMEUCIQD6iwsLtxv3rotZb/pIe4dC/+UJ4yOsZjs2ZO17zJleRQIgZiWm0wpceAh2UF6w4lLvq11mVcyb7o29AjqkeMjOn3UqjgMIPRAAGgw4NDEwNzE3NDU4MjYiDFLBkUkksdLaTj69TirrAhkQhtzkYR2VwESMCxPSxtQI4rZtBElXtKkOiJXNiddXLSusEswIU8ElHrxPrM1sCCDU0fXeIn4etJzetg7yKijadW4NQfCCmacCOJwp7hPMU3lvTnL4odsthT051jW1YSOa24YMkv9738X885+gyYMP/KX8j3h5tpG/QIbNHdMg6AoXM99ma5Ss+V8TK9y3l4NCXuBv2Fv5F8bIjpqOLzGViCJav8zvTareeB50KtS8ZbN0EK9cFPjqIFn6OHN5pm1htCrA72DBcpTA5KhVYKduvLbWIQvBLN0qRLL48wALio5mDzAsSlZ/U3DFS7H01jYaYVbH/hB4z1JYTCzPB1ibOG+x/QHTVbCi56WG4qFGTJHAUh5mbbS5K4LNb6v1u+PGiX3L2PAgzTu307zsAqlVPgiBe9fQaE+btBChwVM6F3iZk0jxgIhvHvwF42bDIwbO5tWHb1xrE2KQyvpxBhP2p5A7hNv2HcgjhjCpjPSvBjqmAf1e7YRcnAFGmfmnSlF1znRcAJYFhMYSwkmTeEoMB02SKnKdjy6toPyKWNc/Jf1+pa2XX/Evt+cyVFPbGajYb1H0n8c3CEMHWaV8u8Wh4juykgamet/Hjf/T2oxkzanoULsx4JQamBIryreYZ6CHxkXEMGm1Cds2cU/IiitOCzu4fFVDEDagcLXAQc0muLWfHphyaaysqL+4VViBneDkxTf1T9x3c0g="
 
 AWS_STORAGE_BUCKET_NAME = 'elasticbeanstalk-ca-central-1-841071745826'
 AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
@@ -203,3 +203,5 @@ DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 #solves vidstream auto-created primary key error
 DEFAULT_AUTO_FIELD='django.db.models.AutoField'
 
+DATA_UPLOAD_MAX_MEMORY_SIZE = 1024 * 1024 * 50  # X is the size in megabytes - 50mb
+FILE_UPLOAD_MAX_MEMORY_SIZE = 1024 * 1024 * 50  # X is the size in megabytes - 50mb
