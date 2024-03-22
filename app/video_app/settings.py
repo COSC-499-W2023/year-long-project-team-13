@@ -60,6 +60,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'video_app.urls'
@@ -205,3 +206,5 @@ DEFAULT_AUTO_FIELD='django.db.models.AutoField'
 
 DATA_UPLOAD_MAX_MEMORY_SIZE = 1024 * 1024 * 50  # X is the size in megabytes - 50mb
 FILE_UPLOAD_MAX_MEMORY_SIZE = 1024 * 1024 * 50  # X is the size in megabytes - 50mb
+# STATIC_ROOT=os.path.join(BASE_DIR,'productionfiles')
+# MEDIA_ROOT=os.path.join(BASE_DIR,'static/media/')

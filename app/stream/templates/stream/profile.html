@@ -32,8 +32,12 @@
                         </li>
                         <div class="dropdown-content">
                             <li class="nav-item nav-link"><a class="nav-link active" href=" {% url 'stream:video-list' %} " id="Video Button">View Videos</a></li>
-                            <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:video-create' %}" id="New Video Button">Send Video</a>
-                            <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:request-video' %}" id="Video Request Button">Request Video</a>
+                            {% if user.userinfo.permission == 1 or user.is_superuser %}
+                                <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:video-create' %}" id="New Video Button">Send Video</a>
+                            {% endif %}
+                            {% if user.userinfo.permission == 2 or user.is_superuser %}
+                                <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:request-video' %}" id="Video Request Button">Request Video</a>
+                            {% endif %}
                         </div>
                       </div>
                       <li class="nav-item nav-link"><a class="nav-link active" href=" {% url 'stream:contact' %} " id="Add Contacts Button">Add Contacts</a></li>
@@ -232,8 +236,8 @@
                       <div class="col-sm-12">
                           <div class="card" style = "padding-top: 15px; padding-bottom: 15px;">
                               <div class="card-body">
-                                  <h5 class="d-flex align-items-center mb-3">Project Status</h5>
-                                  <p>Web Design</p>
+                                  <h5 class="d-flex align-items-center mb-3">Uploaded Videos</h5>
+                                  {% comment %} <p>Web Design</p>
                                   <div class="progress mb-3" style="height: 5px">
                                       <div class="progress-bar bg-primary" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
                                   </div>
@@ -252,7 +256,14 @@
                                   <p>Backend API</p>
                                   <div class="progress" style="height: 5px">
                                       <div class="progress-bar bg-info" role="progressbar" style="width: 66%" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
-                                  </div>
+                                  </div> {% endcomment %}
+                                    {% for item in videos %}
+                                        {% if item.sender == user %}
+                                            <video class="card-img-top" controls style="width: 40%; height: auto;">
+                                                <source src="{{ item.video.url }}" type="video/mp4">
+                                            </video>
+                                        {% endif %}
+                                    {% endfor %}
                               </div>
                           </div>
                       </div>
