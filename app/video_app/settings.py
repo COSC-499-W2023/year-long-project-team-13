@@ -23,8 +23,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'fpfd*qb+!is4hf@l6c(0n*1v4syzidbwzfsm-^%c30x*&772wc'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-# DEBUG = False
+# DEBUG = True
+DEBUG = False
 
 
 # STATIC_LOCATION = "static"
@@ -89,24 +89,24 @@ WSGI_APPLICATION = 'video_app.wsgi.application'
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 # Local SQLite3 database
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
 
 # AWS RDS database
-# DATABASES = {
-#   'default': {
-#     'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#     'NAME': 'djangodatabase',
-#     'USER': 'masteruser',
-#     'PASSWORD': 'masteruser',
-#     'HOST': 'database-django.cqtxhhmhjnhu.ca-central-1.rds.amazonaws.com',
-#     'PORT': '5432',
-#   }
-# }
+DATABASES = {
+  'default': {
+    'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    'NAME': 'djangodatabase',
+    'USER': 'masteruser',
+    'PASSWORD': 'masteruser',
+    'HOST': 'database-django.cqtxhhmhjnhu.ca-central-1.rds.amazonaws.com',
+    'PORT': '5432',
+  }
+}
 
 
 # Password validation
@@ -160,9 +160,9 @@ LOGIN_URL = 'login'
 # AWS_ACCESS_KEY_ID = 'ASIA4HU6ILMRHALXJ5UV'
 # AWS_SECRET_ACCESS_KEY = 'Qukq6847BUBvzckLohMB9sIUEhzb4swWl74O/HWE'
 # AWS_SESSION_TOKEN = ''
-AWS_ACCESS_KEY_ID="ASIA4HU6ILMRHUP7QZU3"
-AWS_SECRET_ACCESS_KEY="t4JR/Zv9eZuuNeC7PAsKU2+ywWiaGWUIza59oIqV"
-AWS_SESSION_TOKEN="IQoJb3JpZ2luX2VjEB0aDGNhLWNlbnRyYWwtMSJHMEUCIBIhbpDHe18KOL4W03aJdY9cz7mQ50HarbTIKSPnpviVAiEAw8+e5oT855dGTwNXA5aTl0LCiRLLsCs6jqoxf/jNZBQqigMINxAAGgw4NDEwNzE3NDU4MjYiDJo6wTLAONBpXHL7ayrnAjZIdfRa05UeCv/koLp5gtebz+2TJv9IqYFcP2L3y1kXqvE5pf8I8FSoHQhrrUntLdjNDjYrVR3UNM0Fkba7fvLbVR/icMaCyZw38J+KQ9AufiqZc+wtHuMgcVNT8Xc0SAMgHFDeRupkK4nv48kiU5YbVhlydmd7Sx+//WHZP6Gi3v2WRCQ0YuUInZrP0WsfKtQdNzeuV0CyV+h9bHLPesiUsYbO3b6cgJfkW0YqrY8w1VNDsUMY2tt5ihvT7upXetUGXv+5A+X4vOuEF3bizdGr010xGpq896DhM5OKWdzXkXMkO/kY/5OmHuc3L61f4TX4CoAY1Cz+IBz3QYY1G1vpWj10go/CZJ2K9GcPHzp3Ow3Mi4u79EFNwd6lrbZBiB8IV65r+CvxLK3f6GW7zdol+MWsyab+i3rQr9ftyfQ49KrZOelJv1NBge3q1LlwJ0UbAZ0A4EzbzcUggvb14Q8E2t3RxrmBMJvN8q8GOqYBmaAuXnB5mU1ksc4kNBvqKPEx0x5ZzdWhw5FlFFBiaqcAFWDllB7lmseiwJmldb6EbMIvg/bAarMKR7eoaHVL2qk61R5TKA+rcL44vs/BNI+6ToncbJUU4k3N9MyLjT7qFdzlVAwM89dy3oudIwDpSMEzlRgVpYO8618n17bI/93BjIMJuLVwWN8kL0lwKdEThCRmI552RC6fVxFkO6hyVCBHeJ1bIg=="
+AWS_ACCESS_KEY_ID="ASIA4HU6ILMROVWL4KRB"
+AWS_SECRET_ACCESS_KEY="5gM+xkF/AEzRXZS/bAcOe43vRUxcfqWQY0w65oNG"
+AWS_SESSION_TOKEN="IQoJb3JpZ2luX2VjEE8aDGNhLWNlbnRyYWwtMSJHMEUCIGgAM5vc8ehnqgdqFvcHO9Bl9SCck4f2pg9onGqdXOBFAiEAk/QhRUR63+fzgmcfLy6eASV5c3g8pFcC3BFLrN5y7/EqigMIaBAAGgw4NDEwNzE3NDU4MjYiDIPeQRUmL/aeKf0/KyrnAr5QCvk/onS6xuZHS7YX3yDObqa/+JdPTli05Xfkdx+QdXBooqQNJF+z4fz7QmmpVX6cftUvfOjAcza8PTW3+8Ima0wo5ngngsfT7PkKX1vSSTyhxjWNSgPPeWOmHmP74Ac3a4Q2mUfKANCun5+aJ6R1Teevf6Vi5TN5VMT+0Knlc/xLOZFOLmF3ZdFq2s9fqA51+9OiE2/UgseyQsfZTr1FXizwTxqAam6JS/1q6YVJ2TzDqwwNc2/qDt3dWplH9Mu3hNpQcmk7xVucZKcYSueGjEy6s6jdsOhf2ubMya0Lb3N6eVtcHIeJFqUePHIjvk1AMntPOpqLsA/JzAPS1wZh5eKBWSYmC63jZgKVOjpjvMxPsmUxar0kYKNX20hZfzLTqjtOGQ3vJWnRAm+koBUulFbsSHFWT25BRBAUwNsUAQVlLURTEa0trFteIe2VLLIKbh7N9qj3E4YVX+AkjC16FvQf+yFOMLmx/a8GOqYB2XkTsYIo0Vc0ad9W6e+JeongQ6W5Z1a+1OE112+kPHP0fBmIMBwayAiIfYit8fxiWt9U7Gob66WeEVMMTu6ejGLoVPVsZ/rd99gyTQEsWpj2rI8teGQxmmNawisI7QBRjeUPK2Mg2UxAGjylcOHIgeQgfRfOw4JaVta5Y9vCiIcEHWosS1Jc+ZHDeFpT6K6xNJ156/STpcXN6GoEeaLxeK9nUxqLYw=="
 
 AWS_STORAGE_BUCKET_NAME = 'elasticbeanstalk-ca-central-1-841071745826'
 AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
