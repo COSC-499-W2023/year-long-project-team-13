@@ -184,7 +184,15 @@ def upload_video(request):
             upload_video.sender = request.user
             receiverfilter = User.objects.get(username=VidRequest.objects.get(id=request_id.id).sender)
             upload_video.receiver = receiverfilter
+
+            # Check if the video file already exists
+            existing_video = Post.objects.filter(video=upload_video.video.name).first()
+            if existing_video:
+                # Overwrite the existing video file
+                existing_video.video.delete(save=False)  # Delete the existing video file
+                upload_video.id = existing_video.id  # Set the ID of the existing video
             upload_video.save()
+
             # link recent uploaded video request from Post table to Notification table
             recentVideoUpload = Post.objects.filter(sender=request.user).last()
 
