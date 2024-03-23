@@ -10,11 +10,11 @@
     <style>
         /* The sidebar menu */
 .sidebar {
-  height: 100%; /* 100% Full-height */
+  height: 70%; /* 100% Full-height */
   width: 0; /* 0 width - change this with JavaScript */
   position: fixed; /* Stay in place */
   z-index: 1; /* Stay on top */
-  top: 0;
+  top: 150;
   left: 0;
   background-color: #111; /* Black*/
   overflow-x: hidden; /* Disable horizontal scroll */
@@ -54,6 +54,7 @@
   color: white;
   padding: 10px 15px;
   border: none;
+  margin-bottom: 1.5em;
 }
 
 .openbtn:hover {
@@ -73,7 +74,7 @@
 }
 </style>
     {% if user.userinfo.permission == 1 or user.is_superuser %}
-        <div style = "margin-top: 15%; padding-top: 10em; clear: both;">
+        <div id='filled-container' style = "margin-top: 15%; padding-top: 10em; clear: both;">
             <div class = "horizontal-buttons" id="hor-button">
                 {% for item in notification %}
                 <a class="button" id="top_record" href=" {% url 'stream:video-record-filled' item.id%}" style="color: #FFFFFF">
