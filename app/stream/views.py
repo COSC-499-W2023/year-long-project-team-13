@@ -271,7 +271,10 @@ def record_filled_video(request, pk):
         print(request.method)
         createvideoform = VidRecFilledForm(request.user)
 
-    context = {'notification': Notification.objects.filter(id=pk), 'createvideoform': createvideoform}
+    context = {
+        'notification': Notification.objects.filter(id=pk),
+        'createvideoform': createvideoform
+        }
     return render(request, 'stream/video-record-filled.html', context )
 
 
