@@ -104,18 +104,18 @@ def setting_test(driver, username, password, newpassword):
 
     print("Test 2 : newpassword successful")
 
-    password2_input_element = driver.find_element(By.ID, "id_password2")
-    password2_input_element.click()
-    wait.until(EC.presence_of_element_located((By.ID, "id_password2")))
-
-    print("Test 3 : confirmpassword successful")
-
     # Scroll down the page
     html = driver.find_element(By.TAG_NAME, "html")
     html.send_keys(Keys.PAGE_DOWN)
     html.send_keys(Keys.PAGE_DOWN)
 
     time.sleep(0.5)
+
+    password2_input_element = driver.find_element(By.ID, "id_password2")
+    password2_input_element.click()
+    wait.until(EC.presence_of_element_located((By.ID, "id_password2")))
+
+    print("Test 3 : confirmpassword successful")
 
     wait.until(EC.visibility_of_element_located((By.ID, "Save")))
     wait.until(EC.presence_of_element_located((By.ID, "Save")))
@@ -175,6 +175,13 @@ def setting_test(driver, username, password, newpassword):
 
     print("newpassword filled successfully")
 
+    # Scroll down the page
+    html = driver.find_element(By.TAG_NAME, "html")
+    html.send_keys(Keys.PAGE_DOWN)
+    html.send_keys(Keys.PAGE_DOWN)
+
+    time.sleep(0.5)
+
     password2_input_element = driver.find_element(By.ID, "id_password2")
     password2_input_element.click()
     wait.until(EC.presence_of_element_located((By.ID, "id_password2")))
@@ -183,13 +190,6 @@ def setting_test(driver, username, password, newpassword):
     wait.until(EC.text_to_be_present_in_element_value((By.ID, "id_password2"), newpassword))
 
     print("confirmpassword filled successfully")
-
-    # Scroll down the page
-    html = driver.find_element(By.TAG_NAME, "html")
-    html.send_keys(Keys.PAGE_DOWN)
-    html.send_keys(Keys.PAGE_DOWN)
-
-    time.sleep(0.5)
 
     wait.until(EC.visibility_of_element_located((By.ID, "Save")))
     wait.until(EC.presence_of_element_located((By.ID, "Save")))
