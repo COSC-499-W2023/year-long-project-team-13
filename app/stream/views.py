@@ -9,12 +9,12 @@ from django.contrib.auth import logout, authenticate, login
 from django.dispatch import Signal
 from django.db.models import Q
 from stream.forms import UserInfoUpdateForm
-
 from . models import VidRequest, VidStream, Contact, FriendRequest, Post, Profile, UserInfo, Notification, Setting
 from . forms import VidUploadForm, VidCreateForm, VidRequestForm, UserRegistrationForm, UserUpdateForm, UserInfoUpdateForm, UserProfileUpdateForm, UserProfileUpdateForm,  ValidatingPasswordChangeForm, AddContactForm, UserPermissionForm, VidRecFilledForm, VidUpFilledForm
 
 import base64
 from django.core.files.base import ContentFile
+# from background_task import background
 
 class VideoDetailView(DetailView):
     template_name = "stream/video-detail.html"
@@ -109,6 +109,14 @@ class VideoCreateView(LoginRequiredMixin   ,CreateView):
         video = form.cleaned_data['video']
         return super().form_valid(form)
 
+# @background(schedule=0)
+# def upload_video_to_s3(video_id):
+#     # Retrieve the video object from the database
+#     video = Video.objects.get(pk=video_id)
+
+#     # Upload the video file to Amazon S3
+#     # Replace 'your_bucket_name' and 'your_video_key' with appropriate values
+#     video.video.upload_to_s3(bucket_name='your_bucket_name', key='your_video_key')
 
 def create_video(request):
     if request.method == "POST":
@@ -121,10 +129,21 @@ def create_video(request):
             receiverfilter = User.objects.get(username=VidRequest.objects.get(id=request_id.id).sender)
             upload_video.receiver = receiverfilter
 
-            # Decode and save the blob data
-            blob_data = request.POST['video_blob']  # Get blob video data from html input
-            decoded_data = base64.b64decode(blob_data)  # Convert the video data to 64 byte type
-            upload_video.video.save('video_filename.mp4', ContentFile(decoded_data), save=True) # Save into video field with 64 byte content file (video name)
+            # # Decode and save the blob data
+            # blob_data = request.POST['video_blob']  # Get blob video data from html input
+            # decoded_data = base64.b64decode(blob_data)  # Convert the video data to 64 byte type
+            # upload_video.video.delete(save=False)  # Delete the existing video file
+            # upload_video.video.save('video_filename.mp4', ContentFile(decoded_data), save=True) # Save into video field with 64 byte content file (video name)
+
+            # upload_video.save()
+            if 'video_blob' in request.POST:  # Check if the video blob exists in the request
+                blob_data = request.POST['video_blob']  # Get blob video data from HTML input
+                decoded_data = base64.b64decode(blob_data)  # Convert the video data to bytes
+                # Delete the existing video file associated with the Post instance
+                if upload_video.video:
+                    upload_video.video.delete(save=False)
+                # Save the new video file
+                upload_video.video.save('video_filename.mp4', ContentFile(decoded_data), save=True)
 
             upload_video.save()
 
@@ -134,6 +153,7 @@ def create_video(request):
             Notification.objects.create(user=request.user, message=f'You have post a video to '+ str(receiverfilter) +'.', type=5, post_id=recentVideoUpload)
             Notification.objects.create(user=receiverfilter, message=f'You have received a video post from '+ str(request.user) +'.', type=6, post_id=recentVideoUpload)
             return redirect('stream:video-list')
+
     else:
         createvideoform = VidCreateForm(request.user)
 

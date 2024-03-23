@@ -147,12 +147,42 @@ STATICFILES_DIRS = [
 LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = 'login'
 
+AWS_ACCESS_KEY_ID="ASIA4HU6ILMRCG6D2VMK"
+AWS_SECRET_ACCESS_KEY="AlXjh7ONprX3vNoXZ7TrMZYR5kc1rKUD6TGZc4x/"
+AWS_SESSION_TOKEN="IQoJb3JpZ2luX2VjEDwaDGNhLWNlbnRyYWwtMSJGMEQCIBBplx7n4+keRFrce4bkRSM0bknce7ooraIzyw0oN+dGAiA0zLXW8FNQN0pal1g5VcA/cZVrBOwEEUhIPL7DLGySaSqOAwhWEAAaDDg0MTA3MTc0NTgyNiIMsus5B3AY9kv3dtr9KusChep+uxXpgssnK7cCmh/Ihpx++I4aMG4lvnshj84GBhRwp1ud7TozkxINrNkNB6rhlNv7VYLe7erNFRQGkYRPqmK63/ZpcLHAR2ESCkKnpbsGClLph1AFRcSHU7lsNxzJbMuDen1WpImceq4nmNCAUXlBY9b8+M9Jp/4uTPNwMQF0J5rbwheKSKjF8I9J8h/mfYFyvhbZr2M5T41DDsPz6eceGVW03JonFsJisdA2ofqqwBOQk4vs1qTWdBJGNKLufhWUEFkwEs3OQBiHtf9L4nUG5k3/4lGVGANCmaZuu3dVXJp7XDYey978myBBUXeVLl9OoRfMnjdLrgUzeElJiI9rej9eyhwILY17zhgqkK8hjIkB54fROTTdVTI5yzzTvR3s1nKp2ifjxx1JKh7VF5o1/5pZIZqrRqpPSeS564uTQc/gTGcKDy3T4IT/KCFJwPbPE75Ar2WpbJcJyNbweRZGFhG7XGHtdYa3MK+z+a8GOqcBoIuFLhRYc3k476XB1w/mymx0kJVBYjpMInMglaiRFC+sXuCHXFXZl41gE608y1k/6zjjK/pCUduZmUP99p8NcERPFgR3U52hu6e5VmF/1pdwmSzEGmXM0ptlh3yHLKJZopM3he70aUtGQ/v606J9aJcnBovUBEGhbUYbXFeaIz5ul8vAPdAC9nkRTOoYz2lJPCFzUvFuD0KletUhAZnwYTyBjRQlrFo="
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/'
+AWS_STORAGE_BUCKET_NAME = 'elasticbeanstalk-ca-central-1-841071745826'
+AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
+AWS_S3_REGION_NAME = "ca-central-1"
+AWS_S3_SIGNATURE_VERSION = "s3v4"
+AWS_QUERYSTRING_EXPIRE = 604800
+CLOUDFRONT_DOMAIN = 'd18u3jaflgrcvn.cloudfront.net'
+AWS_CLOUDFRONT_DOMAIN = 'd18u3jaflgrcvn.cloudfront.net'
+AWS_S3_REGION_NAME = 'ca-central-1'
+AWS_S3_ENDPOINT_URL = f'https://s3.{AWS_S3_REGION_NAME}.amazonaws.com'
+
+S3DIRECT_DESTINATIONS = {
+    'primary_destination': {
+        'key': 'uploads/',
+        'allowed': ['image/jpg', 'image/jpeg', 'image/png', 'video/mp4'],
+    },
+}
+
+
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# MEDIA_URL = '/media/'
+
+MEDIAFILES_LOCATION = 'media'
+MEDIA_URL = f'{CLOUDFRONT_DOMAIN}/media/'
+
+PROFILE_PICTURE_FILES_LOCATION = 'media/profile-pics'
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 #solves vidstream auto-created primary key error
 DEFAULT_AUTO_FIELD='django.db.models.AutoField'
+
+DATA_UPLOAD_MAX_MEMORY_SIZE = 1024 * 1024 * 50  # X is the size in megabytes - 50mb (1 min record video = 5.5mb)
+FILE_UPLOAD_MAX_MEMORY_SIZE = 1024 * 1024 * 50  # X is the size in megabytes - 50mb
 
 STATIC_ROOT=os.path.join(BASE_DIR,'productionfiles')
 # MEDIA_ROOT=os.path.join(BASE_DIR,'static/media/')
