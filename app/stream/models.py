@@ -146,7 +146,7 @@ class UserInfo(models.Model):
     birthdate = models.DateField(default=date.today)
     permission = models.IntegerField(choices=STATUS_CHOICES, default=1)
     security_question = models.IntegerField(choices=QUESTIONS_CHOICES, default=1)
-    security_answer = models.CharField(max_length=300)
+    security_answer = models.CharField(max_length=300, default=' ')
 
     def __str__(self):
         return f"{self.user.username} PersonalInfo"
