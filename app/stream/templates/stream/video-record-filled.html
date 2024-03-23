@@ -88,10 +88,11 @@
             <form method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 <h1 style="text-align: center; color: white;">Record a Video</h1>
+                <button id="side-bar-btn" class="openbtn" onclick="toggleNav()">&#9776; Toggle Sidebar</button>
                 <div id='main-box'>
                     {% comment %} style = "padding-top: 2%;" {% endcomment %}
                     <button id="start-camera" style="height: 50%; width: 50%; background-color: black; color: #FFFFFF; margin-bottom: 10%;">Start Camera</button>
-                    <div class="video-box" style="display: none; margin: 10% auto;">
+                    <div class="video-box" style="display: none; margin: 5% auto;">
                         {% comment %} padding-bottom: 10%; display: none; margin-bottom:10%; {% endcomment %}
                         <video id="video" width="320" height="240" autoplay></video>
                     </div>
@@ -102,9 +103,8 @@
                         <a href="#">Clients</a>
                         <a href="#">Contact</a>
                       </div>
-
                       <div id="main">
-                        <button id="side-bar-btn" class="openbtn" onclick="toggleNav()"  style="display:none;">&#9776; Toggle Sidebar</button>
+
                             <div class="detailsPage card mb-3" style="display: none; width: 75%; margin: auto;box-shadow: 12em;">
 
                             <div class="form-group" style = "padding-top: 25px;">

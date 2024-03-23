@@ -6,6 +6,7 @@ let download_link = document.querySelector("#download-video");
 let videobox = document.querySelector('.video-box');
 let next_button = document.querySelector("#next");
 let side_bar_button = document.querySelector("#side-bar-btn");
+let side_bar = document.querySelector("#mySidebar");
 
 let camera_stream = null;
 let media_recorder = null;
@@ -98,6 +99,7 @@ next_button.addEventListener('click', function() {
     back_record.style.display = 'block';
     videobox.style.display = 'none';
     side_bar_button.style.display = 'inline-block';
+    side_bar.style.display = "block";
 
 });
 
@@ -110,7 +112,6 @@ back_record.addEventListener('click', function() {
     preview_button.style.display = 'none';
     back_record.style.display = 'none';
     videobox.style.display = 'block';
-    side_bar_button.style.display = 'none';
 });
 
 preview_button.addEventListener('click', function() {
