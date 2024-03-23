@@ -376,3 +376,8 @@ class ValidatingPasswordChangeForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ['password']
+
+# class ForgotPasswordForm(UserCreationForm):
+#     username = forms.CharField(widget=forms.TextInput(attrs={'placeholder' :'Username',
+#                                                              'style':'width: 400px; height: 45px; margin-left: auto; margin-right: auto; margin-bottom: 25px; border: 2px groove lightgreen;',
+#                                                              'class': 'form-control', 'required': True}))

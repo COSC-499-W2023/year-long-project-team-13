@@ -43,4 +43,6 @@ urlpatterns = [
     path('setting',stream_views.settings, name="setting"),
     path('theme',stream_views.settings, name="theme"),
     path('notifications',stream_views.notifications, name="notifications"),
+
+     path('forget-password/', auth_views.PasswordResetView.as_view(template_name='stream/forget-password.html'), name='forget-password'),
 ]
