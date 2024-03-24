@@ -209,12 +209,46 @@ class UserPermissionForm(forms.ModelForm):
       (1, 'Sender'),
       (2, 'Reciever'),
      )
+    QUESTIONS_CHOICES = (
+      (1, 'What was the name of your first pet?'),
+      (2, 'In which city were you born?'),
+      (3, 'What is the middle name of your oldest sibling?'),
+      (4, 'What is the name of your favorite sports team?'),
+      (5, 'What was the make and model of your first car?'),
+     )
+
     permission = forms.ChoiceField(choices=STATUS_CHOICES, widget=forms.Select(attrs={'style': 'width: 400px; height: 45px;margin-left: auto; margin-right: auto; margin-bottom: 25px;border: 2px groove lightgreen;',
                                                               'class': 'form-control', 'required': True}))
 
+    security_question = forms.ChoiceField(choices=QUESTIONS_CHOICES, widget=forms.Select(attrs={'style': 'width: 400px; height: 45px;margin-left: auto; margin-right: auto; margin-bottom: 25px;border: 2px groove lightgreen;',
+                                                              'class': 'form-control', 'required': True}))
+
+    security_answer = forms.CharField(widget=forms.TextInput(attrs={'placeholder' :'Your Answer',
+                                                                  'style': 'width: 400px; height: 45px; margin-left: auto; margin-right: auto; margin-bottom: 27px; border: 2px groove lightgreen;',
+                                                                  'class': 'form-control', 'required': True}))
+
     class Meta:
         model = UserInfo
-        fields = ['permission']
+        fields = ['permission', 'security_question', 'security_answer']
+
+class SecurityQuestionForm(forms.ModelForm):
+
+    username = forms.CharField(widget=forms.TextInput(attrs={'placeholder' :'Username',
+                                                             'style':'width: 400px; height: 45px; margin-left: auto; margin-right: auto; margin-bottom: 25px; border: 2px groove lightgreen;',
+                                                             'class': 'form-control', 'required': True}))
+
+    email = forms.EmailField(widget=forms.EmailInput(attrs={'placeholder' :'Email',
+                                                            'style': 'width: 400px; height: 45px;margin-left: auto; margin-right: auto; margin-bottom: 25px; border: 2px groove lightgreen;',
+                                                            'class': 'form-control', 'required': True}))
+
+    security_answer = forms.CharField(widget=forms.TextInput(attrs={'placeholder' :'Your Answer',
+                                                                  'style': 'width: 400px; height: 45px; margin-left: auto; margin-right: auto; margin-bottom: 27px; border: 2px groove lightgreen;',
+                                                                  'class': 'form-control', 'required': True}))
+
+    class Meta:
+        model = UserInfo
+        fields = ['username', 'email', 'security_answer']
+
 
 class UserProfileUpdateForm(forms.ModelForm):
 

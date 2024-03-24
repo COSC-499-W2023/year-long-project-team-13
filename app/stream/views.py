@@ -11,7 +11,7 @@ from django.db.models import Q
 from stream.forms import UserInfoUpdateForm
 
 from . models import VidRequest, VidStream, Contact, FriendRequest, Post, Profile, UserInfo, Notification, Setting
-from . forms import VidUploadForm, VidCreateForm, VidRequestForm, UserRegistrationForm, UserUpdateForm, UserInfoUpdateForm, UserProfileUpdateForm, UserProfileUpdateForm,  ValidatingPasswordChangeForm, AddContactForm, UserPermissionForm, VidRecFilledForm, VidUpFilledForm
+from . forms import VidUploadForm, VidCreateForm, VidRequestForm, UserRegistrationForm, UserUpdateForm, UserInfoUpdateForm, UserProfileUpdateForm, UserProfileUpdateForm,  ValidatingPasswordChangeForm, AddContactForm, UserPermissionForm, VidRecFilledForm, VidUpFilledForm, SecurityQuestionForm
 
 import base64
 from django.core.files.base import ContentFile
@@ -303,6 +303,7 @@ def register(request):
     if request.method == "POST":
         registrationform = UserRegistrationForm(request.POST)
         userpermissionform = UserPermissionForm(request.POST)
+
         if registrationform.is_valid() and userpermissionform.is_valid():
             new_user = registrationform.save()
             user_signed_up.send(sender=User, user=new_user)
@@ -315,12 +316,63 @@ def register(request):
     else:
         registrationform = UserRegistrationForm()
         userpermissionform = UserPermissionForm()
+        # usersecurityform = UserSecurityForm()
 
     context = {
         'registrationform': registrationform,
         'userpermissionform': userpermissionform,
-    }
+        # 'usersecurityform' : usersecurityform,
+        }
     return render(request, 'stream/register.html', context)
+
+from django.contrib.auth.models import User
+from django.contrib import messages
+from .forms import SecurityQuestionForm
+
+from django.contrib.auth.models import User
+from django.shortcuts import render, redirect
+from django.contrib import messages
+from .forms import SecurityQuestionForm
+from .models import UserInfo
+
+from django.contrib.auth.models import User
+from django.shortcuts import render, redirect
+from django.contrib import messages
+from .forms import SecurityQuestionForm
+
+def password_reset(request):
+    if request.method == 'POST':
+        form = SecurityQuestionForm(request.POST)
+        if form.is_valid():
+            email = form.cleaned_data.get('email')
+            username = form.cleaned_data.get('username')
+            security_answer = form.cleaned_data.get('security_answer')
+
+            # Check if the user exists with the provided email and username
+            try:
+                user = User.objects.get(email=email, username=username)
+            except User.DoesNotExist:
+                messages.error(request, 'User with this email or username does not exist.')
+                return redirect('stream:forget-password')
+
+            # Fetch the security question associated with the user's account
+            security_question = user.userinfo.security_question
+
+            # Check if the provided answer matches the stored answer
+            if user.userinfo.security_answer == security_answer:
+                # Redirect to password reset page or any other desired page
+                return redirect('stream:password_reset_done')
+            else:
+                messages.error(request, 'Incorrect security answer.')
+    else:
+        form = SecurityQuestionForm()
+        # Get the user's security question
+        form = SecurityQuestionForm(security_question=request.user.userinfo.security_question)
+    return render(request, 'forget-password.html', {'form': form})
+
+
+
+
 
 
 @login_required
