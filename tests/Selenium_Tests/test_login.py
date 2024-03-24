@@ -27,6 +27,10 @@ def login_page_test(driver, username, password):
     password_input_element.send_keys("Admin123")
     wait.until(EC.text_to_be_present_in_element_value((By.ID, "id_password"), "Admin123"))
 
+    # Find the eye icon and click it
+    eye_icon_element = driver.find_element(By.CLASS_NAME, "toggle-password")
+    eye_icon_element.click()
+
     # Scroll down the login page
     html = driver.find_element(By.TAG_NAME, "html")
     html.send_keys(Keys.PAGE_DOWN)
@@ -44,6 +48,7 @@ def login_page_test(driver, username, password):
         print("TEST 0: `Login` failed Did not go home")
     else:
         print("TEST: 0 `Login` successful")
+
 # Create a ChromeOptions object with the log level set to 3
 chrome_options = webdriver.ChromeOptions()
 chrome_options.add_argument("--log-level=3")  # Set log level to suppress warnings
@@ -65,4 +70,3 @@ print("Login Page test Completed")
 
 # Close the webdriver
 driver.quit()
-

@@ -7,6 +7,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium import webdriver
 import time
 from selenium.webdriver.support.ui import Select
+from selenium.webdriver.support.ui import WebDriverWait
 
 
 
@@ -22,10 +23,14 @@ def register_page_test(driver, username, email, password, permission):
     email_element.send_keys(email)
     wait.until(EC.text_to_be_present_in_element_value((By.ID, "id_email"), email))
 
-
     password1_element = driver.find_element(By.ID, "id_password1")
     password1_element.send_keys(password)
     wait.until(EC.text_to_be_present_in_element_value((By.ID, "id_password1"), password))
+
+    eye_icon_elements = driver.find_elements(By.CLASS_NAME, "toggle-password")
+    for eye_icon in eye_icon_elements:
+        wait.until(EC.element_to_be_clickable((By.CLASS_NAME, "toggle-password")))
+    eye_icon.click()
 
     password2_element = driver.find_element(By.ID, "id_password2")
     password2_element.send_keys(password)
