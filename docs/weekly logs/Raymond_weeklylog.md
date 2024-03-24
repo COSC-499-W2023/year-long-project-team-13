@@ -516,3 +516,28 @@ Link the button after send me instruction button is clicked (in progress)
 ### Additional
 - Worked on my own weekly log, contribute to team weekly log.
 - Looking at different youtube videos to gain insights on how to work on forgot password on the login page so that user can reset the password when they totally forgot their password by getting a reset link through email and change to a new password.
+
+
+## Term 2 Week 11 2024/03/18 ~ 2024/03/24
+
+- Type of tasks you worked on
+
+![Tasks](./images/tasks/SittPaing_T2W11-Task.png)
+
+## Recap of week's goals
+
+This week, I worked on the forgot password UI and make changes to the register page. I created a new branch to make the forgot password UI and add the security questions and answer form on the register page so that user can choose their security question and put in the answer before they register. The aim of this feature is for resetting the password in case if user forgot the password they will be asked to provide their username, email and the security question will appear so that they can input their answer and the password can be reset if the user input the correct answer. I was going to do the reset password by receiving email but its a tough task and its will be time consuming without guarantee that its going to function as expected so we come up with another solution which is making use of security question and answer to reset the password which will be easier compared to receiving email. When working on the task, the issue i have on the register page is that the form is not appearing when i try to make the spinner for questions and form for answer so I have to troubleshoot and get help from my teammate to overcome the issue. Now I am working on forgot password UI and its still in progress. I am currently making the form appear on the page so that user can input their username, email and security answers to reset the password but the form are not appearing as expected so I am trying to tackle this issue and link it to another page if it is successful and user input the correct answer.
+
+
+Security question spinner and answer form on register page
+
+![Security question spinner and answer form on register page](./images/Sitt_images/Term_2_Week_11/Security_Question_Answer_Register.png)
+
+Password form after forgot password link is clicked(in progress)
+
+![Password form after forgot password link is clicked(in progress)](./images/Sitt_images/Term_2_Week_11/Forgot_password_UI(in_progress).png)
+
+
+### Additional
+- Worked on my own weekly log, contribute to team weekly log.
+- Trying on forgot-password UI to work by searching online to tackle the issue and will be getting help if needed from my teammates.
