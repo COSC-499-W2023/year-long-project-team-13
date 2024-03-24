@@ -875,3 +875,75 @@ id connect to "friend request", "video request", "post", and "video" table.
 
 ### Weekly Log / Team Weekly Log / Additional
   - Worked on my own weekly log, contribute to team weeklog.
+
+# Preferred name -> Ssc name -> Github name
+
+- Adrian -> Adrian Fong -> AdrianFWM
+
+## Term 2 Week 11 2023/03/18~2023/03/24
+
+- Task I have worked on this week.
+![Weekly Task T2-11](./images/tasks/AdrianFong_T2_Week11_Task.jpg)
+
+## Recap on your week's goals
+
+### Profie Image to S3 cloudfront [Complete]
+- Worked on "S3 upload video and profile image from webpage" on project board, users can upload their profile picture to S3 cloudfront and load the url from S3 to webpage.
+
+  - [S3 cloudfront Pull Request/Commit](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/184)
+  - [S3 testing user upload Pull Request/Commit](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/195)
+  - Image to S3 setting.py screenshot code
+![Image to S3 setting.py screenshot code](./images/Adrian_images/T2_Week_11/image_to_s3_setting.jpg)
+  - Image to S3 location screenshot code
+![Image to S3 location screenshot code](./images/Adrian_images/T2_Week_11/image_to_s3_storage.jpg)
+  - Profile Image upload to S3 screenshot (S3 server page)
+![Profile Image upload to S3 screenshot (S3 server page)](./images/Adrian_images/T2_Week_11/s3_image_profile.jpg)
+
+### Upload/record video and image overwrite [Complete]
+- Worked on "SQL overwrites file with same name" on project board, users can upload same filename to S3 and overwrites file with same name with new content, and also overwrites on SQL database.
+
+  - [S3 cloudfront Pull Request/Commit](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/184)
+  - [S3 testing Pull Request/Commit](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/195)
+  - Upload video overwrite code screenshot code
+![Upload video overwrite code screenshot code](./images/Adrian_images/T2_Week_11/upload_video_overwrite.jpg)
+  - Record video overwrite code screenshot code
+![Record video overwrite code screenshot code](./images/Adrian_images/T2_Week_11/create_video_overwrite.jpg)
+
+### Elastic Beanstalk Increase file upload size limit [Complete]
+- Worked on "AWS Elastic beanstalk file upload increase" on project board, users can upload files on elastic beanstalk server up to 50 MB.
+
+  - [EB file increase Pull Request/Commit](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/184)
+  - [EB file increase testing Pull Request/Commit](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/195)
+  - Elastic beanstalk server nginx folder directory screenshot code
+![Elastic beanstalk server nginx folder directory screenshot code](./images/Adrian_images/T2_Week_11/django_config.jpg)
+  - Updated AWS Elastic Beanstalk directory screenshot (Elastic Beanstalk page)
+![Updated AWS Elastic Beanstalk directory screenshot (Elastic Beanstalk page)](./images/Adrian_images/T2_Week_11/aws_nginx.jpg)
+  - Nginx file upload size limit screenshot code
+![Nginx file upload size limit screenshot code](./images/Adrian_images/T2_Week_11/nginx_limit.jpg)
+
+### Update/Clean up Requirement.txt [Complete]
+- Worked on "Clean up requirement.txt" on project board, cleaned up unnecessary installation package in requirement.txt.
+
+  - [Requirement.txt Pull Request/Commit](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/184)
+  - [Requirement.txt testing Pull Request/Commit](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/195)
+  - Updated requirement.txt screenshot
+![Updated requirement.txt screenshot](./images/Adrian_images/T2_Week_11/Update_requirement.jpg)
+
+### Fixed Login and Upload Video page css layout [Complete]
+- Worked on fixing login and upload page css layout because login and upload button and login username and password are out of place.
+
+  - [Login and Upload Video page css layout Pull Request/Commit](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/184)
+  - [Login and Upload Video page css layout testing Pull Request/Commit](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/195)
+  - Login css layout fix screenshot (Red arrow)
+![Login css layout fix screenshot (Red arrow)](./images/Adrian_images/T2_Week_11/login_css.jpg)
+  - Upload css layout fix screenshot (Red arrow)
+![Upload css layout fix screenshot (Red arrow)](./images/Adrian_images/T2_Week_11/upload_css.jpg)
+
+### Review other team member's pull request
+- Reviewed Beth's notification pull request on video post and video create.
+- All Selenium tests and pytests runs and passed.
+  - [Notifications Pull Request/Commit](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/186)
+
+### Weekly Log / Team Weekly Log / Additional
+  - Worked on my own weekly log, contribute to team weeklog.
+  - Although I created a overwrite function for video and image, but later on Ethan wrote increment filename if same filename exist in S3 cloudfront server; therefore, my overwrite function is to prevent file to have conflict on SQL when filename is not incremented on S3.
