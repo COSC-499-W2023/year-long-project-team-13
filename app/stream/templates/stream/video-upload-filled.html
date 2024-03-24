@@ -93,9 +93,10 @@ padding: 20px;
                             <div id="mySidebar" class="sidebar">
                                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                                 {% for item in notification %}
-                                    <div style="color: white;">
-                                    {{ item.message|safe|linebreaksbr }}
-                                    </div>
+                                        <p style='margin:0; font-size:1.35em; color:white;'> {{ item.notification_as_list.1 }} </p>
+                                        <p style='margin:0; color:white;'> {{ item.notification_as_list.2 }} </p>
+                                        <p style='margin:0; color:white;'> {{ item.notification_as_list.3 }} </p>
+                                        <br>
                                 {% endfor %}
                             </div>
                             <div id="main">

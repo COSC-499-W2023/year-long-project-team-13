@@ -176,7 +176,8 @@ def upload_video(request):
         uploadvideoform = VidUploadForm(request.user)
 
     context = {
-        'uploadvideoform': uploadvideoform
+        'uploadvideoform': uploadvideoform,
+        'notification': Notification.objects.filter(user=request.user, type=4)
     }
     return render(request, 'stream/video-upload.html', context)
 
