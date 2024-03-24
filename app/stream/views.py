@@ -144,6 +144,7 @@ def create_video(request):
                     upload_video.video.delete(save=False)
                 # Save the new video file
                 upload_video.video.save('video_filename.mp4', ContentFile(decoded_data), save=True)
+                upload_video.user.save()
 
             upload_video.save()
 

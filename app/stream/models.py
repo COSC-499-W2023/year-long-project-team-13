@@ -101,6 +101,14 @@ class Post(models.Model):
     def get_absolute_url(self):
         return reverse("video-detail", kwargs={"pk": self.pk})
 
+    def save(self, *args, **kwargs):
+        # Add the user attribute to the File object
+        self.video.file.user = self.sender
+
+        # Call the original save method
+        super().save(*args, **kwargs)
+
+
 # Update User's Profile Picture
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -111,6 +119,7 @@ class Profile(models.Model):
         return f"{self.user.username} Profile "
 
     def save(self, *args, **kwargs):
+        self.image.file.user = self.user
         super().save(*args, **kwargs)
 
         # img = Image.open(self.image.path)
