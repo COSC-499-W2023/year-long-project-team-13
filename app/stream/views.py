@@ -163,13 +163,12 @@ def create_video(request):
     }
     return render(request, 'stream/video-create.html', context)
 
-
 class VideoUploadView(LoginRequiredMixin   ,CreateView):
     model = Post
     success_url = "/"
     template_name = 'stream/video-upload.html'
     fields = ['title', 'description','video']
-    #this is to make sure that the logged in user is the one to upload the content
+    # this is to make sure that the logged in user is the one to upload the content
     def form_valid(self, form):
         form.instance.sender = self.request.user
         return super().form_valid(form)
@@ -186,12 +185,12 @@ def upload_video(request):
             receiverfilter = User.objects.get(username=VidRequest.objects.get(id=request_id.id).sender)
             upload_video.receiver = receiverfilter
 
-            # # Check if the video file already exists
-            # existing_video = Post.objects.filter(video=upload_video.video.name).first()
-            # if existing_video:
-            #     # Overwrite the existing video file
-            #     existing_video.video.delete(save=False)  # Delete the existing video file
-            #     upload_video.id = existing_video.id  # Set the ID of the existing video
+            # Check if the video file already exists
+            existing_video = Post.objects.filter(video=upload_video.video.name).first()
+            if existing_video:
+                # Overwrite the existing video file
+                existing_video.video.delete(save=False)  # Delete the existing video file
+                upload_video.id = existing_video.id  # Set the ID of the existing video
             upload_video.save()
 
             # link recent uploaded video request from Post table to Notification table
@@ -232,15 +231,14 @@ def upload_filled_video(request, pk):
             upload_video.receiver = receiverfilter
             upload_video.request_id = request_id
 
-            # # Check if the video file already exists
-            # existing_video = Post.objects.filter(video=upload_video.video.name).first()
-            # if existing_video:
-            #     # Overwrite the existing video file
-            #     existing_video.video.delete(save=False)  # Delete the existing video file
-            #     upload_video.id = existing_video.id  # Set the ID of the existing video
-            # upload_video.save()
-
+            # Check if the video file already exists
+            existing_video = Post.objects.filter(video=upload_video.video.name).first()
+            if existing_video:
+                # Overwrite the existing video file
+                existing_video.video.delete(save=False)  # Delete the existing video file
+                upload_video.id = existing_video.id  # Set the ID of the existing video
             upload_video.save()
+
             # link recent uploaded video request from Post table to Notification table
             recentVideoUpload = Post.objects.filter(sender=request.user).last()
 
@@ -259,11 +257,11 @@ class VideoRecordFilledView(LoginRequiredMixin, UserPassesTestMixin ,UpdateView)
     success_url = "/"
     fields = ['title','description','timelimit','request_id']
 
-    #this is to make sure that the logged in user is the one to upload the content
+    # this is to make sure that the logged in user is the one to upload the content
     def form_valid(self, form):
         form.instance.sender = self.request.user
         return super().form_valid(form)
-    #this function prevents other people from updating your videos
+    # this function prevents other people from updating your videos
     def test_func(self):
         video = self.get_object()
         if self.request.user == video.sender:
@@ -290,22 +288,24 @@ def record_filled_video(request, pk):
             upload_video.receiver = receiverfilter
             upload_video.request_id = request_id
 
-            # Decode and save the blob data
-            blob_data = request.POST['video_blob']  # Get blob video data from html input
-            decoded_data = base64.b64decode(blob_data)  # Convert the video data to 64 byte type
-            upload_video.video.save('video_filename.mp4', ContentFile(decoded_data), save=True) # Save into video field with 64 byte content file (video name)
+            # # Decode and save the blob data
+            # blob_data = request.POST['video_blob']  # Get blob video data from html input
+            # decoded_data = base64.b64decode(blob_data)  # Convert the video data to 64 byte type
+            # upload_video.video.save('video_filename.mp4', ContentFile(decoded_data), save=True) # Save into video field with 64 byte content file (video name)
 
-            upload_video.save()
+            # upload_video.save()
 
             # Check if the video file already exists
-            # if 'video_blob' in request.POST:  # Check if the video blob exists in the request
-            #     blob_data = request.POST['video_blob']  # Get blob video data from HTML input
-            #     decoded_data = base64.b64decode(blob_data)  # Convert the video data to bytes
-            #     # # Delete the existing video file associated with the Post instance
-            #     # if upload_video.video:
-            #     #     upload_video.video.delete(save=False)
-            #     # Save the new video file
-            #     upload_video.video.save('video_filename.mp4', ContentFile(decoded_data), save=True)
+            if 'video_blob' in request.POST:  # Check if the video blob exists in the request
+                blob_data = request.POST['video_blob']  # Get blob video data from HTML input
+                decoded_data = base64.b64decode(blob_data)  # Convert the video data to bytes
+                # Delete the existing video file associated with the Post instance
+                if upload_video.video:
+                    upload_video.video.delete(save=False)
+                # Save the new video file
+                upload_video.video.save('video_filename.mp4', ContentFile(decoded_data), save=True)
+
+            upload_video.save()
 
             # link recent uploaded video request from Post table to Notification table
             recentVideoUpload = Post.objects.filter(sender=request.user).last()
