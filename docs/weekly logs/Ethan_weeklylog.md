@@ -360,3 +360,20 @@
   - The top horizontal buttons for switching between recording and uploading videos doesn't get overlapped under the top
   - The bottom buttons for going between pages, doesn't get blocked by the recording box.
   - ![Top horizontal buttons](./images/Ethan_stuff/t2w10/top_horizontal_button.png)
+
+# Preferred name -> Ssc name -> Github name
+
+- Ethan -> Ethan Hsu -> YuchenHsu
+
+## Week 11 2024/03/18 ~ 2024/03/24
+
+- Type of tasks you worked on (screenshot from Peer Eval question)
+
+![Tasks](./images/tasks/ethan_term2_week11.png)
+
+- This week, I worked on the S3 uploading with Adrian. I managed to make it so that when a file is uploaded the file is store in the S3 bucket with their username as the folder name. (which is the primary key for the user that they cannot change).
+- I also worked on making sure that if the user uploads a video or image, it wouldn't just replace the file with the same name, but instead add a number to the end of the file name.
+- I also helped Beth on the record and upload page to display the video request detail.
+  - Uploading function to check for duplicate names and specify location
+  - ![S3 Upload](./images/Ethan_stuff/t2w11/MediaUpload.png)
+  - ![S3 Upload](./images/Ethan_stuff/t2w11/ProfileUpload.png)
