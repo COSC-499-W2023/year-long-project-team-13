@@ -144,7 +144,7 @@ def create_video(request):
                     upload_video.video.delete(save=False)
                 # Save the new video file
                 upload_video.video.save('video_filename.mp4', ContentFile(decoded_data), save=True)
-                upload_video.user.save()
+                # upload_video.user.save()
 
             upload_video.save()
 
@@ -186,12 +186,12 @@ def upload_video(request):
             receiverfilter = User.objects.get(username=VidRequest.objects.get(id=request_id.id).sender)
             upload_video.receiver = receiverfilter
 
-            # Check if the video file already exists
-            existing_video = Post.objects.filter(video=upload_video.video.name).first()
-            if existing_video:
-                # Overwrite the existing video file
-                existing_video.video.delete(save=False)  # Delete the existing video file
-                upload_video.id = existing_video.id  # Set the ID of the existing video
+            # # Check if the video file already exists
+            # existing_video = Post.objects.filter(video=upload_video.video.name).first()
+            # if existing_video:
+            #     # Overwrite the existing video file
+            #     existing_video.video.delete(save=False)  # Delete the existing video file
+            #     upload_video.id = existing_video.id  # Set the ID of the existing video
             upload_video.save()
 
             # link recent uploaded video request from Post table to Notification table
@@ -232,13 +232,13 @@ def upload_filled_video(request, pk):
             upload_video.receiver = receiverfilter
             upload_video.request_id = request_id
 
-            # Check if the video file already exists
-            existing_video = Post.objects.filter(video=upload_video.video.name).first()
-            if existing_video:
-                # Overwrite the existing video file
-                existing_video.video.delete(save=False)  # Delete the existing video file
-                upload_video.id = existing_video.id  # Set the ID of the existing video
-            upload_video.save()
+            # # Check if the video file already exists
+            # existing_video = Post.objects.filter(video=upload_video.video.name).first()
+            # if existing_video:
+            #     # Overwrite the existing video file
+            #     existing_video.video.delete(save=False)  # Delete the existing video file
+            #     upload_video.id = existing_video.id  # Set the ID of the existing video
+            # upload_video.save()
 
             upload_video.save()
             # link recent uploaded video request from Post table to Notification table
@@ -301,9 +301,9 @@ def record_filled_video(request, pk):
             if 'video_blob' in request.POST:  # Check if the video blob exists in the request
                 blob_data = request.POST['video_blob']  # Get blob video data from HTML input
                 decoded_data = base64.b64decode(blob_data)  # Convert the video data to bytes
-                # Delete the existing video file associated with the Post instance
-                if upload_video.video:
-                    upload_video.video.delete(save=False)
+                # # Delete the existing video file associated with the Post instance
+                # if upload_video.video:
+                #     upload_video.video.delete(save=False)
                 # Save the new video file
                 upload_video.video.save('video_filename.mp4', ContentFile(decoded_data), save=True)
 
