@@ -138,7 +138,8 @@ def create_video(request):
         createvideoform = VidCreateForm(request.user)
 
     context = {
-        'createvideoform': createvideoform
+        'createvideoform': createvideoform,
+        'notification': Notification.objects.filter(user=request.user, type=4)
     }
     return render(request, 'stream/video-create.html', context)
 

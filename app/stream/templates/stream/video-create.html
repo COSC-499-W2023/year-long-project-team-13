@@ -7,8 +7,74 @@
 {% bootstrap_javascript %} {% endcomment %}
 {% load static %}
     <link href="{% static 'css/styleVideoCreate.css' %}" rel="stylesheet">
+    <style>
+        /* The sidebar menu */
+.sidebar {
+  height: 70%; /* 100% Full-height */
+  width: 0; /* 0 width - change this with JavaScript */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Stay on top */
+  top: 150;
+  left: 0;
+  background-color: #111; /* Black*/
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 60px; /* Place content 60px from the top */
+  transition: 0.5s; /* 0.5 second transition effect to slide in the sidebar */
+}
+
+/* The sidebar links */
+.sidebar a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidebar a:hover {
+  color: #f1f1f1;
+}
+
+/* Position and style the close button (top right corner) */
+.sidebar .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+/* The button used to open the sidebar */
+.openbtn {
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  margin-bottom: 1.5em;
+}
+
+.openbtn:hover {
+  background-color: #444;
+}
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+  transition: margin-left .5s; /* If you want a transition effect */
+  padding: 20px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidebar {padding-top: 15px;}
+  .sidebar a {font-size: 18px;}
+}
+</style>
     {% if user.userinfo.permission == 1 or user.is_superuser %}
-        <div style = "margin-top: 15%; padding-top: 10em; clear: both;">
+        <div id='filled-container' style = "margin-top: 15%; padding-top: 10em; clear: both;">
             <div class = "horizontal-buttons" id="hor-button">
                 <a class="button" id="top_record" href=" {% url 'stream:video-create' %}" style="color: #FFFFFF">
                     Record
@@ -20,6 +86,7 @@
             <form method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 <h1 style="text-align: center; color: white;">Record a Video</h1>
+                <button id="side-bar-btn" class="openbtn" onclick="toggleNav()">&#9776; Toggle Sidebar</button>
                 <div id='main-box'>
                     {% comment %} style = "padding-top: 2%;" {% endcomment %}
                     <button id="start-camera" style="height: 50%; width: 50%; background-color: black; color: #FFFFFF; margin-bottom: 10%;">Start Camera</button>
@@ -27,6 +94,13 @@
                         {% comment %} padding-bottom: 10%; display: none; margin-bottom:10%; {% endcomment %}
                         <video id="video" width="320" height="240" autoplay></video>
                     </div>
+                    <div id="mySidebar" class="sidebar">
+                        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                        {% for item in notification %}
+                            {{ item.message|safe|linebreaksbr }}
+                        {% endfor %}
+                    </div>
+                    <div id="main">
                     <div class="detailsPage card mb-3" style="display: none; width: 75%; margin: auto;box-shadow: 12em;">
                         <div class="form-group" style = "padding-top: 25px;">
                             <label class="requestID">Video Request ID:</label>
@@ -62,6 +136,7 @@
                         </div>
                         <input type="hidden" name="video_blob" id="video_blob" value="your_blob_data_here" />
                     </div>
+                </div>
                     <div class="previewPage" style="display: none;">
                         <div class="card mb-3" style="width: 75%; box-shadow: 12em; margin: auto;">
                             <img class="rounded-circle border-dark" src="{{ user.profile.image.url }}" style="border-color: red;" width="50" height="50">
@@ -96,6 +171,7 @@
             </form>
         </div>
         <script src=" {% static 'assets/js/videoCreate.js'%} "></script>
+        <script src = " {% static 'assets/js/sideBar.js'%} "></script>
     {% else %}
         <div class="container">
             <h2>Oops! It seems you’ve reached a page where access is restricted. <br>
