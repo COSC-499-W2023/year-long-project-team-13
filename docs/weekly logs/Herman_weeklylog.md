@@ -339,8 +339,20 @@ Add Contact Function, Add contact UI
 ![Tasks](./images/tasks/Week10Term2UploadVideoHerman.png)
 ![Tasks](./images/tasks/Week10Term2RegisterUpdatedHerman.png)
 
+- Applicable date range
+## Week 11 Term 2 03/18/24~03/24/24
+
+ # Preferred name -> Ssc name -> Github name
+
+- Herman -> Herman Sood -> Herman Sood
+
+- Recap on your week's goals-Which features were yours in the project plan for this milestone? For term 2 week 11, I wrapped up the password viewable feature for the register, login, and setting page where it was applicable and adjusted the UI accordingly as well. I also updated the selenium test to ensure everything is good to go with these changes. Now I am going to start on a notification indicator feature in which a red number with a circle icon or something similar will be an indicator for whenever a user gets any new notifications. 
+  - Which tasks from the project board are associated with these features? Password viewable, Notification Indicator  
+  - Among these tasks, which have you completed/in progress in the last week? Password viewable
 
 
+![Tasks](./images/tasks/Week11Term2PeerEvalHerman.png)
+![Tasks](./images/tasks/Week11Term2RegisterUpdatedHerman.png)
 
 
 
