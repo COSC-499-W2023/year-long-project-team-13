@@ -21,7 +21,7 @@
                         <a class="mr-2" href="{% url 'stream:user-videos' item.sender.username %}" style="text-align: start;">{{ item.sender }}</a>
                         <h12 style="text-align: start;">{{ item.sendtime }}</h12>
                         <video class="card-img-top" controls style="width: 100%; height: auto;">
-                            <source src="{{ item.video.url }}" type="video/mp4">
+                            <source src="{{ item.video }}" type="video/mp4">
                         </video>
                         <div class="card-body">
                             <h5 class="card-title"><a href="{% url 'stream:video-detail' item.id  %}">{{ item.title }}</a></h5>

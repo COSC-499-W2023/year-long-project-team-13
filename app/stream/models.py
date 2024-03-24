@@ -90,7 +90,8 @@ class Post(models.Model):
     sendtime = models.DateTimeField(default=timezone.now)
     timelimit = models.DateTimeField(default=timezone.now)
     # video = models.FileField(upload_to='')
-    video = models.FileField(storage=MediaStorage())
+    # video = models.FileField(storage=MediaStorage())
+    video = models.URLField(null=True)
     video_id = models.ForeignKey(VidStream, on_delete=models.SET_NULL, null=True)
     request_id = models.ForeignKey(VidRequest, on_delete=models.SET_NULL, null=True)
 

@@ -16,6 +16,9 @@ import base64
 from django.core.files.base import ContentFile
 # from background_task import background
 
+import boto3
+from django.conf import settings
+
 class VideoDetailView(DetailView):
     template_name = "stream/video-detail.html"
     model = Post
@@ -175,9 +178,10 @@ class VideoUploadView(LoginRequiredMixin   ,CreateView):
 
 def upload_video(request):
     if request.method == "POST":
-        uploadvideoform = VidUploadForm(request.user, request.POST, request.FILES)
+        uploadvideoform = VidUploadForm(request.user, request.POST)
+        print("uploadvideoform.isvalid:", uploadvideoform.is_valid())
         if uploadvideoform.is_valid():
-
+            print("uploadvideoform.isvalid:", uploadvideoform.is_valid())
             request_id = uploadvideoform.cleaned_data['request_id']
 
             upload_video = uploadvideoform.save(commit=False)
@@ -186,11 +190,25 @@ def upload_video(request):
             upload_video.receiver = receiverfilter
 
             # Check if the video file already exists
-            existing_video = Post.objects.filter(video=upload_video.video.name).first()
-            if existing_video:
-                # Overwrite the existing video file
-                existing_video.video.delete(save=False)  # Delete the existing video file
-                upload_video.id = existing_video.id  # Set the ID of the existing video
+            # existing_video = Post.objects.filter(video=upload_video.video.name).first()
+            # if existing_video:
+            #     # Overwrite the existing video file
+            #     existing_video.video.delete(save=False)  # Delete the existing video file
+            #     upload_video.id = existing_video.id  # Set the ID of the existing video
+
+            video_file = request.FILES.get('video')
+            s3_client = boto3.client('s3',
+                                         aws_access_key_id="ASIA4HU6ILMRAHPI2TQP",
+                                         aws_secret_access_key="JAEwz0cDFNctBmlx0NvzvmTHdYXl+n8g2C4vIYtj",
+                                         aws_session_token="IQoJb3JpZ2luX2VjEFgaDGNhLWNlbnRyYWwtMSJIMEYCIQCV/igMMI22NQWi2mwXvc2crktOxKUAxPnBroSLTbTQBwIhAIiaEfK4MUqVLYJNDlUjSb2u4VkvUe9rjsCFAT5w+SQBKo4DCHEQABoMODQxMDcxNzQ1ODI2IgzE4+FOdczK0ZuFTPoq6wLu1loCSUGr4FdgEK076vyTAzIPEvEcOXc/R8eawPvQr5LxBixJPknk+drhH1NmGq7GJkMmItvx258BQPrL8vo8hLyY15KeTWyt96ECj+hr51mdcRRQ1nKe9SJahJgLJhxmK1hNAVjLoBdU7SXCcGUDdoNtItF4CnYhYQlGDngJhnHrSvoVJROkHNR5gKaUwFBE6aqzz9cOQzwWMYsUc2R7VCceYZDQzRPgc18uxlalYUHSOkhlmj6Yh/DroXzd9q7bDwnk+RBe2xHKmXp/Dz7yjYfjNZIUcbj2dQa5Rgi+AnARnmnfzxodDdWXGI3eBFJk/JJgYFuEMkxlVV4FCsf7tQeJFfpveWy1ymAAys4u8a55ctv+SNrMAum7Q6gr/CtHUCVvKa8J92uWyVdfdIYTWqPMvmlnKEXyntXTDOs2XNxphOx/aXJuuv+r6XEyxdM0sR/RFicz18USvAZa+FZDx8LkqIB8kSAGDiAw1ML/rwY6pQH+jLAGOoYDe7/LitV6d2lsZJR4gwVirclGapVUPdhgEnWrQv3M4B8VAiuuVzCgJs/TOBC1K7vW2LXpkfoalEcNdtXyxu6HjQvWH0tAJ1egnbm7s1gzIajjszqgIjG8dA3COeH7mR0aa3YOh8jF10xQ7MeP7I+L4xkVz8O2x2hnQjgeDVGzPIUh6AmsrLobNI0hrVorlBxF3MoDVbnzuXz8E/yITS4=",)
+            bucket_name = 'elasticbeanstalk-ca-central-1-841071745826'
+            s3_key = f'media/{video_file.name}'
+            s3_client.upload_fileobj(video_file, bucket_name, s3_key)
+
+            # Generate S3 URL
+            video_url = f'https://elasticbeanstalk-ca-central-1-841071745826.s3.amazonaws.com/{s3_key}'
+            upload_video.video = video_url
+
             upload_video.save()
 
             # link recent uploaded video request from Post table to Notification table
