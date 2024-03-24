@@ -143,7 +143,8 @@ def create_video(request):
                 blob_data = request.POST['video_blob']  # Get blob video data from HTML input
                 decoded_data = base64.b64decode(blob_data)  # Convert the video data to bytes
                 # Delete the existing video file associated with the Post instance
-                if upload_video.video:
+                # if upload_video.video:
+                if upload_video.video.name:
                     upload_video.video.delete(save=False)
                 # Save the new video file
                 upload_video.video.save('video_filename.mp4', ContentFile(decoded_data), save=True)
