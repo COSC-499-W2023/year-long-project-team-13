@@ -57,6 +57,13 @@ background-color: #444;
 transition: margin-left .5s; /* If you want a transition effect */
 padding: 20px;
 }
+.message_info{
+    margin:0;
+    color:white;
+}
+.message_id{
+    font-size:1.35em;
+}
 
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
 @media screen and (max-height: 450px) {
