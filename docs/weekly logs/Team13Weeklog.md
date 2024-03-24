@@ -603,3 +603,40 @@ Test Report
 
 - Test report file is in the same directory [here](./report.txt)
   ![Test Report](./images/tests_completion/term2_week10_pytest.png)
+
+## Preferred name -> Ssc name -> Github name
+
+- Ethan -> Ethan Hsu -> YuchenHsu
+- Beth -> Beth Ralston -> mblackbeak (mblackbeak)
+- Herman -> Herman Sood -> herman-23
+- Raymond -> Sitt Paing -> SittHmuePaing
+- Adrian -> Adrian Fong -> AdrianFWM
+
+## Term 2 Week 11 2024/03/18 ~ 2024/03/24
+
+- Which features were in the project plan for this milestone?
+  - Worked on the S3 uploading features to upload sucessfully to the bucket.
+  - Worked on making the S3 upload user specific, scratched that for making sure the uploaded fine name is not repeated and increment the file name.
+  - New database for video and image in post, profile table.
+  - Elastic Beanstalk server file upload size limit increase to 50 MB.
+  - Users can upload profile picture to s3 and load it to webpage.
+  - Fixed some CSS layout for login and upload video.
+  - Updated requirement.txt
+
+Burnup chart
+![Burnup](./images/burnup/term2_week11_burnup.png)
+Network Graph
+![Network](./images/network/term2_week11_network_1.png)
+![Network](./images/network/term2_week11_network_2.png)
+Completed Tasks
+![Completed](./images/completed/term2_week11_done_1.png)
+![Completed](./images/completed/term2_week11_done_2.png)
+![Completed](./images/completed/term2_week11_done_3.png)
+![Completed](./images/completed/term2_week11_done_4.png)
+![Completed](./images/completed/term2_week11_done_5.png)
+In progress Tasks
+![In Progress](./images/in-prog/term2_week11_inprogress.png)
+Test Report
+
+- Test report file is in the same directory [here](./report.txt)
+  ![Test Report](./images/tests_completion/term2_week11_pytest.png)
