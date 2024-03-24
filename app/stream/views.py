@@ -109,14 +109,6 @@ class VideoCreateView(LoginRequiredMixin   ,CreateView):
         video = form.cleaned_data['video']
         return super().form_valid(form)
 
-# @background(schedule=0)
-# def upload_video_to_s3(video_id):
-#     # Retrieve the video object from the database
-#     video = Video.objects.get(pk=video_id)
-
-#     # Upload the video file to Amazon S3
-#     # Replace 'your_bucket_name' and 'your_video_key' with appropriate values
-#     video.video.upload_to_s3(bucket_name='your_bucket_name', key='your_video_key')
 
 def create_video(request):
     if request.method == "POST":
