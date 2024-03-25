@@ -111,6 +111,10 @@ def create_record_video_test(driver, dueDateYear, dueDateMonthDay, dueDateTime):
     side_bar_btn = driver.find_element(By.ID, "side-bar-btn")
     wait.until(EC.element_to_be_clickable((By.ID, "side-bar-btn")))
     side_bar_btn.click()
+    wait.until(EC.visibility_of_element_located((By.ID, "close-btn")))
+    close_btn = driver.find_element(By.ID, "close-btn")
+    wait.until(EC.element_to_be_clickable((By.ID, "close-btn")))
+    close_btn.click()
     print("TEST: 0 `Side Bar Button` Successful")
 
     # Find the element with the id "start-camera" and click it
@@ -296,7 +300,13 @@ def upload_video_test(driver, dueDateYear, dueDateMonthDay, dueDateTime, video):
     side_bar_btn = driver.find_element(By.ID, "side-bar-btn")
     wait.until(EC.element_to_be_clickable((By.ID, "side-bar-btn")))
     side_bar_btn.click()
+
+    wait.until(EC.visibility_of_element_located((By.ID, "close-btn")))
+    close_btn = driver.find_element(By.ID, "close-btn")
+    wait.until(EC.element_to_be_clickable((By.ID, "close-btn")))
+    close_btn.click()
     print("TEST: 0 `Side Bar Button` Successful")
+
 
     # Wait for the URL to change to the upload page URL
     wait.until(EC.url_contains('video/new'))
