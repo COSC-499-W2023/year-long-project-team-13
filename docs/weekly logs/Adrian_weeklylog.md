@@ -939,6 +939,15 @@ id connect to "friend request", "video request", "post", and "video" table.
   - Upload css layout fix screenshot (Red arrow)
 ![Upload css layout fix screenshot (Red arrow)](./images/Adrian_images/T2_Week_11/upload_css.jpg)
 
+### Fixed background image to mirror [Complete]
+- Worked on "Background no repeat (mirror image)" on project board, fixed background image to be mirrors and not a repeated image formed up to down, because we received feedback from peer testing 2 about background looks weird with repeated up to down.
+
+  - [Background image to mirror Pull Request/Commit](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/184)
+  - [Background image to mirror testing Pull Request/Commit](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/195)
+  - Fix background image to mirrored screenshot
+![Fix background image to mirrored screenshot](./images/Adrian_images/T2_Week_11/Mirror_background.jpg)
+
+
 ### Review other team member's pull request
 - Reviewed Beth's notification pull request on video post and video create.
 - All Selenium tests and pytests runs and passed.

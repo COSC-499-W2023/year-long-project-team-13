@@ -580,11 +580,9 @@ Test Report
   - Displayed the video request ID on the record video page and upload video page.
   - Recorded video and post successfully saved to the database.
   - Notification details updated to include title, description, and due date of the video request.
-  - Fixed Upload video and Login page css layout.
-  - S3 video upload is working and the video and photo can be viewed on the website and database.
-  - Increased Elastic Beanstalk server upload file size limit up to 50 MB.
+  - S3 video upload is working and the video can be viewed on the website and database.
+  - S3 photo upload is still work in progress.
   - Deleted pycache files, and added gitignore file to test if it work or not.
-  - Updated/Cleaned up requirement.txt for unnecessary install package.
 
 Burnup chart
 ![Burnup](./images/burnup/term2_week10_burnup.png)
@@ -620,6 +618,7 @@ Test Report
   - New database for video and image in post, profile table.
   - Elastic Beanstalk server file upload size limit increase to 50 MB.
   - Users can upload profile picture to s3 and load it to webpage.
+  - Fixed background image to mirrored.
   - Fixed some CSS layout for login and upload video.
   - Updated requirement.txt
   - Updated readme for testing
