@@ -241,7 +241,10 @@ def upload_filled_video(request, pk):
     else:
         uploadvideoform = VidUpFilledForm(request.user)
 
-    context = {'notification': Notification.objects.filter(id=pk), 'uploadvideoform': uploadvideoform}
+    context = {
+        'notification': Notification.objects.filter(id=pk),
+        'uploadvideoform': uploadvideoform
+    }
     return render(request, 'stream/video-upload-filled.html', context)
 
 class VideoRecordFilledView(LoginRequiredMixin, UserPassesTestMixin ,UpdateView):
@@ -312,7 +315,10 @@ def record_filled_video(request, pk):
         print(request.method)
         createvideoform = VidRecFilledForm(request.user)
 
-    context = {'notification': Notification.objects.filter(id=pk), 'createvideoform': createvideoform}
+    context = {
+        'notification': Notification.objects.filter(id=pk),
+        'createvideoform': createvideoform
+    }
     return render(request, 'stream/video-record-filled.html', context )
 
 
