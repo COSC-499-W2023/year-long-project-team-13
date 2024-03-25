@@ -162,3 +162,10 @@ I was able to sucessfully complete this but there was a bug where it was not sav
 #### Picture of View Video button in notifications
 ![ViewVideoButton](./images/Ralston_stuff/T2_week10/ViewVideoNot.png)
 
+### Week 11 Mar 18 - 24
+![Week11Tasks](./images/tasks/Ralston_term2_w11_tasks.png)
+
+I worked on wrote the automated tests for the view video and create video links that I worked on last week so that could be reviewed and merged into master. I also worked on updating the Readme with the testing protocol for Selenium Tests and Pytests. Finally I wrote the code to be able to display the video request information on the create video page. I also manually tested this code. Ethan helped me with giving me the idea to try and break up the information to display line by line so I could style each line differently as needed. These tasks are associated with button from notifications to send/view video, and display request information on create video page, and Documentation on the project board. The buttons from notifications is completely finished and the display information is finished with manually testing so the automated testing just needs to be updated and then reviewed and merged in.
+
+
+
