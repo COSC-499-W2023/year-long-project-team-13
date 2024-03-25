@@ -106,6 +106,13 @@ def create_record_video_test(driver, dueDateYear, dueDateMonthDay, dueDateTime):
     # Find the element with the id "videos hover" and hover over it
     hoverTest("Videos Hover","New Video Button", '/new', "`Send Video page found`")
 
+    # Find the element with the id "side-bar-btn" and click it
+    wait.until(EC.visibility_of_element_located((By.ID, "side-bar-btn")))
+    side_bar_btn = driver.find_element(By.ID, "side-bar-btn")
+    wait.until(EC.element_to_be_clickable((By.ID, "side-bar-btn")))
+    side_bar_btn.click()
+    print("TEST: 0 `Side Bar Button` Successful")
+
     # Find the element with the id "start-camera" and click it
     start_camera_element = driver.find_element(By.ID, "start-camera")
     wait.until(EC.element_to_be_clickable((By.ID, "start-camera")))
@@ -274,6 +281,7 @@ def remove_video_post_test(driver):
 def upload_video_test(driver, dueDateYear, dueDateMonthDay, dueDateTime, video):
     # Find the element with the id "videos hover" and hover over it
     hoverTest("Videos Hover","New Video Button", '/new', "`Send Video page found`")
+    html = driver.find_element(By.TAG_NAME, "html")
 
     # Find the top upload button and click it
     wait.until(EC.visibility_of_element_located((By.ID, "top_upload")))
@@ -282,6 +290,13 @@ def upload_video_test(driver, dueDateYear, dueDateMonthDay, dueDateTime, video):
     wait.until(EC.element_to_be_clickable((By.ID, "top_upload")))
     time.sleep(3)
     top_upload_button.click()
+
+    # Find the element with the id "side-bar-btn" and click it
+    wait.until(EC.visibility_of_element_located((By.ID, "side-bar-btn")))
+    side_bar_btn = driver.find_element(By.ID, "side-bar-btn")
+    wait.until(EC.element_to_be_clickable((By.ID, "side-bar-btn")))
+    side_bar_btn.click()
+    print("TEST: 0 `Side Bar Button` Successful")
 
     # Wait for the URL to change to the upload page URL
     wait.until(EC.url_contains('video/new'))
@@ -322,9 +337,6 @@ def upload_video_test(driver, dueDateYear, dueDateMonthDay, dueDateTime, video):
     uploadvideo.send_keys(video)
     time.sleep(0.5)
 
-    html = driver.find_element(By.TAG_NAME, "html")
-    html.send_keys(Keys.PAGE_DOWN)
-
     # Check that the upload button goes to home page
     wait.until(EC.visibility_of_element_located((By.ID, "upload")))
     wait.until(EC.presence_of_element_located((By.ID, "upload")))
@@ -346,6 +358,8 @@ def upload_video_test(driver, dueDateYear, dueDateMonthDay, dueDateTime, video):
 def filled_record_video_test(driver):
     # Find the element with the id "Notification Button" and hover over it
     hoverTest("Notification Button","Notification Button", '/notifications', "`Notifications page found`")
+    html = driver.find_element(By.TAG_NAME, "html")
+    html.send_keys(Keys.PAGE_DOWN)
 
     # Find the element with the id "Send Video" and click it
     send_video_element = driver.find_element(By.ID, "Send Video")
