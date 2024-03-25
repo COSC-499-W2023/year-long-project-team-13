@@ -622,18 +622,24 @@ Test Report
   - Users can upload profile picture to s3 and load it to webpage.
   - Fixed some CSS layout for login and upload video.
   - Updated requirement.txt
+  - Updated readme for testing
+  - Display Request information on the create video pages
 
 Burnup chart
 ![Burnup](./images/burnup/term2_week11_burnup.png)
 Network Graph
 ![Network](./images/network/term2_week11_network_1.png)
 ![Network](./images/network/term2_week11_network_2.png)
+![Network](./images/network/term2_week11_network_3.png)
+![Network](./images/network/term2_week11_network_4.png)
+![Network](./images/network/term2_week11_network_5.png)
 Completed Tasks
 ![Completed](./images/completed/term2_week11_done_1.png)
 ![Completed](./images/completed/term2_week11_done_2.png)
 ![Completed](./images/completed/term2_week11_done_3.png)
 ![Completed](./images/completed/term2_week11_done_4.png)
 ![Completed](./images/completed/term2_week11_done_5.png)
+![Completed](./images/completed/term2_week11_done_6.png)
 In progress Tasks
 ![In Progress](./images/in-prog/term2_week11_inprogress.png)
 Test Report
