@@ -364,7 +364,7 @@ def password_reset(request):
             # Fetch the security question associated with the user's account
             security_question = user.userinfo.security_question
             # Redirect to page to display security question
-            return render(request, 'stream/security-answer.html', {'security_question': security_question, 'username': username})
+            return redirect('stream:security-answer')
 
     else:
         form = SecurityQuestionForm()
@@ -389,9 +389,6 @@ def security_answer(request):
 class PasswordResetDoneView(DetailView):
     def password_reset_done(request):
         return render(request, 'stream/password_reset_done.html')
-
-
-
 
 
 @login_required
