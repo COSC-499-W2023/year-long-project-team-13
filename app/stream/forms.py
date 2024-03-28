@@ -28,7 +28,7 @@ class VidUploadForm(forms.ModelForm):
     timelimit = forms.DateTimeField(widget=forms.TextInput(attrs={'placeholder' :'Select a time limit date',
                                                               'style': 'width: 210px; margin-left: auto; margin-right: auto; border: 2px groove lightgreen;',
                                                               'class': 'form-control', 'type': 'datetime-local','required': True}))
-    video = forms.FileField()
+    # video = forms.FileField()
     request_id = forms.ModelChoiceField(
         queryset=User.objects.none(),
         widget=forms.Select(attrs={'style': 'width: 210px; border: 2px groove lightgreen;',
@@ -43,8 +43,8 @@ class VidUploadForm(forms.ModelForm):
 
     class Meta:
         model = Post
-        fields = ['title','description','timelimit','video','request_id']
-        # ,'receiver'
+        fields = ['title','description','timelimit','request_id']
+        # ,'receiver', 'video',
 
 class VidCreateForm(forms.ModelForm):
     # receiver = forms.ModelChoiceField(
