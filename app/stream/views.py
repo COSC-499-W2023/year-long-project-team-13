@@ -340,6 +340,14 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from .forms import SecurityQuestionForm
 
+class PasswordResetView(UpdateView):
+    model = Post
+    template_name = "stream/forget-password.html"
+    fields = ['email', 'username', 'security_answer']
+    def form_valid(self, form):
+        form.instance.sender = self.request.user
+        return super().form_valid(form)
+
 def password_reset(request):
     if request.method == 'POST':
         form = SecurityQuestionForm(request.POST)
@@ -347,7 +355,6 @@ def password_reset(request):
             email = form.cleaned_data.get('email')
             username = form.cleaned_data.get('username')
             security_answer = form.cleaned_data.get('security_answer')
-
             # Check if the user exists with the provided email and username
             try:
                 user = User.objects.get(email=email, username=username)
@@ -367,9 +374,12 @@ def password_reset(request):
     else:
         form = SecurityQuestionForm()
         # Get the user's security question
-        form = SecurityQuestionForm(security_question=request.user.userinfo.security_question)
-    return render(request, 'forget-password.html', {'form': form})
+        # form = SecurityQuestionForm(security_question=request.user.userinfo.security_question)
+    return render(request, 'stream/forget-password.html', {'form': form})
 
+class PasswordResetDoneView(DetailView):
+    def password_reset_done(request):
+        return render(request, 'stream/password_reset_done.html')
 
 
 

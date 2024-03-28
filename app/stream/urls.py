@@ -8,7 +8,9 @@ from . views import (
     VideoDeleteView,
     FriendRequest,
     VideoUploadView,
-    VideoUploadFilledView
+    VideoUploadFilledView,
+    PasswordResetDoneView,
+    PasswordResetView,
 )
 from django.urls import path
 from stream import views as stream_views
@@ -44,5 +46,6 @@ urlpatterns = [
     path('theme',stream_views.settings, name="theme"),
     path('notifications',stream_views.notifications, name="notifications"),
 
-     path('forget-password/', auth_views.PasswordResetView.as_view(template_name='stream/forget-password.html'), name='forget-password'),
+    path('forget-password/', stream_views.password_reset, name='forget-password'),
+    path('password_reset_done/', auth_views.PasswordResetDoneView.as_view, name='password_reset_done'),
 ]
