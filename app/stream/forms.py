@@ -241,13 +241,9 @@ class SecurityQuestionForm(forms.ModelForm):
                                                             'style': 'width: 400px; height: 45px;margin-left: auto; margin-right: auto; margin-bottom: 25px; border: 2px groove lightgreen;',
                                                             'class': 'form-control', 'required': True}))
 
-    security_answer = forms.CharField(widget=forms.TextInput(attrs={'placeholder' :'Your Answer',
-                                                                  'style': 'width: 400px; height: 45px; margin-left: auto; margin-right: auto; margin-bottom: 27px; border: 2px groove lightgreen;',
-                                                                  'class': 'form-control', 'required': True}))
-
     class Meta:
         model = UserInfo
-        fields = ['username', 'email', 'security_answer']
+        fields = ['username', 'email']
 
 
 class UserProfileUpdateForm(forms.ModelForm):

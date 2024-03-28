@@ -47,5 +47,6 @@ urlpatterns = [
     path('notifications',stream_views.notifications, name="notifications"),
 
     path('forget-password/', stream_views.password_reset, name='forget-password'),
+    path('security-answer/', stream_views.security_answer, name='security-answer'),
     path('password_reset_done/', auth_views.PasswordResetDoneView.as_view, name='password_reset_done'),
 ]

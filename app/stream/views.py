@@ -352,9 +352,8 @@ def password_reset(request):
     if request.method == 'POST':
         form = SecurityQuestionForm(request.POST)
         if form.is_valid():
-            email = form.cleaned_data.get('email')
-            username = form.cleaned_data.get('username')
-            security_answer = form.cleaned_data.get('security_answer')
+            username = request.POST['username']
+            email = request.POST['email']
             # Check if the user exists with the provided email and username
             try:
                 user = User.objects.get(email=email, username=username)
@@ -364,18 +363,28 @@ def password_reset(request):
 
             # Fetch the security question associated with the user's account
             security_question = user.userinfo.security_question
+            # Redirect to page to display security question
+            return render(request, 'stream/security-answer.html', {'security_question': security_question, 'username': username})
 
-            # Check if the provided answer matches the stored answer
-            if user.userinfo.security_answer == security_answer:
-                # Redirect to password reset page or any other desired page
-                return redirect('stream:password_reset_done')
-            else:
-                messages.error(request, 'Incorrect security answer.')
     else:
         form = SecurityQuestionForm()
         # Get the user's security question
         # form = SecurityQuestionForm(security_question=request.user.userinfo.security_question)
     return render(request, 'stream/forget-password.html', {'form': form})
+
+def security_answer(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        security_answer = request.POST['security_answer']
+
+        # Check if the security answer is correct
+        if username.userinfo.security_answer == security_answer:
+            # Redirect to page to reset password
+            return redirect('stream:password_reset_done')
+        else:
+            messages.error(request, 'Incorrect security answer.')
+            return redirect('stream:security-answer')
+    return render(request, 'stream/security-answer.html')
 
 class PasswordResetDoneView(DetailView):
     def password_reset_done(request):
