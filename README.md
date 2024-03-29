@@ -28,21 +28,19 @@ Also, update your README.md file with the team and client/project information. Y
 
 ### 1. **Activate the virtual environment:**
 
-If you have never created a virtual environment, you need to install Python first.
-
-Then, install the virtualenv package first:
+First, you need to create a virtual environment, starting by installing the virtualenv package with the following command:
 
 ```console
 pip install virtualenv
 ```
 
-Create a virtual environment by running the following command:
+Once the virtualenv package is installed. Create a virtual environment by running the following command:
 
 ```console
 python -m venv myenv
 ```
 
-Once you install the virtualenv package, you can create a virtual environment by running the following command:
+Once the virtual environment is created, you can activate it using the following commands:
 
 MacOS/Linux:
 
@@ -70,7 +68,7 @@ Git bash:
 
 ### 2. **Install Required Packages:** With the virtual environment activated (if you created one), proceed to install the necessary packages by running the following command in your terminal
 
-Depending on the system and environment already created, The command will be different. Here are the commands for different systems:
+Depending on the system and environment already created, The command will be different. Here are the commands for different systems to install the required packages in the virtual environment:
 
 ```console
 pip install -r requirements.txt
