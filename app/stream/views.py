@@ -11,7 +11,7 @@ from django.db.models import Q
 from stream.forms import UserInfoUpdateForm
 
 from . models import VidRequest, VidStream, Contact, FriendRequest, Post, Profile, UserInfo, Notification, Setting
-from . forms import VidUploadForm, VidCreateForm, VidRequestForm, UserRegistrationForm, UserUpdateForm, UserInfoUpdateForm, UserProfileUpdateForm, UserProfileUpdateForm,  ValidatingPasswordChangeForm, AddContactForm, UserPermissionForm, VidRecFilledForm, VidUpFilledForm, SecurityQuestionForm
+from . forms import VidUploadForm, VidCreateForm, VidRequestForm, UserRegistrationForm, UserUpdateForm, UserInfoUpdateForm, UserProfileUpdateForm, UserProfileUpdateForm,  ValidatingPasswordChangeForm, AddContactForm, UserPermissionForm, VidRecFilledForm, VidUpFilledForm, SecurityQuestionForm, ResetPasswordForm
 
 import base64
 from django.core.files.base import ContentFile
@@ -541,3 +541,28 @@ def settings(request):
         'passwordform': passwordform,
     }
     return render(request, 'stream/settings.html', context)
+
+
+def reset(request):
+    if request.method == "POST":
+        # passwordform = SetPasswordForm(request.POST, instance=request.user)
+        passwordform = ResetPasswordForm(data=request.POST, instance=request.user)
+
+        if passwordform.is_valid():
+            new_password3 = passwordform.cleaned_data['resetpassword']
+            new_password4 = passwordform.cleaned_data['resetpassword2']
+
+            # Check if the new passwords match
+            if new_password3 == new_password4:
+                usertemp = passwordform.save(commit=False)
+                usertemp.password = make_password(usertemp.password)
+                usertemp.save()
+                return redirect("stream:login")
+
+    else:
+        passwordform = ResetPasswordForm(instance=request.user)
+
+    context = {
+        'passwordform': passwordform,
+    }
+    return render(request, 'stream/password_reset_done.html', context)
