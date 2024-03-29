@@ -325,28 +325,6 @@ def register(request):
         }
     return render(request, 'stream/register.html', context)
 
-from django.contrib.auth.models import User
-from django.contrib import messages
-from .forms import SecurityQuestionForm
-
-from django.contrib.auth.models import User
-from django.shortcuts import render, redirect
-from django.contrib import messages
-from .forms import SecurityQuestionForm
-from .models import UserInfo
-
-from django.contrib.auth.models import User
-from django.shortcuts import render, redirect
-from django.contrib import messages
-from .forms import SecurityQuestionForm
-
-class PasswordResetView(UpdateView):
-    model = Post
-    template_name = "stream/forget-password.html"
-    fields = ['email', 'username', 'security_answer']
-    def form_valid(self, form):
-        form.instance.sender = self.request.user
-        return super().form_valid(form)
 
 def password_reset(request):
     if request.method == 'POST':
@@ -372,6 +350,7 @@ def password_reset(request):
         # form = SecurityQuestionForm(security_question=request.user.userinfo.security_question)
     return render(request, 'stream/forget-password.html', {'form': form})
 
+
 def security_answer(request):
     if request.method == 'POST':
         username = request.POST['username']
@@ -385,6 +364,7 @@ def security_answer(request):
             messages.error(request, 'Incorrect security answer.')
             return redirect('stream:security-answer')
     return render(request, 'stream/security-answer.html')
+
 
 class PasswordResetDoneView(DetailView):
     def password_reset_done(request):
