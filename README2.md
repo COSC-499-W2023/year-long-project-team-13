@@ -1,6 +1,3 @@
-Sure, here's the content in a README format:
-
-```markdown
 # Project Setup and Testing Guide
 
 This guide will walk you through the process of setting up your Python environment, installing necessary packages, configuring the database, and running the Django server. It also includes instructions for running Selenium and Pytest tests.
