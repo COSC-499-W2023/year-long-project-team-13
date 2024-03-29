@@ -408,10 +408,10 @@ class ValidatingPasswordChangeForm(forms.ModelForm):
 
 
 class ResetPasswordForm(forms.ModelForm):
-    resetpassword = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder' :'Password',
+    password = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder' :'Password',
                                                                   'style': 'width: 400px; height: 45px; margin-left: auto; margin-right: auto; margin-bottom: 25px; border: 2px groove lightgreen;',
                                                                   'class': 'form-control', 'required': True}),validators=[validate_password])
-    resetpassword2 = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder' :'Confirm Password',
+    password2 = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder' :'Confirm Password',
                                                                   'style': 'width: 400px; height: 45px; margin-left: auto; margin-right: auto; margin-bottom: 27px; border: 2px groove lightgreen;',
                                                                   'class': 'form-control', 'required': True}))
 

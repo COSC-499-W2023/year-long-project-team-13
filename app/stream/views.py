@@ -371,8 +371,8 @@ def password_reset_done(request, username):
         passwordform = ResetPasswordForm(data=request.POST, instance=user)
         print("Post correct")
         if passwordform.is_valid():
-            reset_password = passwordform.cleaned_data['resetpassword']
-            reset_password2 = passwordform.cleaned_data['resetpassword2']
+            reset_password = passwordform.cleaned_data['password']
+            reset_password2 = passwordform.cleaned_data['password2']
             print("form is valid")
 
             # Check if the new passwords match
@@ -387,6 +387,7 @@ def password_reset_done(request, username):
         else:
             messages.error(request, 'Invalid password.')
             print('invalid form')
+            print(passwordform.errors)
             return redirect('stream:password_reset_done', username)
 
 
