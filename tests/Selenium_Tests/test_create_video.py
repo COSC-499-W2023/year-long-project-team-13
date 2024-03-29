@@ -165,6 +165,7 @@ def create_record_video_test(driver, dueDateYear, dueDateMonthDay, dueDateTime):
     html.send_keys(Keys.PAGE_DOWN)
     time.sleep(3)
     html.send_keys(Keys.PAGE_DOWN)
+    time.sleep(3)
     back_details_element.click()
     print("TEST: 6 `Back Details` Successful")
 
@@ -287,7 +288,6 @@ def upload_video_test(driver, dueDateYear, dueDateMonthDay, dueDateTime, video):
     # Find the element with the id "videos hover" and hover over it
     hoverTest("Videos Hover","New Video Button", '/new', "`Send Video page found`")
     html = driver.find_element(By.TAG_NAME, "html")
-    html.send_keys(Keys.PAGE_DOWN)
 
     # Find the top upload button and click it
     wait.until(EC.visibility_of_element_located((By.ID, "top_upload")))
@@ -308,7 +308,8 @@ def upload_video_test(driver, dueDateYear, dueDateMonthDay, dueDateTime, video):
     wait.until(EC.element_to_be_clickable((By.ID, "close-btn")))
     close_btn.click()
     print("TEST: 0 `Side Bar Button` Successful")
-
+    # scroll down the page without using html.send_keys(Keys.PAGE_DOWN)
+    driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
 
     # Wait for the URL to change to the upload page URL
     wait.until(EC.url_contains('video/new'))
