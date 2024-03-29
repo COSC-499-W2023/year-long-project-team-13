@@ -526,11 +526,11 @@ def reset(request):
         passwordform = ResetPasswordForm(data=request.POST, instance=request.user)
 
         if passwordform.is_valid():
-            new_password3 = passwordform.cleaned_data['resetpassword']
-            new_password4 = passwordform.cleaned_data['resetpassword2']
+            reset_password = passwordform.cleaned_data['resetpassword']
+            reset_password2 = passwordform.cleaned_data['resetpassword2']
 
             # Check if the new passwords match
-            if new_password3 == new_password4:
+            if reset_password == reset_password2:
                 usertemp = passwordform.save(commit=False)
                 usertemp.password = make_password(usertemp.password)
                 usertemp.save()
