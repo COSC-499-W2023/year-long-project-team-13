@@ -419,36 +419,36 @@ class ResetPasswordForm(forms.ModelForm):
     MIN_LENGTH = 8
 
     def clean_resetpassword(self):
-        resetpassword = self.cleaned_data.get('resetpassword')
+        password = self.cleaned_data.get('password')
         username = self.instance.username
         email = self.instance.email
         email = re.sub(r'@[A-Za-z]*\.?[A-Za-z0-9]*',"", email)
 
         # At least MIN_LENGTH long
-        if len(resetpassword) < self.MIN_LENGTH:
+        if len(password) < self.MIN_LENGTH:
             raise forms.ValidationError("The new password must be at least %d characters long." % self.MIN_LENGTH)
 
         # At least one letter and one non-letter
-        first_isalpha = resetpassword[0].isalpha()
-        if all(c.isalpha() == first_isalpha for c in resetpassword):
+        first_isalpha = password[0].isalpha()
+        if all(c.isalpha() == first_isalpha for c in password):
             raise forms.ValidationError("The new password must contain at least one letter and at least one digit or" \
                                         " punctuation character.")
 
         # Check Password not similar to username and email information
-        username_similarity = difflib.SequenceMatcher(None, resetpassword.lower(), username.lower()).ratio()
-        email_similarity = difflib.SequenceMatcher(None, resetpassword.lower(), email.lower()).ratio()
+        username_similarity = difflib.SequenceMatcher(None, password.lower(), username.lower()).ratio()
+        email_similarity = difflib.SequenceMatcher(None, password.lower(), email.lower()).ratio()
 
         similarity_threshold = 0.6  # Adjust this threshold as needed
 
         if username_similarity > similarity_threshold or email_similarity > similarity_threshold:
             raise forms.ValidationError("The new password cannot be too similar to your username or email.")
 
-        return resetpassword
+        return password
 
 
     def clean_resetpassword2(self):
-        resetpassword = self.cleaned_data.get('resetpassword')
-        resetpassword2 = self.cleaned_data.get('resetpassword2')
+        resetpassword = self.cleaned_data.get('password')
+        resetpassword2 = self.cleaned_data.get('password2')
 
         if resetpassword and resetpassword2 and resetpassword != resetpassword2:
             raise forms.ValidationError(('The two password fields must match.'))
