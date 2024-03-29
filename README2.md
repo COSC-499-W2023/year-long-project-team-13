@@ -117,6 +117,4 @@ Open your web browser and navigate to [http://127.0.0.1:8000/](http://127.0.0.1:
     ```console
     python manage.py test pytests.[your_file_name_here]
     ```
-```
 
-You can copy the above content and save it as a README.md file in your project directory. Let me know if you need further assistance!
