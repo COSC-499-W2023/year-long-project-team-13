@@ -99,7 +99,17 @@
                                                 <div class="form-group">
                                                 {%for user in username%}
                                                 <p>hello</p>
-                                                {{user}}
+                                                {% if user.security_question == 1%}
+                                                    <p>What was the name of your first pet?</p>
+                                                {% elif user.security_question == 2%}
+                                                    <p>In which city were you born?</p>
+                                                {% elif user.security_question == 3%}
+                                                    <p>What is the middle name of your oldest sibling?</p>
+                                                {% elif user.security_question == 4%}
+                                                    <p>What is the name of your favorite sports team?</p>
+                                                {% elif user.security_question == 5%}
+                                                    <p>What was the make and model of your first car?</p>
+                                                {%endif%}
                                                 {%endfor%}
                                                 <input type="text" class="form-control" id="security_answer" name="security_answer" placeholder="Answer" required>
                                                 <input type="submit" value="Submit" class="btn btn-primary">
