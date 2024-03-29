@@ -330,8 +330,10 @@ def password_reset(request):
     if request.method == 'POST':
         form = SecurityQuestionForm(request.POST)
         if form.is_valid():
-            username = request.POST['username']
-            email = request.POST['email']
+            # username = request.POST['username']
+            # email = request.POST['email']
+            username = form.cleaned_data['username']
+            email = form.cleaned_data['email']
             # Check if the user exists with the provided email and username
             try:
                 user = User.objects.get(email=email, username=username)
@@ -339,8 +341,6 @@ def password_reset(request):
                 messages.error(request, 'User with this email or username does not exist.')
                 return redirect('stream:forget-password')
 
-            # Fetch the security question associated with the user's account
-            security_question = user.userinfo.security_question
             # Redirect to page to display security question
             return redirect('stream:security-answer', username)
 
@@ -398,22 +398,6 @@ def password_reset_done(request, username):
         'passwordform': passwordform, 'username': username
     }
     return render(request, 'stream/password_reset_done.html', context)
-
-
-
-# def password_reset_done(request):
-#     if request.method == 'POST':
-#         reset_password_form = ResetPasswordForm(request.POST)
-#         if reset_password_form.is_valid():
-#             reset_password = reset_password_form.cleaned_data['resetpassword']
-#             reset_password2 = reset_password_form.cleaned_data['resetpassword2']
-#             if reset_password == reset_password2:
-#                 user = User.objects.get(username=request.user.username)
-#                 user.set_password(reset_password)
-#                 user.save()
-#                 return redirect('stream:login')
-#         return redirect('stream:login')
-#     return render(request, 'stream/password_reset_done.html')
 
 
 @login_required
