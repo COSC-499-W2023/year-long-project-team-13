@@ -25,19 +25,6 @@ class Migration(migrations.Migration):
                 ('sender', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='requests_sender', to=settings.AUTH_USER_MODEL)),
             ],
         ),
-        migrations.RemoveField(
-            model_name='vidstream',
-            name='description',
-        ),
-        migrations.RemoveField(
-            model_name='vidstream',
-            name='title',
-        ),
-        migrations.AlterField(
-            model_name='vidstream',
-            name='id',
-            field=models.AutoField(primary_key=True, serialize=False),
-        ),
         migrations.CreateModel(
             name='VidRequest',
             fields=[
