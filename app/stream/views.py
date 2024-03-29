@@ -8,13 +8,13 @@ from django.contrib.auth.hashers import make_password
 from django.contrib.auth import logout, authenticate, login
 from django.dispatch import Signal
 from django.db.models import Q
-from stream.forms import UserInfoUpdateForm
+from django.core.files.base import ContentFile
+from django.conf import settings as aws_settings
+import base64, boto3, time, requests
+from stream.storage_backends import MediaStorage, ProfilePictureStorage
 from . models import VidRequest, VidStream, Contact, FriendRequest, Post, Profile, UserInfo, Notification, Setting
 from . forms import VidUploadForm, VidCreateForm, VidRequestForm, UserRegistrationForm, UserUpdateForm, UserInfoUpdateForm, UserProfileUpdateForm, UserProfileUpdateForm,  ValidatingPasswordChangeForm, AddContactForm, UserPermissionForm, VidRecFilledForm, VidUpFilledForm
-
-import base64
-from django.core.files.base import ContentFile
-# from background_task import background
+# from django.http import HttpResponse
 
 class VideoDetailView(DetailView):
     template_name = "stream/video-detail.html"
@@ -90,26 +90,6 @@ def request_video(request):
     return render(request, 'stream/request-video.html', context)
 
 
-class VideoCreateView(LoginRequiredMixin   ,CreateView):
-    model = Post
-    success_url = "/"
-    template_name = 'stream/video-create.html'
-    # template_name = 'stream/upload.html'
-    form_class = VidCreateForm
-    # fields = ['title', 'description','video']
-    # ['title','description','timelimit','video','request_id']
-    #this is to make sure that the logged in user is the one to upload the content
-    def form_valid(self, form):
-        form.instance.sender = self.request.user
-        request_id = form.cleaned_data['request_id']
-        # form.instance.receiver = User.objects.get(username=VidRequest.objects.get(id=request_id.id).sender)
-        title = form.cleaned_data['title']
-        description = form.cleaned_data['description']
-        timelimit = form.cleaned_data['timelimit']
-        video = form.cleaned_data['video']
-        return super().form_valid(form)
-
-
 def create_video(request):
     if request.method == "POST":
         createvideoform = VidCreateForm(request.user, request.POST, request.FILES)
@@ -129,18 +109,6 @@ def create_video(request):
 
             upload_video.save()
 
-            # if 'video_blob' in request.POST:  # Check if the video blob exists in the request
-            #     blob_data = request.POST['video_blob']  # Get blob video data from HTML input
-            #     decoded_data = base64.b64decode(blob_data)  # Convert the video data to bytes
-            #     # Delete the existing video file associated with the Post instance
-            #     if upload_video.video:
-            #         upload_video.video.delete(save=False)
-            #     # Save the new video file
-            #     upload_video.video.save('video_filename.mp4', ContentFile(decoded_data), save=True)
-            #     # upload_video.user.save()
-
-            # upload_video.save()
-
             # link recent uploaded video request from Post table to Notification table
             recentVideoUpload = Post.objects.filter(sender=request.user).last()
 
@@ -156,20 +124,59 @@ def create_video(request):
     }
     return render(request, 'stream/video-create.html', context)
 
-class VideoUploadView(LoginRequiredMixin   ,CreateView):
-    model = Post
-    success_url = "/"
-    template_name = 'stream/video-upload.html'
-    fields = ['title', 'description','video']
-    # this is to make sure that the logged in user is the one to upload the content
-    def form_valid(self, form):
-        form.instance.sender = self.request.user
-        return super().form_valid(form)
+# Function for wait file to finish upload on s3
+def wait_for_file_existence(file_url, max_attempts=60, delay=5):
+    """
+    Function to wait until a file exists in CloudFront distribution.
+
+    Args:
+    - file_url: The URL of the file in CloudFront distribution.
+    - max_attempts: The maximum number of attempts to check for file existence.
+    - delay: The delay (in seconds) between each attempt.
+
+    Returns:
+    - True if the file exists within the specified number of attempts, False otherwise.
+    """
+    for attempt in range(max_attempts):
+        response = requests.head(file_url)
+        if response.status_code == 200:
+            return True
+        else:
+            print(f"File '{file_url}' does not exist yet. Waiting...")
+            time.sleep(delay)
+    return False
 
 def upload_video(request):
     if request.method == "POST":
         uploadvideoform = VidUploadForm(request.user, request.POST, request.FILES)
         if uploadvideoform.is_valid():
+
+            # Upload video to the input S3 bucket
+            s3_client = boto3.client(
+                's3',
+                aws_access_key_id=aws_settings.AWS_ACCESS_KEY_ID,
+                aws_secret_access_key=aws_settings.AWS_SECRET_ACCESS_KEY,
+                aws_session_token=aws_settings.AWS_SESSION_TOKEN,
+                region_name=aws_settings.AWS_S3_REGION_NAME
+            )
+
+            if request.POST.get('blurFace') == 'on':  # Check if the checkbox is checked
+                s3_bucket_name = aws_settings.AWS_S3_INPUT_BUCKET_NAME  # input s3 bucket for blur face
+            else:
+                s3_bucket_name = aws_settings.AWS_STORAGE_BUCKET_NAME   # normal output s3 bucket for storage video
+
+            video_file = request.FILES['video_upload']  # Get video file from input post
+            video_key = f"{video_file.name}"  # Store in s3 directory
+            media_storage = MediaStorage()
+            video_name = media_storage.get_available_name(name=video_key)   # Check if file exists, if exists increment file name
+
+            s3_client.upload_fileobj(video_file, s3_bucket_name, video_name)
+
+            # Get the URL of the processed video
+            processed_video_url = f'https://{aws_settings.CLOUDFRONT_DOMAIN}/{video_name}'
+
+            # # Wait until processed video URL exists in CloudFront
+            # if wait_for_file_existence(processed_video_url):
 
             request_id = uploadvideoform.cleaned_data['request_id']
 
@@ -178,12 +185,8 @@ def upload_video(request):
             receiverfilter = User.objects.get(username=VidRequest.objects.get(id=request_id.id).sender)
             upload_video.receiver = receiverfilter
 
-            # Check if the video file already exists
-            # existing_video = Post.objects.filter(video=upload_video.video.name).first()
-            # if existing_video:
-            #     # Overwrite the existing video file
-            #     existing_video.video.delete(save=False)  # Delete the existing video file
-            #     upload_video.id = existing_video.id  # Set the ID of the existing video
+            upload_video.video = processed_video_url    # store cloudfront video url
+
             upload_video.save()
 
             # link recent uploaded video request from Post table to Notification table
@@ -192,6 +195,11 @@ def upload_video(request):
             Notification.objects.create(user=request.user, message=f'You have post a video to '+ str(receiverfilter) +'.', type=5, post_id=recentVideoUpload)
             Notification.objects.create(user=receiverfilter, message=f'You have received a video post from '+ str(request.user) +'.', type=6, post_id=recentVideoUpload)
             return redirect('stream:video-list')
+
+            # else:
+            #     # Handle the case where the processed video URL doesn't exist even after waiting
+            #     return HttpResponse("Processed video URL is not available yet. Please try again later.")
+
     else:
         uploadvideoform = VidUploadForm(request.user)
 
@@ -200,15 +208,6 @@ def upload_video(request):
     }
     return render(request, 'stream/video-upload.html', context)
 
-class VideoUploadFilledView(LoginRequiredMixin   ,CreateView):
-    model = Post
-    success_url = "/"
-    template_name = 'stream/video-upload-filled.html'
-    fields = ['title', 'description','video']
-    #this is to make sure that the logged in user is the one to upload the content
-    def form_valid(self, form):
-        form.instance.sender = self.request.user
-        return super().form_valid(form)
 
 def upload_filled_video(request, pk):
     if request.method == "POST":
@@ -224,12 +223,6 @@ def upload_filled_video(request, pk):
             upload_video.receiver = receiverfilter
             upload_video.request_id = request_id
 
-            # Check if the video file already exists
-            # existing_video = Post.objects.filter(video=upload_video.video.name).first()
-            # if existing_video:
-            #     # Overwrite the existing video file
-            #     existing_video.video.delete(save=False)  # Delete the existing video file
-            #     upload_video.id = existing_video.id  # Set the ID of the existing video
             upload_video.save()
 
             # link recent uploaded video request from Post table to Notification table
@@ -247,37 +240,16 @@ def upload_filled_video(request, pk):
     }
     return render(request, 'stream/video-upload-filled.html', context)
 
-class VideoRecordFilledView(LoginRequiredMixin, UserPassesTestMixin ,UpdateView):
-    model = Post
-    template_name = 'stream/video-record-filled.html'
-    success_url = "/"
-    fields = ['title','description','timelimit','request_id']
-
-    # this is to make sure that the logged in user is the one to upload the content
-    def form_valid(self, form):
-        form.instance.sender = self.request.user
-        return super().form_valid(form)
-    # this function prevents other people from updating your videos
-    def test_func(self):
-        video = self.get_object()
-        if self.request.user == video.sender:
-            return True
-        return False
-
 
 def record_filled_video(request, pk):
     if request.method == "POST":
-        print("request.method:", request.method)
         createvideoform = VidRecFilledForm(request.user, request.POST, request.FILES)
         if createvideoform.is_valid():
-            print("createvideoform.isvalid:", createvideoform.is_valid())
+
             request_id_filter = Notification.objects.get(id=pk).videoRequest_id.id
             request_id = VidRequest.objects.get(id=request_id_filter)
 
             upload_video = createvideoform.save(commit=False)
-
-            # upload_video.request_id = request_id
-            # upload_video.request_id = Notification.objects.filter(id=pk).first().videoRequest_id.cleaned_data['id']
 
             upload_video.sender = request.user
             receiverfilter = User.objects.get(username=VidRequest.objects.get(id=request_id_filter).sender)
@@ -290,18 +262,6 @@ def record_filled_video(request, pk):
             upload_video.video.save('video_filename.mp4', ContentFile(decoded_data), save=True) # Save into video field with 64 byte content file (video name)
 
             upload_video.save()
-
-            # Check if the video file already exists
-            # if 'video_blob' in request.POST:  # Check if the video blob exists in the request
-            #     blob_data = request.POST['video_blob']  # Get blob video data from HTML input
-            #     decoded_data = base64.b64decode(blob_data)  # Convert the video data to bytes
-            #     # Delete the existing video file associated with the Post instance
-            #     if upload_video.video:
-            #         upload_video.video.delete(save=False)
-            #     # Save the new video file
-            #     upload_video.video.save('video_filename.mp4', ContentFile(decoded_data), save=True)
-
-            # upload_video.save()
 
             # link recent uploaded video request from Post table to Notification table
             recentVideoUpload = Post.objects.filter(sender=request.user).last()
@@ -471,34 +431,12 @@ def notifications(request):
     else:
         return redirect('stream:login')  # or wherever you want to redirect unauthenticated users
 
-# def login_view(request):
-#     if request.method == 'POST':
-#         username = request.POST['username']
-#         password = request.POST['password']
-#         user = authenticate(request, username=username, password=password)
-#         # print("user:", user)  # and this
-#         if user is not None:
-#         #    Notification.objects.create(user=user, message='You have logged in.')
-#         #    login(request, user)
-#            return redirect('stream:home')  # or wherever you want to redirect after login
-#         else:
-#             return render(request, 'stream/login.html', {'error': 'Invalid username or password'})
-#     else:
-#         return render(request, 'stream/login.html')
-
-# def logout_view(request):
-#     user = request.user
-#     if user.is_authenticated:
-#         logout(request)
-#     return redirect('stream:home')  # or wherever you want to redirect after logout
 
 # Change Password
 @login_required
 def settings(request):
     if request.method == "POST":
-        # passwordform = SetPasswordForm(request.POST, instance=request.user)
         passwordform = ValidatingPasswordChangeForm(data=request.POST, instance=request.user)
-
         if passwordform.is_valid():
             new_password1 = passwordform.cleaned_data['password']
             new_password2 = passwordform.cleaned_data['password2']

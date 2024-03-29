@@ -147,42 +147,36 @@ STATICFILES_DIRS = [
 LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = 'login'
 
-AWS_ACCESS_KEY_ID="ASIA4HU6ILMRCK45LUZF"
-AWS_SECRET_ACCESS_KEY="ahs83qVGBMoRHJXSPsDAtq0LCzDpiAqWz3H+FLMa"
-AWS_SESSION_TOKEN="IQoJb3JpZ2luX2VjEGYaDGNhLWNlbnRyYWwtMSJHMEUCIQC+uPwTH7HJ41PcqTY61AE9C75Gsjr/RLpw1kJYCqZ3rgIgbwrys1O/Dkto9DG0pTolDx4/3XhIP3nGRgyJIE9eTlIqjgMIfxAAGgw4NDEwNzE3NDU4MjYiDJ0jbiht8pFP+rH8EyrrAgmBVPCF2Ca1DIS52THGuYIq+CJh4w1jQiluyubJltIPnDWp0xb+6BMtVhVXJ7PLRE3cuqEkPMihPSV76IH0OVDQz5WEUqxAjl3KIAWFaJOM3yKTW7QxyQ1LeEJeavr8hklPAQFrazu4LVDj83S+5lD3tBo3CTrv/NUwKNqzHkNcSNRBD427Xs0YS98eTvDuIPVOuBn45GT+tIWMqO2Qu1icCWDSYT5F+LT3xeUcHQv7Y6vRpUpg64bAXoAYzHLRPm1HM1AX/2BRrhTWp4qXMER7QYXVE6ZS/aXxNnX0rwIU/6DqSNcz1KptoSF3/NXt760Aj4YUt59R98elEx5K6fT0JnQjnLDnGdx0TAB85tjElN/7g+wNESwWo/FJhkv6JwpXL2R74DZpkJYtuhRfmKJsteAfvEPmO2aLVGzJ1zXYq4FtedWkx0v1fTqxqyShpFPinXD8pRgj0h3rSE9r3r7aJWC0c7oVsYPfwTD9uYKwBjqmAR0mEkX1qnJlVz0GHEmlbkLqbarJpgZj5KBzgoG5yNmUdvqrYpf46hps88gFKb4zKq+yS+AbfUC1tIHcdJYPwIhm04EGvAPhuVeKrsGtnQ3mquYr++gtOYOCV331Frhb2miicKss1gCuIEgWaFAJyBLVw5m8e1tSStO9gIRMP8kDEk0TcwPOw28RDw5pnmKfXrnpFTJ46QDN0n68Jb7YEJsJivOOvic="
+AWS_ACCESS_KEY_ID="ASIA4HU6ILMRO3RSW5SR"
+AWS_SECRET_ACCESS_KEY="AlnEsmThCDoVdSsfEo+cuHdOqnmx+CrYTsBsOEpo"
+AWS_SESSION_TOKEN="IQoJb3JpZ2luX2VjEMv//////////wEaDGNhLWNlbnRyYWwtMSJGMEQCIFfEE/XhoWkSi/LOS+z01KPx8Th2UHkc9Aww4WRPgV2vAiBzr7EZaYfCETfbZsBuzdDo6KnJBmvkK4HkzUGThyunHyqXAwjk//////////8BEAAaDDg0MTA3MTc0NTgyNiIM5x4Ow6zlU40m0G1AKusCG7OQhqwXbj+Mn/zqqi7Wx4dCJEe0KO8ZbfZpteXZjkFTvvo+/MlSr6SKQxcmqtzxrsZilYwqGiBcArpB6bgirGpq2gw70O2+AKNtpvW0yKsbm7Dy+XfqbgTHQuK3zhHwwE16fk6oMF7Pu+Q8LCmcedAcNJTJZKvRqJ7i0nTDT1hZPTiXe6umAduaxQNReNHoIJj3yCOVMIrw3EPs4B1cEOuOLbgLDH9OSmeFFs57Q2xaaZeGBt/ZBsamdswhhMBiF+pBAYUvWwH6nPY23ZXO9cnZ1Z7PBKUAlWWTw6DNNjN3aF/0dyugKBv35QVQ4Q5rF3kRH0NATBikIIlVyckLcWsYtID0hPVgym0m3PXc+L8ILj/TcAf0sUCvkCid8+cRfVYinw/T/8mll1nsAxydcmLO2KzVjeOREFopgc+47jkVjSVkSBdj8u0s3zgV9GU7sjg6bATLCxfP4x6sI5tBwz8VN2H9LYqqVllmMNzWmLAGOqcBL0dLzaqZ3POZMu2hfH2lolOWugGD9YkAwSg4ikgnp4QB3Xb6HKKlIFmJC8JkQYUkxBuTBK1c3CjJK/1TPYLNpy3mQu8bfeRSEg1Mxkuc4IeFb11o0B7xK6LC8QO39peWUDOLchQ0Kecf2xWJ+9aRN4u+KObUnrIViikRCz0hh8380NdWKJXgDIVkWjUJzmx2+ZhgRQfmqYczblWR/ep6QmM3x97SbBI="
 
-AWS_STORAGE_BUCKET_NAME = 'elasticbeanstalk-ca-central-1-841071745826'
+AWS_STORAGE_BUCKET_NAME = 'rekognitionvideofaceblurr-outputimagebucket1311836-qbibfhivlghz'
 AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
-AWS_S3_REGION_NAME = "ca-central-1"
+AWS_S3_REGION_NAME = "us-west-2"
 AWS_S3_SIGNATURE_VERSION = "s3v4"
 AWS_QUERYSTRING_EXPIRE = 604800
-CLOUDFRONT_DOMAIN = 'd18u3jaflgrcvn.cloudfront.net'
-AWS_CLOUDFRONT_DOMAIN = 'd18u3jaflgrcvn.cloudfront.net'
-AWS_S3_REGION_NAME = 'ca-central-1'
+CLOUDFRONT_DOMAIN = 'dns1ziq7g5vyv.cloudfront.net'
+AWS_CLOUDFRONT_DOMAIN = 'dns1ziq7g5vyv.cloudfront.net'
+AWS_S3_REGION_NAME = 'us-west-2'
 AWS_S3_ENDPOINT_URL = f'https://s3.{AWS_S3_REGION_NAME}.amazonaws.com'
 
-S3DIRECT_DESTINATIONS = {
-    'primary_destination': {
-        'key': 'uploads/',
-        'allowed': ['image/jpg', 'image/jpeg', 'image/png', 'video/mp4'],
-    },
-}
-
+AWS_S3_INPUT_BUCKET_NAME = 'rekognitionvideofaceblurr-inputimagebucket20b2ba6b-c4zs9410qluo'
 
 # MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # MEDIA_URL = '/media/'
 
-MEDIAFILES_LOCATION = 'media'
-MEDIA_URL = f'{CLOUDFRONT_DOMAIN}/media/'
+MEDIAFILES_LOCATION = ''
+MEDIA_URL = f'{CLOUDFRONT_DOMAIN}/'
 
-PROFILE_PICTURE_FILES_LOCATION = 'media/profile-pics'
+PROFILE_PICTURE_FILES_LOCATION = 'profile-pics'
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 #solves vidstream auto-created primary key error
 DEFAULT_AUTO_FIELD='django.db.models.AutoField'
 
-DATA_UPLOAD_MAX_MEMORY_SIZE = 1024 * 1024 * 50  # X is the size in megabytes - 50mb (1 min record video = 5.5mb)
-FILE_UPLOAD_MAX_MEMORY_SIZE = 1024 * 1024 * 50  # X is the size in megabytes - 50mb
+DATA_UPLOAD_MAX_MEMORY_SIZE = 1024 * 1024 * 100  # X is the size in megabytes - 100mb (1 min record video = 5.5mb)
+FILE_UPLOAD_MAX_MEMORY_SIZE = 1024 * 1024 * 100  # X is the size in megabytes - 100mb
 
 STATIC_ROOT=os.path.join(BASE_DIR,'productionfiles')
 # MEDIA_ROOT=os.path.join(BASE_DIR,'static/media/')

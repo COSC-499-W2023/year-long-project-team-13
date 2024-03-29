@@ -20,7 +20,8 @@
         <div class="card mb-3" style="width: 75%; box-shadow: 12em; margin: auto;">
             <h12 style="text-align: center; margin-top: 0.25em; font-size: 1.25em;">{{ object.sendtime }}</h12>
             <video class="card-img-top" controls style="width: 100%; height: auto;">
-                <source src="{{ object.video.url }}" type="video/mp4">
+                {% comment %} <source src="{{ object.video.url }}" type="video/mp4"> {% endcomment %}
+                <source src="{{ object.video }}" type="video/mp4">
             </video>
             <div class="card-body">
                 <h5 class="card-title"><a href="{% url 'stream:video-detail' object.id  %}">{{ object.title }}</a></h5>

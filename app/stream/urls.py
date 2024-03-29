@@ -2,19 +2,13 @@ from . import views
 from . views import (
     VideoDetailView,
     UserVideoListView,
-    VideoCreateView,
     GeneralVideoListView,
-    VideoRecordFilledView,
     VideoDeleteView,
     FriendRequest,
-    VideoUploadView,
-    VideoUploadFilledView
 )
 from django.urls import path
 from stream import views as stream_views
 from django.contrib.auth import views as auth_views
-
-
 
 app_name = "stream"
 
@@ -25,10 +19,7 @@ urlpatterns = [
     path('video/<int:pk>/upload/', stream_views.upload_filled_video, name="video-upload-filled"),
     path('video/<int:pk>/delete/', VideoDeleteView.as_view(), name="video-delete"),
     path('user/<str:username>', UserVideoListView.as_view(), name="user-videos"),
-    # VideoCreateView.as_view()
-    # stream_views.create_video
     path('video/new/',stream_views.create_video, name="video-create"),
-    # VideoUploadView.as_view()
     path('video/new',stream_views.upload_video, name="video-upload"),
     path('search',views.search,name="search"),
     path('',views.home,name="home"),
