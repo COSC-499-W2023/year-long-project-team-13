@@ -342,7 +342,7 @@ def password_reset(request):
             # Fetch the security question associated with the user's account
             security_question = user.userinfo.security_question
             # Redirect to page to display security question
-            return redirect('stream:security-answer')
+            return redirect('stream:security-answer', username)
 
     else:
         form = SecurityQuestionForm()
@@ -351,11 +351,9 @@ def password_reset(request):
     return render(request, 'stream/forget-password.html', {'form': form})
 
 
-def security_answer(request):
+def security_answer(request, username):
     if request.method == 'POST':
-        username = request.POST['username']
         security_answer = request.POST['security_answer']
-
         # Check if the security answer is correct
         if username.userinfo.security_answer == security_answer:
             # Redirect to page to reset password
@@ -363,7 +361,7 @@ def security_answer(request):
         else:
             messages.error(request, 'Incorrect security answer.')
             return redirect('stream:security-answer')
-    return render(request, 'stream/security-answer.html')
+    return render(request, 'stream/security-answer.html', {'username': UserInfo.objects.filter(user__username=username)})
 
 
 class PasswordResetDoneView(DetailView):
