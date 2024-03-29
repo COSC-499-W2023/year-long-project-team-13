@@ -1,6 +1,7 @@
 # Project Setup and Testing Guide
 
 This guide will walk you through the process of setting up your Python environment, installing necessary packages, configuring the database, and running the Django server. It also includes instructions for running Selenium and Pytest tests.
+**Note:** The following guide uses `python` as the command to run Python. Depending on your system, you may need to use `python3` or `py` instead.
 
 ## Setup Guide
 
