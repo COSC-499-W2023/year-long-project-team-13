@@ -6,6 +6,9 @@ from django.dispatch import receiver
 from PIL import Image, ImageOps
 from datetime import date
 from django.urls import reverse
+from django.core.files.storage import default_storage as storage
+from s3direct.fields import S3DirectField
+from stream.storage_backends import MediaStorage, ProfilePictureStorage
 # Create your models here.
 
 # Video Request Table
@@ -86,7 +89,8 @@ class Post(models.Model):
     description = models.TextField(max_length=600)
     sendtime = models.DateTimeField(default=timezone.now)
     timelimit = models.DateTimeField(default=timezone.now)
-    video = models.FileField(upload_to='')
+    # video = models.FileField(upload_to='')    # local SQLite
+    video = models.FileField(storage=MediaStorage())    # S3 cloudfront
     video_id = models.ForeignKey(VidStream, on_delete=models.SET_NULL, null=True)
     request_id = models.ForeignKey(VidRequest, on_delete=models.SET_NULL, null=True)
 
@@ -97,15 +101,25 @@ class Post(models.Model):
     def get_absolute_url(self):
         return reverse("video-detail", kwargs={"pk": self.pk})
 
+    def save(self, *args, **kwargs):
+        # Add the user attribute to the File object
+        self.video.file.user = self.sender
+
+        # Call the original save method
+        super().save(*args, **kwargs)
+
+
 # Update User's Profile Picture
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    image = models.ImageField(default="mountain.jpg", upload_to='profile-pics')
+    # image = models.ImageField(default="mountain.jpg", upload_to='profile-pics')   # local SQLite
+    image = models.ImageField(default="mountain.jpg", storage=ProfilePictureStorage())  # S3 cloudfront
 
     def __str__(self):
         return f"{self.user.username} Profile "
 
     def save(self, *args, **kwargs):
+        self.image.file.user = self.user
         super().save(*args, **kwargs)
 
         # img = Image.open(self.image.path)
@@ -173,6 +187,9 @@ class Notification(models.Model):
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
+
+    def notification_as_list(self):
+        return self.message.split('&nbsp;')
 
 # @receiver(user_logged_in)
 # def user_logged_in(sender, user, request, **kwargs):

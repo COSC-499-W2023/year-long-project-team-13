@@ -9,12 +9,12 @@ from django.contrib.auth import logout, authenticate, login
 from django.dispatch import Signal
 from django.db.models import Q
 from stream.forms import UserInfoUpdateForm
-
 from . models import VidRequest, VidStream, Contact, FriendRequest, Post, Profile, UserInfo, Notification, Setting
 from . forms import VidUploadForm, VidCreateForm, VidRequestForm, UserRegistrationForm, UserUpdateForm, UserInfoUpdateForm, UserProfileUpdateForm, UserProfileUpdateForm,  ValidatingPasswordChangeForm, AddContactForm, UserPermissionForm, VidRecFilledForm, VidUpFilledForm
 
 import base64
 from django.core.files.base import ContentFile
+# from background_task import background
 
 class VideoDetailView(DetailView):
     template_name = "stream/video-detail.html"
@@ -125,9 +125,22 @@ def create_video(request):
             # Decode and save the blob data
             blob_data = request.POST['video_blob']  # Get blob video data from html input
             decoded_data = base64.b64decode(blob_data)  # Convert the video data to 64 byte type
+            upload_video.video.delete(save=False)  # Delete the existing video file
             upload_video.video.save('video_filename.mp4', ContentFile(decoded_data), save=True) # Save into video field with 64 byte content file (video name)
 
             upload_video.save()
+
+            # if 'video_blob' in request.POST:  # Check if the video blob exists in the request
+            #     blob_data = request.POST['video_blob']  # Get blob video data from HTML input
+            #     decoded_data = base64.b64decode(blob_data)  # Convert the video data to bytes
+            #     # Delete the existing video file associated with the Post instance
+            #     if upload_video.video:
+            #         upload_video.video.delete(save=False)
+            #     # Save the new video file
+            #     upload_video.video.save('video_filename.mp4', ContentFile(decoded_data), save=True)
+            #     # upload_video.user.save()
+
+            # upload_video.save()
 
             # link recent uploaded video request from Post table to Notification table
             recentVideoUpload = Post.objects.filter(sender=request.user).last()
@@ -135,21 +148,22 @@ def create_video(request):
             Notification.objects.create(user=request.user, message=f'You have post a video to '+ str(receiverfilter) +'.', type=5, post_id=recentVideoUpload)
             Notification.objects.create(user=receiverfilter, message=f'You have received a video post from '+ str(request.user) +'.', type=6, post_id=recentVideoUpload)
             return redirect('stream:video-list')
+
     else:
         createvideoform = VidCreateForm(request.user)
 
     context = {
-        'createvideoform': createvideoform
+        'createvideoform': createvideoform,
+        'notification': Notification.objects.filter(user=request.user, type=4)
     }
     return render(request, 'stream/video-create.html', context)
-
 
 class VideoUploadView(LoginRequiredMixin   ,CreateView):
     model = Post
     success_url = "/"
     template_name = 'stream/video-upload.html'
     fields = ['title', 'description','video']
-    #this is to make sure that the logged in user is the one to upload the content
+    # this is to make sure that the logged in user is the one to upload the content
     def form_valid(self, form):
         form.instance.sender = self.request.user
         return super().form_valid(form)
@@ -165,7 +179,15 @@ def upload_video(request):
             upload_video.sender = request.user
             receiverfilter = User.objects.get(username=VidRequest.objects.get(id=request_id.id).sender)
             upload_video.receiver = receiverfilter
+
+            # Check if the video file already exists
+            # existing_video = Post.objects.filter(video=upload_video.video.name).first()
+            # if existing_video:
+            #     # Overwrite the existing video file
+            #     existing_video.video.delete(save=False)  # Delete the existing video file
+            #     upload_video.id = existing_video.id  # Set the ID of the existing video
             upload_video.save()
+
             # link recent uploaded video request from Post table to Notification table
             recentVideoUpload = Post.objects.filter(sender=request.user).last()
 
@@ -176,7 +198,8 @@ def upload_video(request):
         uploadvideoform = VidUploadForm(request.user)
 
     context = {
-        'uploadvideoform': uploadvideoform
+        'uploadvideoform': uploadvideoform,
+        'notification': Notification.objects.filter(user=request.user, type=4)
     }
     return render(request, 'stream/video-upload.html', context)
 
@@ -203,7 +226,15 @@ def upload_filled_video(request, pk):
             receiverfilter = User.objects.get(username=VidRequest.objects.get(id=request_id.id).sender)
             upload_video.receiver = receiverfilter
             upload_video.request_id = request_id
+
+            # Check if the video file already exists
+            # existing_video = Post.objects.filter(video=upload_video.video.name).first()
+            # if existing_video:
+            #     # Overwrite the existing video file
+            #     existing_video.video.delete(save=False)  # Delete the existing video file
+            #     upload_video.id = existing_video.id  # Set the ID of the existing video
             upload_video.save()
+
             # link recent uploaded video request from Post table to Notification table
             recentVideoUpload = Post.objects.filter(sender=request.user).last()
 
@@ -213,7 +244,10 @@ def upload_filled_video(request, pk):
     else:
         uploadvideoform = VidUpFilledForm(request.user)
 
-    context = {'notification': Notification.objects.filter(id=pk), 'uploadvideoform': uploadvideoform}
+    context = {
+        'notification': Notification.objects.filter(id=pk),
+        'uploadvideoform': uploadvideoform
+    }
     return render(request, 'stream/video-upload-filled.html', context)
 
 class VideoRecordFilledView(LoginRequiredMixin, UserPassesTestMixin ,UpdateView):
@@ -222,11 +256,11 @@ class VideoRecordFilledView(LoginRequiredMixin, UserPassesTestMixin ,UpdateView)
     success_url = "/"
     fields = ['title','description','timelimit','request_id']
 
-    #this is to make sure that the logged in user is the one to upload the content
+    # this is to make sure that the logged in user is the one to upload the content
     def form_valid(self, form):
         form.instance.sender = self.request.user
         return super().form_valid(form)
-    #this function prevents other people from updating your videos
+    # this function prevents other people from updating your videos
     def test_func(self):
         video = self.get_object()
         if self.request.user == video.sender:
@@ -260,6 +294,18 @@ def record_filled_video(request, pk):
 
             upload_video.save()
 
+            # Check if the video file already exists
+            # if 'video_blob' in request.POST:  # Check if the video blob exists in the request
+            #     blob_data = request.POST['video_blob']  # Get blob video data from HTML input
+            #     decoded_data = base64.b64decode(blob_data)  # Convert the video data to bytes
+            #     # Delete the existing video file associated with the Post instance
+            #     if upload_video.video:
+            #         upload_video.video.delete(save=False)
+            #     # Save the new video file
+            #     upload_video.video.save('video_filename.mp4', ContentFile(decoded_data), save=True)
+
+            # upload_video.save()
+
             # link recent uploaded video request from Post table to Notification table
             recentVideoUpload = Post.objects.filter(sender=request.user).last()
 
@@ -272,7 +318,10 @@ def record_filled_video(request, pk):
         print(request.method)
         createvideoform = VidRecFilledForm(request.user)
 
-    context = {'notification': Notification.objects.filter(id=pk), 'createvideoform': createvideoform}
+    context = {
+        'notification': Notification.objects.filter(id=pk),
+        'createvideoform': createvideoform
+        }
     return render(request, 'stream/video-record-filled.html', context )
 
 
