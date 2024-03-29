@@ -50,7 +50,8 @@ Activate the virtual environment:
 
 ### Step 3: Install Required Packages
 
-With the virtual environment activated, install the necessary packages:
+With the virtual environment activated, install the necessary packages.
+First, navigate to the `app` folder in your command line. Then, run the following command to install the required packages
 
 ```console
 pip install -r requirements.txt
