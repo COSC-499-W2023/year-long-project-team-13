@@ -44,8 +44,8 @@ def reset_password_page_test(driver, email, username, answer, password):
     wait.until(EC.presence_of_element_located((By.ID, "id_email")))
 
     # Send the email to the email input
-    email_input_element.send_keys("testing2")
-    wait.until(EC.text_to_be_present_in_element_value((By.ID, "id_email"), "testing2"))
+    email_input_element.send_keys("testing2@gmail.com")
+    wait.until(EC.text_to_be_present_in_element_value((By.ID, "id_email"), "testing2@gmail.com"))
 
     submit_button = driver.find_element(By.ID, "email-username-submit")
     wait.until(EC.element_to_be_clickable((By.ID, "email-username-submit")))
@@ -58,6 +58,8 @@ def reset_password_page_test(driver, email, username, answer, password):
         print("TEST 2: `Bad Username/Email` failed")
 
     # Find the element with id_username and click it
+    html = driver.find_element(By.TAG_NAME, "html")
+    html.send_keys(Keys.PAGE_DOWN)
     username_input_element = driver.find_element(By.ID, "id_username")
     username_input_element.click()
     wait.until(EC.presence_of_element_located((By.ID, "id_username")))
@@ -65,6 +67,9 @@ def reset_password_page_test(driver, email, username, answer, password):
     # Send the username to the username input
     username_input_element.send_keys(username)
     wait.until(EC.text_to_be_present_in_element_value((By.ID, "id_username"), username))
+
+    html = driver.find_element(By.TAG_NAME, "html")
+    html.send_keys(Keys.PAGE_DOWN)
 
     # Find the element with the id "id_email" and click it
     email_input_element = driver.find_element(By.ID, "id_email")
@@ -74,6 +79,9 @@ def reset_password_page_test(driver, email, username, answer, password):
     # Send the email to the email input
     email_input_element.send_keys(email)
     wait.until(EC.text_to_be_present_in_element_value((By.ID, "id_email"), email))
+
+    html = driver.find_element(By.TAG_NAME, "html")
+    html.send_keys(Keys.PAGE_DOWN)
 
     submit_button = driver.find_element(By.ID, "email-username-submit")
     wait.until(EC.element_to_be_clickable((By.ID, "email-username-submit")))
@@ -86,9 +94,13 @@ def reset_password_page_test(driver, email, username, answer, password):
         print("TEST 3: `Good Username/Email` failed")
 
     # Find the element with the id "security_answer" and click it
+    html = driver.find_element(By.TAG_NAME, "html")
+    html.send_keys(Keys.PAGE_DOWN)
+    html.send_keys(Keys.PAGE_DOWN)
+    html.send_keys(Keys.PAGE_DOWN)
     security_answer_input_element = driver.find_element(By.ID, "security_answer")
+    wait.until(EC.element_to_be_clickable((By.ID, "security_answer")))
     security_answer_input_element.click()
-    wait.until(EC.presence_of_element_located((By.ID, "security_anwser")))
     security_answer_input_element.send_keys("testing")
     wait.until(EC.text_to_be_present_in_element_value((By.ID, "security_answer"), "testing"))
 
@@ -102,6 +114,10 @@ def reset_password_page_test(driver, email, username, answer, password):
         print("TEST 4: `Bad Security Answer` failed")
 
     # Find the element with the id "security_answer" and click it
+    html = driver.find_element(By.TAG_NAME, "html")
+    html.send_keys(Keys.PAGE_DOWN)
+    html.send_keys(Keys.PAGE_DOWN)
+    html.send_keys(Keys.PAGE_DOWN)
     security_answer_input_element = driver.find_element(By.ID, "security_answer")
     wait.until(EC.element_to_be_clickable((By.ID, "security_answer")))
     security_answer_input_element.click()
@@ -119,6 +135,10 @@ def reset_password_page_test(driver, email, username, answer, password):
         print("TEST 5: `Good Security Answer` failed")
 
     # Find the element with the id "id_password" and click it
+    html = driver.find_element(By.TAG_NAME, "html")
+    html.send_keys(Keys.PAGE_DOWN)
+    html.send_keys(Keys.PAGE_DOWN)
+    html.send_keys(Keys.PAGE_DOWN)
     password_input_element = driver.find_element(By.ID, "id_password")
     wait.until(EC.element_to_be_clickable((By.ID, "id_password")))
     password_input_element.click()
@@ -146,6 +166,10 @@ def reset_password_page_test(driver, email, username, answer, password):
         print("TEST 6: `Bad Password Reset` failed")
 
     # Find the element with the id "id_password" and click it
+    html = driver.find_element(By.TAG_NAME, "html")
+    html.send_keys(Keys.PAGE_DOWN)
+    html.send_keys(Keys.PAGE_DOWN)
+    html.send_keys(Keys.PAGE_DOWN)
     password_input_element = driver.find_element(By.ID, "id_password")
     wait.until(EC.element_to_be_clickable((By.ID, "id_password")))
     password_input_element.click()
