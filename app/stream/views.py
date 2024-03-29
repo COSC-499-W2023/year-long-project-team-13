@@ -42,6 +42,7 @@ def home(request):
 
 
 def friendRequest(request):
+    users = None  # To avoid error if users is not defined
     if request.method == "POST":
         addcontactform = AddContactForm(request.user, request.POST)
         if addcontactform.is_valid():
@@ -50,7 +51,7 @@ def friendRequest(request):
             add_contact.save()
             # link recent created friendRequest from friend request table to Notification table
             recentFriendRequest = FriendRequest.objects.filter(sender=request.user).last()
-            Notification.objects.create(user=request.user, message=f'You have sent a friend request to '+ str(addcontactform.cleaned_data['receiver']) +'.', type=1, friendRequest_id=recentFriendRequest)
+            Notification.objects.create(user=request.user, message=f'You have sent a friend request to '+ str(addcontactform.cleaned_data['receiver']) +'.', type=1, friendRequest_id=recentFriendRequest, is_read=True)
             Notification.objects.create(user=addcontactform.cleaned_data['receiver'], message=f'You have received a friend request from '+ str(request.user) +'.', type=2, friendRequest_id=recentFriendRequest)
             return redirect("stream:notifications")
     else:
@@ -357,72 +358,70 @@ def notifications(request):
     user = request.user
     if user.is_authenticated:
         if request.method == "POST":
+            notificationid = request.POST.get('notifID')
+            notification = Notification.objects.get(id=notificationid)
+
+            # Mark the notification as read
+            notification.is_read = True
+            notification.save()
+
             if 'deleteFriendRequest' in request.POST:
                 # delete the friend request
                 # delete notification of sender and receiver friend request
                 # make sender notification of successful delete the sent friend request
-                notificationid = request.POST.get('notifID')
-                friendRequestid = Notification.objects.get(id=notificationid).friendRequest_id.id
+                friendRequestid = notification.friendRequest_id.id
                 receiver = FriendRequest.objects.get(id=friendRequestid).receiver
                 sender = request.user
                 FriendRequest.objects.filter(id=friendRequestid).delete()
-                Notification.objects.create(user=sender, message=f'You have successfully deleted a friend request to '+ str(receiver) +'.', type=8)
-                return redirect("stream:notifications")
+                Notification.objects.create(user=sender, message=f'You have successfully deleted a friend request to '+ str(receiver) +'.', type=8, is_read=True)
             elif 'acceptFriendRequest' in request.POST:
                 # make a contact data with sender and receiver username
                 # delete the friend request
                 # delete notification of sender and receiver friend request
                 # make both sender and receiver notification of successful become friends
-                notificationid = request.POST.get('notifID')
-                friendRequestid = Notification.objects.get(id=notificationid).friendRequest_id.id
+                friendRequestid = notification.friendRequest_id.id
                 sender = FriendRequest.objects.get(id=friendRequestid).sender
                 receiver = request.user
                 Contact.objects.create(sender=sender, receiver=receiver)
                 FriendRequest.objects.filter(id=friendRequestid).delete()
                 Notification.objects.create(user=sender, message=f'You and '+ str(receiver) +' had become friends.', type=8)
                 Notification.objects.create(user=receiver, message=f'You and '+ str(sender) +' had become friends.', type=8)
-                return redirect("stream:notifications")
             elif 'rejectFriendRequest' in request.POST:
                 # delete the friend request
                 # delete notification of the sender and receiver friend request
                 # make receiver notification of successful reject friend request
-                notificationid = request.POST.get('notifID')
-                friendRequestid = Notification.objects.get(id=notificationid).friendRequest_id.id
+                friendRequestid = notification.friendRequest_id.id
                 sender = FriendRequest.objects.get(id=friendRequestid).sender
                 receiver = request.user
                 FriendRequest.objects.filter(id=friendRequestid).delete()
                 Notification.objects.create(user=receiver, message=f'You have rejected a friend request from '+ str(sender) +'.', type=8)
-                return redirect("stream:notifications")
             elif 'deleteVideoRequest' in request.POST:
                 # delete the video request
                 # delete notification of sender and receiver video request
                 # make sender notification of successful delete the sent video request
-                notificationid = request.POST.get('notifID')
-                videoRequestid = Notification.objects.get(id=notificationid).videoRequest_id.id
+                videoRequestid = notification.videoRequest_id.id
                 receiver = VidRequest.objects.get(id=videoRequestid).receiver
                 sender = request.user
                 VidRequest.objects.filter(id=videoRequestid).delete()
                 Notification.objects.create(user=sender, message=f'You have successfully deleted a video request to '+ str(receiver) +'.', type=8)
-                return redirect("stream:notifications")
             elif 'deleteVideoPost' in request.POST:
                 # delete the video post
                 # delete notification of sender and receiver video post
                 # make sender notification of successful delete the sent video post
-                notificationid = request.POST.get('notifID')
-                postid = Notification.objects.get(id=notificationid).post_id.id
+                postid = notification.post_id.id
                 receiver = Post.objects.get(id=postid).receiver
                 sender = request.user
                 Post.objects.filter(id=postid).delete()
                 Notification.objects.create(user=sender, message=f'You have successfully deleted a video post to '+ str(receiver) +'.', type=8)
-                return redirect("stream:notifications")
-            else:
-                notifications = Notification.objects.filter(user=user).order_by('-timestamp')
-                return render(request, 'stream/notification.html', {'notifications': notifications})
-        else:
-            notifications = Notification.objects.filter(user=user).order_by('-timestamp')
-            return render(request, 'stream/notification.html', {'notifications': notifications})
+
+        # Update the unread notifications count
+        unread_notifications_count = Notification.objects.filter(user=user, is_read=False).count()
+
+        notifications = Notification.objects.filter(user=user).order_by('-timestamp')
+        return render(request, 'stream/notification.html', {'notifications': notifications, 'unread_notifications_count': unread_notifications_count})
+
     else:
-        return redirect('stream:login')  # or wherever you want to redirect unauthenticated users
+        return redirect('stream:login')
 
 # def login_view(request):
 #     if request.method == 'POST':
