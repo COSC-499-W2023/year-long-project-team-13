@@ -147,12 +147,43 @@ STATICFILES_DIRS = [
 LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = 'login'
 
+AWS_ACCESS_KEY_ID="ASIA4HU6ILMRHJSTEDNK"
+AWS_SECRET_ACCESS_KEY="hL4tjL8CLcoEgtLGdl8xgv2cririnGQDuDp2o1L0"
+AWS_SESSION_TOKEN="IQoJb3JpZ2luX2VjENz//////////wEaDGNhLWNlbnRyYWwtMSJHMEUCIQD85uMVayy/sAVdFbPiJ6OJGky4QlrtR75zRLvCzPBb1AIgeTzsRrvNbpnFFd06RhyOMGoYwBkm6Z8Zvdy3EX4Dv0gqlwMI9f//////////ARAAGgw4NDEwNzE3NDU4MjYiDK9R8zfSBn5MA7AHWyrrAkvghnviaao8hL68csE+iVFZ/32HC8k2pjVtLzv8Uiz78zxPfKsVmV6vOKuooumaZ+8YZysEJGqXLuR0WAf3j4MI93AQx9ltLiohpkEif+mHlyVEGy52X+Il9LaWpljPd8Qom/zWbTnlDIp+SmO+DZFYeQwDYjzbZOGbclwvYqCgGW2ngIMlXbM9+gx15s/z1V9w+4mYP9ExNLmxNYbajMrhp3UKfi7e4tHn/7hHYIy7f8spVFH7UIZG/1GQj6+M9jn8sANW3+HOH7B55moGobjygnsKPO73vggK8LU+cQ+DXRPIaZAukPsw82fSFo2UFOI8Y60awJybst6v1X6CzewMpwlyxt7nJKW5XawJvF0yGon3cPO2jr2Xk+ISISKzKvGi2mT6yVaADakJxn1wrAjF9L7jXpOsCaRb8ui3BdcspzOyFUPqPYH3ZjHNZmc2Kn1glXfUT/ph7P94hmTjhhpsFzFMQB52TVMLwTDRwZywBjqmATXkes4JcCY9xhrazJg8mTYTgLJFuV78KdbuNbFt8U3tVCTnPjz3sLOtvd7kEV+82aIzILKhlycWU85M4uG7v4c4AtCh6v46985VCdLP0y1YEZXZYT6PQuaviNQpSuVHLKZwyL4zgW2sdjwZcOYAnn4z/AHH0+0cuPmrCc8luvaGobaqnrAlF+Oh9d4hynBppY8XbtpJJ9oljVKDfZR+EoAYQ949vmY="
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/'
+AWS_STORAGE_BUCKET_NAME = 'elasticbeanstalk-ca-central-1-841071745826'
+AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
+AWS_S3_REGION_NAME = "ca-central-1"
+AWS_S3_SIGNATURE_VERSION = "s3v4"
+AWS_QUERYSTRING_EXPIRE = 604800
+CLOUDFRONT_DOMAIN = 'd18u3jaflgrcvn.cloudfront.net'
+AWS_CLOUDFRONT_DOMAIN = 'd18u3jaflgrcvn.cloudfront.net'
+AWS_S3_REGION_NAME = 'ca-central-1'
+AWS_S3_ENDPOINT_URL = f'https://s3.{AWS_S3_REGION_NAME}.amazonaws.com'
+
+S3DIRECT_DESTINATIONS = {
+    'primary_destination': {
+        'key': 'uploads/',
+        'allowed': ['image/jpg', 'image/jpeg', 'image/png', 'video/mp4'],
+    },
+}
+
+# Local media store path
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# MEDIA_URL = '/media/'
+
+# S3 media/profile picture store path
+MEDIAFILES_LOCATION = 'media'
+MEDIA_URL = f'{CLOUDFRONT_DOMAIN}/media/'
+
+PROFILE_PICTURE_FILES_LOCATION = 'media/profile-pics'
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 #solves vidstream auto-created primary key error
 DEFAULT_AUTO_FIELD='django.db.models.AutoField'
 
+DATA_UPLOAD_MAX_MEMORY_SIZE = 1024 * 1024 * 50  # X is the size in megabytes - 50mb (1 min record video = 5.5mb)
+FILE_UPLOAD_MAX_MEMORY_SIZE = 1024 * 1024 * 50  # X is the size in megabytes - 50mb
+
 STATIC_ROOT=os.path.join(BASE_DIR,'productionfiles')
-# MEDIA_ROOT=os.path.join(BASE_DIR,'static/media/')
+# MEDIA_ROOT=os.path.join(BASE_DIR,'static/media/')   # Media root for local
