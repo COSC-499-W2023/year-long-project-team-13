@@ -187,6 +187,9 @@ class Notification(models.Model):
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
 
+    def notification_as_list(self):
+        return self.message.split('&nbsp;')
+
 # @receiver(user_logged_in)
 # def user_logged_in(sender, user, request, **kwargs):
 #     Notification.objects.create(user=user, message='You have logged in.')
