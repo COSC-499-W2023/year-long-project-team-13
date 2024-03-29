@@ -9,7 +9,6 @@ from . views import (
     FriendRequest,
     VideoUploadView,
     VideoUploadFilledView,
-    PasswordResetDoneView,
 )
 from django.urls import path
 from stream import views as stream_views
@@ -47,5 +46,5 @@ urlpatterns = [
 
     path('forget-password/', stream_views.password_reset, name='forget-password'),
     path('security-answer/<str:username>', stream_views.security_answer, name='security-answer'),
-    path('password_reset_done/', auth_views.PasswordResetDoneView.as_view, name='password_reset_done'),
+    path('password_reset_done/<str:username>', stream_views.password_reset_done, name='password_reset_done'),
 ]

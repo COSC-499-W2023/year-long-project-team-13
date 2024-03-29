@@ -354,19 +354,65 @@ def password_reset(request):
 def security_answer(request, username):
     if request.method == 'POST':
         security_answer = request.POST['security_answer']
+        user = User.objects.get(username=username)
         # Check if the security answer is correct
-        if username.userinfo.security_answer == security_answer:
+        if user.userinfo.security_answer.lower() == security_answer.lower():
             # Redirect to page to reset password
-            return redirect('stream:password_reset_done')
+            return redirect('stream:password_reset_done', user)
         else:
             messages.error(request, 'Incorrect security answer.')
-            return redirect('stream:security-answer')
+            return redirect('stream:security-answer', username)
     return render(request, 'stream/security-answer.html', {'username': UserInfo.objects.filter(user__username=username)})
 
+def password_reset_done(request, username):
+    if request.method == "POST":
+        # passwordform = SetPasswordForm(request.POST, instance=request.user)
+        user = User.objects.get(username=username)
+        passwordform = ResetPasswordForm(data=request.POST, instance=user)
+        print("Post correct")
+        if passwordform.is_valid():
+            reset_password = passwordform.cleaned_data['resetpassword']
+            reset_password2 = passwordform.cleaned_data['resetpassword2']
+            print("form is valid")
 
-class PasswordResetDoneView(DetailView):
-    def password_reset_done(request):
-        return render(request, 'stream/password_reset_done.html')
+            # Check if the new passwords match
+            if reset_password == reset_password2:
+                user = passwordform.save(commit=False)
+                user.password = make_password(user.password)
+                user.save()
+                return redirect("stream:login")
+            else:
+                messages.error(request, 'Passwords do not match.')
+                return redirect('stream:password_reset_done', username)
+        else:
+            messages.error(request, 'Invalid password.')
+            print('invalid form')
+            return redirect('stream:password_reset_done', username)
+
+
+    else:
+        passwordform = ResetPasswordForm(instance=User.objects.get(username=username))
+
+    context = {
+        'passwordform': passwordform, 'username': username
+    }
+    return render(request, 'stream/password_reset_done.html', context)
+
+
+
+# def password_reset_done(request):
+#     if request.method == 'POST':
+#         reset_password_form = ResetPasswordForm(request.POST)
+#         if reset_password_form.is_valid():
+#             reset_password = reset_password_form.cleaned_data['resetpassword']
+#             reset_password2 = reset_password_form.cleaned_data['resetpassword2']
+#             if reset_password == reset_password2:
+#                 user = User.objects.get(username=request.user.username)
+#                 user.set_password(reset_password)
+#                 user.save()
+#                 return redirect('stream:login')
+#         return redirect('stream:login')
+#     return render(request, 'stream/password_reset_done.html')
 
 
 @login_required
@@ -518,26 +564,3 @@ def settings(request):
     return render(request, 'stream/settings.html', context)
 
 
-def reset(request):
-    if request.method == "POST":
-        # passwordform = SetPasswordForm(request.POST, instance=request.user)
-        passwordform = ResetPasswordForm(data=request.POST, instance=request.user)
-
-        if passwordform.is_valid():
-            reset_password = passwordform.cleaned_data['resetpassword']
-            reset_password2 = passwordform.cleaned_data['resetpassword2']
-
-            # Check if the new passwords match
-            if reset_password == reset_password2:
-                usertemp = passwordform.save(commit=False)
-                usertemp.password = make_password(usertemp.password)
-                usertemp.save()
-                return redirect("stream:login")
-
-    else:
-        passwordform = ResetPasswordForm(instance=request.user)
-
-    context = {
-        'passwordform': passwordform,
-    }
-    return render(request, 'stream/password_reset_done.html', context)

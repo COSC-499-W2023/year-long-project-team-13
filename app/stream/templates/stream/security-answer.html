@@ -98,7 +98,6 @@
                                                 {% csrf_token %}
                                                 <div class="form-group">
                                                 {%for user in username%}
-                                                <p>hello</p>
                                                 {% if user.security_question == 1%}
                                                     <p>What was the name of your first pet?</p>
                                                 {% elif user.security_question == 2%}
