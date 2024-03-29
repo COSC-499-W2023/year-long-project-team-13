@@ -245,7 +245,6 @@ class SecurityQuestionForm(forms.ModelForm):
         model = UserInfo
         fields = ['username', 'email']
 
-
 class UserProfileUpdateForm(forms.ModelForm):
 
     image = forms.ImageField(widget=forms.FileInput(attrs={'class': 'form-control-file'}))
