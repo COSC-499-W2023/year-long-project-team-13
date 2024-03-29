@@ -153,19 +153,26 @@
                                                 <br>
                                                 Your password can’t be entirely numeric.
                                                 <br>The new password must contain at least one letter and at least one digit or punctuation character.</p>
-                                            <div class = "form-center" id= "oldpassword" style= "margin: auto; padding-right: 140px;"
-                                                <div class="form-group">
-                                                {{ passwordform.oldpassword.errors }}
-                                                {{ passwordform.oldpassword }}
-                                            </div>
-                                            <div class="form-group" id = "newpassword"  style= "margin: auto; padding-right: 140px;">
-                                                {{ passwordform.password.errors }}
-                                                {{ passwordform.password }}
-                                            </div>
-                                            <div class="form-group" id = "confirmpassword" style= "margin: auto; padding-right: 140px;">
-                                                {{ passwordform.password2.errors }}
-                                                {{ passwordform.password2 }}
-                                            </div>
+                                                <div class="form-center" id="oldpassword" style="margin: auto; padding-right: 145px;">
+                                                    <div class="form-group">
+                                                        <label for="{{ passwordform.oldpassword.id_for_label }}">Old Password:</label>
+                                                        {{ passwordform.oldpassword.errors }}
+                                                        {{ passwordform.oldpassword }}
+                                                        <span toggle="#{{ passwordform.oldpassword.id_for_label }}" class="input-group-addon toggle-password fas fa-eye" style="position: absolute; top: 458px; margin-left: 355px;"></span>
+                                                    </div>
+                                                    <div class="form-group" id="newpassword" style="margin: auto; padding-right: 140px;">
+                                                        <label for="{{ passwordform.password.id_for_label }}">New Password:</label>
+                                                        {{ passwordform.password.errors }}
+                                                        {{ passwordform.password }}
+                                                        <span toggle="#{{ passwordform.password.id_for_label }}" class="input-group-addon toggle-password fas fa-eye" style="position: absolute; top: 555px; margin-left: 355px;"></span>
+                                                    </div>
+                                                    <div class="form-group" id="confirmpassword" style="margin: auto; padding-right: 140px;">
+                                                        <label for="{{ passwordform.password2.id_for_label }}">Confirm Password:</label>
+                                                        {{ passwordform.password2.errors }}
+                                                        {{ passwordform.password2 }}
+                                                        <span toggle="#{{ passwordform.password2.id_for_label }}" class="input-group-addon toggle-password fas fa-eye" style="position: absolute; top: 652px; margin-left: 355px;"></span>
+                                                    </div>
+                                                </div>
                                             <!-- Uncomment the following lines if you want to include Confirm Password field -->
                                             {% comment %}
                                             <div class="form-group">
@@ -204,6 +211,7 @@
                     </div>
                 </div>
             </div>
+           
 
 {% comment %} {% endblock content %} {% endcomment %}
 
@@ -211,10 +219,25 @@
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-<script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+<!-- <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script> -->
+<script>
+    $(document).ready(function() {
+      $(".toggle-password").click(function() {
+        $(this).toggleClass("fas fa-eye fas fa-eye-slash");
+        var input = $($(this).attr("toggle"));
+        if (input.attr("type") == "password") {
+          input.attr("type", "text");
+        } else {
+          input.attr("type", "password");
+        }
+      });
+    });
+  </script>
 
         <!-- This js ask user before logout  -->
         <script src=" {% static 'assets/js/logout.js'%} "></script>
