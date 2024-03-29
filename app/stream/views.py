@@ -357,6 +357,8 @@ def profile(request):
 def notifications(request):
     user = request.user
     if user.is_authenticated:
+        # Mark all notifications as read when the user opens the notifications page
+        Notification.objects.filter(user=user, is_read=False).update(is_read=True)
         if request.method == "POST":
             notificationid = request.POST.get('notifID')
             notification = Notification.objects.get(id=notificationid)
@@ -384,8 +386,8 @@ def notifications(request):
                 receiver = request.user
                 Contact.objects.create(sender=sender, receiver=receiver)
                 FriendRequest.objects.filter(id=friendRequestid).delete()
-                Notification.objects.create(user=sender, message=f'You and '+ str(receiver) +' had become friends.', type=8)
-                Notification.objects.create(user=receiver, message=f'You and '+ str(sender) +' had become friends.', type=8)
+                Notification.objects.create(user=sender, message=f'You and '+ str(receiver) +' had become friends.', type=8, is_read=True)
+                Notification.objects.create(user=receiver, message=f'You and '+ str(sender) +' had become friends.', type=8, is_read=True)
             elif 'rejectFriendRequest' in request.POST:
                 # delete the friend request
                 # delete notification of the sender and receiver friend request
@@ -394,7 +396,7 @@ def notifications(request):
                 sender = FriendRequest.objects.get(id=friendRequestid).sender
                 receiver = request.user
                 FriendRequest.objects.filter(id=friendRequestid).delete()
-                Notification.objects.create(user=receiver, message=f'You have rejected a friend request from '+ str(sender) +'.', type=8)
+                Notification.objects.create(user=receiver, message=f'You have rejected a friend request from '+ str(sender) +'.', type=8, is_read=True)
             elif 'deleteVideoRequest' in request.POST:
                 # delete the video request
                 # delete notification of sender and receiver video request
@@ -403,7 +405,7 @@ def notifications(request):
                 receiver = VidRequest.objects.get(id=videoRequestid).receiver
                 sender = request.user
                 VidRequest.objects.filter(id=videoRequestid).delete()
-                Notification.objects.create(user=sender, message=f'You have successfully deleted a video request to '+ str(receiver) +'.', type=8)
+                Notification.objects.create(user=sender, message=f'You have successfully deleted a video request to '+ str(receiver) +'.', type=8, is_read=True)
             elif 'deleteVideoPost' in request.POST:
                 # delete the video post
                 # delete notification of sender and receiver video post
@@ -412,7 +414,7 @@ def notifications(request):
                 receiver = Post.objects.get(id=postid).receiver
                 sender = request.user
                 Post.objects.filter(id=postid).delete()
-                Notification.objects.create(user=sender, message=f'You have successfully deleted a video post to '+ str(receiver) +'.', type=8)
+                Notification.objects.create(user=sender, message=f'You have successfully deleted a video post to '+ str(receiver) +'.', type=8, is_read=True)
 
         # Update the unread notifications count
         unread_notifications_count = Notification.objects.filter(user=user, is_read=False).count()

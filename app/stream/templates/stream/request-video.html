@@ -17,6 +17,22 @@
     <link href="{% static 'css/styleProfile.css' %}" rel="stylesheet">
     <link href="{% static 'css/styleVideo.css' %}" rel="stylesheet">
     <link href="{% static 'css/styleTopBar.css' %}" rel="stylesheet">
+    <style>
+      .badge {
+    display: inline-block;
+    min-width: 10px;
+    padding: 3px 7px;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    background-color: #f00;
+    border-radius: 10px;
+}
+    </style>
 </head>
 
 <body id="page-top" data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="77" style="background-size: cover; background-image: url(' {% static 'assets/img/intro-bg.jpg' %} ');">
@@ -46,7 +62,9 @@
                     </div>
                   </div>
                   <li class="nav-item nav-link"><a class="nav-link active" href=" {% url 'stream:contact' %} " id="Add Contacts Button">Add Contacts</a></li>
-                  <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:notifications' %}" id="Notification Button">Notifications</a></li>
+                  <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:notifications' %}" id="Notification Button">Notifications
+                    <span class="badge">{{ unread_notifications_count }}</span>
+                    </a></li>
                   <div class="dropdown">
                     <li class="nav-item nav-link">
                     <button class="nav-link active">

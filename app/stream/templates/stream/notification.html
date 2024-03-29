@@ -103,7 +103,6 @@
             <div class="card" style="border-radius: 15px;">
               <div class="card-body p-5">
                 <h2 class="text-uppercase text-center mb-5">Your notifications</h2>
-                <p>You have {{ unread_notifications_count }} unread notifications.</p>
                 {% for notification in notifications %}
                   <form method="POST" enctype="multipart/form-data">
                     {% csrf_token %}
