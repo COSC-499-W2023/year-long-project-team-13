@@ -13,9 +13,14 @@ from django.conf import settings as aws_settings
 import os, subprocess, base64, boto3, time, requests
 from stream.storage_backends import MediaStorage, ProfilePictureStorage
 from . models import VidRequest, VidStream, Contact, FriendRequest, Post, Profile, UserInfo, Notification, Setting
-from . forms import VidUploadForm, VidCreateForm, VidRequestForm, UserRegistrationForm, UserUpdateForm, UserInfoUpdateForm, UserProfileUpdateForm, UserProfileUpdateForm,  ValidatingPasswordChangeForm, AddContactForm, UserPermissionForm, VidRecFilledForm, VidUpFilledForm
+from . forms import VidUploadForm, VidCreateForm, VidRequestForm, UserRegistrationForm, UserUpdateForm, UserInfoUpdateForm, UserProfileUpdateForm, UserProfileUpdateForm,  ValidatingPasswordChangeForm, AddContactForm, UserPermissionForm, VidRecFilledForm, VidUpFilledForm, SecurityQuestionForm, ResetPasswordForm
 # from django.http import HttpResponse
 
+import base64
+import difflib
+import re
+from django.core.files.base import ContentFile
+# from background_task import background
 
 class VideoDetailView(DetailView):
     template_name = "stream/video-detail.html"
@@ -43,6 +48,7 @@ def home(request):
 
 
 def friendRequest(request):
+    users = None  # To avoid error if users is not defined
     if request.method == "POST":
         addcontactform = AddContactForm(request.user, request.POST)
         if addcontactform.is_valid():
@@ -51,7 +57,7 @@ def friendRequest(request):
             add_contact.save()
             # link recent created friendRequest from friend request table to Notification table
             recentFriendRequest = FriendRequest.objects.filter(sender=request.user).last()
-            Notification.objects.create(user=request.user, message=f'You have sent a friend request to '+ str(addcontactform.cleaned_data['receiver']) +'.', type=1, friendRequest_id=recentFriendRequest)
+            Notification.objects.create(user=request.user, message=f'You have sent a friend request to '+ str(addcontactform.cleaned_data['receiver']) +'.', type=1, friendRequest_id=recentFriendRequest, is_read=True)
             Notification.objects.create(user=addcontactform.cleaned_data['receiver'], message=f'You have received a friend request from '+ str(request.user) +'.', type=2, friendRequest_id=recentFriendRequest)
             return redirect("stream:notifications")
     else:
@@ -168,7 +174,8 @@ def create_video(request):
         createvideoform = VidCreateForm(request.user)
 
     context = {
-        'createvideoform': createvideoform
+        'createvideoform': createvideoform,
+        'notification': Notification.objects.filter(user=request.user, type=4)
     }
     return render(request, 'stream/video-create.html', context)
 
@@ -252,7 +259,8 @@ def upload_video(request):
         uploadvideoform = VidUploadForm(request.user)
 
     context = {
-        'uploadvideoform': uploadvideoform
+        'uploadvideoform': uploadvideoform,
+        'notification': Notification.objects.filter(user=request.user, type=4)
     }
     return render(request, 'stream/video-upload.html', context)
 
@@ -431,6 +439,7 @@ def register(request):
     if request.method == "POST":
         registrationform = UserRegistrationForm(request.POST)
         userpermissionform = UserPermissionForm(request.POST)
+
         if registrationform.is_valid() and userpermissionform.is_valid():
             new_user = registrationform.save()
             user_signed_up.send(sender=User, user=new_user)
@@ -443,12 +452,110 @@ def register(request):
     else:
         registrationform = UserRegistrationForm()
         userpermissionform = UserPermissionForm()
+        # usersecurityform = UserSecurityForm()
 
     context = {
         'registrationform': registrationform,
         'userpermissionform': userpermissionform,
-    }
+        # 'usersecurityform' : usersecurityform,
+        }
     return render(request, 'stream/register.html', context)
+
+
+def password_reset(request):
+    if request.method == 'POST':
+        form = SecurityQuestionForm(request.POST)
+        if form.is_valid():
+            # username = request.POST['username']
+            # email = request.POST['email']
+            username = form.cleaned_data['username']
+            email = form.cleaned_data['email']
+            # Check if the user exists with the provided email and username
+            try:
+                user = User.objects.get(email=email, username=username)
+            except User.DoesNotExist:
+                messages.error(request, 'User with this email or username does not exist.')
+                return redirect('stream:forget-password')
+
+            # Redirect to page to display security question
+            return redirect('stream:security-answer', username)
+
+    else:
+        form = SecurityQuestionForm()
+        # Get the user's security question
+        # form = SecurityQuestionForm(security_question=request.user.userinfo.security_question)
+    return render(request, 'stream/forget-password.html', {'form': form})
+
+
+def security_answer(request, username):
+    if request.method == 'POST':
+        security_answer = request.POST['security_answer']
+        user = User.objects.get(username=username)
+        # Check if the security answer is correct
+        if user.userinfo.security_answer.lower() == security_answer.lower():
+            # Redirect to page to reset password
+            return redirect('stream:password_reset_done', user)
+        else:
+            messages.error(request, 'Incorrect security answer.')
+            return redirect('stream:security-answer', username)
+    return render(request, 'stream/security-answer.html', {'username': UserInfo.objects.filter(user__username=username)})
+
+def password_reset_done(request, username):
+    if request.method == "POST":
+        # passwordform = SetPasswordForm(request.POST, instance=request.user)
+        user = User.objects.get(username=username)
+        email = user.email
+        email = re.sub(r'@[A-Za-z]*\.?[A-Za-z0-9]*',"", email)
+        resetpasswordform = ResetPasswordForm(data=request.POST, instance=user)
+        if resetpasswordform.is_valid():
+            reset_password = resetpasswordform.cleaned_data['password']
+            reset_password2 = resetpasswordform.cleaned_data['password2']
+            print("form is valid")
+            MIN_LENGTH = 8
+
+            # Check if the new passwords match
+            if reset_password == reset_password2:
+                user = resetpasswordform.save(commit=False)
+                user.password = make_password(user.password)
+                user.save()
+                if(len(reset_password) < MIN_LENGTH):
+                    messages.error(request, 'Password must be at least 8 characters long.')
+                    return redirect('stream:password_reset_done', username)
+                else:
+                    # At least one letter and one non-letter
+                    first_isalpha = reset_password[0].isalpha()
+                    if all(c.isalpha() == first_isalpha for c in reset_password):
+                        messages.error(request, 'Password must contain at least one letter and one non-letter.')
+                        return redirect('stream:password_reset_done', username)
+
+                    else:
+                        # Check Password not similar to username and email information
+                        username_similarity = difflib.SequenceMatcher(None, reset_password.lower(), username.lower()).ratio()
+                        email_similarity = difflib.SequenceMatcher(None, reset_password.lower(), email.lower()).ratio()
+                        similarity_threshold = 0.6  # Adjust this threshold as needed
+
+                        if username_similarity > similarity_threshold or email_similarity > similarity_threshold:
+                            messages.error(request, 'Password must not be similar to username or email.')
+                            return redirect('stream:password_reset_done', username)
+                        else:
+                            return redirect("stream:login")
+            else:
+                messages.error(request, 'Passwords do not match.')
+                return redirect('stream:password_reset_done', username)
+
+        else:
+            messages.error(request, resetpasswordform.errors)
+            print(resetpasswordform.errors)
+            return redirect('stream:password_reset_done', username)
+
+
+    else:
+        resetpasswordform = ResetPasswordForm(instance=User.objects.get(username=username))
+
+    context = {
+        'passwordform': resetpasswordform, 'username': username
+    }
+    return render(request, 'stream/password_reset_done.html', context)
 
 
 @login_required
@@ -484,71 +591,71 @@ def profile(request):
 def notifications(request):
     user = request.user
     if user.is_authenticated:
+        # Mark all notifications as read when the user opens the notifications page
+        Notification.objects.filter(user=user, is_read=False).update(is_read=True)
         if request.method == "POST":
+            notificationid = request.POST.get('notifID')
+            notification = Notification.objects.get(id=notificationid)
+
+            # Mark the notification as read
+            notification.is_read = True
+            notification.save()
+
             if 'deleteFriendRequest' in request.POST:
                 # delete the friend request
                 # delete notification of sender and receiver friend request
                 # make sender notification of successful delete the sent friend request
-                notificationid = request.POST.get('notifID')
-                friendRequestid = Notification.objects.get(id=notificationid).friendRequest_id.id
+                friendRequestid = notification.friendRequest_id.id
                 receiver = FriendRequest.objects.get(id=friendRequestid).receiver
                 sender = request.user
                 FriendRequest.objects.filter(id=friendRequestid).delete()
-                Notification.objects.create(user=sender, message=f'You have successfully deleted a friend request to '+ str(receiver) +'.', type=8)
-                return redirect("stream:notifications")
+                Notification.objects.create(user=sender, message=f'You have successfully deleted a friend request to '+ str(receiver) +'.', type=8, is_read=True)
             elif 'acceptFriendRequest' in request.POST:
                 # make a contact data with sender and receiver username
                 # delete the friend request
                 # delete notification of sender and receiver friend request
                 # make both sender and receiver notification of successful become friends
-                notificationid = request.POST.get('notifID')
-                friendRequestid = Notification.objects.get(id=notificationid).friendRequest_id.id
+                friendRequestid = notification.friendRequest_id.id
                 sender = FriendRequest.objects.get(id=friendRequestid).sender
                 receiver = request.user
                 Contact.objects.create(sender=sender, receiver=receiver)
                 FriendRequest.objects.filter(id=friendRequestid).delete()
-                Notification.objects.create(user=sender, message=f'You and '+ str(receiver) +' had become friends.', type=8)
-                Notification.objects.create(user=receiver, message=f'You and '+ str(sender) +' had become friends.', type=8)
-                return redirect("stream:notifications")
+                Notification.objects.create(user=sender, message=f'You and '+ str(receiver) +' had become friends.', type=8, is_read=True)
+                Notification.objects.create(user=receiver, message=f'You and '+ str(sender) +' had become friends.', type=8, is_read=True)
             elif 'rejectFriendRequest' in request.POST:
                 # delete the friend request
                 # delete notification of the sender and receiver friend request
                 # make receiver notification of successful reject friend request
-                notificationid = request.POST.get('notifID')
-                friendRequestid = Notification.objects.get(id=notificationid).friendRequest_id.id
+                friendRequestid = notification.friendRequest_id.id
                 sender = FriendRequest.objects.get(id=friendRequestid).sender
                 receiver = request.user
                 FriendRequest.objects.filter(id=friendRequestid).delete()
-                Notification.objects.create(user=receiver, message=f'You have rejected a friend request from '+ str(sender) +'.', type=8)
-                return redirect("stream:notifications")
+                Notification.objects.create(user=receiver, message=f'You have rejected a friend request from '+ str(sender) +'.', type=8, is_read=True)
             elif 'deleteVideoRequest' in request.POST:
                 # delete the video request
                 # delete notification of sender and receiver video request
                 # make sender notification of successful delete the sent video request
-                notificationid = request.POST.get('notifID')
-                videoRequestid = Notification.objects.get(id=notificationid).videoRequest_id.id
+                videoRequestid = notification.videoRequest_id.id
                 receiver = VidRequest.objects.get(id=videoRequestid).receiver
                 sender = request.user
                 VidRequest.objects.filter(id=videoRequestid).delete()
-                Notification.objects.create(user=sender, message=f'You have successfully deleted a video request to '+ str(receiver) +'.', type=8)
-                return redirect("stream:notifications")
+                Notification.objects.create(user=sender, message=f'You have successfully deleted a video request to '+ str(receiver) +'.', type=8, is_read=True)
             elif 'deleteVideoPost' in request.POST:
                 # delete the video post
                 # delete notification of sender and receiver video post
                 # make sender notification of successful delete the sent video post
-                notificationid = request.POST.get('notifID')
-                postid = Notification.objects.get(id=notificationid).post_id.id
+                postid = notification.post_id.id
                 receiver = Post.objects.get(id=postid).receiver
                 sender = request.user
                 Post.objects.filter(id=postid).delete()
-                Notification.objects.create(user=sender, message=f'You have successfully deleted a video post to '+ str(receiver) +'.', type=8)
-                return redirect("stream:notifications")
-            else:
-                notifications = Notification.objects.filter(user=user).order_by('-timestamp')
-                return render(request, 'stream/notification.html', {'notifications': notifications})
-        else:
-            notifications = Notification.objects.filter(user=user).order_by('-timestamp')
-            return render(request, 'stream/notification.html', {'notifications': notifications})
+                Notification.objects.create(user=sender, message=f'You have successfully deleted a video post to '+ str(receiver) +'.', type=8, is_read=True)
+
+        # Update the unread notifications count
+        unread_notifications_count = Notification.objects.filter(user=user, is_read=False).count()
+
+        notifications = Notification.objects.filter(user=user).order_by('-timestamp')
+        return render(request, 'stream/notification.html', {'notifications': notifications, 'unread_notifications_count': unread_notifications_count})
+
     else:
         return redirect('stream:login')  # or wherever you want to redirect unauthenticated users
 
@@ -576,3 +683,5 @@ def settings(request):
         'passwordform': passwordform,
     }
     return render(request, 'stream/settings.html', context)
+
+

@@ -11,7 +11,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 
 
 
-def register_page_test(driver, username, email, password, permission):
+def register_page_test(driver, username, email, password, permission, security, answer):
     html = driver.find_element(By.TAG_NAME, "html")
 
     # Find the username, email, and password fields and fill them out
@@ -45,6 +45,16 @@ def register_page_test(driver, username, email, password, permission):
     # permission_element.click()
     permission_element.select_by_value(permission)
 
+    security_element = Select(driver.find_element(By.NAME, "security_question"))
+    # wait.until(EC.element_to_be_clickable((By.ID, "id_permission")))
+    # permission_element.click()
+    security_element.select_by_value(security)
+
+    security_answer_element = driver.find_element(By.ID, "id_security_answer")
+    wait.until(EC.element_to_be_clickable((By.ID, "id_security_answer")))
+    security_answer_element.click()
+    security_answer_element.send_keys(answer)
+    wait.until(EC.text_to_be_present_in_element_value((By.ID, "id_security_answer"), answer))
 
      # Find the checkbox and click it
     checkbox_element = driver.find_element(By.XPATH, "//input[@type='checkbox']")
@@ -85,11 +95,11 @@ driver.get('http://localhost:8000/register/')  # Update the URL if needed
 
 # Call the register page test function with appropriate input values
 print("Register Page test Start")
-register_page_test(driver, 'abcde', 'abcde@email.com', 'herman1234', "1")
+register_page_test(driver, 'WannaBe', 'raymond@email.com', 'herman1234', "1", "2", "canada")
 print("Register Page test end for permission 1")
 time.sleep(0.5)
 driver.get('http://localhost:8000/register/')  # Update the URL if needed
-register_page_test(driver, 'abcdef', 'abcdef@email.com', 'herman1234', "2")
+register_page_test(driver, 'abcdef', 'abcdef@email.com', 'herman1234', "2", "1", "canada")
 print("Register Page test end for permission 2")
 print("Register Page test End")
 

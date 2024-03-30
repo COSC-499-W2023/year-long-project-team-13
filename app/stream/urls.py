@@ -33,4 +33,8 @@ urlpatterns = [
     path('setting',stream_views.settings, name="setting"),
     path('theme',stream_views.settings, name="theme"),
     path('notifications',stream_views.notifications, name="notifications"),
+
+    path('forget-password/', stream_views.password_reset, name='forget-password'),
+    path('security-answer/<str:username>', stream_views.security_answer, name='security-answer'),
+    path('password_reset_done/<str:username>', stream_views.password_reset_done, name='password_reset_done'),
 ]

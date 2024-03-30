@@ -172,12 +172,41 @@ class UserPermissionForm(forms.ModelForm):
       (1, 'Sender'),
       (2, 'Reciever'),
      )
+    QUESTIONS_CHOICES = (
+      (1, 'What was the name of your first pet?'),
+      (2, 'In which city were you born?'),
+      (3, 'What is the middle name of your oldest sibling?'),
+      (4, 'What is the name of your favorite sports team?'),
+      (5, 'What was the make and model of your first car?'),
+     )
+
     permission = forms.ChoiceField(choices=STATUS_CHOICES, widget=forms.Select(attrs={'style': 'width: 400px; height: 45px;margin-left: auto; margin-right: auto; margin-bottom: 25px;border: 2px groove lightgreen;',
                                                               'class': 'form-control', 'required': True}))
 
+    security_question = forms.ChoiceField(choices=QUESTIONS_CHOICES, widget=forms.Select(attrs={'style': 'width: 400px; height: 45px;margin-left: auto; margin-right: auto; margin-bottom: 25px;border: 2px groove lightgreen;',
+                                                              'class': 'form-control', 'required': True}))
+
+    security_answer = forms.CharField(widget=forms.TextInput(attrs={'placeholder' :'Your Answer',
+                                                                  'style': 'width: 400px; height: 45px; margin-left: auto; margin-right: auto; margin-bottom: 27px; border: 2px groove lightgreen;',
+                                                                  'class': 'form-control', 'required': True}))
+
     class Meta:
         model = UserInfo
-        fields = ['permission']
+        fields = ['permission', 'security_question', 'security_answer']
+
+class SecurityQuestionForm(forms.ModelForm):
+
+    username = forms.CharField(widget=forms.TextInput(attrs={'placeholder' :'Username',
+                                                             'style':'width: 400px; height: 45px; margin-left: auto; margin-right: auto; margin-bottom: 25px; border: 2px groove lightgreen;',
+                                                             'class': 'form-control', 'required': True}))
+
+    email = forms.EmailField(widget=forms.EmailInput(attrs={'placeholder' :'Email',
+                                                            'style': 'width: 400px; height: 45px;margin-left: auto; margin-right: auto; margin-bottom: 25px; border: 2px groove lightgreen;',
+                                                            'class': 'form-control', 'required': True}))
+
+    class Meta:
+        model = UserInfo
+        fields = ['username', 'email']
 
 class UserProfileUpdateForm(forms.ModelForm):
 
@@ -295,3 +324,56 @@ class ValidatingPasswordChangeForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ['password']
+
+
+class ResetPasswordForm(forms.ModelForm):
+    password = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder' :'Password',
+                                                                  'style': 'width: 400px; height: 45px; margin-left: auto; margin-right: auto; margin-bottom: 25px; border: 2px groove lightgreen;',
+                                                                  'class': 'form-control', 'required': True}),validators=[validate_password])
+    password2 = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder' :'Confirm Password',
+                                                                  'style': 'width: 400px; height: 45px; margin-left: auto; margin-right: auto; margin-bottom: 27px; border: 2px groove lightgreen;',
+                                                                  'class': 'form-control', 'required': True}))
+
+    MIN_LENGTH = 8
+
+    def clean_resetpassword(self):
+        password = self.cleaned_data.get('password')
+        username = self.instance.username
+        email = self.instance.email
+        email = re.sub(r'@[A-Za-z]*\.?[A-Za-z0-9]*',"", email)
+
+        # At least MIN_LENGTH long
+        if len(password) < self.MIN_LENGTH:
+            raise forms.ValidationError("The new password must be at least %d characters long." % self.MIN_LENGTH)
+
+        # At least one letter and one non-letter
+        first_isalpha = password[0].isalpha()
+        if all(c.isalpha() == first_isalpha for c in password):
+            raise forms.ValidationError("The new password must contain at least one letter and at least one digit or" \
+                                        " punctuation character.")
+
+        # Check Password not similar to username and email information
+        username_similarity = difflib.SequenceMatcher(None, password.lower(), username.lower()).ratio()
+        email_similarity = difflib.SequenceMatcher(None, password.lower(), email.lower()).ratio()
+
+        similarity_threshold = 0.6  # Adjust this threshold as needed
+
+        if username_similarity > similarity_threshold or email_similarity > similarity_threshold:
+            raise forms.ValidationError("The new password cannot be too similar to your username or email.")
+
+        return password
+
+
+    def clean_resetpassword2(self):
+        resetpassword = self.cleaned_data.get('password')
+        resetpassword2 = self.cleaned_data.get('password2')
+
+        if resetpassword and resetpassword2 and resetpassword != resetpassword2:
+            raise forms.ValidationError(('The two password fields must match.'))
+
+        return resetpassword2
+
+    class Meta:
+        model = User
+        fields = ['password']
+

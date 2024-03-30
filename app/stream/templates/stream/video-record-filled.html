@@ -3,8 +3,9 @@
 {% block content %}
 {% load static %}
     <link href="{% static 'css/styleVideoCreate.css' %}" rel="stylesheet">
+    <link href="{% static 'css/styleSideBar.css' %}" rel="stylesheet">
     {% if user.userinfo.permission == 1 or user.is_superuser %}
-        <div style = "margin-top: 15%; padding-top: 10em; clear: both;">
+        <div id='filled-container' style = "margin-top: 15%; padding-top: 10em; clear: both;">
             <div class = "horizontal-buttons" id="hor-button">
                 {% for item in notification %}
                 <a class="button" id="top_record" href=" {% url 'stream:video-record-filled' item.id%}" style="color: #FFFFFF">
@@ -18,19 +19,33 @@
             <form method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 <h1 style="text-align: center; color: white;">Record a Video</h1>
+                <button id="side-bar-btn" class="openbtn" onclick="toggleNav()">&#9776; Toggle Sidebar</button>
                 <div id='main-box'>
                     <button id="start-camera" style="height: 50%; width: 50%; background-color: black; color: #FFFFFF; margin-bottom: 10%;">Start Camera</button>
                     <div class="video-box" style="display: none; margin: 10% auto;">
+                        {% comment %}  margin: 5% {% endcomment %}
                         <video id="video" width="320" height="240" autoplay></video>
                     </div>
-                    <div class="detailsPage card mb-3" style="display: none; width: 75%; margin: auto;box-shadow: 12em;">
-                        <div class="form-group" style = "padding-top: 25px;">
-                            <label class="requestID">Video Request ID:</label>
+                    <div id="mySidebar" class="sidebar">
+                        <a id="close-btn" href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                        {% for item in notification %}
+                            <p class='message_info message_id'> {{ item.notification_as_list.1 }} </p>
+                            <p class='message_info'> {{ item.notification_as_list.2 }} </p>
+                            <p class='message_info'> {{ item.notification_as_list.3 }} </p>
+                            <br>
+                        {% endfor %}
+                    </div>
+                    <div id="main">
 
-                            {% for item in notification %}
-                                {{item.videoRequest_id}}
-                                <input type="hidden" name="video_request_id" id="video_request_id" value="{{item.videoRequest_id}}" />
-                            {% endfor %}
+                            <div class="detailsPage card mb-3" style="display: none; width: 75%; margin: auto;box-shadow: 12em;">
+
+                            <div class="form-group" style = "padding-top: 25px;">
+                                <label class="requestID">Video Request ID:</label>
+
+                                {% for item in notification %}
+                                    {{item.videoRequest_id}}
+                                    <input type="hidden" name="video_request_id" id="video_request_id" value="{{item.videoRequest_id}}" />
+                                {% endfor %}
 
                         </div>
                         <div class="form-group" style = "padding-top: 15px;">
@@ -89,6 +104,7 @@
             </form>
         </div>
         <script src=" {% static 'assets/js/videoCreate.js'%} "></script>
+        <script src = " {% static 'assets/js/sideBar.js'%} "></script>
     {% else %}
         <div class="container">
             <h2>Oops! It seems you’ve reached a page where access is restricted. <br>

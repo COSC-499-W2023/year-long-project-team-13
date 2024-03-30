@@ -21,7 +21,7 @@ class ProfileAdmin(admin.ModelAdmin):
     list_display = ('id', 'user', 'image')
 
 class UserInfoAdmin(admin.ModelAdmin):
-    list_display = ('id', 'user', 'birthdate', 'permission')
+    list_display = ('id', 'user', 'birthdate', 'permission', 'security_question', 'security_answer')
 
 class NotificationAdmin(admin.ModelAdmin):
     list_display = ('id', 'user', 'message', 'timestamp', 'type', 'friendRequest_id', 'videoRequest_id', 'post_id', 'video_id')
