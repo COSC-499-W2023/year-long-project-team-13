@@ -59,6 +59,11 @@
                             {{ createvideoform.timelimit.errors }}
                             {{ createvideoform.timelimit }}
                         </div>
+                        <span style="color: red;">*Face Blurring process might take a while to upload*</span>
+                        <div class="form-group" style = "padding-top: 15px; padding-bottom:25px;">
+                            <label class="blur pe-3">Blur Face:</label>
+                            <input type="checkbox" id="blurFace" name="blurFace">
+                        </div>
                         <input type="hidden" name="video_blob" id="video_blob" value="your_blob_data_here" />
                     </div>
                     <div class="previewPage" style="display: none;">

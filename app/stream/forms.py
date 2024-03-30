@@ -79,11 +79,13 @@ class VidUpFilledForm(forms.ModelForm):
     timelimit = forms.DateTimeField(widget=forms.TextInput(attrs={'placeholder' :'Select a time limit date',
                                                               'style': 'width: 210px; margin-left: auto; margin-right: auto; border: 2px groove lightgreen;',
                                                               'class': 'form-control', 'type': 'datetime-local','required': True}))
-    video = forms.FileField()
+
+    def __init__(self, user, *args, **kwargs):
+        super().__init__(*args, **kwargs)
 
     class Meta:
         model = Post
-        fields = ['title','description','timelimit','video']
+        fields = ['title','description','timelimit']
 
 class VidRecFilledForm(forms.ModelForm):
     title = forms.CharField(widget=forms.TextInput(attrs={'placeholder' :'Title',
@@ -95,6 +97,9 @@ class VidRecFilledForm(forms.ModelForm):
     timelimit = forms.DateTimeField(widget=forms.TextInput(attrs={'placeholder' :'Select a time limit date',
                                                               'style': 'width: 210px; margin-left: auto; margin-right: auto; border: 2px groove lightgreen;',
                                                               'class': 'form-control', 'type': 'datetime-local','required': True}))
+
+    def __init__(self, user, *args, **kwargs):
+        super().__init__(*args, **kwargs)
 
     class Meta:
         model = Post
