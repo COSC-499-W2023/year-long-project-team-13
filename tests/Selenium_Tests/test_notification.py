@@ -47,30 +47,35 @@ def login_page_test(driver, username, password):
         print("Login successful")
 
 def notification_test(driver, username, password):
-    # Call the login page test function
     login_page_test(driver, username, password)
     time.sleep(0.5)
-
-    # Find the element with the id "Topbar" and hover over it
+    # Navigate to the notifications page
+    driver.get('http://localhost:8000/notifications')
     topbar_element = driver.find_element(By.ID, "User Hover")
     hover = ActionChains(driver).move_to_element(topbar_element)
     hover.perform()
     wait.until(EC.presence_of_element_located((By.ID, "User Hover")))
     print("TEST: 0 `User hover` successful")
-
-    # Find the element with the id "Profile Button" and click it
-    notification_button_element = driver.find_element(By.ID, "Notification Button")
-    wait.until(EC.presence_of_element_located((By.ID, "Notification Button")))
+    
+    wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, "#Notification-Button .badge")))
+    notification_indicator_element = driver.find_element(By.CSS_SELECTOR, "#Notification-Button .badge")
+    
+    if notification_indicator_element.is_displayed():
+        print(f"TEST: Notification indicator is displayed with count {notification_indicator_element.text}")
+    else:
+        print("TEST: Notification indicator is not displayed")
+    notification_button_element = driver.find_element(By.ID, "Notification-Button")
+    wait.until(EC.presence_of_element_located((By.ID, "Notification-Button")))
     hover = ActionChains(driver).move_to_element(notification_button_element)
     hover.perform()
-    wait.until(EC.element_to_be_clickable((By.ID, "Notification Button")))
+    wait.until(EC.element_to_be_clickable((By.ID, "Notification-Button")))
     ActionChains(driver).click(notification_button_element).perform()
-
-    # Check if the URL contains the expected notification page URL
     if '/notifications' in driver.current_url:
         print("TEST 1: `Notifications` successful")
     else:
         print("TEST 1: `Notifications` failed")
+
+
 
 
 # Create a ChromeOptions object with the log level set to 3

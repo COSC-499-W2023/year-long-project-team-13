@@ -266,7 +266,7 @@ def create_record_video_test(driver, dueDateYear, dueDateMonthDay, dueDateTime):
 
 def remove_video_post_test(driver):
     # Find the element with the id "videos hover" and hover over it
-    hoverTest("User Hover","Notification Button", '/notifications', "`Notification page found`")
+    hoverTest("User Hover","Notification-Button", '/notifications', "`Notification page found`")
 
     # Find the remove video post button
     remove_video_post_button = wait.until(EC.element_to_be_clickable((By.ID, "delete video post button")))
@@ -369,8 +369,8 @@ def upload_video_test(driver, dueDateYear, dueDateMonthDay, dueDateTime, video):
 
 
 def filled_record_video_test(driver):
-    # Find the element with the id "Notification Button" and hover over it
-    hoverTest("Notification Button","Notification Button", '/notifications', "`Notifications page found`")
+    # Find the element with the id "Notification-Button" and hover over it
+    hoverTest("Notification-Button","Notification-Button", '/notifications', "`Notifications page found`")
     html = driver.find_element(By.TAG_NAME, "html")
     html.send_keys(Keys.PAGE_DOWN)
 
