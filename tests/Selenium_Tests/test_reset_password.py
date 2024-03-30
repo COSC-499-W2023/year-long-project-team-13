@@ -26,6 +26,10 @@ def reset_password_page_test(driver, email, username, answer, password):
         print("TEST 1: `Forget Password Page` failed")
 
     # Find the element with id_username and click it
+    html = driver.find_element(By.TAG_NAME, "html")
+    html.send_keys(Keys.PAGE_DOWN)
+    html.send_keys(Keys.PAGE_DOWN)
+    html.send_keys(Keys.PAGE_DOWN)
     username_input_element = driver.find_element(By.ID, "id_username")
     wait.until(EC.element_to_be_clickable((By.ID, "id_username")))
     username_input_element.click()
@@ -59,6 +63,8 @@ def reset_password_page_test(driver, email, username, answer, password):
 
     # Find the element with id_username and click it
     html = driver.find_element(By.TAG_NAME, "html")
+    html.send_keys(Keys.PAGE_DOWN)
+    html.send_keys(Keys.PAGE_DOWN)
     html.send_keys(Keys.PAGE_DOWN)
     username_input_element = driver.find_element(By.ID, "id_username")
     username_input_element.click()
