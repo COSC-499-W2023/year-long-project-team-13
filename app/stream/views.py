@@ -152,7 +152,8 @@ def create_video(request):
         createvideoform = VidCreateForm(request.user)
 
     context = {
-        'createvideoform': createvideoform
+        'createvideoform': createvideoform,
+        'notification': Notification.objects.filter(user=request.user, type=4)
     }
     return render(request, 'stream/video-create.html', context)
 
@@ -196,7 +197,8 @@ def upload_video(request):
         uploadvideoform = VidUploadForm(request.user)
 
     context = {
-        'uploadvideoform': uploadvideoform
+        'uploadvideoform': uploadvideoform,
+        'notification': Notification.objects.filter(user=request.user, type=4)
     }
     return render(request, 'stream/video-upload.html', context)
 
@@ -318,7 +320,7 @@ def record_filled_video(request, pk):
     context = {
         'notification': Notification.objects.filter(id=pk),
         'createvideoform': createvideoform
-    }
+        }
     return render(request, 'stream/video-record-filled.html', context )
 
 
