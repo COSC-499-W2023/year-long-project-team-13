@@ -225,6 +225,11 @@ def create_record_video_test(driver, dueDateYear, dueDateMonthDay, dueDateTime):
     time.sleep(0.5)
     print("TEST: 11 `Video Record Info` Successful")
 
+    blurface_element = driver.find_element(By.ID, "blurFace")
+    wait.until(EC.presence_of_element_located((By.ID, "blurFace")))
+    wait.until(EC.element_to_be_clickable((By.ID, "blurFace")))
+    blurface_element.click()
+
     # Find the element with the id "preview" and click it
     preview_element = driver.find_element(By.ID, "preview")
     wait.until(EC.element_to_be_clickable((By.ID, "preview")))
@@ -318,7 +323,7 @@ def upload_video_test(driver, dueDateYear, dueDateMonthDay, dueDateTime, video):
     time.sleep(0.5)
 
     # Find the element with the form video and upload video file
-    uploadvideo = driver.find_element(By.ID, "id_video")
+    uploadvideo = driver.find_element(By.ID, "video_upload")
     uploadvideo.send_keys(video)
     time.sleep(0.5)
 
