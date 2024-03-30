@@ -158,7 +158,7 @@ def remove_friend_request_test(driver, username, password):
 
     add_contact_page_search_and_friend_request_test(driver, username, password)
 
-    hoverTest("Notification Button", '/notifications', "`Notifications`")
+    hoverTest("Notification-Button", '/notifications', "`Notifications`")
 
     # Find the remove friend request button
     remove_friend_request_button = wait.until(EC.presence_of_element_located((By.ID, "delete friend request button")))
@@ -185,7 +185,7 @@ def reject_friend_request_test(driver, usernameAdmin, passwordAdmin, usernamePai
     logout(driver, '/notifications#')
     login(driver, usernamePaitent, passwordPaitent)
 
-    hoverTest("Notification Button", '/notifications', "`Notifications`")
+    hoverTest("Notification-Button", '/notifications', "`Notifications`")
 
     # Find the reject friend request button
     reject_friend_request_button = wait.until(EC.presence_of_element_located((By.ID, "reject friend request button")))
@@ -211,7 +211,7 @@ def accept_friend_request_test(driver, usernameAdmin, passwordAdmin, usernamePai
     logout(driver, '/notifications#')
     login(driver, usernamePaitent, passwordPaitent)
 
-    hoverTest("Notification Button", '/notifications', "`Notifications`")
+    hoverTest("Notification-Button", '/notifications', "`Notifications`")
 
     # Find the accept friend request button
     accept_friend_request_button = wait.until(EC.presence_of_element_located((By.ID, "accept friend request button")))

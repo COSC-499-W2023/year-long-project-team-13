@@ -180,6 +180,7 @@ class Notification(models.Model):
     videoRequest_id = models.ForeignKey(VidRequest, on_delete=models.CASCADE, null=True)
     post_id = models.ForeignKey(Post, on_delete=models.CASCADE, null=True)
     video_id = models.ForeignKey(VidStream, on_delete=models.SET_NULL, null=True)
+    is_read = models.BooleanField(default=False) # false when notification not read
 
     def __str__(self):
         return f"{self.id}"
