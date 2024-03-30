@@ -114,7 +114,10 @@ def create_video(request):
                 f.write(decoded_data)
 
             video_key = f"video_filename.mp4"  # video record file name
-            # video_filename.mp4
+            # video_record.mp4
+
+            # Replace '/path/to/ffmpeg' with the actual path to ffmpeg executable
+            # ffmpeg_path = '/path/to/ffmpeg'
 
             # Define the output file path
             output_video_path = os.path.join(aws_settings.MEDIA_ROOT, video_key)
