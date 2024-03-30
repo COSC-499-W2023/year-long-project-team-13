@@ -133,16 +133,25 @@
                       <div style="width: 90%;">
                     {{ registrationform.password2 }}
                   </div>
-                    <span toggle="#id_password2" class="input-group-addon toggle-password fas fa-eye" style="width: 10%; margin-top: 15px;"></span>                      
+                    <span toggle="#id_password2" class="input-group-addon toggle-password fas fa-eye" style="width: 10%; margin-top: 15px;">
+
+                    </span>
                     </span>
                   </div>
                     {% comment %} <p id="intruction">Enter the same password as before, for verification.</p> {% endcomment %}
-
 
                     <p id="instruction" style="margin-top: 1px; margin-left: auto; margin-right: auto; font-size: 14px; width: 75%;">Click on the dropdown menu and select the user group you are.</p>
                     {% comment %} userpermissionform {% endcomment %}
                     {{ userpermissionform.permission.errors }}
                     {{ userpermissionform.permission }}
+
+                    <p id="instruction" style="margin-top: 1px; margin-left: auto; margin-right: auto; font-size: 14px; width: 75%;">Click on the dropdown menu and select the security questions.</p>
+
+                    {{ userpermissionform.security_question.errors }}
+                    {{ userpermissionform.security_question }}
+
+                    {{ userpermissionform.security_answer.errors }}
+                    {{ userpermissionform.security_answer }}
 
                     <div class="form-check d-flex justify-content-center mb-5">
                       <div class="checkbox">

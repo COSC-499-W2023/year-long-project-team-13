@@ -17,6 +17,7 @@ import test_setting # runs setting test
 #import test_theme # runs theme test
 import test_register # runs register test
 import test_profile # runs profile test
+import test_reset_password # runs reset password test
 
 #Close program when done
 sys.exit()

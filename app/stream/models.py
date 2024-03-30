@@ -149,9 +149,18 @@ class UserInfo(models.Model):
       (2, 'Receiver'),
       (3, 'Admin'),
      )
+    QUESTIONS_CHOICES = (
+      (1, 'What was the name of your first pet?'),
+      (2, 'In which city were you born?'),
+      (3, 'What is the middle name of your oldest sibling?'),
+      (4, 'What is the name of your favorite sports team?'),
+      (5, 'What was the make and model of your first car?'),
+     )
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     birthdate = models.DateField(default=date.today)
     permission = models.IntegerField(choices=STATUS_CHOICES, default=1)
+    security_question = models.IntegerField(choices=QUESTIONS_CHOICES, default=1)
+    security_answer = models.CharField(max_length=300, default=' ')
 
     def __str__(self):
         return f"{self.user.username} PersonalInfo"

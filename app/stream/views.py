@@ -10,9 +10,11 @@ from django.dispatch import Signal
 from django.db.models import Q
 from stream.forms import UserInfoUpdateForm
 from . models import VidRequest, VidStream, Contact, FriendRequest, Post, Profile, UserInfo, Notification, Setting
-from . forms import VidUploadForm, VidCreateForm, VidRequestForm, UserRegistrationForm, UserUpdateForm, UserInfoUpdateForm, UserProfileUpdateForm, UserProfileUpdateForm,  ValidatingPasswordChangeForm, AddContactForm, UserPermissionForm, VidRecFilledForm, VidUpFilledForm
+from . forms import VidUploadForm, VidCreateForm, VidRequestForm, UserRegistrationForm, UserUpdateForm, UserInfoUpdateForm, UserProfileUpdateForm, UserProfileUpdateForm,  ValidatingPasswordChangeForm, AddContactForm, UserPermissionForm, VidRecFilledForm, VidUpFilledForm, SecurityQuestionForm, ResetPasswordForm
 
 import base64
+import difflib
+import re
 from django.core.files.base import ContentFile
 # from background_task import background
 
@@ -353,6 +355,7 @@ def register(request):
     if request.method == "POST":
         registrationform = UserRegistrationForm(request.POST)
         userpermissionform = UserPermissionForm(request.POST)
+
         if registrationform.is_valid() and userpermissionform.is_valid():
             new_user = registrationform.save()
             user_signed_up.send(sender=User, user=new_user)
@@ -365,12 +368,110 @@ def register(request):
     else:
         registrationform = UserRegistrationForm()
         userpermissionform = UserPermissionForm()
+        # usersecurityform = UserSecurityForm()
 
     context = {
         'registrationform': registrationform,
         'userpermissionform': userpermissionform,
-    }
+        # 'usersecurityform' : usersecurityform,
+        }
     return render(request, 'stream/register.html', context)
+
+
+def password_reset(request):
+    if request.method == 'POST':
+        form = SecurityQuestionForm(request.POST)
+        if form.is_valid():
+            # username = request.POST['username']
+            # email = request.POST['email']
+            username = form.cleaned_data['username']
+            email = form.cleaned_data['email']
+            # Check if the user exists with the provided email and username
+            try:
+                user = User.objects.get(email=email, username=username)
+            except User.DoesNotExist:
+                messages.error(request, 'User with this email or username does not exist.')
+                return redirect('stream:forget-password')
+
+            # Redirect to page to display security question
+            return redirect('stream:security-answer', username)
+
+    else:
+        form = SecurityQuestionForm()
+        # Get the user's security question
+        # form = SecurityQuestionForm(security_question=request.user.userinfo.security_question)
+    return render(request, 'stream/forget-password.html', {'form': form})
+
+
+def security_answer(request, username):
+    if request.method == 'POST':
+        security_answer = request.POST['security_answer']
+        user = User.objects.get(username=username)
+        # Check if the security answer is correct
+        if user.userinfo.security_answer.lower() == security_answer.lower():
+            # Redirect to page to reset password
+            return redirect('stream:password_reset_done', user)
+        else:
+            messages.error(request, 'Incorrect security answer.')
+            return redirect('stream:security-answer', username)
+    return render(request, 'stream/security-answer.html', {'username': UserInfo.objects.filter(user__username=username)})
+
+def password_reset_done(request, username):
+    if request.method == "POST":
+        # passwordform = SetPasswordForm(request.POST, instance=request.user)
+        user = User.objects.get(username=username)
+        email = user.email
+        email = re.sub(r'@[A-Za-z]*\.?[A-Za-z0-9]*',"", email)
+        resetpasswordform = ResetPasswordForm(data=request.POST, instance=user)
+        if resetpasswordform.is_valid():
+            reset_password = resetpasswordform.cleaned_data['password']
+            reset_password2 = resetpasswordform.cleaned_data['password2']
+            print("form is valid")
+            MIN_LENGTH = 8
+
+            # Check if the new passwords match
+            if reset_password == reset_password2:
+                user = resetpasswordform.save(commit=False)
+                user.password = make_password(user.password)
+                user.save()
+                if(len(reset_password) < MIN_LENGTH):
+                    messages.error(request, 'Password must be at least 8 characters long.')
+                    return redirect('stream:password_reset_done', username)
+                else:
+                    # At least one letter and one non-letter
+                    first_isalpha = reset_password[0].isalpha()
+                    if all(c.isalpha() == first_isalpha for c in reset_password):
+                        messages.error(request, 'Password must contain at least one letter and one non-letter.')
+                        return redirect('stream:password_reset_done', username)
+
+                    else:
+                        # Check Password not similar to username and email information
+                        username_similarity = difflib.SequenceMatcher(None, reset_password.lower(), username.lower()).ratio()
+                        email_similarity = difflib.SequenceMatcher(None, reset_password.lower(), email.lower()).ratio()
+                        similarity_threshold = 0.6  # Adjust this threshold as needed
+
+                        if username_similarity > similarity_threshold or email_similarity > similarity_threshold:
+                            messages.error(request, 'Password must not be similar to username or email.')
+                            return redirect('stream:password_reset_done', username)
+                        else:
+                            return redirect("stream:login")
+            else:
+                messages.error(request, 'Passwords do not match.')
+                return redirect('stream:password_reset_done', username)
+
+        else:
+            messages.error(request, resetpasswordform.errors)
+            print(resetpasswordform.errors)
+            return redirect('stream:password_reset_done', username)
+
+
+    else:
+        resetpasswordform = ResetPasswordForm(instance=User.objects.get(username=username))
+
+    context = {
+        'passwordform': resetpasswordform, 'username': username
+    }
+    return render(request, 'stream/password_reset_done.html', context)
 
 
 @login_required
@@ -520,3 +621,5 @@ def settings(request):
         'passwordform': passwordform,
     }
     return render(request, 'stream/settings.html', context)
+
+
