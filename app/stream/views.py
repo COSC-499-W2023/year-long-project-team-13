@@ -13,6 +13,8 @@ from . models import VidRequest, VidStream, Contact, FriendRequest, Post, Profil
 from . forms import VidUploadForm, VidCreateForm, VidRequestForm, UserRegistrationForm, UserUpdateForm, UserInfoUpdateForm, UserProfileUpdateForm, UserProfileUpdateForm,  ValidatingPasswordChangeForm, AddContactForm, UserPermissionForm, VidRecFilledForm, VidUpFilledForm, SecurityQuestionForm, ResetPasswordForm
 
 import base64
+import difflib
+import re
 from django.core.files.base import ContentFile
 # from background_task import background
 
@@ -417,23 +419,47 @@ def password_reset_done(request, username):
     if request.method == "POST":
         # passwordform = SetPasswordForm(request.POST, instance=request.user)
         user = User.objects.get(username=username)
+        email = user.email
+        email = re.sub(r'@[A-Za-z]*\.?[A-Za-z0-9]*',"", email)
         resetpasswordform = ResetPasswordForm(data=request.POST, instance=user)
         if resetpasswordform.is_valid():
             reset_password = resetpasswordform.cleaned_data['password']
             reset_password2 = resetpasswordform.cleaned_data['password2']
             print("form is valid")
+            MIN_LENGTH = 8
 
             # Check if the new passwords match
             if reset_password == reset_password2:
                 user = resetpasswordform.save(commit=False)
                 user.password = make_password(user.password)
                 user.save()
-                return redirect("stream:login")
+                if(len(reset_password) < MIN_LENGTH):
+                    messages.error(request, 'Password must be at least 8 characters long.')
+                    return redirect('stream:password_reset_done', username)
+                else:
+                    # At least one letter and one non-letter
+                    first_isalpha = reset_password[0].isalpha()
+                    if all(c.isalpha() == first_isalpha for c in reset_password):
+                        messages.error(request, 'Password must contain at least one letter and one non-letter.')
+                        return redirect('stream:password_reset_done', username)
+
+                    else:
+                        # Check Password not similar to username and email information
+                        username_similarity = difflib.SequenceMatcher(None, reset_password.lower(), username.lower()).ratio()
+                        email_similarity = difflib.SequenceMatcher(None, reset_password.lower(), email.lower()).ratio()
+                        similarity_threshold = 0.6  # Adjust this threshold as needed
+
+                        if username_similarity > similarity_threshold or email_similarity > similarity_threshold:
+                            messages.error(request, 'Password must not be similar to username or email.')
+                            return redirect('stream:password_reset_done', username)
+                        else:
+                            return redirect("stream:login")
             else:
                 messages.error(request, 'Passwords do not match.')
                 return redirect('stream:password_reset_done', username)
+
         else:
-            messages.error(request, 'Invalid password.')
+            messages.error(request, resetpasswordform.errors)
             print(resetpasswordform.errors)
             return redirect('stream:password_reset_done', username)
 
