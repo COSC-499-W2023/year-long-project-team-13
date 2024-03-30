@@ -12,7 +12,6 @@ from stream.storage_backends import MediaStorage, ProfilePictureStorage
 
 # Video Request Table
 class VidRequest(models.Model):
-    # id = models.TextField((""), primary_key=True)
     id = models.AutoField(primary_key=True)
     sender = models.ForeignKey(User, related_name="video_sender", on_delete=models.CASCADE)
     receiver = models.ForeignKey(User, related_name="video_receiver", on_delete=models.CASCADE)
@@ -83,7 +82,7 @@ class Post(models.Model):
     timelimit = models.DateTimeField(default=timezone.now)
     # video = models.FileField(upload_to='')    # local SQLite
     # video = models.FileField(storage=MediaStorage())    # S3 cloudfront
-    video = models.URLField()
+    video = models.URLField()   # Video url (cloudfront) for more upload to s3 options
     video_id = models.ForeignKey(VidStream, on_delete=models.SET_NULL, null=True)
     request_id = models.ForeignKey(VidRequest, on_delete=models.SET_NULL, null=True)
 
@@ -175,7 +174,6 @@ class Setting(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     darkmode = models.BooleanField(default=False)
     emailnotification = models.BooleanField(default=True)
-    # defaultoption =
 
     def __str__(self):
         return f"{self.user.username} Settings"

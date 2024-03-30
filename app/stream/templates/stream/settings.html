@@ -9,11 +9,9 @@
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <link rel="stylesheet" href= "{%static 'assets/bootstrap/css/bootstrap.min.css' %}">
       <title>Vnonymous</title>
-      {% comment %} <link href="{% static 'css/styleProfile.css' %}" rel="stylesheet"> {% endcomment %}
       <link href="{% static 'css/logoutUI.css' %}" rel="stylesheet">
       <link href="{% static 'css/ChangePasswordUI.css' %}" rel="stylesheet">
       <link href="{% static 'css/styleSetting.css' %}" rel="stylesheet">
-      {% comment %} <link href="{% static 'css/styleVideo.css' %}" rel="stylesheet"> {% endcomment %}
       <link href="{% static 'css/styleTopBar.css' %}" rel="stylesheet">
       <style>
         ul.errorlist {
@@ -77,10 +75,6 @@
             </div>
         </nav>
 
-    {% comment %} <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel=stylesheet href="styleSetting.css"> {% endcomment %}
-
     <div style="margin-top: 25px; padding-top: 50px;">
 
     <title>Settings Page</title><div class="container-fluid main" style="height:100vh;padding-left:0px;">
@@ -95,12 +89,6 @@
 
     <div class="col-md-3 d-none d-md-block" style="height:100%" >
 
-        {% comment %} <div class="container-fluid nav sidebar flex-column"> {% endcomment %}
-{% comment %}
-            <a href="{% url 'stream:setting' %}" class="nav-link active mt-auto"><i class="far fa-user-circle"></i> Change Password</a>
-            <a href="{% url 'stream:theme' %}" class="nav-link mb-auto" id="Background Button"><i class="fas fa-cogs"></i> Background</a> {% endcomment %}
-
-        {% comment %} </div> {% endcomment %}
 
     </div>
 
@@ -112,14 +100,6 @@
        </div>
     </div>
 
-    {% comment %} <div id="overlay" class="float-center "style="position:fixed;top:30%;">
-        <div>
-            <p class="text-dark">Are you sure you want to change your password?</p>
-            <button id="Update" class="float-left submit-button" >Update</button>
-            <button id="Cancel" class="float-left submit-button">Cancel</button>
-       </div>
-    </div> {% endcomment %}
-
     <div class="col-md-6">
 
         <div class="container content clear-fix">
@@ -127,13 +107,6 @@
         <h1 class="mt-5 mb-5">Settings</h1>
 
         <div class="row" style="height:70%">
-
-            {% comment %} <div class="col-md-3">
-
-                <div href=# class="d-inline"><img src="https://image.flaticon.com/icons/svg/236/236831.svg" width=130px style="margin:0;"><br><p class="pl-2 mt-2"><a href="#" class="btn" style="color:#8f9096;font-weight:600">Edit Picture</a></p></div>
-
-
-            </div> {% endcomment %}
 
             <div class="container">
                 <div class="row">
@@ -173,21 +146,11 @@
                                                         <span toggle="#{{ passwordform.password2.id_for_label }}" class="input-group-addon toggle-password fas fa-eye" style="position: absolute; top: 652px; margin-left: 355px;"></span>
                                                     </div>
                                                 </div>
-                                            <!-- Uncomment the following lines if you want to include Confirm Password field -->
-                                            {% comment %}
-                                            <div class="form-group">
-                                                <label for="id_new_password2">Confirm Password</label>
-                                                <input type="password" class="form-control" id="id_new_password2" name="new_password2">
-                                                {{ passwordform.new_password2.errors }}
-                                                {{ passwordform.new_password2 }}
-                                            </div>
-                                            {% endcomment %}
+
                                             <div class="row mt-4 d-flex justify-content-center" style="padding-top:25px; margin-right: 140px;">
                                                 <div class="col-auto">
                                                     <button type="button" href="{% url 'stream:setting' %}" id="Save" class="btn btn-primary btn-block submit-button" onclick='Password_Overlay()'>
-                                                        {% comment %} <a  onclick='Password_Overlay()'> {% endcomment %}
                                                             Save Changes
-                                                        {% comment %} </a> {% endcomment %}
                                                     </button>
                                                 </div>
                                                 <div class="col-auto">
@@ -200,7 +163,6 @@
                                                     <p class="text-dark">Are you sure you want to change your password?</p>
                                                     <button type = "submit" id="Update" class="float-left btn btn-primary btn-block me-4" onclick="Password_Overlay()">Update</button>
                                                     <button type="button" id = "Cancel" class="float-left btn btn-default btn-block" onclick="Password_Overlay()">Cancel</button>
-                                                    {% comment %} <a href="{% url 'stream:setting' %}" id="Cancel" class="float-left btn btn-default btn-block">Cancel</a> {% endcomment %}
                                                </div>
                                             </div>
                                         </form>
@@ -211,11 +173,6 @@
                     </div>
                 </div>
             </div>
-           
-
-{% comment %} {% endblock content %} {% endcomment %}
-
-
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -253,15 +210,9 @@
             };
         </script>
 
-         {% comment %} <!-- This js ask user before user change the password  -->
-         <script src=" {% static 'assets/js/logout.js'%} "></script> {% endcomment %}
-
          <!-- ChangePassword popup UI -->
          <script src=" {% static 'assets/js/ChangePasswordUI.js'%} "></script>
          <script>
-            {% comment %} document.getElementById("Update").onclick = function () {
-                 location.href = "{% url 'stream:login' %}";
-             }; {% endcomment %}
              document.getElementById("Cancel").onclick = function () {
                  location.href = "{% url 'stream:setting' %}";
              };

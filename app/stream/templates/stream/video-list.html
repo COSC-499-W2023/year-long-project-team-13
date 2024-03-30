@@ -1,9 +1,6 @@
 {% extends 'stream/base.html' %}
 {% block content %}
     <div class="container" style="margin-top: 25px;">
-        <div>
-            {% comment %} <h1>Vnonymous</h1> {% endcomment %}
-        </div>
         {% if user.is_authenticated %}
         <div id="overlay" class="float-center" style="position:fixed; top:30%;">
             <div>

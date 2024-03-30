@@ -84,7 +84,6 @@
         </div>
     {% endif %}
 
-
     <div class="container">
         <div class="row d-flex justify-content-center align-items-center h-100">
           <div class="col-lg-15" style="padding-top: 50px">
@@ -145,7 +144,6 @@
         </div>
       </div>
 
-
     <script src=" {% static 'assets/bootstrap/js/bootstrap.min.js' %} "></script>
 
     <!-- This js makes the header change to black colour when scrolling -->
@@ -158,13 +156,9 @@
             location.href = "{% url 'stream:logout' %}";
         };
         document.getElementById("cancel").onclick = function () {
-            // location.href = "{% url 'stream:request-video' %}";
             overlay();
         };
     </script>
 
   </body>
   </html>
-
-
-{% comment %} {% endblock content %} {% endcomment %}

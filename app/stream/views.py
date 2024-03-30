@@ -10,18 +10,11 @@ from django.dispatch import Signal
 from django.db.models import Q
 from django.core.files.base import ContentFile
 from django.conf import settings as aws_settings
-import base64, boto3, time, requests
+import os, subprocess, base64, boto3, time, requests
 from stream.storage_backends import MediaStorage, ProfilePictureStorage
 from . models import VidRequest, VidStream, Contact, FriendRequest, Post, Profile, UserInfo, Notification, Setting
 from . forms import VidUploadForm, VidCreateForm, VidRequestForm, UserRegistrationForm, UserUpdateForm, UserInfoUpdateForm, UserProfileUpdateForm, UserProfileUpdateForm,  ValidatingPasswordChangeForm, AddContactForm, UserPermissionForm, VidRecFilledForm, VidUpFilledForm
 # from django.http import HttpResponse
-from django.http import HttpResponseServerError
-import os
-import boto3
-import base64
-import subprocess
-from django.core.files.base import ContentFile
-import subprocess
 
 
 class VideoDetailView(DetailView):

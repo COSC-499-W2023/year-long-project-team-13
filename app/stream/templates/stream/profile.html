@@ -90,7 +90,6 @@
                               <img src="{{ user.profile.image.url }}" alt="Admin" class="rounded-circle bg-primary" width="200" height="200" style="max-height: 100% max-width: 100%;">
                               <div class="mt-3">
                                   <h4>{{ user.username }}</h4>
-                                  <!-- <p class="text-dark mb-1">{{ user.email }}</p> -->
                                   <p class="text-secondary mb-1" id="NameCheck">{{ user.first_name }} {{ user.last_name }}</p>
                                   <p class="text-muted font-size-sm" id="EmailCheck">{{ user.email }}</p>
                                   <p class="text-muted font-size-sm" id="BirthdateCheck">{{ user.userinfo.birthdate }}</p>
@@ -135,9 +134,6 @@
                                   <h6 class="mb-0">First Name</h6>
                               </div>
                               <div class="col-sm-9 text-secondary">
-                                  {% comment %} <input type="text" class="form-control" value="John Doe"> {% endcomment %}
-                                  {% comment %} {{ userform.username.errors }}
-                                  {{ userform.username }} {% endcomment %}
                                 {{ userform.first_name.errors }}
                                 {{ userform.first_name }}
                               </div>
@@ -147,11 +143,8 @@
                                 <h6 class="mb-0">Last Name</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                {% comment %} <input type="text" class="form-control" value="John Doe"> {% endcomment %}
                                 {{ userform.last_name.errors }}
                                 {{ userform.last_name }}
-                                {% comment %} {{ userform.first_name.errors }}
-                                {{ userform.first_name }} {% endcomment %}
                             </div>
                           </div>
                           <div class="row mb-3">
@@ -159,7 +152,6 @@
                                   <h6 class="mb-0">Email</h6>
                               </div>
                               <div class="col-sm-9 text-secondary">
-                                  {% comment %} <input type="text" class="form-control" value="john@example.com"> {% endcomment %}
                                   {{ userform.email.errors }}
                                   {{ userform.email }}
                               </div>
@@ -173,60 +165,23 @@
                                 {{ personalinfoform.birthdate }}
                             </div>
                         </div>
-                        {% comment %} <div class="row mb-3">
-                            <div class="col-sm-3">
-                                <h6 class="mb-0">Password</h6>
-                            </div>
-                            <div class="col-sm-9 text-secondary">
-                            {{ passwordform.password.errors }}
-                            {{ passwordform.password }}
-                        </div>
-                    </div> {% endcomment %}
                           <div class="row mb-3">
                               <div class="col-sm-3">
                                   <h6 class="mb-0">Image</h6>
                               </div>
                               <div class="col-sm-9 text-secondary">
-                                  {% comment %} <input type="text" class="form-control" value="(239) 816-9029"> {% endcomment %}
-                                  {% comment %} <p>Image: {% endcomment %}
                                     {{ profileform.image.errors }}
                                     {{ profileform.image }}
-                                    {% comment %} </p> {% endcomment %}
                               </div>
                           </div>
-                          {% comment %} <div class="row mb-3">
-                              <div class="col-sm-3">
-                                  <h6 class="mb-0">Mobile</h6>
-                              </div>
-                              <div class="col-sm-9 text-secondary">
-                                  <input type="text" class="form-control" value="(320) 380-4539">
-                              </div>
-                          </div>
-                          <div class="row mb-3">
-                              <div class="col-sm-3">
-                                  <h6 class="mb-0">Address</h6>
-                              </div>
-                              <div class="col-sm-9 text-secondary">
-                                  <input type="text" class="form-control" value="Bay Area, San Francisco, CA">
-                              </div>
-                          </div> {% endcomment %}
                           <div class="row" style = "padding-top: 25px;">
                               <div class="col-sm-4"></div>
                               <div class="col-sm-3 text-secondary d-flex justify-content-center">
-                                  {% comment %} <input type="button" class="btn btn-primary px-4" value="Save Changes"> {% endcomment %}
                                 <button id="update" class="btn btn-outline-info btn-primary px-4 text-dark" type="submit">Update</button>
                               </div>
                               <div class="col-sm-4 text-secondary d-flex justify-content-center">
                                 <button id="change password" class="btn btn-outline-info btn-outline-primary px-4 text-dark" type="button" onclick="location.href='{% url 'stream:setting' %}'">Change Password</button>
                               </div>
-                              {% comment %} <div class="col-sm-9 d-flex justify-content-center"> {% endcomment %}
-
-                              {% comment %} </div> {% endcomment %}
-                              {% comment %} <div class="col-sm-9 text-secondary d-flex justify-content-center">
-                                {% comment %} <button onclick="location.href='http://www.example.com'" type="button">
-                                    www.example.com</button>
-                                <button class="btn btn-outline-info btn-primary px-4 text-dark" type="button" onclick="{% url 'stream:setting' %}">Change Password</button>
-                            </div> {% endcomment %}
                           </div>
                       </div>
                   </form>
@@ -237,26 +192,6 @@
                           <div class="card" style = "padding-top: 15px; padding-bottom: 15px;">
                               <div class="card-body">
                                   <h5 class="d-flex align-items-center mb-3">Uploaded Videos</h5>
-                                  {% comment %} <p>Web Design</p>
-                                  <div class="progress mb-3" style="height: 5px">
-                                      <div class="progress-bar bg-primary" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-                                  </div>
-                                  <p>Website Markup</p>
-                                  <div class="progress mb-3" style="height: 5px">
-                                      <div class="progress-bar bg-danger" role="progressbar" style="width: 72%" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
-                                  </div>
-                                  <p>One Page</p>
-                                  <div class="progress mb-3" style="height: 5px">
-                                      <div class="progress-bar bg-success" role="progressbar" style="width: 89%" aria-valuenow="89" aria-valuemin="0" aria-valuemax="100"></div>
-                                  </div>
-                                  <p>Mobile Template</p>
-                                  <div class="progress mb-3" style="height: 5px">
-                                      <div class="progress-bar bg-warning" role="progressbar" style="width: 55%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
-                                  </div>
-                                  <p>Backend API</p>
-                                  <div class="progress" style="height: 5px">
-                                      <div class="progress-bar bg-info" role="progressbar" style="width: 66%" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
-                                  </div> {% endcomment %}
                                     {% for item in videos %}
                                         {% if item.sender == user %}
                                             <video class="card-img-top" controls style="width: 40%; height: auto;">
@@ -272,41 +207,6 @@
           </div>
       </div>
   </div>
-
-
-    {% comment %} <div style = "margin-top: 25px; padding-top: 75px;">
-      <img src="{{ user.profile.image.url }}" style=""> {% endcomment %}
-    {% comment %} <div style = "margin-top: 25px; padding-top: 75px;">
-
-      <img src="{{ user.profile.image.url }}" style=""> {% endcomment %}
-            {% comment %} <img src="{{ user.profile.image.url }}"> {% endcomment %}
-            {% comment %} <h3>{{ user.username }}</h3>
-            <p>{{ user.email }}</p>
-            <p>{{ user.password }}</p>
-            <p>{{ user.profile }}</p>
-            <p>{{ user.profile.image }}</p>
-            <p>{{ user.profile.image.url }}</p>
-        </div>
-        <div>
-            <form method="POST" enctype="multipart/form-data">
-                {% csrf_token %}
-                <legend>profile info</legend>
-                {{ userform.username.errors }}
-                {{ userform.username }}
-                {{ userform.email.errors }}
-                {{ userform.email }} {% endcomment %}
-
-                {% comment %} {{ userform.password.errors }}
-                {{ userform.password }} {% endcomment %}
-
-                {% comment %} <p>Image:
-                {{ profileform.image.errors }}
-                {{ profileform.image }}
-                </p>
-                <button class="btn btn-outline-info" type="submit">Update</button>
-            </form>
-
-        </div> {% endcomment %}
 
         <script src=" {% static 'assets/bootstrap/js/bootstrap.min.js' %} "></script>
 
@@ -327,25 +227,3 @@
 
 </body>
 </html>
-{% comment %} {% endblock content %} {% endcomment %}
-
-{% comment %} <div>
-        <img src="{{ user.profile.image.url }}">
-        <h3>{{ user.username }}</h3>
-        <p>{{ user.email }}</p>
-    </div>
-    <div style="text-align: center;">
-        <form method="POST" enctype="multipart/form-data">
-            {% csrf_token %}
-            <legend>profile info</legend>
-            {{ userform.as_p }}
-            {{ profileform.as_p }}
-            <button class="btn btn-outline-info" type="submit">Update</button>
-        </form>
-    </div>
-
-    <script src=" {% static 'assets/bootstrap/js/bootstrap.min.js' %} "></script>
-    <script src=" {% static 'assets/js/grayscale.js' %} "></script>
-  </body>
-</html>
-{% comment %} {% endblock content %} {% endcomment %}

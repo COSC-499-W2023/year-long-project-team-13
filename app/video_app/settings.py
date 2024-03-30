@@ -169,11 +169,11 @@ AWS_S3_ENDPOINT_URL = f'https://s3.{AWS_S3_REGION_NAME}.amazonaws.com'
 
 AWS_S3_INPUT_BUCKET_NAME = 'rekognitionvideofaceblurr-inputimagebucket20b2ba6b-c4zs9410qluo'
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')    # Local media store folder
 MEDIA_URL = '/media/'
 
 MEDIAFILES_LOCATION = ''
-# MEDIA_URL = f'{CLOUDFRONT_DOMAIN}/'
+# MEDIA_URL = f'{CLOUDFRONT_DOMAIN}/'   # S3 media store location
 
 PROFILE_PICTURE_FILES_LOCATION = 'profile-pics'
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'

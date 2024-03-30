@@ -88,8 +88,6 @@
                   <div class="card-body p-md-5 mx-md-4">
 
                     <div class="text-center">
-                        {% comment %} lotus image {% endcomment %}
-                        {% comment %} <img src="{% static 'assets/img/login-phone-image.jpg' %}" style="width: 185px;" alt="logo"> {% endcomment %}
                         <video autoplay loop muted width="250" height="250">
                           <source type="video/mp4" src="{% static 'assets/img/vnonymous_logo.mp4' %}">
                         </video>
@@ -129,19 +127,9 @@
                   </div>
                 </div>
 
-                {% comment %} <div class="col-lg-6 d-flex align-items-center gradient-custom-2"> {% endcomment %}
                 <div class="col-lg-6 d-md-flex align-items-center justify-content-between">
                   <div class="box-1 mt-md-0 mt-5 rounded-3">
-                  {% comment %} <div class="text-white px-3 py-4 p-md-5 mx-md-4"> {% endcomment %}
-
-                    {% comment %} https://mdbootstrap.com/img/new/ecommerce/vertical/004.jpg {% endcomment %}
                     <img src="{% static 'assets/img/login-phone-image.jpg' %}" alt="Trendy Pants and Shoes" class=""/>
-                    {% comment %} class="w-100 rounded-t-5 rounded-tr-lg-0 rounded-bl-lg-5 mb-4" {% endcomment %}
-
-                    {% comment %} <h4 class="mb-4">We are more than just a company</h4>
-                    <p class="small mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                      exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p> {% endcomment %}
                   </div>
                 </div>
 
@@ -151,21 +139,6 @@
         </div>
       </div>
     </section>
-
-
-
-      {% comment "Original code" %}
-      <form method="POST">
-          {% csrf_token %}
-          <h1>Log in</h1>
-          {{ form.as_p }}
-          <button class="btn btn-outline-info" type="submit">Login</button>
-
-      </form>
-      <div>
-          Need an Account ?<a href="{% url 'register'%}">Register</a>
-      </div>
-      {% endcomment %}
 
     <script src=" {% static 'assets/bootstrap/js/bootstrap.min.js' %} "></script>
 
@@ -186,6 +159,3 @@
       });
     </script>
   </body>
-{% comment %}
-{% endblock content %}
-{% endcomment %}

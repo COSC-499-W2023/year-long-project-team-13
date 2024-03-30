@@ -85,30 +85,15 @@
               <div class="card" style="border-radius: 15px;">
                 <div class="card-body p-5">
                   <h2 class="text-uppercase text-center mb-5">Create an account</h2>
-
                   <form method="POST">
                     {% csrf_token %}
-                    {% comment %} {{form.as_p}} {% endcomment %}
-
-                    {% comment %} <div class="form-outline mb-4">
-                      <input type="text" id="form3Example1cg" class="form-control form-control-lg" />
-                      <label class="form-label" for="form3Example1cg">Your Name</label>
-                    </div> {% endcomment %}
                     {{ registrationform.username.errors }}
                     {{ registrationform.username }}
                     <p id="intruction">Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.</p>
 
-                    {% comment %} <div class="form-outline mb-4">
-                      <input type="email" id="form3Example3cg" class="form-control form-control-lg" />
-                      <label class="form-label" for="form3Example3cg">Your Email</label>
-                    </div> {% endcomment %}
                     {{ registrationform.email.errors }}
                     {{ registrationform.email }}
 
-                    {% comment %} <div class="form-outline mb-4">
-                      <input type="password" id="form3Example4cg" class="form-control form-control-lg" />
-                      <label class="form-label" for="form3Example4cg">Password</label>
-                    </div> {% endcomment %}
                     {{ registrationform.password1.errors }}
                     <div class="input-group" style="width: 75%; margin-left: 70px;">
                         <div style="width: 90%;">
@@ -124,23 +109,16 @@
                       <br>
                       Your password can’t be entirely numeric.</p>
 
-                    {% comment %} <div class="form-outline mb-4">
-                      <input type="password" id="form3Example4cdg" class="form-control form-control-lg" />
-                      <label class="form-label" for="form3Example4cdg">Repeat your password</label>
-                    </div> {% endcomment %}
                     {{ registrationform.password2.errors }}
                     <div class="input-group" style="width: 75%; margin-left: 70px;">
                       <div style="width: 90%;">
-                    {{ registrationform.password2 }}
-                  </div>
-                    <span toggle="#id_password2" class="input-group-addon toggle-password fas fa-eye" style="width: 10%; margin-top: 15px;"></span>                      
-                    </span>
-                  </div>
-                    {% comment %} <p id="intruction">Enter the same password as before, for verification.</p> {% endcomment %}
-
+                        {{ registrationform.password2 }}
+                      </div>
+                      <span toggle="#id_password2" class="input-group-addon toggle-password fas fa-eye" style="width: 10%; margin-top: 15px;"></span>
+                    </div>
 
                     <p id="instruction" style="margin-top: 1px; margin-left: auto; margin-right: auto; font-size: 14px; width: 75%;">Click on the dropdown menu and select the user group you are.</p>
-                    {% comment %} userpermissionform {% endcomment %}
+
                     {{ userpermissionform.permission.errors }}
                     {{ userpermissionform.permission }}
 
@@ -153,9 +131,7 @@
                       </label>
                     </div>
 
-                    {% comment %}  onclick="register()" {% endcomment %}
                     <div class="d-flex justify-content-center">
-                      {% comment %} btn btn-primary btn-block fa-lg mb-3 btn-outline-info {% endcomment %}
                       <button id="register" type="submit" class="btn btn-outline-info btn-success btn-block btn-lg gradient-custom-4 text-body" required>Register</button>
                     </div>
 
@@ -163,76 +139,29 @@
                         class="fw-bold text-body"><u>Login here</u></a></p>
 
                   </form>
-
-                {% comment %} </div> {% endcomment %}
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    {% comment %} <script>
-      function register() {
-        // Alert that lets the user know registration was successful
-        alert("Registration successful!");
-        // Redirect to the login page after successful registration
-        window.location.href = "{% url 'login' %}";
-      }
-    </script> {% endcomment %}
+      <script src=" {% static 'assets/bootstrap/js/bootstrap.min.js' %} "></script>
 
-    {% comment %}
-      <form method="POST">
-          {% csrf_token %}
-          <h1>Register</h1>
-          {{ form.as_p }}
-          <button class="btn btn-outline-info" type="submit">Sign Up</button>
+      <!-- This js makes the header change to black colour when scrolling-->
+      <script src=" {% static 'assets/js/grayscale.js' %} "></script>
 
-      </form>
-      <div>
-          Already have an account <a href="{% url 'login' %}">Sign In</a>
-      </div>
-      </div>
-    {% endblock content %}
-    {% endcomment %}
-
-    {% comment %} <script>
-      function register() {
-        // Get the values of all the form inputs
-        var username = document.getElementById("id_username").value;
-        var email = document.getElementById("id_email").value;
-        var password1 = document.getElementById("id_password1").value;
-        var password2 = document.getElementById("id_password2").value;
-
-        // Check if any of the values are empty
-        if (username === "" || email === "" || password1 === "" || password2 === "") {
-          // Display an error message if any of the values are empty strings
-          alert("Please enter all the required fields.");
-        } else {
-          // Display the success message and redirect to the login page
-          alert("Registration successful!");
-          window.location.href = "{% url 'login' %}";
-        }
-      }
-    </script> {% endcomment %}
-
-    <script src=" {% static 'assets/bootstrap/js/bootstrap.min.js' %} "></script>
-
-    <!-- This js makes the header change to black colour when scrolling-->
-    <script src=" {% static 'assets/js/grayscale.js' %} "></script>
-
-    <script>
-      $(document).ready(function() {
-        $(".toggle-password").click(function() {
-          $(this).toggleClass("fas fa-eye fas fa-eye-slash");
-          var input = $($(this).attr("toggle"));
-          if (input.attr("type") == "password") {
-            input.attr("type", "text");
-          } else {
-            input.attr("type", "password");
-          }
+      <script>
+        $(document).ready(function() {
+          $(".toggle-password").click(function() {
+            $(this).toggleClass("fas fa-eye fas fa-eye-slash");
+            var input = $($(this).attr("toggle"));
+            if (input.attr("type") == "password") {
+              input.attr("type", "text");
+            } else {
+              input.attr("type", "password");
+            }
+          });
         });
-      });
-    </script>
-
-  </body>
+      </script>
+    </body>

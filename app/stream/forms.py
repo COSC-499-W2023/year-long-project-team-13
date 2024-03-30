@@ -2,15 +2,13 @@ from django import forms
 from django.core.exceptions import ValidationError
 from django.contrib.auth.forms import UserCreationForm, SetPasswordForm
 from django.contrib.auth.models import User
-from . models import VidRequest, VidStream, Contact, FriendRequest, Post, Profile, UserInfo, Notification, Setting
-from django.contrib.auth import password_validation
 from django.contrib import auth
+from django.contrib.auth import password_validation, authenticate
 from django.contrib.auth.password_validation import validate_password
 from django.contrib.auth.hashers import check_password
-import difflib
 from django.db.models import Q
-import re
-from django.contrib.auth import authenticate
+import difflib, re
+from . models import VidRequest, VidStream, Contact, FriendRequest, Post, Profile, UserInfo, Notification, Setting
 
 class VidUploadForm(forms.ModelForm):
     # receiver = forms.ModelChoiceField(
