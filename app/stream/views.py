@@ -15,6 +15,14 @@ from stream.storage_backends import MediaStorage, ProfilePictureStorage
 from . models import VidRequest, VidStream, Contact, FriendRequest, Post, Profile, UserInfo, Notification, Setting
 from . forms import VidUploadForm, VidCreateForm, VidRequestForm, UserRegistrationForm, UserUpdateForm, UserInfoUpdateForm, UserProfileUpdateForm, UserProfileUpdateForm,  ValidatingPasswordChangeForm, AddContactForm, UserPermissionForm, VidRecFilledForm, VidUpFilledForm
 # from django.http import HttpResponse
+from django.http import HttpResponseServerError
+import os
+import boto3
+import base64
+import subprocess
+from django.core.files.base import ContentFile
+import subprocess
+
 
 class VideoDetailView(DetailView):
     template_name = "stream/video-detail.html"
@@ -104,8 +112,67 @@ def create_video(request):
             # Decode and save the blob data
             blob_data = request.POST['video_blob']  # Get blob video data from html input
             decoded_data = base64.b64decode(blob_data)  # Convert the video data to 64 byte type
-            upload_video.video.delete(save=False)  # Delete the existing video file
-            upload_video.video.save('video_filename.mp4', ContentFile(decoded_data), save=True) # Save into video field with 64 byte content file (video name)
+            # upload_video.video.delete(save=False)  # Delete the existing video file
+            # upload_video.video.save('video_filename.mp4', ContentFile(decoded_data), save=True) # Save into video field with 64 byte content file (video name)
+
+            # Save the video to a temporary file
+            temp_video_path = os.path.join(aws_settings.MEDIA_ROOT, 'temp_video.webm')
+            with open(temp_video_path, 'wb') as f:
+                f.write(decoded_data)
+
+            # Define the output file path
+            output_video_path = os.path.join(aws_settings.MEDIA_ROOT, 'converted_video.mp4')
+
+
+            # Replace '/path/to/ffmpeg' with the actual path to ffmpeg executable
+            ffmpeg_path = '/path/to/ffmpeg'
+
+            # Convert webm to mp4 using ffmpeg
+            try:
+                subprocess.run(['ffmpeg', '-i', temp_video_path, '-c', 'copy', output_video_path], check=True)
+            except subprocess.CalledProcessError as e:
+                print(f"FFMPEG Error: {e}")
+            # Clean up the temporary file
+            os.remove(temp_video_path)
+
+            # Save the converted video to Django's file field
+            with open(output_video_path, 'rb') as converted_file:
+                upload_video.video.save('converted_video.mp4', ContentFile(converted_file.read()), save=False)
+
+
+
+            # Upload video to the input S3 bucket
+            s3_client = boto3.client(
+                's3',
+                aws_access_key_id=aws_settings.AWS_ACCESS_KEY_ID,
+                aws_secret_access_key=aws_settings.AWS_SECRET_ACCESS_KEY,
+                aws_session_token=aws_settings.AWS_SESSION_TOKEN,
+                region_name=aws_settings.AWS_S3_REGION_NAME
+            )
+
+            if request.POST.get('blurFace') == 'on':  # Check if the checkbox is checked
+                s3_bucket_name = aws_settings.AWS_S3_INPUT_BUCKET_NAME  # input s3 bucket for blur face
+            else:
+                s3_bucket_name = aws_settings.AWS_STORAGE_BUCKET_NAME   # normal output s3 bucket for storage video
+
+            # video_file = ContentFile(decoded_data)  # Get video file from input post
+            video_key = f"video_filename.mp4"  # Store in s3 directory
+            media_storage = MediaStorage()
+            video_name = media_storage.get_available_name(name=video_key)   # Check if file exists, if exists increment file name
+
+            with open(output_video_path, 'rb') as video_file:
+                s3_client.upload_fileobj(video_file, s3_bucket_name, 'converted_video.mp4')
+
+            # Remove the local converted file
+            os.remove(output_video_path)
+
+            # Upload the converted MP4 file to S3
+            # s3_client.upload_fileobj(video_file, s3_bucket_name, video_key)
+
+            # Get the URL of the processed video
+            processed_video_url = f'https://{aws_settings.CLOUDFRONT_DOMAIN}/{video_name}'
+
+            upload_video.video = processed_video_url    # store cloudfront video url
 
             upload_video.save()
 
