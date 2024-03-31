@@ -645,3 +645,42 @@ Test Report
 
 - Test report file is in the same directory [here](./report.txt)
   ![Test Report](./images/tests_completion/term2_week11_pytest.png)
+
+## Preferred name -> Ssc name -> Github name
+
+- Ethan -> Ethan Hsu -> YuchenHsu
+- Beth -> Beth Ralston -> mblackbeak (mblackbeak)
+- Herman -> Herman Sood -> herman-23
+- Raymond -> Sitt Paing -> SittHmuePaing
+- Adrian -> Adrian Fong -> AdrianFWM
+
+## Term 2 Week 12 2024/03/25 ~ 2024/03/31
+
+- Which features were in the project plan for this milestone?
+  - Worked on the S3 uploading features to save the correct URL to the database based on the user's choice of blurring or not.
+  - Worked on the recording and uploading page to show the reqest details.
+  - Worked on the register page to include a security question and answer which is saved to the database.
+  - Worked on the reset password page to include the security question and answer to allow the user to reset their password.
+  - Worked on the notification page to include a notification counter.
+
+Burnup chart
+![Burnup](./images/burnup/term2_week12_burnup.png)
+Network Graph
+![Network](./images/network/term2_week12_network_1.png)
+![Network](./images/network/term2_week12_network_2.png)
+![Network](./images/network/term2_week12_network_3.png)
+![Network](./images/network/term2_week12_network_4.png)
+![Network](./images/network/term2_week12_network_5.png)
+Completed Tasks
+![Completed](./images/completed/term2_week12_done_1.png)
+![Completed](./images/completed/term2_week12_done_2.png)
+![Completed](./images/completed/term2_week12_done_3.png)
+![Completed](./images/completed/term2_week12_done_4.png)
+![Completed](./images/completed/term2_week12_done_5.png)
+In progress Tasks
+![In Progress](./images/in-prog/term2_week12_inprogress.png)
+Test Report
+
+- Test report file is in the same directory [here](./report.txt)
+  ![Test Report](./images/tests_completion/term2_week12_pytest.png)
+
