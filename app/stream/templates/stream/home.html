@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="{%static 'css/styleTopBar.css' %}">
     <link rel="stylesheet" href="{%static 'assets/fonts/font-awesome.min.css' %}">
     <link href="{% static 'css/logoutUI.css' %}" rel="stylesheet">
-    
+
 </head>
 
 <body id="page-top" data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="77">
@@ -43,7 +43,14 @@
                         </div>
                       </div>
                       <li class="nav-item nav-link"><a class="nav-link active" href=" {% url 'stream:contact' %} " id="Add Contacts Button">Add Contacts</a></li>
-                      <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:notifications' %}" id="Notification-Button">Notifications</a></li>
+                      <li class="nav-item nav-link">
+                        <a class="nav-link active" href="{% url 'stream:notifications' %}" id="Notification-Button">
+                            Notifications
+                            {% if unread_notifications_count > 0 %}
+                                <span class="badge badge-light">{{ unread_notifications_count }}</span>
+                            {% endif %}
+                        </a>
+                      </li>
                       <div class="dropdown">
                         <li class="nav-item nav-link">
                         <button class="nav-link active">
