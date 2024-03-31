@@ -1,122 +1,168 @@
-# Project Setup and Testing Guide
+[![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-718a45dd9cf7e7f842a935f5ebbe5719a5e09af4491e668f4dbf3b35d5cca122.svg)](https://classroom.github.com/online_ide?assignment_repo_id=12113061&assignment_repo_type=AssignmentRepo)
 
-This guide will walk you through the process of setting up your Python environment, installing necessary packages, configuring the database, and running the Django server. It also includes instructions for running Selenium and Pytest tests.
-**Note:** The following guide uses `python` as the command to run Python. Depending on your system, you may need to use `python3` or `py` instead.
+# Project-Starter
 
-## Setup Guide
+Please use the provided folder structure for your docs (project plan, design documentation, communications log, weekly logs, and final documentation), source code, testing, etc. You are free to organize any additional internal folder structure as required by the project. Please use a branching workflow and once an item is ready, do remember to issue a PR, code review, and merge it into the develop branch and then the master branch.
 
-### Step 1: Install Python
+```
+.
+├── docs                    # Documentation files (alternatively `doc`)
+│   ├── project plan        # Project plan document
+│   ├── design              # Getting started guide
+│   ├── final               # Getting started guide
+│   ├── logs                # Team Logs
+│   └── ...
+├── app                     # Source files
+├── tests                   # Automated tests
+├── utils                   # Tools and utilities
+└── README.md
+```
 
-If Python is not installed on your system, download it from the [official Python website](https://www.python.org/downloads/) and follow the installation instructions. During the installation process, ensure to check the box that says "Add Python to PATH".
+Also, update your README.md file with the team and client/project information. You can find details on writing GitHub Markdown [here](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax) as well as a [handy cheatsheet](https://enterprise.github.com/downloads/en/markdown-cheatsheet.pdf).
 
-### Step 2: Set Up Virtual Environment
+## Install Guide
 
-First, install the `virtualenv` package using pip:
+### 0. **Install Python:** If you don't have Python installed on your system, you can download it from the [official Python website](https://www.python.org/downloads/) and follow the installation instructions.
+
+**Note:** Make sure to check the box that says "Add Python to PATH" during the installation process.
+
+### 1. **Activate the virtual environment:**
+
+First, you need to create a virtual environment, starting by installing the virtualenv package with the following command:
 
 ```console
 pip install virtualenv
 ```
 
-Next, create a virtual environment:
+Once the virtualenv package is installed. Create a virtual environment by running the following command:
 
 ```console
 python -m venv myenv
 ```
 
-Activate the virtual environment:
+Once the virtual environment is created, you can activate it using the following commands:
 
-- MacOS/Linux:
+MacOS/Linux:
 
-    ```console
-    source myenv/bin/activate
-    ```
+```console
+source myenv/bin/activate
+```
 
-- Cmd.exe:
+Cmd.exe:
 
-    ```console
-    myenv\Scripts\activate.bat
-    ```
+```console
+myenv\Scripts\activate.bat
+```
 
-- Powershell:
+Powershell:
 
-    ```console
-    myenv\Scripts\Activate.ps1
-    ```
+```console
+myenv\Scripts\Activate.ps1
+```
 
-- Git bash:
+Git bash:
 
-    ```console
-    . myenv/Scripts/activate
-    ```
+```console
+. myenv/Scripts/activate
+```
 
-### Step 3: Install Required Packages
+### 2. **Install Required Packages:** With the virtual environment activated (if you created one), proceed to install the necessary packages by running the following command in your terminal
 
-With the virtual environment activated, install the necessary packages.
-First, navigate to the `app` folder in your command line. Then, run the following command to install the required packages
+Depending on the system and environment already created, The command will be different. Here are the commands for different systems to install the required packages in the virtual environment:
 
 ```console
 pip install -r requirements.txt
 ```
 
-### Step 4: Database Setup
-
-Configure the database by applying migrations:
+### 3. **Database Setup:** Configure the database by applying migrations with these commands
 
 ```console
 python manage.py makemigrations
 python manage.py migrate
 ```
 
-### Step 5: Start the Django Server
-
-Launch the Django development server:
+### 4. **Start the Django Server:** Launch the Django development server with this command
 
 ```console
 python manage.py runserver
 ```
 
-### Step 6: Access the Website
+### 5. **Access the Website:** Open your web browser and navigate to [http://127.0.0.1:8000/](http://127.0.0.1:8000/) to access the locally hosted website
 
-Open your web browser and navigate to [http://127.0.0.1:8000/](http://127.0.0.1:8000/) to access the locally hosted website.
+By following these steps, you'll have a Python virtual environment set up and activated, ensuring a clean and isolated environment for your Django project.
 
 ## Testing Guide
 
 ### Selenium Testing
 
-1. Start the Django server.
-2. Navigate to the `Selenium_Tests` folder in your command line.
-3. Run all Selenium tests:
+1. Start the django server
+2. Navigate to the folder Selenium_Tests in your command line
+3. To run all selenium tests, use the command:
 
-    ```console
-    python master_test.py
-    ```
+   ```console
+   python master_test.py
+   ```
 
-4. Run a specific test file (replace `[your_file_name_here]` with the specific test file name):
+   or
 
-    ```console
-    python [your_file_name_here].py
-    ```
+   ```console
+   py master_test.py
+   ```
 
-**Note:** Selenium Testing can be finicky depending on how fast your computer can run. If something fails, most of the time, if you run it again, the test will pass. Otherwise, add wait time to allow for the page to load.
+4. To run a specific test file, use the command:
 
-5. Save Selenium test report into a txt file (replace `master_test.py` with any other test file name if needed):
+   ```console
+   # Replace with the specific test file name
+   python [your_file_name_here].py
+   ```
 
-    ```console
-    python master_test.py > report.txt
-    ```
+   or
+
+   ```console
+   # Replace with the specific test file name
+   py [your_file_name_here].py
+   ```
+
+   Note: Selenium Testing can be finicky depending on how fast your computer can run. If something fails, most of the time, if you run it again, the test will pass. Otherwise, add wait time to allow for the page to load.
+
+5. To save selenium test report into a txt file, Use the command:
+
+   ```console
+   # Can replace master_test.py with any other test file name
+   python master_test.py > report.txt
+   ```
+
+   or
+
+   ```console
+   py master_test.py > report.txt
+   ```
 
 ### Pytest Testing
 
-1. Navigate into the `app` folder in your command line.
-2. Run all Pytests:
+1. Navigate into the app folder in your command line
+2. To run all pytests, Use the command:
 
-    ```console
-    python manage.py test pytests
-    ```
+```console
+python manage.py test pytests
+```
 
-3. Run a specific pytest (replace `[your_file_name_here]` with the specific test file name):
+    or
 
-    ```console
-    python manage.py test pytests.[your_file_name_here]
-    ```
+```console
+py manage.py test pytests
+```
 
+3. To run a specific pytest, use the command:
+
+```console
+# Replace with the specific test file name
+python manage.py test pytests.[your_file_name_here]
+```
+
+    or
+
+```console
+# Replace with the specific test file name
+py manage.py test pytests.[your_file_name_here]
+```
