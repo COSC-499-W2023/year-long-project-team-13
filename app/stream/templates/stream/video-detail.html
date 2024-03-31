@@ -9,9 +9,9 @@
         </div>
     </div>
     {% endif %}
-    <div style = "padding-bottom: 60px;">
+    <div style = "padding-bottom: 60px; padding-top: 125px; ">
         {% if object.sender == user %}
-                <div style = "margin-top: 25px; padding-top: 75px; padding-bottom: 25px;">
+                <div style = "margin-top: 25px; padding-bottom: 25px;">
                     <img class="rounded-circle border-dark" src="{{ object.sender.profile.image.url }}" style="border-color: red;" width="100" height="100">
                     <a style="font-size: 2em; text-align: start; margin: 1em; display:inline; align-items: center;" href="{% url 'stream:user-videos' object.sender.username %}">{{ object.sender.username }}</a>
                 </div>
