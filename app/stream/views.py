@@ -10,17 +10,11 @@ from django.dispatch import Signal
 from django.db.models import Q
 from django.core.files.base import ContentFile
 from django.conf import settings as aws_settings
-import os, subprocess, base64, boto3, time, requests
+import os, subprocess, base64, boto3, time, requests, difflib, re
 from stream.storage_backends import MediaStorage, ProfilePictureStorage
 from . models import VidRequest, VidStream, Contact, FriendRequest, Post, Profile, UserInfo, Notification, Setting
 from . forms import VidUploadForm, VidCreateForm, VidRequestForm, UserRegistrationForm, UserUpdateForm, UserInfoUpdateForm, UserProfileUpdateForm, UserProfileUpdateForm,  ValidatingPasswordChangeForm, AddContactForm, UserPermissionForm, VidRecFilledForm, VidUpFilledForm, SecurityQuestionForm, ResetPasswordForm
 # from django.http import HttpResponse
-
-import base64
-import difflib
-import re
-from django.core.files.base import ContentFile
-# from background_task import background
 
 class VideoDetailView(DetailView):
     template_name = "stream/video-detail.html"
@@ -457,7 +451,6 @@ def register(request):
     context = {
         'registrationform': registrationform,
         'userpermissionform': userpermissionform,
-        # 'usersecurityform' : usersecurityform,
         }
     return render(request, 'stream/register.html', context)
 
@@ -466,8 +459,6 @@ def password_reset(request):
     if request.method == 'POST':
         form = SecurityQuestionForm(request.POST)
         if form.is_valid():
-            # username = request.POST['username']
-            # email = request.POST['email']
             username = form.cleaned_data['username']
             email = form.cleaned_data['email']
             # Check if the user exists with the provided email and username
@@ -479,11 +470,8 @@ def password_reset(request):
 
             # Redirect to page to display security question
             return redirect('stream:security-answer', username)
-
     else:
         form = SecurityQuestionForm()
-        # Get the user's security question
-        # form = SecurityQuestionForm(security_question=request.user.userinfo.security_question)
     return render(request, 'stream/forget-password.html', {'form': form})
 
 
@@ -527,7 +515,6 @@ def password_reset_done(request, username):
                     if all(c.isalpha() == first_isalpha for c in reset_password):
                         messages.error(request, 'Password must contain at least one letter and one non-letter.')
                         return redirect('stream:password_reset_done', username)
-
                     else:
                         # Check Password not similar to username and email information
                         username_similarity = difflib.SequenceMatcher(None, reset_password.lower(), username.lower()).ratio()
@@ -542,13 +529,10 @@ def password_reset_done(request, username):
             else:
                 messages.error(request, 'Passwords do not match.')
                 return redirect('stream:password_reset_done', username)
-
         else:
             messages.error(request, resetpasswordform.errors)
             print(resetpasswordform.errors)
             return redirect('stream:password_reset_done', username)
-
-
     else:
         resetpasswordform = ResetPasswordForm(instance=User.objects.get(username=username))
 
@@ -675,7 +659,6 @@ def settings(request):
                 usertemp.password = make_password(usertemp.password)
                 usertemp.save()
                 return redirect("stream:login")
-
     else:
         passwordform = ValidatingPasswordChangeForm(instance=request.user)
 

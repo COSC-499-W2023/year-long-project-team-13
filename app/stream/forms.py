@@ -363,7 +363,6 @@ class ResetPasswordForm(forms.ModelForm):
 
         return password
 
-
     def clean_resetpassword2(self):
         resetpassword = self.cleaned_data.get('password')
         resetpassword2 = self.cleaned_data.get('password2')
