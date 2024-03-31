@@ -670,13 +670,14 @@ Network Graph
 ![Network](./images/network/term2_week12_network_2.png)
 ![Network](./images/network/term2_week12_network_3.png)
 ![Network](./images/network/term2_week12_network_4.png)
-![Network](./images/network/term2_week12_network_5.png)
 Completed Tasks
 ![Completed](./images/completed/term2_week12_done_1.png)
 ![Completed](./images/completed/term2_week12_done_2.png)
 ![Completed](./images/completed/term2_week12_done_3.png)
 ![Completed](./images/completed/term2_week12_done_4.png)
 ![Completed](./images/completed/term2_week12_done_5.png)
+![Completed](./images/completed/term2_week12_done_6.png)
+![Completed](./images/completed/term2_week12_done_7.png)
 In progress Tasks
 ![In Progress](./images/in-prog/term2_week12_inprogress.png)
 Test Report
