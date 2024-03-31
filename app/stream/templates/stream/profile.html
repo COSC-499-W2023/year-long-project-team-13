@@ -218,7 +218,7 @@
                                     {% for item in videos %}
                                         {% if item.sender == user %}
                                             <video class="card-img-top" controls style="width: 40%; height: auto;">
-                                                <source src="{{ item.video.url }}" type="video/mp4">
+                                                <source src="{{ item.video }}" type="video/mp4">
                                             </video>
                                         {% endif %}
                                     {% endfor %}
