@@ -377,3 +377,24 @@
   - Uploading function to check for duplicate names and specify location
   - ![S3 Upload](./images/Ethan_stuff/t2w11/MediaUpload.png)
   - ![S3 Upload](./images/Ethan_stuff/t2w11/ProfileUpload.png)
+
+# Preferred name -> Ssc name -> Github name
+
+- Ethan -> Ethan Hsu -> YuchenHsu
+
+## Week 12 2024/03/25 ~ 2024/03/31
+
+- Type of tasks you worked on (screenshot from Peer Eval question)
+
+![Tasks](./images/tasks/ethan_term2_week12.png)
+
+- This week, I worked on the S3 and blurring functions with Adrian.
+- I also reviewed and fixed tests for multiple branches to help with merging the branches to the master.
+  - Reviews of the branches
+    - [Forget Password](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/203#pullrequestreview-1969709754)
+    - [Notification](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/202#pullrequestreview-1969704056)
+    - [Request Detail](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/201#pullrequestreview-1969681162)
+    - [Test Fixes](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/201#issuecomment-2027826755)
+- I started the document for the final report and the video.
+  - Started making the list of features we worked on.
+  - Started updating Readme for the project.
