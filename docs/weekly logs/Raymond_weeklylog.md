@@ -541,3 +541,35 @@ Password form after forgot password link is clicked(in progress)
 ### Additional
 - Worked on my own weekly log, contribute to team weekly log.
 - Trying on forgot-password UI to work by searching online to tackle the issue and will be getting help if needed from my teammates.
+
+
+## Term 2 Week 12 2024/03/24 ~ 2024/03/31
+
+- Type of tasks you worked on
+
+![Tasks](./images/tasks/SittPaing_T2W12-Task.png)
+
+## Recap of week's goals
+
+This week me and my team member Beth finished up the forgot password function so that user can easily reset their password in case they forget their existing password. When the user clicked on the forgot password, they will be sent to forgot password page where they will be asked to provide username and email. If they don’t much their existing username/email, the website will give and error to prevent the user from going further. If the user input for both username/email matches, the security question that they used in during registration will appear for them to answer. If the answer matches their existing answer the user will be sent to password reset page, if not error message will appear for the user to try again. On forgot password page, similar to setting page, they will be asked to provide their new password and they need to confirm their password if its matches and if the password meet the requirements, the user will be able to log in with their new password when they are redirect to login page after the password change is successfully. Beth helps me with the forgot password function and also help me write the test for the forgot password and the test passed and the forgot password function is also working as expected. I also made adjustments to the html/css of the page design and the error message so that its in place and Herman assist me to add the password viewable button on the password reset page so that user can view their password for double checking.
+
+
+Forgot Password Form
+
+![Forgot Password Form](./images/Sitt_images/Term_2_Week_12/Forgot_Password_Form.png)
+
+Error Message Forgot Password if user input wrong username and email
+
+![Error Message Forgot Password if user input wrong username and email)](./images/Sitt_images/Term_2_Week_12/Error_Message_Forgot_Password.png)
+
+Security answer form and error message if user input wrong answer
+
+![Security answer form and error message if user input wrong answer](./images/Sitt_images/Term_2_Week_12/Incorrect_security_answer.png)
+
+Password Reset Page
+
+![Forgot Password Form](./images/Sitt_images/Term_2_Week_12/Password_reset_page.png)
+
+
+### Additional
+- Worked on my own weekly log, contribute to team weekly log and the report document.
