@@ -172,5 +172,12 @@ I worked on wrote the automated tests for the view video and create video links 
 #### Picture of Request Details showing all requests when not linked
 ![RequestDetailsFilled](./images/Ralston_stuff/T2_week11/request_details_2.png)
 
+### Week 12 Mar 25 - 31
+![Week12Tasks](./images/tasks/Ralston_term2_w12_tasks.png)
+
+This week my tasks were the testing for the displaying of request information on the create video page and the forgot password function. These are associated with display request info on create video page and forgot password on the project board. The testing for display request info is completed and that has been reviewed and merged into master. I helped Raymond complete forgot password by creating and linking the views to the urls and passing the needed information through the urls in order to display the security question on the forgot password page. Raymond and I worked together to re-write some of the password checks that were not working in the view function instead of in the forms. I also updated and wrote all the needed automatic testing functions. Forgot password is now complete, reviewed, and merged into master.
+
+
+
 
 
