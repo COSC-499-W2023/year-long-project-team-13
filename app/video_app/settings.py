@@ -94,7 +94,7 @@ DATABASES = {
 #     'NAME': 'djangodatabase',
 #     'USER': 'masteruser',
 #     'PASSWORD': 'masteruser',
-#     'HOST': 'database-django.cqtxhhmhjnhu.ca-central-1.rds.amazonaws.com',
+#     'HOST': 'django-database.c6pxc7oyiyq1.us-west-2.rds.amazonaws.com',
 #     'PORT': '5432',
 #   }
 # }
