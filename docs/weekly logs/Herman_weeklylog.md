@@ -354,5 +354,21 @@ Add Contact Function, Add contact UI
 ![Tasks](./images/tasks/Week11Term2PeerEvalHerman.png)
 ![Tasks](./images/tasks/Week11Term2RegisterUpdatedHerman.png)
 
+- Applicable date range
+## Week 11 Term 2 03/18/24~03/24/24
+
+ # Preferred name -> Ssc name -> Github name
+
+- Herman -> Herman Sood -> Herman Sood
+
+- Recap on your week's goals-Which features were yours in the project plan for this milestone? For term 2 week 12, I worked on the notification indicator feature in which the receiver will get a notification if they receive a friend request or a video request for example and this is seen as a number within a red border on any page that they are on (for example on the home page or on the profile page) directly on the notifications bar. If the receiver gets multiple notifications the number increments and once they go to the notifications page the notifications indicator sets back to 0 since the notifications are now all marked as read. I also updated the selenium test for the notification test to highlight the indicator addition. 
+  - Which tasks from the project board are associated with these features? Notification Indicator  
+  - Among these tasks, which have you completed/in progress in the last week? Notification Indicator
+
+
+![Tasks](./images/tasks/Week12Term2NotificationIndicatorHerman.png)
+![Tasks](./images/tasks/Week12Term2NotificationIndicatorPic2Herman.png)
+![Tasks](./images/tasks/Week12Term2PeerEvalHerman.png)
+
 
 
