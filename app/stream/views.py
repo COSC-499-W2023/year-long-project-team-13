@@ -106,22 +106,23 @@ def create_video(request):
             blob_data = request.POST['video_blob']  # Get blob video data from html input
             decoded_data = base64.b64decode(blob_data)  # Convert the video data to 64 byte type
             # upload_video.video.delete(save=False)  # Delete the existing video file
-            # upload_video.video.save('video_filename.mp4', ContentFile(decoded_data), save=True) # Save into video field with 64 byte content file (video name)
+            # upload_video.video.save('video_record.mp4', ContentFile(decoded_data), save=True) # Save into video field with 64 byte content file (video name)
 
             # Save the video to a temporary file
             temp_video_path = os.path.join(aws_settings.MEDIA_ROOT, 'temp_video.webm')
             with open(temp_video_path, 'wb') as f:
                 f.write(decoded_data)
 
-            video_key = f"video_filename.mp4"  # video record file name
-            # video_record.mp4
+            video_key = f"video_record.mp4"  # video record file name
 
             # Define the output file path
             output_video_path = os.path.join(aws_settings.MEDIA_ROOT, video_key)
 
             # Convert webm to mp4 using ffmpeg
             try:
-                subprocess.run(['ffmpeg', '-i', temp_video_path, '-c', 'copy', output_video_path], check=True)
+                ffmpeg_path = '/opt/ffmpeg/ffmpeg-6.1-amd64-static/ffmpeg'  # FFMPEG path for Elastic Beanstalk (Path referenced from .ebextensions/ffmpeg.config)
+                subprocess.run([ffmpeg_path, '-i', temp_video_path, '-c', 'copy', output_video_path], check=True)
+                # subprocess.run(['ffmpeg', '-i', temp_video_path, '-c', 'copy', output_video_path], check=True) # local FFMPEG, make sure to have FFMPEG path setup on your computer
             except subprocess.CalledProcessError as e:
                 print(f"FFMPEG Error: {e}")
             # Clean up the temporary file
@@ -336,21 +337,23 @@ def record_filled_video(request, pk):
             blob_data = request.POST['video_blob']  # Get blob video data from html input
             decoded_data = base64.b64decode(blob_data)  # Convert the video data to 64 byte type
             # upload_video.video.delete(save=False)  # Delete the existing video file
-            # upload_video.video.save('video_filename.mp4', ContentFile(decoded_data), save=True) # Save into video field with 64 byte content file (video name)
+            # upload_video.video.save('video_record.mp4', ContentFile(decoded_data), save=True) # Save into video field with 64 byte content file (video name)
 
             # Save the video to a temporary file
             temp_video_path = os.path.join(aws_settings.MEDIA_ROOT, 'temp_video.webm')
             with open(temp_video_path, 'wb') as f:
                 f.write(decoded_data)
 
-            video_key = f"video_filename.mp4"  # video record file name
+            video_key = f"video_record.mp4"  # video record file name
 
             # Define the output file path
             output_video_path = os.path.join(aws_settings.MEDIA_ROOT, video_key)
 
             # Convert webm to mp4 using ffmpeg
             try:
-                subprocess.run(['ffmpeg', '-i', temp_video_path, '-c', 'copy', output_video_path], check=True)
+                ffmpeg_path = '/opt/ffmpeg/ffmpeg-6.1-amd64-static/ffmpeg'  # FFMPEG path for Elastic Beanstalk (Path referenced from .ebextensions/ffmpeg.config)
+                subprocess.run([ffmpeg_path, '-i', temp_video_path, '-c', 'copy', output_video_path], check=True)
+                # subprocess.run(['ffmpeg', '-i', temp_video_path, '-c', 'copy', output_video_path], check=True) # local FFMPEG, make sure to have FFMPEG path setup on your computer
             except subprocess.CalledProcessError as e:
                 print(f"FFMPEG Error: {e}")
             # Clean up the temporary file

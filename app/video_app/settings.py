@@ -26,8 +26,8 @@ SECRET_KEY = 'fpfd*qb+!is4hf@l6c(0n*1v4syzidbwzfsm-^%c30x*&772wc'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
-# ALLOWED_HOSTS = ['ebdjango-env-1.eba-uzn2yvai.ca-central-1.elasticbeanstalk.com']
+# ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ['vnonymous-env.eba-ai3bsdyf.us-west-2.elasticbeanstalk.com']
 
 # Application definition
 
@@ -79,24 +79,24 @@ WSGI_APPLICATION = 'video_app.wsgi.application'
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 # Local SQLite3 database
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
 
 # AWS RDS database
-# DATABASES = {
-#   'default': {
-#     'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#     'NAME': 'djangodatabase',
-#     'USER': 'masteruser',
-#     'PASSWORD': 'masteruser',
-#     'HOST': 'django-database.c6pxc7oyiyq1.us-west-2.rds.amazonaws.com',
-#     'PORT': '5432',
-#   }
-# }
+DATABASES = {
+  'default': {
+    'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    'NAME': 'djangodatabase',
+    'USER': 'masteruser',
+    'PASSWORD': 'masteruser',
+    'HOST': 'django-database.c6pxc7oyiyq1.us-west-2.rds.amazonaws.com',
+    'PORT': '5432',
+  }
+}
 
 
 # Password validation
@@ -147,15 +147,15 @@ STATICFILES_DIRS = [
 LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = 'login'
 
-# Local (AWS access) [Manually update]
-AWS_ACCESS_KEY_ID="ASIA4HU6ILMRLXD7ZR3A"
-AWS_SECRET_ACCESS_KEY="lTOcv5p4y+KQp5bYVt23PVEozqg/7CfrOZiIZXzP"
-AWS_SESSION_TOKEN="IQoJb3JpZ2luX2VjEPv//////////wEaDGNhLWNlbnRyYWwtMSJHMEUCIQDLttHepknAJIvQ4ZGhRMUzcn6IckpesEJd1oGyFw2uyAIgXUoKGzf4qAiTtimTrNQtIP8sCWALhT8jDnMk0DNJNhUqjgMIJRAAGgw4NDEwNzE3NDU4MjYiDHluA6jjkwty71hCrSrrAifRY1s5dimQld29iEUhpHjMrN6qPQWfbSSHDXeXP852mm3T3ExpsiD2vxn9a1eABu4rAhF79PX+8YlUl2MxczUUJPSo/aiLr57PQ1c8dCM2yjGhQWA2EkqX3DsdJqXT74dwQXLmLq5ocsOInaKjNbLKSwdlINAaT7wXVu0FMfXfoiBn3ZnjNc8Yd/hqlOVshEUuGltP9ocQec8uUF9oOB2qWxZNyP6J0UWxJCOIjznucFz2Gr7QrATvWE0a3m2eSpF5QMHlk+fRGb7FRPcYFOyc8Vz71eCbZarL4z6XKCZD9B/sAzBM21SISaZ73C23/fsANzP8GxhD6WlXFyW/mjWec9RDNlvYhw4r2UZinJVsPIwlFX5apSvSYn5ud29+o3RrWslcMmV/w9DQa8DZDG9LhJSUqBPa5aQW02jCsoEhkD1jdTCEopzGs5wpXG1IpDx0mWv6nHQ/BBtyUEPR6hO5dBy9pnA7wIHxuTDesaOwBjqmAcsdihW38krm+zNXrow7e8IQqDxQNidppVyZlmx80EGuy4yaZo7hp4ixhlTrbbuHhnczRNfCwVgMoLerkbh27OKL3cAO5dbS0W/s/+22uPiwBGA5lui1P/koYYSwz/4RETS10gxr9kB7N6Rx17BIxkfMkaP8HlCX+FBJwk5MjQrlJCfJtexOnNfQTX7CY+KcI6PQNkF12x13KgBEvyCeY5h+9HCCAuU="
+# Local (AWS access) [Manually update] Copy it from AWS access portal
+# AWS_ACCESS_KEY_ID=""
+# AWS_SECRET_ACCESS_KEY=""
+# AWS_SESSION_TOKEN=""
 
 # Elasic Beanstalk server (AWS access)
-# AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
-# AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
-# AWS_SESSION_TOKEN = os.environ.get('AWS_SESSION_TOKEN')
+AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+AWS_SESSION_TOKEN = os.environ.get('AWS_SESSION_TOKEN')
 
 AWS_STORAGE_BUCKET_NAME = 'rekognitionvideofaceblurr-outputimagebucket1311836-qbibfhivlghz'
 AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
@@ -181,14 +181,8 @@ DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 #solves vidstream auto-created primary key error
 DEFAULT_AUTO_FIELD='django.db.models.AutoField'
 
-DATA_UPLOAD_MAX_MEMORY_SIZE = 1024 * 1024 * 100  # X is the size in megabytes - 100mb (1 min record video = 5.5mb)
-FILE_UPLOAD_MAX_MEMORY_SIZE = 1024 * 1024 * 100  # X is the size in megabytes - 100mb
+DATA_UPLOAD_MAX_MEMORY_SIZE = 1024 * 1024 * 100  # X is the size in megabytes - 50mb (1 min record video = 5.5mb)
+FILE_UPLOAD_MAX_MEMORY_SIZE = 1024 * 1024 * 100  # X is the size in megabytes - 50mb
 
 STATIC_ROOT=os.path.join(BASE_DIR,'productionfiles')
 MEDIA_ROOT=os.path.join(BASE_DIR,'media/')
-
-# ffmpeg_path to ffmpeg folder  (put ffmpeg folder files in app folder repository)
-# ffmpeg_path = os.path.join(BASE_DIR, 'ffmpeg/bin')  # Example path, adjust as per your installation
-
-# Set elastic beanstalk ffmpeg environment to ffmpeg_path
-# os.environ['FFMPEG_PATH'] = ffmpeg_path

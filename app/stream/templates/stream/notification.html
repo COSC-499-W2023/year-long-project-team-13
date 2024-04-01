@@ -117,8 +117,6 @@
                       <small class="text-muted">{{ notification.timestamp }}</small>
                       <br>
                       {% if notification.type == 1 %}
-                        <small class="text-muted">{{ notification.timestamp }}</small>
-                        <br>
                         <input type="hidden" name="notifID" value="{{ notification.id }}">
                         <button class="btn btn-dark mt-3 mb-1" id="delete friend request button" name="deleteFriendRequest" type="submit">Remove Friend Request</button>
                       {% elif notification.type == 2 %}
