@@ -947,7 +947,6 @@ id connect to "friend request", "video request", "post", and "video" table.
   - Fix background image to mirrored screenshot
 ![Fix background image to mirrored screenshot](./images/Adrian_images/T2_Week_11/Mirror_background.jpg)
 
-
 ### Review other team member's pull request
 - Reviewed Beth's notification pull request on video post and video create.
 - All Selenium tests and pytests runs and passed.
@@ -956,3 +955,109 @@ id connect to "friend request", "video request", "post", and "video" table.
 ### Weekly Log / Team Weekly Log / Additional
   - Worked on my own weekly log, contribute to team weeklog.
   - Although I created a overwrite function for video and image, but later on Ethan wrote increment filename if same filename exist in S3 cloudfront server; therefore, my overwrite function is to prevent file to have conflict on SQL when filename is not incremented on S3.
+
+# Preferred name -> Ssc name -> Github name
+
+- Adrian -> Adrian Fong -> AdrianFWM
+
+## Term 2 Week 12 2023/03/25~2023/03/31
+
+- Task I have worked on this week.
+![Weekly Task T2-12](./images/tasks/AdrianFong_T2_Week12_Task.jpg)
+
+## Recap on your week's goals
+
+### New Elastic Beanstalk server/RDS database/S3 buckets/AWS Lambda to US-West-2 region [Complete]
+- Worked on "Elastic Beanstalk, RDS, S3 Bucket change region to US-West-2" on project board, make new elastic beanstalk server, rds database, s3 buckets on new US-West-2 region, because face blurring feature (AWS Face Rekognition) cannot use ca-central-1 region.
+- Made two S3 buckets, one for storing Elastic Beanstalk server uploaded project zip files and server details, another cdk s3 bucket to store AWS Lambda functions zip codes.
+- Made two more S3 buckets, input s3 bucket for mp4/mov file face blurring for (AWS Lambda), output s3 bucket for all files to display on webpage.
+- Made AWS Lambda to run functions, when mp4/mov video files uploaded to s3 input bucket, send to AWS Face Rekognition, and apply face blurring, and send face blurred video to s3 ouput bucket.
+
+  - [AWS change region setup and AWS Lambda setup Pull Request/Commit](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/204)
+  - New Elastic Beanstalk server (US-West-2) screenshot
+![New Elastic Beanstalk server (US-West-2) screenshot](./images/Adrian_images/T2_Week_12/elastic_beanstalk_us-west-2.jpg)
+  - New RDS Database (US-West-2) screenshot
+![New RDS Database (US-West-2) screenshot](./images/Adrian_images/T2_Week_12/rds_us-west-2.jpg)
+  - New S3 bucket for elastic beanstalk details storing (US-West-2) screenshot
+![New S3 bucket for elastic beanstalk details storing (US-West-2) screenshot](./images/Adrian_images/T2_Week_12/s3_elastic_beanstalk.jpg)
+  - New S3 bucket for Lambda cdk code zip functions (US-West-2) screenshot
+![New S3 bucket for Lambda cdk code zip functions (US-West-2) screenshot](./images/Adrian_images/T2_Week_12/s3_cdk.jpg)
+  - New S3 input bucket (US-West-2) screenshot
+![New S3 input bucket (US-West-2) screenshot](./images/Adrian_images/T2_Week_12/s3_input.jpg)
+  - New S3 output bucket (US-West-2) screenshot
+![New S3 output bucket (US-West-2) screenshot](./images/Adrian_images/T2_Week_12/s3_output.jpg)
+  - AWS Lambda Functions for face blurring (US-West-2) screenshot
+![AWS Lambda Functions for face blurring (US-West-2) screenshot](./images/Adrian_images/T2_Week_12/lambda_blur.jpg)
+
+### Face Blurring Feature on both Elastic Beanstalk server/Local [Complete]
+- Worked on "AWS Elastic Beanstalk Face blurring", "Blurring faces", "Choose options UI" and "Choose Options function" on project board, Users are able to choose face blurring feature to their upload and web record videos on video record and video upload page. Video will be uploaded to input s3 bucket if user chose to blur faces; if user chose not to blur faces. video will just only upload to output s3 bucket. After the video is uploaded to s3, users can view the video on view video page with uses a cloudfront link to load videos in output s3 bucket.
+- The face blurring feature works on both Elastic Beanstalk server and local.
+
+  - [Face Blurring Feature Pull Request/Commit](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/204)
+  - Video record on Elastic Beanstalk server screenshot
+![Video record on Elastic Beanstalk server screenshot](./images/Adrian_images/T2_Week_12/elastic_video_record.jpg)
+  - Face Blurring option (no face blurring chosen) on video record form screenshot
+![Face Blurring option (no face blurring chosen) on video record form screenshot](./images/Adrian_images/T2_Week_12/elastic_video_record_form.jpg)
+  - View record video with cloudfront from S3 output bucket screenshot
+![View record video with cloudfront from S3 output bucket screenshot](./images/Adrian_images/T2_Week_12/elastic_video_record_view.jpg)
+  - Face Blurring option (Face blurring chosen) on video record form screenshot
+![Face Blurring option (Face blurring chosen) on video record form screenshot](./images/Adrian_images/T2_Week_12/elastic_video_record_form_blur.jpg)
+  - View Face Blurred record video with cloudfront from S3 output bucket screenshot
+![View Face Blurred record video with cloudfront from S3 output bucket screenshot](./images/Adrian_images/T2_Week_12/elastic_video_record_view_blur.jpg)
+  - Face Blurring option (Face blurring chosen) on video upload form screenshot
+![Face Blurring option (Face blurring chosen) on video upload form screenshot](./images/Adrian_images/T2_Week_12/elastic_video_upload_form_blur.jpg)
+  - View Face Blurred upload video with cloudfront from S3 output bucket screenshot
+![View Face Blurred upload video with cloudfront from S3 output bucket screenshot](./images/Adrian_images/T2_Week_12/elastic_video_upload_view_blur.jpg)
+  - Video record and upload choose Face Blurring uploaded to S3 input bucket screenshot
+![Video record and upload choose Face Blurring uploaded to S3 input bucket screenshot](./images/Adrian_images/T2_Week_12/s3_input_blur_video.jpg)
+  - All face blurred and not face blurred video store in output S3 bucket for webpage display screenshot
+![All face blurred and not face blurred video store in output S3 bucket for webpage display screenshot](./images/Adrian_images/T2_Week_12/s3_output_blur.jpg)
+
+### FFMPEG for convert webm file to mp4 file format function, local/Elastic Beanstalk FFMPEG setup[Complete]
+- Worked on "FFMPEG installation and configuration for both local and AWS Elastic Beanstalk" on project board, before uploading the video record, video files need to be in either mp4 or mov file format to Input S3 bucket, because the AWS Lambda functions only trigger when mp4 or mov files upload to Input S3 bucket, and start face blurring.
+- FFMPEG function will convert the web recorded video(webm file format) to mp4 file format.
+- Setup FFMPEG application on both elastic beanstalk and local.
+- Update the installation for ffmpeg python in requirement.txt.
+
+  - [FFMPEG function and setup Pull Request/Commit](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/204)
+  - FFMPEG Function code screenshot
+![FFMPEG Function code screenshot](./images/Adrian_images/T2_Week_12/ffmpeg_code.jpg)
+  - Coverted from webm video record files to mp4 in Input S3 bucket screenshot
+![Coverted from webm video record files to mp4 in Input S3 bucket screenshot](./images/Adrian_images/T2_Week_12/s3_input_mp4.jpg)
+  - Added ffmpeg python to requirement.txt screenshot
+![Added ffmpeg python to requirement.txt screenshot](./images/Adrian_images/T2_Week_12/requirement.jpg)
+
+### Auto update AWS Access Key for Elastic Beanstalk [Complete]
+- Worked on "Auto Update AWS Access Key" on project board, made auto update aws access key for Elastic Beanstalk server, so we need to manually update aws access key on Elastic Beanstalk server.
+
+  - [Auto update AWS Access Key Pull Request/Commit](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/204)
+  - Auto update AWS access key code screenshot
+![Auto update AWS access key code screenshot](./images/Adrian_images/T2_Week_12/auto_access_key.jpg)
+
+### Increased Nginx (Elastic Beanstalk server) file upload size to 100mb [Complete]
+- Worked on "AWS Elastic beanstalk file upload increase" on project board, increase the file upload size limit on Elastic Beanstalk server up to 100mb.
+
+  - [Nginx file upload size increase Pull Request/Commit](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/204)
+  - Nginx file upload size code screenshot
+![Nginx file upload size code screenshot](./images/Adrian_images/T2_Week_12/nginx.jpg)
+  - Upload file size limit on settings screenshot
+![Upload file size limit on settings screenshot](./images/Adrian_images/T2_Week_12/upload_size.jpg)
+
+### Updated Selenium tests/pytests for new features
+- Worked on updating all Selenium tests and pytests for new features.
+- All Selenium tests and pytests passed with no error.
+
+  - [Updated Selenium tests/pytests Pull Request/Commit](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/204)
+  - Selenium tests passed screenshot
+![Selenium tests passed screenshot](./images/Adrian_images/T2_Week_12/Selenium_test.jpg)
+  - Pytests passed screenshot
+![Pytests passed screenshot](./images/Adrian_images/T2_Week_12/pytests.jpg)
+
+### Review other team member's pull request
+- Reviewed Ethan's S3 testing user upload pull request and Beth's Forget password pull request.
+- All Selenium tests and pytests runs and passed.
+  - [S3 testing user upload Pull Request/Commit](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/195)
+  - [Forget password Pull Request/Commit](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/203)
+
+### Weekly Log / Team Weekly Log / Additional
+  - Worked on my own weekly log, contribute to team weeklog.

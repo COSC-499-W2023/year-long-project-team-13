@@ -657,8 +657,16 @@ Test Report
 ## Term 2 Week 12 2024/03/25 ~ 2024/03/31
 
 - Which features were in the project plan for this milestone?
+  - Worked on new Elastic Beanstalk server, RDS database, four S3 buckets (Elastic Beanstalk details, Lambda code zip, Input S3 bucket, Output S3 bucket) to US-West-2 region.
+  - Worked on create AWS Lambda functions for Face blurring.
+  - Worked on Face blurring UI and functions on video upload and record page.
   - Worked on the S3 uploading features to save the correct URL to the database based on the user's choice of blurring or not.
-  - Worked on the recording and uploading page to show the reqest details.
+  - Updated Database using cloudfront URL from S3 to display Videos.
+  - Worked on FFMPEG function to covert webm video web record files to mp4 format before uploading it to Input S3 bucket, and FFMPEG setup for both Elastic Beanstalk server and local.
+  - Worked on increasing Nginx (Elastic Beanstalk) file upload size to 100mb.
+  - Updated requirement.txt.
+  - Worked on auto update AWS access key on Elastic Beanstalk.
+  - Worked on the recording and uploading page to show the request details.
   - Worked on the register page to include a security question and answer which is saved to the database.
   - Worked on the reset password page to include the security question and answer to allow the user to reset their password.
   - Worked on the notification page to include a notification counter.
