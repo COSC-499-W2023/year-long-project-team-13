@@ -7,26 +7,19 @@ from PIL import Image, ImageOps
 from datetime import date
 from django.urls import reverse
 from django.core.files.storage import default_storage as storage
-from s3direct.fields import S3DirectField
 from stream.storage_backends import MediaStorage, ProfilePictureStorage
 # Create your models here.
 
 # Video Request Table
 class VidRequest(models.Model):
-    # id = models.TextField((""), primary_key=True)
     id = models.AutoField(primary_key=True)
-    # request_id = models.AutoField(primary_key=True)
     sender = models.ForeignKey(User, related_name="video_sender", on_delete=models.CASCADE)
     receiver = models.ForeignKey(User, related_name="video_receiver", on_delete=models.CASCADE)
     description = models.TextField(max_length=600)
     due_date = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
-        # return f"{self.sender} Request"
         return f"{self.sender} {self.id}"
-
-    # def get_absolute_url(self):
-    #     return reverse("video-detail", kwargs={"pk": self.pk})
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
@@ -40,8 +33,6 @@ class VidStream(models.Model):
 
     def __str__(self):
         return f"{self.id}"
-    # return self.title
-        # return f"{self.video_id} {self.streamer}"
 
     def get_absolute_url(self):
         return reverse("video-detail", kwargs={"pk": self.pk})
@@ -90,20 +81,21 @@ class Post(models.Model):
     sendtime = models.DateTimeField(default=timezone.now)
     timelimit = models.DateTimeField(default=timezone.now)
     # video = models.FileField(upload_to='')    # local SQLite
-    video = models.FileField(storage=MediaStorage())    # S3 cloudfront
+    # video = models.FileField(storage=MediaStorage())    # S3 cloudfront
+    video = models.URLField()   # Video url (cloudfront) for more upload to s3 options
     video_id = models.ForeignKey(VidStream, on_delete=models.SET_NULL, null=True)
     request_id = models.ForeignKey(VidRequest, on_delete=models.SET_NULL, null=True)
 
     def __str__(self):
-        # return f"{self.post_id} {self.sender} Post"
         return f"{self.id}"
 
     def get_absolute_url(self):
         return reverse("video-detail", kwargs={"pk": self.pk})
 
     def save(self, *args, **kwargs):
-        # Add the user attribute to the File object
-        self.video.file.user = self.sender
+    #     # Add the user attribute to the File object
+    #     # self.video.file.user = self.sender
+    #     self.video.sender = self.sender
 
         # Call the original save method
         super().save(*args, **kwargs)
@@ -130,17 +122,6 @@ class Profile(models.Model):
         #     fixed_image.thumbnail(output_size)
         #     fixed_image.save(self.image.path)
 
-# Update User's First & Last Name
-# class Person(models.Model):
-#     user = models.OneToOneField(User, on_delete=models.CASCADE)
-#     first_name = models.CharField(max_length=50)
-#     last_name = models.CharField(max_length=50)
-
-#     def __str__(self):
-#         return f"{self.first_name} {self.last_name}"
-
-#     def save(self, *args, **kwargs):
-#         super().save(*args, **kwargs)
 
 # Update User's Birthdate
 class UserInfo(models.Model):
@@ -174,7 +155,7 @@ class Notification(models.Model):
       (1, 'Friend Request Send'),
       (2, 'Accept/Reject Friend Request'),
       (3, 'Video Request Send'),
-      (4, 'Video Request Receive'), #go to record video
+      (4, 'Video Request Receive'), # Go to record video
       (5, 'Post Upload'),
       (6, 'Post Receive'),
       (7, 'Video Upload'),
@@ -200,35 +181,14 @@ class Notification(models.Model):
     def notification_as_list(self):
         return self.message.split('&nbsp;')
 
-# @receiver(user_logged_in)
-# def user_logged_in(sender, user, request, **kwargs):
-#     Notification.objects.create(user=user, message='You have logged in.')
-
-# Video request notification table
-# class VidRequestNotification(models.Model):
-#     id = models.OneToOneField(VidRequest, on_delete=models.CASCADE)
-#     sender = models.ForeignKey(User, related_name="user_sender", on_delete=models.CASCADE)
-#     reciever = models.ForeignKey(User, related_name="user_reciever", on_delete=models.CASCADE)
-#     description = models.TextField(max_length=600)
-#     timestamp = models.DateTimeField(auto_now_add=True)
-
-#     def __str__(self):
-#         return self.id
-
-#     def save(self, *args, **kwargs):
-#         super().save(*args, **kwargs)
-
 # User's Setting preference
 class Setting(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     darkmode = models.BooleanField(default=False)
     emailnotification = models.BooleanField(default=True)
-    # defaultoption =
 
     def __str__(self):
         return f"{self.user.username} Settings"
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
-
-

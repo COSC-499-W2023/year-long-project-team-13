@@ -1,10 +1,6 @@
 
 {% extends 'stream/base.html'%}
 {% block content %}
-
-{% comment %} {% load bootstrap5 %}
-{% bootstrap_css %}
-{% bootstrap_javascript %} {% endcomment %}
 {% load static %}
     <link href="{% static 'css/styleVideoCreate.css' %}" rel="stylesheet">
     <link href="{% static 'css/styleSideBar.css' %}" rel="stylesheet">
@@ -23,10 +19,8 @@
                 <h1 style="text-align: center; color: white;">Record a Video</h1>
                 <button id="side-bar-btn" class="openbtn" onclick="toggleNav()">&#9776; Toggle Sidebar</button>
                 <div id='main-box'>
-                    {% comment %} style = "padding-top: 2%;" {% endcomment %}
                     <button id="start-camera" style="height: 50%; width: 50%; background-color: black; color: #FFFFFF; margin-bottom: 10%;">Start Camera</button>
                     <div class="video-box" style="display: none; margin: 10% auto;">
-                        {% comment %} padding-bottom: 10%; display: none; margin-bottom:10%; {% endcomment %}
                         <video id="video" width="320" height="240" autoplay></video>
                     </div>
                     <div id="mySidebar" class="sidebar">
@@ -42,19 +36,11 @@
                     <div class="detailsPage card mb-3" style="display: none; width: 75%; margin: auto;box-shadow: 12em;">
                         <div class="form-group" style = "padding-top: 25px;">
                             <label class="requestID">Video Request ID:</label>
-                            {% comment %} <select class="form-control" id="contact" name="contact">
-                                <option value="Adrian">Adrian</option>
-                                <option value="Ethan">Ethan</option>
-                                <option value="Herman">Herman</option>
-                                <option value="Raymond">Raymond</option>
-                                <option value="Beth">Beth</option>
-                            </select> {% endcomment %}
                             {{ createvideoform.request_id.errors }}
                             {{ createvideoform.request_id }}
                         </div>
                         <div class="form-group" style = "padding-top: 15px;">
                             <label class="title">Title:</label>
-                            {% comment %} <input type="text" class="form-control" id="title" name="title" placeholder="Enter title"> {% endcomment %}
                             {{ createvideoform.title.errors }}
                             {{ createvideoform.title }}
                         </div>
@@ -62,15 +48,18 @@
                             <div class="col-lg-15">
                                 <label class="description">Description:</label>
                             </div>
-                            {% comment %} <textarea class="form-control" id="description" name="description" placeholder="Enter description" style="height: 30%"></textarea> {% endcomment %}
                             {{ createvideoform.description.errors }}
                             {{ createvideoform.description }}
                         </div>
                         <div class="form-group" style = "padding-top: 15px; padding-bottom:25px;">
                             <label class="timelimit">Time Limit Date:</label>
-                            {% comment %} <textarea class="form-control" id="description" name="description" placeholder="Enter description" style="height: 30%"></textarea> {% endcomment %}
                             {{ createvideoform.timelimit.errors }}
                             {{ createvideoform.timelimit }}
+                        </div>
+                        <span style="color: red;">*Face Blurring process might take a while to upload*</span>
+                        <div class="form-group" style = "padding-top: 15px; padding-bottom:25px;">
+                            <label class="blur pe-3">Blur Face:</label>
+                            <input type="checkbox" id="blurFace" name="blurFace">
                         </div>
                         <input type="hidden" name="video_blob" id="video_blob" value="your_blob_data_here" />
                     </div>
@@ -79,8 +68,6 @@
                         <div class="card mb-3" style="width: 75%; box-shadow: 12em; margin: auto;">
                             <img class="rounded-circle border-dark" src="{{ user.profile.image.url }}" style="border-color: red;" width="50" height="50">
                             <a class="mr-2" style="text-align: start;">{{ user }}</a>
-                            {% comment %} <p id="preview-contact">Request From: Video Request Sender</p> {% endcomment %}
-                            {% comment %} <h12 style="text-align: start;">{{ item.upload_date }}</h12> {% endcomment %}
                             <h12 style="text-align: start;">Upload Date</h12>
                             <video class="card-img-top" controls style="width: 100%; height: 25%;" id="vid-box">
                                 <source type="video/mp4" id="vid-source">
@@ -121,15 +108,6 @@
             </div>
         </div>
     {% endif %}
-        {% comment %} <div>
-            <form method="POST" enctype="multipart/form-data">
-                {% csrf_token %}
-                <h1>Upload a video</h1>
-                    {{ form.as_p }}
-                <button class="btn btn-outline-info" type="submit">Upload</button>
-
-            </form>
-        </div> {% endcomment %}
         {% if user.is_authenticated %}
             <div id="overlay" class="float-center" style="position:fixed; top:30%;">
                 <div>

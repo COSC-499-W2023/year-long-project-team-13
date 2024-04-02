@@ -72,17 +72,27 @@
                                             {{ uploadvideoform.timelimit }}
                                         </div>
                                     </div>
-                                    <div class="row justify-content-center mt-3">
+                                    <div class="row justify-content-center mt-3 mb-3">
                                         <div class="col-3 text-end">
                                             <label class="video">Video:</label>
                                         </div>
                                         <div class="col-3">
-                                            {{ uploadvideoform.video.errors }}
-                                            {{ uploadvideoform.video }}
+                                            {% comment %} {{ uploadvideoform.video.errors }}
+                                            {{ uploadvideoform.video }} {% endcomment %}
+                                        <input type="file" id="video_upload" name="video_upload" accept="video/mp4,video/quicktime">
+                                    </div>
+                                </div>
+                                <span style="color: red;">*Face Blurring process might take a while to upload*</span>
+                                <div class="row justify-content-center mt-2">
+                                    <div class="col-3 text-end">
+                                        <label class="video">Blur Face:</label>
+                                    </div>
+                                    <div class="col-3 text-start pt-1 ps-3">
+                                        <input type="checkbox" id="blurFace" name="blurFace">
                                         </div>
                                     </div>
                                     <div class="row justify-content-center mt-3">
-                                        <button class="btn-lg btn-default" id="upload" type="submit" style="background-color: #FFFFFF; width: 25%;">Upload</button>
+                                        <button class="button2 buttonRound" :hover type="button2" id="upload" type="submit">Upload</button>
                                     </div>
                                 </div>
                             </div>

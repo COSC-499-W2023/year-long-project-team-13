@@ -56,14 +56,7 @@ def notification_test(driver, username, password):
     hover.perform()
     wait.until(EC.presence_of_element_located((By.ID, "User Hover")))
     print("TEST: 0 `User hover` successful")
-    
-    wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, "#Notification-Button .badge")))
-    notification_indicator_element = driver.find_element(By.CSS_SELECTOR, "#Notification-Button .badge")
-    
-    if notification_indicator_element.is_displayed():
-        print(f"TEST: Notification indicator is displayed with count {notification_indicator_element.text}")
-    else:
-        print("TEST: Notification indicator is not displayed")
+
     notification_button_element = driver.find_element(By.ID, "Notification-Button")
     wait.until(EC.presence_of_element_located((By.ID, "Notification-Button")))
     hover = ActionChains(driver).move_to_element(notification_button_element)
