@@ -155,7 +155,7 @@ class Notification(models.Model):
       (1, 'Friend Request Send'),
       (2, 'Accept/Reject Friend Request'),
       (3, 'Video Request Send'),
-      (4, 'Video Request Receive'), #go to record video
+      (4, 'Video Request Receive'), # Go to record video
       (5, 'Post Upload'),
       (6, 'Post Receive'),
       (7, 'Video Upload'),
