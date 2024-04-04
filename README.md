@@ -33,24 +33,12 @@ If Python is not installed on your system, download it from the [official Python
 
 ### Step 2: Set Up Virtual Environment
 
-First, install the `virtualenv` package using pip:
-
-```console
-pip install virtualenv
-```
-
-Next, create a virtual environment:
-
-```console
-python -m venv myenv
-```
-
 Activate the virtual environment:
 
 - MacOS/Linux:
 
   ```console
-  source myenv/bin/activate
+  source myenv/Scripts/activate
   ```
 - Cmd.exe:
 
