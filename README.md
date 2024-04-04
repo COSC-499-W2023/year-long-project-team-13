@@ -19,6 +19,7 @@ Please use the provided folder structure for your docs (project plan, design doc
 ```
 
 Also, update your README.md file with the team and client/project information. You can find details on writing GitHub Markdown [here](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax) as well as a [handy cheatsheet](https://enterprise.github.com/downloads/en/markdown-cheatsheet.pdf).
+
 # Project Setup and Testing Guide
 
 This guide will walk you through the process of setting up your Python environment, installing necessary packages, configuring the database, and running the Django server. It also includes instructions for running Selenium and Pytest tests.
@@ -48,27 +49,24 @@ Activate the virtual environment:
 
 - MacOS/Linux:
 
-    ```console
-    source myenv/bin/activate
-    ```
-
+  ```console
+  source myenv/bin/activate
+  ```
 - Cmd.exe:
 
-    ```console
-    myenv\Scripts\activate.bat
-    ```
-
+  ```console
+  myenv\Scripts\activate.bat
+  ```
 - Powershell:
 
-    ```console
-    myenv\Scripts\Activate.ps1
-    ```
-
+  ```console
+  myenv\Scripts\Activate.ps1
+  ```
 - Git bash:
 
-    ```console
-    . myenv/Scripts/activate
-    ```
+  ```console
+  . myenv/Scripts/activate
+  ```
 
 ### Step 3: Install Required Packages
 
@@ -79,7 +77,11 @@ First, navigate to the `app` folder in your command line. Then, run the followin
 pip install -r requirements.txt
 ```
 
-### Step 4: Database Setup
+### Step 4: ffmpeg Installation
+
+This is the guide for ffmpeg installation.
+
+### Step 5: Database Setup
 
 Configure the database by applying migrations:
 
@@ -88,7 +90,7 @@ python manage.py makemigrations
 python manage.py migrate
 ```
 
-### Step 5: Start the Django Server
+### Step 6: Start the Django Server
 
 Launch the Django development server:
 
@@ -96,7 +98,7 @@ Launch the Django development server:
 python manage.py runserver
 ```
 
-### Step 6: Access the Website
+### Step 7: Access the Website
 
 Open your web browser and navigate to [http://127.0.0.1:8000/](http://127.0.0.1:8000/) to access the locally hosted website.
 
@@ -108,35 +110,33 @@ Open your web browser and navigate to [http://127.0.0.1:8000/](http://127.0.0.1:
 2. Navigate to the `Selenium_Tests` folder in your command line.
 3. Run all Selenium tests:
 
-    ```console
-    python master_test.py
-    ```
-
+   ```console
+   python master_test.py
+   ```
 4. Run a specific test file (replace `[your_file_name_here]` with the specific test file name):
 
-    ```console
-    python [your_file_name_here].py
-    ```
+   ```console
+   python [your_file_name_here].py
+   ```
 
 **Note:** Selenium Testing can be finicky depending on how fast your computer can run. If something fails, most of the time, if you run it again, the test will pass. Otherwise, add wait time to allow for the page to load.
 
 5. Save Selenium test report into a txt file (replace `master_test.py` with any other test file name if needed):
 
-    ```console
-    python master_test.py > report.txt
-    ```
+   ```console
+   python master_test.py > report.txt
+   ```
 
 ### Pytest Testing
 
 1. Navigate into the `app` folder in your command line.
 2. Run all Pytests:
 
-    ```console
-    python manage.py test pytests
-    ```
-
+   ```console
+   python manage.py test pytests
+   ```
 3. Run a specific pytest (replace `[your_file_name_here]` with the specific test file name):
 
-    ```console
-    python manage.py test pytests.[your_file_name_here]
-    ```
+   ```console
+   python manage.py test pytests.[your_file_name_here]
+   ```
