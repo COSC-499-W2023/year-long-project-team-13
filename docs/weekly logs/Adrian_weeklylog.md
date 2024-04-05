@@ -1026,6 +1026,8 @@ id connect to "friend request", "video request", "post", and "video" table.
 ![Coverted from webm video record files to mp4 in Input S3 bucket screenshot](./images/Adrian_images/T2_Week_12/s3_input_mp4.jpg)
   - Added ffmpeg python to requirement.txt screenshot
 ![Added ffmpeg python to requirement.txt screenshot](./images/Adrian_images/T2_Week_12/requirement.jpg)
+  - FFMPEG Setup for Elastic Beanstalk screenshot
+![FFMPEG Setup for Elastic Beanstalk screenshot](./images/Adrian_images/T2_Week_12/ffmpeg_setup.png)
 
 ### Auto update AWS Access Key for Elastic Beanstalk [Complete]
 - Worked on "Auto Update AWS Access Key" on project board, made auto update aws access key for Elastic Beanstalk server, so we need to manually update aws access key on Elastic Beanstalk server.
