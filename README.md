@@ -74,13 +74,13 @@ If FFmpeg is not installed on your system, follow the instructions.
    2. Download "ffmpeg-XXXX-XX-XX-git-5d71f97e0e-full_build.zip" package (Date version might different).
    3. Extract the ffmpeg zip file into your C drive ("C:\").
    4. Rename your extracted ffmpeg folder to "ffmpeg".
-   5. Nagivate to bin folder and copy the bin navigation path ("C:\ffmpeg\bin").
+   5. Navigate to the bin folder and copy the bin navigation path ("C:\ffmpeg\bin").
    6. Type “Edit the system environment variables” on the search tab and open it.
-   7. Click "Environment Variables" button.
-   8. Click and edit the "Path" inside "System variables" table.
+   7. Click the "Environment Variables" button.
+   8. Click and edit the "Path" inside the "System variables" table.
    9. Add a new path with your copied bin navigation path ("C:\ffmpeg\bin").
    10. Click "OK" to save.
-   11. Type this command in Command Prompt to check if ffmpeg is working:
+   11. Type this command in Command Prompt to check if FFmpeg is working:
    ```console
    ffmpeg
    ```
@@ -90,16 +90,16 @@ If FFmpeg is not installed on your system, follow the instructions.
    - MacOS
 
    1. Go to the [official FFmpeg download website](https://www.ffmpeg.org/download.html).
-   2. In the Get packages & executable files section, hover onto the Apple logo and select the Static builds for macOS 64-bit link.
+   2. In the **Get packages & executable files** section, hover over the Apple logo and select the **Static builds for macOS 64-bit** link.
    ![ffmpeg download](docs/weekly%20logs/images/Adrian_images/ReadMe_images/ffmpeg_mac_link.png)
-   3. In the FFmpeg section, download the latest ffmpeg zip file.
+   3. In the FFmpeg section, download the latest FFmpeg zip file.
    ![ffmpeg download](docs/weekly%20logs/images/Adrian_images/ReadMe_images/ffmpeg_mac_zip.png)
    4. Extract the ffmpeg zip file into a directory path of your choice.
-   5. In the terminal, navigate to the directory path of your FFmpeg file location. If your FFmpeg locate at "/Users/test/local" type:
+   5. In the terminal, navigate to the directory path of your FFmpeg file location. If your FFmpeg is located at "/Users/test/local" type:
    ```console
    export PATH=$PATH:/Users/test/Local
    ```
-   6. Type this command in terminal to check if ffmpeg is working:
+   6. Type this command in the terminal to check if FFmpeg is working:
    ```console
    ffmpeg
    ```
