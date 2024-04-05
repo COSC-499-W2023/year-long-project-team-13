@@ -88,7 +88,21 @@ If FFmpeg is not installed on your system, follow the instructions.
       ![FFmpeg successful](docs/weekly%20logs/images/Adrian_images/ReadMe_images/ffmpeg.png)
 
    - MacOS
-      - Follow the instructions on this [FFmpeg installation guide](https://phoenixnap.com/kb/ffmpeg-mac).
+
+      1. Go to the [official FFmpeg download website](https://www.ffmpeg.org/download.html).
+      2. In the Get packages & executable files section, hover onto the Apple logo and select the Static builds for macOS 64-bit link.
+      ![ffmpeg download](docs/weekly%20logs/images/Adrian_images/ReadMe_images/ffmpeg_mac_link.png)
+      3. In the FFmpeg section, download the latest ffmpeg zip file.
+      ![ffmpeg download](docs/weekly%20logs/images/Adrian_images/ReadMe_images/ffmpeg_mac_zip.png)
+      4. Extract the ffmpeg zip file into a directory path of your choice.
+      5. In the terminal, navigate to the directory path of your FFmpeg file location. If your FFmpeg locate at "/Users/test/local" type:
+      ```console
+      export PATH=$PATH:/Users/test/Local
+      ```
+      6. Type this command in terminal to check if ffmpeg is working:
+      ```console
+      ffmpeg
+      ```
 
 ### Step 5: Database Setup
 
