@@ -71,7 +71,7 @@ If FFmpeg is not installed on your system, follow the instructions:
    - Windows 10/11
 
    1. Go to the [official FFmpeg download website](https://www.gyan.dev/ffmpeg/builds/ffmpeg-git-github).
-   2. Download "ffmpeg-XXXX-XX-XX-git-5d71f97e0e-full_build.zip" package (Date version might different).
+   2. Download "ffmpeg-XXXX-XX-XX-git-5d71f97e0e-full_build.zip" package (Date version might differ).
    3. Extract the ffmpeg zip file into your C drive ("C:\").
    4. Rename your extracted ffmpeg folder to "ffmpeg".
    5. Navigate to the bin folder and copy the bin navigation path ("C:\ffmpeg\bin").
