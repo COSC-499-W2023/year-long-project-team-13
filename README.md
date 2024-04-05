@@ -67,7 +67,7 @@ pip install -r requirements.txt
 
 ### Step 4: FFmpeg Installation
 
-If FFmpeg is not installed on your system, follow the instructions.
+If FFmpeg is not installed on your system, follow the instructions:
    - Windows 10/11
 
    1. Go to the [official FFmpeg download website](https://www.gyan.dev/ffmpeg/builds/ffmpeg-git-github).
