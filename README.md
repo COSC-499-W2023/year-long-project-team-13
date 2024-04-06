@@ -89,17 +89,13 @@ If FFmpeg is not installed on your system, follow the instructions:
 
    - MacOS
 
-   1. Go to the [official FFmpeg download website](https://www.ffmpeg.org/download.html).
-   2. In the **Get packages & executable files** section, hover over the Apple logo and select the **Static builds for macOS 64-bit** link.
-   ![ffmpeg download](docs/weekly%20logs/images/Adrian_images/ReadMe_images/ffmpeg_mac_link.png)
-   3. In the FFmpeg section, download the latest FFmpeg zip file.
-   ![ffmpeg download](docs/weekly%20logs/images/Adrian_images/ReadMe_images/ffmpeg_mac_zip.png)
-   4. Extract the ffmpeg zip file into a directory path of your choice.
-   5. In the terminal, navigate to the directory path of your FFmpeg file location. If your FFmpeg is located at "/Users/test/local" type:
+   1. Make sure to have Home Brew installed:
+      Go to [Home Brew Website](https://brew.sh/) to follow the instructions there if it is not installed
+   2. Run the following command to install ffmpeg
    ```console
-   export PATH=$PATH:/Users/test/Local
+   brew install ffmpeg
    ```
-   6. Type this command in the terminal to check if FFmpeg is working:
+   3. Check if ffmpeg installed properly by running this command
    ```console
    ffmpeg
    ```
