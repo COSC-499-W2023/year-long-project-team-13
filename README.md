@@ -33,7 +33,8 @@ If Python is not installed on your system, download it from the [official Python
 
 ### Step 2: Set Up Virtual Environment
 
-Activate the virtual environment:
+First, navigate to the `app` folder in your command line. Then, run the following command to install the required packages
+Then, activate the virtual environment:
 
 - MacOS/Linux:
 
@@ -59,7 +60,6 @@ Activate the virtual environment:
 ### Step 3: Install Required Packages
 
 With the virtual environment activated, install the necessary packages.
-First, navigate to the `app` folder in your command line. Then, run the following command to install the required packages
 
 ```console
 pip install -r requirements.txt
@@ -163,3 +163,8 @@ Open your web browser and navigate to [http://127.0.0.1:8000/](http://127.0.0.1:
    ```console
    python manage.py test pytests.[your_file_name_here]
    ```
+
+### Citations
+
+- [Bootstrap studio](https://bootstrapstudio.io/)
+- Our project structure was inspired by [this template](https://github.com/bunnythecompiler/video_app/tree/master)
