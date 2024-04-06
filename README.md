@@ -68,37 +68,43 @@ pip install -r requirements.txt
 ### Step 4: FFmpeg Installation
 
 If FFmpeg is not installed on your system, follow the instructions:
-   - Windows 10/11
 
-   1. Go to the [official FFmpeg download website](https://www.gyan.dev/ffmpeg/builds/ffmpeg-git-github).
-   2. Download "ffmpeg-XXXX-XX-XX-git-5d71f97e0e-full_build.zip" package (Date version might differ).
-   3. Extract the ffmpeg zip file into your C drive ("C:\").
-   4. Rename your extracted ffmpeg folder to "ffmpeg".
-   5. Navigate to the bin folder and copy the bin navigation path ("C:\ffmpeg\bin").
-   6. Type “Edit the system environment variables” on the search tab and open it.
-   7. Click the "Environment Variables" button.
-   8. Click and edit the "Path" inside the "System variables" table.
-   9. Add a new path with your copied bin navigation path ("C:\ffmpeg\bin").
-   10. Click "OK" to save.
-   11. Type this command in Command Prompt to check if FFmpeg is working:
-   ```console
-   ffmpeg
-   ```
-   If successfully installed, FFmpeg displays configuration options.
-   ![FFmpeg successful](docs/weekly%20logs/images/Adrian_images/ReadMe_images/ffmpeg.png)
+   - Windows 10/11:
 
-   - MacOS
+      1. Go to the [official FFmpeg download website](https://www.gyan.dev/ffmpeg/builds/ffmpeg-git-github).
+      2. Download "ffmpeg-XXXX-XX-XX-git-5d71f97e0e-full_build.zip" package (Date version might differ).
+      3. Extract the ffmpeg zip file into your C drive ("C:\").
+      4. Rename your extracted ffmpeg folder to "ffmpeg".
+      5. Navigate to the bin folder and copy the bin navigation path ("C:\ffmpeg\bin").
+      6. Type “Edit the system environment variables” on the search tab and open it.
+      7. Click the "Environment Variables" button.
+      8. Click and edit the "Path" inside the "System variables" table.
+      9. Add a new path with your copied bin navigation path ("C:\ffmpeg\bin").
+      10. Click "OK" to save.
+      11. Type this command in Command Prompt to check if FFmpeg is working:
 
-   1. Make sure to have Home Brew installed:
-      Go to [Home Brew Website](https://brew.sh/) to follow the instructions there if it is not installed
-   2. Run the following command to install ffmpeg
-   ```console
-   brew install ffmpeg
-   ```
-   3. Check if ffmpeg installed properly by running this command
-   ```console
-   ffmpeg
-   ```
+      ```console
+      ffmpeg
+      ```
+
+      If successfully installed, FFmpeg displays configuration options.
+      ![FFmpeg successful](docs/weekly%20logs/images/Adrian_images/ReadMe_images/ffmpeg.png)
+
+   - MacOS:
+
+      1. Make sure to have Home Brew installed:
+         Go to [Home Brew Website](https://brew.sh/) to follow the instructions there if it is not installed
+      2. Run the following command to install ffmpeg
+
+         ```console
+         brew install ffmpeg
+         ```
+
+      3. Check if ffmpeg installed properly by running this command
+
+         ```console
+         ffmpeg
+         ```
 
 ### Step 5: Database Setup
 
