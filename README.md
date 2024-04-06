@@ -170,6 +170,6 @@ Open your web browser and navigate to [http://127.0.0.1:8000/](http://127.0.0.1:
 
 - [Bootstrap studio](https://bootstrapstudio.io/)
 - Our project structure was inspired by [this template](https://github.com/bunnythecompiler/video_app/tree/master)
-- Login template
-- Register template
-- Profile page template
+- Login template was using [login template website](https://freefrontend.com/bootstrap-login-forms/)
+- Register template was using [register template website](https://colorlib.com/wp/free-bootstrap-registration-forms/)
+- Profile page template was using [profile template website](https://www.sliderrevolution.com/resources/bootstrap-profile/)
