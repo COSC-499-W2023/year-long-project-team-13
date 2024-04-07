@@ -137,6 +137,7 @@ python manage.py migrate
 - Using Local host AWS access:
    - To access AWS RDS and S3 buckets locally, you need to add your AWS account access and session keys.
    - Add your AWS Account Access and Session keys to use local host and access AWS RDS and S3 buckets on settings.py file.
+
    ![Local host code](docs/weekly%20logs/images/Adrian_images/ReadMe_images/aws_local.png)
 
 - Using AWS Elastic Beanstalk hosting access:
