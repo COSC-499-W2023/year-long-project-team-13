@@ -398,3 +398,21 @@
 - I started the document for the final report and the video.
   - Started making the list of features we worked on.
   - Started updating Readme for the project.
+
+# Preferred name -> Ssc name -> Github name
+
+- Ethan -> Ethan Hsu -> YuchenHsu
+
+## Week 13 2024/04/01 ~ 2024/04/07
+
+- Type of tasks you worked on (screenshot from Peer Eval question)
+
+![Tasks](./images/tasks/ethan_term2_week13.png)
+
+- This week I worked on testing and merging all the rest of the branches.
+- I also updated the readme of our project to reflect new changes and new setups needed, also added citations.
+- I also worked on the final report and the video.
+  - The following links are the approval of pull requests and the updated readme.
+    - [Approval of pull requests](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/204#pullrequestreview-1975102899)
+    - [updated readme pull request 1](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/211)
+    - [updated readme pull request 2](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/212)
