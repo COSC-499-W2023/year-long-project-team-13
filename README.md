@@ -224,3 +224,4 @@ Open your web browser and navigate to [http://127.0.0.1:8000/](http://127.0.0.1:
 - Login template was using [login template website](https://freefrontend.com/bootstrap-login-forms/)
 - Register template was using [register template website](https://colorlib.com/wp/free-bootstrap-registration-forms/)
 - Profile page template was using [profile template website](https://www.sliderrevolution.com/resources/bootstrap-profile/)
+- AWS video face blurring was referenced by [AWS Rekognition Video](https://aws.amazon.com/blogs/machine-learning/blur-faces-in-videos-automatically-with-amazon-rekognition-video/)
