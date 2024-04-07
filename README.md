@@ -76,7 +76,7 @@ pip install -r requirements.txt
 
 ### Step 4: FFmpeg Installation
 
-If FFmpeg is not installed on your system, follow the instructions:
+FFmpeg is required to convert webm files to mp4 format. Follow the instructions below to install FFmpeg on your system:
 
 - Windows 10/11:
 
@@ -217,7 +217,7 @@ Open your web browser and navigate to [http://127.0.0.1:8000/](http://127.0.0.1:
    python manage.py test pytests.[your_file_name_here]
    ```
 
-### Citations
+# Citations
 
 - [Bootstrap studio](https://bootstrapstudio.io/)
 - Our project structure was inspired by [this template](https://github.com/bunnythecompiler/video_app/tree/master)
