@@ -143,7 +143,7 @@ python manage.py migrate
 - Using AWS Elastic Beanstalk hosting access:
    - Use this code for AWS Elastic Beanstalk server to connect to RDS database and S3 buckets on settings.py file.
 
-      ![AWS Elastic Beanstalk server connection code](docs/weekly%20logs/images/Adrian_images/ReadMe_images/aws_server.png)
+   ![AWS Elastic Beanstalk server connection code](docs/weekly%20logs/images/Adrian_images/ReadMe_images/aws_server.png)
 
 ### Step 7: Start the Django Server
 
