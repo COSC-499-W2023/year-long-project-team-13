@@ -693,3 +693,36 @@ Test Report
 - Test report file is in the same directory [here](./report.txt)
   ![Test Report](./images/tests_completion/term2_week12_pytest.png)
 
+## Preferred name -> Ssc name -> Github name
+
+- Ethan -> Ethan Hsu -> YuchenHsu
+- Beth -> Beth Ralston -> mblackbeak (mblackbeak)
+- Herman -> Herman Sood -> herman-23
+- Raymond -> Sitt Paing -> SittHmuePaing
+- Adrian -> Adrian Fong -> AdrianFWM
+
+## Term 2 Week 13 2024/04/01 ~ 2024/04/07
+
+- Which features were in the project plan for this milestone?
+  - This week we focused on making sure our website is hosted on the Elastic Beanstalk server.
+  - We also merged all of the pull request into master.
+    - [readme updates v1](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/211)
+    - [readme updates v2](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/212)
+    - [face blurring feature](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/204)
+  - We also updated the readme files on the [update_readme branch](https://github.com/COSC-499-W2023/year-long-project-team-13/tree/update_readme) to include new setup guides for new packages that we are using, included guides for using the website as hosted on the server and merged it into master.
+
+Burnup chart
+![Burnup](./images/burnup/term2_week13_burnup.png)
+Network Graph
+![Network](./images/network/term2_week13_network_1.png)
+![Network](./images/network/term2_week13_network_2.png)
+Completed Tasks
+![Completed](./images/completed/term2_week13_done_1.png)
+![Completed](./images/completed/term2_week13_done_2.png)
+![Completed](./images/completed/term2_week13_done_3.png)
+In progress Tasks
+![In Progress](./images/in-prog/term2_week13_inprogress.png)
+Test Report
+
+- Test report file is in the same directory [here](./report.txt)
+  ![Test Report](./images/tests_completion/term2_week13_pytest.png)
