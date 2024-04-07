@@ -24,7 +24,7 @@ Also, update your README.md file with the team and client/project information. Y
 
 In order to run the website hosted on AWS Elastic Beanstalk server, you need to enable the "Insecure origins treated as secure" flag on your browser. Follow the steps below to enable the flag on your browser:
 
-1. In the address bar, type `[browser name]://flags` and press Enter.Replace `[browser name]` with the name of your browser (e.g., `chrome`, `firefox`, `edge`).
+1. In the address bar, type `[browser name]://flags` and press Enter. Replace `[browser name]` with the name of your browser (e.g., `chrome`, `firefox`, `edge`).
 2. Search for "Insecure origins treated as secure" in the search bar.
 3. Click the dropdown menu and select "Enabled".
 4. Click the "Relaunch" button at the bottom of the page to restart your browser.
@@ -101,13 +101,13 @@ FFmpeg is required to convert webm files to mp4 format. Follow the instructions 
 - MacOS:
 
   1. Make sure to have Home Brew installed:
-     Go to [Home Brew Website](https://brew.sh/) to follow the instructions there if it is not installed
-  2. Run the following command to install ffmpeg
+     Go to [Home Brew Website](https://brew.sh/) to follow the instructions there if it is not installed.
+  2. Run the following command to install ffmpeg:
 
      ```console
      brew install ffmpeg
      ```
-  3. Check if ffmpeg installed properly by running this command
+  3. Check if ffmpeg installed properly by running this command:
 
      ```console
      ffmpeg
