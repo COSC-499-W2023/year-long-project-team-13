@@ -163,7 +163,7 @@ class Notification(models.Model):
      )
     id = models.AutoField(primary_key=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    message = models.CharField(max_length=200)
+    message = models.CharField(max_length=600)
     timestamp = models.DateTimeField(auto_now_add=True)
     type = models.IntegerField(choices=TYPE_CHOICES, null=True)
     friendRequest_id = models.ForeignKey(FriendRequest, on_delete=models.CASCADE, null=True)

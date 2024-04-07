@@ -26,9 +26,8 @@ In order to run the website hosted on AWS Elastic Beanstalk server, you need to 
 
 1. In the address bar, type `[browser name]://flags` and press Enter. Replace `[browser name]` with the name of your browser (e.g., `chrome`, `firefox`, `edge`).
 2. Search for "Insecure origins treated as secure" in the search bar.
-3. Paste our website link http://vnonymous-env.eba-ai3bsdyf.us-west-2.elasticbeanstalk.com/ into the box area.
-4. Click the dropdown menu and select "Enabled".
-5. Click the "Relaunch" button at the bottom of the page to restart your browser.
+3. Click the dropdown menu and select "Enabled".
+4. Click the "Relaunch" button at the bottom of the page to restart your browser.
 
 # Project Setup and Testing Guide
 
