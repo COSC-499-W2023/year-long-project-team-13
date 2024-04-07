@@ -113,7 +113,7 @@ If FFmpeg is not installed on your system, follow the instructions:
      ffmpeg
      ```
 
-#### Convert webm to mp4 file type code
+#### FFmpeg Code Configuration
 
 - Using Local hosting:
 
@@ -149,12 +149,12 @@ python manage.py migrate
   - To access AWS RDS and S3 buckets locally, you need to add your AWS account access and session keys.
   - Add your AWS Account Access and Session keys to use local host and access AWS RDS and S3 buckets on settings.py file.
 
-      ![Local host code](docs/weekly%20logs/images/Adrian_images/ReadMe_images/aws_local.png)
+    ![Local host code](docs/weekly%20logs/images/Adrian_images/ReadMe_images/aws_local.png)
 - Using AWS Elastic Beanstalk hosting access:
 
   - Use this code for AWS Elastic Beanstalk server to connect to RDS database and S3 buckets on settings.py file.
 
-      ![AWS Elastic Beanstalk server connection code](docs/weekly%20logs/images/Adrian_images/ReadMe_images/aws_server.png)
+    ![AWS Elastic Beanstalk server connection code](docs/weekly%20logs/images/Adrian_images/ReadMe_images/aws_server.png)
 
 ### Step 7: Start the Django Server
 
@@ -171,7 +171,7 @@ python manage.py migrate
 Launch the Django development server:
 
 ```console
-	python manage.py runserver
+python manage.py runserver
 ```
 
 ### Step 8: Access the Website
