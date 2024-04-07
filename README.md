@@ -24,8 +24,7 @@ Also, update your README.md file with the team and client/project information. Y
 
 In order to run the website hosted on AWS Elastic Beanstalk server, you need to enable the "Insecure origins treated as secure" flag on your browser. Follow the steps below to enable the flag on your browser:
 
-1. In the address bar, type `[browser name]://flags` and press Enter.\
-   Replace `[browser name]` with the name of your browser (e.g., `chrome`, `firefox`, `edge`).
+1. In the address bar, type `[browser name]://flags` and press Enter.Replace `[browser name]` with the name of your browser (e.g., `chrome`, `firefox`, `edge`).
 2. Search for "Insecure origins treated as secure" in the search bar.
 3. Click the dropdown menu and select "Enabled".
 4. Click the "Relaunch" button at the bottom of the page to restart your browser.
@@ -150,12 +149,12 @@ python manage.py migrate
   - To access AWS RDS and S3 buckets locally, you need to add your AWS account access and session keys.
   - Add your AWS Account Access and Session keys to use local host and access AWS RDS and S3 buckets on settings.py file.
 
-  ![Local host code](docs/weekly%20logs/images/Adrian_images/ReadMe_images/aws_local.png)
+      ![Local host code](docs/weekly%20logs/images/Adrian_images/ReadMe_images/aws_local.png)
 - Using AWS Elastic Beanstalk hosting access:
 
   - Use this code for AWS Elastic Beanstalk server to connect to RDS database and S3 buckets on settings.py file.
 
-  ![AWS Elastic Beanstalk server connection code](docs/weekly%20logs/images/Adrian_images/ReadMe_images/aws_server.png)
+      ![AWS Elastic Beanstalk server connection code](docs/weekly%20logs/images/Adrian_images/ReadMe_images/aws_server.png)
 
 ### Step 7: Start the Django Server
 
@@ -172,7 +171,7 @@ python manage.py migrate
 Launch the Django development server:
 
 ```console
-python manage.py runserver
+	python manage.py runserver
 ```
 
 ### Step 8: Access the Website
