@@ -25,6 +25,16 @@ Also, update your README.md file with the team and client/project information. Y
 This guide will walk you through the process of setting up your Python environment, installing necessary packages, configuring the database, and running the Django server. It also includes instructions for running Selenium and Pytest tests.
 **Note:** The following guide uses `python` as the command to run Python. Depending on your system, you may need to use `python3` or `py` instead.
 
+# Browser setup for AWS Elastic Beanstalk server
+
+   1. Type "browsername://flags/" on chrome browser.
+
+      For exmaple: Chrome browser "chrome://flags/"
+
+   2. Search "Insecure origins treated as secure" on browser.
+   3. Enter "http://ebdjango-env-1.eba-uzn2yvai.ca-central-1.elasticbeanstalk.com" our website link and toggle it to enable.
+   4. Restart the browser.
+
 ## Setup Guide
 
 ### Step 1: Install Python
