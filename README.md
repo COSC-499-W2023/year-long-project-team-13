@@ -21,14 +21,14 @@ Please use the provided folder structure for your docs (project plan, design doc
 Also, update your README.md file with the team and client/project information. You can find details on writing GitHub Markdown [here](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax) as well as a [handy cheatsheet](https://enterprise.github.com/downloads/en/markdown-cheatsheet.pdf).
 
 # Browser setup for AWS Elastic Beanstalk server
+
 In order to run the website hosted on AWS Elastic Beanstalk server, you need to enable the "Insecure origins treated as secure" flag on your browser. Follow the steps below to enable the flag on your browser:
 
-1.  Type "browsername://flags/" on chrome browser.
-For exmaple: Chrome browser "chrome://flags/"
-
-2.  Search "Insecure origins treated as secure" on browser.
-3.  Enter "http://ebdjango-env-1.eba-uzn2yvai.ca-central-1.elasticbeanstalk.com" our website link and toggle it to enable.
-4.  Restart the browser.
+1. In the address bar, type `[browser name]://flags` and press Enter.
+   Replace `[browser name]` with the name of your browser (e.g., `chrome`, `firefox`, `edge`).
+2. Search for "Insecure origins treated as secure" in the search bar.
+3. Click the dropdown menu and select "Enabled".
+4. Click the "Relaunch" button at the bottom of the page to restart your browser.
 
 # Project Setup and Testing Guide
 
@@ -51,19 +51,16 @@ Then, activate the virtual environment:
   ```console
   source myenv/Scripts/activate
   ```
-
 - Cmd.exe:
 
   ```console
   myenv\Scripts\activate.bat
   ```
-
 - Powershell:
 
   ```console
   myenv\Scripts\Activate.ps1
   ```
-
 - Git bash:
 
   ```console
@@ -102,7 +99,6 @@ If FFmpeg is not installed on your system, follow the instructions:
 
   If successfully installed, FFmpeg displays configuration options.
   ![FFmpeg successful](docs/weekly%20logs/images/Adrian_images/ReadMe_images/ffmpeg.png)
-
 - MacOS:
 
   1. Make sure to have Home Brew installed:
@@ -112,21 +108,20 @@ If FFmpeg is not installed on your system, follow the instructions:
      ```console
      brew install ffmpeg
      ```
-
   3. Check if ffmpeg installed properly by running this command
 
      ```console
      ffmpeg
      ```
 
-#### Convert webm to mp4 file type code:
+#### Convert webm to mp4 file type code
 
 - Using Local hosting:
 
   - Use this FFMpeg code to convert webm to mp4 in create_video function and record_filled_video on views.py file.
     ![FFmpeg successful](docs/weekly%20logs/images/Adrian_images/ReadMe_images/ffmpeg_local.png)
-
 - Using AWS Elastic Beanstalk hosting:
+
   - Use this FFMpeg code for AWS Elastic Beanstalk server to convert webm to mp4 in create_video function and record_filled_video on views.py file.
     ![FFmpeg successful](docs/weekly%20logs/images/Adrian_images/ReadMe_images/ffmpeg_server.png)
 
@@ -136,8 +131,8 @@ If FFmpeg is not installed on your system, follow the instructions:
 
   - Use this code to connect to local SQL database on settings.py file.
     ![Local SQL database connection code](docs/weekly%20logs/images/Adrian_images/ReadMe_images/local_sql.png)
-
 - Using AWS RDS database:
+
   - Use this code to connect to AWS RDS database on settings.py file.
     ![AWS RDS SQL database connection code](docs/weekly%20logs/images/Adrian_images/ReadMe_images/rds.png)
 
@@ -148,7 +143,7 @@ python manage.py makemigrations
 python manage.py migrate
 ```
 
-### Step 6: AWS Access/Session Keys:
+### Step 6: AWS Access/Session Keys
 
 - Using Local host AWS access:
 
@@ -156,7 +151,6 @@ python manage.py migrate
   - Add your AWS Account Access and Session keys to use local host and access AWS RDS and S3 buckets on settings.py file.
 
   ![Local host code](docs/weekly%20logs/images/Adrian_images/ReadMe_images/aws_local.png)
-
 - Using AWS Elastic Beanstalk hosting access:
 
   - Use this code for AWS Elastic Beanstalk server to connect to RDS database and S3 buckets on settings.py file.
@@ -170,8 +164,8 @@ python manage.py migrate
   - Use this code to host website locally on settings.py file.
 
     ![Local host code](docs/weekly%20logs/images/Adrian_images/ReadMe_images/local_host.png)
-
 - Using AWS Elastic Beanstalk hosting:
+
   - Add your server url link for AWS Elastic Beanstalk server hosting on settings.py file.
     ![AWS Elastic Beanstalk server connection code](docs/weekly%20logs/images/Adrian_images/ReadMe_images/server_host.png)
 
@@ -196,7 +190,6 @@ Open your web browser and navigate to [http://127.0.0.1:8000/](http://127.0.0.1:
    ```console
    python master_test.py
    ```
-
 4. Run a specific test file (replace `[your_file_name_here]` with the specific test file name):
 
    ```console
@@ -219,7 +212,6 @@ Open your web browser and navigate to [http://127.0.0.1:8000/](http://127.0.0.1:
    ```console
    python manage.py test pytests
    ```
-
 3. Run a specific pytest (replace `[your_file_name_here]` with the specific test file name):
 
    ```console
