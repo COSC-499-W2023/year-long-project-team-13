@@ -26,8 +26,8 @@ SECRET_KEY = 'fpfd*qb+!is4hf@l6c(0n*1v4syzidbwzfsm-^%c30x*&772wc'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
-# ALLOWED_HOSTS = ['ebdjango-env-1.eba-uzn2yvai.ca-central-1.elasticbeanstalk.com']
+# ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ['vnonymous-env.eba-ai3bsdyf.us-west-2.elasticbeanstalk.com']
 
 # Application definition
 
@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'stream.apps.StreamConfig',
-    # 'streamers.apps.StreamersConfig',
     'bootstrap5',
 ]
 
@@ -67,6 +66,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'stream.context_processors.notifications',
             ],
         },
     },
@@ -79,24 +79,24 @@ WSGI_APPLICATION = 'video_app.wsgi.application'
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 # Local SQLite3 database
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
 
 # AWS RDS database
-# DATABASES = {
-#   'default': {
-#     'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#     'NAME': 'djangodatabase',
-#     'USER': 'masteruser',
-#     'PASSWORD': 'masteruser',
-#     'HOST': 'database-django.cqtxhhmhjnhu.ca-central-1.rds.amazonaws.com',
-#     'PORT': '5432',
-#   }
-# }
+DATABASES = {
+  'default': {
+    'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    'NAME': 'djangodatabase',
+    'USER': 'masteruser',
+    'PASSWORD': 'masteruser',
+    'HOST': 'django-database.c6pxc7oyiyq1.us-west-2.rds.amazonaws.com',
+    'PORT': '5432',
+  }
+}
 
 
 # Password validation
@@ -147,12 +147,42 @@ STATICFILES_DIRS = [
 LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = 'login'
 
+# Local (AWS access) [Manually update] Copy it from AWS access portal
+# AWS_ACCESS_KEY_ID=""
+# AWS_SECRET_ACCESS_KEY=""
+# AWS_SESSION_TOKEN=""
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# Elasic Beanstalk server (AWS access)
+AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+AWS_SESSION_TOKEN = os.environ.get('AWS_SESSION_TOKEN')
+
+AWS_STORAGE_BUCKET_NAME = 'rekognitionvideofaceblurr-outputimagebucket1311836-qbibfhivlghz'
+AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
+AWS_S3_REGION_NAME = "us-west-2"
+AWS_S3_SIGNATURE_VERSION = "s3v4"
+AWS_QUERYSTRING_EXPIRE = 604800
+CLOUDFRONT_DOMAIN = 'dns1ziq7g5vyv.cloudfront.net'
+AWS_CLOUDFRONT_DOMAIN = 'dns1ziq7g5vyv.cloudfront.net'
+AWS_S3_REGION_NAME = 'us-west-2'
+AWS_S3_ENDPOINT_URL = f'https://s3.{AWS_S3_REGION_NAME}.amazonaws.com'
+
+AWS_S3_INPUT_BUCKET_NAME = 'rekognitionvideofaceblurr-inputimagebucket20b2ba6b-c4zs9410qluo'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')    # Local media store folder
 MEDIA_URL = '/media/'
+
+MEDIAFILES_LOCATION = ''
+# MEDIA_URL = f'{CLOUDFRONT_DOMAIN}/'   # S3 media store location
+
+PROFILE_PICTURE_FILES_LOCATION = 'profile-pics'
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 #solves vidstream auto-created primary key error
 DEFAULT_AUTO_FIELD='django.db.models.AutoField'
 
+DATA_UPLOAD_MAX_MEMORY_SIZE = 1024 * 1024 * 100  # X is the size in megabytes - 50mb (1 min record video = 5.5mb)
+FILE_UPLOAD_MAX_MEMORY_SIZE = 1024 * 1024 * 100  # X is the size in megabytes - 50mb
+
 STATIC_ROOT=os.path.join(BASE_DIR,'productionfiles')
-# MEDIA_ROOT=os.path.join(BASE_DIR,'static/media/')
+MEDIA_ROOT=os.path.join(BASE_DIR,'media/')

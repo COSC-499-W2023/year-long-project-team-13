@@ -1,9 +1,6 @@
 {% extends 'stream/base.html' %}
 {% block content %}
     <div class="container" style="margin-top: 25px;">
-        <div>
-            {% comment %} <h1>Vnonymous</h1> {% endcomment %}
-        </div>
         {% if user.is_authenticated %}
         <div id="overlay" class="float-center" style="position:fixed; top:30%;">
             <div>
@@ -13,7 +10,7 @@
             </div>
         </div>
         {% endif %}
-        <div style="margin-top: 25px; padding-top: 75px;">
+        <div style="margin-top: 25px; padding-top: 100px;">
             {% for item in videos %}
                 {% if item.sender == user or item.receiver == user %}
                     <div class="card mb-3" style="width: 75%; box-shadow: 12em; margin: auto;">
@@ -21,7 +18,8 @@
                         <a class="mr-2" href="{% url 'stream:user-videos' item.sender.username %}" style="text-align: start;">{{ item.sender }}</a>
                         <h12 style="text-align: start;">{{ item.sendtime }}</h12>
                         <video class="card-img-top" controls style="width: 100%; height: auto;">
-                            <source src="{{ item.video.url }}" type="video/mp4">
+                            {% comment %} <source src="{{ item.video.url }}" type="video/mp4"> {% endcomment %}
+                            <source src="{{ item.video }}" type="video/mp4">
                         </video>
                         <div class="card-body">
                             <h5 class="card-title"><a href="{% url 'stream:video-detail' item.id  %}">{{ item.title }}</a></h5>

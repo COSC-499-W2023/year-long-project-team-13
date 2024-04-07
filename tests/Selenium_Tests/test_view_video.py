@@ -45,13 +45,13 @@ def login(driver, username, password):
 
 def view_video(driver):
     # click notifications button
-    wait.until(EC.presence_of_element_located((By.ID, "Notification Button")))
-    notification_button = driver.find_element(By.ID, "Notification Button")
-    wait.until(EC.element_to_be_clickable((By.ID, "Notification Button")))
+    wait.until(EC.presence_of_element_located((By.ID, "Notification-Button")))
+    notification_button = driver.find_element(By.ID, "Notification-Button")
+    wait.until(EC.element_to_be_clickable((By.ID, "Notification-Button")))
     notification_button.click()
     # Click the video button
     wait.until(EC.url_contains('/notifications'))
-    print("TEST: 1 `Notification Button` Sucessful")
+    print("TEST: 1 `Notification-Button` Sucessful")
 
     wait.until(EC.presence_of_element_located((By.ID, "View Video")))
     video_button = driver.find_element(By.ID, "View Video")

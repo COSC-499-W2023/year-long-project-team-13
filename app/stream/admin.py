@@ -1,6 +1,5 @@
 from django.contrib import admin
 from . models import VidRequest, VidStream, Contact, FriendRequest, Post, Profile, UserInfo, Notification, Setting
-# VidRequestNotification
 
 # Make table layout display for admin
 class VidRequestAdmin(admin.ModelAdmin):
@@ -22,7 +21,7 @@ class ProfileAdmin(admin.ModelAdmin):
     list_display = ('id', 'user', 'image')
 
 class UserInfoAdmin(admin.ModelAdmin):
-    list_display = ('id', 'user', 'birthdate', 'permission')
+    list_display = ('id', 'user', 'birthdate', 'permission', 'security_question', 'security_answer')
 
 class NotificationAdmin(admin.ModelAdmin):
     list_display = ('id', 'user', 'message', 'timestamp', 'type', 'friendRequest_id', 'videoRequest_id', 'post_id', 'video_id')
@@ -47,7 +46,5 @@ admin.site.register(Profile, ProfileAdmin)
 admin.site.register(UserInfo, UserInfoAdmin)
 
 admin.site.register(Notification, NotificationAdmin)
-
-# admin.site.register(VidRequestNotification)
 
 admin.site.register(Setting, SettingAdmin)
