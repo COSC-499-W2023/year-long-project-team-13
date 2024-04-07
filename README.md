@@ -24,7 +24,7 @@ Also, update your README.md file with the team and client/project information. Y
 
 In order to run the website hosted on AWS Elastic Beanstalk server, you need to enable the "Insecure origins treated as secure" flag on your browser. Follow the steps below to enable the flag on your browser:
 
-1. In the address bar, type `[browser name]://flags` and press Enter.
+1. In the address bar, type `[browser name]://flags` and press Enter.\
    Replace `[browser name]` with the name of your browser (e.g., `chrome`, `firefox`, `edge`).
 2. Search for "Insecure origins treated as secure" in the search bar.
 3. Click the dropdown menu and select "Enabled".
