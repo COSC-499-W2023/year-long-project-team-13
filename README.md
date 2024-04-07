@@ -20,6 +20,16 @@ Please use the provided folder structure for your docs (project plan, design doc
 
 Also, update your README.md file with the team and client/project information. You can find details on writing GitHub Markdown [here](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax) as well as a [handy cheatsheet](https://enterprise.github.com/downloads/en/markdown-cheatsheet.pdf).
 
+# Browser setup for AWS Elastic Beanstalk server
+
+In order to run the website hosted on AWS Elastic Beanstalk server, you need to enable the "Insecure origins treated as secure" flag on your browser. Follow the steps below to enable the flag on your browser:
+
+1. In the address bar, type `[browser name]://flags` and press Enter. Replace `[browser name]` with the name of your browser (e.g., `chrome`, `firefox`, `edge`).
+2. Search for "Insecure origins treated as secure" in the search bar.
+3. Paste our website link http://vnonymous-env.eba-ai3bsdyf.us-west-2.elasticbeanstalk.com/ into the box area.
+4. Click the dropdown menu and select "Enabled".
+5. Click the "Relaunch" button at the bottom of the page to restart your browser.
+
 # Project Setup and Testing Guide
 
 This guide will walk you through the process of setting up your Python environment, installing necessary packages, configuring the database, and running the Django server. It also includes instructions for running Selenium and Pytest tests.
@@ -67,63 +77,64 @@ pip install -r requirements.txt
 
 ### Step 4: FFmpeg Installation
 
-If FFmpeg is not installed on your system, follow the instructions:
+FFmpeg is required to convert webm files to mp4 format. Follow the instructions below to install FFmpeg on your system:
 
-   - Windows 10/11:
+- Windows 10/11:
 
-      1. Go to the [official FFmpeg download website](https://www.gyan.dev/ffmpeg/builds/ffmpeg-git-github).
-      2. Download "ffmpeg-XXXX-XX-XX-git-5d71f97e0e-full_build.zip" package (Date version might differ).
-      3. Extract the ffmpeg zip file into your C drive ("C:\").
-      4. Rename your extracted ffmpeg folder to "ffmpeg".
-      5. Navigate to the bin folder and copy the bin navigation path ("C:\ffmpeg\bin").
-      6. Type “Edit the system environment variables” on the search tab and open it.
-      7. Click the "Environment Variables" button.
-      8. Click and edit the "Path" inside the "System variables" table.
-      9. Add a new path with your copied bin navigation path ("C:\ffmpeg\bin").
-      10. Click "OK" to save.
-      11. Type this command in Command Prompt to check if FFmpeg is working:
+  1. Go to the [official FFmpeg download website](https://www.gyan.dev/ffmpeg/builds/ffmpeg-git-github).
+  2. Download "ffmpeg-XXXX-XX-XX-git-5d71f97e0e-full_build.zip" package (Date version might differ).
+  3. Extract the ffmpeg zip file into your C drive ("C:\").
+  4. Rename your extracted ffmpeg folder to "ffmpeg".
+  5. Navigate to the bin folder and copy the bin navigation path ("C:\ffmpeg\bin").
+  6. Type “Edit the system environment variables” on the search tab and open it.
+  7. Click the "Environment Variables" button.
+  8. Click and edit the "Path" inside the "System variables" table.
+  9. Add a new path with your copied bin navigation path ("C:\ffmpeg\bin").
+  10. Click "OK" to save.
+  11. Type this command in Command Prompt to check if FFmpeg is working:
 
-      ```console
-      ffmpeg
-      ```
+  ```console
+  ffmpeg
+  ```
 
-      If successfully installed, FFmpeg displays configuration options.
-      ![FFmpeg successful](docs/weekly%20logs/images/Adrian_images/ReadMe_images/ffmpeg.png)
+  If successfully installed, FFmpeg displays configuration options.
+  ![FFmpeg successful](docs/weekly%20logs/images/Adrian_images/ReadMe_images/ffmpeg.png)
+- MacOS:
 
-   - MacOS:
+  1. Make sure to have Home Brew installed:
+     Go to [Home Brew Website](https://brew.sh/) to follow the instructions there if it is not installed.
+  2. Run the following command to install ffmpeg:
 
-      1. Make sure to have Home Brew installed:
-         Go to [Home Brew Website](https://brew.sh/) to follow the instructions there if it is not installed
-      2. Run the following command to install ffmpeg
+     ```console
+     brew install ffmpeg
+     ```
+  3. Check if ffmpeg installed properly by running this command:
 
-         ```console
-         brew install ffmpeg
-         ```
+     ```console
+     ffmpeg
+     ```
 
-      3. Check if ffmpeg installed properly by running this command
+#### FFmpeg Code Configuration
 
-         ```console
-         ffmpeg
-         ```
+- Using Local hosting:
 
-#### Convert webm to mp4 file type code:
-   - Using Local hosting:
-      - Use this FFMpeg code to convert webm to mp4 in create_video function and record_filled_video on views.py file.
-      ![FFmpeg successful](docs/weekly%20logs/images/Adrian_images/ReadMe_images/ffmpeg_local.png)
+  - Use this FFMpeg code to convert webm to mp4 in create_video function and record_filled_video on views.py file.
+    ![FFmpeg successful](docs/weekly%20logs/images/Adrian_images/ReadMe_images/ffmpeg_local.png)
+- Using AWS Elastic Beanstalk hosting:
 
-   - Using AWS Elastic Beanstalk hosting:
-      - Use this FFMpeg code for AWS Elastic Beanstalk server to convert webm to mp4 in create_video function and record_filled_video on views.py file.
-      ![FFmpeg successful](docs/weekly%20logs/images/Adrian_images/ReadMe_images/ffmpeg_server.png)
+  - Use this FFMpeg code for AWS Elastic Beanstalk server to convert webm to mp4 in create_video function and record_filled_video on views.py file.
+    ![FFmpeg successful](docs/weekly%20logs/images/Adrian_images/ReadMe_images/ffmpeg_server.png)
 
 ### Step 5: Database Setup
 
 - Using Local SQL Database:
-   - Use this code to connect to local SQL database on settings.py file.
-   ![Local SQL database connection code](docs/weekly%20logs/images/Adrian_images/ReadMe_images/local_sql.png)
 
+  - Use this code to connect to local SQL database on settings.py file.
+    ![Local SQL database connection code](docs/weekly%20logs/images/Adrian_images/ReadMe_images/local_sql.png)
 - Using AWS RDS database:
-   - Use this code to connect to AWS RDS database on settings.py file.
-   ![AWS RDS SQL database connection code](docs/weekly%20logs/images/Adrian_images/ReadMe_images/rds.png)
+
+  - Use this code to connect to AWS RDS database on settings.py file.
+    ![AWS RDS SQL database connection code](docs/weekly%20logs/images/Adrian_images/ReadMe_images/rds.png)
 
 Configure the database by applying migrations:
 
@@ -132,29 +143,31 @@ python manage.py makemigrations
 python manage.py migrate
 ```
 
-### Step 6: AWS Access/Session Keys:
+### Step 6: AWS Access/Session Keys
 
 - Using Local host AWS access:
-   - To access AWS RDS and S3 buckets locally, you need to add your AWS account access and session keys.
-   - Add your AWS Account Access and Session keys to use local host and access AWS RDS and S3 buckets on settings.py file.
 
-   ![Local host code](docs/weekly%20logs/images/Adrian_images/ReadMe_images/aws_local.png)
+  - To access AWS RDS and S3 buckets locally, you need to add your AWS account access and session keys.
+  - Add your AWS Account Access and Session keys to use local host and access AWS RDS and S3 buckets on settings.py file.
 
+    ![Local host code](docs/weekly%20logs/images/Adrian_images/ReadMe_images/aws_local.png)
 - Using AWS Elastic Beanstalk hosting access:
-   - Use this code for AWS Elastic Beanstalk server to connect to RDS database and S3 buckets on settings.py file.
 
-   ![AWS Elastic Beanstalk server connection code](docs/weekly%20logs/images/Adrian_images/ReadMe_images/aws_server.png)
+  - Use this code for AWS Elastic Beanstalk server to connect to RDS database and S3 buckets on settings.py file.
+
+    ![AWS Elastic Beanstalk server connection code](docs/weekly%20logs/images/Adrian_images/ReadMe_images/aws_server.png)
 
 ### Step 7: Start the Django Server
 
 - Using Local host:
-   - Use this code to host website locally on settings.py file.
 
-      ![Local host code](docs/weekly%20logs/images/Adrian_images/ReadMe_images/local_host.png)
+  - Use this code to host website locally on settings.py file.
 
+    ![Local host code](docs/weekly%20logs/images/Adrian_images/ReadMe_images/local_host.png)
 - Using AWS Elastic Beanstalk hosting:
-   - Add your server url link for AWS Elastic Beanstalk server hosting on settings.py file.
-   ![AWS Elastic Beanstalk server connection code](docs/weekly%20logs/images/Adrian_images/ReadMe_images/server_host.png)
+
+  - Add your server url link for AWS Elastic Beanstalk server hosting on settings.py file.
+    ![AWS Elastic Beanstalk server connection code](docs/weekly%20logs/images/Adrian_images/ReadMe_images/server_host.png)
 
 Launch the Django development server:
 
@@ -205,10 +218,11 @@ Open your web browser and navigate to [http://127.0.0.1:8000/](http://127.0.0.1:
    python manage.py test pytests.[your_file_name_here]
    ```
 
-### Citations
+# Citations
 
 - [Bootstrap studio](https://bootstrapstudio.io/)
 - Our project structure was inspired by [this template](https://github.com/bunnythecompiler/video_app/tree/master)
 - Login template was using [login template website](https://freefrontend.com/bootstrap-login-forms/)
 - Register template was using [register template website](https://colorlib.com/wp/free-bootstrap-registration-forms/)
 - Profile page template was using [profile template website](https://www.sliderrevolution.com/resources/bootstrap-profile/)
+- AWS video face blurring was referenced by [AWS Rekognition Video](https://aws.amazon.com/blogs/machine-learning/blur-faces-in-videos-automatically-with-amazon-rekognition-video/)
