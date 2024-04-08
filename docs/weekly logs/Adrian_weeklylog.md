@@ -1063,3 +1063,41 @@ id connect to "friend request", "video request", "post", and "video" table.
 
 ### Weekly Log / Team Weekly Log / Additional
   - Worked on my own weekly log, contribute to team weeklog.
+
+# Preferred name -> Ssc name -> Github name
+
+- Adrian -> Adrian Fong -> AdrianFWM
+
+## Term 2 Week 13 2023/04/01~2023/04/07
+
+- Task I have worked on this week.
+![Weekly Task T2-13](./images/tasks/AdrianFong_T2_Week13_Task.png)
+
+## Recap on your week's goals
+
+### ReadMe Documentation on Github
+- Worked on setup, installation, code documentation in ReadMe file. Updated browser setup, FFMpeg setup, database setup, aws access setup, django server setup documentation on ReadMe file.
+
+  - [ReadMe Pull Request/Commit](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/212)
+  - [Updating ReadMe Pull Request/Commit](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/211)
+  - ReadMe documentation screenshot
+![ReadMe documentation screenshot](./images/Adrian_images/T2_Week_13/ReadMe.png)
+
+### Final report/video and split features
+- Worked on "Final Individual Report" on project board, wrote my final project report and create my project demo video.
+- We also worked on splitting or claimed finished features during meeting this week for our final project report.
+
+  - Split features document screenshot
+![Split features document screenshot](./images/Adrian_images/T2_Week_13/feature.png)
+  - My final project report screenshot
+![My final report screenshot](./images/Adrian_images/T2_Week_13/my_report.png)
+  - My project video demo screenshot
+![My project video demo screenshot](./images/Adrian_images/T2_Week_13/my_video.png)
+
+### Weekly Log / Team Weekly Log / Additional
+  - Worked on my own weekly log, contribute to team weeklog.
+  - All selenium and pytests passed.
+    - Selenium test screenshot
+  ![Selenium test screenshot](./images/Adrian_images/T2_Week_13/final_selenium.png)
+    - Pytest screenshot
+  ![Pytest screenshot](./images/Adrian_images/T2_Week_13/final_pytest.png)
