@@ -1,0 +1,130 @@
+{% extends 'stream/base.html'%}
+{% block content %}
+{% load static %}
+
+<link href="{% static 'css/styleVideoUpload.css' %}" rel="stylesheet">
+<link href="{% static 'css/styleSideBar.css' %}" rel="stylesheet">
+
+{% if user.userinfo.permission == 1 or user.is_superuser %}
+    <div id='filled-container' style = "margin-top: 15%; padding-top: 10em;">
+        <div class = "horizontal-buttons">
+            {%for item in notification%}
+            <a class="button" id="top_record" href=" {% url 'stream:video-record-filled' item.id%}" style="color: #FFFFFF">
+                Record
+            </a>
+            <a class="button" id="top_upload" href=" {% url 'stream:video-upload-filled' item.id%}" style="color: #FFFFFF">
+                Upload
+            </a>
+            {% endfor %}
+        </div>
+        <div class="container">
+            <div class="row d-flex justify-content-center align-items-center h-90">
+                <div class="col-lg-15" style="padding-top: 25px;">
+                    <h1>Post a Video</h1>
+                    <button id="side-bar-btn" class="openbtn" onclick="toggleNav()">&#9776; Toggle Sidebar</button>
+                    <div class="card mb-3" style="width: 75%; box-shadow: 12em; margin: auto;">
+                        <form method="POST" enctype="multipart/form-data">
+
+                            <div id="mySidebar" class="sidebar">
+                                <a id="close-btn" href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                                {% for item in notification %}
+                                        <p class='message_info message_id'> {{ item.notification_as_list.1 }} </p>
+                                        <p class='message_info'> {{ item.notification_as_list.2 }} </p>
+                                        <p class='message_info'> {{ item.notification_as_list.3 }} </p>
+                                        <br>
+                                {% endfor %}
+                            </div>
+                            <div id="main">
+                                {% csrf_token %}
+                                <div style = "padding-top: 25px;">
+                                    <div class="row justify-content-center mt-3">
+                                        <div class="col-3 text-end">
+                                            <label class="requestID">Video Request ID:</label>
+                                        </div>
+                                        <div class="col-3">
+                                            {% for item in notification %}
+                                                {{item.videoRequest_id}}
+                                                    <input type="hidden" name="video_request_id" id="video_request_id" value="{{item.videoRequest_id}}" />
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                    <div class="row justify-content-center mt-3">
+                                        <div class="col-3 text-end">
+                                            <label class="title">Title:</label>
+                                        </div>
+                                        <div class="col-3">
+                                            {{ uploadvideoform.title.errors }}
+                                            <div class="w-75">
+                                                {{ uploadvideoform.title }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row justify-content-center mt-3">
+                                        <div class="col-3 text-end">
+                                            <label class="description">Description:</label>
+                                        </div>
+                                        <div class="col-3 ">
+                                            {{ uploadvideoform.description.errors }}
+                                            {{ uploadvideoform.description }}
+                                        </div>
+                                    </div>
+                                    <div class="row justify-content-center mt-3">
+                                        <div class="col-3 text-end">
+                                            <label class="timelimit">Time Limit Date:</label>
+                                        </div>
+                                        <div class="col-3">
+                                            {{ uploadvideoform.timelimit.errors }}
+                                            {{ uploadvideoform.timelimit }}
+                                        </div>
+                                    </div>
+                                    <div class="row justify-content-center mt-3 mb-3">
+                                        <div class="col-3 text-end">
+                                            <label class="video">Video:</label>
+                                        </div>
+                                        <div class="col-3">
+                                            {% comment %} {{ uploadvideoform.video.errors }}
+                                            {{ uploadvideoform.video }} {% endcomment %}
+                                        <input type="file" id="video_upload" name="video_upload" accept="video/mp4,video/quicktime">
+                                    </div>
+                                </div>
+                                <span style="color: red;">*Face Blurring process might take a while to upload*</span>
+                                <div class="row justify-content-center mt-2">
+                                    <div class="col-3 text-end">
+                                        <label class="video">Blur Face:</label>
+                                    </div>
+                                    <div class="col-3 text-start pt-1 ps-3">
+                                        <input type="checkbox" id="blurFace" name="blurFace">
+                                        </div>
+                                    </div>
+                                    <div class="row justify-content-center mt-3">
+                                        <button class="button2 buttonRound" :hover type="button2" id="upload" type="submit">Upload</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src = " {% static 'assets/js/sideBar.js'%} "></script>
+{% else %}
+    <div class="redirect">
+        <h1>Oops! It seems you’ve reached a page where access is restricted. No worries, just click the button below to return to the home page. Thank you!</h1>
+        <a href=" {% url 'stream:home' %}">
+            <button class="button" type="button">Back to home page</button>
+        </a>
+    </div>
+{% endif %}
+
+{% if user.is_authenticated %}
+    <div id="overlay" class="float-center" style="position:fixed; top:30%;">
+        <div>
+            <p class="text-dark">Are you sure to logout?</p>
+            <button id="logout" class="float-left submit-button me-1">Logout</button>
+            <button id="cancel" class="float-left submit-button">Cancel</button>
+        </div>
+    </div>
+{% endif %}
+</div>
+{% endblock content %}

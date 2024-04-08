@@ -1,0 +1,122 @@
+
+{% extends 'stream/base.html'%}
+{% block content %}
+{% load static %}
+    <link href="{% static 'css/styleVideoCreate.css' %}" rel="stylesheet">
+    <link href="{% static 'css/styleSideBar.css' %}" rel="stylesheet">
+    {% if user.userinfo.permission == 1 or user.is_superuser %}
+        <div id='filled-container' style = "margin-top: 15%; padding-top: 10em; clear: both;">
+            <div class = "horizontal-buttons" id="hor-button">
+                <a class="button" id="top_record" href=" {% url 'stream:video-create' %}" style="color: #FFFFFF">
+                    Record
+                </a>
+                <a class="button" id="top_upload" href=" {% url 'stream:video-upload' %}" style="color: #FFFFFF">
+                    Upload
+                </a>
+            </div>
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <h1 style="text-align: center; color: white;">Record a Video</h1>
+                <button id="side-bar-btn" class="openbtn" onclick="toggleNav()">&#9776; Toggle Sidebar</button>
+                <div id='main-box'>
+                    <button id="start-camera" style="height: 50%; width: 50%; background-color: black; color: #FFFFFF; margin-bottom: 10%;">Start Camera</button>
+                    <div class="video-box" style="display: none; margin: 10% auto;">
+                        <video id="video" width="320" height="240" autoplay></video>
+                    </div>
+                    <div id="mySidebar" class="sidebar">
+                        <a id="close-btn" href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                        {% for item in notification %}
+                            <p class='message_info message_id'> {{ item.notification_as_list.1 }} </p>
+                            <p class='message_info'> {{ item.notification_as_list.2 }} </p>
+                            <p class='message_info'> {{ item.notification_as_list.3 }} </p>
+                            <br>
+                        {% endfor %}
+                    </div>
+                    <div id="main">
+                    <div class="detailsPage card mb-3" style="display: none; width: 75%; margin: auto;box-shadow: 12em;">
+                        <div class="form-group" style = "padding-top: 25px;">
+                            <label class="requestID">Video Request ID:</label>
+                            {{ createvideoform.request_id.errors }}
+                            {{ createvideoform.request_id }}
+                        </div>
+                        <div class="form-group" style = "padding-top: 15px;">
+                            <label class="title">Title:</label>
+                            {{ createvideoform.title.errors }}
+                            {{ createvideoform.title }}
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-15">
+                                <label class="description">Description:</label>
+                            </div>
+                            {{ createvideoform.description.errors }}
+                            {{ createvideoform.description }}
+                        </div>
+                        <div class="form-group" style = "padding-top: 15px; padding-bottom:25px;">
+                            <label class="timelimit">Time Limit Date:</label>
+                            {{ createvideoform.timelimit.errors }}
+                            {{ createvideoform.timelimit }}
+                        </div>
+                        <span style="color: red;">*Face Blurring process might take a while to upload*</span>
+                        <div class="form-group" style = "padding-top: 15px; padding-bottom:25px;">
+                            <label class="blur pe-3">Blur Face:</label>
+                            <input type="checkbox" id="blurFace" name="blurFace">
+                        </div>
+                        <input type="hidden" name="video_blob" id="video_blob" value="your_blob_data_here" />
+                    </div>
+                </div>
+                    <div class="previewPage" style="display: none;">
+                        <div class="card mb-3" style="width: 75%; box-shadow: 12em; margin: auto;">
+                            <img class="rounded-circle border-dark" src="{{ user.profile.image.url }}" style="border-color: red;" width="50" height="50">
+                            <a class="mr-2" style="text-align: start;">{{ user }}</a>
+                            <h12 style="text-align: start;">Upload Date</h12>
+                            <video class="card-img-top" controls style="width: 100%; height: 25%;" id="vid-box">
+                                <source type="video/mp4" id="vid-source">
+                            </video>
+                            <div class="card-body">
+                                <h5 class="card-title" id="preview-title"><a>Title</a></h5>
+                                <p class="card-text" id="preview-description">Description</p>
+                            </div>
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="submit-success" style="display: none;">
+                        <h1 id="success-msg">Video Submitted Successfully</h1>
+                    </div>
+                    <div class="horizontal-buttons">
+                        <button class="button" id="back-record" type="button" style="display: none">Back</button>
+                        <button class="button" id="back-details" type="button" style="display: none">Back</button>
+                        <button class="button" id="start-record" type="button" style="display: none">Start/Re-record</button>
+                        <button class="button" id="stop-record" type="button" style="display: none">Stop Recording</button>
+                        <button class="button" id="next" type="button" style="display: none">NEXT</button>
+                        <button class="button" id="preview" type="button" style="display: none">Preview</button>
+                        <button class="button" id="submit" type="submit" style="display: none">Submit</button>
+                        <a class="button" id="download-video" download="test.webm" style="text-decoration: none; color: #FFFFFF; display: none;">Download Video</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <script src=" {% static 'assets/js/videoCreate.js'%} "></script>
+        <script src = " {% static 'assets/js/sideBar.js'%} "></script>
+    {% else %}
+        <div class="container">
+            <h2>Oops! It seems you’ve reached a page where access is restricted. <br>
+                No worries, just click the button below to return to the home page. Thank you!</h2>
+            <div class="col-lg-8 mx-auto">
+                <a href=" {% url 'stream:home' %}">
+                    <button class="btn-lg btn-default" type="button" style="background-color">Back to home page</button>
+                </a>
+            </div>
+        </div>
+    {% endif %}
+        {% if user.is_authenticated %}
+            <div id="overlay" class="float-center" style="position:fixed; top:30%;">
+                <div>
+                    <p class="text-dark">Are you sure to logout?</p>
+                    <button id="logout" class="float-left submit-button me-1">Logout</button>
+                    <button id="cancel" class="float-left submit-button">Cancel</button>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+{% endblock content %}
+

@@ -1,44 +1,40 @@
 {% extends 'stream/base.html'%}
 {% block content %}
-    <div class="center_journal" style="margin-top: 25px;">
-        {% comment %} <h1>Search </h1> {% endcomment %}
+
+<div class="center_journal" style = "margin-top: 25px; padding-top: 90px;">
+    <h1>ADD CONTACT</h1>
+</div>
+{% if user.is_authenticated %}
+<div id="overlay" class="float-center" style="position:fixed; top:30%;">
+    <div>
+        <p class="text-dark">Are you sure to logout?</p>
+        <button id="logout" class="float-left submit-button me-1">Logout</button>
+        <button id="cancel" class="float-left submit-button">Cancel</button>
     </div>
-    {% if user.is_authenticated %}
-    <div id="overlay" class="float-center" style="position:fixed; top:30%;">
-        <div>
-            <p class="text-dark">Are you sure to logout?</p>
-            <button id="logout" class="float-left submit-button" >Logout</button>
-            <button id="cancel" class="float-left submit-button">Cancel</button>
+</div>
+{% endif %}
+<div style="padding-top: 25px;">
+    <form method="GET">
+        <div class="input-group">
+            <input type="text" class="form-control" name="search" placeholder="Search for users">
+            <button class="btn btn-dark" id="search button" type="submit">Search</button>
+        </div>
+    </form>
+    <div style="display: flex; flex-direction: column; align-items: center; margin-top: 25px;">
+        <h2>Existing Users</h2>
+        <div style="display: grid; grid-template-columns: max-content max-content; gap: 10px;">
+            {% for user in users %}
+            <div style="display: contents;">
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <input type="hidden" name="receiver" value="{{ user.id }}">
+                    <button class="btn btn-dark" id="add contact button" type="submit">Add Contact</button>
+                </form>
+                <p>{{ user.username }}</p>
+            </div>
+            {% endfor %}
         </div>
     </div>
-    {% endif %}
-    <div style="padding-top: 150px;">
-        <form method="POST" action="{% url 'stream:contact' %}">
-            {% csrf_token %}
-            <div class="input-group">
-                <div class="input-group-prepend">
-                </div>
-                <input type="text" class="form-control" name="contact_name" placeholder="Enter name to add as contact">
-                <a href=" {% url 'stream:video-list' %}" class="btn btn-dark" id="search button">Add Contact</a>
-                {% comment %} <button type="submit" class="btn btn-dark" id="search button">Add Contact</button> {% endcomment %}
-            </div>
-        </form>
-    </div>
-    {% comment %} <div>
-        {% for item in videos%}
-        <div class="card" style="width: 40rem; margin: 20px; box-shadow: 12em;">
-            <img class="rounded-circle border-dark" src="{{ item.stream.profile.image.url }}" style="border-color: red;" width="30" height="30">
-            <a class="mr-2" href="{% url 'stream:user-videos' item.stream.username %}" style="text-align: start;">{{ item.stream }}</a>
-            <h12 style="text-align: start;">{{ item.upload_date }}</h12>
-            <video class="card-image-top" controls>
-                <source src="{{ item.video.url }}" type="video/mp4">
-            </video>
-            <div class="card-body">
-              <h5 class="card-title"><a href="{% url 'stream:video-detail' item.id  %}">{{ item.title }}</a></h5>
-              <p class="card-text">{{item.description }}</p>
-            </div>
-            <hr>
-          </div>
-        {% endfor %}
-    </div> {% endcomment %}
+</div>
+
 {% endblock content %}

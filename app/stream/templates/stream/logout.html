@@ -1,10 +1,9 @@
 {% extends 'stream/base.html' %}
 {% block content %}
-<div style = "margin-top: 25px; padding-top: 75px;">
+<div style = "margin-top: 25px; padding-top: 80px;">
     <h2>You have been logged out</h2>
         <div>
-            {% comment %} <a href="{% url 'login' %}">Log in again</a> {% endcomment %}
-            <button id="btn" style="background-color: #04AA6D; color: black; font-family: sans-serif; font-weight: bold; font-size: 18px; padding: 5px 12px 5px 12px;" onclick="window.location.href='{% url 'stream:login' %}';">Log In Again</button>
+            <button id="login again" style="background-color: #04AA6D; color: black; font-family: sans-serif; font-weight: bold; font-size: 18px; padding: 5px 12px 5px 12px;" onclick="window.location.href='{% url 'stream:login' %}';">Log In Again</button>
         </div>
 </div>
 
