@@ -185,14 +185,19 @@ Open your web browser and navigate to [http://127.0.0.1:8000/](http://127.0.0.1:
 
 #### **For the following section, make sure to configure the `views.py`, `database` and `AWS access/session keys` as mentioned in the previous sections.**
 
-1. Run the Django server using the command mentioned in Step 7 in the `Setup Guide` section.
-2. In a different terminal window, activate the virtual environmen. Navigate to the `Selenium_Tests` folder in your command line.
-3. Run all Selenium tests:
+1. Check [Step 4](#step-4-ffmpeg-installation) to [Step 7](#step-7-start-the-django-server) for code changes to run local.
+    - [FFmpeg local host code](#ffmpeg-code-configuration)
+    - [Database local host code](#step-5-database-setup)
+    - [AWS access local host code](#step-6-aws-accesssession-keys)
+    - [Django Server local host code](#step-7-start-the-django-server)
+2. Start the Django server.
+3. In a different terminal window, activate the virtual environmen. Navigate to the `Selenium_Tests` folder in your command line.
+4. Run all Selenium tests:
 
    ```console
    python master_test.py
    ```
-4. Run a specific test file (replace `[your_file_name_here]` with the specific test file name):
+5. Run a specific test file (replace `[your_file_name_here]` with the specific test file name):
 
    ```console
    python [your_file_name_here].py
@@ -200,7 +205,7 @@ Open your web browser and navigate to [http://127.0.0.1:8000/](http://127.0.0.1:
 
 **Note:** Selenium Testing can be finicky depending on how fast your computer can run. If something fails, most of the time, if you run it again, the test will pass. Otherwise, add wait time to allow for the page to load.
 
-5. Save Selenium test report into a txt file (replace `master_test.py` with any other test file name if needed):
+6. Save Selenium test report into a txt file (replace `master_test.py` with any other test file name if needed):
 
    ```console
    python master_test.py > report.txt
@@ -208,14 +213,19 @@ Open your web browser and navigate to [http://127.0.0.1:8000/](http://127.0.0.1:
 
 ### Pytest Testing
 
-1. For this section, the server is not required to be running.
-2. Navigate into the `app` folder in your command line.
-3. Run all Pytests:
+1. Check [Step 4](#step-4-ffmpeg-installation) to [Step 7](#step-7-start-the-django-server) for code changes to run local.
+    - [FFmpeg local host code](#ffmpeg-code-configuration)
+    - [Database local host code](#step-5-database-setup)
+    - [AWS access local host code](#step-6-aws-accesssession-keys)
+    - [Django Server local host code](#step-7-start-the-django-server)
+2. For this section, the server is not required to be running.
+3. Navigate into the `app` folder in your command line.
+4. Run all Pytests:
 
    ```console
    python manage.py test pytests
    ```
-4. Run a specific pytest (replace `[your_file_name_here]` with the specific test file name):
+5. Run a specific pytest (replace `[your_file_name_here]` with the specific test file name):
 
    ```console
    python manage.py test pytests.[your_file_name_here]
