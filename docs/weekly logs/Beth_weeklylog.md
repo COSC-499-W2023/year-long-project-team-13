@@ -186,5 +186,7 @@ This week my tasks were the testing for the displaying of request information on
 #### Picture of Reset Password Page Part 2
 ![ForgotPassword](./images/Ralston_stuff/T2_week12/forgot_password_4.png)
 
+### Week 13 Apr 1 - 7
+This week my tasks were the final project report and video and to update the readme. These are associated with Final Video creation, Final Video editing, Final Individual Report and Documentation on the Project board. All is finished and submitted. Thank you for a good year and best of luck with your future endevors. Good job team!
 
-
+- Beth
