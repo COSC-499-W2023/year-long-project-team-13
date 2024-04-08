@@ -191,7 +191,7 @@ Open your web browser and navigate to [http://127.0.0.1:8000/](http://127.0.0.1:
     - [AWS access local host code](#step-6-aws-accesssession-keys)
     - [Django Server local host code](#step-7-start-the-django-server)
 2. Start the Django server.
-3. In a different terminal window, activate the virtual environmen. Navigate to the `Selenium_Tests` folder in your command line.
+3. In a different terminal window, activate the virtual environment. Navigate to the `Selenium_Tests` folder in your command line.
 4. Run all Selenium tests:
 
    ```console
