@@ -208,14 +208,176 @@ Notifications and Design Milestone
   Notifications and Add Contact Function
   - Among these tasks, which have you completed/in progress in the last week?
 Notifications and Design Milestone before Christmas break.
+
+- Applicable date range
+##  Week 2 Term 2 01/15/24~01/21/24
+
+ # Preferred name -> Ssc name -> Github name
+
+- Herman -> Herman Sood -> Herman Sood
+
+![Tasks](./images/tasks/Term2Week1Herman.png)
+
+- Recap on your week's goals-Which features were yours in the project plan for this milestone? For term 2 week 2 I added some functionality to the add contact branch in which one a user has a registered account, they have the ability to add any other existing contact and it will show a message on the top of the screen stating that the user was added successfully. If the user does not exist, then a message saying will show. I am now in the phase of writing a unit test for this. I should have probably written it prior to the functions for the add contact which I will try to be mindful of for future. 
+  - Which tasks from the project board are associated with these features?
+  Add Contact Function
+  - Among these tasks, which have you completed/in progress in the last week?
+Add Contact Function (testing left)
+ 
+ ![Tasks](./images/tasks/Week2Term2HermanAddContact.png)
+
+ ![Tasks](./images/tasks/Week2Term2HermanPeerEval.png)
  
 
+ - Applicable date range
+##  Week 3 Term 2 01/22/24~01/28/24
+
+ # Preferred name -> Ssc name -> Github name
+
+- Herman -> Herman Sood -> Herman Sood
+
+- Recap on your week's goals-Which features were yours in the project plan for this milestone? For term 2 week 3 I helped Raymond with the setting branch a little and wrote two unit tests in which one checks for valid passwords when doing a password change and the other test looks for invalid passwords. I also added in an additional validity checker where a user cannot add more than 4 of the same characters in a row in the password but that may be removed. I plan to get back to the add contact branch and get a search bar and everything once things are set on the database side from Adrian. 
+  - Which tasks from the project board are associated with these features? Settings - Change Password
+  - Among these tasks, which have you completed/in progress in the last week?
+Settings - Change Password (unit tests),
+Add contact in progress.
+
+ ![Tasks](./images/tasks/Week3Term2HermanSettingUnittests.png)
+
+ ![Tasks](./images/tasks/Week3Term2Herman.png)
+
+  - Applicable date range
+##  Week 4 Term 2 01/29/24~02/04/24
+
+ # Preferred name -> Ssc name -> Github name
+
+- Herman -> Herman Sood -> Herman Sood
+
+- Recap on your week's goals-Which features were yours in the project plan for this milestone? For term 2 week 4 I worked on the add contact branch and made modifications to the page. Now, there is a search bar on the page rather than a direct add contact and with the search bar you can search for existing users and add them. There is also a list of existing users with add contact buttons next to each user beneath the search bar. You can also search a user by typing a couple letters and search and the results will match the most closely associated users to add. Lastly I wrote a selenium test and updated unit tests for this. 
+  - Which tasks from the project board are associated with these features? Add Contact function, Add contact UI
+  - Among these tasks, which have you completed/in progress in the last week?
+Add Contact Function, Add contact UI
 
 
+ ![Tasks](./images/tasks/Week4Term2AddContact.png)
+
+ ![Tasks](./images/tasks/Week4Term2PeerEval.png)
+ 
+  - Applicable date range
+##  Week 5 Term 2 02/05/24~02/11/24
+
+ # Preferred name -> Ssc name -> Github name
+
+- Herman -> Herman Sood -> Herman Sood
+
+- Recap on your week's goals-Which features were yours in the project plan for this milestone? For term 2 week 5 I worked on a new branch that I created called view_video. What I have done so far is that for videos that get uploaded, admin users can go to the admin page and can see all the videos that have been uploaded under posts in stream. I plan to try and make changes next though to the view video page next because on that page it doesnt show the new uploaded videos at the moment. 
+  - Which tasks from the project board are associated with these features? View video function
+  - Among these tasks, which have you completed/in progress in the last week? Started new task so just view video in progress right now. 
 
 
+ ![Tasks](./images/tasks/Week5Term2Hermanview_video.png)
+  ![Tasks](./images/tasks/Week5Term2HermanPeerEval.png)
 
 
+- Applicable date range
+##  Week 6 Term 2 02/12/24~02/18/24
+
+ # Preferred name -> Ssc name -> Github name
+
+- Herman -> Herman Sood -> Herman Sood
+
+- Recap on your week's goals-Which features were yours in the project plan for this milestone? For term 2 week 6 I unfortunately ran into some issues with my laptop and was unable to get anything done. I did attend the meeting however and am on base with the team for what we are planning to do for the peer testing 2 coming up in a few weeks. I hope to get some more stuff done over the break which is my goal with a balance of all my other courses. 
+  - Which tasks from the project board are associated with these features? View video function
+  - Among these tasks, which have you completed/in progress in the last week? View video in progress right now. 
 
 
+![Tasks](./images/tasks/Week6Term2HermanPeerEval.png)
 
+ - Applicable date range
+##  Week 7 Term 2 and Week 8 Term 2 02/19/24~03/03/24
+
+ # Preferred name -> Ssc name -> Github name
+
+- Herman -> Herman Sood -> Herman Sood
+
+- Recap on your week's goals-Which features were yours in the project plan for this milestone? For term 2 week 7(the reading break) I went on to help Raymond with some unit tests for the setting page to check for valid and invalid passwords and the form setting. I also helped out with the html/css to fix the issue of the text overflowing from the box when the screen size is shrunk. For week 8 I worked on the view video page and made some changes to get videos that are uploaded by the user to be viewable. I also made a small touch to the register page in which now instead of black text that shows indicating a potential error a user has made when registering for an account, the text is in red for ease of user viewability.  
+  - Which tasks from the project board are associated with these features? View video function, Setting Page UI 
+  - Among these tasks, which have you completed/in progress in the last week? View video function and Setting Page UI.
+
+
+![Tasks](./images/tasks/Week7And8Term2PeerEval.png)
+![Tasks](./images/tasks/ViewVideoHerman.png)
+
+
+- Applicable date range
+## Week 9 Term 2 03/04/24~03/10/24
+
+ # Preferred name -> Ssc name -> Github name
+
+- Herman -> Herman Sood -> Herman Sood
+
+- Recap on your week's goals-Which features were yours in the project plan for this milestone? For term 2 week 9, after the second peer evaluation session in class, my team and I discussed on features to be done or updated for the coming weeks and so we prioritized and assigned all members with some tasks to do and updated the Kanban board accordingly. I will be working on some of the UI updates for the upload video page and then later work on the password viewable on the login and register page afterward. 
+  - Which tasks from the project board are associated with these features? Upload video page UI updates and Password viewable.  
+  - Among these tasks, which have you completed/in progress in the last week? Upload video page UI. 
+
+
+![Tasks](./images/tasks/Week9Term2PeerEvalHerman.png)
+
+- Applicable date range
+## Week 10 Term 2 03/11/24~03/17/24
+
+ # Preferred name -> Ssc name -> Github name
+
+- Herman -> Herman Sood -> Herman Sood
+
+- Recap on your week's goals-Which features were yours in the project plan for this milestone? For term 2 week 10, I fixed the UI structure for the upload video page to match the structure of page for sending a video. I also implemented a password viewable feature on the register page and almost finished doing the same thing for the login page using an eye icon that can be toggled to view or hide password when registering or logging into an account. I am also planning to add the feature to the setting page where users are able to create a new password if they want to change their password.
+  - Which tasks from the project board are associated with these features? Upload video page UI updates and Password viewable.  
+  - Among these tasks, which have you completed/in progress in the last week? Upload video page UI and Password Viewable. 
+
+
+![Tasks](./images/tasks/Week10Term2PeerEvalHerman.png)
+![Tasks](./images/tasks/Week10Term2UploadVideoHerman.png)
+![Tasks](./images/tasks/Week10Term2RegisterUpdatedHerman.png)
+
+- Applicable date range
+## Week 11 Term 2 03/18/24~03/24/24
+
+ # Preferred name -> Ssc name -> Github name
+
+- Herman -> Herman Sood -> Herman Sood
+
+- Recap on your week's goals-Which features were yours in the project plan for this milestone? For term 2 week 11, I wrapped up the password viewable feature for the register, login, and setting page where it was applicable and adjusted the UI accordingly as well. I also updated the selenium test to ensure everything is good to go with these changes. Now I am going to start on a notification indicator feature in which a red number with a circle icon or something similar will be an indicator for whenever a user gets any new notifications. 
+  - Which tasks from the project board are associated with these features? Password viewable, Notification Indicator  
+  - Among these tasks, which have you completed/in progress in the last week? Password viewable
+
+
+![Tasks](./images/tasks/Week11Term2PeerEvalHerman.png)
+![Tasks](./images/tasks/Week11Term2RegisterUpdatedHerman.png)
+
+- Applicable date range
+## Week 11 Term 2 03/18/24~03/24/24
+
+ # Preferred name -> Ssc name -> Github name
+
+- Herman -> Herman Sood -> Herman Sood
+
+- Recap on your week's goals-Which features were yours in the project plan for this milestone? For term 2 week 12, I worked on the notification indicator feature in which the receiver will get a notification if they receive a friend request or a video request for example and this is seen as a number within a red border on any page that they are on (for example on the home page or on the profile page) directly on the notifications bar. If the receiver gets multiple notifications the number increments and once they go to the notifications page the notifications indicator sets back to 0 since the notifications are now all marked as read. I also updated the selenium test for the notification test to highlight the indicator addition. 
+  - Which tasks from the project board are associated with these features? Notification Indicator  
+  - Among these tasks, which have you completed/in progress in the last week? Notification Indicator
+
+
+![Tasks](./images/tasks/Week12Term2NotificationIndicatorHerman.png)
+![Tasks](./images/tasks/Week12Term2NotificationIndicatorPic2Herman.png)
+![Tasks](./images/tasks/Week12Term2PeerEvalHerman.png)
+
+- Applicable date range
+# Preferred name -> Ssc name -> Github name
+
+- Herman -> Herman Sood -> Herman Sood
+
+## Week 13 2024/04/01 ~ 2024/04/07
+
+- Recap on your week's goals-Which features were yours in the project plan for this milestone? For term 2 week 13, I worked on the final project report and video.
+  - Which tasks from the project board are associated with these features? Final Video creation, Final Video editing, Final Individual Report and Documentation.
+
+![Tasks](./images/tasks/Week13Term2PeerEvalHerman.png)

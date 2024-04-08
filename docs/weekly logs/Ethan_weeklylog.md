@@ -212,3 +212,207 @@
     - ![AWS S3-3](./images/Ethan_stuff/t2w1/s3_upload_cloudfront_view_video_3.png)
   - The tasks associated are the following:
     - [S3 Buckets](https://github.com/COSC-499-W2023/year-long-project-team-13/issues/96)
+
+# Preferred name -> Ssc name -> Github name
+
+- Ethan -> Ethan Hsu -> YuchenHsu
+
+## Week 2 2024/01/15 ~ 2024/01/21
+
+- Type of tasks you worked on (screenshot from Peer Eval question)
+
+![Tasks](./images/tasks/ethan_term2_week2.png)
+
+- This week, I worked on making the video list page, originally I was planning on working with one of the blurring features, but when the rds database was implemented the s3 bucket and cloudfront stopped working. So I had to work on fixing that.
+  - The tasks associated are the following:
+  - [S3 cloudfront branch](https://github.com/COSC-499-W2023/year-long-project-team-13/issues/96)
+  - ![Video List Page Video](./images/Ethan_stuff/t2w2/s3_updated_database_version.png)
+  - ![Video List Page Image](./images/Ethan_stuff/t2w2/s3_updated_database_version_2.png)
+
+# Preferred name -> Ssc name -> Github name
+
+- Ethan -> Ethan Hsu -> YuchenHsu
+
+## Week 3 2024/01/22 ~ 2024/01/28
+
+- Type of tasks you worked on (screenshot from Peer Eval question)
+
+![Tasks](./images/tasks/ethan_term2_week3.png)
+
+- This week, I worked on fixing the s3 cloudfront branch to try to make profile picture can be swapped out. That is the only thing that is not working right now.
+- I also worked on the Upload Video Page and seperated the upload video part and the record video part so that on the same page the user can change whether they want to upload or record a video (default one is record).
+  - The tasks associated are the following:
+  - [S3 cloudfront branch](https://github.com/COSC-499-W2023/year-long-project-team-13/issues/96)
+
+![Upload Video Page](./images/Ethan_stuff/t2w3/upload_video.png)
+![Record Video Page](./images/Ethan_stuff/t2w3/record_video.png)
+
+# Preferred name -> Ssc name -> Github name
+
+- Ethan -> Ethan Hsu -> YuchenHsu
+
+## Week 4 2024/01/29 ~ 2024/02/04
+
+- Type of tasks you worked on (screenshot from Peer Eval question)
+
+![Tasks](./images/tasks/ethan_term2_week4.png)
+
+- This week, I worked on implementing the permission system to the website, I did the permission and form with Adrian's help.
+- And I also worked on the page to make it display the correct information based on the user's permission.
+- I also added a dropdown bar when registering to let the user define what kind of user they are.
+- When a user selected a permission they will not be able to change it.
+  - The user can choose from being a doctor or a patient when registering.
+  - ![Permission Choice](./images/Ethan_stuff/t2w4/new_register_1.png)
+  - The message will be shown when the user access a page that they don't have permission to access.
+  - ![Permission Denied](./images/Ethan_stuff/t2w4/upload_record_denied_1.png)
+
+# Preferred name -> Ssc name -> Github name
+
+- Ethan -> Ethan Hsu -> YuchenHsu
+
+## Week 5 2024/02/05 ~ 2024/02/11
+
+- Type of tasks you worked on (screenshot from Peer Eval question)
+
+![Tasks](./images/tasks/ethan_term2_week5.png)
+
+- This week, I tried to make s3 work, managed to successfully download and upload to the s3 bucket.
+- I also started working on aws rekognition and blurring faces, I have managed to blur a face on an image, but haven't gotten to do it on a video yet.
+  - Here's the result of the blurring face on an image
+  - ![Blurred Face](./images/Ethan_stuff/t2w5/face_blurring.png)
+- The tasks associated are the following:
+  - [S3 cloudfront branch](https://github.com/COSC-499-W2023/year-long-project-team-13/tree/s3_cloudfront)
+  - [Blur Face](https://github.com/COSC-499-W2023/year-long-project-team-13/tree/rekognition)
+
+# Preferred name -> Ssc name -> Github name
+
+- Ethan -> Ethan Hsu -> YuchenHsu
+
+## Week 6 2024/02/12 ~ 2024/02/18
+
+- Type of tasks you worked on (screenshot from Peer Eval question)
+
+![Tasks](./images/tasks/ethan_term2_week6.png)
+
+- This week, I worked on making the rekognition and face blurring work on videos, here's the guide I followed and failed to to make them work so far.
+  - [rekognition with lambda](https://awstip.com/aws-rekognition-using-lambda-with-sqs-and-sns-part-1-ca66c37dad7e)
+  - [SQS and SNS setup for lambda function](https://awstip.com/aws-rekognition-using-lambda-with-sqs-and-sns-part-2-b2eeca1a9c3d)
+- I also worked on the record video page with Beth and designed the pages following the recording of the video.
+  - ![Record Video Page](./images/Ethan_stuff/t2w6/record_video.png)
+  - ![Details Page](./images/Ethan_stuff/t2w6/detail_page.png)
+  - ![Review Page](./images/Ethan_stuff/t2w6/review_page.png)
+
+# Preferred name -> Ssc name -> Github name
+
+- Ethan -> Ethan Hsu -> YuchenHsu
+
+## Week 7 2024/02/19 ~ 2024/02/25
+
+- This week, I tried to make the blurring work with videos but so far I haven't have any success. I also worked on the linking of our database to the s3 buckets. So far the upload never goes into the bucket but it is trying its best.
+  - This is the guide I followed:
+    - [Uploading to the S3 and store the URL in the database](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/PostgreSQL.Procedural.Importing.html)
+  - ![upload_fails](./images/Ethan_stuff/t2w7/failed_s3_upload.png)
+
+# Preferred name -> Ssc name -> Github name
+
+- Ethan -> Ethan Hsu -> YuchenHsu
+
+## Week 8 2024/02/26 ~ 2024/03/03
+
+- Type of tasks you worked on (screenshot from Peer Eval question)
+
+![Tasks](./images/tasks/ethan_term2_week8.png)
+
+- The past two weeks I worked with Beth to finish (and salvage) the record/upload video page
+- Made the UIs and the preview work on the record page.
+- Fixed multiple UI bugs on the record/upload video page.
+- Also fixed the testing for the record/upload video page.
+
+# Preferred name -> Ssc name -> Github name
+
+- Ethan -> Ethan Hsu -> YuchenHsu
+
+## Week 9 2024/03/04 ~ 2024/03/10
+
+- Type of tasks you worked on (screenshot from Peer Eval question)
+
+![Tasks](./images/tasks/ethan_term2_week9.png)
+
+- I have been sick since last week (before the peer eval) so I haven't been the most productive for the project. I still showed up to most meetings to help with some minor problems.
+- This week I worked on fixing some styling problems, namely the user videos, video details, and profile page. I worked on the video record page as well but haven't fixed that yet.
+  - ![User Videos](./images/Ethan_stuff/t2w9/user_video_page.png)
+  - ![Video Details](./images/Ethan_stuff/t2w9/video_detail_page.png)
+  - ![Profile Page](./images/Ethan_stuff/t2w9/profile_page.png)
+
+# Preferred name -> Ssc name -> Github name
+
+- Ethan -> Ethan Hsu -> YuchenHsu
+
+## Week 10 2024/03/11 ~ 2024/03/17
+
+- Type of tasks you worked on (screenshot from Peer Eval question)
+
+![Tasks](./images/tasks/ethan_term2_week10.png)
+
+- This week, I worked with the team and merged the updates after the peer evaluation.
+- Worked with Beth on making it so that when the user used the link from the notification to go to the record page, it does successfully go to the record page and the recordings gets successfully uploaded to the database.
+- Updated the post video page styling when the website is hosted on the Elastic Beanstalk
+  - The top horizontal buttons for switching between recording and uploading videos doesn't get overlapped under the top
+  - The bottom buttons for going between pages, doesn't get blocked by the recording box.
+  - ![Top horizontal buttons](./images/Ethan_stuff/t2w10/top_horizontal_button.png)
+
+# Preferred name -> Ssc name -> Github name
+
+- Ethan -> Ethan Hsu -> YuchenHsu
+
+## Week 11 2024/03/18 ~ 2024/03/24
+
+- Type of tasks you worked on (screenshot from Peer Eval question)
+
+![Tasks](./images/tasks/ethan_term2_week11.png)
+
+- This week, I worked on the S3 uploading with Adrian. I managed to make it so that when a file is uploaded the file is store in the S3 bucket with their username as the folder name. (which is the primary key for the user that they cannot change).
+- I also worked on making sure that if the user uploads a video or image, it wouldn't just replace the file with the same name, but instead add a number to the end of the file name.
+- I also helped Beth on the record and upload page to display the video request detail.
+  - Uploading function to check for duplicate names and specify location
+  - ![S3 Upload](./images/Ethan_stuff/t2w11/MediaUpload.png)
+  - ![S3 Upload](./images/Ethan_stuff/t2w11/ProfileUpload.png)
+
+# Preferred name -> Ssc name -> Github name
+
+- Ethan -> Ethan Hsu -> YuchenHsu
+
+## Week 12 2024/03/25 ~ 2024/03/31
+
+- Type of tasks you worked on (screenshot from Peer Eval question)
+
+![Tasks](./images/tasks/ethan_term2_week12.png)
+
+- This week, I worked on the S3 and blurring functions with Adrian.
+- I also reviewed and fixed tests for multiple branches to help with merging the branches to the master.
+  - Reviews of the branches
+    - [Forget Password](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/203#pullrequestreview-1969709754)
+    - [Notification](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/202#pullrequestreview-1969704056)
+    - [Request Detail](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/201#pullrequestreview-1969681162)
+    - [Test Fixes](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/201#issuecomment-2027826755)
+- I started the document for the final report and the video.
+  - Started making the list of features we worked on.
+  - Started updating Readme for the project.
+
+# Preferred name -> Ssc name -> Github name
+
+- Ethan -> Ethan Hsu -> YuchenHsu
+
+## Week 13 2024/04/01 ~ 2024/04/07
+
+- Type of tasks you worked on (screenshot from Peer Eval question)
+
+![Tasks](./images/tasks/ethan_term2_week13.png)
+
+- This week I worked on testing and merging all the rest of the branches.
+- I also updated the readme of our project to reflect new changes and new setups needed, also added citations.
+- I also worked on the final report and the video.
+  - The following links are the approval of pull requests and the updated readme.
+    - [Approval of pull requests](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/204#pullrequestreview-1975102899)
+    - [updated readme pull request 1](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/211)
+    - [updated readme pull request 2](https://github.com/COSC-499-W2023/year-long-project-team-13/pull/212)
