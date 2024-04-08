@@ -584,3 +584,7 @@ Password Reset Page
 ## Recap of week's goals
 
 For this week, I work on my report and video demo that needed to be submitted as per requirement. I attend the team meeting to discuss about what features we worked on and how many features we must describe in our report. We condense some features so that our features only take 5 pages and discussed about how to work on the DFD Level 1 diagram. We helped one another and discussed about the report and update the Readme file for the client. I also worked on the video demo so that the person who is checking our website can check how to use our website and to gain insight.
+
+### Additional
+- Worked on my own weekly log, contribute to team weekly log.
+- Contributed in working on Readme file.
