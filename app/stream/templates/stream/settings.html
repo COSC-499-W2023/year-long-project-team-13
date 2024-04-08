@@ -1,0 +1,242 @@
+
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% load static %}
+  <html lang="en">
+    <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <link rel="stylesheet" href= "{%static 'assets/bootstrap/css/bootstrap.min.css' %}">
+      <title>Vnonymous</title>
+      <link href="{% static 'css/logoutUI.css' %}" rel="stylesheet">
+      <link href="{% static 'css/ChangePasswordUI.css' %}" rel="stylesheet">
+      <link href="{% static 'css/styleSetting.css' %}" rel="stylesheet">
+      <link href="{% static 'css/styleTopBar.css' %}" rel="stylesheet">
+      <style>
+        ul.errorlist {
+            color: red;
+        }
+        .badge {
+            display: inline-block;
+            min-width: 10px;
+            padding: 3px 7px;
+            font-size: 12px;
+            font-weight: 700;
+            line-height: 1;
+            color: #fff;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: baseline;
+            background-color: #f00;
+            border-radius: 10px;
+        }
+      </style>
+    </head>
+
+    <body id="page-top" data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="77" style="background-size: cover; background-image: url(' {% static 'assets/img/intro-bg.jpg' %} ');">
+        <nav class="navbar navbar-expand-md fixed-top navbar-light" id="mainNav">
+            <div class="container"><a class="navbar-brand" href=" {% url 'stream:home' %} " id="Home Button">
+                Vnonymous
+              </a><button data-bs-toggle="collapse" class="navbar-toggler navbar-toggler-right" data-bs-target="#navbarResponsive" type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" value="Menu"><i class="fa fa-bars"></i></button>
+                <div class="navbar" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto">
+                        {% if user.is_authenticated %}
+                        <div class="dropdown">
+                            <li class="nav-item nav-link">
+                                <button class="nav-link active">
+                                    <a id="Videos Hover">
+                                        VIDEOS &#9660;
+                                    </a>
+                                </button>
+                            </li>
+                            <div class="dropdown-content">
+                                <li class="nav-item nav-link"><a class="nav-link active" href=" {% url 'stream:video-list' %} " id="Video Button">Videos</a></li>
+                                {% if user.userinfo.permission == 1 or user.is_superuser %}
+                                    <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:video-create' %}" id="New Video Button">Send Video</a>
+                                {% endif %}
+                                {% if user.userinfo.permission == 2 or user.is_superuser %}
+                                    <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:request-video' %}" id="Video Request Button">Request Video</a>
+                                {% endif %}
+                            </div>
+                          </div>
+                          <li class="nav-item nav-link"><a class="nav-link active" href=" {% url 'stream:contact' %} " id="Add Contacts Button">Add Contacts</a></li>
+                          <li class="nav-item nav-link">
+                            <a class="nav-link active" href="{% url 'stream:notifications' %}" id="Notification-Button">
+                                Notifications
+                                {% if unread_notifications_count > 0 %}
+                                    <span class="badge badge-light">{{ unread_notifications_count }}</span>
+                                {% endif %}
+                            </a>
+                        </li>
+                          <div class="dropdown">
+                            <li class="nav-item nav-link">
+                            <button class="nav-link active">
+                                <a id="User Hover">
+                                    <img class="rounded-circle border-dark" src="{{ user.profile.image.url }}" style="border-color: red;" width="25" height="25">
+                                &#9660;
+                                </a>
+                            </button>
+                            </li>
+                            <div class="dropdown-content">
+                                <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:profile' %}" id="Profile Button">Profile</a>
+                                <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:setting' %}" id="Setting Button">Setting</a>
+                                {% if user.is_superuser %}
+                                    <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'admin:index' %}" id="Admin Button">Admin</a>
+                                {% endif %}
+                                <li class="nav-item nav-link"><a class="nav-link active"  href='#'onclick='overlay()' id="Logout Button">Logout</a>
+                            </div>
+                          </div>
+                        {% else %}
+                            <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:login' %}" id="Login Button">Login</a></li>
+                            <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:register' %}" id="Register Button">Register</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+    <div style="margin-top: 25px; padding-top: 50px;">
+
+    <title>Settings Page</title>
+
+    <div class="container-fluid main" style="height:100vh;padding-left:0px;">
+
+    <div class="d-block d-md-none menu">
+
+        <div class="bar"></div>
+
+    </div>
+
+    <div class="row align-items-center" style="height:100%">
+
+    <div class="col-md-3 d-none d-md-block" style="height:100%" >
+
+
+    </div>
+
+    <div id="overlay" class="float-center "style="position:fixed;top:30%;">
+        <div>
+            <p class="text-dark">Are you sure to logout?</p>
+            <button id="logout" class="float-left submit-button me-1">Logout</button>
+            <button id="cancel" class="float-left submit-button">Cancel</button>
+       </div>
+    </div>
+
+    <div class="col-md-6">
+
+        <div class="container content clear-fix">
+
+        <h1 class="mt-5 mb-5">Settings</h1>
+
+        <div class="row" style="height:70%">
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-10 mx-auto">
+                        <div class="card">
+                            <div class="row d-flex justify-content-center align-items-center h-100">
+                                <div class="col-lg-12" style="padding-top: 50px;">
+                                    <h1 class="text-center">Change Password</h1>
+                                    <div style="width: 75%; margin: auto;">
+                                        <form method="post" enctype="multipart/form-data">
+                                            {% csrf_token %}
+                                            <p class="text-center" id="instruction" style="padding-right: 140px;">Your password can’t be too similar to your other personal information.
+                                                <br>
+                                                Your password must contain at least 8 characters.
+                                                <br>
+                                                Your password can’t be a commonly used password.
+                                                <br>
+                                                Your password can’t be entirely numeric.
+                                                <br>The new password must contain at least one letter and at least one digit or punctuation character.</p>
+                                                <div class="form-center" id="oldpassword" style="margin: auto; padding-right: 145px;">
+                                                    <div class="form-group">
+                                                        <label for="{{ passwordform.oldpassword.id_for_label }}">Old Password:</label>
+                                                        {{ passwordform.oldpassword.errors }}
+                                                        {{ passwordform.oldpassword }}
+                                                        <span toggle="#{{ passwordform.oldpassword.id_for_label }}" class="input-group-addon toggle-password fas fa-eye" style="position: absolute; top: 458px; margin-left: 355px;"></span>
+                                                    </div>
+                                                    <div class="form-group" id="newpassword" style="margin: auto; padding-right: 140px;">
+                                                        <label for="{{ passwordform.password.id_for_label }}">New Password:</label>
+                                                        {{ passwordform.password.errors }}
+                                                        {{ passwordform.password }}
+                                                        <span toggle="#{{ passwordform.password.id_for_label }}" class="input-group-addon toggle-password fas fa-eye" style="position: absolute; top: 555px; margin-left: 355px;"></span>
+                                                    </div>
+                                                    <div class="form-group" id="confirmpassword" style="margin: auto; padding-right: 140px;">
+                                                        <label for="{{ passwordform.password2.id_for_label }}">Confirm Password:</label>
+                                                        {{ passwordform.password2.errors }}
+                                                        {{ passwordform.password2 }}
+                                                        <span toggle="#{{ passwordform.password2.id_for_label }}" class="input-group-addon toggle-password fas fa-eye" style="position: absolute; top: 652px; margin-left: 355px;"></span>
+                                                    </div>
+                                                </div>
+
+                                            <div class="row mt-4 d-flex justify-content-center" style="padding-top:25px; margin-right: 140px;">
+                                                <div class="col-auto">
+                                                    <button type="button" href="{% url 'stream:setting' %}" id="Save" class="btn btn-primary btn-block submit-button" onclick='Password_Overlay()'>
+                                                            Save Changes
+                                                    </button>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <button type="reset" id="Reset" class="btn btn-default btn-block">Reset</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                            <div id="overlay1" class="float-center"style="position:fixed; top:30%;">
+                                                <div>
+                                                    <p class="text-dark">Are you sure you want to change your password?</p>
+                                                    <button type = "submit" id="Update" class="float-left btn btn-primary btn-block me-4" onclick="Password_Overlay()">Update</button>
+                                                    <button type="button" id = "Cancel" class="float-left btn btn-default btn-block" onclick="Password_Overlay()">Cancel</button>
+                                               </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<!-- <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script> -->
+<script>
+    $(document).ready(function() {
+      $(".toggle-password").click(function() {
+        $(this).toggleClass("fas fa-eye fas fa-eye-slash");
+        var input = $($(this).attr("toggle"));
+        if (input.attr("type") == "password") {
+          input.attr("type", "text");
+        } else {
+          input.attr("type", "password");
+        }
+      });
+    });
+  </script>
+
+        <!-- This js ask user before logout  -->
+        <script src=" {% static 'assets/js/logout.js'%} "></script>
+
+        <!-- Logout popup UI -->
+        <script src=" {% static 'assets/js/logoutUI.js'%} "></script>
+        <script>
+            document.getElementById("logout").onclick = function () {
+                location.href = "{% url 'stream:logout' %}";
+            };
+            document.getElementById("cancel").onclick = function () {
+                location.href = "{% url 'stream:setting' %}";
+            };
+        </script>
+
+         <!-- ChangePassword popup UI -->
+         <script src=" {% static 'assets/js/ChangePasswordUI.js'%} "></script>
+         <script>
+             document.getElementById("Cancel").onclick = function () {
+                 location.href = "{% url 'stream:setting' %}";
+             };
+         </script>

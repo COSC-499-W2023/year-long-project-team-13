@@ -1,0 +1,22 @@
+{% extends 'stream/base.html'%}
+{% block content %}
+    {% if user.is_authenticated %}
+        <div id="overlay" class="float-center" style="position:fixed; top:30%;">
+            <div>
+                <p class="text-dark">Are you sure to logout?</p>
+                <button id="logout" class="float-left submit-button me-1">Logout</button>
+                <button id="cancel" class="float-left submit-button">Cancel</button>
+            </div>
+        </div>
+    {% endif %}
+    <div style = "margin-top: 25px; padding-top: 80px;">
+        <form method="POST">
+            {% csrf_token %}
+            <h3>Are you sure you want to delete the video {{ object.title }} ?</h3>
+            <div style="padding-top: 5px;">
+                <button type="submit" class="btn btn-primary me-3">Confirm Delete</button>
+                <a href="{% url 'stream:video-detail' object.id %}" class="btn btn-primary">Cancel</a>
+            </div>
+        </form>
+    </div>
+{% endblock content %}

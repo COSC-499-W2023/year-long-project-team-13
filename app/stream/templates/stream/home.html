@@ -1,0 +1,167 @@
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% load static %}
+<!DOCTYPE html>
+<html data-bs-theme="light" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Vnonymous</title>
+    <link rel="stylesheet" href= "{%static 'assets/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{%static 'css/styleTopBar.css' %}">
+    <link rel="stylesheet" href="{%static 'assets/fonts/font-awesome.min.css' %}">
+    <link href="{% static 'css/logoutUI.css' %}" rel="stylesheet">
+    <style>
+        .badge {
+          display: inline-block;
+          min-width: 10px;
+          padding: 3px 7px;
+          font-size: 12px;
+          font-weight: 700;
+          line-height: 1;
+          color: #fff;
+          text-align: center;
+          white-space: nowrap;
+          vertical-align: baseline;
+          background-color: #f00;
+          border-radius: 10px;
+        }
+      </style>
+</head>
+
+<body id="page-top" data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="77">
+    <nav class="navbar navbar-expand-md fixed-top navbar-light" id="mainNav">
+        <div class="container"><a class="navbar-brand" href=" {% url 'stream:home' %} " id="Home Button">
+            Vnonymous
+          </a><button data-bs-toggle="collapse" class="navbar-toggler navbar-toggler-right" data-bs-target="#navbarResponsive" type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" value="Menu"><i class="fa fa-bars"></i></button>
+            <div class="navbar" id="navbarResponsive">
+                <ul class="navbar-nav ms-auto">
+                    {% if user.is_authenticated %}
+                    <div class="dropdown">
+                        <li class="nav-item nav-link">
+                            <button class="nav-link active">
+                                <a id="Videos Hover">
+                                    VIDEOS &#9660;
+                                </a>
+                            </button>
+                        </li>
+                        <div class="dropdown-content">
+                            <li class="nav-item nav-link"><a class="nav-link active" href=" {% url 'stream:video-list' %} " id="Video Button">View Videos</a></li>
+                            {% if user.userinfo.permission == 1 or user.is_superuser %}
+                                <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:video-create' %}" id="New Video Button">Send Video</a>
+                            {% endif %}
+                            {% if user.userinfo.permission == 2 or user.is_superuser %}
+                                 <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:request-video' %}" id="Video Request Button">Request Video</a>
+                            {% endif %}
+                        </div>
+                      </div>
+                      <li class="nav-item nav-link"><a class="nav-link active" href=" {% url 'stream:contact' %} " id="Add Contacts Button">Add Contacts</a></li>
+                      <li class="nav-item nav-link">
+                        <a class="nav-link active" href="{% url 'stream:notifications' %}" id="Notification-Button">
+                            Notifications
+                            {% if unread_notifications_count > 0 %}
+                                <span class="badge badge-light">{{ unread_notifications_count }}</span>
+                            {% endif %}
+                        </a>
+                      </li>
+                      <div class="dropdown">
+                        <li class="nav-item nav-link">
+                        <button class="nav-link active">
+                            <a id="User Hover">
+                                <img class="rounded-circle border-dark" src="{{ user.profile.image.url }}" style="border-color: red;" width="25" height="25">
+                            &#9660;
+                            </a>
+                        </button>
+                        </li>
+                        <div class="dropdown-content">
+                            <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:profile' %}" id="Profile Button">Profile</a>
+                            <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:setting' %}" id="Setting Button">Settings</a>
+                            {% if user.is_superuser %}
+                                <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'admin:index' %}" id="Admin Button">Admin</a>
+                            {% endif %}
+                            <li class="nav-item nav-link"><a class="nav-link active"  href='#'onclick='overlay()' id="Logout Button">Logout</a>
+                        </div>
+                      </div>
+                    {% else %}
+                        <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:login' %}" id="Login Button">Login</a></li>
+                        <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:register' %}" id="Register Button">Register</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    {% if user.is_authenticated %}
+        <div id="overlay" class="float-center" style="position:fixed; top:30%;">
+            <div>
+                <p class="text-dark">Are you sure you want to logout?</p>
+                <button id="logout" class="float-left submit-button me-1">Logout</button>
+                <button id="cancel" class="float-left submit-button">Cancel</button>
+            </div>
+        </div>
+    {% endif %}
+
+    <header class="masthead" style="background-image:url('{% static 'assets/img/intro-bg.jpg' %}');">
+        <div class="intro-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 mx-auto">
+                        <h1 class="brand-heading">Vnonymous</h1>
+                        <p class="intro-text">Share Unseen, Connect Unheard: Your Video Stories, Your Way!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section class="text-center content-section" id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <h2>About Vnonymous</h2>
+                    <p>Vnonymous is the ultimate destination for those who crave privacy and self-expression in the world of video sharing. With Vnonymous, you can send and receive videos anonymously, allowing you to share your thoughts, experiences, and creativity without revealing your identity.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="text-center download-section content-section" id="download" style="background-image:url(' {% static 'assets/img/downloads-bg.jpg' %} ');">
+        <div class="container">
+            <div class="col-lg-8 mx-auto">
+                <h1>Start trying Vnonymous</h1>
+                {% if user.is_authenticated %}
+                <p>Start by creating a new video or by adding a new contact</p>
+                    <a href=" {% url 'stream:video-create' %}" >
+                        <button class="btn btn-primary btn-lg btn-default" type="button" > Visit CREATE Video page</button>
+                    </a>
+                    <a href=" {% url 'stream:contact' %}">
+                        <button class="btn btn-primary btn-lg btn-default" type="button" > Visit ADD Contact page</button>
+                    </a>
+                {% else %}
+                <p>In order to use this, start by creating an account</p>
+                <a href=" {% url 'stream:register' %}"><button class="btn btn-primary btn-lg btn-default" type="button" >Visit CREATE ACCOUNT page</button></a>
+                {% endif %}
+
+            </div>
+        </div>
+    </section>
+    <div class="map-clean"></div>
+    <script src=" {% static 'assets/bootstrap/js/bootstrap.min.js' %} "></script>
+
+    <!-- This js makes the header change to black colour when scrolling -->
+    <script src=" {% static 'assets/js/grayscale.js' %} "></script>
+
+    <!-- Logout popup UI -->
+    <script src=" {% static 'assets/js/logoutUI.js'%} "></script>
+    <script>
+        document.getElementById("logout").onclick = function () {
+            location.href = "{% url 'stream:logout' %}";
+        };
+        document.getElementById("cancel").onclick = function () {
+            location.href = "{% url 'stream:home' %}";
+        };
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+{% extends 'stream/base.html'%}
+{% block content %}
+
+<div class="center_journal" style = "margin-top: 25px; padding-top: 90px;">
+    <h1>ADD CONTACT</h1>
+</div>
+{% if user.is_authenticated %}
+<div id="overlay" class="float-center" style="position:fixed; top:30%;">
+    <div>
+        <p class="text-dark">Are you sure to logout?</p>
+        <button id="logout" class="float-left submit-button me-1">Logout</button>
+        <button id="cancel" class="float-left submit-button">Cancel</button>
+    </div>
+</div>
+{% endif %}
+<div style="padding-top: 25px;">
+    <form method="GET">
+        <div class="input-group">
+            <input type="text" class="form-control" name="search" placeholder="Search for users">
+            <button class="btn btn-dark" id="search button" type="submit">Search</button>
+        </div>
+    </form>
+    <div style="display: flex; flex-direction: column; align-items: center; margin-top: 25px;">
+        <h2>Existing Users</h2>
+        <div style="display: grid; grid-template-columns: max-content max-content; gap: 10px;">
+            {% for user in users %}
+            <div style="display: contents;">
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <input type="hidden" name="receiver" value="{{ user.id }}">
+                    <button class="btn btn-dark" id="add contact button" type="submit">Add Contact</button>
+                </form>
+                <p>{{ user.username }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

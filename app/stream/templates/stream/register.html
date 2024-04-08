@@ -1,0 +1,175 @@
+
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Vnonymous</title>
+    <link rel="stylesheet" href= "{%static 'assets/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="{% static 'css/styleRegister.css' %}" rel="stylesheet">
+    <link href="{% static 'css/styleTopBar.css' %}" rel="stylesheet">
+    <style>
+      ul.errorlist {
+          color: red;
+      }
+    </style>
+  </head>
+  <!--style in body change the website side/top/bottom background-->
+  <body id="page-top" data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="77" style="background-size: cover; background-image: url('{% static 'assets/img/register-background.jpg' %}');">
+    <nav class="navbar navbar-expand-md fixed-top navbar-light" id="mainNav">
+      <div class="container"><a class="navbar-brand" href=" {% url 'stream:home' %} " id="Home Button">
+          Vnonymous
+        </a><button data-bs-toggle="collapse" class="navbar-toggler navbar-toggler-right" data-bs-target="#navbarResponsive" type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" value="Menu"><i class="fa fa-bars"></i></button>
+          <div class="navbar" id="navbarResponsive">
+              <ul class="navbar-nav ms-auto">
+                  {% if user.is_authenticated %}
+                  <div class="dropdown">
+                      <li class="nav-item nav-link">
+                          <button class="nav-link active">
+                              <a id="Videos Hover">
+                                  VIDEOS &#9660;
+                              </a>
+                          </button>
+                      </li>
+                      <div class="dropdown-content">
+                        <li class="nav-item nav-link"><a class="nav-link active" href=" {% url 'stream:video-list' %} " id="Video Button">View Videos</a></li>
+                        {% if user.userinfo.permission == 1 or user.is_superuser %}
+                          <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:video-create' %}" id="New Video Button">Send Video</a>
+                        {% endif %}
+                        {% if user.userinfo.permission == 2 or user.is_superuser %}
+                          <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:request-video' %}" id="Video Request Button">Request Video</a>
+                        {% endif %}
+                      </div>
+                    </div>
+                    <li class="nav-item nav-link"><a class="nav-link active" href=" {% url 'stream:contact' %} " id="Add Contacts Button">Add Contacts</a></li>
+                    <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:notifications' %}" id="Notification Button">Notifications</a></li>
+                    <div class="dropdown">
+                      <li class="nav-item nav-link">
+                      <button class="nav-link active">
+                          <a id="User Hover">
+                              <img class="rounded-circle border-dark" src="{{ user.profile.image.url }}" style="border-color: red;" width="25" height="25">
+                          &#9660;
+                          </a>
+                      </button>
+                      </li>
+                      <div class="dropdown-content">
+                          <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:profile' %}" id="Profile Button">Profile</a>
+                          <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:setting' %}" id="Setting Button">Settings</a>
+                          {% if user.is_superuser %}
+                              <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'admin:index' %}" id="Admin Button">Admin</a>
+                          {% endif %}
+                          <li class="nav-item nav-link"><a class="nav-link active"  href='#'onclick='overlay()' id="Logout Button">Logout</a>
+                      </div>
+                    </div>
+                  {% else %}
+                      <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:login' %}" id="Login Button">Login</a></li>
+                      <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:register' %}" id="Register Button">Register</a></li>
+                  {% endif %}
+              </ul>
+          </div>
+      </div>
+  </nav>
+
+    <!--style in section change the website background-->
+    {% comment %} <section class="vh-100 bg-image" style="background-size: cover; background-image: url('{% static 'assets/img/register-background.jpg' %}'); margin-top: 73px;"> {% endcomment %}
+      <!-- Gradient mask -->
+      <section style="margin-top: 120px;">
+        <div class="container h-100">
+          <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+              <div class="card" style="border-radius: 15px;">
+                <div class="card-body p-5">
+                  <h2 class="text-uppercase text-center mb-5">Create an account</h2>
+                  <form method="POST">
+                    {% csrf_token %}
+                    {{ registrationform.username.errors }}
+                    {{ registrationform.username }}
+                    <p id="intruction">Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.</p>
+
+                    {{ registrationform.email.errors }}
+                    {{ registrationform.email }}
+
+                    {{ registrationform.password1.errors }}
+                    <div class="input-group" style="width: 75%; margin-left: 70px;">
+                        <div style="width: 90%;">
+                            {{ registrationform.password1 }}
+                        </div>
+                        <span toggle="#id_password1" class="input-group-addon toggle-password fas fa-eye" style="width: 10%; margin-top: 15px;"></span>
+                    </div>
+                    <p id="intruction">Your password can’t be too similar to your other personal information.
+                      <br>
+                      Your password must contain at least 8 characters.
+                      <br>
+                      Your password can’t be a commonly used password.
+                      <br>
+                      Your password can’t be entirely numeric.</p>
+
+                    {{ registrationform.password2.errors }}
+                    <div class="input-group" style="width: 75%; margin-left: 70px;">
+                      <div style="width: 90%;">
+                        {{ registrationform.password2 }}
+                      </div>
+                      <span toggle="#id_password2" class="input-group-addon toggle-password fas fa-eye" style="width: 10%; margin-top: 15px;"></span>
+                    </div>
+
+                    <p id="instruction" style="margin-top: 1px; margin-left: auto; margin-right: auto; font-size: 14px; width: 75%;">Click on the dropdown menu and select the user group you are.</p>
+
+                    {{ userpermissionform.permission.errors }}
+                    {{ userpermissionform.permission }}
+
+                    <p id="instruction" style="margin-top: 1px; margin-left: auto; margin-right: auto; font-size: 14px; width: 75%;">Click on the dropdown menu and select the security questions.</p>
+
+                    {{ userpermissionform.security_question.errors }}
+                    {{ userpermissionform.security_question }}
+
+                    {{ userpermissionform.security_answer.errors }}
+                    {{ userpermissionform.security_answer }}
+
+                    <div class="form-check d-flex justify-content-center mb-5">
+                      <div class="checkbox">
+                        <input class="form-check-input me-2 border-success" type="checkbox" value="" id="form2Example3cg" />
+                      </div>
+                      <label class="form-check-label" for="form2Example3g">
+                        I agree to all statements in <a href="#!" class="text-body"><u>Terms of service</u></a>
+                      </label>
+                    </div>
+
+                    <div class="d-flex justify-content-center">
+                      <button id="register" type="submit" class="btn btn-outline-info btn-success btn-block btn-lg gradient-custom-4 text-body" required>Register</button>
+                    </div>
+
+                    <p class="text-center text-muted mt-5 mb-0">Already have an account? <a href="{% url 'stream:login' %}"
+                        class="fw-bold text-body"><u>Login here</u></a></p>
+
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <script src=" {% static 'assets/bootstrap/js/bootstrap.min.js' %} "></script>
+
+      <!-- This js makes the header change to black colour when scrolling-->
+      <script src=" {% static 'assets/js/grayscale.js' %} "></script>
+
+      <script>
+        $(document).ready(function() {
+          $(".toggle-password").click(function() {
+            $(this).toggleClass("fas fa-eye fas fa-eye-slash");
+            var input = $($(this).attr("toggle"));
+            if (input.attr("type") == "password") {
+              input.attr("type", "text");
+            } else {
+              input.attr("type", "password");
+            }
+          });
+        });
+      </script>
+    </body>

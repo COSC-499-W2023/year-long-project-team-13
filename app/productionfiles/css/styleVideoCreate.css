@@ -1,0 +1,80 @@
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.horizontal-buttons {
+  flex-direction: row;
+  display: flex;
+}
+
+.button {
+  background-color: transparent;
+  margin: 0 auto 3em auto;
+  padding: 10px;
+  color: white;
+  border: 1px solid white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  width: 75%; /* Set a width if needed */
+  cursor: pointer; /* Mouse pointer on change to hand on hover */
+}
+
+.button:hover {
+  background-color: #3e8e41;
+}
+
+.video-box{
+  margin: 0 auto;
+  width: 50%;
+  height: 50%;
+}
+
+video {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.requestID {
+  color: black;
+  font-weight: bold;
+  /* padding-left:47px; */
+}
+
+.title {
+  color: black;
+  font-weight: bold;
+}
+
+.description {
+  color: black;
+  font-weight: bold;
+}
+
+.timelimit {
+  color: black;
+  font-weight: bold;
+}
+/* The sidebar menu */
+.sidebar {
+  height: 70%; /* 100% Full-height */
+  width: 0; /* 0 width - change this with JavaScript */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Stay on top */
+  top: 150;
+  left: 0;
+  background-color: #111; /* Black*/
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 60px; /* Place content 60px from the top */
+  transition: 0.5s; /* 0.5 second transition effect to slide in the sidebar */
+}
+
+.blur {
+  color: black;
+  font-weight: bold;
+}

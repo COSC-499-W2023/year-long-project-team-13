@@ -1,0 +1,33 @@
+{% extends 'stream/base.html' %}
+{% block content %}
+    {% if user.is_authenticated %}
+    <div id="overlay" class="float-center" style="position:fixed; top:30%;">
+        <div>
+            <p class="text-dark">Are you sure to logout?</p>
+            <button id="logout" class="float-left submit-button me-1">Logout</button>
+            <button id="cancel" class="float-left submit-button">Cancel</button>
+        </div>
+    </div>
+    {% endif %}
+    <div style = "padding-bottom: 60px; padding-top: 125px; ">
+        {% if object.sender == user %}
+                <div style = "margin-top: 25px; padding-bottom: 25px;">
+                    <img class="rounded-circle border-dark" src="{{ object.sender.profile.image.url }}" style="border-color: red;" width="100" height="100">
+                    <a style="font-size: 2em; text-align: start; margin: 1em; display:inline; align-items: center;" href="{% url 'stream:user-videos' object.sender.username %}">{{ object.sender.username }}</a>
+                </div>
+                <a class="btn btn-danger btn-sm mb-4" href="{% url 'stream:video-delete' object.id %}">Delete</a>
+        {% endif %}
+        <div class="card mb-3" style="width: 75%; box-shadow: 12em; margin: auto;">
+            <h12 style="text-align: center; margin-top: 0.25em; font-size: 1.25em;">{{ object.sendtime }}</h12>
+            <video class="card-img-top" controls style="width: 100%; height: auto;">
+                {% comment %} <source src="{{ object.video.url }}" type="video/mp4"> {% endcomment %}
+                <source src="{{ object.video }}" type="video/mp4">
+            </video>
+            <div class="card-body">
+                <h5 class="card-title"><a href="{% url 'stream:video-detail' object.id  %}">{{ object.title }}</a></h5>
+                <p class="card-text">{{ object.description }}</p>
+            </div>
+        </div>
+
+    </div>
+{% endblock content %}

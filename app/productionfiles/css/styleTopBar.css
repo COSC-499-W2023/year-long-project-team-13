@@ -1,0 +1,27 @@
+
+  /* The dropdown container */
+  .dropdown {
+    float: left;
+    overflow: hidden;
+    position: relative;
+    color: whitesmoke;
+  }
+
+  /* Dropdown content (hidden by default) */
+  .dropdown-content {
+    display: none;
+    position: fixed;
+    background-color: rgba(0,0,0,1);
+    min-width: 160px;
+    z-index: 1;
+  }
+
+  /* Add a grey background color to dropdown links on hover */
+  .dropdown-content a:hover {
+    background-color: #ddd;
+  }
+
+  /* Show the dropdown menu on hover */
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }

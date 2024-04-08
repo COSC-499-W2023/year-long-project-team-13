@@ -1,0 +1,20 @@
+{% extends 'stream/base.html' %}
+{% block content %}
+<div style = "margin-top: 25px; padding-top: 80px;">
+    <h2>You have been logged out</h2>
+        <div>
+            <button id="login again" style="background-color: #04AA6D; color: black; font-family: sans-serif; font-weight: bold; font-size: 18px; padding: 5px 12px 5px 12px;" onclick="window.location.href='{% url 'stream:login' %}';">Log In Again</button>
+        </div>
+</div>
+
+<script>
+    btn.addEventListener("mouseenter", function( event ) {
+        event.target.style.backgroundColor = "#00BFFF";
+        event.target.style.color = "white";
+      }, false);
+      btn.addEventListener("mouseleave", function( event ) {
+        event.target.style.backgroundColor = "#04AA6D";
+        event.target.style.color = "black";
+      }, false);
+</script>
+{% endblock content %}

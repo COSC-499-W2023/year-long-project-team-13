@@ -1,0 +1,161 @@
+
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Vnonymous</title>
+    <link rel="stylesheet" href= "{%static 'assets/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="{% static 'css/styleLogin.css' %}" rel="stylesheet">
+    <link href="{% static 'css/styleTopBar.css' %}" rel="stylesheet">
+    <style>
+      ul.errorlist {
+          color: red;
+      }
+    </style>
+  </head>
+
+  <!--style in body change the website side/top/bottom background-->
+  <body id="page-top" data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="77"  style="background-size: cover; background-image: url(' {% static 'assets/img/login-background-image.jpg' %} ');">
+    <nav class="navbar navbar-expand-md fixed-top navbar-light" id="mainNav">
+      <div class="container"><a class="navbar-brand" href=" {% url 'stream:home' %} " id="Home Button">
+          Vnonymous
+        </a><button data-bs-toggle="collapse" class="navbar-toggler navbar-toggler-right" data-bs-target="#navbarResponsive" type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" value="Menu"><i class="fa fa-bars"></i></button>
+          <div class="navbar" id="navbarResponsive">
+              <ul class="navbar-nav ms-auto">
+                  {% if user.is_authenticated %}
+                  <div class="dropdown">
+                      <li class="nav-item nav-link">
+                          <button class="nav-link active">
+                              <a id="Videos Hover">
+                                  VIDEOS &#9660;
+                              </a>
+                          </button>
+                      </li>
+                      <div class="dropdown-content">
+                        <li class="nav-item nav-link"><a class="nav-link active" href=" {% url 'stream:video-list' %} " id="Video Button">View Videos</a></li>
+                        {% if user.userinfo.permission == 1 or user.is_superuser %}
+                          <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:video-create' %}" id="New Video Button">Send Video</a>
+                        {% endif %}
+                        {% if user.userinfo.permission == 2 or user.is_superuser %}
+                         <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:request-video' %}" id="Video Request Button">Request Video</a>
+                        {% endif %}
+                      </div>
+                    </div>
+                    <li class="nav-item nav-link"><a class="nav-link active" href=" {% url 'stream:contact' %} " id="Add Contacts Button">Add Contacts</a></li>
+                    <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:notifications' %}" id="Notification Button">Notifications</a></li>
+                    <div class="dropdown">
+                      <li class="nav-item nav-link">
+                      <button class="nav-link active">
+                          <a id="User Hover">
+                              <img class="rounded-circle border-dark" src="{{ user.profile.image.url }}" style="border-color: red;" width="25" height="25">
+                          &#9660;
+                          </a>
+                      </button>
+                      </li>
+                      <div class="dropdown-content">
+                          <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:profile' %}" id="Profile Button">Profile</a>
+                          <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:setting' %}" id="Setting Button">Settings</a>
+                          {% if user.is_superuser %}
+                              <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'admin:index' %}" id="Admin Button">Admin</a>
+                          {% endif %}
+                          <li class="nav-item nav-link"><a class="nav-link active"  href='#'onclick='overlay()' id="Logout Button">Logout</a>
+                      </div>
+                    </div>
+                  {% else %}
+                      <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:login' %}" id="Login Button">Login</a></li>
+                      <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:register' %}" id="Register Button">Register</a></li>
+                  {% endif %}
+              </ul>
+          </div>
+      </div>
+  </nav>
+
+    <!--style in section change the website background-->
+    {% comment %} <section class="h-100 gradient-form" style="background-size: cover; background-image: url(' {% static 'assets/img/login-background-image.jpg' %} '); margin-top: 25px;"> {% endcomment %}
+    <section style="margin-top: 73px;">
+      <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col-xl-10">
+            <div class="card rounded-3 text-black">
+              <div class="row g-0">
+                <div class="col-lg-6">
+                  <div class="card-body p-md-5 mx-md-4">
+
+                    <div class="text-center">
+                        <video autoplay loop muted width="250" height="250">
+                          <source type="video/mp4" src="{% static 'assets/img/vnonymous_logo.mp4' %}">
+                        </video>
+                        <h4 class="mt-1 mb-5 pb-1">We are Vnonymous</h4>
+                    </div>
+
+                    <form method="POST">
+                      {% csrf_token %}
+                      <div id="please">
+                          <p style="text-align: center;">Please login to your account</p>
+                      </div>
+
+                      <div id="form">
+                        <label for="{{ form.username.id_for_label }}">Username:</label>
+                        {{ form.username }}
+                        <div class="input-group">
+                          <div style="width: 90%; margin-bottom:">
+                            <label for="{{ form.password.id_for_label }}" style="margin-left: 46px; margin-top: 15px;">Password:</label>
+                            {{ form.password }}
+                          </div>
+                          <span toggle="#{{ form.password.id_for_label }}" class="input-group-addon toggle-password fas fa-eye" style="position: absolute; margin-top: 20px; margin-left: 310px;"></span>
+                        </div>
+                      </div>
+
+                      <div class="text-center pt-1 mb-5 pb-1">
+                        <button id="login" class="btn btn-primary btn-block fa-lg mb-3 btn-outline-info" type="submit" style="margin-top: 20px; padding-top: 10px; padding-bottom: 10px; width: 85%;">Log In</button>
+                        <br>
+                        <a id='forgot-password-btn' class="text-muted" href="{% url 'stream:forget-password' %}">Forgot password?</a>
+                      </div>
+
+                      <div class="d-flex align-items-center justify-content-center pb-4">
+                        <p class="mb-0 me-2">Don't have an account?&nbsp;&nbsp;</p>
+                        <button type="button" class="btn btn-outline-danger" onclick="window.location.href='{% url 'stream:register'%}';">Create new</button>
+                      </div>
+                    </form>
+
+                  </div>
+                </div>
+
+                <div class="col-lg-6 d-md-flex align-items-center justify-content-between">
+                  <div class="box-1 mt-md-0 mt-5 rounded-3">
+                    <img src="{% static 'assets/img/login-phone-image.jpg' %}" alt="Trendy Pants and Shoes" class=""/>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script src=" {% static 'assets/bootstrap/js/bootstrap.min.js' %} "></script>
+
+    <!-- This js makes the header change to black colour when scrolling -->
+    <script src=" {% static 'assets/js/grayscale.js' %} "></script>
+
+    <script>
+      $(document).ready(function() {
+        $(".toggle-password").click(function() {
+          $(this).toggleClass("fas fa-eye fas fa-eye-slash");
+          var input = $($(this).attr("toggle"));
+          if (input.attr("type") == "password") {
+            input.attr("type", "text");
+          } else {
+            input.attr("type", "password");
+          }
+        });
+      });
+    </script>
+  </body>

@@ -1,0 +1,227 @@
+
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href= "{%static 'assets/bootstrap/css/bootstrap.min.css' %}">
+    <title>Vnonymous</title>
+    <link href="{% static 'css/styleProfile.css' %}" rel="stylesheet">
+    <link href="{% static 'css/logoutUI.css' %}" rel="stylesheet">
+    <link href="{% static 'css/styleTopBar.css' %}" rel="stylesheet">
+    <style>
+        .badge {
+            display: inline-block;
+            min-width: 10px;
+            padding: 3px 7px;
+            font-size: 12px;
+            font-weight: 700;
+            line-height: 1;
+            color: #fff;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: baseline;
+            background-color: #f00;
+            border-radius: 10px;
+        }
+      </style>
+  </head>
+
+  <body id="page-top" data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="77" style="background-size: cover; background-image: url(' {% static 'assets/img/intro-bg.jpg' %} ');">
+    <nav class="navbar navbar-expand-md fixed-top navbar-light" id="mainNav">
+        <div class="container"><a class="navbar-brand" href=" {% url 'stream:home' %} " id="Home Button">
+            Vnonymous
+          </a><button data-bs-toggle="collapse" class="navbar-toggler navbar-toggler-right" data-bs-target="#navbarResponsive" type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" value="Menu"><i class="fa fa-bars"></i></button>
+            <div class="navbar" id="navbarResponsive">
+                <ul class="navbar-nav ms-auto">
+                    {% if user.is_authenticated %}
+                    <div class="dropdown">
+                        <li class="nav-item nav-link">
+                            <button class="nav-link active">
+                                <a id="Videos Hover">
+                                    VIDEOS &#9660;
+                                </a>
+                            </button>
+                        </li>
+                        <div class="dropdown-content">
+                            <li class="nav-item nav-link"><a class="nav-link active" href=" {% url 'stream:video-list' %} " id="Video Button">View Videos</a></li>
+                            {% if user.userinfo.permission == 1 or user.is_superuser %}
+                                <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:video-create' %}" id="New Video Button">Send Video</a>
+                            {% endif %}
+                            {% if user.userinfo.permission == 2 or user.is_superuser %}
+                                <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:request-video' %}" id="Video Request Button">Request Video</a>
+                            {% endif %}
+                        </div>
+                      </div>
+                      <li class="nav-item nav-link"><a class="nav-link active" href=" {% url 'stream:contact' %} " id="Add Contacts Button">Add Contacts</a></li>
+                      <li class="nav-item nav-link">
+                        <a class="nav-link active" href="{% url 'stream:notifications' %}" id="Notification-Button">
+                            Notifications
+                            {% if unread_notifications_count > 0 %}
+                                <span class="badge badge-light">{{ unread_notifications_count }}</span>
+                            {% endif %}
+                        </a>
+                    </li>
+                      <div class="dropdown">
+                        <li class="nav-item nav-link">
+                        <button class="nav-link active">
+                            <a id="User Hover">
+                                <img class="rounded-circle border-dark" src="{{ user.profile.image.url }}" style="border-color: red;" width="25" height="25">
+                            &#9660;
+                            </a>
+                        </button>
+                        </li>
+                        <div class="dropdown-content">
+                            <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:profile' %}" id="Profile Button">Profile</a>
+                            <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:setting' %}" id="Setting Button">Settings</a>
+                            {% if user.is_superuser %}
+                                <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'admin:index' %}" id="Admin Button">Admin</a>
+                            {% endif %}
+                            <li class="nav-item nav-link"><a class="nav-link active"  href='#'onclick='overlay()' id="Logout Button">Logout</a>
+                        </div>
+                      </div>
+                    {% else %}
+                        <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:login' %}" id="Login Button">Login</a></li>
+                        <li class="nav-item nav-link"><a class="nav-link active" href="{% url 'stream:register' %}" id="Register Button">Register</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div id="overlay" class="float-center "style="position:fixed;top:30%;">
+        <div>
+            <p class="text-dark">Are you sure to logout?</p>
+            <button id="logout" class="float-left submit-button me-1">Logout</button>
+            <button id="cancel" class="float-left submit-button">Cancel</button>
+       </div>
+    </div>
+
+    <!-- https://www.bootdey.com/snippets/view/profile-edit-data-and-skills#css -->
+    <div style = "margin-top: 25px; padding-top: 100px;">
+
+    <div class="container">
+      <div class="main-body">
+          <div class="row">
+              <div class="col-lg-4">
+                  <div class="card" style = "padding-top: 25px; padding-bottom: 15px;">
+                      <div class="card-body">
+                          <div class="d-flex flex-column align-items-center text-center">
+                              <img src="{{ user.profile.image.url }}" alt="Admin" class="rounded-circle bg-primary" width="200" height="200" style="max-height: 100% max-width: 100%;">
+                              <div class="mt-3">
+                                  <h4>{{ user.username }}</h4>
+                                  <p class="text-secondary mb-3" id="NameCheck">{{ user.first_name }} {{ user.last_name }}</p>
+                                  <p class="text-muted font-size-sm" id="EmailCheck">{{ user.email }}</p>
+                                  <p class="text-muted font-size-sm" id="BirthdateCheck">{{ user.userinfo.birthdate }}</p>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="col-lg-8">
+                <form method="POST" enctype="multipart/form-data">
+                  {% csrf_token %}
+                  <div class="card" style = "padding-top: 25px; padding-bottom: 15px;">
+                      <div class="card-body">
+                          <div class="row mb-3">
+                              <div class="col-sm-3">
+                                  <h6 class="mb-0">First Name</h6>
+                              </div>
+                              <div class="col-sm-9 text-secondary">
+                                {{ userform.first_name.errors }}
+                                {{ userform.first_name }}
+                              </div>
+                          </div>
+                          <div class="row mb-3">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Last Name</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                {{ userform.last_name.errors }}
+                                {{ userform.last_name }}
+                            </div>
+                          </div>
+                          <div class="row mb-3">
+                              <div class="col-sm-3">
+                                  <h6 class="mb-0">Email</h6>
+                              </div>
+                              <div class="col-sm-9 text-secondary">
+                                  {{ userform.email.errors }}
+                                  {{ userform.email }}
+                              </div>
+                          </div>
+                          <div class="row mb-3">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Birth Date</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                {{ personalinfoform.birthdate.errors }}
+                                {{ personalinfoform.birthdate }}
+                            </div>
+                        </div>
+                          <div class="row mb-3">
+                              <div class="col-sm-3">
+                                  <h6 class="mb-0">Image</h6>
+                              </div>
+                              <div class="col-sm-9 text-secondary">
+                                    {{ profileform.image.errors }}
+                                    {{ profileform.image }}
+                              </div>
+                          </div>
+                          <div class="row" style = "padding-top: 25px;">
+                              <div class="col-sm-4"></div>
+                              <div class="col-sm-3 text-secondary d-flex justify-content-center">
+                                <button id="update" class="btn btn-outline-info btn-primary px-4 text-dark" type="submit">Update</button>
+                              </div>
+                              <div class="col-sm-4 text-secondary d-flex justify-content-center">
+                                <button id="change password" class="btn btn-outline-info btn-outline-primary px-4 text-dark" type="button" onclick="location.href='{% url 'stream:setting' %}'">Change Password</button>
+                              </div>
+                          </div>
+                      </div>
+                  </form>
+                  </div>
+
+                  <div class="row">
+                      <div class="col-sm-12">
+                          <div class="card" style = "padding-top: 15px; padding-bottom: 15px;">
+                              <div class="card-body">
+                                  <h5 class="d-flex align-items-center mb-3">Uploaded Videos</h5>
+                                    {% for item in videos %}
+                                        {% if item.sender == user %}
+                                            <video class="card-img-top" controls style="width: 40%; height: auto;">
+                                                <source src="{{ item.video }}" type="video/mp4">
+                                            </video>
+                                        {% endif %}
+                                    {% endfor %}
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+        <script src=" {% static 'assets/bootstrap/js/bootstrap.min.js' %} "></script>
+
+        <!-- This js makes the header change to black colour when scrolling -->
+        <script src=" {% static 'assets/js/grayscale.js' %} "></script>
+
+        <!-- Logout popup UI -->
+        <script src=" {% static 'assets/js/logoutUI.js'%} "></script>
+        <script>
+            document.getElementById("logout").onclick = function () {
+                location.href = "{% url 'stream:logout' %}";
+            };
+            document.getElementById("cancel").onclick = function () {
+                // cancel the pop up and stay on the same page
+                overlay();
+            };
+        </script>
+
+</body>
+</html>
