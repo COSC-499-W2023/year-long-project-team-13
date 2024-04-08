@@ -720,6 +720,12 @@ Completed Tasks
 ![Completed](./images/completed/term2_week13_done_1.png)
 ![Completed](./images/completed/term2_week13_done_2.png)
 ![Completed](./images/completed/term2_week13_done_3.png)
+![Completed](./images/completed/term2_week13_done_4.png)
+![Completed](./images/completed/term2_week13_done_5.png)
+![Completed](./images/completed/term2_week13_done_6.png)
+![Completed](./images/completed/term2_week13_done_7.png)
+![Completed](./images/completed/term2_week13_done_8.png)
+![Completed](./images/completed/term2_week13_done_9.png)
 In progress Tasks
 ![In Progress](./images/in-prog/term2_week13_inprogress.png)
 Test Report
