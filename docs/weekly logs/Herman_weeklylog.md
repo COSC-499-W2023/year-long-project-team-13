@@ -370,5 +370,14 @@ Add Contact Function, Add contact UI
 ![Tasks](./images/tasks/Week12Term2NotificationIndicatorPic2Herman.png)
 ![Tasks](./images/tasks/Week12Term2PeerEvalHerman.png)
 
+- Applicable date range
+# Preferred name -> Ssc name -> Github name
 
+- Herman -> Herman Sood -> Herman Sood
 
+## Week 13 2024/04/01 ~ 2024/04/07
+
+- Recap on your week's goals-Which features were yours in the project plan for this milestone? For term 2 week 13, I worked on the final project report and video.
+  - Which tasks from the project board are associated with these features? Final Video creation, Final Video editing, Final Individual Report and Documentation.
+
+![Tasks](./images/tasks/Week13Term2PeerEvalHerman.png)
