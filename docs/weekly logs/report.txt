@@ -35,7 +35,6 @@ Admin Page test Completed
 Notification Page test Start
 Login successful
 TEST: 0 `User hover` successful
-TEST: Notification indicator is displayed with count 0
 TEST 1: `Notifications` successful
 Notification Page test completed
 Contact Video Page Test Start
@@ -130,6 +129,44 @@ Login Successful
 TEST: 1 `Notification-Button` Sucessful
 TEST: 2 `View Video From Notifications` Successful
 View Video Test Complete
+Setting Page test Start
+Login successful
+TEST: 0 `User hover` successful
+TEST: 1 Change Password redirect successful
+TEST: 2 `User hover` successful
+Test 1 : oldpassword successful
+Test 2 : newpassword successful
+Test 3 : confirmpassword successful
+Test 4 : Save successful
+Test 5 : Update successful
+Test 6 : Reset successful
+Test 7 : Save successful
+Test 8 : Cancel successful
+oldpassword filled successfully
+newpassword filled successfully
+confirmpassword filled successfully
+Save successful
+Update successful
+TEST: 9 `Setting` successful
+Login successful
+TEST: 0 `User hover` successful
+TEST: 1 Change Password redirect successful
+TEST: 2 `User hover` successful
+Test 1 : oldpassword successful
+Test 2 : newpassword successful
+Test 3 : confirmpassword successful
+Test 4 : Save successful
+Test 5 : Update successful
+Test 6 : Reset successful
+Test 7 : Save successful
+Test 8 : Cancel successful
+oldpassword filled successfully
+newpassword filled successfully
+confirmpassword filled successfully
+Save successful
+Update successful
+TEST: 9 `Setting` successful
+Setting Page test Completed
 Register Page test Start
 TEST: 0 `Registration` successful
 Register Page test end for permission 1
@@ -160,41 +197,3 @@ TEST 6: `Bad Password Reset` successful
 TEST 7: `Good Password Reset` successful
 TEST 8: `Login` successful
 Reset Password Page test Completed
-Setting Page test Start
-Login successful
-TEST: 0 `User hover` successful
-TEST: 1 Change Password redirect successful
-TEST: 2 `User hover` successful
-Test 1 : oldpassword successful
-Test 2 : newpassword successful
-Test 3 : confirmpassword successful
-Test 4 : Save successful
-Test 5 : Update successful
-Test 6 : Save successful
-Test 7 : Cancel successful
-Test 8 : Reset successful
-oldpassword filled successfully
-newpassword filled successfully
-confirmpassword filled successfully
-Save successful
-Update successful
-TEST: 9 `Setting` successful
-Login successful
-TEST: 0 `User hover` successful
-TEST: 1 Change Password redirect successful
-TEST: 2 `User hover` successful
-Test 1 : oldpassword successful
-Test 2 : newpassword successful
-Test 3 : confirmpassword successful
-Test 4 : Save successful
-Test 5 : Update successful
-Test 6 : Save successful
-Test 7 : Cancel successful
-Test 8 : Reset successful
-oldpassword filled successfully
-newpassword filled successfully
-confirmpassword filled successfully
-Save successful
-Update successful
-TEST: 9 `Setting` successful
-Setting Page test Completed
