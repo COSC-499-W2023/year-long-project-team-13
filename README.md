@@ -183,8 +183,8 @@ Open your web browser and navigate to [http://127.0.0.1:8000/](http://127.0.0.1:
 
 ### Selenium Testing
 
-1. Run the Project on your Local Server.
-2. Navigate to the `Selenium_Tests` folder in your command line.
+1. Configure the Project to run locally following steps 4, 5, and 6 in the `Setup Guide` and make sure the Django server is running.
+2. Navigate to the `Selenium_Tests` folder in your command line in a different terminal window and activate the virtual environment using the same steps as in the `Setup Guide`.
 3. Run all Selenium tests:
 
    ```console
@@ -206,7 +206,8 @@ Open your web browser and navigate to [http://127.0.0.1:8000/](http://127.0.0.1:
 
 ### Pytest Testing
 
-1. Have the files set up for running the project on your local server. (You do not need the server running but the permissions and credentials need to be set up like you are running the it on local)
+1. Configure the Project to run locally following steps 4, 5, and 6 in the `Setup Guide` and make sure the Django server is running.\
+(You do not need the server running but the permissions and credentials need to be set up like you are running the it on local)
 2. Navigate into the `app` folder in your command line.
 3. Run all Pytests:
 
